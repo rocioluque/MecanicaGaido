@@ -92,6 +92,8 @@
     <Compile Include="AD_Ciudades.vb" />
     <Compile Include="AD_Empleados.vb" />
     <Compile Include="AD_Login.vb" />
+    <Compile Include="AD_Marca.vb" />
+    <Compile Include="AD_Productos.vb" />
     <Compile Include="ConnectionToSql.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
