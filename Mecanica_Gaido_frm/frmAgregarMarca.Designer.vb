@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmAgregarMarca
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,13 +20,15 @@ Partial Class frmAgregarMarca
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAgregarMarca))
         Me.btnCerrar = New System.Windows.Forms.PictureBox()
         Me.txtMarca = New System.Windows.Forms.TextBox()
         Me.lblMarca = New System.Windows.Forms.Label()
         Me.btnAgregar = New System.Windows.Forms.Button()
+        Me.btnModificar = New System.Windows.Forms.Button()
+        Me.chkEstado = New System.Windows.Forms.CheckBox()
         CType(Me.btnCerrar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -67,19 +69,49 @@ Partial Class frmAgregarMarca
         Me.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAgregar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregar.ForeColor = System.Drawing.Color.White
-        Me.btnAgregar.Location = New System.Drawing.Point(308, 129)
+        Me.btnAgregar.Location = New System.Drawing.Point(308, 260)
         Me.btnAgregar.Name = "btnAgregar"
         Me.btnAgregar.Size = New System.Drawing.Size(82, 29)
         Me.btnAgregar.TabIndex = 11
         Me.btnAgregar.Text = "Agregar"
         Me.btnAgregar.UseVisualStyleBackColor = True
         '
+        'btnModificar
+        '
+        Me.btnModificar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.btnModificar.FlatAppearance.BorderSize = 2
+        Me.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnModificar.ForeColor = System.Drawing.Color.White
+        Me.btnModificar.Location = New System.Drawing.Point(10, 260)
+        Me.btnModificar.Name = "btnModificar"
+        Me.btnModificar.Size = New System.Drawing.Size(82, 29)
+        Me.btnModificar.TabIndex = 15
+        Me.btnModificar.Text = "Modificar"
+        Me.btnModificar.UseVisualStyleBackColor = True
+        '
+        'chkEstado
+        '
+        Me.chkEstado.AutoSize = True
+        Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkEstado.ForeColor = System.Drawing.Color.White
+        Me.chkEstado.Location = New System.Drawing.Point(153, 260)
+        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
+        Me.chkEstado.Name = "chkEstado"
+        Me.chkEstado.Size = New System.Drawing.Size(85, 21)
+        Me.chkEstado.TabIndex = 27
+        Me.chkEstado.Text = "¿Activo?"
+        Me.chkEstado.UseVisualStyleBackColor = True
+        '
         'frmAgregarMarca
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(402, 170)
+        Me.ClientSize = New System.Drawing.Size(402, 297)
+        Me.Controls.Add(Me.chkEstado)
+        Me.Controls.Add(Me.btnModificar)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.txtMarca)
         Me.Controls.Add(Me.lblMarca)
@@ -98,4 +130,6 @@ Partial Class frmAgregarMarca
     Friend WithEvents txtMarca As TextBox
     Friend WithEvents lblMarca As Label
     Friend WithEvents btnAgregar As Button
+    Friend WithEvents btnModificar As Button
+    Friend WithEvents chkEstado As CheckBox
 End Class
