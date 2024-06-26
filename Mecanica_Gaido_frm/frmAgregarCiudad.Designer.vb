@@ -23,31 +23,32 @@ Partial Class frmAgregarCiudad
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAgregarCiudad))
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.btnCerrar = New System.Windows.Forms.PictureBox()
         Me.txtCiudad = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnAgregar = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.cboProvincia = New System.Windows.Forms.ComboBox()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.btnModificar = New System.Windows.Forms.Button()
+        CType(Me.btnCerrar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'PictureBox1
+        'btnCerrar
         '
-        Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox1.Location = New System.Drawing.Point(371, 3)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(19, 18)
-        Me.PictureBox1.TabIndex = 8
-        Me.PictureBox1.TabStop = False
+        Me.btnCerrar.BackgroundImage = CType(resources.GetObject("btnCerrar.BackgroundImage"), System.Drawing.Image)
+        Me.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnCerrar.Location = New System.Drawing.Point(371, 3)
+        Me.btnCerrar.Name = "btnCerrar"
+        Me.btnCerrar.Size = New System.Drawing.Size(19, 18)
+        Me.btnCerrar.TabIndex = 8
+        Me.btnCerrar.TabStop = False
         '
         'txtCiudad
         '
-        Me.txtCiudad.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCiudad.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtCiudad.Location = New System.Drawing.Point(120, 101)
         Me.txtCiudad.Name = "txtCiudad"
-        Me.txtCiudad.Size = New System.Drawing.Size(228, 21)
+        Me.txtCiudad.Size = New System.Drawing.Size(228, 23)
         Me.txtCiudad.TabIndex = 7
         '
         'Label1
@@ -70,7 +71,7 @@ Partial Class frmAgregarCiudad
         Me.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAgregar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregar.ForeColor = System.Drawing.Color.White
-        Me.btnAgregar.Location = New System.Drawing.Point(299, 167)
+        Me.btnAgregar.Location = New System.Drawing.Point(12, 175)
         Me.btnAgregar.Name = "btnAgregar"
         Me.btnAgregar.Size = New System.Drawing.Size(82, 29)
         Me.btnAgregar.TabIndex = 5
@@ -90,21 +91,39 @@ Partial Class frmAgregarCiudad
         '
         'cboProvincia
         '
+        Me.cboProvincia.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.cboProvincia.FormattingEnabled = True
         Me.cboProvincia.Location = New System.Drawing.Point(120, 43)
         Me.cboProvincia.Name = "cboProvincia"
-        Me.cboProvincia.Size = New System.Drawing.Size(228, 21)
+        Me.cboProvincia.Size = New System.Drawing.Size(228, 25)
         Me.cboProvincia.TabIndex = 10
+        '
+        'btnModificar
+        '
+        Me.btnModificar.BackColor = System.Drawing.Color.Transparent
+        Me.btnModificar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.btnModificar.FlatAppearance.BorderSize = 2
+        Me.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnModificar.ForeColor = System.Drawing.Color.White
+        Me.btnModificar.Location = New System.Drawing.Point(299, 175)
+        Me.btnModificar.Name = "btnModificar"
+        Me.btnModificar.Size = New System.Drawing.Size(82, 29)
+        Me.btnModificar.TabIndex = 11
+        Me.btnModificar.Text = "Modificar"
+        Me.btnModificar.UseVisualStyleBackColor = False
         '
         'frmAgregarCiudad
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(393, 208)
+        Me.ClientSize = New System.Drawing.Size(393, 216)
+        Me.Controls.Add(Me.btnModificar)
         Me.Controls.Add(Me.cboProvincia)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.txtCiudad)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnAgregar)
@@ -114,16 +133,17 @@ Partial Class frmAgregarCiudad
         Me.Name = "frmAgregarCiudad"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Agregar Ciudad"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btnCerrar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents btnCerrar As PictureBox
     Friend WithEvents txtCiudad As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents btnAgregar As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents cboProvincia As ComboBox
+    Friend WithEvents btnModificar As Button
 End Class

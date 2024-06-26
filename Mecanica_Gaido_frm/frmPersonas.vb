@@ -158,7 +158,30 @@ Public Class frmPersonas
     End Sub
 
     Private Sub btnAgregarCiudad_Click(sender As Object, e As EventArgs) Handles btnAgregarCiudad.Click
-        frmAgregarCiudad.ShowDialog()
+        If cboCiudad.SelectedValue <> Nothing And cboProvincia.SelectedValue <> Nothing Then
+            Dim frm As New frmAgregarCiudad()
+
+            ' Pasar la ciudad y provincia seleccionada
+            frm.CiudadID = Convert.ToInt32(cboCiudad.SelectedValue)
+            frm.CiudadNombre = cboCiudad.Text
+            frm.ProvinciaSeleccionada = Convert.ToInt32(cboProvincia.SelectedValue)
+            frm.EsModificacion = True
+
+            If frm.ShowDialog() = DialogResult.OK Then
+                ' Recargar las ciudades
+                If cboProvincia.SelectedValue IsNot Nothing Then
+                    Dim idProvincia As Integer
+                    If TypeOf cboProvincia.SelectedValue Is DataRowView Then
+                        idProvincia = Convert.ToInt32(DirectCast(cboProvincia.SelectedValue, DataRowView)("ID_Provincia"))
+                    Else
+                        idProvincia = Convert.ToInt32(cboProvincia.SelectedValue)
+                    End If
+                    Cargar_Ciudades(idProvincia)
+                End If
+            End If
+        Else
+            MsgBox("Seleccione una ciudad para modificar.", vbInformation, "Información")
+        End If
     End Sub
 #End Region
 

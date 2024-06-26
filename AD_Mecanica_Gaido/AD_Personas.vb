@@ -25,7 +25,7 @@ Public Class AD_Personas
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar las marcas desde la base de datos", ex)
+                    Throw New Exception("Error al cargar las provincias desde la base de datos", ex)
                 End Try
 
             End Using
