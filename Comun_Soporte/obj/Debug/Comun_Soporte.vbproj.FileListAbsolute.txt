@@ -49,3 +49,17 @@ C:\Users\alumn\source\repos\Mecanica_Gaido\Comun_Soporte\obj\Debug\Comun_Soporte
 C:\Users\alumn\source\repos\Mecanica_Gaido\Comun_Soporte\obj\Debug\Comun_Soporte.dll
 C:\Users\alumn\source\repos\Mecanica_Gaido\Comun_Soporte\obj\Debug\Comun_Soporte.xml
 C:\Users\alumn\source\repos\Mecanica_Gaido\Comun_Soporte\obj\Debug\Comun_Soporte.pdb
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\Comun_Soporte.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\Comun_Soporte.pdb
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\Comun_Soporte.xml
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\Newtonsoft.Json.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\StarkbankEcdsa.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\Newtonsoft.Json.xml
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.vbproj.AssemblyReference.cache
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.Resources.resources
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.vbproj.GenerateResource.cache
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.vbproj.CoreCompileInputs.cache
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.vbproj.CopyComplete
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.xml
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.pdb
