@@ -1,0 +1,70 @@
+C:\Users\alumn\Documents\Instituto\Segundo año\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\AD_Mecanica_Gaido.dll
+C:\Users\alumn\Documents\Instituto\Segundo año\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\AD_Mecanica_Gaido.pdb
+C:\Users\alumn\Documents\Instituto\Segundo año\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\AD_Mecanica_Gaido.xml
+C:\Users\alumn\Documents\Instituto\Segundo año\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\alumn\Documents\Instituto\Segundo año\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\alumn\Documents\Instituto\Segundo año\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\alumn\Documents\Instituto\Segundo año\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Users\alumn\Documents\Instituto\Segundo año\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Microsoft.Practices.Unity.Interception.dll
+C:\Users\alumn\Documents\Instituto\Segundo año\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.AssemblyReference.cache
+C:\Users\alumn\Documents\Instituto\Segundo año\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.Resources.resources
+C:\Users\alumn\Documents\Instituto\Segundo año\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.GenerateResource.cache
+C:\Users\alumn\Documents\Instituto\Segundo año\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.CoreCompileInputs.cache
+C:\Users\alumn\Documents\Instituto\Segundo año\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.CopyComplete
+C:\Users\alumn\Documents\Instituto\Segundo año\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.dll
+C:\Users\alumn\Documents\Instituto\Segundo año\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.xml
+C:\Users\alumn\Documents\Instituto\Segundo año\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.pdb
+C:\Users\alumn\Documents\Instituto\Segundo año\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Comun_Soporte.dll
+C:\Users\alumn\Documents\Instituto\Segundo año\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Comun_Soporte.pdb
+C:\Users\alumn\Documents\Instituto\Segundo año\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Comun_Soporte.xml
+C:\Users\alumn\Documents\Instituto\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\AD_Mecanica_Gaido.dll
+C:\Users\alumn\Documents\Instituto\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\AD_Mecanica_Gaido.pdb
+C:\Users\alumn\Documents\Instituto\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\AD_Mecanica_Gaido.xml
+C:\Users\alumn\Documents\Instituto\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Comun_Soporte.dll
+C:\Users\alumn\Documents\Instituto\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Comun_Soporte.pdb
+C:\Users\alumn\Documents\Instituto\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Comun_Soporte.xml
+C:\Users\alumn\Documents\Instituto\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.AssemblyReference.cache
+C:\Users\alumn\Documents\Instituto\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.Resources.resources
+C:\Users\alumn\Documents\Instituto\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.GenerateResource.cache
+C:\Users\alumn\Documents\Instituto\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.CoreCompileInputs.cache
+C:\Users\alumn\Documents\Instituto\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.CopyComplete
+C:\Users\alumn\Documents\Instituto\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.dll
+C:\Users\alumn\Documents\Instituto\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.xml
+C:\Users\alumn\Documents\Instituto\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.pdb
+<<<<<<< HEAD
+C:\Users\Fabricio\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\AD_Mecanica_Gaido.dll
+C:\Users\Fabricio\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\AD_Mecanica_Gaido.pdb
+C:\Users\Fabricio\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\AD_Mecanica_Gaido.xml
+C:\Users\Fabricio\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Comun_Soporte.dll
+C:\Users\Fabricio\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Comun_Soporte.pdb
+C:\Users\Fabricio\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Comun_Soporte.xml
+C:\Users\Fabricio\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.AssemblyReference.cache
+C:\Users\Fabricio\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.Resources.resources
+C:\Users\Fabricio\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.GenerateResource.cache
+C:\Users\Fabricio\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.CoreCompileInputs.cache
+C:\Users\Fabricio\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.CopyComplete
+C:\Users\Fabricio\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.dll
+C:\Users\Fabricio\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.xml
+C:\Users\Fabricio\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.pdb
+=======
+C:\Users\alumn\Documents\Instituto\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Newtonsoft.Json.dll
+C:\Users\alumn\Documents\Instituto\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\StarkbankEcdsa.dll
+C:\Users\alumn\Documents\Instituto\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Newtonsoft.Json.xml
+>>>>>>> 0062e405a165c8e13c2e55343e7a3003ee301f69
+C:\Users\alumn\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\AD_Mecanica_Gaido.dll
+C:\Users\alumn\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\AD_Mecanica_Gaido.pdb
+C:\Users\alumn\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\AD_Mecanica_Gaido.xml
+C:\Users\alumn\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Comun_Soporte.dll
+C:\Users\alumn\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Newtonsoft.Json.dll
+C:\Users\alumn\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\StarkbankEcdsa.dll
+C:\Users\alumn\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Comun_Soporte.pdb
+C:\Users\alumn\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Comun_Soporte.xml
+C:\Users\alumn\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\bin\Debug\Newtonsoft.Json.xml
+C:\Users\alumn\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.AssemblyReference.cache
+C:\Users\alumn\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.Resources.resources
+C:\Users\alumn\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.GenerateResource.cache
+C:\Users\alumn\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.CoreCompileInputs.cache
+C:\Users\alumn\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.CopyComplete
+C:\Users\alumn\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.dll
+C:\Users\alumn\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.xml
+C:\Users\alumn\source\repos\Mecanica_Gaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.pdb
