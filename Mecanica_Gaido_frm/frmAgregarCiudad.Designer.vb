@@ -30,6 +30,7 @@ Partial Class frmAgregarCiudad
         Me.Label2 = New System.Windows.Forms.Label()
         Me.cboProvincia = New System.Windows.Forms.ComboBox()
         Me.btnModificar = New System.Windows.Forms.Button()
+        Me.chkEstado = New System.Windows.Forms.CheckBox()
         CType(Me.btnCerrar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -114,12 +115,26 @@ Partial Class frmAgregarCiudad
         Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = False
         '
+        'chkEstado
+        '
+        Me.chkEstado.AutoSize = True
+        Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkEstado.ForeColor = System.Drawing.Color.White
+        Me.chkEstado.Location = New System.Drawing.Point(152, 180)
+        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
+        Me.chkEstado.Name = "chkEstado"
+        Me.chkEstado.Size = New System.Drawing.Size(85, 21)
+        Me.chkEstado.TabIndex = 28
+        Me.chkEstado.Text = "¿Activo?"
+        Me.chkEstado.UseVisualStyleBackColor = True
+        '
         'frmAgregarCiudad
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(393, 216)
+        Me.Controls.Add(Me.chkEstado)
         Me.Controls.Add(Me.btnModificar)
         Me.Controls.Add(Me.cboProvincia)
         Me.Controls.Add(Me.Label2)
@@ -146,4 +161,5 @@ Partial Class frmAgregarCiudad
     Friend WithEvents Label2 As Label
     Friend WithEvents cboProvincia As ComboBox
     Friend WithEvents btnModificar As Button
+    Friend WithEvents chkEstado As CheckBox
 End Class

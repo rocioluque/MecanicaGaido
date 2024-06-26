@@ -36,7 +36,7 @@ Partial Class frmAgregarMarca
         '
         Me.btnCerrar.BackgroundImage = CType(resources.GetObject("btnCerrar.BackgroundImage"), System.Drawing.Image)
         Me.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnCerrar.Location = New System.Drawing.Point(378, 3)
+        Me.btnCerrar.Location = New System.Drawing.Point(373, 1)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(19, 18)
         Me.btnCerrar.TabIndex = 14
@@ -45,7 +45,7 @@ Partial Class frmAgregarMarca
         'txtMarca
         '
         Me.txtMarca.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMarca.Location = New System.Drawing.Point(132, 62)
+        Me.txtMarca.Location = New System.Drawing.Point(130, 81)
         Me.txtMarca.Name = "txtMarca"
         Me.txtMarca.Size = New System.Drawing.Size(228, 21)
         Me.txtMarca.TabIndex = 13
@@ -55,7 +55,7 @@ Partial Class frmAgregarMarca
         Me.lblMarca.AutoSize = True
         Me.lblMarca.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMarca.ForeColor = System.Drawing.Color.White
-        Me.lblMarca.Location = New System.Drawing.Point(33, 63)
+        Me.lblMarca.Location = New System.Drawing.Point(31, 82)
         Me.lblMarca.Name = "lblMarca"
         Me.lblMarca.Size = New System.Drawing.Size(59, 20)
         Me.lblMarca.TabIndex = 12
@@ -69,7 +69,7 @@ Partial Class frmAgregarMarca
         Me.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAgregar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregar.ForeColor = System.Drawing.Color.White
-        Me.btnAgregar.Location = New System.Drawing.Point(308, 260)
+        Me.btnAgregar.Location = New System.Drawing.Point(12, 175)
         Me.btnAgregar.Name = "btnAgregar"
         Me.btnAgregar.Size = New System.Drawing.Size(82, 29)
         Me.btnAgregar.TabIndex = 11
@@ -84,7 +84,7 @@ Partial Class frmAgregarMarca
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
-        Me.btnModificar.Location = New System.Drawing.Point(10, 260)
+        Me.btnModificar.Location = New System.Drawing.Point(299, 175)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(82, 29)
         Me.btnModificar.TabIndex = 15
@@ -96,7 +96,7 @@ Partial Class frmAgregarMarca
         Me.chkEstado.AutoSize = True
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
-        Me.chkEstado.Location = New System.Drawing.Point(153, 260)
+        Me.chkEstado.Location = New System.Drawing.Point(152, 180)
         Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
@@ -109,7 +109,7 @@ Partial Class frmAgregarMarca
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(402, 297)
+        Me.ClientSize = New System.Drawing.Size(393, 216)
         Me.Controls.Add(Me.chkEstado)
         Me.Controls.Add(Me.btnModificar)
         Me.Controls.Add(Me.btnCerrar)
