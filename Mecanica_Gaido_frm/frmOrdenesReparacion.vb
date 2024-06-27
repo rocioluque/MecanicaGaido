@@ -13,4 +13,17 @@ Public Class frmOrdenesReparacion
         cboServicios.SelectedIndex = 0
         chkActivo.Checked = False
     End Sub
+
+
+    Private Sub txtSeñasParticulares_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSeñasParticulares.KeyPress
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
+    End Sub
 End Class

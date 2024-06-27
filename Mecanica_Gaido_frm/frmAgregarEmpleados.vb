@@ -6,9 +6,26 @@ Imports System.Configuration
 Public Class frmAgregarEmpleados
     Dim o_empleados As New AD_Empleados
 
+#Region "Procedimientos"
+    Private Sub frmEmpleados_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Cargar_Combo_Usuarios()
+        Cargar_Grilla_Empleados()
+        Cargar_Combo_Seccion()
+        Cargar_Combo_Rol()
+    End Sub
 
-    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
-        Me.Close()
+    Public Sub limpiar()
+        txtID.Text = Nothing
+        cboSeccion.SelectedIndex = -1
+        txtCuil.Text = Nothing
+        txtFechaNacimiento.Text = Nothing
+        txtFechaContratacion.Text = Nothing
+        txtCargo.Text = Nothing
+        cboUsuario.SelectedIndex = -1
+        txtContraseña = Nothing
+        cboRol.SelectedIndex = -1
+        txtNota.Text = Nothing
+        chkEstado.Enabled = False
     End Sub
 
     Public Sub Cargar_Grilla_Empleados()
@@ -35,7 +52,9 @@ Public Class frmAgregarEmpleados
         oDs = Nothing
         conexion.Close()
     End Sub
+#End Region
 
+#Region "Cargar Combos"
     Private Sub Cargar_Combo_Usuarios()
         Try
             Dim tabla As DataTable = o_empleados.Cargar_Combo_Usuarios
@@ -70,10 +89,26 @@ Public Class frmAgregarEmpleados
         End Try
     End Sub
 
-    Private Sub frmEmpleados_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Cargar_Combo_Usuarios()
-        Cargar_Grilla_Empleados()
-        Cargar_Combo_Seccion()
+    Private Sub Cargar_Combo_Rol()
+        Try
+            Dim tabla As DataTable = o_empleados.Cargar_Combo_Rol
+
+            If tabla.Rows.Count > 0 Then
+                cboRol.DataSource = tabla
+                cboRol.DisplayMember = "Nombre"
+                cboRol.ValueMember = "ID_Rol"
+            Else
+                MsgBox("No se encontraron roles.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar los roles: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+#End Region
+
+    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        Me.Close()
     End Sub
 
     'Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
@@ -106,15 +141,4 @@ Public Class frmAgregarEmpleados
     '    End If
     'End Sub
 
-    Public Sub limpiar()
-        txtApellido.Text = Nothing
-        txtNombre.Text = Nothing
-        txtDireccion.Text = Nothing
-        txtID.Text = Nothing
-        txtNota.Text = Nothing
-        txtTelefono.Text = Nothing
-        cboSeccion.SelectedIndex = -1
-        cboUsuario.SelectedIndex = -1
-        chkEstado.Enabled = False
-    End Sub
 End Class

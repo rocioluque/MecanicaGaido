@@ -246,6 +246,38 @@ Public Class frmPersonas
             limpiar()
         End If
     End Sub
+
+    Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombre.KeyPress
+        If Not Char.IsLetter(e.KeyChar) _
+           AndAlso Not Char.IsControl(e.KeyChar) _
+           AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+
+
+    Private Sub txtApellido_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtApellido.KeyPress
+        If Not Char.IsLetter(e.KeyChar) _
+         AndAlso Not Char.IsControl(e.KeyChar) _
+         AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
+            e.Handled = True
+        End If
+
+    End Sub
+
+
+    Private Sub txtTelefono_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTelefono.KeyPress
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
+
+    End Sub
 #End Region
 
 

@@ -61,7 +61,7 @@ Partial Class frmPersonas
         Me.cboCiudad.Location = New System.Drawing.Point(384, 113)
         Me.cboCiudad.Margin = New System.Windows.Forms.Padding(2)
         Me.cboCiudad.Name = "cboCiudad"
-        Me.cboCiudad.Size = New System.Drawing.Size(133, 25)
+        Me.cboCiudad.Size = New System.Drawing.Size(133, 29)
         Me.cboCiudad.TabIndex = 34
         '
         'txtCorreo
@@ -70,7 +70,7 @@ Partial Class frmPersonas
         Me.txtCorreo.Location = New System.Drawing.Point(143, 191)
         Me.txtCorreo.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCorreo.Name = "txtCorreo"
-        Me.txtCorreo.Size = New System.Drawing.Size(118, 23)
+        Me.txtCorreo.Size = New System.Drawing.Size(118, 27)
         Me.txtCorreo.TabIndex = 31
         '
         'txtTelefono
@@ -79,7 +79,7 @@ Partial Class frmPersonas
         Me.txtTelefono.Location = New System.Drawing.Point(143, 153)
         Me.txtTelefono.Margin = New System.Windows.Forms.Padding(2)
         Me.txtTelefono.Name = "txtTelefono"
-        Me.txtTelefono.Size = New System.Drawing.Size(118, 23)
+        Me.txtTelefono.Size = New System.Drawing.Size(118, 27)
         Me.txtTelefono.TabIndex = 30
         '
         'txtApellido
@@ -88,7 +88,7 @@ Partial Class frmPersonas
         Me.txtApellido.Location = New System.Drawing.Point(143, 115)
         Me.txtApellido.Margin = New System.Windows.Forms.Padding(2)
         Me.txtApellido.Name = "txtApellido"
-        Me.txtApellido.Size = New System.Drawing.Size(118, 23)
+        Me.txtApellido.Size = New System.Drawing.Size(118, 27)
         Me.txtApellido.TabIndex = 29
         '
         'txtNombre
@@ -97,7 +97,7 @@ Partial Class frmPersonas
         Me.txtNombre.Location = New System.Drawing.Point(143, 77)
         Me.txtNombre.Margin = New System.Windows.Forms.Padding(2)
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(118, 23)
+        Me.txtNombre.Size = New System.Drawing.Size(118, 27)
         Me.txtNombre.TabIndex = 28
         '
         'txtID
@@ -106,7 +106,7 @@ Partial Class frmPersonas
         Me.txtID.Location = New System.Drawing.Point(143, 39)
         Me.txtID.Margin = New System.Windows.Forms.Padding(2)
         Me.txtID.Name = "txtID"
-        Me.txtID.Size = New System.Drawing.Size(43, 23)
+        Me.txtID.Size = New System.Drawing.Size(43, 27)
         Me.txtID.TabIndex = 27
         '
         'chkEstado
@@ -117,7 +117,7 @@ Partial Class frmPersonas
         Me.chkEstado.Location = New System.Drawing.Point(68, 230)
         Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
-        Me.chkEstado.Size = New System.Drawing.Size(85, 21)
+        Me.chkEstado.Size = New System.Drawing.Size(108, 25)
         Me.chkEstado.TabIndex = 26
         Me.chkEstado.Text = "¿Activo?"
         Me.chkEstado.UseVisualStyleBackColor = True
@@ -130,7 +130,7 @@ Partial Class frmPersonas
         Me.Label8.Location = New System.Drawing.Point(301, 156)
         Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(41, 17)
+        Me.Label8.Size = New System.Drawing.Size(53, 21)
         Me.Label8.TabIndex = 25
         Me.Label8.Text = "Nota"
         '
@@ -142,7 +142,7 @@ Partial Class frmPersonas
         Me.Label7.Location = New System.Drawing.Point(301, 118)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(57, 17)
+        Me.Label7.Size = New System.Drawing.Size(73, 21)
         Me.Label7.TabIndex = 24
         Me.Label7.Text = "Ciudad"
         '
@@ -154,7 +154,7 @@ Partial Class frmPersonas
         Me.Label6.Location = New System.Drawing.Point(301, 42)
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(69, 17)
+        Me.Label6.Size = New System.Drawing.Size(88, 21)
         Me.Label6.TabIndex = 23
         Me.Label6.Text = "Dirección"
         '
@@ -166,7 +166,7 @@ Partial Class frmPersonas
         Me.Label5.Location = New System.Drawing.Point(65, 194)
         Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(53, 17)
+        Me.Label5.Size = New System.Drawing.Size(67, 21)
         Me.Label5.TabIndex = 22
         Me.Label5.Text = "Correo"
         '
@@ -178,7 +178,7 @@ Partial Class frmPersonas
         Me.Label4.Location = New System.Drawing.Point(65, 156)
         Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(62, 17)
+        Me.Label4.Size = New System.Drawing.Size(80, 21)
         Me.Label4.TabIndex = 21
         Me.Label4.Text = "Teléfono"
         '
@@ -190,7 +190,7 @@ Partial Class frmPersonas
         Me.Label3.Location = New System.Drawing.Point(65, 118)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(61, 17)
+        Me.Label3.Size = New System.Drawing.Size(78, 21)
         Me.Label3.TabIndex = 20
         Me.Label3.Text = "Apellido"
         '
@@ -202,7 +202,7 @@ Partial Class frmPersonas
         Me.Label2.Location = New System.Drawing.Point(65, 80)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(61, 17)
+        Me.Label2.Size = New System.Drawing.Size(77, 21)
         Me.Label2.TabIndex = 19
         Me.Label2.Text = "Nombre"
         '
@@ -214,7 +214,7 @@ Partial Class frmPersonas
         Me.Label1.Location = New System.Drawing.Point(65, 42)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(21, 17)
+        Me.Label1.Size = New System.Drawing.Size(28, 21)
         Me.Label1.TabIndex = 18
         Me.Label1.Text = "ID"
         '
@@ -227,7 +227,7 @@ Partial Class frmPersonas
         Me.cboProvincia.Location = New System.Drawing.Point(384, 75)
         Me.cboProvincia.Margin = New System.Windows.Forms.Padding(2)
         Me.cboProvincia.Name = "cboProvincia"
-        Me.cboProvincia.Size = New System.Drawing.Size(133, 25)
+        Me.cboProvincia.Size = New System.Drawing.Size(133, 29)
         Me.cboProvincia.TabIndex = 37
         Me.cboProvincia.ValueMember = "ID_Provincia"
         '
@@ -239,7 +239,7 @@ Partial Class frmPersonas
         Me.Label9.Location = New System.Drawing.Point(301, 80)
         Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(68, 17)
+        Me.Label9.Size = New System.Drawing.Size(86, 21)
         Me.Label9.TabIndex = 36
         Me.Label9.Text = "Provincia"
         '
@@ -354,7 +354,7 @@ Partial Class frmPersonas
         Me.txtDireccion.Location = New System.Drawing.Point(384, 39)
         Me.txtDireccion.Margin = New System.Windows.Forms.Padding(2)
         Me.txtDireccion.Name = "txtDireccion"
-        Me.txtDireccion.Size = New System.Drawing.Size(133, 23)
+        Me.txtDireccion.Size = New System.Drawing.Size(133, 27)
         Me.txtDireccion.TabIndex = 46
         '
         'grdPersonas
@@ -365,6 +365,7 @@ Partial Class frmPersonas
         Me.grdPersonas.Location = New System.Drawing.Point(66, 298)
         Me.grdPersonas.Name = "grdPersonas"
         Me.grdPersonas.ReadOnly = True
+        Me.grdPersonas.RowHeadersWidth = 51
         Me.grdPersonas.Size = New System.Drawing.Size(834, 241)
         Me.grdPersonas.TabIndex = 47
         '

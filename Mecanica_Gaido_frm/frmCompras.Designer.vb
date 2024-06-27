@@ -78,7 +78,7 @@ Partial Class frmCompras
         Me.chkEstado.Location = New System.Drawing.Point(399, 264)
         Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
-        Me.chkEstado.Size = New System.Drawing.Size(85, 21)
+        Me.chkEstado.Size = New System.Drawing.Size(108, 25)
         Me.chkEstado.TabIndex = 44
         Me.chkEstado.Text = "¿Activo?"
         Me.chkEstado.UseVisualStyleBackColor = True
@@ -174,7 +174,7 @@ Partial Class frmCompras
         Me.Label11.Location = New System.Drawing.Point(398, 227)
         Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(39, 17)
+        Me.Label11.Size = New System.Drawing.Size(51, 21)
         Me.Label11.TabIndex = 33
         Me.Label11.Text = "Total"
         '
@@ -186,7 +186,7 @@ Partial Class frmCompras
         Me.Label10.Location = New System.Drawing.Point(396, 182)
         Me.Label10.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(111, 17)
+        Me.Label10.Size = New System.Drawing.Size(143, 21)
         Me.Label10.TabIndex = 32
         Me.Label10.Text = "Otros impuestos"
         '
@@ -198,7 +198,7 @@ Partial Class frmCompras
         Me.Label9.Location = New System.Drawing.Point(398, 137)
         Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(77, 17)
+        Me.Label9.Size = New System.Drawing.Size(100, 21)
         Me.Label9.TabIndex = 31
         Me.Label9.Text = "IVA monto"
         '
@@ -210,7 +210,7 @@ Partial Class frmCompras
         Me.Label8.Location = New System.Drawing.Point(396, 92)
         Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(29, 17)
+        Me.Label8.Size = New System.Drawing.Size(41, 21)
         Me.Label8.TabIndex = 30
         Me.Label8.Text = "IVA"
         '
@@ -222,7 +222,7 @@ Partial Class frmCompras
         Me.Label7.Location = New System.Drawing.Point(398, 45)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(62, 17)
+        Me.Label7.Size = New System.Drawing.Size(80, 21)
         Me.Label7.TabIndex = 29
         Me.Label7.Text = "Subtotal"
         '
@@ -234,7 +234,7 @@ Partial Class frmCompras
         Me.Label5.Location = New System.Drawing.Point(43, 227)
         Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(110, 17)
+        Me.Label5.Size = New System.Drawing.Size(140, 21)
         Me.Label5.TabIndex = 28
         Me.Label5.Text = "Forma de pago"
         '
@@ -246,7 +246,7 @@ Partial Class frmCompras
         Me.Label4.Location = New System.Drawing.Point(43, 180)
         Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(57, 17)
+        Me.Label4.Size = New System.Drawing.Size(74, 21)
         Me.Label4.TabIndex = 27
         Me.Label4.Text = "Cuenta"
         '
@@ -258,7 +258,7 @@ Partial Class frmCompras
         Me.Label3.Location = New System.Drawing.Point(43, 137)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(121, 17)
+        Me.Label3.Size = New System.Drawing.Size(155, 21)
         Me.Label3.TabIndex = 26
         Me.Label3.Text = "N° Comprobante"
         '
@@ -270,7 +270,7 @@ Partial Class frmCompras
         Me.Label2.Location = New System.Drawing.Point(43, 90)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(103, 17)
+        Me.Label2.Size = New System.Drawing.Size(133, 21)
         Me.Label2.TabIndex = 25
         Me.Label2.Text = "Fecha compra"
         '
@@ -282,7 +282,7 @@ Partial Class frmCompras
         Me.Label1.Location = New System.Drawing.Point(43, 45)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(21, 17)
+        Me.Label1.Size = New System.Drawing.Size(28, 21)
         Me.Label1.TabIndex = 24
         Me.Label1.Text = "ID"
         '

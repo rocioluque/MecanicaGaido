@@ -74,6 +74,7 @@ Partial Class frmVentas
         Me.grdVentas.Location = New System.Drawing.Point(55, 304)
         Me.grdVentas.Name = "grdVentas"
         Me.grdVentas.ReadOnly = True
+        Me.grdVentas.RowHeadersWidth = 51
         Me.grdVentas.Size = New System.Drawing.Size(830, 246)
         Me.grdVentas.TabIndex = 95
         '
@@ -84,7 +85,7 @@ Partial Class frmVentas
         Me.chkEstado.ForeColor = System.Drawing.Color.White
         Me.chkEstado.Location = New System.Drawing.Point(100, 206)
         Me.chkEstado.Name = "chkEstado"
-        Me.chkEstado.Size = New System.Drawing.Size(85, 21)
+        Me.chkEstado.Size = New System.Drawing.Size(108, 25)
         Me.chkEstado.TabIndex = 93
         Me.chkEstado.Text = "¿Activo?"
         Me.chkEstado.UseVisualStyleBackColor = True
@@ -96,7 +97,7 @@ Partial Class frmVentas
         Me.Label14.ForeColor = System.Drawing.Color.White
         Me.Label14.Location = New System.Drawing.Point(436, 182)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(124, 17)
+        Me.Label14.Size = New System.Drawing.Size(159, 21)
         Me.Label14.TabIndex = 92
         Me.Label14.Text = "Forma de Entrega"
         '
@@ -107,7 +108,7 @@ Partial Class frmVentas
         Me.Label13.ForeColor = System.Drawing.Color.White
         Me.Label13.Location = New System.Drawing.Point(439, 155)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(98, 17)
+        Me.Label13.Size = New System.Drawing.Size(130, 21)
         Me.Label13.TabIndex = 91
         Me.Label13.Text = "Tipo de Venta"
         '
@@ -118,7 +119,7 @@ Partial Class frmVentas
         Me.Label11.ForeColor = System.Drawing.Color.White
         Me.Label11.Location = New System.Drawing.Point(439, 129)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(39, 17)
+        Me.Label11.Size = New System.Drawing.Size(51, 21)
         Me.Label11.TabIndex = 90
         Me.Label11.Text = "Total"
         '
@@ -129,7 +130,7 @@ Partial Class frmVentas
         Me.Label9.ForeColor = System.Drawing.Color.White
         Me.Label9.Location = New System.Drawing.Point(439, 51)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(62, 17)
+        Me.Label9.Size = New System.Drawing.Size(80, 21)
         Me.Label9.TabIndex = 89
         Me.Label9.Text = "Subtotal"
         '
@@ -140,7 +141,7 @@ Partial Class frmVentas
         Me.Label8.ForeColor = System.Drawing.Color.White
         Me.Label8.Location = New System.Drawing.Point(439, 77)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(29, 17)
+        Me.Label8.Size = New System.Drawing.Size(41, 21)
         Me.Label8.TabIndex = 88
         Me.Label8.Text = "IVA"
         '
@@ -151,7 +152,7 @@ Partial Class frmVentas
         Me.Label7.ForeColor = System.Drawing.Color.White
         Me.Label7.Location = New System.Drawing.Point(439, 103)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(111, 17)
+        Me.Label7.Size = New System.Drawing.Size(145, 21)
         Me.Label7.TabIndex = 87
         Me.Label7.Text = "Otros Impuestos"
         '
@@ -176,7 +177,7 @@ Partial Class frmVentas
         Me.Label6.ForeColor = System.Drawing.Color.White
         Me.Label6.Location = New System.Drawing.Point(98, 156)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(75, 17)
+        Me.Label6.Size = New System.Drawing.Size(95, 21)
         Me.Label6.TabIndex = 84
         Me.Label6.Text = "Empleado"
         '
@@ -187,7 +188,7 @@ Partial Class frmVentas
         Me.Label5.ForeColor = System.Drawing.Color.White
         Me.Label5.Location = New System.Drawing.Point(97, 129)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(57, 17)
+        Me.Label5.Size = New System.Drawing.Size(74, 21)
         Me.Label5.TabIndex = 83
         Me.Label5.Text = "Cuenta"
         '
@@ -198,7 +199,7 @@ Partial Class frmVentas
         Me.Label4.ForeColor = System.Drawing.Color.White
         Me.Label4.Location = New System.Drawing.Point(98, 183)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(109, 17)
+        Me.Label4.Size = New System.Drawing.Size(138, 21)
         Me.Label4.TabIndex = 82
         Me.Label4.Text = "Forma de Pago"
         '
@@ -223,7 +224,7 @@ Partial Class frmVentas
         Me.Label3.ForeColor = System.Drawing.Color.White
         Me.Label3.Location = New System.Drawing.Point(97, 103)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(133, 17)
+        Me.Label3.Size = New System.Drawing.Size(169, 21)
         Me.Label3.TabIndex = 78
         Me.Label3.Text = "Nro. Comprobante"
         '
@@ -241,7 +242,7 @@ Partial Class frmVentas
         Me.Label2.ForeColor = System.Drawing.Color.White
         Me.Label2.Location = New System.Drawing.Point(97, 77)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(90, 17)
+        Me.Label2.Size = New System.Drawing.Size(120, 21)
         Me.Label2.TabIndex = 76
         Me.Label2.Text = "Fecha Venta"
         '
@@ -252,7 +253,7 @@ Partial Class frmVentas
         Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(97, 50)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(21, 17)
+        Me.Label1.Size = New System.Drawing.Size(28, 21)
         Me.Label1.TabIndex = 75
         Me.Label1.Text = "ID"
         '

@@ -45,7 +45,7 @@ Partial Class frmAgregarFormaPago
         Me.txtFormaPago.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtFormaPago.Location = New System.Drawing.Point(29, 93)
         Me.txtFormaPago.Name = "txtFormaPago"
-        Me.txtFormaPago.Size = New System.Drawing.Size(228, 21)
+        Me.txtFormaPago.Size = New System.Drawing.Size(228, 24)
         Me.txtFormaPago.TabIndex = 21
         '
         'lblRubro
@@ -55,7 +55,7 @@ Partial Class frmAgregarFormaPago
         Me.lblRubro.ForeColor = System.Drawing.Color.White
         Me.lblRubro.Location = New System.Drawing.Point(25, 58)
         Me.lblRubro.Name = "lblRubro"
-        Me.lblRubro.Size = New System.Drawing.Size(121, 20)
+        Me.lblRubro.Size = New System.Drawing.Size(151, 22)
         Me.lblRubro.TabIndex = 20
         Me.lblRubro.Text = "Forma de Pago"
         '

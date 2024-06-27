@@ -296,6 +296,7 @@ Partial Class frmAgregarCuentas
         Me.grdCuenta.Location = New System.Drawing.Point(49, 198)
         Me.grdCuenta.Name = "grdCuenta"
         Me.grdCuenta.ReadOnly = True
+        Me.grdCuenta.RowHeadersWidth = 51
         Me.grdCuenta.Size = New System.Drawing.Size(652, 176)
         Me.grdCuenta.TabIndex = 82
         '
