@@ -80,7 +80,7 @@ Partial Class frmAgregarEmpleados
         Me.txtContraseña.Location = New System.Drawing.Point(431, 67)
         Me.txtContraseña.Margin = New System.Windows.Forms.Padding(2)
         Me.txtContraseña.Name = "txtContraseña"
-        Me.txtContraseña.Size = New System.Drawing.Size(133, 23)
+        Me.txtContraseña.Size = New System.Drawing.Size(133, 27)
         Me.txtContraseña.TabIndex = 49
         '
         'txtTelefono
@@ -89,7 +89,7 @@ Partial Class frmAgregarEmpleados
         Me.txtTelefono.Location = New System.Drawing.Point(145, 181)
         Me.txtTelefono.Margin = New System.Windows.Forms.Padding(2)
         Me.txtTelefono.Name = "txtTelefono"
-        Me.txtTelefono.Size = New System.Drawing.Size(133, 23)
+        Me.txtTelefono.Size = New System.Drawing.Size(133, 27)
         Me.txtTelefono.TabIndex = 48
         '
         'txtApellido
@@ -98,7 +98,7 @@ Partial Class frmAgregarEmpleados
         Me.txtApellido.Location = New System.Drawing.Point(145, 143)
         Me.txtApellido.Margin = New System.Windows.Forms.Padding(2)
         Me.txtApellido.Name = "txtApellido"
-        Me.txtApellido.Size = New System.Drawing.Size(133, 23)
+        Me.txtApellido.Size = New System.Drawing.Size(133, 27)
         Me.txtApellido.TabIndex = 47
         '
         'txtNombre
@@ -107,7 +107,7 @@ Partial Class frmAgregarEmpleados
         Me.txtNombre.Location = New System.Drawing.Point(145, 105)
         Me.txtNombre.Margin = New System.Windows.Forms.Padding(2)
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(133, 23)
+        Me.txtNombre.Size = New System.Drawing.Size(133, 27)
         Me.txtNombre.TabIndex = 46
         '
         'txtID
@@ -116,7 +116,7 @@ Partial Class frmAgregarEmpleados
         Me.txtID.Location = New System.Drawing.Point(145, 29)
         Me.txtID.Margin = New System.Windows.Forms.Padding(2)
         Me.txtID.Name = "txtID"
-        Me.txtID.Size = New System.Drawing.Size(43, 23)
+        Me.txtID.Size = New System.Drawing.Size(43, 27)
         Me.txtID.TabIndex = 45
         '
         'chkEstado
@@ -127,7 +127,7 @@ Partial Class frmAgregarEmpleados
         Me.chkEstado.Location = New System.Drawing.Point(326, 186)
         Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
-        Me.chkEstado.Size = New System.Drawing.Size(85, 21)
+        Me.chkEstado.Size = New System.Drawing.Size(108, 25)
         Me.chkEstado.TabIndex = 44
         Me.chkEstado.Text = "¿Activo?"
         Me.chkEstado.UseVisualStyleBackColor = True
@@ -140,7 +140,7 @@ Partial Class frmAgregarEmpleados
         Me.Label5.Location = New System.Drawing.Point(323, 73)
         Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(84, 17)
+        Me.Label5.Size = New System.Drawing.Size(109, 21)
         Me.Label5.TabIndex = 43
         Me.Label5.Text = "Contraseña"
         '
@@ -152,7 +152,7 @@ Partial Class frmAgregarEmpleados
         Me.Label4.Location = New System.Drawing.Point(43, 187)
         Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(62, 17)
+        Me.Label4.Size = New System.Drawing.Size(80, 21)
         Me.Label4.TabIndex = 42
         Me.Label4.Text = "Teléfono"
         '
@@ -164,7 +164,7 @@ Partial Class frmAgregarEmpleados
         Me.Label3.Location = New System.Drawing.Point(43, 149)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(61, 17)
+        Me.Label3.Size = New System.Drawing.Size(78, 21)
         Me.Label3.TabIndex = 41
         Me.Label3.Text = "Apellido"
         '
@@ -176,7 +176,7 @@ Partial Class frmAgregarEmpleados
         Me.Label2.Location = New System.Drawing.Point(43, 111)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(61, 17)
+        Me.Label2.Size = New System.Drawing.Size(77, 21)
         Me.Label2.TabIndex = 40
         Me.Label2.Text = "Nombre"
         '
@@ -188,7 +188,7 @@ Partial Class frmAgregarEmpleados
         Me.Label1.Location = New System.Drawing.Point(43, 35)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(21, 17)
+        Me.Label1.Size = New System.Drawing.Size(28, 21)
         Me.Label1.TabIndex = 39
         Me.Label1.Text = "ID"
         '
@@ -250,7 +250,7 @@ Partial Class frmAgregarEmpleados
         Me.txtDireccion.Location = New System.Drawing.Point(145, 67)
         Me.txtDireccion.Margin = New System.Windows.Forms.Padding(2)
         Me.txtDireccion.Name = "txtDireccion"
-        Me.txtDireccion.Size = New System.Drawing.Size(133, 23)
+        Me.txtDireccion.Size = New System.Drawing.Size(133, 27)
         Me.txtDireccion.TabIndex = 60
         '
         'btnAgregarUsuario
@@ -272,7 +272,7 @@ Partial Class frmAgregarEmpleados
         Me.cboUsuario.Location = New System.Drawing.Point(431, 29)
         Me.cboUsuario.Margin = New System.Windows.Forms.Padding(2)
         Me.cboUsuario.Name = "cboUsuario"
-        Me.cboUsuario.Size = New System.Drawing.Size(133, 25)
+        Me.cboUsuario.Size = New System.Drawing.Size(133, 29)
         Me.cboUsuario.TabIndex = 58
         '
         'Label9
@@ -283,7 +283,7 @@ Partial Class frmAgregarEmpleados
         Me.Label9.Location = New System.Drawing.Point(323, 35)
         Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(54, 17)
+        Me.Label9.Size = New System.Drawing.Size(70, 21)
         Me.Label9.TabIndex = 57
         Me.Label9.Text = "Usuario"
         '
@@ -295,7 +295,7 @@ Partial Class frmAgregarEmpleados
         Me.cboSeccion.Location = New System.Drawing.Point(431, 105)
         Me.cboSeccion.Margin = New System.Windows.Forms.Padding(2)
         Me.cboSeccion.Name = "cboSeccion"
-        Me.cboSeccion.Size = New System.Drawing.Size(133, 25)
+        Me.cboSeccion.Size = New System.Drawing.Size(133, 29)
         Me.cboSeccion.TabIndex = 56
         '
         'Label7
@@ -306,7 +306,7 @@ Partial Class frmAgregarEmpleados
         Me.Label7.Location = New System.Drawing.Point(323, 111)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(58, 17)
+        Me.Label7.Size = New System.Drawing.Size(75, 21)
         Me.Label7.TabIndex = 55
         Me.Label7.Text = "Seccion"
         '
@@ -318,7 +318,7 @@ Partial Class frmAgregarEmpleados
         Me.Label6.Location = New System.Drawing.Point(43, 73)
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(69, 17)
+        Me.Label6.Size = New System.Drawing.Size(88, 21)
         Me.Label6.TabIndex = 54
         Me.Label6.Text = "Dirección"
         '
@@ -358,7 +358,7 @@ Partial Class frmAgregarEmpleados
         Me.Label8.Location = New System.Drawing.Point(323, 149)
         Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(41, 17)
+        Me.Label8.Size = New System.Drawing.Size(53, 21)
         Me.Label8.TabIndex = 63
         Me.Label8.Text = "Nota"
         '
@@ -370,6 +370,7 @@ Partial Class frmAgregarEmpleados
         Me.grdEmpleados.Location = New System.Drawing.Point(47, 241)
         Me.grdEmpleados.Name = "grdEmpleados"
         Me.grdEmpleados.ReadOnly = True
+        Me.grdEmpleados.RowHeadersWidth = 51
         Me.grdEmpleados.Size = New System.Drawing.Size(703, 176)
         Me.grdEmpleados.TabIndex = 65
         '

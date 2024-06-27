@@ -66,6 +66,7 @@ Partial Class frmOrdenesReparacion
         Me.grdOrdenReparacion.Location = New System.Drawing.Point(54, 338)
         Me.grdOrdenReparacion.Name = "grdOrdenReparacion"
         Me.grdOrdenReparacion.ReadOnly = True
+        Me.grdOrdenReparacion.RowHeadersWidth = 51
         Me.grdOrdenReparacion.Size = New System.Drawing.Size(843, 241)
         Me.grdOrdenReparacion.TabIndex = 89
         '
@@ -76,7 +77,7 @@ Partial Class frmOrdenesReparacion
         Me.chkActivo.ForeColor = System.Drawing.Color.White
         Me.chkActivo.Location = New System.Drawing.Point(394, 245)
         Me.chkActivo.Name = "chkActivo"
-        Me.chkActivo.Size = New System.Drawing.Size(85, 21)
+        Me.chkActivo.Size = New System.Drawing.Size(108, 25)
         Me.chkActivo.TabIndex = 87
         Me.chkActivo.Text = "¿Activo?"
         Me.chkActivo.UseVisualStyleBackColor = True
@@ -88,7 +89,7 @@ Partial Class frmOrdenesReparacion
         Me.Label5.ForeColor = System.Drawing.Color.White
         Me.Label5.Location = New System.Drawing.Point(391, 207)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(138, 17)
+        Me.Label5.Size = New System.Drawing.Size(181, 21)
         Me.Label5.TabIndex = 86
         Me.Label5.Text = "Servicios de terceros"
         '
@@ -99,7 +100,7 @@ Partial Class frmOrdenesReparacion
         Me.Label4.ForeColor = System.Drawing.Color.White
         Me.Label4.Location = New System.Drawing.Point(391, 123)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(110, 17)
+        Me.Label4.Size = New System.Drawing.Size(144, 21)
         Me.Label4.TabIndex = 85
         Me.Label4.Text = "Fecha de salida"
         '
@@ -110,7 +111,7 @@ Partial Class frmOrdenesReparacion
         Me.Label3.ForeColor = System.Drawing.Color.White
         Me.Label3.Location = New System.Drawing.Point(391, 81)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(154, 17)
+        Me.Label3.Size = New System.Drawing.Size(199, 21)
         Me.Label3.TabIndex = 84
         Me.Label3.Text = "Fecha Estimada Salida"
         '
@@ -121,7 +122,7 @@ Partial Class frmOrdenesReparacion
         Me.Label2.ForeColor = System.Drawing.Color.White
         Me.Label2.Location = New System.Drawing.Point(391, 38)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(102, 17)
+        Me.Label2.Size = New System.Drawing.Size(134, 21)
         Me.Label2.TabIndex = 83
         Me.Label2.Text = "Fecha Entrada"
         '
@@ -154,7 +155,7 @@ Partial Class frmOrdenesReparacion
         Me.Label12.ForeColor = System.Drawing.Color.White
         Me.Label12.Location = New System.Drawing.Point(391, 165)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(57, 17)
+        Me.Label12.Size = New System.Drawing.Size(74, 21)
         Me.Label12.TabIndex = 78
         Me.Label12.Text = "Cuenta"
         '
@@ -165,7 +166,7 @@ Partial Class frmOrdenesReparacion
         Me.Label10.ForeColor = System.Drawing.Color.White
         Me.Label10.Location = New System.Drawing.Point(51, 208)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(109, 17)
+        Me.Label10.Size = New System.Drawing.Size(141, 21)
         Me.Label10.TabIndex = 77
         Me.Label10.Text = "Fecha del turno"
         '
@@ -176,7 +177,7 @@ Partial Class frmOrdenesReparacion
         Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(51, 165)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(149, 17)
+        Me.Label1.Size = New System.Drawing.Size(195, 21)
         Me.Label1.TabIndex = 76
         Me.Label1.Text = "Motivo de reparación"
         '
@@ -231,7 +232,7 @@ Partial Class frmOrdenesReparacion
         Me.Label8.ForeColor = System.Drawing.Color.White
         Me.Label8.Location = New System.Drawing.Point(51, 81)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(64, 17)
+        Me.Label8.Size = New System.Drawing.Size(82, 21)
         Me.Label8.TabIndex = 69
         Me.Label8.Text = "Vehiculo"
         '
@@ -242,7 +243,7 @@ Partial Class frmOrdenesReparacion
         Me.Label7.ForeColor = System.Drawing.Color.White
         Me.Label7.Location = New System.Drawing.Point(51, 123)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(122, 17)
+        Me.Label7.Size = New System.Drawing.Size(159, 21)
         Me.Label7.TabIndex = 68
         Me.Label7.Text = "Señas Particulares"
         '
@@ -253,7 +254,7 @@ Partial Class frmOrdenesReparacion
         Me.lbl1.ForeColor = System.Drawing.Color.White
         Me.lbl1.Location = New System.Drawing.Point(51, 38)
         Me.lbl1.Name = "lbl1"
-        Me.lbl1.Size = New System.Drawing.Size(21, 17)
+        Me.lbl1.Size = New System.Drawing.Size(28, 21)
         Me.lbl1.TabIndex = 67
         Me.lbl1.Text = "ID"
         '

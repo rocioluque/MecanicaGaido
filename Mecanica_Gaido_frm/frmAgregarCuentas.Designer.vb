@@ -64,7 +64,7 @@ Partial Class frmAgregarCuentas
         Me.txtEmpresa.Location = New System.Drawing.Point(148, 69)
         Me.txtEmpresa.Margin = New System.Windows.Forms.Padding(2)
         Me.txtEmpresa.Name = "txtEmpresa"
-        Me.txtEmpresa.Size = New System.Drawing.Size(133, 23)
+        Me.txtEmpresa.Size = New System.Drawing.Size(133, 27)
         Me.txtEmpresa.TabIndex = 74
         '
         'Label6
@@ -75,7 +75,7 @@ Partial Class frmAgregarCuentas
         Me.Label6.Location = New System.Drawing.Point(46, 75)
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(63, 17)
+        Me.Label6.Size = New System.Drawing.Size(81, 21)
         Me.Label6.TabIndex = 73
         Me.Label6.Text = "Empresa"
         '
@@ -102,7 +102,7 @@ Partial Class frmAgregarCuentas
         Me.txtFechaAlta.Location = New System.Drawing.Point(415, 31)
         Me.txtFechaAlta.Margin = New System.Windows.Forms.Padding(2)
         Me.txtFechaAlta.Name = "txtFechaAlta"
-        Me.txtFechaAlta.Size = New System.Drawing.Size(133, 23)
+        Me.txtFechaAlta.Size = New System.Drawing.Size(133, 27)
         Me.txtFechaAlta.TabIndex = 71
         '
         'txtIngresosBrutos
@@ -111,7 +111,7 @@ Partial Class frmAgregarCuentas
         Me.txtIngresosBrutos.Location = New System.Drawing.Point(148, 145)
         Me.txtIngresosBrutos.Margin = New System.Windows.Forms.Padding(2)
         Me.txtIngresosBrutos.Name = "txtIngresosBrutos"
-        Me.txtIngresosBrutos.Size = New System.Drawing.Size(133, 23)
+        Me.txtIngresosBrutos.Size = New System.Drawing.Size(133, 27)
         Me.txtIngresosBrutos.TabIndex = 70
         '
         'txtCUIT
@@ -120,7 +120,7 @@ Partial Class frmAgregarCuentas
         Me.txtCUIT.Location = New System.Drawing.Point(148, 107)
         Me.txtCUIT.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCUIT.Name = "txtCUIT"
-        Me.txtCUIT.Size = New System.Drawing.Size(133, 23)
+        Me.txtCUIT.Size = New System.Drawing.Size(133, 27)
         Me.txtCUIT.TabIndex = 69
         '
         'txtID
@@ -129,7 +129,7 @@ Partial Class frmAgregarCuentas
         Me.txtID.Location = New System.Drawing.Point(148, 31)
         Me.txtID.Margin = New System.Windows.Forms.Padding(2)
         Me.txtID.Name = "txtID"
-        Me.txtID.Size = New System.Drawing.Size(43, 23)
+        Me.txtID.Size = New System.Drawing.Size(43, 27)
         Me.txtID.TabIndex = 68
         '
         'chkEstado
@@ -140,7 +140,7 @@ Partial Class frmAgregarCuentas
         Me.chkEstado.Location = New System.Drawing.Point(310, 150)
         Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
-        Me.chkEstado.Size = New System.Drawing.Size(85, 21)
+        Me.chkEstado.Size = New System.Drawing.Size(108, 25)
         Me.chkEstado.TabIndex = 67
         Me.chkEstado.Text = "¿Activo?"
         Me.chkEstado.UseVisualStyleBackColor = True
@@ -153,7 +153,7 @@ Partial Class frmAgregarCuentas
         Me.Label4.Location = New System.Drawing.Point(307, 37)
         Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(77, 17)
+        Me.Label4.Size = New System.Drawing.Size(102, 21)
         Me.Label4.TabIndex = 66
         Me.Label4.Text = "Fecha Alta"
         '
@@ -165,7 +165,7 @@ Partial Class frmAgregarCuentas
         Me.Label3.Location = New System.Drawing.Point(46, 148)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(101, 17)
+        Me.Label3.Size = New System.Drawing.Size(132, 21)
         Me.Label3.TabIndex = 65
         Me.Label3.Text = "Ingresos Brutos"
         '
@@ -177,7 +177,7 @@ Partial Class frmAgregarCuentas
         Me.Label2.Location = New System.Drawing.Point(46, 113)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(35, 17)
+        Me.Label2.Size = New System.Drawing.Size(49, 21)
         Me.Label2.TabIndex = 64
         Me.Label2.Text = "CUIT"
         '
@@ -189,7 +189,7 @@ Partial Class frmAgregarCuentas
         Me.Label1.Location = New System.Drawing.Point(46, 37)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(21, 17)
+        Me.Label1.Size = New System.Drawing.Size(28, 21)
         Me.Label1.TabIndex = 63
         Me.Label1.Text = "ID"
         '
@@ -199,7 +199,7 @@ Partial Class frmAgregarCuentas
         Me.txtSaldo.Location = New System.Drawing.Point(415, 107)
         Me.txtSaldo.Margin = New System.Windows.Forms.Padding(2)
         Me.txtSaldo.Name = "txtSaldo"
-        Me.txtSaldo.Size = New System.Drawing.Size(133, 23)
+        Me.txtSaldo.Size = New System.Drawing.Size(133, 27)
         Me.txtSaldo.TabIndex = 78
         '
         'txtCargo
@@ -208,7 +208,7 @@ Partial Class frmAgregarCuentas
         Me.txtCargo.Location = New System.Drawing.Point(415, 69)
         Me.txtCargo.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCargo.Name = "txtCargo"
-        Me.txtCargo.Size = New System.Drawing.Size(133, 23)
+        Me.txtCargo.Size = New System.Drawing.Size(133, 27)
         Me.txtCargo.TabIndex = 77
         '
         'Label5
@@ -219,7 +219,7 @@ Partial Class frmAgregarCuentas
         Me.Label5.Location = New System.Drawing.Point(307, 113)
         Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(101, 17)
+        Me.Label5.Size = New System.Drawing.Size(131, 21)
         Me.Label5.TabIndex = 76
         Me.Label5.Text = "Saldo Cta Cte"
         '
@@ -231,7 +231,7 @@ Partial Class frmAgregarCuentas
         Me.Label7.Location = New System.Drawing.Point(307, 75)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(54, 17)
+        Me.Label7.Size = New System.Drawing.Size(68, 21)
         Me.Label7.TabIndex = 75
         Me.Label7.Text = "Cargo "
         '
@@ -296,6 +296,7 @@ Partial Class frmAgregarCuentas
         Me.grdCuenta.Location = New System.Drawing.Point(49, 198)
         Me.grdCuenta.Name = "grdCuenta"
         Me.grdCuenta.ReadOnly = True
+        Me.grdCuenta.RowHeadersWidth = 51
         Me.grdCuenta.Size = New System.Drawing.Size(652, 176)
         Me.grdCuenta.TabIndex = 82
         '

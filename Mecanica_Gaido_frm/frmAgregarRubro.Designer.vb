@@ -47,7 +47,7 @@ Partial Class frmAgregarRubro
         Me.txtRubro.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtRubro.Location = New System.Drawing.Point(130, 67)
         Me.txtRubro.Name = "txtRubro"
-        Me.txtRubro.Size = New System.Drawing.Size(228, 21)
+        Me.txtRubro.Size = New System.Drawing.Size(228, 24)
         Me.txtRubro.TabIndex = 17
         '
         'lblRubro
@@ -57,7 +57,7 @@ Partial Class frmAgregarRubro
         Me.lblRubro.ForeColor = System.Drawing.Color.White
         Me.lblRubro.Location = New System.Drawing.Point(31, 68)
         Me.lblRubro.Name = "lblRubro"
-        Me.lblRubro.Size = New System.Drawing.Size(52, 20)
+        Me.lblRubro.Size = New System.Drawing.Size(65, 22)
         Me.lblRubro.TabIndex = 16
         Me.lblRubro.Text = "Rubro"
         '
@@ -69,7 +69,7 @@ Partial Class frmAgregarRubro
         Me.chkEstado.Location = New System.Drawing.Point(152, 180)
         Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
-        Me.chkEstado.Size = New System.Drawing.Size(85, 21)
+        Me.chkEstado.Size = New System.Drawing.Size(108, 25)
         Me.chkEstado.TabIndex = 31
         Me.chkEstado.Text = "¿Activo?"
         Me.chkEstado.UseVisualStyleBackColor = True

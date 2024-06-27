@@ -83,6 +83,7 @@ Partial Class frmProductos
         Me.grdProductos.Location = New System.Drawing.Point(42, 379)
         Me.grdProductos.Name = "grdProductos"
         Me.grdProductos.ReadOnly = True
+        Me.grdProductos.RowHeadersWidth = 51
         Me.grdProductos.Size = New System.Drawing.Size(868, 209)
         Me.grdProductos.TabIndex = 93
         '
@@ -93,7 +94,7 @@ Partial Class frmProductos
         Me.chkActivo.ForeColor = System.Drawing.Color.White
         Me.chkActivo.Location = New System.Drawing.Point(526, 320)
         Me.chkActivo.Name = "chkActivo"
-        Me.chkActivo.Size = New System.Drawing.Size(85, 21)
+        Me.chkActivo.Size = New System.Drawing.Size(108, 25)
         Me.chkActivo.TabIndex = 91
         Me.chkActivo.Text = "¿Activo?"
         Me.chkActivo.UseVisualStyleBackColor = True
@@ -105,7 +106,7 @@ Partial Class frmProductos
         Me.Label19.ForeColor = System.Drawing.Color.White
         Me.Label19.Location = New System.Drawing.Point(390, 292)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(51, 17)
+        Me.Label19.Size = New System.Drawing.Size(65, 21)
         Me.Label19.TabIndex = 90
         Me.Label19.Text = "Origen"
         '
@@ -116,7 +117,7 @@ Partial Class frmProductos
         Me.Label18.ForeColor = System.Drawing.Color.White
         Me.Label18.Location = New System.Drawing.Point(389, 187)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(108, 17)
+        Me.Label18.Size = New System.Drawing.Size(140, 21)
         Me.Label18.TabIndex = 89
         Me.Label18.Text = "Cod. Estanteria"
         '
@@ -155,7 +156,7 @@ Partial Class frmProductos
         Me.Label17.ForeColor = System.Drawing.Color.White
         Me.Label17.Location = New System.Drawing.Point(389, 161)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(118, 17)
+        Me.Label17.Size = New System.Drawing.Size(157, 21)
         Me.Label17.TabIndex = 84
         Me.Label17.Text = "Fecha. Ult. Venta"
         '
@@ -166,7 +167,7 @@ Partial Class frmProductos
         Me.Label16.ForeColor = System.Drawing.Color.White
         Me.Label16.Location = New System.Drawing.Point(390, 134)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(134, 17)
+        Me.Label16.Size = New System.Drawing.Size(173, 21)
         Me.Label16.TabIndex = 83
         Me.Label16.Text = "Fecha. Ult. Compra"
         '
@@ -177,7 +178,7 @@ Partial Class frmProductos
         Me.Label15.ForeColor = System.Drawing.Color.White
         Me.Label15.Location = New System.Drawing.Point(390, 239)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(99, 17)
+        Me.Label15.Size = New System.Drawing.Size(129, 21)
         Me.Label15.TabIndex = 82
         Me.Label15.Text = "Cod. de Barra"
         '
@@ -188,7 +189,7 @@ Partial Class frmProductos
         Me.Label5.ForeColor = System.Drawing.Color.White
         Me.Label5.Location = New System.Drawing.Point(390, 264)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(114, 17)
+        Me.Label5.Size = New System.Drawing.Size(148, 21)
         Me.Label5.TabIndex = 81
         Me.Label5.Text = "Cod. Fabricante"
         '
@@ -199,7 +200,7 @@ Partial Class frmProductos
         Me.Label4.ForeColor = System.Drawing.Color.White
         Me.Label4.Location = New System.Drawing.Point(390, 212)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(69, 17)
+        Me.Label4.Size = New System.Drawing.Size(89, 21)
         Me.Label4.TabIndex = 80
         Me.Label4.Text = "N° de Fila"
         '
@@ -210,7 +211,7 @@ Partial Class frmProductos
         Me.Label3.ForeColor = System.Drawing.Color.White
         Me.Label3.Location = New System.Drawing.Point(389, 55)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(107, 17)
+        Me.Label3.Size = New System.Drawing.Size(135, 21)
         Me.Label3.TabIndex = 79
         Me.Label3.Text = "Precio Compra"
         '
@@ -221,7 +222,7 @@ Partial Class frmProductos
         Me.Label14.ForeColor = System.Drawing.Color.White
         Me.Label14.Location = New System.Drawing.Point(39, 292)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(114, 17)
+        Me.Label14.Size = New System.Drawing.Size(146, 21)
         Me.Label14.TabIndex = 75
         Me.Label14.Text = "Stock Disponible"
         '
@@ -239,7 +240,7 @@ Partial Class frmProductos
         Me.Label13.ForeColor = System.Drawing.Color.White
         Me.Label13.Location = New System.Drawing.Point(39, 264)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(75, 17)
+        Me.Label13.Size = New System.Drawing.Size(97, 21)
         Me.Label13.TabIndex = 73
         Me.Label13.Text = "Stock Real"
         '
@@ -250,7 +251,7 @@ Partial Class frmProductos
         Me.Label12.ForeColor = System.Drawing.Color.White
         Me.Label12.Location = New System.Drawing.Point(39, 239)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(106, 17)
+        Me.Label12.Size = New System.Drawing.Size(135, 21)
         Me.Label12.TabIndex = 72
         Me.Label12.Text = "Cant. Por Bulto"
         '
@@ -261,7 +262,7 @@ Partial Class frmProductos
         Me.Label11.ForeColor = System.Drawing.Color.White
         Me.Label11.Location = New System.Drawing.Point(389, 82)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(80, 17)
+        Me.Label11.Size = New System.Drawing.Size(103, 21)
         Me.Label11.TabIndex = 71
         Me.Label11.Text = "Precio Lista"
         '
@@ -272,7 +273,7 @@ Partial Class frmProductos
         Me.Label10.ForeColor = System.Drawing.Color.White
         Me.Label10.Location = New System.Drawing.Point(39, 161)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(46, 17)
+        Me.Label10.Size = New System.Drawing.Size(58, 21)
         Me.Label10.TabIndex = 70
         Me.Label10.Text = "Rubro"
         '
@@ -283,7 +284,7 @@ Partial Class frmProductos
         Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(39, 134)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(49, 17)
+        Me.Label1.Size = New System.Drawing.Size(67, 21)
         Me.Label1.TabIndex = 69
         Me.Label1.Text = "Marca"
         '
@@ -373,7 +374,7 @@ Partial Class frmProductos
         Me.Label8.ForeColor = System.Drawing.Color.White
         Me.Label8.Location = New System.Drawing.Point(39, 82)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(83, 17)
+        Me.Label8.Size = New System.Drawing.Size(107, 21)
         Me.Label8.TabIndex = 56
         Me.Label8.Text = "Descripcion"
         '
@@ -384,7 +385,7 @@ Partial Class frmProductos
         Me.Label7.ForeColor = System.Drawing.Color.White
         Me.Label7.Location = New System.Drawing.Point(39, 108)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(103, 17)
+        Me.Label7.Size = New System.Drawing.Size(129, 21)
         Me.Label7.TabIndex = 55
         Me.Label7.Text = "Nombre Diario"
         '
@@ -395,7 +396,7 @@ Partial Class frmProductos
         Me.Label6.ForeColor = System.Drawing.Color.White
         Me.Label6.Location = New System.Drawing.Point(39, 212)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(136, 17)
+        Me.Label6.Size = New System.Drawing.Size(172, 21)
         Me.Label6.TabIndex = 54
         Me.Label6.Text = "Nombre de Original"
         '
@@ -406,7 +407,7 @@ Partial Class frmProductos
         Me.lbl1.ForeColor = System.Drawing.Color.White
         Me.lbl1.Location = New System.Drawing.Point(39, 55)
         Me.lbl1.Name = "lbl1"
-        Me.lbl1.Size = New System.Drawing.Size(21, 17)
+        Me.lbl1.Size = New System.Drawing.Size(28, 21)
         Me.lbl1.TabIndex = 53
         Me.lbl1.Text = "ID"
         '
@@ -432,7 +433,7 @@ Partial Class frmProductos
         Me.chkAlternativo.ForeColor = System.Drawing.Color.White
         Me.chkAlternativo.Location = New System.Drawing.Point(175, 185)
         Me.chkAlternativo.Name = "chkAlternativo"
-        Me.chkAlternativo.Size = New System.Drawing.Size(114, 21)
+        Me.chkAlternativo.Size = New System.Drawing.Size(145, 25)
         Me.chkAlternativo.TabIndex = 98
         Me.chkAlternativo.Text = "¿Alternativo?"
         Me.chkAlternativo.UseVisualStyleBackColor = True
@@ -461,7 +462,7 @@ Partial Class frmProductos
         Me.Label2.ForeColor = System.Drawing.Color.White
         Me.Label2.Location = New System.Drawing.Point(390, 108)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(57, 17)
+        Me.Label2.Size = New System.Drawing.Size(74, 21)
         Me.Label2.TabIndex = 101
         Me.Label2.Text = "Utilidad"
         '
