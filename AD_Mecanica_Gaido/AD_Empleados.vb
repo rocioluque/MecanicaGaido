@@ -86,6 +86,7 @@ Public Class AD_Empleados
         Return tabla
     End Function
 
+    'Modificar esto, el procedimiento no está creado
     Public Sub Agregar_Empleado(direccion As String, nombre As String, apellido As String, idusuario As Integer, contraseña As String, idseccion As Integer, nota As String, estado As Boolean)
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Agregar_Empleado", conexion)

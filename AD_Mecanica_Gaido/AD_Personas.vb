@@ -13,13 +13,13 @@ Public Class AD_Personas
         connectionString = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123"
     End Sub
 
+    'Carga cbo Provincias
     Public Function Cargar_Provincias() As DataTable
         Dim tabla As New DataTable
 
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Cargar_CboProvincia", conexion)
                 comando.CommandType = CommandType.StoredProcedure
-
                 Try
                     conexion.Open()
                     Dim datadapter As New SqlDataAdapter(comando)
@@ -34,6 +34,7 @@ Public Class AD_Personas
         Return tabla
     End Function
 
+    'Depende de la provincia elegida, las ciudades que se cargan en el cbo
     Public Function Cargar_Ciudades_Por_Provincia(idProvincia As Integer) As DataTable
         Dim tabla As New DataTable
 

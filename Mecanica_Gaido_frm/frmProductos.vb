@@ -7,10 +7,6 @@ Public Class frmProductos
     Dim o_productos As New AD_Productos
 
 #Region "Abrir frm"
-    Private Sub btnAgregarMarca_Click(sender As Object, e As EventArgs) Handles btnAgregarMarca.Click
-        frmAgregarMarca.ShowDialog()
-    End Sub
-
     Private Sub btnAgregarRubro_Click(sender As Object, e As EventArgs) Handles btnAgregarRubro.Click
         frmAgregarRubro.ShowDialog()
     End Sub
@@ -18,15 +14,17 @@ Public Class frmProductos
 
 #Region "Procedimientos"
     Private Sub frmProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Combo_Marcas()
+        Cargar_Combo_Marcas()
+        limpiar()
     End Sub
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+
+    Public Sub limpiar()
         txtId.Clear()
         txtDescripcion.Clear()
         txtNombreDiario.Clear()
-        cboRubro.SelectedIndex = 0
+        cboRubro.SelectedIndex = -1
         chkAlternativo.Checked = False
-        cboOriginal.SelectedIndex = 0
+        cboOriginal.SelectedIndex = -1
         txtCantidadBulto.Clear()
         txtStockReal.Clear()
         txtStockDisponible.Clear()
@@ -43,16 +41,13 @@ Public Class frmProductos
         chkActivo.Checked = False
         cboMarca.SelectedIndex = -1
     End Sub
+
 #End Region
 
 #Region "Carga de Combos"
-    Private Sub Combo_Marcas()
+    Private Sub Cargar_Combo_Marcas()
         Try
-            Dim tabla As DataTable = o_productos.Combo_Marcas
-
-            For Each column As DataColumn In tabla.Columns
-                Console.WriteLine(column.ColumnName)
-            Next
+            Dim tabla As DataTable = o_productos.Cargar_Combo_Marcas
 
             If tabla.Rows.Count > 0 Then
                 cboMarca.DataSource = tabla
@@ -61,10 +56,32 @@ Public Class frmProductos
             Else
                 MsgBox("No se encontraron marcas.", vbInformation, "Información")
             End If
-
         Catch ex As Exception
             MsgBox("Error al cargar las marcas: " & ex.Message, vbCritical, "Error")
         End Try
+    End Sub
+#End Region
+
+#Region "Abrir frm para agregar datos"
+    Private Sub btnAgregarMarca_Click(sender As Object, e As EventArgs) Handles btnAgregarMarca.Click
+        Dim frm As New frmAgregarMarca()
+
+        'Pasar la marca seleccionada
+        frm.MarcaID = Convert.ToInt32(cboMarca.SelectedValue)
+        frm.MarcaNombre = cboMarca.Text
+        frm.EsModificacion = True
+
+        ' Obtener el estado de la marca seleccionada
+        Dim selectedRow As DataRowView = DirectCast(cboMarca.SelectedItem, DataRowView)
+        If selectedRow IsNot Nothing AndAlso selectedRow.Row.Table.Columns.Contains("Estado") Then
+            frm.MarcaEstado = Convert.ToBoolean(selectedRow("Estado"))
+        Else
+            frm.MarcaEstado = False
+        End If
+
+        If frm.ShowDialog() = DialogResult.OK Then
+            Cargar_Combo_Marcas()
+        End If
     End Sub
 #End Region
 
@@ -142,4 +159,7 @@ Public Class frmProductos
     End Sub
 #End Region
 
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiar()
+    End Sub
 End Class

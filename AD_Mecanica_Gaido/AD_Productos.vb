@@ -5,7 +5,6 @@ Imports System.IO
 Imports Microsoft.Practices.EnterpriseLibrary.Data
 Imports System.Configuration
 Imports System.Data.Common
-
 Public Class AD_Productos
     Private connectionString As String
 
@@ -13,13 +12,12 @@ Public Class AD_Productos
         connectionString = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123"
     End Sub
 
-    Public Function Combo_Marcas() As DataTable
+    Public Function Cargar_Combo_Marcas() As DataTable
         Dim tabla As New DataTable
 
         Using conexion As New SqlConnection(connectionString)
-            Using comando As New SqlCommand("Combo_Marcas", conexion)
+            Using comando As New SqlCommand("Cargar_Combo_Marcas", conexion)
                 comando.CommandType = CommandType.StoredProcedure
-
                 Try
                     conexion.Open()
                     Dim datadapter As New SqlDataAdapter(comando)
@@ -30,7 +28,6 @@ Public Class AD_Productos
 
             End Using
         End Using
-
         Return tabla
     End Function
 End Class
