@@ -6,7 +6,6 @@ Imports System.Configuration
 Public Class frmProductos
     Dim o_productos As New AD_Productos
 
-
 #Region "Abrir frm"
     Private Sub btnAgregarMarca_Click(sender As Object, e As EventArgs) Handles btnAgregarMarca.Click
         frmAgregarMarca.ShowDialog()
@@ -17,8 +16,10 @@ Public Class frmProductos
     End Sub
 #End Region
 
-
-#Region "limpiar"
+#Region "Procedimientos"
+    Private Sub frmProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Combo_Marcas()
+    End Sub
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         txtId.Clear()
         txtDescripcion.Clear()
@@ -44,15 +45,7 @@ Public Class frmProductos
     End Sub
 #End Region
 
-
-#Region "LOAD"
-    Private Sub frmProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Combo_Marcas()
-    End Sub
-#End Region
-
-
-#Region "combos"
+#Region "Carga de Combos"
     Private Sub Combo_Marcas()
         Try
             Dim tabla As DataTable = o_productos.Combo_Marcas
@@ -73,7 +66,9 @@ Public Class frmProductos
             MsgBox("Error al cargar las marcas: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+#End Region
 
+#Region "KeyPress"
     Private Sub txtCantidadBulto_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCantidadBulto.KeyPress
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
@@ -86,7 +81,6 @@ Public Class frmProductos
         End If
     End Sub
 
-
     Private Sub txtStockReal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtStockReal.KeyPress
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
@@ -98,7 +92,6 @@ Public Class frmProductos
             End If
         End If
     End Sub
-
 
     Private Sub txtStockDisponible_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtStockDisponible.KeyPress
         If Char.IsDigit(e.KeyChar) Then
@@ -124,7 +117,6 @@ Public Class frmProductos
         End If
     End Sub
 
-
     Private Sub txtLista_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtLista.KeyPress
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
@@ -149,6 +141,5 @@ Public Class frmProductos
         End If
     End Sub
 #End Region
-
 
 End Class

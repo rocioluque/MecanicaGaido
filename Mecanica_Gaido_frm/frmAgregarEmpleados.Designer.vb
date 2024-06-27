@@ -91,7 +91,7 @@ Partial Class frmAgregarEmpleados
         'txtFechaNacimiento
         '
         Me.txtFechaNacimiento.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFechaNacimiento.Location = New System.Drawing.Point(145, 181)
+        Me.txtFechaNacimiento.Location = New System.Drawing.Point(145, 183)
         Me.txtFechaNacimiento.Margin = New System.Windows.Forms.Padding(2)
         Me.txtFechaNacimiento.Name = "txtFechaNacimiento"
         Me.txtFechaNacimiento.Size = New System.Drawing.Size(133, 23)
@@ -100,7 +100,7 @@ Partial Class frmAgregarEmpleados
         'txtCuil
         '
         Me.txtCuil.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCuil.Location = New System.Drawing.Point(145, 143)
+        Me.txtCuil.Location = New System.Drawing.Point(145, 145)
         Me.txtCuil.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCuil.Name = "txtCuil"
         Me.txtCuil.Size = New System.Drawing.Size(133, 23)

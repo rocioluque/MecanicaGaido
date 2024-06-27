@@ -3,10 +3,8 @@ Imports AD_Mecanica_Gaido
 Imports System.Data.SqlClient
 
 Public Class frmAgregarMarca
-
     Dim o_productos As New AD_Productos
     Dim o_marca As New AD_Marca
-
 
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
         Me.Close()
