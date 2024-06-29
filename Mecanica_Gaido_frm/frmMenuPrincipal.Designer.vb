@@ -24,6 +24,10 @@ Partial Class frmMenuPrincipal
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMenuPrincipal))
         Me.PanelMenu = New System.Windows.Forms.Panel()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnInicio = New System.Windows.Forms.Button()
+        Me.PanelVerdeGestion = New System.Windows.Forms.Panel()
+        Me.btnGestionDatos = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.lblCorreo = New System.Windows.Forms.Label()
@@ -33,12 +37,12 @@ Partial Class frmMenuPrincipal
         Me.lblRol = New System.Windows.Forms.Label()
         Me.lblUsuario = New System.Windows.Forms.Label()
         Me.btnCerrarSesion = New System.Windows.Forms.Button()
-        Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.PanelVerdeCompras = New System.Windows.Forms.Panel()
+        Me.PanelVerdeVentas = New System.Windows.Forms.Panel()
+        Me.PanelVerdeOrdenes = New System.Windows.Forms.Panel()
+        Me.PanelVerdeVehiculos = New System.Windows.Forms.Panel()
+        Me.PanelVerdeProductos = New System.Windows.Forms.Panel()
+        Me.PanelVerdePersonas = New System.Windows.Forms.Panel()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.btnCompras = New System.Windows.Forms.Button()
         Me.btnProductos = New System.Windows.Forms.Button()
@@ -66,6 +70,10 @@ Partial Class frmMenuPrincipal
         Me.PanelMenu.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.PanelMenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.PanelMenu.Controls.Add(Me.Panel1)
+        Me.PanelMenu.Controls.Add(Me.btnInicio)
+        Me.PanelMenu.Controls.Add(Me.PanelVerdeGestion)
+        Me.PanelMenu.Controls.Add(Me.btnGestionDatos)
         Me.PanelMenu.Controls.Add(Me.Label3)
         Me.PanelMenu.Controls.Add(Me.Label4)
         Me.PanelMenu.Controls.Add(Me.lblCorreo)
@@ -75,12 +83,12 @@ Partial Class frmMenuPrincipal
         Me.PanelMenu.Controls.Add(Me.lblRol)
         Me.PanelMenu.Controls.Add(Me.lblUsuario)
         Me.PanelMenu.Controls.Add(Me.btnCerrarSesion)
-        Me.PanelMenu.Controls.Add(Me.Panel7)
-        Me.PanelMenu.Controls.Add(Me.Panel6)
-        Me.PanelMenu.Controls.Add(Me.Panel5)
-        Me.PanelMenu.Controls.Add(Me.Panel4)
-        Me.PanelMenu.Controls.Add(Me.Panel3)
-        Me.PanelMenu.Controls.Add(Me.Panel2)
+        Me.PanelMenu.Controls.Add(Me.PanelVerdeCompras)
+        Me.PanelMenu.Controls.Add(Me.PanelVerdeVentas)
+        Me.PanelMenu.Controls.Add(Me.PanelVerdeOrdenes)
+        Me.PanelMenu.Controls.Add(Me.PanelVerdeVehiculos)
+        Me.PanelMenu.Controls.Add(Me.PanelVerdeProductos)
+        Me.PanelMenu.Controls.Add(Me.PanelVerdePersonas)
         Me.PanelMenu.Controls.Add(Me.PictureBox7)
         Me.PanelMenu.Controls.Add(Me.btnCompras)
         Me.PanelMenu.Controls.Add(Me.btnProductos)
@@ -92,6 +100,61 @@ Partial Class frmMenuPrincipal
         Me.PanelMenu.Name = "PanelMenu"
         Me.PanelMenu.Size = New System.Drawing.Size(240, 630)
         Me.PanelMenu.TabIndex = 0
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.SeaGreen
+        Me.Panel1.Location = New System.Drawing.Point(0, 109)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(5, 35)
+        Me.Panel1.TabIndex = 38
+        '
+        'btnInicio
+        '
+        Me.btnInicio.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.btnInicio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnInicio.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnInicio.FlatAppearance.BorderSize = 0
+        Me.btnInicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
+        Me.btnInicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnInicio.Font = New System.Drawing.Font("Century Gothic", 11.25!)
+        Me.btnInicio.ForeColor = System.Drawing.Color.White
+        Me.btnInicio.Image = CType(resources.GetObject("btnInicio.Image"), System.Drawing.Image)
+        Me.btnInicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnInicio.Location = New System.Drawing.Point(2, 109)
+        Me.btnInicio.Name = "btnInicio"
+        Me.btnInicio.Size = New System.Drawing.Size(243, 35)
+        Me.btnInicio.TabIndex = 37
+        Me.btnInicio.Text = "        Inicio"
+        Me.btnInicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnInicio.UseVisualStyleBackColor = False
+        '
+        'PanelVerdeGestion
+        '
+        Me.PanelVerdeGestion.BackColor = System.Drawing.Color.SeaGreen
+        Me.PanelVerdeGestion.Location = New System.Drawing.Point(0, 396)
+        Me.PanelVerdeGestion.Name = "PanelVerdeGestion"
+        Me.PanelVerdeGestion.Size = New System.Drawing.Size(5, 35)
+        Me.PanelVerdeGestion.TabIndex = 36
+        '
+        'btnGestionDatos
+        '
+        Me.btnGestionDatos.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.btnGestionDatos.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnGestionDatos.FlatAppearance.BorderSize = 0
+        Me.btnGestionDatos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
+        Me.btnGestionDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnGestionDatos.Font = New System.Drawing.Font("Century Gothic", 11.25!)
+        Me.btnGestionDatos.ForeColor = System.Drawing.Color.White
+        Me.btnGestionDatos.Image = CType(resources.GetObject("btnGestionDatos.Image"), System.Drawing.Image)
+        Me.btnGestionDatos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnGestionDatos.Location = New System.Drawing.Point(2, 396)
+        Me.btnGestionDatos.Name = "btnGestionDatos"
+        Me.btnGestionDatos.Size = New System.Drawing.Size(243, 35)
+        Me.btnGestionDatos.TabIndex = 35
+        Me.btnGestionDatos.Text = "        Gestión de Datos "
+        Me.btnGestionDatos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnGestionDatos.UseVisualStyleBackColor = False
         '
         'Label3
         '
@@ -201,53 +264,53 @@ Partial Class frmMenuPrincipal
         Me.btnCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnCerrarSesion.UseVisualStyleBackColor = False
         '
-        'Panel7
+        'PanelVerdeCompras
         '
-        Me.Panel7.BackColor = System.Drawing.Color.SeaGreen
-        Me.Panel7.Location = New System.Drawing.Point(0, 314)
-        Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(5, 35)
-        Me.Panel7.TabIndex = 23
+        Me.PanelVerdeCompras.BackColor = System.Drawing.Color.SeaGreen
+        Me.PanelVerdeCompras.Location = New System.Drawing.Point(0, 355)
+        Me.PanelVerdeCompras.Name = "PanelVerdeCompras"
+        Me.PanelVerdeCompras.Size = New System.Drawing.Size(5, 35)
+        Me.PanelVerdeCompras.TabIndex = 23
         '
-        'Panel6
+        'PanelVerdeVentas
         '
-        Me.Panel6.BackColor = System.Drawing.Color.SeaGreen
-        Me.Panel6.Location = New System.Drawing.Point(0, 273)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(5, 35)
-        Me.Panel6.TabIndex = 21
+        Me.PanelVerdeVentas.BackColor = System.Drawing.Color.SeaGreen
+        Me.PanelVerdeVentas.Location = New System.Drawing.Point(0, 314)
+        Me.PanelVerdeVentas.Name = "PanelVerdeVentas"
+        Me.PanelVerdeVentas.Size = New System.Drawing.Size(5, 35)
+        Me.PanelVerdeVentas.TabIndex = 21
         '
-        'Panel5
+        'PanelVerdeOrdenes
         '
-        Me.Panel5.BackColor = System.Drawing.Color.SeaGreen
-        Me.Panel5.Location = New System.Drawing.Point(0, 232)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(5, 35)
-        Me.Panel5.TabIndex = 19
+        Me.PanelVerdeOrdenes.BackColor = System.Drawing.Color.SeaGreen
+        Me.PanelVerdeOrdenes.Location = New System.Drawing.Point(0, 273)
+        Me.PanelVerdeOrdenes.Name = "PanelVerdeOrdenes"
+        Me.PanelVerdeOrdenes.Size = New System.Drawing.Size(5, 35)
+        Me.PanelVerdeOrdenes.TabIndex = 19
         '
-        'Panel4
+        'PanelVerdeVehiculos
         '
-        Me.Panel4.BackColor = System.Drawing.Color.SeaGreen
-        Me.Panel4.Location = New System.Drawing.Point(0, 191)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(5, 35)
-        Me.Panel4.TabIndex = 17
+        Me.PanelVerdeVehiculos.BackColor = System.Drawing.Color.SeaGreen
+        Me.PanelVerdeVehiculos.Location = New System.Drawing.Point(0, 232)
+        Me.PanelVerdeVehiculos.Name = "PanelVerdeVehiculos"
+        Me.PanelVerdeVehiculos.Size = New System.Drawing.Size(5, 35)
+        Me.PanelVerdeVehiculos.TabIndex = 17
         '
-        'Panel3
+        'PanelVerdeProductos
         '
-        Me.Panel3.BackColor = System.Drawing.Color.SeaGreen
-        Me.Panel3.Location = New System.Drawing.Point(0, 150)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(5, 35)
-        Me.Panel3.TabIndex = 15
+        Me.PanelVerdeProductos.BackColor = System.Drawing.Color.SeaGreen
+        Me.PanelVerdeProductos.Location = New System.Drawing.Point(0, 191)
+        Me.PanelVerdeProductos.Name = "PanelVerdeProductos"
+        Me.PanelVerdeProductos.Size = New System.Drawing.Size(5, 35)
+        Me.PanelVerdeProductos.TabIndex = 15
         '
-        'Panel2
+        'PanelVerdePersonas
         '
-        Me.Panel2.BackColor = System.Drawing.Color.SeaGreen
-        Me.Panel2.Location = New System.Drawing.Point(0, 109)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(5, 35)
-        Me.Panel2.TabIndex = 2
+        Me.PanelVerdePersonas.BackColor = System.Drawing.Color.SeaGreen
+        Me.PanelVerdePersonas.Location = New System.Drawing.Point(0, 150)
+        Me.PanelVerdePersonas.Name = "PanelVerdePersonas"
+        Me.PanelVerdePersonas.Size = New System.Drawing.Size(5, 35)
+        Me.PanelVerdePersonas.TabIndex = 2
         '
         'PictureBox7
         '
@@ -270,7 +333,7 @@ Partial Class frmMenuPrincipal
         Me.btnCompras.ForeColor = System.Drawing.Color.White
         Me.btnCompras.Image = CType(resources.GetObject("btnCompras.Image"), System.Drawing.Image)
         Me.btnCompras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCompras.Location = New System.Drawing.Point(3, 314)
+        Me.btnCompras.Location = New System.Drawing.Point(2, 355)
         Me.btnCompras.Name = "btnCompras"
         Me.btnCompras.Size = New System.Drawing.Size(243, 35)
         Me.btnCompras.TabIndex = 5
@@ -289,7 +352,7 @@ Partial Class frmMenuPrincipal
         Me.btnProductos.ForeColor = System.Drawing.Color.White
         Me.btnProductos.Image = CType(resources.GetObject("btnProductos.Image"), System.Drawing.Image)
         Me.btnProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnProductos.Location = New System.Drawing.Point(2, 150)
+        Me.btnProductos.Location = New System.Drawing.Point(2, 191)
         Me.btnProductos.Name = "btnProductos"
         Me.btnProductos.Size = New System.Drawing.Size(243, 35)
         Me.btnProductos.TabIndex = 4
@@ -308,7 +371,7 @@ Partial Class frmMenuPrincipal
         Me.btnVehiculos.ForeColor = System.Drawing.Color.White
         Me.btnVehiculos.Image = CType(resources.GetObject("btnVehiculos.Image"), System.Drawing.Image)
         Me.btnVehiculos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnVehiculos.Location = New System.Drawing.Point(3, 191)
+        Me.btnVehiculos.Location = New System.Drawing.Point(2, 232)
         Me.btnVehiculos.Name = "btnVehiculos"
         Me.btnVehiculos.Size = New System.Drawing.Size(243, 35)
         Me.btnVehiculos.TabIndex = 3
@@ -327,7 +390,7 @@ Partial Class frmMenuPrincipal
         Me.btnOrdenReparacón.ForeColor = System.Drawing.Color.White
         Me.btnOrdenReparacón.Image = CType(resources.GetObject("btnOrdenReparacón.Image"), System.Drawing.Image)
         Me.btnOrdenReparacón.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnOrdenReparacón.Location = New System.Drawing.Point(3, 232)
+        Me.btnOrdenReparacón.Location = New System.Drawing.Point(2, 273)
         Me.btnOrdenReparacón.Name = "btnOrdenReparacón"
         Me.btnOrdenReparacón.Size = New System.Drawing.Size(243, 35)
         Me.btnOrdenReparacón.TabIndex = 2
@@ -346,7 +409,7 @@ Partial Class frmMenuPrincipal
         Me.btnVentas.ForeColor = System.Drawing.Color.White
         Me.btnVentas.Image = CType(resources.GetObject("btnVentas.Image"), System.Drawing.Image)
         Me.btnVentas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnVentas.Location = New System.Drawing.Point(3, 273)
+        Me.btnVentas.Location = New System.Drawing.Point(2, 314)
         Me.btnVentas.Name = "btnVentas"
         Me.btnVentas.Size = New System.Drawing.Size(243, 35)
         Me.btnVentas.TabIndex = 1
@@ -366,7 +429,7 @@ Partial Class frmMenuPrincipal
         Me.btnPersonas.ForeColor = System.Drawing.Color.White
         Me.btnPersonas.Image = CType(resources.GetObject("btnPersonas.Image"), System.Drawing.Image)
         Me.btnPersonas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnPersonas.Location = New System.Drawing.Point(2, 109)
+        Me.btnPersonas.Location = New System.Drawing.Point(2, 150)
         Me.btnPersonas.Name = "btnPersonas"
         Me.btnPersonas.Size = New System.Drawing.Size(243, 35)
         Me.btnPersonas.TabIndex = 0
@@ -480,12 +543,12 @@ Partial Class frmMenuPrincipal
     Friend WithEvents btnCompras As Button
     Friend WithEvents panelNav As Panel
     Friend WithEvents PictureBox7 As PictureBox
-    Friend WithEvents Panel7 As Panel
-    Friend WithEvents Panel6 As Panel
-    Friend WithEvents Panel5 As Panel
-    Friend WithEvents Panel4 As Panel
-    Friend WithEvents Panel3 As Panel
-    Friend WithEvents Panel2 As Panel
+    Friend WithEvents PanelVerdeCompras As Panel
+    Friend WithEvents PanelVerdeVentas As Panel
+    Friend WithEvents PanelVerdeOrdenes As Panel
+    Friend WithEvents PanelVerdeVehiculos As Panel
+    Friend WithEvents PanelVerdeProductos As Panel
+    Friend WithEvents PanelVerdePersonas As Panel
     Friend WithEvents btnMaximizar As PictureBox
     Friend WithEvents btnCerrar As PictureBox
     Friend WithEvents btnRestaurar As PictureBox
@@ -500,4 +563,8 @@ Partial Class frmMenuPrincipal
     Friend WithEvents Label4 As Label
     Friend WithEvents lblCorreo As Label
     Friend WithEvents lblNombre As Label
+    Friend WithEvents PanelVerdeGestion As Panel
+    Friend WithEvents btnGestionDatos As Button
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents btnInicio As Button
 End Class
