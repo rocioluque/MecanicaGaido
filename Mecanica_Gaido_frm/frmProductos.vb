@@ -66,21 +66,18 @@ Public Class frmProductos
     Private Sub btnAgregarMarca_Click(sender As Object, e As EventArgs) Handles btnAgregarMarca.Click
         Dim frm As New frmAgregarMarca()
 
-        'Pasar la marca seleccionada
-        frm.MarcaID = Convert.ToInt32(cboMarca.SelectedValue)
-        frm.MarcaNombre = cboMarca.Text
-        frm.EsModificacion = True
-
-        ' Obtener el estado de la marca seleccionada
-        Dim selectedRow As DataRowView = DirectCast(cboMarca.SelectedItem, DataRowView)
-        If selectedRow IsNot Nothing AndAlso selectedRow.Row.Table.Columns.Contains("Estado") Then
-            frm.MarcaEstado = Convert.ToBoolean(selectedRow("Estado"))
-        Else
-            frm.MarcaEstado = False
-        End If
-
+        'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
         If frm.ShowDialog() = DialogResult.OK Then
             Cargar_Combo_Marcas()
+
+            ' Buscar y seleccionar la nueva marca en el ComboBox
+            Dim nuevaMarca As String = frm.NuevaMarcaNombre
+            For Each item As DataRowView In cboMarca.Items
+                If item("Nombre").ToString() = nuevaMarca Then
+                    cboMarca.SelectedItem = item
+                    Exit For
+                End If
+            Next
         End If
     End Sub
 #End Region

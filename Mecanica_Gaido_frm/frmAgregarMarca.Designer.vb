@@ -27,8 +27,8 @@ Partial Class frmAgregarMarca
         Me.txtMarca = New System.Windows.Forms.TextBox()
         Me.lblMarca = New System.Windows.Forms.Label()
         Me.btnAgregar = New System.Windows.Forms.Button()
-        Me.btnModificar = New System.Windows.Forms.Button()
-        Me.chkEstado = New System.Windows.Forms.CheckBox()
+        Me.chkProducto = New System.Windows.Forms.CheckBox()
+        Me.chkVehiculo = New System.Windows.Forms.CheckBox()
         CType(Me.btnCerrar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -45,7 +45,7 @@ Partial Class frmAgregarMarca
         'txtMarca
         '
         Me.txtMarca.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMarca.Location = New System.Drawing.Point(130, 81)
+        Me.txtMarca.Location = New System.Drawing.Point(128, 55)
         Me.txtMarca.Name = "txtMarca"
         Me.txtMarca.Size = New System.Drawing.Size(228, 21)
         Me.txtMarca.TabIndex = 13
@@ -55,7 +55,7 @@ Partial Class frmAgregarMarca
         Me.lblMarca.AutoSize = True
         Me.lblMarca.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMarca.ForeColor = System.Drawing.Color.White
-        Me.lblMarca.Location = New System.Drawing.Point(31, 82)
+        Me.lblMarca.Location = New System.Drawing.Point(29, 56)
         Me.lblMarca.Name = "lblMarca"
         Me.lblMarca.Size = New System.Drawing.Size(59, 20)
         Me.lblMarca.TabIndex = 12
@@ -69,40 +69,38 @@ Partial Class frmAgregarMarca
         Me.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAgregar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregar.ForeColor = System.Drawing.Color.White
-        Me.btnAgregar.Location = New System.Drawing.Point(12, 175)
+        Me.btnAgregar.Location = New System.Drawing.Point(299, 175)
         Me.btnAgregar.Name = "btnAgregar"
         Me.btnAgregar.Size = New System.Drawing.Size(82, 29)
         Me.btnAgregar.TabIndex = 11
         Me.btnAgregar.Text = "Agregar"
         Me.btnAgregar.UseVisualStyleBackColor = True
         '
-        'btnModificar
+        'chkProducto
         '
-        Me.btnModificar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.btnModificar.FlatAppearance.BorderSize = 2
-        Me.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
-        Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnModificar.ForeColor = System.Drawing.Color.White
-        Me.btnModificar.Location = New System.Drawing.Point(299, 175)
-        Me.btnModificar.Name = "btnModificar"
-        Me.btnModificar.Size = New System.Drawing.Size(82, 29)
-        Me.btnModificar.TabIndex = 15
-        Me.btnModificar.Text = "Modificar"
-        Me.btnModificar.UseVisualStyleBackColor = True
+        Me.chkProducto.AutoSize = True
+        Me.chkProducto.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkProducto.ForeColor = System.Drawing.Color.White
+        Me.chkProducto.Location = New System.Drawing.Point(33, 115)
+        Me.chkProducto.Margin = New System.Windows.Forms.Padding(2)
+        Me.chkProducto.Name = "chkProducto"
+        Me.chkProducto.Size = New System.Drawing.Size(141, 21)
+        Me.chkProducto.TabIndex = 27
+        Me.chkProducto.Text = "¿Es de producto?"
+        Me.chkProducto.UseVisualStyleBackColor = True
         '
-        'chkEstado
+        'chkVehiculo
         '
-        Me.chkEstado.AutoSize = True
-        Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkEstado.ForeColor = System.Drawing.Color.White
-        Me.chkEstado.Location = New System.Drawing.Point(152, 180)
-        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
-        Me.chkEstado.Name = "chkEstado"
-        Me.chkEstado.Size = New System.Drawing.Size(85, 21)
-        Me.chkEstado.TabIndex = 27
-        Me.chkEstado.Text = "¿Activo?"
-        Me.chkEstado.UseVisualStyleBackColor = True
+        Me.chkVehiculo.AutoSize = True
+        Me.chkVehiculo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkVehiculo.ForeColor = System.Drawing.Color.White
+        Me.chkVehiculo.Location = New System.Drawing.Point(221, 115)
+        Me.chkVehiculo.Margin = New System.Windows.Forms.Padding(2)
+        Me.chkVehiculo.Name = "chkVehiculo"
+        Me.chkVehiculo.Size = New System.Drawing.Size(135, 21)
+        Me.chkVehiculo.TabIndex = 28
+        Me.chkVehiculo.Text = "¿Es de vehículo?"
+        Me.chkVehiculo.UseVisualStyleBackColor = True
         '
         'frmAgregarMarca
         '
@@ -110,8 +108,8 @@ Partial Class frmAgregarMarca
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(393, 216)
-        Me.Controls.Add(Me.chkEstado)
-        Me.Controls.Add(Me.btnModificar)
+        Me.Controls.Add(Me.chkVehiculo)
+        Me.Controls.Add(Me.chkProducto)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.txtMarca)
         Me.Controls.Add(Me.lblMarca)
@@ -130,6 +128,6 @@ Partial Class frmAgregarMarca
     Friend WithEvents txtMarca As TextBox
     Friend WithEvents lblMarca As Label
     Friend WithEvents btnAgregar As Button
-    Friend WithEvents btnModificar As Button
-    Friend WithEvents chkEstado As CheckBox
+    Friend WithEvents chkProducto As CheckBox
+    Friend WithEvents chkVehiculo As CheckBox
 End Class

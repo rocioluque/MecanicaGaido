@@ -51,9 +51,9 @@ Partial Class frmGestionDatos
         Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(25, 18)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(230, 22)
+        Me.Label1.Size = New System.Drawing.Size(252, 22)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "¿Qué quéres modificar?"
+        Me.Label1.Text = "¿Dónde quéres gestionar?"
         '
         'btnMarca
         '

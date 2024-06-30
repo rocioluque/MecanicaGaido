@@ -32,13 +32,14 @@ Public Class AD_Marca
         End Using
     End Function
 
-    Public Function Agregar_Marca(nombreMarca As String, estado As Boolean) As Boolean
+    Public Function Agregar_Marca(nombreMarca As String, repuesto As Boolean, vehiculo As Boolean) As Boolean
         If Not MarcaExiste(nombreMarca) Then
             Using conexion As New SqlConnection(connectionstring)
                 Using comando As New SqlCommand("Agregar_Marca", conexion)
                     comando.CommandType = CommandType.StoredProcedure
                     comando.Parameters.AddWithValue("@Nombre", nombreMarca)
-                    comando.Parameters.AddWithValue("@Estado", estado)
+                    comando.Parameters.AddWithValue("@Repuesto", repuesto)
+                    comando.Parameters.AddWithValue("@Vehiculo", vehiculo)
 
                     Try
                         conexion.Open()
@@ -50,26 +51,10 @@ Public Class AD_Marca
                 End Using
             End Using
         Else
-            Return False 'La marca ya existe
+            'Si la marca ya existe
+            Return False
         End If
     End Function
 
-    Public Function Modificar_Marca(id_marca As Integer, marca As String, estado As Boolean) As Boolean
-        Using conexion As New SqlConnection(connectionstring)
-            Using comando As New SqlCommand("Modificar_Marca", conexion)
-                comando.CommandType = CommandType.StoredProcedure
-                comando.Parameters.AddWithValue("@id_marca", id_marca)
-                comando.Parameters.AddWithValue("@Nombre", marca)
-                comando.Parameters.AddWithValue("@Estado", estado)
 
-                Try
-                    conexion.Open()
-                    comando.ExecuteNonQuery()
-                    Return True
-                Catch ex As Exception
-                    Throw New Exception("Error al modificar la ciudad en la base de datos: " & ex.Message, ex)
-                End Try
-            End Using
-        End Using
-    End Function
 End Class
