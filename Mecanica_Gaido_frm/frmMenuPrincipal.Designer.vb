@@ -24,18 +24,18 @@ Partial Class frmMenuPrincipal
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMenuPrincipal))
         Me.PanelMenu = New System.Windows.Forms.Panel()
+        Me.lblUsuario = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnInicio = New System.Windows.Forms.Button()
         Me.PanelVerdeGestion = New System.Windows.Forms.Panel()
         Me.btnGestionDatos = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblRol = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.lblCorreo = New System.Windows.Forms.Label()
         Me.lblNombre = New System.Windows.Forms.Label()
+        Me.lblCorreo = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.lblRol = New System.Windows.Forms.Label()
-        Me.lblUsuario = New System.Windows.Forms.Label()
         Me.btnCerrarSesion = New System.Windows.Forms.Button()
         Me.PanelVerdeCompras = New System.Windows.Forms.Panel()
         Me.PanelVerdeVentas = New System.Windows.Forms.Panel()
@@ -50,6 +50,7 @@ Partial Class frmMenuPrincipal
         Me.btnOrdenReparacón = New System.Windows.Forms.Button()
         Me.btnVentas = New System.Windows.Forms.Button()
         Me.btnPersonas = New System.Windows.Forms.Button()
+        Me.lblUsuarioBarra = New System.Windows.Forms.Label()
         Me.panelNav = New System.Windows.Forms.Panel()
         Me.btnRestaurar = New System.Windows.Forms.PictureBox()
         Me.btnMinimizar = New System.Windows.Forms.PictureBox()
@@ -70,18 +71,18 @@ Partial Class frmMenuPrincipal
         Me.PanelMenu.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.PanelMenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.PanelMenu.Controls.Add(Me.lblUsuario)
         Me.PanelMenu.Controls.Add(Me.Panel1)
         Me.PanelMenu.Controls.Add(Me.btnInicio)
         Me.PanelMenu.Controls.Add(Me.PanelVerdeGestion)
         Me.PanelMenu.Controls.Add(Me.btnGestionDatos)
         Me.PanelMenu.Controls.Add(Me.Label3)
+        Me.PanelMenu.Controls.Add(Me.lblRol)
         Me.PanelMenu.Controls.Add(Me.Label4)
-        Me.PanelMenu.Controls.Add(Me.lblCorreo)
         Me.PanelMenu.Controls.Add(Me.lblNombre)
+        Me.PanelMenu.Controls.Add(Me.lblCorreo)
         Me.PanelMenu.Controls.Add(Me.Label1)
         Me.PanelMenu.Controls.Add(Me.Label2)
-        Me.PanelMenu.Controls.Add(Me.lblRol)
-        Me.PanelMenu.Controls.Add(Me.lblUsuario)
         Me.PanelMenu.Controls.Add(Me.btnCerrarSesion)
         Me.PanelMenu.Controls.Add(Me.PanelVerdeCompras)
         Me.PanelMenu.Controls.Add(Me.PanelVerdeVentas)
@@ -100,6 +101,17 @@ Partial Class frmMenuPrincipal
         Me.PanelMenu.Name = "PanelMenu"
         Me.PanelMenu.Size = New System.Drawing.Size(240, 630)
         Me.PanelMenu.TabIndex = 0
+        '
+        'lblUsuario
+        '
+        Me.lblUsuario.AutoSize = True
+        Me.lblUsuario.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUsuario.ForeColor = System.Drawing.Color.White
+        Me.lblUsuario.Location = New System.Drawing.Point(124, 18)
+        Me.lblUsuario.Name = "lblUsuario"
+        Me.lblUsuario.Size = New System.Drawing.Size(11, 16)
+        Me.lblUsuario.TabIndex = 28
+        Me.lblUsuario.Text = ":"
         '
         'Panel1
         '
@@ -161,44 +173,55 @@ Partial Class frmMenuPrincipal
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(79, 70)
+        Me.Label3.Location = New System.Drawing.Point(79, 69)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(47, 16)
         Me.Label3.TabIndex = 34
         Me.Label3.Text = "Correo:"
+        '
+        'lblRol
+        '
+        Me.lblRol.AutoSize = True
+        Me.lblRol.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRol.ForeColor = System.Drawing.Color.White
+        Me.lblRol.Location = New System.Drawing.Point(101, 35)
+        Me.lblRol.Name = "lblRol"
+        Me.lblRol.Size = New System.Drawing.Size(11, 16)
+        Me.lblRol.TabIndex = 28
+        Me.lblRol.Text = ":"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(79, 53)
+        Me.Label4.Location = New System.Drawing.Point(79, 52)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(54, 16)
         Me.Label4.TabIndex = 33
         Me.Label4.Text = "Nombre:"
-        '
-        'lblCorreo
-        '
-        Me.lblCorreo.AutoSize = True
-        Me.lblCorreo.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCorreo.ForeColor = System.Drawing.Color.White
-        Me.lblCorreo.Location = New System.Drawing.Point(123, 70)
-        Me.lblCorreo.Name = "lblCorreo"
-        Me.lblCorreo.Size = New System.Drawing.Size(11, 16)
-        Me.lblCorreo.TabIndex = 32
-        Me.lblCorreo.Text = ":"
         '
         'lblNombre
         '
         Me.lblNombre.AutoSize = True
         Me.lblNombre.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNombre.ForeColor = System.Drawing.Color.White
-        Me.lblNombre.Location = New System.Drawing.Point(129, 53)
+        Me.lblNombre.Location = New System.Drawing.Point(130, 52)
         Me.lblNombre.Name = "lblNombre"
         Me.lblNombre.Size = New System.Drawing.Size(11, 16)
         Me.lblNombre.TabIndex = 31
         Me.lblNombre.Text = ":"
+        '
+        'lblCorreo
+        '
+        Me.lblCorreo.AutoSize = True
+        Me.lblCorreo.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCorreo.ForeColor = System.Drawing.Color.White
+        Me.lblCorreo.Location = New System.Drawing.Point(123, 69)
+        Me.lblCorreo.Name = "lblCorreo"
+        Me.lblCorreo.Size = New System.Drawing.Size(11, 16)
+        Me.lblCorreo.TabIndex = 32
+        Me.lblCorreo.Text = ":"
         '
         'Label1
         '
@@ -216,33 +239,11 @@ Partial Class frmMenuPrincipal
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(79, 19)
+        Me.Label2.Location = New System.Drawing.Point(79, 18)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(50, 16)
         Me.Label2.TabIndex = 29
         Me.Label2.Text = "Usuario:"
-        '
-        'lblRol
-        '
-        Me.lblRol.AutoSize = True
-        Me.lblRol.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRol.ForeColor = System.Drawing.Color.White
-        Me.lblRol.Location = New System.Drawing.Point(102, 35)
-        Me.lblRol.Name = "lblRol"
-        Me.lblRol.Size = New System.Drawing.Size(11, 16)
-        Me.lblRol.TabIndex = 28
-        Me.lblRol.Text = ":"
-        '
-        'lblUsuario
-        '
-        Me.lblUsuario.AutoSize = True
-        Me.lblUsuario.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUsuario.ForeColor = System.Drawing.Color.White
-        Me.lblUsuario.Location = New System.Drawing.Point(126, 19)
-        Me.lblUsuario.Name = "lblUsuario"
-        Me.lblUsuario.Size = New System.Drawing.Size(11, 16)
-        Me.lblUsuario.TabIndex = 27
-        Me.lblUsuario.Text = ":"
         '
         'btnCerrarSesion
         '
@@ -437,6 +438,17 @@ Partial Class frmMenuPrincipal
         Me.btnPersonas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnPersonas.UseVisualStyleBackColor = False
         '
+        'lblUsuarioBarra
+        '
+        Me.lblUsuarioBarra.AutoSize = True
+        Me.lblUsuarioBarra.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUsuarioBarra.ForeColor = System.Drawing.Color.White
+        Me.lblUsuarioBarra.Location = New System.Drawing.Point(12, 6)
+        Me.lblUsuarioBarra.Name = "lblUsuarioBarra"
+        Me.lblUsuarioBarra.Size = New System.Drawing.Size(11, 16)
+        Me.lblUsuarioBarra.TabIndex = 27
+        Me.lblUsuarioBarra.Text = ":"
+        '
         'panelNav
         '
         Me.panelNav.BackColor = System.Drawing.Color.SeaGreen
@@ -444,6 +456,7 @@ Partial Class frmMenuPrincipal
         Me.panelNav.Controls.Add(Me.btnMinimizar)
         Me.panelNav.Controls.Add(Me.btnMaximizar)
         Me.panelNav.Controls.Add(Me.btnCerrar)
+        Me.panelNav.Controls.Add(Me.lblUsuarioBarra)
         Me.panelNav.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelNav.Location = New System.Drawing.Point(0, 0)
         Me.panelNav.Name = "panelNav"
@@ -526,6 +539,7 @@ Partial Class frmMenuPrincipal
         Me.PanelMenu.PerformLayout()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelNav.ResumeLayout(False)
+        Me.panelNav.PerformLayout()
         CType(Me.btnRestaurar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnMinimizar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnMaximizar, System.ComponentModel.ISupportInitialize).EndInit()
@@ -556,7 +570,7 @@ Partial Class frmMenuPrincipal
     Friend WithEvents panelContenedor As Panel
     Friend WithEvents btnCerrarSesion As Button
     Friend WithEvents lblRol As Label
-    Friend WithEvents lblUsuario As Label
+    Friend WithEvents lblUsuarioBarra As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
@@ -567,4 +581,5 @@ Partial Class frmMenuPrincipal
     Friend WithEvents btnGestionDatos As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btnInicio As Button
+    Friend WithEvents lblUsuario As Label
 End Class
