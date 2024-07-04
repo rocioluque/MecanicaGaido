@@ -43,7 +43,6 @@ Public Class AD_Empleados
 
             End Using
         End Using
-
         Return tabla
     End Function
 
@@ -64,10 +63,30 @@ Public Class AD_Empleados
 
             End Using
         End Using
-
         Return tabla
     End Function
 
+    Public Function Cargar_Combo_Rol() As DataTable
+        Dim tabla As New DataTable
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Combo_Rol", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+
+                Try
+                    conexion.Open()
+                    Dim datadapter As New SqlDataAdapter(comando)
+                    datadapter.Fill(tabla)
+                Catch ex As Exception
+                    Throw New Exception("Error al cargar los roles desde la base de datos", ex)
+                End Try
+
+            End Using
+        End Using
+        Return tabla
+    End Function
+
+    'Modificar esto, el procedimiento no está creado
     Public Sub Agregar_Empleado(direccion As String, nombre As String, apellido As String, idusuario As Integer, contraseña As String, idseccion As Integer, nota As String, estado As Boolean)
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Agregar_Empleado", conexion)

@@ -39,39 +39,45 @@ Public Class frmMenuPrincipal
 
 #Region "Control btn"
     Private Sub btnVehiculos_Click(sender As Object, e As EventArgs) Handles btnVehiculos.Click
-        AbrirFormHijo(New frmVehiculos())
-        DirectCast(sender, Button).BackColor = Color.SeaGreen
+        AbrirFormHijo(New frmVehiculos(), DirectCast(sender, Button))
     End Sub
 
     Private Sub btnPersonas_Click(sender As Object, e As EventArgs) Handles btnPersonas.Click
-        AbrirFormHijo(New frmPersonas())
-        DirectCast(sender, Button).BackColor = Color.SeaGreen
+        AbrirFormHijo(New frmPersonas(), DirectCast(sender, Button))
     End Sub
 
     Private Sub btnProductos_Click(sender As Object, e As EventArgs) Handles btnProductos.Click
-        AbrirFormHijo(New frmProductos())
-        DirectCast(sender, Button).BackColor = Color.SeaGreen
+        AbrirFormHijo(New frmProductos(), DirectCast(sender, Button))
     End Sub
 
     Private Sub btnOrdenReparacón_Click(sender As Object, e As EventArgs) Handles btnOrdenReparacón.Click
-        AbrirFormHijo(New frmOrdenesReparacion())
-        DirectCast(sender, Button).BackColor = Color.SeaGreen
+        AbrirFormHijo(New frmOrdenesReparacion(), DirectCast(sender, Button))
     End Sub
 
     Private Sub btnVentas_Click(sender As Object, e As EventArgs) Handles btnVentas.Click
-        AbrirFormHijo(New frmVentas())
-        DirectCast(sender, Button).BackColor = Color.SeaGreen
+        AbrirFormHijo(New frmVentas(), DirectCast(sender, Button))
     End Sub
 
     Private Sub btnCompras_Click(sender As Object, e As EventArgs) Handles btnCompras.Click
-        AbrirFormHijo(New frmCompras())
-        DirectCast(sender, Button).BackColor = Color.SeaGreen
+        AbrirFormHijo(New frmCompras(), DirectCast(sender, Button))
     End Sub
 
-    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
-        If MessageBox.Show("¿Estás seguro de cerrar la aplicación?", "Warning",
-            MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            Application.Exit()
+    Private Sub btnGestionDatos_Click(sender As Object, e As EventArgs) Handles btnGestionDatos.Click
+        AbrirFormHijo(New frmGestionDatos(), DirectCast(sender, Button))
+    End Sub
+
+    Private Sub btnInicio_Click(sender As Object, e As EventArgs) Handles btnInicio.Click
+        'Restablecer el color del botón anterior
+        If btnAnterior IsNot Nothing Then
+            btnAnterior.BackColor = Color.FromArgb(65, 65, 65)
+        End If
+
+        ' Pintar el botón "Inicio"
+        PintarBotonInicio()
+
+        ' Cerrar todos los formularios hijos
+        If Me.panelContenedor.Controls.Count > 0 Then
+            Me.panelContenedor.Controls.RemoveAt(0)
         End If
     End Sub
 
@@ -91,6 +97,13 @@ Public Class frmMenuPrincipal
         Me.WindowState = FormWindowState.Minimized
     End Sub
 
+    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        If MessageBox.Show("¿Estás seguro de cerrar la aplicación?", "Warning",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+            Application.Exit()
+        End If
+    End Sub
+
     Private Sub btnCerrarSesion_Click(sender As Object, e As EventArgs) Handles btnCerrarSesion.Click
         If MessageBox.Show("¿Estás seguro de cerrar sesión?", "Warning",
             MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
@@ -99,48 +112,58 @@ Public Class frmMenuPrincipal
     End Sub
 #End Region
 
-#Region "Mantener el color btn"
-
-    Private Sub btnCompras_Leave(sender As Object, e As EventArgs) Handles btnCompras.Leave
-        DirectCast(sender, Button).BackColor = Color.FromArgb(65, 65, 65)
-    End Sub
-    Private Sub btnVentas_Leave(sender As Object, e As EventArgs) Handles btnVentas.Leave
-        DirectCast(sender, Button).BackColor = Color.FromArgb(65, 65, 65)
-    End Sub
-    Private Sub btnOrdenReparacón_Leave(sender As Object, e As EventArgs) Handles btnOrdenReparacón.Leave
-        DirectCast(sender, Button).BackColor = Color.FromArgb(65, 65, 65)
-    End Sub
-
-    Private Sub btnProductos_Leave(sender As Object, e As EventArgs) Handles btnProductos.Leave
-        DirectCast(sender, Button).BackColor = Color.FromArgb(65, 65, 65)
-    End Sub
-
-    Private Sub btnPersonas_Leave(sender As Object, e As EventArgs) Handles btnPersonas.Leave
-        DirectCast(sender, Button).BackColor = Color.FromArgb(65, 65, 65)
-    End Sub
-
-    Private Sub btnVehiculos_Leave(sender As Object, e As EventArgs) Handles btnVehiculos.Leave
-        DirectCast(sender, Button).BackColor = Color.FromArgb(65, 65, 65)
-    End Sub
-
-
-#End Region
-
 #Region "frm Padre y resize"
-    Private Sub AbrirFormHijo(formHijo As Object)
+    Private btnAnterior As Button = Nothing
+
+    Private Sub AbrirFormHijo(formHijo As Object, sender As Button)
+        ' Restablecer el color del botón anterior
+        If btnAnterior IsNot Nothing Then
+            btnAnterior.BackColor = Color.FromArgb(65, 65, 65)
+        End If
+
+        ' Actualizar el color del botón actual
+        btnAnterior = sender
+        sender.BackColor = Color.SeaGreen
+
+        'Si el contenedor panelContenedor ya tiene controles hijos, elimina el primer control
         If Me.panelContenedor.Controls.Count > 0 Then
             Me.panelContenedor.Controls.RemoveAt(0)
         End If
 
+        'Convierte el objeto formHijo a un tipo Form
         Dim fh As Form = TryCast(formHijo, Form)
+
         If fh IsNot Nothing Then
+            'Esto indica que el formulario no es un formulario de nivel superior
             fh.TopLevel = False
+            ' El formulario se ajustará al tamaño completo del contenedor
             fh.Dock = DockStyle.Fill
+            'Agrega el formulario al contenedor
             Me.panelContenedor.Controls.Add(fh)
+            'Almacena una referencia al formulario hijo en la propiedad Tag del contenedor.
             Me.panelContenedor.Tag = fh
             fh.Show()
+            'Trae el formulario al frente de cualquier otro control
             fh.BringToFront()
         End If
+
+        ' Si no se agregó ningún formulario hijo, pinta el botón "Inicio"
+        If Me.panelContenedor.Controls.Count = 0 Then
+            PintarBotonInicio()
+        End If
+    End Sub
+
+    Private Sub PintarBotonInicio()
+        ' Restablecer el color del botón anterior
+        If btnAnterior IsNot Nothing Then
+            btnAnterior.BackColor = Color.FromArgb(65, 65, 65)
+        End If
+
+        ' Pintar el botón "Inicio" con un color especial cuando no hay formularios hijos abiertos
+        btnInicio.BackColor = Color.SeaGreen
+
+        ' Actualizar el botón anterior como btnInicio
+        btnAnterior = btnInicio
     End Sub
 
     Private Sub MenuPrincipal_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
@@ -159,10 +182,15 @@ Public Class frmMenuPrincipal
 #End Region
 
     Private Sub MenuPrincipal_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'lblUsuarioBarra.Text = "Usuario: " & UsuarioActivo.usuario & ", Rol: " & UsuarioActivo.nombre_rol &
+        '                    ", Empleado: " & UsuarioActivo.nombrePersona & " " & UsuarioActivo.apellidoPersona &
+        '                    ", Correo: " & UsuarioActivo.correoPersona
         lblUsuario.Text = UsuarioActivo.usuario
         lblRol.Text = UsuarioActivo.nombre_rol
         lblNombre.Text = UsuarioActivo.nombrePersona & " " & UsuarioActivo.apellidoPersona
         lblCorreo.Text = UsuarioActivo.correoPersona
+        PintarBotonInicio()
     End Sub
+
 
 End Class

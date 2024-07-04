@@ -132,6 +132,12 @@
     <Compile Include="frmAgregarEmpleados.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmGestionDatos.Designer.vb">
+      <DependentUpon>frmGestionDatos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmGestionDatos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmLogin.Designer.vb">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
@@ -142,6 +148,60 @@
       <DependentUpon>frmAgregarMarca.vb</DependentUpon>
     </Compile>
     <Compile Include="frmAgregarMarca.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModificarCiudades.Designer.vb">
+      <DependentUpon>frmModificarCiudades.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmModificarCiudades.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModificarFormaEntrega.Designer.vb">
+      <DependentUpon>frmModificarFormaEntrega.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmModificarFormaEntrega.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModificarFormaPago.Designer.vb">
+      <DependentUpon>frmModificarFormaPago.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmModificarFormaPago.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModificarMarca.Designer.vb">
+      <DependentUpon>frmModificarMarca.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmModificarMarca.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModificarRoles.Designer.vb">
+      <DependentUpon>frmModificarRoles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmModificarRoles.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModificarRubros.Designer.vb">
+      <DependentUpon>frmModificarRubros.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmModificarRubros.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModificarSecciones.Designer.vb">
+      <DependentUpon>frmModificarSecciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmModificarSecciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModificarTipoVehiculos.Designer.vb">
+      <DependentUpon>frmModificarTipoVehiculos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmModificarTipoVehiculos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModificarTipoVenta.Designer.vb">
+      <DependentUpon>frmModificarTipoVenta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmModificarTipoVenta.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmOrdenesReparacion.Designer.vb">
@@ -247,6 +307,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarEmpleados.resx">
       <DependentUpon>frmAgregarEmpleados.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestionDatos.resx">
+      <DependentUpon>frmGestionDatos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>

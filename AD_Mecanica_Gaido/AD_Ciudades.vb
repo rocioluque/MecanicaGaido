@@ -13,28 +13,6 @@ Public Class AD_Ciudades
         connectionString = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123"
     End Sub
 
-    Public Function Agregar_Ciudad(ByVal Ciudad As String, ByVal idProvincia As Integer) As Boolean
-        If Not CiudadExiste(Ciudad, idProvincia) Then
-            Using conexion As New SqlConnection(connectionString)
-                Using comando As New SqlCommand("Insertar_Ciudad", conexion)
-                    comando.CommandType = CommandType.StoredProcedure
-                    comando.Parameters.AddWithValue("@Ciudad", Ciudad)
-                    comando.Parameters.AddWithValue("@ID_Provincia", idProvincia)
-
-                    Try
-                        conexion.Open()
-                        comando.ExecuteNonQuery()
-                        Return True
-                    Catch ex As Exception
-                        Throw New Exception("Error al agregar la ciudad a la base de datos: " & ex.Message, ex)
-                    End Try
-                End Using
-            End Using
-        Else
-            Return False ' Ciudad ya existe
-        End If
-    End Function
-
     Public Function CiudadExiste(nombreCiudad As String, idProvincia As Integer) As Boolean
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("ControlarCiudadExistente", conexion)
@@ -55,13 +33,37 @@ Public Class AD_Ciudades
         End Using
     End Function
 
-    Public Function Modificar_Ciudad(ByVal idCiudad As Integer, ByVal Ciudad As String, ByVal idProvincia As Integer) As Boolean
+    Public Function Agregar_Ciudad(ByVal Ciudad As String, ByVal idProvincia As Integer, estado As Boolean) As Boolean
+        If Not CiudadExiste(Ciudad, idProvincia) Then
+            Using conexion As New SqlConnection(connectionString)
+                Using comando As New SqlCommand("Insertar_Ciudad", conexion)
+                    comando.CommandType = CommandType.StoredProcedure
+                    comando.Parameters.AddWithValue("@Ciudad", Ciudad)
+                    comando.Parameters.AddWithValue("@ID_Provincia", idProvincia)
+                    comando.Parameters.AddWithValue("@estado", estado)
+
+                    Try
+                        conexion.Open()
+                        comando.ExecuteNonQuery()
+                        Return True
+                    Catch ex As Exception
+                        Throw New Exception("Error al agregar la ciudad a la base de datos: " & ex.Message, ex)
+                    End Try
+                End Using
+            End Using
+        Else
+            Return False 'La ciudad ya existe
+        End If
+    End Function
+
+    Public Function Modificar_Ciudad(ByVal idCiudad As Integer, ByVal Ciudad As String, ByVal idProvincia As Integer, estado As Boolean) As Boolean
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Modificar_Ciudad", conexion)
                 comando.CommandType = CommandType.StoredProcedure
                 comando.Parameters.AddWithValue("@ID_Ciudad", idCiudad)
                 comando.Parameters.AddWithValue("@Ciudad", Ciudad)
                 comando.Parameters.AddWithValue("@ID_Provincia", idProvincia)
+                comando.Parameters.AddWithValue("@estado", estado)
 
                 Try
                     conexion.Open()

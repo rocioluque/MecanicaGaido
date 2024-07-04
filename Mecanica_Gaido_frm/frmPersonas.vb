@@ -165,6 +165,7 @@ Public Class frmPersonas
             frm.CiudadID = Convert.ToInt32(cboCiudad.SelectedValue)
             frm.CiudadNombre = cboCiudad.Text
             frm.ProvinciaSeleccionada = Convert.ToInt32(cboProvincia.SelectedValue)
+            frm.CiudadEstado = grdPersonas.CurrentRow.Cells("Estado").Value
             frm.EsModificacion = True
 
             If frm.ShowDialog() = DialogResult.OK Then
@@ -180,7 +181,7 @@ Public Class frmPersonas
                 End If
             End If
         Else
-            MsgBox("Seleccione una ciudad para modificar.", vbInformation, "Información")
+            MsgBox("Seleccione una provincia para agregar y/o modificar ciudades.", vbInformation, "Información")
         End If
     End Sub
 #End Region
@@ -279,6 +280,5 @@ Public Class frmPersonas
 
     End Sub
 #End Region
-
 
 End Class

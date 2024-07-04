@@ -5,9 +5,11 @@ Public Class frmAgregarCiudad
     Dim o_Personas As New AD_Personas
     Dim o_Ciudad As New AD_Ciudades
 
+#Region "Procedimientos"
     Public Property ProvinciaSeleccionada As Integer
     Public Property CiudadID As Integer
     Public Property CiudadNombre As String
+    Public Property CiudadEstado As Boolean
     Public Property EsModificacion As Boolean = False
 
     Private Sub frmAgregarCiudad_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -17,6 +19,7 @@ Public Class frmAgregarCiudad
             ' Si es una modificación, establecer los valores
             cboProvincia.SelectedValue = ProvinciaSeleccionada
             txtCiudad.Text = CiudadNombre
+            chkEstado.Checked = CiudadEstado
         Else
             ' Si es una nueva ciudad, establecer la provincia seleccionada
             If ProvinciaSeleccionada <> 0 Then
@@ -41,17 +44,20 @@ Public Class frmAgregarCiudad
             MsgBox("Error al cargar las provincias: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+#End Region
 
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
         Me.Close()
     End Sub
 
+#Region "Cargar"
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         Try
             Dim nombreCiudad As String = txtCiudad.Text
             Dim idProvincia As Integer = CInt(cboProvincia.SelectedValue)
+            Dim estado As Boolean = chkEstado.Checked
 
-            If o_Ciudad.Agregar_Ciudad(nombreCiudad, idProvincia) Then
+            If o_Ciudad.Agregar_Ciudad(nombreCiudad, idProvincia, estado) Then
                 MsgBox("Ciudad agregada correctamente.", vbInformation, "Éxito")
                 Me.DialogResult = DialogResult.OK
                 Me.Close()
@@ -62,13 +68,16 @@ Public Class frmAgregarCiudad
             MsgBox("Error al agregar la ciudad: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+#End Region
 
+#Region "Modificar"
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         Try
             Dim nombreCiudad As String = txtCiudad.Text
             Dim idProvincia As Integer = CInt(cboProvincia.SelectedValue)
+            Dim estado As Boolean = chkEstado.Checked
 
-            o_Ciudad.Modificar_Ciudad(CiudadID, nombreCiudad, idProvincia)
+            o_Ciudad.Modificar_Ciudad(CiudadID, nombreCiudad, idProvincia, estado)
             MsgBox("Ciudad modificada correctamente.", vbInformation, "Éxito")
             Me.DialogResult = DialogResult.OK
             Me.Close()
@@ -76,4 +85,5 @@ Public Class frmAgregarCiudad
             MsgBox("Error al modificar la ciudad: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+#End Region
 End Class

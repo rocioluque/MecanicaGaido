@@ -36,28 +36,31 @@ Partial Class frmAgregarSeccion
         '
         Me.btnCerrar.BackgroundImage = CType(resources.GetObject("btnCerrar.BackgroundImage"), System.Drawing.Image)
         Me.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnCerrar.Location = New System.Drawing.Point(373, 1)
+        Me.btnCerrar.Location = New System.Drawing.Point(497, 1)
+        Me.btnCerrar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(19, 18)
+        Me.btnCerrar.Size = New System.Drawing.Size(25, 22)
         Me.btnCerrar.TabIndex = 22
         Me.btnCerrar.TabStop = False
         '
         'txtSeccion
         '
         Me.txtSeccion.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSeccion.Location = New System.Drawing.Point(120, 71)
+        Me.txtSeccion.Location = New System.Drawing.Point(160, 87)
+        Me.txtSeccion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtSeccion.Name = "txtSeccion"
-        Me.txtSeccion.Size = New System.Drawing.Size(228, 21)
-        Me.txtSeccion.TabIndex = 21
+        Me.txtSeccion.Size = New System.Drawing.Size(303, 24)
+        Me.txtSeccion.TabIndex = 1
         '
         'lblRubro
         '
         Me.lblRubro.AutoSize = True
         Me.lblRubro.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRubro.ForeColor = System.Drawing.Color.White
-        Me.lblRubro.Location = New System.Drawing.Point(21, 72)
+        Me.lblRubro.Location = New System.Drawing.Point(28, 89)
+        Me.lblRubro.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblRubro.Name = "lblRubro"
-        Me.lblRubro.Size = New System.Drawing.Size(68, 20)
+        Me.lblRubro.Size = New System.Drawing.Size(82, 22)
         Me.lblRubro.TabIndex = 20
         Me.lblRubro.Text = "Sección"
         '
@@ -66,11 +69,11 @@ Partial Class frmAgregarSeccion
         Me.chkEstado.AutoSize = True
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
-        Me.chkEstado.Location = New System.Drawing.Point(152, 180)
-        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
+        Me.chkEstado.Location = New System.Drawing.Point(203, 222)
+        Me.chkEstado.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.chkEstado.Name = "chkEstado"
-        Me.chkEstado.Size = New System.Drawing.Size(85, 21)
-        Me.chkEstado.TabIndex = 31
+        Me.chkEstado.Size = New System.Drawing.Size(108, 25)
+        Me.chkEstado.TabIndex = 2
         Me.chkEstado.Text = "¿Activo?"
         Me.chkEstado.UseVisualStyleBackColor = True
         '
@@ -82,10 +85,11 @@ Partial Class frmAgregarSeccion
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
-        Me.btnModificar.Location = New System.Drawing.Point(299, 175)
+        Me.btnModificar.Location = New System.Drawing.Point(399, 215)
+        Me.btnModificar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnModificar.Name = "btnModificar"
-        Me.btnModificar.Size = New System.Drawing.Size(82, 29)
-        Me.btnModificar.TabIndex = 30
+        Me.btnModificar.Size = New System.Drawing.Size(109, 36)
+        Me.btnModificar.TabIndex = 4
         Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = True
         '
@@ -97,19 +101,20 @@ Partial Class frmAgregarSeccion
         Me.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAgregar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregar.ForeColor = System.Drawing.Color.White
-        Me.btnAgregar.Location = New System.Drawing.Point(12, 175)
+        Me.btnAgregar.Location = New System.Drawing.Point(16, 215)
+        Me.btnAgregar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnAgregar.Name = "btnAgregar"
-        Me.btnAgregar.Size = New System.Drawing.Size(82, 29)
-        Me.btnAgregar.TabIndex = 29
+        Me.btnAgregar.Size = New System.Drawing.Size(109, 36)
+        Me.btnAgregar.TabIndex = 3
         Me.btnAgregar.Text = "Agregar"
         Me.btnAgregar.UseVisualStyleBackColor = True
         '
         'frmAgregarSeccion
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(393, 216)
+        Me.ClientSize = New System.Drawing.Size(524, 266)
         Me.Controls.Add(Me.chkEstado)
         Me.Controls.Add(Me.btnModificar)
         Me.Controls.Add(Me.btnAgregar)
@@ -118,6 +123,7 @@ Partial Class frmAgregarSeccion
         Me.Controls.Add(Me.lblRubro)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmAgregarSeccion"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmAgregarSeccion"
