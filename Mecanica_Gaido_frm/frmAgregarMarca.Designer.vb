@@ -36,28 +36,31 @@ Partial Class frmAgregarMarca
         '
         Me.btnCerrar.BackgroundImage = CType(resources.GetObject("btnCerrar.BackgroundImage"), System.Drawing.Image)
         Me.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnCerrar.Location = New System.Drawing.Point(373, 1)
+        Me.btnCerrar.Location = New System.Drawing.Point(497, 1)
+        Me.btnCerrar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(19, 18)
+        Me.btnCerrar.Size = New System.Drawing.Size(25, 22)
         Me.btnCerrar.TabIndex = 14
         Me.btnCerrar.TabStop = False
         '
         'txtMarca
         '
         Me.txtMarca.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMarca.Location = New System.Drawing.Point(128, 55)
+        Me.txtMarca.Location = New System.Drawing.Point(171, 68)
+        Me.txtMarca.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtMarca.Name = "txtMarca"
-        Me.txtMarca.Size = New System.Drawing.Size(228, 21)
-        Me.txtMarca.TabIndex = 13
+        Me.txtMarca.Size = New System.Drawing.Size(303, 24)
+        Me.txtMarca.TabIndex = 1
         '
         'lblMarca
         '
         Me.lblMarca.AutoSize = True
         Me.lblMarca.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMarca.ForeColor = System.Drawing.Color.White
-        Me.lblMarca.Location = New System.Drawing.Point(29, 56)
+        Me.lblMarca.Location = New System.Drawing.Point(39, 69)
+        Me.lblMarca.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMarca.Name = "lblMarca"
-        Me.lblMarca.Size = New System.Drawing.Size(59, 20)
+        Me.lblMarca.Size = New System.Drawing.Size(71, 22)
         Me.lblMarca.TabIndex = 12
         Me.lblMarca.Text = "Marca"
         '
@@ -69,10 +72,11 @@ Partial Class frmAgregarMarca
         Me.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAgregar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregar.ForeColor = System.Drawing.Color.White
-        Me.btnAgregar.Location = New System.Drawing.Point(299, 175)
+        Me.btnAgregar.Location = New System.Drawing.Point(399, 215)
+        Me.btnAgregar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnAgregar.Name = "btnAgregar"
-        Me.btnAgregar.Size = New System.Drawing.Size(82, 29)
-        Me.btnAgregar.TabIndex = 11
+        Me.btnAgregar.Size = New System.Drawing.Size(109, 36)
+        Me.btnAgregar.TabIndex = 4
         Me.btnAgregar.Text = "Agregar"
         Me.btnAgregar.UseVisualStyleBackColor = True
         '
@@ -81,11 +85,11 @@ Partial Class frmAgregarMarca
         Me.chkProducto.AutoSize = True
         Me.chkProducto.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkProducto.ForeColor = System.Drawing.Color.White
-        Me.chkProducto.Location = New System.Drawing.Point(33, 115)
-        Me.chkProducto.Margin = New System.Windows.Forms.Padding(2)
+        Me.chkProducto.Location = New System.Drawing.Point(44, 142)
+        Me.chkProducto.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.chkProducto.Name = "chkProducto"
-        Me.chkProducto.Size = New System.Drawing.Size(141, 21)
-        Me.chkProducto.TabIndex = 27
+        Me.chkProducto.Size = New System.Drawing.Size(180, 25)
+        Me.chkProducto.TabIndex = 2
         Me.chkProducto.Text = "¿Es de producto?"
         Me.chkProducto.UseVisualStyleBackColor = True
         '
@@ -94,20 +98,20 @@ Partial Class frmAgregarMarca
         Me.chkVehiculo.AutoSize = True
         Me.chkVehiculo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkVehiculo.ForeColor = System.Drawing.Color.White
-        Me.chkVehiculo.Location = New System.Drawing.Point(221, 115)
-        Me.chkVehiculo.Margin = New System.Windows.Forms.Padding(2)
+        Me.chkVehiculo.Location = New System.Drawing.Point(295, 142)
+        Me.chkVehiculo.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.chkVehiculo.Name = "chkVehiculo"
-        Me.chkVehiculo.Size = New System.Drawing.Size(135, 21)
-        Me.chkVehiculo.TabIndex = 28
+        Me.chkVehiculo.Size = New System.Drawing.Size(171, 25)
+        Me.chkVehiculo.TabIndex = 3
         Me.chkVehiculo.Text = "¿Es de vehículo?"
         Me.chkVehiculo.UseVisualStyleBackColor = True
         '
         'frmAgregarMarca
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(393, 216)
+        Me.ClientSize = New System.Drawing.Size(524, 266)
         Me.Controls.Add(Me.chkVehiculo)
         Me.Controls.Add(Me.chkProducto)
         Me.Controls.Add(Me.btnCerrar)
@@ -116,6 +120,7 @@ Partial Class frmAgregarMarca
         Me.Controls.Add(Me.btnAgregar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmAgregarMarca"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmMarca"

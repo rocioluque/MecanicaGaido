@@ -39,9 +39,10 @@ Partial Class frmGestionDatos
         '
         'PanelPadre
         '
-        Me.PanelPadre.Location = New System.Drawing.Point(40, 169)
+        Me.PanelPadre.Location = New System.Drawing.Point(53, 208)
+        Me.PanelPadre.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PanelPadre.Name = "PanelPadre"
-        Me.PanelPadre.Size = New System.Drawing.Size(871, 396)
+        Me.PanelPadre.Size = New System.Drawing.Size(1161, 487)
         Me.PanelPadre.TabIndex = 0
         '
         'Label1
@@ -49,9 +50,10 @@ Partial Class frmGestionDatos
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(25, 18)
+        Me.Label1.Location = New System.Drawing.Point(33, 22)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(252, 22)
+        Me.Label1.Size = New System.Drawing.Size(326, 30)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "¿Dónde quéres gestionar?"
         '
@@ -63,10 +65,11 @@ Partial Class frmGestionDatos
         Me.btnMarca.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnMarca.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnMarca.ForeColor = System.Drawing.Color.White
-        Me.btnMarca.Location = New System.Drawing.Point(203, 62)
+        Me.btnMarca.Location = New System.Drawing.Point(271, 76)
+        Me.btnMarca.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnMarca.Name = "btnMarca"
-        Me.btnMarca.Size = New System.Drawing.Size(82, 29)
-        Me.btnMarca.TabIndex = 16
+        Me.btnMarca.Size = New System.Drawing.Size(109, 36)
+        Me.btnMarca.TabIndex = 1
         Me.btnMarca.Text = "Marcas"
         Me.btnMarca.UseVisualStyleBackColor = True
         '
@@ -78,10 +81,11 @@ Partial Class frmGestionDatos
         Me.btnRubro.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRubro.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnRubro.ForeColor = System.Drawing.Color.White
-        Me.btnRubro.Location = New System.Drawing.Point(316, 62)
+        Me.btnRubro.Location = New System.Drawing.Point(421, 76)
+        Me.btnRubro.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnRubro.Name = "btnRubro"
-        Me.btnRubro.Size = New System.Drawing.Size(82, 29)
-        Me.btnRubro.TabIndex = 17
+        Me.btnRubro.Size = New System.Drawing.Size(109, 36)
+        Me.btnRubro.TabIndex = 3
         Me.btnRubro.Text = "Rubros"
         Me.btnRubro.UseVisualStyleBackColor = True
         '
@@ -93,10 +97,11 @@ Partial Class frmGestionDatos
         Me.btnRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRol.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnRol.ForeColor = System.Drawing.Color.White
-        Me.btnRol.Location = New System.Drawing.Point(542, 62)
+        Me.btnRol.Location = New System.Drawing.Point(723, 76)
+        Me.btnRol.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnRol.Name = "btnRol"
-        Me.btnRol.Size = New System.Drawing.Size(82, 29)
-        Me.btnRol.TabIndex = 19
+        Me.btnRol.Size = New System.Drawing.Size(109, 36)
+        Me.btnRol.TabIndex = 7
         Me.btnRol.Text = "Roles"
         Me.btnRol.UseVisualStyleBackColor = True
         '
@@ -108,10 +113,11 @@ Partial Class frmGestionDatos
         Me.btnCiudad.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCiudad.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCiudad.ForeColor = System.Drawing.Color.White
-        Me.btnCiudad.Location = New System.Drawing.Point(429, 62)
+        Me.btnCiudad.Location = New System.Drawing.Point(572, 76)
+        Me.btnCiudad.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnCiudad.Name = "btnCiudad"
-        Me.btnCiudad.Size = New System.Drawing.Size(82, 29)
-        Me.btnCiudad.TabIndex = 18
+        Me.btnCiudad.Size = New System.Drawing.Size(109, 36)
+        Me.btnCiudad.TabIndex = 5
         Me.btnCiudad.Text = "Ciudades"
         Me.btnCiudad.UseVisualStyleBackColor = True
         '
@@ -123,10 +129,11 @@ Partial Class frmGestionDatos
         Me.btnTipoVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnTipoVenta.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnTipoVenta.ForeColor = System.Drawing.Color.White
-        Me.btnTipoVenta.Location = New System.Drawing.Point(547, 120)
+        Me.btnTipoVenta.Location = New System.Drawing.Point(729, 148)
+        Me.btnTipoVenta.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnTipoVenta.Name = "btnTipoVenta"
-        Me.btnTipoVenta.Size = New System.Drawing.Size(122, 29)
-        Me.btnTipoVenta.TabIndex = 23
+        Me.btnTipoVenta.Size = New System.Drawing.Size(163, 36)
+        Me.btnTipoVenta.TabIndex = 6
         Me.btnTipoVenta.Text = "Tipos de Ventas"
         Me.btnTipoVenta.UseVisualStyleBackColor = True
         '
@@ -138,10 +145,11 @@ Partial Class frmGestionDatos
         Me.btnFormaPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFormaPago.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnFormaPago.ForeColor = System.Drawing.Color.White
-        Me.btnFormaPago.Location = New System.Drawing.Point(387, 120)
+        Me.btnFormaPago.Location = New System.Drawing.Point(516, 148)
+        Me.btnFormaPago.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnFormaPago.Name = "btnFormaPago"
-        Me.btnFormaPago.Size = New System.Drawing.Size(129, 29)
-        Me.btnFormaPago.TabIndex = 22
+        Me.btnFormaPago.Size = New System.Drawing.Size(172, 36)
+        Me.btnFormaPago.TabIndex = 4
         Me.btnFormaPago.Text = "Formas de Pago"
         Me.btnFormaPago.UseVisualStyleBackColor = True
         '
@@ -153,10 +161,11 @@ Partial Class frmGestionDatos
         Me.btnTipoVehiculos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnTipoVehiculos.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnTipoVehiculos.ForeColor = System.Drawing.Color.White
-        Me.btnTipoVehiculos.Location = New System.Drawing.Point(205, 120)
+        Me.btnTipoVehiculos.Location = New System.Drawing.Point(273, 148)
+        Me.btnTipoVehiculos.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnTipoVehiculos.Name = "btnTipoVehiculos"
-        Me.btnTipoVehiculos.Size = New System.Drawing.Size(151, 29)
-        Me.btnTipoVehiculos.TabIndex = 20
+        Me.btnTipoVehiculos.Size = New System.Drawing.Size(201, 36)
+        Me.btnTipoVehiculos.TabIndex = 2
         Me.btnTipoVehiculos.Text = "Tipos de Vehiculos"
         Me.btnTipoVehiculos.UseVisualStyleBackColor = True
         '
@@ -168,10 +177,11 @@ Partial Class frmGestionDatos
         Me.frmFormaEntrega.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.frmFormaEntrega.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.frmFormaEntrega.ForeColor = System.Drawing.Color.White
-        Me.frmFormaEntrega.Location = New System.Drawing.Point(700, 120)
+        Me.frmFormaEntrega.Location = New System.Drawing.Point(933, 148)
+        Me.frmFormaEntrega.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.frmFormaEntrega.Name = "frmFormaEntrega"
-        Me.frmFormaEntrega.Size = New System.Drawing.Size(148, 29)
-        Me.frmFormaEntrega.TabIndex = 27
+        Me.frmFormaEntrega.Size = New System.Drawing.Size(197, 36)
+        Me.frmFormaEntrega.TabIndex = 8
         Me.frmFormaEntrega.Text = "Formas de Entrega"
         Me.frmFormaEntrega.UseVisualStyleBackColor = True
         '
@@ -183,10 +193,11 @@ Partial Class frmGestionDatos
         Me.Button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button10.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button10.ForeColor = System.Drawing.Color.White
-        Me.Button10.Location = New System.Drawing.Point(775, 62)
+        Me.Button10.Location = New System.Drawing.Point(1033, 76)
+        Me.Button10.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(82, 29)
-        Me.Button10.TabIndex = 25
+        Me.Button10.Size = New System.Drawing.Size(109, 36)
+        Me.Button10.TabIndex = 10
         Me.Button10.Text = ".........."
         Me.Button10.UseVisualStyleBackColor = True
         '
@@ -198,19 +209,20 @@ Partial Class frmGestionDatos
         Me.btnSeccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSeccion.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSeccion.ForeColor = System.Drawing.Color.White
-        Me.btnSeccion.Location = New System.Drawing.Point(655, 62)
+        Me.btnSeccion.Location = New System.Drawing.Point(873, 76)
+        Me.btnSeccion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnSeccion.Name = "btnSeccion"
-        Me.btnSeccion.Size = New System.Drawing.Size(89, 29)
-        Me.btnSeccion.TabIndex = 24
+        Me.btnSeccion.Size = New System.Drawing.Size(119, 36)
+        Me.btnSeccion.TabIndex = 9
         Me.btnSeccion.Text = "Secciones"
         Me.btnSeccion.UseVisualStyleBackColor = True
         '
         'frmGestionDatos
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1200, 650)
+        Me.ClientSize = New System.Drawing.Size(1600, 800)
         Me.Controls.Add(Me.frmFormaEntrega)
         Me.Controls.Add(Me.Button10)
         Me.Controls.Add(Me.btnSeccion)
@@ -225,6 +237,7 @@ Partial Class frmGestionDatos
         Me.Controls.Add(Me.PanelPadre)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmGestionDatos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "frmGestionDatos"
