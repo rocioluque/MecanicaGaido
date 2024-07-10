@@ -4,7 +4,6 @@ Imports System.Data.SqlClient
 Imports System.Configuration
 Public Class frmModificarMarca
     Dim o_Marca As New AD_Marca
-    Private currentIdMarca As Integer
 
 #Region "Procedimientos"
     Private Sub frmPersonas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -13,11 +12,11 @@ Public Class frmModificarMarca
     End Sub
 
     Public Sub limpiar()
+        txtId.Text = Nothing
         txtMarca.Text = Nothing
         chkProducto.Checked = False
         chkVehiculo.Checked = False
         chkEstado.Checked = False
-        currentIdMarca = -1
     End Sub
 
     Public Sub Cargar_Grilla()
@@ -47,7 +46,7 @@ Public Class frmModificarMarca
 
     Public Sub CargarDatosEnTextBoxes(ByVal rowIndex As Integer)
         If grdModificarMarca.Rows.Count > 0 Then
-            currentIdMarca = Convert.ToInt32(grdModificarMarca.Rows(rowIndex).Cells("N° Marca").Value)
+            txtId.Text = Convert.ToInt32(grdModificarMarca.Rows(rowIndex).Cells("N° Marca").Value)
             txtMarca.Text = grdModificarMarca.Rows(rowIndex).Cells("Marca").Value.ToString()
             chkProducto.Checked = Convert.ToBoolean(grdModificarMarca.Rows(rowIndex).Cells("¿Es de repuesto?").Value)
             chkVehiculo.Checked = Convert.ToBoolean(grdModificarMarca.Rows(rowIndex).Cells("¿Es de vehículo?").Value)
@@ -67,23 +66,28 @@ Public Class frmModificarMarca
 #End Region
 
 #Region "Modificar"
-    'Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
-    '    Using conexion As New SqlConnection(connectionString)
-    '        Using comando As New SqlCommand("Modificar_Ciudad", conexion)
-    '            comando.CommandType = CommandType.StoredProcedure
-    '            comando.Parameters.AddWithValue("@ID_Ciudad", idCiudad)
-    '            comando.Parameters.AddWithValue("@Ciudad", Ciudad)
-    '            comando.Parameters.AddWithValue("@ID_Provincia", idProvincia)
+    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
+        If txtId.Text <> Nothing And txtMarca.Text <> Nothing Then
+            Try
+                Dim idMarca As Integer = Convert.ToInt32(txtId.Text)
+                Dim nombre As String = txtMarca.Text
+                Dim EsRepuesto As Boolean = chkProducto.Checked
+                Dim EsVehiculo As Boolean = chkVehiculo.Checked
+                Dim estado As Boolean = chkEstado.Checked
 
-    '            Try
-    '                conexion.Open()
-    '                comando.ExecuteNonQuery()
-    '                Return True
-    '            Catch ex As Exception
-    '                Throw New Exception("Error al modificar la ciudad en la base de datos", ex)
-    '            End Try
-    '        End Using
-    '    End Using
-    'End Sub
+                o_Marca.Modificar_Marca(idMarca, nombre, EsRepuesto, EsVehiculo, estado)
+                MsgBox("Marca modificada correctamente.", vbInformation, "Información")
+                limpiar()
+                Cargar_Grilla()
+
+            Catch ex As Exception
+                MsgBox("Error al modificar la marca: " & ex.Message, vbCritical, "Error")
+                limpiar()
+            End Try
+        Else
+            MsgBox("Complete Datos", vbInformation, "Error")
+            limpiar()
+        End If
+    End Sub
 #End Region
 End Class
