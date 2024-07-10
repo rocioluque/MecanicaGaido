@@ -26,13 +26,13 @@ Partial Class frmModificarMarca
         Me.chkVehiculo = New System.Windows.Forms.CheckBox()
         Me.chkProducto = New System.Windows.Forms.CheckBox()
         Me.txtId = New System.Windows.Forms.TextBox()
-        Me.lblMarca = New System.Windows.Forms.Label()
+        Me.lblNumeroMarca = New System.Windows.Forms.Label()
         Me.btnModificar = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.grdModificarMarca = New System.Windows.Forms.DataGridView()
         Me.chkEstado = New System.Windows.Forms.CheckBox()
         Me.txtMarca = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblMarca = New System.Windows.Forms.Label()
         CType(Me.grdModificarMarca, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -70,16 +70,16 @@ Partial Class frmModificarMarca
         Me.txtId.Size = New System.Drawing.Size(63, 21)
         Me.txtId.TabIndex = 15
         '
-        'lblMarca
+        'lblNumeroMarca
         '
-        Me.lblMarca.AutoSize = True
-        Me.lblMarca.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMarca.ForeColor = System.Drawing.Color.White
-        Me.lblMarca.Location = New System.Drawing.Point(82, 55)
-        Me.lblMarca.Name = "lblMarca"
-        Me.lblMarca.Size = New System.Drawing.Size(80, 20)
-        Me.lblMarca.TabIndex = 19
-        Me.lblMarca.Text = "N° Marca"
+        Me.lblNumeroMarca.AutoSize = True
+        Me.lblNumeroMarca.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNumeroMarca.ForeColor = System.Drawing.Color.White
+        Me.lblNumeroMarca.Location = New System.Drawing.Point(82, 55)
+        Me.lblNumeroMarca.Name = "lblNumeroMarca"
+        Me.lblNumeroMarca.Size = New System.Drawing.Size(80, 20)
+        Me.lblNumeroMarca.TabIndex = 19
+        Me.lblNumeroMarca.Text = "N° Marca"
         '
         'btnModificar
         '
@@ -145,16 +145,16 @@ Partial Class frmModificarMarca
         Me.txtMarca.Size = New System.Drawing.Size(187, 21)
         Me.txtMarca.TabIndex = 23
         '
-        'Label1
+        'lblMarca
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(290, 55)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(59, 20)
-        Me.Label1.TabIndex = 24
-        Me.Label1.Text = "Marca"
+        Me.lblMarca.AutoSize = True
+        Me.lblMarca.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMarca.ForeColor = System.Drawing.Color.White
+        Me.lblMarca.Location = New System.Drawing.Point(290, 55)
+        Me.lblMarca.Name = "lblMarca"
+        Me.lblMarca.Size = New System.Drawing.Size(59, 20)
+        Me.lblMarca.TabIndex = 24
+        Me.lblMarca.Text = "Marca"
         '
         'frmModificarMarca
         '
@@ -163,14 +163,14 @@ Partial Class frmModificarMarca
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(871, 396)
         Me.Controls.Add(Me.txtMarca)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lblMarca)
         Me.Controls.Add(Me.chkEstado)
         Me.Controls.Add(Me.grdModificarMarca)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.chkVehiculo)
         Me.Controls.Add(Me.chkProducto)
         Me.Controls.Add(Me.txtId)
-        Me.Controls.Add(Me.lblMarca)
+        Me.Controls.Add(Me.lblNumeroMarca)
         Me.Controls.Add(Me.btnModificar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -185,11 +185,11 @@ Partial Class frmModificarMarca
     Friend WithEvents chkVehiculo As CheckBox
     Friend WithEvents chkProducto As CheckBox
     Friend WithEvents txtId As TextBox
-    Friend WithEvents lblMarca As Label
+    Friend WithEvents lblNumeroMarca As Label
     Friend WithEvents btnModificar As Button
     Friend WithEvents btnCancelar As Button
     Friend WithEvents grdModificarMarca As DataGridView
     Friend WithEvents chkEstado As CheckBox
     Friend WithEvents txtMarca As TextBox
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lblMarca As Label
 End Class

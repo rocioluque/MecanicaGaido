@@ -33,14 +33,13 @@ Public Class AD_Ciudades
         End Using
     End Function
 
-    Public Function Agregar_Ciudad(ByVal Ciudad As String, ByVal idProvincia As Integer, estado As Boolean) As Boolean
+    Public Function Agregar_Ciudad(ByVal Ciudad As String, ByVal idProvincia As Integer) As Boolean
         If Not CiudadExiste(Ciudad, idProvincia) Then
             Using conexion As New SqlConnection(connectionString)
-                Using comando As New SqlCommand("Insertar_Ciudad", conexion)
+                Using comando As New SqlCommand("Agregar_Ciudad", conexion)
                     comando.CommandType = CommandType.StoredProcedure
                     comando.Parameters.AddWithValue("@Ciudad", Ciudad)
                     comando.Parameters.AddWithValue("@ID_Provincia", idProvincia)
-                    comando.Parameters.AddWithValue("@estado", estado)
 
                     Try
                         conexion.Open()
@@ -74,5 +73,26 @@ Public Class AD_Ciudades
                 End Try
             End Using
         End Using
+    End Function
+
+    'Carga cbo Provincias
+    Public Function Cargar_Provincias() As DataTable
+        Dim tabla As New DataTable
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_CboProvincia", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                Try
+                    conexion.Open()
+                    Dim datadapter As New SqlDataAdapter(comando)
+                    datadapter.Fill(tabla)
+                Catch ex As Exception
+                    Throw New Exception("Error al cargar las provincias desde la base de datos", ex)
+                End Try
+
+            End Using
+        End Using
+
+        Return tabla
     End Function
 End Class
