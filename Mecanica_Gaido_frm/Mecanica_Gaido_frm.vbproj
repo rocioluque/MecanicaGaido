@@ -317,6 +317,33 @@
     <EmbeddedResource Include="frmAgregarMarca.resx">
       <DependentUpon>frmAgregarMarca.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmModificarCiudades.resx">
+      <DependentUpon>frmModificarCiudades.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModificarFormaEntrega.resx">
+      <DependentUpon>frmModificarFormaEntrega.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModificarFormaPago.resx">
+      <DependentUpon>frmModificarFormaPago.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModificarMarca.resx">
+      <DependentUpon>frmModificarMarca.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModificarRoles.resx">
+      <DependentUpon>frmModificarRoles.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModificarRubros.resx">
+      <DependentUpon>frmModificarRubros.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModificarSecciones.resx">
+      <DependentUpon>frmModificarSecciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModificarTipoVehiculos.resx">
+      <DependentUpon>frmModificarTipoVehiculos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModificarTipoVenta.resx">
+      <DependentUpon>frmModificarTipoVenta.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmOrdenesReparacion.resx">
       <DependentUpon>frmOrdenesReparacion.vb</DependentUpon>
     </EmbeddedResource>
