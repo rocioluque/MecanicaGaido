@@ -76,6 +76,7 @@ Public Class frmModificarCiudades
         If oDs.Tables(0).Rows.Count > 0 Then
             grdModificarCiudad.AutoGenerateColumns = True
             grdModificarCiudad.DataSource = oDs.Tables(0)
+            grdModificarCiudad.Columns("ID_Provincia").Visible = False  ' Ocultar la columna de ID_Provincia
             grdModificarCiudad.Refresh()
         End If
 
@@ -85,10 +86,15 @@ Public Class frmModificarCiudades
 
     Public Sub CargarDatosEnTextBoxes(ByVal rowIndex As Integer)
         If grdModificarCiudad.Rows.Count > 0 Then
-            txtId.Text = Convert.ToInt32(grdModificarCiudad.Rows(rowIndex).Cells("N° Marca").Value)
-            txtCiudad.Text = grdModificarCiudad.Rows(rowIndex).Cells("Marca").Value.ToString()
-
+            txtId.Text = Convert.ToInt32(grdModificarCiudad.Rows(rowIndex).Cells("N° Ciudad").Value)
+            txtCiudad.Text = grdModificarCiudad.Rows(rowIndex).Cells("Ciudad").Value.ToString()
             chkEstado.Checked = Convert.ToBoolean(grdModificarCiudad.Rows(rowIndex).Cells("¿Está activa?").Value)
+
+            ' Obtener el ID de la provincia desde la celda correspondiente
+            Dim idProvincia As Integer = Convert.ToInt32(grdModificarCiudad.Rows(rowIndex).Cells("ID_Provincia").Value)
+
+            ' Seleccionar la provincia en el ComboBox
+            cboProvincia.SelectedValue = idProvincia
         End If
     End Sub
 
