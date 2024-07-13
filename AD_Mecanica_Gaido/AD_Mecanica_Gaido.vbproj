@@ -94,6 +94,7 @@
     <Compile Include="AD_Login.vb" />
     <Compile Include="AD_Marca.vb" />
     <Compile Include="AD_Productos.vb" />
+    <Compile Include="AD_Roles.vb" />
     <Compile Include="AD_Rubros.vb" />
     <Compile Include="ConnectionToSql.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
