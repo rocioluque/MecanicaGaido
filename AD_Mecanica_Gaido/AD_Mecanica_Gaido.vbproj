@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AD_Ciudades.vb" />
+    <Compile Include="AD_Compras.vb" />
     <Compile Include="AD_Empleados.vb" />
     <Compile Include="AD_FormaEntrega.vb" />
     <Compile Include="AD_Login.vb" />
