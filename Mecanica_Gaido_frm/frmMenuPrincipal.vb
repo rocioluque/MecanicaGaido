@@ -185,6 +185,7 @@ Public Class frmMenuPrincipal
         'lblUsuarioBarra.Text = "Usuario: " & UsuarioActivo.usuario & ", Rol: " & UsuarioActivo.nombre_rol &
         '                    ", Empleado: " & UsuarioActivo.nombrePersona & " " & UsuarioActivo.apellidoPersona &
         '                    ", Correo: " & UsuarioActivo.correoPersona
+
         lblUsuario.Text = UsuarioActivo.usuario
         lblRol.Text = UsuarioActivo.nombre_rol
         lblNombre.Text = UsuarioActivo.nombrePersona & " " & UsuarioActivo.apellidoPersona

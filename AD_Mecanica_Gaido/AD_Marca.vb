@@ -56,5 +56,19 @@ Public Class AD_Marca
         End If
     End Function
 
+    Public Sub Modificar_Marca(id_marca As Integer, nombre As String, EsRepuesto As Boolean, EsVehiculo As Boolean, estado As Boolean)
+        Using conexion As New SqlConnection(connectionstring)
+            Using comando As New SqlCommand("Modificar_Marca", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@ID_Marca", id_marca)
+                comando.Parameters.AddWithValue("@Nombre", nombre)
+                comando.Parameters.AddWithValue("@Repuesto", EsRepuesto)
+                comando.Parameters.AddWithValue("@Vehiculo", EsVehiculo)
+                comando.Parameters.AddWithValue("@Estado", estado)
 
+                conexion.Open()
+                comando.ExecuteNonQuery()
+            End Using
+        End Using
+    End Sub
 End Class
