@@ -265,3 +265,4 @@ C:\Users\Carabante\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecan
 C:\Users\Carabante\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.pdb
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.frmGestionDatos.resources
 C:\Users\Carabante\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.frmGestionDatos.resources
+C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.frmGestionDatos.resources
