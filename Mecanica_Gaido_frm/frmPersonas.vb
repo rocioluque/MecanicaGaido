@@ -14,6 +14,7 @@ Public Class frmPersonas
                 cboProvincia.DataSource = tabla
                 cboProvincia.DisplayMember = "Nombre"
                 cboProvincia.ValueMember = "ID_Provincia"
+                'cboProvincia.SelectedValue = 7
             Else
                 MsgBox("No se encontraron provincias.", vbInformation, "Información")
             End If
@@ -59,9 +60,10 @@ Public Class frmPersonas
 
 #Region "Procedimientos"
     Private Sub frmPersonas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        limpiar()
         Cargar_Grilla()
         Cargar_Provincias()
-        limpiar()
+
     End Sub
 
     Public Sub limpiar()

@@ -12,6 +12,7 @@ Public Class frmAgregarEmpleados
         Cargar_Grilla_Empleados()
         Cargar_Combo_Seccion()
         Cargar_Combo_Rol()
+        txtID.Enabled = False
         cboSeccion.TabIndex = 1
     End Sub
 
@@ -27,6 +28,7 @@ Public Class frmAgregarEmpleados
         cboRol.SelectedIndex = -1
         txtNota.Text = Nothing
         chkEstado.Enabled = False
+        txtID.Enabled = False
     End Sub
 
     Public Sub Cargar_Grilla_Empleados()
