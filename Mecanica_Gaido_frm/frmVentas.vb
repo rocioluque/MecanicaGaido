@@ -1,4 +1,11 @@
-﻿Public Class frmVentas
+﻿Imports System.Data
+Imports AD_Mecanica_Gaido
+Imports System.Data.SqlClient
+Imports System.Configuration
+
+Public Class frmVentas
+
+    Dim o_ventas As New AD_Ventas
     Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
         frmAgregarCuentas.ShowDialog()
     End Sub
@@ -82,4 +89,96 @@
         End If
     End Sub
 
+    Private Sub frmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Cargar_Combo_Cuenta2()
+        Cargar_Combo_Empleados()
+        Cargar_Combo_FormaPago()
+        Cargar_Combo_TipoVenta()
+        Cargar_Combo_FormaEntrega()
+    End Sub
+
+    Private Sub Cargar_Combo_Cuenta2()
+        Try
+            Dim tabla As DataTable = o_ventas.Cargar_Combo_Cuentas2()
+
+            If tabla.Rows.Count > 0 Then
+                cboCuenta.DataSource = tabla
+                cboCuenta.DisplayMember = "Empresa"
+                cboCuenta.ValueMember = "ID_Cuenta"
+            Else
+                MsgBox("No se encontraron Cuentas.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar las Cuentas: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub Cargar_Combo_Empleados()
+        Try
+            Dim tabla As DataTable = o_ventas.Cargar_Combo_Empleados()
+
+            If tabla.Rows.Count > 0 Then
+                cboEmpleado.DataSource = tabla
+                cboEmpleado.DisplayMember = "Nombre"
+                cboEmpleado.ValueMember = "ID_Persona"
+            Else
+                MsgBox("No se encontraron Empleados.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar los Empleados: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub Cargar_Combo_FormaPago()
+        Try
+            Dim tabla As DataTable = o_ventas.Cargar_Combo_FormaPago()
+
+            If tabla.Rows.Count > 0 Then
+                cboFormaPago.DataSource = tabla
+                cboFormaPago.DisplayMember = "Nombre"
+                cboFormaPago.ValueMember = "ID_FormaPago"
+            Else
+                MsgBox("No se encontraron Fromas de Pago.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar las Formas de Pago: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub Cargar_Combo_TipoVenta()
+        Try
+            Dim tabla As DataTable = o_ventas.Cargar_Combo_TipoVenta()
+
+            If tabla.Rows.Count > 0 Then
+                cboTipoVenta.DataSource = tabla
+                cboTipoVenta.DisplayMember = "Nombre"
+                cboTipoVenta.ValueMember = "ID_TipoVenta"
+            Else
+                MsgBox("No se encontraron Tipos de Ventas.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar los Tipos de Ventas: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub Cargar_Combo_FormaEntrega()
+        Try
+            Dim tabla As DataTable = o_ventas.Cargar_Combo_FormaEntrega()
+
+            If tabla.Rows.Count > 0 Then
+                cboFormaEntrega.DataSource = tabla
+                cboFormaEntrega.DisplayMember = "Nombre"
+                cboFormaEntrega.ValueMember = "ID_FormaDeEntrega"
+            Else
+                MsgBox("No se encontraron Formas de Entrega.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar las Formas de Entrega: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
 End Class
