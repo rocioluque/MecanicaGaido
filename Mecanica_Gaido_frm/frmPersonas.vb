@@ -157,7 +157,7 @@ Public Class frmPersonas
     End Sub
 
     Private Sub btnCtasCtes_Click(sender As Object, e As EventArgs) Handles btnCuentas.Click
-        frmAgregarCuentas.txtEmpresa.Text = txtApellido.Text & ", " & txtNombre.Text
+        frmAgregarCuentas.txtEmpresa.Text = txtApellido.Text & " " & txtNombre.Text
         frmAgregarCuentas.ShowDialog()
     End Sub
 

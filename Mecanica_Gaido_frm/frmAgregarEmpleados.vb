@@ -12,6 +12,7 @@ Public Class frmAgregarEmpleados
         Cargar_Grilla_Empleados()
         Cargar_Combo_Seccion()
         Cargar_Combo_Rol()
+        cboSeccion.TabIndex = 1
     End Sub
 
     Public Sub limpiar()
@@ -63,6 +64,7 @@ Public Class frmAgregarEmpleados
                 cboUsuario.DataSource = tabla
                 cboUsuario.DisplayMember = "Usuario"
                 cboUsuario.ValueMember = "ID_Usuario"
+                cboUsuario.SelectedValue = -1
             Else
                 MsgBox("No se encontraron usuarios.", vbInformation, "Información")
             End If
@@ -80,6 +82,7 @@ Public Class frmAgregarEmpleados
                 cboSeccion.DataSource = tabla
                 cboSeccion.DisplayMember = "Nombre"
                 cboSeccion.ValueMember = "ID_Seccion"
+                cboSeccion.SelectedValue = -1
             Else
                 MsgBox("No se encontraron secciones.", vbInformation, "Información")
             End If
@@ -97,6 +100,7 @@ Public Class frmAgregarEmpleados
                 cboRol.DataSource = tabla
                 cboRol.DisplayMember = "Nombre"
                 cboRol.ValueMember = "ID_Rol"
+                cboRol.SelectedValue = -1
             Else
                 MsgBox("No se encontraron roles.", vbInformation, "Información")
             End If
