@@ -150,10 +150,14 @@ Public Class frmPersonas
 
 #Region "Abrir frm para agregar datos"
     Private Sub btnEmpleados_Click(sender As Object, e As EventArgs) Handles btnEmpleados.Click
+        frmAgregarEmpleados.txt_ID_Persona.Text = txtID.Text
+        frmAgregarEmpleados.lblCargaEmpleado.Text = txtApellido.Text & " " & txtNombre.Text
+
         frmAgregarEmpleados.ShowDialog()
     End Sub
 
     Private Sub btnCtasCtes_Click(sender As Object, e As EventArgs) Handles btnCuentas.Click
+        frmAgregarCuentas.txtEmpresa.Text = txtApellido.Text & ", " & txtNombre.Text
         frmAgregarCuentas.ShowDialog()
     End Sub
 

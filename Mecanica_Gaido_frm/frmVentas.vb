@@ -105,6 +105,7 @@ Public Class frmVentas
                 cboCuenta.DataSource = tabla
                 cboCuenta.DisplayMember = "Empresa"
                 cboCuenta.ValueMember = "ID_Cuenta"
+                cboCuenta.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Cuentas.", vbInformation, "Información")
             End If
@@ -122,6 +123,7 @@ Public Class frmVentas
                 cboEmpleado.DataSource = tabla
                 cboEmpleado.DisplayMember = "Nombre"
                 cboEmpleado.ValueMember = "ID_Persona"
+                cboEmpleado.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Empleados.", vbInformation, "Información")
             End If
@@ -139,6 +141,7 @@ Public Class frmVentas
                 cboFormaPago.DataSource = tabla
                 cboFormaPago.DisplayMember = "Nombre"
                 cboFormaPago.ValueMember = "ID_FormaPago"
+                cboFormaPago.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Fromas de Pago.", vbInformation, "Información")
             End If
@@ -156,6 +159,7 @@ Public Class frmVentas
                 cboTipoVenta.DataSource = tabla
                 cboTipoVenta.DisplayMember = "Nombre"
                 cboTipoVenta.ValueMember = "ID_TipoVenta"
+                cboTipoVenta.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Tipos de Ventas.", vbInformation, "Información")
             End If
@@ -173,6 +177,7 @@ Public Class frmVentas
                 cboFormaEntrega.DataSource = tabla
                 cboFormaEntrega.DisplayMember = "Nombre"
                 cboFormaEntrega.ValueMember = "ID_FormaDeEntrega"
+                cboFormaEntrega.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Formas de Entrega.", vbInformation, "Información")
             End If

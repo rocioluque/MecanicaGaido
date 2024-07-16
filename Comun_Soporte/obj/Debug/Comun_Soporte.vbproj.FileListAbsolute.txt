@@ -105,3 +105,17 @@ C:\Users\arizu\Source\Repos\rocioluque\MecanicaGaido\Comun_Soporte\obj\Debug\Com
 C:\Users\arizu\Source\Repos\rocioluque\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.dll
 C:\Users\arizu\Source\Repos\rocioluque\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.xml
 C:\Users\arizu\Source\Repos\rocioluque\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.pdb
+C:\Gaido\MecanicaGaido\Comun_Soporte\bin\Debug\Comun_Soporte.dll
+C:\Gaido\MecanicaGaido\Comun_Soporte\bin\Debug\Comun_Soporte.pdb
+C:\Gaido\MecanicaGaido\Comun_Soporte\bin\Debug\Comun_Soporte.xml
+C:\Gaido\MecanicaGaido\Comun_Soporte\bin\Debug\Newtonsoft.Json.dll
+C:\Gaido\MecanicaGaido\Comun_Soporte\bin\Debug\StarkbankEcdsa.dll
+C:\Gaido\MecanicaGaido\Comun_Soporte\bin\Debug\Newtonsoft.Json.xml
+C:\Gaido\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.vbproj.AssemblyReference.cache
+C:\Gaido\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.Resources.resources
+C:\Gaido\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.vbproj.GenerateResource.cache
+C:\Gaido\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.vbproj.CoreCompileInputs.cache
+C:\Gaido\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.vbproj.CopyComplete
+C:\Gaido\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.dll
+C:\Gaido\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.xml
+C:\Gaido\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.pdb

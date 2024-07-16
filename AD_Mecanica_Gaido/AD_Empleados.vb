@@ -87,17 +87,18 @@ Public Class AD_Empleados
     End Function
 
     'Modificar esto, el procedimiento no está creado
-    Public Sub Agregar_Empleado(direccion As String, nombre As String, apellido As String, idusuario As Integer, contraseña As String, idseccion As Integer, nota As String, estado As Boolean)
+    Public Sub Agregar_Empleado(ID_Persona As Integer, ID_Usuario As Integer, ID_Seccion As Integer, CUIL As String, FNac As Date, FContrato As Date, Cargo As String, Nota As String, estado As Boolean)
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Agregar_Empleado", conexion)
                 comando.CommandType = CommandType.StoredProcedure
-                comando.Parameters.AddWithValue("@Direccion", direccion)
-                comando.Parameters.AddWithValue("@Nombre", nombre)
-                comando.Parameters.AddWithValue("@Apellido", apellido)
-                comando.Parameters.AddWithValue("@idusuario", idusuario)
-                comando.Parameters.AddWithValue("@Contraseña", contraseña)
-                comando.Parameters.AddWithValue("@idseccion", idseccion)
-                comando.Parameters.AddWithValue("@Nota", nota)
+                comando.Parameters.AddWithValue("@ID_Persona", ID_Persona)
+                comando.Parameters.AddWithValue("@ID_Usuario", ID_Usuario)
+                comando.Parameters.AddWithValue("@ID_Seccion", ID_Seccion)
+                comando.Parameters.AddWithValue("@CUIL", CUIL)
+                comando.Parameters.AddWithValue("@FN", FNac)
+                comando.Parameters.AddWithValue("@FContrato", FContrato)
+                comando.Parameters.AddWithValue("@Cargo", Cargo)
+                comando.Parameters.AddWithValue("@Nota", Nota)
                 comando.Parameters.AddWithValue("@Estado", estado)
 
                 conexion.Open()

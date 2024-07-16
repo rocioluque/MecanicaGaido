@@ -113,7 +113,11 @@ Public Class frmAgregarEmpleados
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
+        lblCargaEmpleado.Text = ""
+        Me.Close()
     End Sub
+
+
 
     'Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
     '    If txtDireccion.Text <> Nothing And txtNombre.Text <> Nothing And txtApellido.Text <> Nothing And txtTelefono.Text <> Nothing And cboUsuario.SelectedValue <> Nothing And
