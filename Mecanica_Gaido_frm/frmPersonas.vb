@@ -14,6 +14,7 @@ Public Class frmPersonas
                 cboProvincia.DataSource = tabla
                 cboProvincia.DisplayMember = "Nombre"
                 cboProvincia.ValueMember = "ID_Provincia"
+                'cboProvincia.SelectedValue = 7
             Else
                 MsgBox("No se encontraron provincias.", vbInformation, "Información")
             End If
@@ -59,9 +60,10 @@ Public Class frmPersonas
 
 #Region "Procedimientos"
     Private Sub frmPersonas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        limpiar()
         Cargar_Grilla()
         Cargar_Provincias()
-        limpiar()
+
     End Sub
 
     Public Sub limpiar()
@@ -150,10 +152,14 @@ Public Class frmPersonas
 
 #Region "Abrir frm para agregar datos"
     Private Sub btnEmpleados_Click(sender As Object, e As EventArgs) Handles btnEmpleados.Click
+        frmAgregarEmpleados.txt_ID_Persona.Text = txtID.Text
+        frmAgregarEmpleados.lblCargaEmpleado.Text = txtApellido.Text & " " & txtNombre.Text
+
         frmAgregarEmpleados.ShowDialog()
     End Sub
 
     Private Sub btnCtasCtes_Click(sender As Object, e As EventArgs) Handles btnCuentas.Click
+        frmAgregarCuentas.txtEmpresa.Text = txtApellido.Text & " " & txtNombre.Text
         frmAgregarCuentas.ShowDialog()
     End Sub
 

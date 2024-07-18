@@ -12,6 +12,8 @@ Public Class frmAgregarEmpleados
         Cargar_Grilla_Empleados()
         Cargar_Combo_Seccion()
         Cargar_Combo_Rol()
+        txtID.Enabled = False
+        cboSeccion.TabIndex = 1
     End Sub
 
     Public Sub limpiar()
@@ -26,6 +28,7 @@ Public Class frmAgregarEmpleados
         cboRol.SelectedIndex = -1
         txtNota.Text = Nothing
         chkEstado.Enabled = False
+        txtID.Enabled = False
     End Sub
 
     Public Sub Cargar_Grilla_Empleados()
@@ -63,6 +66,7 @@ Public Class frmAgregarEmpleados
                 cboUsuario.DataSource = tabla
                 cboUsuario.DisplayMember = "Usuario"
                 cboUsuario.ValueMember = "ID_Usuario"
+                cboUsuario.SelectedValue = -1
             Else
                 MsgBox("No se encontraron usuarios.", vbInformation, "Información")
             End If
@@ -80,6 +84,7 @@ Public Class frmAgregarEmpleados
                 cboSeccion.DataSource = tabla
                 cboSeccion.DisplayMember = "Nombre"
                 cboSeccion.ValueMember = "ID_Seccion"
+                cboSeccion.SelectedValue = -1
             Else
                 MsgBox("No se encontraron secciones.", vbInformation, "Información")
             End If
@@ -97,6 +102,7 @@ Public Class frmAgregarEmpleados
                 cboRol.DataSource = tabla
                 cboRol.DisplayMember = "Nombre"
                 cboRol.ValueMember = "ID_Rol"
+                cboRol.SelectedValue = -1
             Else
                 MsgBox("No se encontraron roles.", vbInformation, "Información")
             End If
@@ -113,7 +119,11 @@ Public Class frmAgregarEmpleados
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
+        lblCargaEmpleado.Text = ""
+        Me.Close()
     End Sub
+
+
 
     'Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
     '    If txtDireccion.Text <> Nothing And txtNombre.Text <> Nothing And txtApellido.Text <> Nothing And txtTelefono.Text <> Nothing And cboUsuario.SelectedValue <> Nothing And

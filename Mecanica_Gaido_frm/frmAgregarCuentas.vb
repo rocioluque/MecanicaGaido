@@ -2,13 +2,13 @@
 
 #Region "Procedimientos"
     Public Sub limpiar()
-        txtID = Nothing
-        txtEmpresa = Nothing
+        txtID.Text = ""
+        txtEmpresa.Text = ""
         txtCUIT = Nothing
-        txtIngresosBrutos = Nothing
-        txtFechaAlta = Nothing
-        txtCargo = Nothing
-        txtSaldo = Nothing
+        txtIngresosBrutos.Text = ""
+        txtFechaAlta.Text = ""
+        txtCargo.Text = ""
+        txtSaldo.Text = ""
         chkEstado.Checked = False
     End Sub
 #End Region
@@ -18,6 +18,7 @@
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
+        Me.Close()
     End Sub
 
 #Region "Keypress"

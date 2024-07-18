@@ -247,9 +247,9 @@ Partial Class frmMenuPrincipal
         '
         'btnCerrarSesion
         '
+        Me.btnCerrarSesion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnCerrarSesion.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
         Me.btnCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.btnCerrarSesion.FlatAppearance.BorderSize = 0
         Me.btnCerrarSesion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
         Me.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -448,6 +448,7 @@ Partial Class frmMenuPrincipal
         Me.lblUsuarioBarra.Size = New System.Drawing.Size(11, 16)
         Me.lblUsuarioBarra.TabIndex = 27
         Me.lblUsuarioBarra.Text = ":"
+        Me.lblUsuarioBarra.Visible = False
         '
         'panelNav
         '
