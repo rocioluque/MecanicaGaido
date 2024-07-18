@@ -152,7 +152,7 @@ Partial Class frmModificarTipoVenta
         Me.Controls.Add(Me.btnModificar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmModificarTipoVenta"
         Me.Text = "frmModificarTipoVenta"
         CType(Me.grdModificarTipoDeVenta, System.ComponentModel.ISupportInitialize).EndInit()
