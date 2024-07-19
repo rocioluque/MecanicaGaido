@@ -121,7 +121,7 @@ Public Class frmVentas
 
             If tabla.Rows.Count > 0 Then
                 cboEmpleado.DataSource = tabla
-                cboEmpleado.DisplayMember = "Nombre"
+                cboEmpleado.DisplayMember = "Nombre/RazonSocial"
                 cboEmpleado.ValueMember = "ID_Persona"
                 cboEmpleado.SelectedValue = -1
             Else
