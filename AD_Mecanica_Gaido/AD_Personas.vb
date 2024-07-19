@@ -50,11 +50,51 @@ Public Class AD_Personas
         Return tabla
     End Function
 
+    Public Function Cargar_Combo_TipoDocumento() As DataTable
+        Dim tabla As New DataTable
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Combo_TipoDocumento", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                Try
+                    conexion.Open()
+                    Dim datadapter As New SqlDataAdapter(comando)
+                    datadapter.Fill(tabla)
+                Catch ex As Exception
+                    Throw New Exception("Error al cargar los tipo de documentos desde la base de datos", ex)
+                End Try
+
+            End Using
+        End Using
+
+        Return tabla
+    End Function
+
+    Public Function Cargar_Combo_TipoPersona() As DataTable
+        Dim tabla As New DataTable
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Combo_TipoPersona", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                Try
+                    conexion.Open()
+                    Dim datadapter As New SqlDataAdapter(comando)
+                    datadapter.Fill(tabla)
+                Catch ex As Exception
+                    Throw New Exception("Error al cargar los tipos de personas desde la base de datos", ex)
+                End Try
+
+            End Using
+        End Using
+
+        Return tabla
+    End Function
+
     Public Function Cargar_Grilla() As DataTable
         Dim tabla As New DataTable
 
         Using conexion As New SqlConnection(connectionString)
-            Using comando As New SqlCommand("Cargar_Grilla", conexion)
+            Using comando As New SqlCommand("Cargar_Grilla_Persona", conexion)
                 comando.CommandType = CommandType.StoredProcedure
                 Dim datadapter As New SqlDataAdapter(comando)
                 datadapter.Fill(tabla)
@@ -63,18 +103,30 @@ Public Class AD_Personas
         Return tabla
     End Function
 
-    Public Sub Agregar_Persona(nombre As String, apellido As String, telefono As String, correo As String, direccion As String, idCiudad As Integer, nota As String, estado As Boolean)
+    Public Sub Agregar_Persona(idTipoPersonas As Integer, nombre As String, apellido As String, telefonoMovil As String,
+                               telefonoFijo As String, FechaNacimiento As Date, idTipoDocumento As Integer, NumeroDocumento As String,
+                              Correo As String, Direccion As String, Numero As Integer, Piso As String, LetraPuerta As String, CodigoPostal As Integer,
+                               idCiudad As Integer, Nota As String, Estado As Boolean)
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Agregar_Persona", conexion)
                 comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@idTipoPersonas", idTipoPersonas)
                 comando.Parameters.AddWithValue("@Nombre", nombre)
                 comando.Parameters.AddWithValue("@Apellido", apellido)
-                comando.Parameters.AddWithValue("@Telefono", telefono)
-                comando.Parameters.AddWithValue("@Correo", correo)
-                comando.Parameters.AddWithValue("@Direccion", direccion)
+                comando.Parameters.AddWithValue("@telefonoMovil", telefonoMovil)
+                comando.Parameters.AddWithValue("@telefonoFijo", telefonoFijo)
+                comando.Parameters.AddWithValue("@FechaNacimiento", FechaNacimiento)
+                comando.Parameters.AddWithValue("@idTipoDocumento", idTipoDocumento)
+                comando.Parameters.AddWithValue("@NumeroDocumento", NumeroDocumento)
+                comando.Parameters.AddWithValue("@Correo", Correo)
+                comando.Parameters.AddWithValue("@Direccion", Direccion)
+                comando.Parameters.AddWithValue("@Numero", Numero)
+                comando.Parameters.AddWithValue("@Piso", Piso)
+                comando.Parameters.AddWithValue("@LetraPuerta", LetraPuerta)
+                comando.Parameters.AddWithValue("@CodigoPostal", CodigoPostal)
                 comando.Parameters.AddWithValue("@ID_Ciudad", idCiudad)
-                comando.Parameters.AddWithValue("@Nota", nota)
-                comando.Parameters.AddWithValue("@Estado", estado)
+                comando.Parameters.AddWithValue("@Nota", Nota)
+                comando.Parameters.AddWithValue("@Estado", Estado)
 
                 conexion.Open()
                 comando.ExecuteNonQuery()
@@ -82,19 +134,32 @@ Public Class AD_Personas
         End Using
     End Sub
 
-    Public Sub Modificar_Persona(idPersona As Integer, nombre As String, apellido As String, telefono As String, correo As String, direccion As String, idCiudad As Integer, nota As String, estado As Boolean)
+    Public Sub Modificar_Persona(idPersona As Integer, idTipoPersonas As Integer, nombre As String, apellido As String, telefonoMovil As String,
+                               telefonoFijo As String, FechaNacimiento As Date, idTipoDocumento As Integer, NumeroDocumento As String,
+                              Correo As String, Direccion As String, Numero As Integer, Piso As String, LetraPuerta As String, CodigoPostal As Integer,
+                               idCiudad As Integer, Nota As String, Estado As Boolean)
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Modificar_Persona", conexion)
                 comando.CommandType = CommandType.StoredProcedure
                 comando.Parameters.AddWithValue("@ID_Persona", idPersona)
+                comando.Parameters.AddWithValue("@idTipoPersonas", idTipoPersonas)
                 comando.Parameters.AddWithValue("@Nombre", nombre)
                 comando.Parameters.AddWithValue("@Apellido", apellido)
-                comando.Parameters.AddWithValue("@Telefono", telefono)
-                comando.Parameters.AddWithValue("@Correo", correo)
-                comando.Parameters.AddWithValue("@Direccion", direccion)
+                comando.Parameters.AddWithValue("@telefonoMovil", telefonoMovil)
+                comando.Parameters.AddWithValue("@telefonoFijo", telefonoFijo)
+                comando.Parameters.AddWithValue("@FechaNacimiento", FechaNacimiento)
+                comando.Parameters.AddWithValue("@idTipoDocumento", idTipoDocumento)
+                comando.Parameters.AddWithValue("@NumeroDocumento", NumeroDocumento)
+                comando.Parameters.AddWithValue("@Correo", Correo)
+                comando.Parameters.AddWithValue("@Direccion", Direccion)
+                comando.Parameters.AddWithValue("@Numero", Numero)
+                comando.Parameters.AddWithValue("@Piso", Piso)
+                comando.Parameters.AddWithValue("@LetraPuerta", LetraPuerta)
+                comando.Parameters.AddWithValue("@CodigoPostal", CodigoPostal)
                 comando.Parameters.AddWithValue("@ID_Ciudad", idCiudad)
-                comando.Parameters.AddWithValue("@Nota", nota)
-                comando.Parameters.AddWithValue("@Estado", estado)
+                comando.Parameters.AddWithValue("@Nota", Nota)
+                comando.Parameters.AddWithValue("@Estado", Estado)
+
 
                 conexion.Open()
                 comando.ExecuteNonQuery()
