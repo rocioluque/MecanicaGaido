@@ -88,7 +88,8 @@ Partial Class frmPersonas
         Me.txtID.Margin = New System.Windows.Forms.Padding(2)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(43, 23)
-        Me.txtID.TabIndex = 16
+        Me.txtID.TabIndex = 1
+        Me.txtID.Tag = ""
         '
         'lblId
         '
@@ -114,7 +115,7 @@ Partial Class frmPersonas
         Me.btnBuscar.Location = New System.Drawing.Point(253, 35)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(50, 28)
-        Me.btnBuscar.TabIndex = 1
+        Me.btnBuscar.TabIndex = 2
         Me.btnBuscar.Text = "..."
         Me.btnBuscar.UseVisualStyleBackColor = False
         '
@@ -131,7 +132,7 @@ Partial Class frmPersonas
         Me.btnEmpleados.Location = New System.Drawing.Point(230, 425)
         Me.btnEmpleados.Name = "btnEmpleados"
         Me.btnEmpleados.Size = New System.Drawing.Size(117, 37)
-        Me.btnEmpleados.TabIndex = 13
+        Me.btnEmpleados.TabIndex = 23
         Me.btnEmpleados.Text = "Empleados"
         Me.btnEmpleados.UseVisualStyleBackColor = False
         '
@@ -147,7 +148,7 @@ Partial Class frmPersonas
         Me.btnCuentas.Location = New System.Drawing.Point(51, 425)
         Me.btnCuentas.Name = "btnCuentas"
         Me.btnCuentas.Size = New System.Drawing.Size(117, 37)
-        Me.btnCuentas.TabIndex = 12
+        Me.btnCuentas.TabIndex = 22
         Me.btnCuentas.Text = "Cuentas"
         Me.btnCuentas.UseVisualStyleBackColor = False
         '
@@ -164,7 +165,7 @@ Partial Class frmPersonas
         Me.btnCancelar.Location = New System.Drawing.Point(767, 425)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(117, 37)
-        Me.btnCancelar.TabIndex = 15
+        Me.btnCancelar.TabIndex = 21
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = False
         '
@@ -180,7 +181,7 @@ Partial Class frmPersonas
         Me.btnAceptar.Location = New System.Drawing.Point(409, 425)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(117, 37)
-        Me.btnAceptar.TabIndex = 11
+        Me.btnAceptar.TabIndex = 19
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = False
         '
@@ -203,7 +204,7 @@ Partial Class frmPersonas
         Me.grdPersonas.ReadOnly = True
         Me.grdPersonas.RowHeadersWidth = 51
         Me.grdPersonas.Size = New System.Drawing.Size(834, 297)
-        Me.grdPersonas.TabIndex = 47
+        Me.grdPersonas.TabIndex = 60
         '
         'btnModificar
         '
@@ -217,7 +218,7 @@ Partial Class frmPersonas
         Me.btnModificar.Location = New System.Drawing.Point(588, 425)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(117, 37)
-        Me.btnModificar.TabIndex = 14
+        Me.btnModificar.TabIndex = 20
         Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = False
         '
@@ -243,7 +244,7 @@ Partial Class frmPersonas
         Me.cboTipoPersona.Margin = New System.Windows.Forms.Padding(2)
         Me.cboTipoPersona.Name = "cboTipoPersona"
         Me.cboTipoPersona.Size = New System.Drawing.Size(133, 25)
-        Me.cboTipoPersona.TabIndex = 50
+        Me.cboTipoPersona.TabIndex = 3
         Me.cboTipoPersona.ValueMember = "ID_Provincia"
         '
         'PanelDatosPersonales
@@ -273,7 +274,7 @@ Partial Class frmPersonas
         Me.cboTipoDocumento.Margin = New System.Windows.Forms.Padding(2)
         Me.cboTipoDocumento.Name = "cboTipoDocumento"
         Me.cboTipoDocumento.Size = New System.Drawing.Size(220, 25)
-        Me.cboTipoDocumento.TabIndex = 55
+        Me.cboTipoDocumento.TabIndex = 7
         Me.cboTipoDocumento.ValueMember = "ID_Provincia"
         '
         'dtpFechaNacimiento
@@ -283,7 +284,7 @@ Partial Class frmPersonas
         Me.dtpFechaNacimiento.Location = New System.Drawing.Point(17, 135)
         Me.dtpFechaNacimiento.Name = "dtpFechaNacimiento"
         Me.dtpFechaNacimiento.Size = New System.Drawing.Size(220, 23)
-        Me.dtpFechaNacimiento.TabIndex = 54
+        Me.dtpFechaNacimiento.TabIndex = 6
         Me.dtpFechaNacimiento.Value = New Date(2024, 7, 18, 0, 0, 0, 0)
         '
         'lblNumeroDocumento
@@ -305,7 +306,7 @@ Partial Class frmPersonas
         Me.txtNumeroDocumento.Margin = New System.Windows.Forms.Padding(2)
         Me.txtNumeroDocumento.Name = "txtNumeroDocumento"
         Me.txtNumeroDocumento.Size = New System.Drawing.Size(220, 23)
-        Me.txtNumeroDocumento.TabIndex = 52
+        Me.txtNumeroDocumento.TabIndex = 8
         '
         'lblFechaNacimiento
         '
@@ -338,7 +339,7 @@ Partial Class frmPersonas
         Me.txtNombre.Margin = New System.Windows.Forms.Padding(2)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(220, 23)
-        Me.txtNombre.TabIndex = 46
+        Me.txtNombre.TabIndex = 4
         '
         'lblNombre
         '
@@ -371,7 +372,7 @@ Partial Class frmPersonas
         Me.txtApellido.Margin = New System.Windows.Forms.Padding(2)
         Me.txtApellido.Name = "txtApellido"
         Me.txtApellido.Size = New System.Drawing.Size(220, 23)
-        Me.txtApellido.TabIndex = 47
+        Me.txtApellido.TabIndex = 5
         '
         'PanelDirecciones
         '
@@ -421,7 +422,7 @@ Partial Class frmPersonas
         Me.txtCodigoPostal.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCodigoPostal.Name = "txtCodigoPostal"
         Me.txtCodigoPostal.Size = New System.Drawing.Size(88, 23)
-        Me.txtCodigoPostal.TabIndex = 75
+        Me.txtCodigoPostal.TabIndex = 14
         '
         'lblTelefonoFijo
         '
@@ -442,7 +443,7 @@ Partial Class frmPersonas
         Me.txtTelefonoFijo.Margin = New System.Windows.Forms.Padding(2)
         Me.txtTelefonoFijo.Name = "txtTelefonoFijo"
         Me.txtTelefonoFijo.Size = New System.Drawing.Size(174, 23)
-        Me.txtTelefonoFijo.TabIndex = 73
+        Me.txtTelefonoFijo.TabIndex = 17
         '
         'lblLetra
         '
@@ -463,7 +464,7 @@ Partial Class frmPersonas
         Me.txtLetraPuerta.Margin = New System.Windows.Forms.Padding(2)
         Me.txtLetraPuerta.Name = "txtLetraPuerta"
         Me.txtLetraPuerta.Size = New System.Drawing.Size(88, 23)
-        Me.txtLetraPuerta.TabIndex = 71
+        Me.txtLetraPuerta.TabIndex = 12
         '
         'lblPiso
         '
@@ -484,7 +485,7 @@ Partial Class frmPersonas
         Me.txtPiso.Margin = New System.Windows.Forms.Padding(2)
         Me.txtPiso.Name = "txtPiso"
         Me.txtPiso.Size = New System.Drawing.Size(58, 23)
-        Me.txtPiso.TabIndex = 69
+        Me.txtPiso.TabIndex = 11
         '
         'lblNumero
         '
@@ -505,7 +506,7 @@ Partial Class frmPersonas
         Me.txtNumero.Margin = New System.Windows.Forms.Padding(2)
         Me.txtNumero.Name = "txtNumero"
         Me.txtNumero.Size = New System.Drawing.Size(58, 23)
-        Me.txtNumero.TabIndex = 67
+        Me.txtNumero.TabIndex = 10
         '
         'lblDireccion
         '
@@ -539,7 +540,7 @@ Partial Class frmPersonas
         Me.cboCiudad.Margin = New System.Windows.Forms.Padding(2)
         Me.cboCiudad.Name = "cboCiudad"
         Me.cboCiudad.Size = New System.Drawing.Size(133, 25)
-        Me.cboCiudad.TabIndex = 60
+        Me.cboCiudad.TabIndex = 13
         '
         'chkEstado
         '
@@ -550,7 +551,7 @@ Partial Class frmPersonas
         Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
-        Me.chkEstado.TabIndex = 57
+        Me.chkEstado.TabIndex = 60
         Me.chkEstado.Text = "¿Activo?"
         Me.chkEstado.UseVisualStyleBackColor = True
         '
@@ -576,7 +577,7 @@ Partial Class frmPersonas
         Me.cboProvincia.Margin = New System.Windows.Forms.Padding(2)
         Me.cboProvincia.Name = "cboProvincia"
         Me.cboProvincia.Size = New System.Drawing.Size(164, 25)
-        Me.cboProvincia.TabIndex = 59
+        Me.cboProvincia.TabIndex = 15
         Me.cboProvincia.ValueMember = "ID_Provincia"
         '
         'txtDireccion
@@ -586,7 +587,7 @@ Partial Class frmPersonas
         Me.txtDireccion.Margin = New System.Windows.Forms.Padding(2)
         Me.txtDireccion.Name = "txtDireccion"
         Me.txtDireccion.Size = New System.Drawing.Size(287, 23)
-        Me.txtDireccion.TabIndex = 58
+        Me.txtDireccion.TabIndex = 9
         '
         'txtCorreo
         '
@@ -595,7 +596,7 @@ Partial Class frmPersonas
         Me.txtCorreo.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCorreo.Name = "txtCorreo"
         Me.txtCorreo.Size = New System.Drawing.Size(174, 23)
-        Me.txtCorreo.TabIndex = 56
+        Me.txtCorreo.TabIndex = 17
         '
         'btnAgregarCiudad
         '
@@ -638,7 +639,7 @@ Partial Class frmPersonas
         Me.txtTelefonoMovil.Margin = New System.Windows.Forms.Padding(2)
         Me.txtTelefonoMovil.Name = "txtTelefonoMovil"
         Me.txtTelefonoMovil.Size = New System.Drawing.Size(174, 23)
-        Me.txtTelefonoMovil.TabIndex = 55
+        Me.txtTelefonoMovil.TabIndex = 16
         '
         'lblDirecciones
         '
@@ -690,7 +691,7 @@ Partial Class frmPersonas
         Me.txtNota.Location = New System.Drawing.Point(13, 19)
         Me.txtNota.Name = "txtNota"
         Me.txtNota.Size = New System.Drawing.Size(522, 46)
-        Me.txtNota.TabIndex = 11
+        Me.txtNota.TabIndex = 18
         Me.txtNota.Text = ""
         '
         'frmPersonas
