@@ -92,7 +92,7 @@
     <Compile Include="AD_Ciudades.vb" />
     <Compile Include="AD_Compras.vb" />
     <Compile Include="AD_Empleados.vb" />
-    <Compile Include="AD_FormaEntrega.vb" />
+    <Compile Include="AD_FormasDeEntrega.vb" />
     <Compile Include="AD_FormasDePago.vb" />
     <Compile Include="AD_Login.vb" />
     <Compile Include="AD_Marca.vb" />

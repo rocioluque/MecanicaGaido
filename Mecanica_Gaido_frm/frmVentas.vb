@@ -12,10 +12,26 @@ Public Class frmVentas
 
     Private Sub btnAgregarFormaPago_Click(sender As Object, e As EventArgs) Handles btnAgregarFormaPago.Click
         frmAgregarFormaPago.ShowDialog()
-
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiar()
+    End Sub
+
+    Private Sub btnTipoVenta_Click(sender As Object, e As EventArgs) Handles btnTipoVenta.Click
+        frmAgregarTipoVenta.ShowDialog()
+    End Sub
+
+#Region "Procedimientos"
+    Private Sub frmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Cargar_Combo_Cuenta()
+        Cargar_Combo_Empleados()
+        Cargar_Combo_FormaPago()
+        Cargar_Combo_TipoVenta()
+        Cargar_Combo_FormaEntrega()
+    End Sub
+
+    Public Sub limpiar()
         txtID.Clear()
         txtFechaVenta.Clear()
         txtNumComprobante.Clear()
@@ -30,76 +46,12 @@ Public Class frmVentas
         cboFormaEntrega.SelectedIndex = 0
         chkEstado.Checked = False
     End Sub
+#End Region
 
-    Private Sub btnFormaEntrega_Click(sender As Object, e As EventArgs) Handles btnFormaEntrega.Click
-        frmAgregarFormaEntrega.ShowDialog()
-    End Sub
-
-    Private Sub btnTipoVenta_Click(sender As Object, e As EventArgs) Handles btnTipoVenta.Click
-        frmAgregarTipoVenta.ShowDialog()
-    End Sub
-
-
-    Private Sub txtSubtotal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSubtotal.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
-    End Sub
-
-    Private Sub txtIVA_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtIVA.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
-    End Sub
-
-
-    Private Sub txtOtrosImpuestos_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtOtrosImpuestos.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
-    End Sub
-
-    Private Sub txtTotal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTotal.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
-    End Sub
-
-    Private Sub frmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Cargar_Combo_Cuenta2()
-        Cargar_Combo_Empleados()
-        Cargar_Combo_FormaPago()
-        Cargar_Combo_TipoVenta()
-        Cargar_Combo_FormaEntrega()
-    End Sub
-
-    Private Sub Cargar_Combo_Cuenta2()
+#Region "Carga de cbo"
+    Private Sub Cargar_Combo_Cuenta()
         Try
-            Dim tabla As DataTable = o_ventas.Cargar_Combo_Cuentas2()
+            Dim tabla As DataTable = o_ventas.Cargar_Combo_Cuentas()
 
             If tabla.Rows.Count > 0 Then
                 cboCuenta.DataSource = tabla
@@ -186,4 +138,76 @@ Public Class frmVentas
             MsgBox("Error al cargar las Formas de Entrega: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+#End Region
+
+#Region "Forma de Entrega"
+    Private Sub btnFormaEntrega_Click(sender As Object, e As EventArgs) Handles btnFormaEntrega.Click
+        Dim frm As New frmAgregarFormaEntrega()
+
+        'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
+        If frm.ShowDialog() = DialogResult.OK Then
+            Cargar_Combo_FormaEntrega()
+
+            ' Buscar y seleccionar la nueva forma de entrega en el ComboBox
+            Dim nuevaMarca As String = frm.NuevaFormaEntregaNombre
+            For Each item As DataRowView In cboFormaEntrega.Items
+                If item("Nombre").ToString() = nuevaMarca Then
+                    cboFormaEntrega.SelectedItem = item
+                    Exit For
+                End If
+            Next
+        End If
+    End Sub
+#End Region
+
+
+#Region "KeyPress"
+    Private Sub txtSubtotal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSubtotal.KeyPress
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub txtIVA_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtIVA.KeyPress
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub txtOtrosImpuestos_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtOtrosImpuestos.KeyPress
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub txtTotal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTotal.KeyPress
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
+    End Sub
+#End Region
 End Class

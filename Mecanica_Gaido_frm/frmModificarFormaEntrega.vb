@@ -2,7 +2,7 @@
 Imports AD_Mecanica_Gaido
 Imports System.Data.SqlClient
 Public Class frmModificarFormaEntrega
-    Dim o_entrega As New AD_FormaEntrega
+    Dim o_entrega As New AD_FormasDeEntrega
 
 #Region "Procedimientos"
     Private Sub frmModificarFormaEntrega_Load(sender As Object, e As EventArgs) Handles MyBase.Load

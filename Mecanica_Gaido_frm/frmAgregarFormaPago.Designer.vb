@@ -34,20 +34,18 @@ Partial Class frmAgregarFormaPago
         '
         Me.btnCerrar.BackgroundImage = CType(resources.GetObject("btnCerrar.BackgroundImage"), System.Drawing.Image)
         Me.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnCerrar.Location = New System.Drawing.Point(485, 1)
-        Me.btnCerrar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnCerrar.Location = New System.Drawing.Point(364, 1)
         Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(25, 22)
+        Me.btnCerrar.Size = New System.Drawing.Size(19, 18)
         Me.btnCerrar.TabIndex = 22
         Me.btnCerrar.TabStop = False
         '
         'txtFormaPago
         '
         Me.txtFormaPago.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFormaPago.Location = New System.Drawing.Point(39, 114)
-        Me.txtFormaPago.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtFormaPago.Location = New System.Drawing.Point(29, 93)
         Me.txtFormaPago.Name = "txtFormaPago"
-        Me.txtFormaPago.Size = New System.Drawing.Size(303, 24)
+        Me.txtFormaPago.Size = New System.Drawing.Size(228, 21)
         Me.txtFormaPago.TabIndex = 1
         '
         'lblRubro
@@ -55,10 +53,9 @@ Partial Class frmAgregarFormaPago
         Me.lblRubro.AutoSize = True
         Me.lblRubro.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRubro.ForeColor = System.Drawing.Color.White
-        Me.lblRubro.Location = New System.Drawing.Point(33, 71)
-        Me.lblRubro.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblRubro.Location = New System.Drawing.Point(25, 58)
         Me.lblRubro.Name = "lblRubro"
-        Me.lblRubro.Size = New System.Drawing.Size(151, 22)
+        Me.lblRubro.Size = New System.Drawing.Size(121, 20)
         Me.lblRubro.TabIndex = 20
         Me.lblRubro.Text = "Forma de Pago"
         '
@@ -70,27 +67,25 @@ Partial Class frmAgregarFormaPago
         Me.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAgregar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregar.ForeColor = System.Drawing.Color.White
-        Me.btnAgregar.Location = New System.Drawing.Point(388, 197)
-        Me.btnAgregar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnAgregar.Location = New System.Drawing.Point(291, 160)
         Me.btnAgregar.Name = "btnAgregar"
-        Me.btnAgregar.Size = New System.Drawing.Size(109, 36)
+        Me.btnAgregar.Size = New System.Drawing.Size(82, 29)
         Me.btnAgregar.TabIndex = 2
         Me.btnAgregar.Text = "Agregar"
         Me.btnAgregar.UseVisualStyleBackColor = True
         '
         'frmAgregarFormaPago
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(513, 247)
+        Me.ClientSize = New System.Drawing.Size(385, 201)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.txtFormaPago)
         Me.Controls.Add(Me.lblRubro)
         Me.Controls.Add(Me.btnAgregar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmAgregarFormaPago"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "AgregarTipoPago"
