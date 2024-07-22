@@ -4,7 +4,6 @@ Imports System.Data.SqlClient
 Imports System.Configuration
 
 Public Class frmVentas
-
     Dim o_ventas As New AD_Ventas
     Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
         frmAgregarCuentas.ShowDialog()
@@ -12,10 +11,6 @@ Public Class frmVentas
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
-    End Sub
-
-    Private Sub btnTipoVenta_Click(sender As Object, e As EventArgs) Handles btnTipoVenta.Click
-        frmAgregarTipoVenta.ShowDialog()
     End Sub
 
 #Region "Procedimientos"
@@ -164,11 +159,31 @@ Public Class frmVentas
         If frm.ShowDialog() = DialogResult.OK Then
             Cargar_Combo_FormaPago()
 
-            ' Buscar y seleccionar la nueva forma de entrega en el ComboBox
+            ' Buscar y seleccionar la nueva forma de pago en el ComboBox
             Dim nuevaFormaPago As String = frm.NuevaFormaPagoNombre
             For Each item As DataRowView In cboFormaPago.Items
                 If item("Nombre").ToString() = nuevaFormaPago Then
                     cboFormaPago.SelectedItem = item
+                    Exit For
+                End If
+            Next
+        End If
+    End Sub
+#End Region
+
+#Region "Tipo de Venta"
+    Private Sub btnTipoVenta_Click(sender As Object, e As EventArgs) Handles btnTipoVenta.Click
+        Dim frm As New frmAgregarTipoVenta()
+
+        'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
+        If frm.ShowDialog() = DialogResult.OK Then
+            Cargar_Combo_TipoVenta()
+
+            ' Buscar y seleccionar el nuevo tipo de venta en el ComboBox
+            Dim nuevoTipoVenta As String = frm.NuevoTipoVentaNombre
+            For Each item As DataRowView In cboTipoVenta.Items
+                If item("Nombre").ToString() = nuevoTipoVenta Then
+                    cboTipoVenta.SelectedItem = item
                     Exit For
                 End If
             Next

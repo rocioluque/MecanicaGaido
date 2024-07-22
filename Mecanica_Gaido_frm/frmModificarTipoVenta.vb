@@ -73,9 +73,4 @@ Public Class frmModificarTipoVenta
         End Try
     End Sub
 
-
-
-
-
-
 End Class

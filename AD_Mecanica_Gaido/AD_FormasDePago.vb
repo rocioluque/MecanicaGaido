@@ -30,7 +30,7 @@ Public Class AD_FormasDePago
         End Using
     End Function
 
-    Public Function Agregar_FormaPAgo(nombreFormaPago As String) As Boolean
+    Public Function Agregar_FormaPago(nombreFormaPago As String) As Boolean
         If Not FormaPagoExiste(nombreFormaPago) Then
             Using conexion As New SqlConnection(connectionString)
                 Using comando As New SqlCommand("Agregar_FormaPago", conexion)
