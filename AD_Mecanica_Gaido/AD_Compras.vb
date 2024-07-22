@@ -31,18 +31,18 @@ Public Class AD_Compras
         Return tabla
     End Function
 
-    Public Function Cargar_Combo_Pagos() As DataTable
+    Public Function Cargar_Combo_FormaPago() As DataTable
         Dim tabla As New DataTable
 
         Using conexion As New SqlConnection(connectionString)
-            Using comando As New SqlCommand("Cargar_Combo_Pagos", conexion)
+            Using comando As New SqlCommand("Cargar_Combo_FormaPago", conexion)
                 comando.CommandType = CommandType.StoredProcedure
                 Try
                     conexion.Open()
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar las Formas de Pago desde la base de datos", ex)
+                    Throw New Exception("Error al cargar las formas de pago desde la base de datos", ex)
                 End Try
 
             End Using

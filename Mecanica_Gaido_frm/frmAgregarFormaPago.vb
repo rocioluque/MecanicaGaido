@@ -6,6 +6,7 @@ Public Class frmAgregarFormaPago
 
     ' Propiedad para almacenar el nombre de la nueva forma de pago agregada
     Public Property NuevaFormaPagoNombre As String
+    Public Property NuevaFormaPagoNombreCompra As String
 
 #Region "Keypress"
     Private Sub txtFormaPago_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtFormaPago.KeyPress
@@ -25,6 +26,7 @@ Public Class frmAgregarFormaPago
 
                     'Almacenar el nombre de la nueva forma de pago
                     NuevaFormaPagoNombre = txtFormaPago.Text
+                    NuevaFormaPagoNombreCompra = txtFormaPago.Text
                     MsgBox("Forma de pago agregada correctamente.", vbInformation, "Información")
 
                     'Al cerrar el modal devuelve un resultado específico en el frmVenta
