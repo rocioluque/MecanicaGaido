@@ -10,10 +10,6 @@ Public Class frmVentas
         frmAgregarCuentas.ShowDialog()
     End Sub
 
-    Private Sub btnAgregarFormaPago_Click(sender As Object, e As EventArgs) Handles btnAgregarFormaPago.Click
-        frmAgregarFormaPago.ShowDialog()
-    End Sub
-
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
     End Sub
@@ -149,9 +145,9 @@ Public Class frmVentas
             Cargar_Combo_FormaEntrega()
 
             ' Buscar y seleccionar la nueva forma de entrega en el ComboBox
-            Dim nuevaMarca As String = frm.NuevaFormaEntregaNombre
+            Dim nuevaFormaEntrega As String = frm.NuevaFormaEntregaNombre
             For Each item As DataRowView In cboFormaEntrega.Items
-                If item("Nombre").ToString() = nuevaMarca Then
+                If item("Nombre").ToString() = nuevaFormaEntrega Then
                     cboFormaEntrega.SelectedItem = item
                     Exit For
                 End If
@@ -160,6 +156,25 @@ Public Class frmVentas
     End Sub
 #End Region
 
+#Region "Forma de Pago"
+    Private Sub btnAgregarFormaPago_Click(sender As Object, e As EventArgs) Handles btnAgregarFormaPago.Click
+        Dim frm As New frmAgregarFormaPago()
+
+        'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
+        If frm.ShowDialog() = DialogResult.OK Then
+            Cargar_Combo_FormaPago()
+
+            ' Buscar y seleccionar la nueva forma de entrega en el ComboBox
+            Dim nuevaFormaPago As String = frm.NuevaFormaPagoNombre
+            For Each item As DataRowView In cboFormaPago.Items
+                If item("Nombre").ToString() = nuevaFormaPago Then
+                    cboFormaPago.SelectedItem = item
+                    Exit For
+                End If
+            Next
+        End If
+    End Sub
+#End Region
 
 #Region "KeyPress"
     Private Sub txtSubtotal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSubtotal.KeyPress
