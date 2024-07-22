@@ -2,9 +2,9 @@
 Imports System.Data
 Imports System.Data.SqlClient
 Imports System.IO
-Imports Microsoft.Practices.EnterpriseLibrary.Data
 Imports System.Configuration
 Imports System.Data.Common
+
 
 Public Class AD_Personas
     Private connectionString As String
@@ -13,6 +13,7 @@ Public Class AD_Personas
         connectionString = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123"
     End Sub
 
+#Region "Carga de cbo"
     'Carga cbo Provincias
     Public Function Cargar_Provincias() As DataTable
         Dim tabla As New DataTable
@@ -89,6 +90,7 @@ Public Class AD_Personas
 
         Return tabla
     End Function
+#End Region
 
     Public Function Cargar_Grilla() As DataTable
         Dim tabla As New DataTable

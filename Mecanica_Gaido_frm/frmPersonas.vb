@@ -166,40 +166,19 @@ Public Class frmPersonas
         conexion.Close()
     End Sub
 
-    Public Sub CargarDatosEnTextBoxes(ByVal rowIndex As Integer)
-        If grdPersonas.Rows.Count > 0 Then
-            txtID.Text = grdPersonas.Rows(rowIndex).Cells("N° Persona").Value.ToString()
-            txtNombre.Text = grdPersonas.Rows(rowIndex).Cells("Nombre/RazonSocial").Value.ToString()
-            txtApellido.Text = grdPersonas.Rows(rowIndex).Cells("Apellido").Value.ToString()
-            txtTelefonoMovil.Text = grdPersonas.Rows(rowIndex).Cells("Telefono_Movil").Value.ToString()
-            txtCorreo.Text = grdPersonas.Rows(rowIndex).Cells("Correo").Value.ToString()
-            txtDireccion.Text = grdPersonas.Rows(rowIndex).Cells("Direccion").Value.ToString()
-            txtNota.Text = grdPersonas.Rows(rowIndex).Cells("Nota").Value.ToString()
-            chkEstado.Checked = grdPersonas.Rows(rowIndex).Cells("Estado").Value.ToString()
+    Public Sub cargardatosentextboxes(ByVal rowindex As Integer)
+        If grdPersonas.Rows.Count > 0 AndAlso rowindex >= 0 AndAlso rowindex < grdPersonas.Rows.Count Then
+            ' Cargar datos de la grilla
+            txtID.Text = grdPersonas.Rows(rowindex).Cells("N° Persona").Value.ToString()
+            txtNombre.Text = grdPersonas.Rows(rowindex).Cells("Nombre / Razon Social").Value.ToString()
+            txtApellido.Text = grdPersonas.Rows(rowindex).Cells("Apellido").Value.ToString()
+            txtTelefonoMovil.Text = grdPersonas.Rows(rowindex).Cells("Teléfono Móvil").Value.ToString()
+            txtTelefonoFijo.Text = grdPersonas.Rows(rowindex).Cells("Teléfono Fijo").Value.ToString()
+            txtCorreo.Text = grdPersonas.Rows(rowindex).Cells("Correo").Value.ToString()
 
-            ' Buscar y seleccionar la provincia en el ComboBox
-            Dim provincia As String = grdPersonas.Rows(rowIndex).Cells("Provincia").Value.ToString()
-            For Each item As DataRowView In cboProvincia.Items
-                If item("Nombre").ToString() = provincia Then
-                    cboProvincia.SelectedValue = item("ID_Provincia")
-                    Exit For
-                End If
-            Next
-
-            ' Cargar y seleccionar la ciudad en el ComboBox basado en la provincia seleccionada
-            If cboProvincia.SelectedValue IsNot Nothing AndAlso IsNumeric(cboProvincia.SelectedValue) Then
-                Dim idProvincia As Integer = Convert.ToInt32(cboProvincia.SelectedValue)
-                Cargar_Ciudades(idProvincia)
-                Dim ciudad As String = grdPersonas.Rows(rowIndex).Cells("Ciudad").Value.ToString()
-                For Each item As DataRowView In cboCiudad.Items
-                    If item("Ciudad").ToString() = ciudad Then
-                        cboCiudad.SelectedValue = item("ID_Ciudad")
-                        Exit For
-                    End If
-                Next
-            End If
         End If
     End Sub
+
 
     Private Sub grdPersonas_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdPersonas.CellClick
         If e.RowIndex >= 0 Then
