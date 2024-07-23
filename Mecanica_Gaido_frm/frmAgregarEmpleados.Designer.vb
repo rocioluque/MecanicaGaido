@@ -84,7 +84,7 @@ Partial Class frmAgregarEmpleados
         '
         Me.txtContraseña.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtContraseña.Location = New System.Drawing.Point(440, 103)
-        Me.txtContraseña.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtContraseña.Margin = New System.Windows.Forms.Padding(2)
         Me.txtContraseña.Name = "txtContraseña"
         Me.txtContraseña.Size = New System.Drawing.Size(133, 23)
         Me.txtContraseña.TabIndex = 9
@@ -93,7 +93,7 @@ Partial Class frmAgregarEmpleados
         '
         Me.txtFechaNacimiento.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtFechaNacimiento.Location = New System.Drawing.Point(145, 183)
-        Me.txtFechaNacimiento.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtFechaNacimiento.Margin = New System.Windows.Forms.Padding(2)
         Me.txtFechaNacimiento.Name = "txtFechaNacimiento"
         Me.txtFechaNacimiento.Size = New System.Drawing.Size(133, 23)
         Me.txtFechaNacimiento.TabIndex = 5
@@ -102,7 +102,7 @@ Partial Class frmAgregarEmpleados
         '
         Me.txtCuil.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCuil.Location = New System.Drawing.Point(145, 145)
-        Me.txtCuil.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtCuil.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCuil.Name = "txtCuil"
         Me.txtCuil.Size = New System.Drawing.Size(133, 23)
         Me.txtCuil.TabIndex = 4
@@ -111,7 +111,7 @@ Partial Class frmAgregarEmpleados
         '
         Me.txtID.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtID.Location = New System.Drawing.Point(145, 29)
-        Me.txtID.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtID.Margin = New System.Windows.Forms.Padding(2)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(43, 23)
         Me.txtID.TabIndex = 1
@@ -122,7 +122,7 @@ Partial Class frmAgregarEmpleados
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
         Me.chkEstado.Location = New System.Drawing.Point(335, 222)
-        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
         Me.chkEstado.TabIndex = 12
@@ -245,7 +245,7 @@ Partial Class frmAgregarEmpleados
         Me.cboUsuario.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboUsuario.FormattingEnabled = True
         Me.cboUsuario.Location = New System.Drawing.Point(440, 65)
-        Me.cboUsuario.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboUsuario.Margin = New System.Windows.Forms.Padding(2)
         Me.cboUsuario.Name = "cboUsuario"
         Me.cboUsuario.Size = New System.Drawing.Size(133, 25)
         Me.cboUsuario.TabIndex = 8
@@ -267,7 +267,7 @@ Partial Class frmAgregarEmpleados
         Me.cboSeccion.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboSeccion.FormattingEnabled = True
         Me.cboSeccion.Location = New System.Drawing.Point(145, 105)
-        Me.cboSeccion.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboSeccion.Margin = New System.Windows.Forms.Padding(2)
         Me.cboSeccion.Name = "cboSeccion"
         Me.cboSeccion.Size = New System.Drawing.Size(133, 25)
         Me.cboSeccion.TabIndex = 3
@@ -375,7 +375,7 @@ Partial Class frmAgregarEmpleados
         Me.cboRol.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboRol.FormattingEnabled = True
         Me.cboRol.Location = New System.Drawing.Point(440, 141)
-        Me.cboRol.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboRol.Margin = New System.Windows.Forms.Padding(2)
         Me.cboRol.Name = "cboRol"
         Me.cboRol.Size = New System.Drawing.Size(133, 25)
         Me.cboRol.TabIndex = 10
@@ -396,7 +396,7 @@ Partial Class frmAgregarEmpleados
         '
         Me.txtFechaContratacion.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtFechaContratacion.Location = New System.Drawing.Point(145, 221)
-        Me.txtFechaContratacion.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtFechaContratacion.Margin = New System.Windows.Forms.Padding(2)
         Me.txtFechaContratacion.Name = "txtFechaContratacion"
         Me.txtFechaContratacion.Size = New System.Drawing.Size(133, 23)
         Me.txtFechaContratacion.TabIndex = 6
@@ -417,7 +417,7 @@ Partial Class frmAgregarEmpleados
         '
         Me.txtCargo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCargo.Location = New System.Drawing.Point(440, 29)
-        Me.txtCargo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtCargo.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCargo.Name = "txtCargo"
         Me.txtCargo.Size = New System.Drawing.Size(133, 23)
         Me.txtCargo.TabIndex = 7
@@ -438,7 +438,7 @@ Partial Class frmAgregarEmpleados
         '
         Me.txt_ID_Persona.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_ID_Persona.Location = New System.Drawing.Point(80, 29)
-        Me.txt_ID_Persona.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txt_ID_Persona.Margin = New System.Windows.Forms.Padding(2)
         Me.txt_ID_Persona.Name = "txt_ID_Persona"
         Me.txt_ID_Persona.Size = New System.Drawing.Size(43, 23)
         Me.txt_ID_Persona.TabIndex = 73

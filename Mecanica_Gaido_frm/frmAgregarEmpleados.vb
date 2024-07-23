@@ -133,6 +133,26 @@ Public Class frmAgregarEmpleados
     End Sub
 #End Region
 
+#Region "Rol"
+    Private Sub btnAgregarRol_Click(sender As Object, e As EventArgs) Handles btnAgregarRol.Click
+        Dim frm As New frmAgregarRoles()
+
+        'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
+        If frm.ShowDialog() = DialogResult.OK Then
+            Cargar_Combo_Rol()
+
+            ' Buscar y seleccionar el nuevo rol en el ComboBox
+            Dim nuevoRol As String = frm.NuevoRolNombre
+            For Each item As DataRowView In cboRol.Items
+                If item("Nombre").ToString() = nuevoRol Then
+                    cboRol.SelectedItem = item
+                    Exit For
+                End If
+            Next
+        End If
+    End Sub
+#End Region
+
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
         Me.Close()
     End Sub
