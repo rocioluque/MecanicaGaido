@@ -56,3 +56,4 @@ Public Class frmOrdenesReparacion
             MsgBox("Error al cargar los Vehiculos-: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+End Class

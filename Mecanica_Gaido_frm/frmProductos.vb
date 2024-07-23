@@ -62,7 +62,7 @@ Public Class frmProductos
     End Sub
 #End Region
 
-#Region "Abrir frm para agregar datos"
+#Region "Marca"
     Private Sub btnAgregarMarca_Click(sender As Object, e As EventArgs) Handles btnAgregarMarca.Click
         Dim frm As New frmAgregarMarca()
 

@@ -37,6 +37,7 @@ Public Class frmCompras
                 cboCuenta.DataSource = tabla
                 cboCuenta.DisplayMember = "Empresa"
                 cboCuenta.ValueMember = "ID_Cuenta"
+                cboCuenta.SelectedValue = -1
             Else
                 MsgBox("No se encontraron cuentas.", vbInformation, "Información")
             End If
@@ -67,11 +68,6 @@ Public Class frmCompras
 
 #Region "Forma de Pago"
     Private Sub btnAgregarFormaPago_Click(sender As Object, e As EventArgs) Handles btnAgregarFormaPago.Click
-        frmAgregarFormaPago.ShowDialog()
-    End Sub
-
-#End Region
-    Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
         Dim frm As New frmAgregarFormaPago()
 
         'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
@@ -79,14 +75,19 @@ Public Class frmCompras
             Cargar_Combo_FormaPago()
 
             ' Buscar y seleccionar la nueva forma de pago en el ComboBox
-            Dim nuevaFormaPago As String = frm.NuevaFormaPagoNombreCompra
+            Dim nuevaFormaPagoCompras As String = frm.NuevaFormaPagoComprasNombre
             For Each item As DataRowView In cboFormaPago.Items
-                If item("Nombre").ToString() = nuevaFormaPago Then
+                If item("Nombre").ToString() = nuevaFormaPagoCompras Then
                     cboFormaPago.SelectedItem = item
                     Exit For
                 End If
             Next
         End If
+    End Sub
+
+#End Region
+    Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
+        frmAgregarCuentas.ShowDialog()
     End Sub
 
 #Region "Keypress"
