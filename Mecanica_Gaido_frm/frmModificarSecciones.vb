@@ -3,7 +3,7 @@ Imports AD_Mecanica_Gaido
 Imports System.Data.SqlClient
 
 Public Class frmModificarSecciones
-    Dim o_secciones As New AD_Seciones
+    Dim o_secciones As New AD_Secciones
 
 #Region "Procedimientos"
     Private Sub frmModificarSeccion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
