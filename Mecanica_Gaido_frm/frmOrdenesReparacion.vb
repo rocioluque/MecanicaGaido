@@ -1,5 +1,12 @@
-﻿
+﻿Imports System.Data
+Imports AD_Mecanica_Gaido
+Imports System.Data.SqlClient
+Imports System.Configuration
+
+
 Public Class frmOrdenesReparacion
+
+    Dim o_Orden As New AD_OrdenReparacion
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         txtID.Clear()
         'ver que hacer con el cboVehiculo'
@@ -26,4 +33,26 @@ Public Class frmOrdenesReparacion
             End If
         End If
     End Sub
-End Class
+
+    Private Sub frmOrdenesReparacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+
+    Private Sub Cargar_Combo_Vehiculos()
+        Try
+            Dim tabla As DataTable = o_Orden.Cargar_Combo_Vehiculos()
+
+            If tabla.Rows.Count > 0 Then
+                cboCuenta.DataSource = tabla
+                cboVehiculo.DisplayMember = "Nombre/RazonSocial"
+                cboVehiculo.ValueMember = "ID_Persona"
+                cboVehiculo.SelectedValue = -1
+            Else
+                MsgBox("No se encontraron Vehiculos.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar los Vehiculos-: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub

@@ -96,6 +96,7 @@
     <Compile Include="AD_FormasDePago.vb" />
     <Compile Include="AD_Login.vb" />
     <Compile Include="AD_Marca.vb" />
+    <Compile Include="AD_OrdenReparacion.vb" />
     <Compile Include="AD_Productos.vb" />
     <Compile Include="AD_Roles.vb" />
     <Compile Include="AD_Rubros.vb" />

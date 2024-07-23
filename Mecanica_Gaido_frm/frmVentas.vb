@@ -4,6 +4,7 @@ Imports System.Data.SqlClient
 Imports System.Configuration
 
 Public Class frmVentas
+
     Dim o_ventas As New AD_Ventas
     Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
         frmAgregarCuentas.ShowDialog()
