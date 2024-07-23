@@ -136,7 +136,7 @@ Partial Class frmMenuPrincipal
         Me.btnInicio.Location = New System.Drawing.Point(2, 109)
         Me.btnInicio.Name = "btnInicio"
         Me.btnInicio.Size = New System.Drawing.Size(243, 35)
-        Me.btnInicio.TabIndex = 1
+        Me.btnInicio.TabIndex = 24
         Me.btnInicio.Text = "        Inicio"
         Me.btnInicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnInicio.UseVisualStyleBackColor = False
@@ -163,7 +163,7 @@ Partial Class frmMenuPrincipal
         Me.btnGestionDatos.Location = New System.Drawing.Point(2, 396)
         Me.btnGestionDatos.Name = "btnGestionDatos"
         Me.btnGestionDatos.Size = New System.Drawing.Size(243, 35)
-        Me.btnGestionDatos.TabIndex = 8
+        Me.btnGestionDatos.TabIndex = 31
         Me.btnGestionDatos.Text = "        Gestión de Datos "
         Me.btnGestionDatos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnGestionDatos.UseVisualStyleBackColor = False
@@ -247,9 +247,9 @@ Partial Class frmMenuPrincipal
         '
         'btnCerrarSesion
         '
+        Me.btnCerrarSesion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnCerrarSesion.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
         Me.btnCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.btnCerrarSesion.FlatAppearance.BorderSize = 0
         Me.btnCerrarSesion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
         Me.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -260,7 +260,7 @@ Partial Class frmMenuPrincipal
         Me.btnCerrarSesion.Location = New System.Drawing.Point(0, 595)
         Me.btnCerrarSesion.Name = "btnCerrarSesion"
         Me.btnCerrarSesion.Size = New System.Drawing.Size(240, 35)
-        Me.btnCerrarSesion.TabIndex = 9
+        Me.btnCerrarSesion.TabIndex = 32
         Me.btnCerrarSesion.Text = "        Cerrar Sesión"
         Me.btnCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnCerrarSesion.UseVisualStyleBackColor = False
@@ -337,7 +337,7 @@ Partial Class frmMenuPrincipal
         Me.btnCompras.Location = New System.Drawing.Point(2, 355)
         Me.btnCompras.Name = "btnCompras"
         Me.btnCompras.Size = New System.Drawing.Size(243, 35)
-        Me.btnCompras.TabIndex = 7
+        Me.btnCompras.TabIndex = 30
         Me.btnCompras.Text = "        Compras "
         Me.btnCompras.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnCompras.UseVisualStyleBackColor = False
@@ -356,7 +356,7 @@ Partial Class frmMenuPrincipal
         Me.btnProductos.Location = New System.Drawing.Point(2, 191)
         Me.btnProductos.Name = "btnProductos"
         Me.btnProductos.Size = New System.Drawing.Size(243, 35)
-        Me.btnProductos.TabIndex = 3
+        Me.btnProductos.TabIndex = 26
         Me.btnProductos.Text = "        Productos"
         Me.btnProductos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnProductos.UseVisualStyleBackColor = False
@@ -375,7 +375,7 @@ Partial Class frmMenuPrincipal
         Me.btnVehiculos.Location = New System.Drawing.Point(2, 232)
         Me.btnVehiculos.Name = "btnVehiculos"
         Me.btnVehiculos.Size = New System.Drawing.Size(243, 35)
-        Me.btnVehiculos.TabIndex = 4
+        Me.btnVehiculos.TabIndex = 27
         Me.btnVehiculos.Text = "        Vehículos"
         Me.btnVehiculos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnVehiculos.UseVisualStyleBackColor = False
@@ -394,7 +394,7 @@ Partial Class frmMenuPrincipal
         Me.btnOrdenReparacón.Location = New System.Drawing.Point(2, 273)
         Me.btnOrdenReparacón.Name = "btnOrdenReparacón"
         Me.btnOrdenReparacón.Size = New System.Drawing.Size(243, 35)
-        Me.btnOrdenReparacón.TabIndex = 5
+        Me.btnOrdenReparacón.TabIndex = 28
         Me.btnOrdenReparacón.Text = "        Ordenes de Reparación"
         Me.btnOrdenReparacón.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnOrdenReparacón.UseVisualStyleBackColor = False
@@ -413,7 +413,7 @@ Partial Class frmMenuPrincipal
         Me.btnVentas.Location = New System.Drawing.Point(2, 314)
         Me.btnVentas.Name = "btnVentas"
         Me.btnVentas.Size = New System.Drawing.Size(243, 35)
-        Me.btnVentas.TabIndex = 6
+        Me.btnVentas.TabIndex = 29
         Me.btnVentas.Text = "        Ventas"
         Me.btnVentas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnVentas.UseVisualStyleBackColor = False
@@ -433,7 +433,7 @@ Partial Class frmMenuPrincipal
         Me.btnPersonas.Location = New System.Drawing.Point(2, 150)
         Me.btnPersonas.Name = "btnPersonas"
         Me.btnPersonas.Size = New System.Drawing.Size(243, 35)
-        Me.btnPersonas.TabIndex = 2
+        Me.btnPersonas.TabIndex = 25
         Me.btnPersonas.Text = "        Personas"
         Me.btnPersonas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnPersonas.UseVisualStyleBackColor = False
@@ -448,6 +448,7 @@ Partial Class frmMenuPrincipal
         Me.lblUsuarioBarra.Size = New System.Drawing.Size(11, 16)
         Me.lblUsuarioBarra.TabIndex = 27
         Me.lblUsuarioBarra.Text = ":"
+        Me.lblUsuarioBarra.Visible = False
         '
         'panelNav
         '

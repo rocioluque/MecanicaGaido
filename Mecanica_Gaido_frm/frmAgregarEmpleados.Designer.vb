@@ -55,6 +55,7 @@ Partial Class frmAgregarEmpleados
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtCargo = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
+        Me.txt_ID_Persona = New System.Windows.Forms.TextBox()
         CType(Me.btnAgregarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnCerrar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarSeccion, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -73,7 +74,7 @@ Partial Class frmAgregarEmpleados
         Me.btnBuscar.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnBuscar.ForeColor = System.Drawing.Color.White
         Me.btnBuscar.Location = New System.Drawing.Point(281, 31)
-        Me.btnBuscar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnBuscar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(67, 34)
         Me.btnBuscar.TabIndex = 2
@@ -184,7 +185,7 @@ Partial Class frmAgregarEmpleados
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
         Me.btnModificar.Location = New System.Drawing.Point(860, 121)
-        Me.btnModificar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnModificar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(156, 46)
         Me.btnModificar.TabIndex = 14
@@ -203,7 +204,7 @@ Partial Class frmAgregarEmpleados
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
         Me.btnCancelar.Location = New System.Drawing.Point(860, 206)
-        Me.btnCancelar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnCancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(156, 46)
         Me.btnCancelar.TabIndex = 15
@@ -221,7 +222,7 @@ Partial Class frmAgregarEmpleados
         Me.btnAceptar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAceptar.ForeColor = System.Drawing.Color.White
         Me.btnAceptar.Location = New System.Drawing.Point(860, 36)
-        Me.btnAceptar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnAceptar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(156, 46)
         Me.btnAceptar.TabIndex = 13
@@ -233,7 +234,7 @@ Partial Class frmAgregarEmpleados
         Me.btnAgregarUsuario.BackgroundImage = CType(resources.GetObject("btnAgregarUsuario.BackgroundImage"), System.Drawing.Image)
         Me.btnAgregarUsuario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnAgregarUsuario.Location = New System.Drawing.Point(771, 80)
-        Me.btnAgregarUsuario.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnAgregarUsuario.Margin = New System.Windows.Forms.Padding(4)
         Me.btnAgregarUsuario.Name = "btnAgregarUsuario"
         Me.btnAgregarUsuario.Size = New System.Drawing.Size(35, 31)
         Me.btnAgregarUsuario.TabIndex = 59
@@ -287,7 +288,7 @@ Partial Class frmAgregarEmpleados
         Me.btnCerrar.BackgroundImage = CType(resources.GetObject("btnCerrar.BackgroundImage"), System.Drawing.Image)
         Me.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnCerrar.Location = New System.Drawing.Point(1036, 4)
-        Me.btnCerrar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnCerrar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(27, 25)
         Me.btnCerrar.TabIndex = 61
@@ -298,7 +299,7 @@ Partial Class frmAgregarEmpleados
         Me.btnAgregarSeccion.BackgroundImage = CType(resources.GetObject("btnAgregarSeccion.BackgroundImage"), System.Drawing.Image)
         Me.btnAgregarSeccion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnAgregarSeccion.Location = New System.Drawing.Point(377, 129)
-        Me.btnAgregarSeccion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnAgregarSeccion.Margin = New System.Windows.Forms.Padding(4)
         Me.btnAgregarSeccion.Name = "btnAgregarSeccion"
         Me.btnAgregarSeccion.Size = New System.Drawing.Size(35, 31)
         Me.btnAgregarSeccion.TabIndex = 62
@@ -307,7 +308,7 @@ Partial Class frmAgregarEmpleados
         'txtNota
         '
         Me.txtNota.Location = New System.Drawing.Point(587, 223)
-        Me.txtNota.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtNota.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNota.Name = "txtNota"
         Me.txtNota.Size = New System.Drawing.Size(217, 72)
         Me.txtNota.TabIndex = 11
@@ -330,7 +331,7 @@ Partial Class frmAgregarEmpleados
         Me.grdEmpleados.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdEmpleados.Location = New System.Drawing.Point(63, 334)
-        Me.grdEmpleados.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grdEmpleados.Margin = New System.Windows.Forms.Padding(4)
         Me.grdEmpleados.Name = "grdEmpleados"
         Me.grdEmpleados.ReadOnly = True
         Me.grdEmpleados.RowHeadersWidth = 51
@@ -355,17 +356,15 @@ Partial Class frmAgregarEmpleados
         Me.lblCargaEmpleado.ForeColor = System.Drawing.Color.White
         Me.lblCargaEmpleado.Location = New System.Drawing.Point(189, 90)
         Me.lblCargaEmpleado.Name = "lblCargaEmpleado"
-        Me.lblCargaEmpleado.Size = New System.Drawing.Size(93, 21)
+        Me.lblCargaEmpleado.Size = New System.Drawing.Size(0, 26)
         Me.lblCargaEmpleado.TabIndex = 66
-        Me.lblCargaEmpleado.Text = "Resultado"
-        Me.lblCargaEmpleado.Visible = False
         '
         'btnAgregarRol
         '
         Me.btnAgregarRol.BackgroundImage = CType(resources.GetObject("btnAgregarRol.BackgroundImage"), System.Drawing.Image)
         Me.btnAgregarRol.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnAgregarRol.Location = New System.Drawing.Point(771, 174)
-        Me.btnAgregarRol.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnAgregarRol.Margin = New System.Windows.Forms.Padding(4)
         Me.btnAgregarRol.Name = "btnAgregarRol"
         Me.btnAgregarRol.Size = New System.Drawing.Size(35, 31)
         Me.btnAgregarRol.TabIndex = 69
@@ -433,12 +432,23 @@ Partial Class frmAgregarEmpleados
         Me.Label11.TabIndex = 72
         Me.Label11.Text = "Cargo"
         '
+        'txt_ID_Persona
+        '
+        Me.txt_ID_Persona.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_ID_Persona.Location = New System.Drawing.Point(107, 36)
+        Me.txt_ID_Persona.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txt_ID_Persona.Name = "txt_ID_Persona"
+        Me.txt_ID_Persona.Size = New System.Drawing.Size(56, 27)
+        Me.txt_ID_Persona.TabIndex = 73
+        Me.txt_ID_Persona.Visible = False
+        '
         'frmAgregarEmpleados
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1067, 554)
+        Me.Controls.Add(Me.txt_ID_Persona)
         Me.Controls.Add(Me.txtCargo)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.txtFechaContratacion)
@@ -473,7 +483,7 @@ Partial Class frmAgregarEmpleados
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmAgregarEmpleados"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Empleados"
@@ -519,4 +529,5 @@ Partial Class frmAgregarEmpleados
     Friend WithEvents Label10 As Label
     Friend WithEvents txtCargo As TextBox
     Friend WithEvents Label11 As Label
+    Friend WithEvents txt_ID_Persona As TextBox
 End Class

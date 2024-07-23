@@ -4,15 +4,15 @@ Imports System.Data.SqlClient
 Imports System.Configuration
 
 Public Class frmCompras
-
     Dim o_Compras As New AD_Compras
 
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+#Region "Procedimientos"
+    Public Sub limpiar()
         txtID.Clear()
         txtFechaCompra.Clear()
         txtNumComprobante.Clear()
-        cboCuenta.SelectedIndex = 0
-        cboFormaPago.SelectedIndex = 0
+        cboCuenta.SelectedIndex = -1
+        cboFormaPago.SelectedIndex = -1
         txtSubTotal.Clear()
         txtIVA.Clear()
         txtIvaMonto.Clear()
@@ -21,15 +21,75 @@ Public Class frmCompras
         chkEstado.Checked = False
     End Sub
 
-    Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
-        frmAgregarCuentas.ShowDialog()
+    Private Sub frmCompras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Cargar_Combo_Cuentas()
+        Cargar_Combo_FormaPago()
+        limpiar()
+    End Sub
+#End Region
+
+#Region "Cargar cbo"
+    Private Sub Cargar_Combo_Cuentas()
+        Try
+            Dim tabla As DataTable = o_Compras.Cargar_Combo_Cuentas()
+
+            If tabla.Rows.Count > 0 Then
+                cboCuenta.DataSource = tabla
+                cboCuenta.DisplayMember = "Empresa"
+                cboCuenta.ValueMember = "ID_Cuenta"
+            Else
+                MsgBox("No se encontraron cuentas.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar la cuenta: " & ex.Message, vbCritical, "Error")
+        End Try
     End Sub
 
+    Private Sub Cargar_Combo_FormaPago()
+        Try
+            Dim tabla As DataTable = o_Compras.Cargar_Combo_FormaPago()
+
+            If tabla.Rows.Count > 0 Then
+                cboFormaPago.DataSource = tabla
+                cboFormaPago.DisplayMember = "Nombre"
+                cboFormaPago.ValueMember = "ID_FormaPago"
+                cboFormaPago.SelectedValue = -1
+            Else
+                MsgBox("No se encontraron Formas de Pago.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar la Forma de Pago: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+#End Region
+
+#Region "Forma de Pago"
     Private Sub btnAgregarFormaPago_Click(sender As Object, e As EventArgs) Handles btnAgregarFormaPago.Click
         frmAgregarFormaPago.ShowDialog()
     End Sub
 
+#End Region
+    Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
+        Dim frm As New frmAgregarFormaPago()
 
+        'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
+        If frm.ShowDialog() = DialogResult.OK Then
+            Cargar_Combo_FormaPago()
+
+            ' Buscar y seleccionar la nueva forma de pago en el ComboBox
+            Dim nuevaFormaPago As String = frm.NuevaFormaPagoNombreCompra
+            For Each item As DataRowView In cboFormaPago.Items
+                If item("Nombre").ToString() = nuevaFormaPago Then
+                    cboFormaPago.SelectedItem = item
+                    Exit For
+                End If
+            Next
+        End If
+    End Sub
+
+#Region "Keypress"
     Private Sub txtNumComprobante_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNumComprobante.KeyPress
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
@@ -91,7 +151,6 @@ Public Class frmCompras
         End If
     End Sub
 
-
     Private Sub txtTotal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTotal.KeyPress
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
@@ -103,44 +162,9 @@ Public Class frmCompras
             End If
         End If
     End Sub
+#End Region
 
-    Private Sub frmCompras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Cargar_Combo_Cuentas()
-        Cargar_Combo_Pagos()
-    End Sub
-
-
-    Private Sub Cargar_Combo_Cuentas()
-        Try
-            Dim tabla As DataTable = o_Compras.Cargar_Combo_Cuentas()
-
-            If tabla.Rows.Count > 0 Then
-                cboCuenta.DataSource = tabla
-                cboCuenta.DisplayMember = "Empresa"
-                cboCuenta.ValueMember = "ID_Cuenta"
-            Else
-                MsgBox("No se encontraron cuentas.", vbInformation, "Información")
-            End If
-
-        Catch ex As Exception
-            MsgBox("Error al cargar la cuenta: " & ex.Message, vbCritical, "Error")
-        End Try
-    End Sub
-
-    Private Sub Cargar_Combo_Pagos()
-        Try
-            Dim tabla As DataTable = o_Compras.Cargar_Combo_Pagos()
-
-            If tabla.Rows.Count > 0 Then
-                cboFormaPago.DataSource = tabla
-                cboFormaPago.DisplayMember = "Nombre"
-                cboFormaPago.ValueMember = "ID_FormaPago"
-            Else
-                MsgBox("No se encontraron Formas de Pago.", vbInformation, "Información")
-            End If
-
-        Catch ex As Exception
-            MsgBox("Error al cargar la Forma de Pago: " & ex.Message, vbCritical, "Error")
-        End Try
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiar()
     End Sub
 End Class

@@ -38,6 +38,7 @@ Public Class frmVehiculos
                 cboMarca.DataSource = tabla
                 cboMarca.DisplayMember = "Nombre"
                 cboMarca.ValueMember = "ID_Marca"
+                cboMarca.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Marcas.", vbInformation, "Información")
             End If
@@ -55,6 +56,7 @@ Public Class frmVehiculos
                 cboTipo.DataSource = tabla
                 cboTipo.DisplayMember = "Nombre"
                 cboTipo.ValueMember = "ID_TipoVehiculo"
+                cboTipo.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Vehiculos.", vbInformation, "Información")
             End If
