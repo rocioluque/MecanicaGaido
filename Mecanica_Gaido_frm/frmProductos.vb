@@ -6,15 +6,10 @@ Imports System.Configuration
 Public Class frmProductos
     Dim o_productos As New AD_Productos
 
-#Region "Abrir frm"
-    Private Sub btnAgregarRubro_Click(sender As Object, e As EventArgs) Handles btnAgregarRubro.Click
-        frmAgregarRubro.ShowDialog()
-    End Sub
-#End Region
-
 #Region "Procedimientos"
     Private Sub frmProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Combo_Marcas()
+        Cargar_Combo_Rubros()
         limpiar()
     End Sub
 
@@ -22,9 +17,6 @@ Public Class frmProductos
         txtId.Clear()
         txtDescripcion.Clear()
         txtNombreDiario.Clear()
-        cboRubro.SelectedIndex = -1
-        chkAlternativo.Checked = False
-        cboOriginal.SelectedIndex = -1
         txtCantidadBulto.Clear()
         txtStockReal.Clear()
         txtStockDisponible.Clear()
@@ -38,8 +30,11 @@ Public Class frmProductos
         txtCodigoBarra.Clear()
         txtFabricante.Clear()
         txtOrigen.Clear()
-        chkActivo.Checked = False
+        cboRubro.SelectedIndex = -1
         cboMarca.SelectedIndex = -1
+        cboOriginal.SelectedIndex = -1
+        chkAlternativo.Checked = False
+        chkActivo.Checked = False
     End Sub
 
 #End Region
@@ -60,6 +55,22 @@ Public Class frmProductos
             MsgBox("Error al cargar las marcas: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+
+    Private Sub Cargar_Combo_Rubros()
+        Try
+            Dim tabla As DataTable = o_productos.Cargar_Combo_Rubros
+
+            If tabla.Rows.Count > 0 Then
+                cboRubro.DataSource = tabla
+                cboRubro.DisplayMember = "Nombre"
+                cboRubro.ValueMember = "ID_Rubro"
+            Else
+                MsgBox("No se encontraron rubros.", vbInformation, "Información")
+            End If
+        Catch ex As Exception
+            MsgBox("Error al cargar los rubros: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
 #End Region
 
 #Region "Marca"
@@ -75,6 +86,26 @@ Public Class frmProductos
             For Each item As DataRowView In cboMarca.Items
                 If item("Nombre").ToString() = nuevaMarca Then
                     cboMarca.SelectedItem = item
+                    Exit For
+                End If
+            Next
+        End If
+    End Sub
+#End Region
+
+#Region "Rubro"
+    Private Sub btnAgregarRubro_Click(sender As Object, e As EventArgs) Handles btnAgregarRubro.Click
+        Dim frm As New frmAgregarRubro()
+
+        'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
+        If frm.ShowDialog() = DialogResult.OK Then
+            Cargar_Combo_Rubros()
+
+            ' Buscar y seleccionar la nueva marca en el ComboBox
+            Dim nuevoRubro As String = frm.NuevoRubroNombre
+            For Each item As DataRowView In cboRubro.Items
+                If item("Nombre").ToString() = nuevoRubro Then
+                    cboRubro.SelectedItem = item
                     Exit For
                 End If
             Next
