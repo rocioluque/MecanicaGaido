@@ -15,7 +15,7 @@ Public Class frmVehiculos
 
     Public Sub Limpiar()
         txtID.Clear()
-        cboTipo.SelectedIndex = -1
+        cboTipoVehiculo.SelectedIndex = -1
         cboMarca.SelectedIndex = -1
         txtNombre.Clear()
         txtModelo.Clear()
@@ -51,10 +51,10 @@ Public Class frmVehiculos
             Dim tabla As DataTable = o_vehiculo.Cargar_Combo_TipoVehiculo()
 
             If tabla.Rows.Count > 0 Then
-                cboTipo.DataSource = tabla
-                cboTipo.DisplayMember = "Nombre"
-                cboTipo.ValueMember = "ID_TipoVehiculo"
-                cboTipo.SelectedValue = -1
+                cboTipoVehiculo.DataSource = tabla
+                cboTipoVehiculo.DisplayMember = "Nombre"
+                cboTipoVehiculo.ValueMember = "ID_TipoVehiculo"
+                cboTipoVehiculo.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Vehiculos.", vbInformation, "Información")
             End If
@@ -78,6 +78,26 @@ Public Class frmVehiculos
             For Each item As DataRowView In cboMarca.Items
                 If item("Nombre").ToString() = nuevaMarcaVehiculo Then
                     cboMarca.SelectedItem = item
+                    Exit For
+                End If
+            Next
+        End If
+    End Sub
+#End Region
+
+#Region "Tipo de Vehiculo"
+    Private Sub btnAgregarTipoVehiculo_Click(sender As Object, e As EventArgs) Handles btnAgregarTipoVehiculo.Click
+        Dim frm As New frmAgregarTipoVehiculo()
+
+        'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
+        If frm.ShowDialog() = DialogResult.OK Then
+            Cargar_Combo_TipoVehiculo()
+
+            ' Buscar y seleccionar la nueva marca en el ComboBox
+            Dim nuevoTipoVehiculo As String = frm.NuevoTipoVehiculoNombre
+            For Each item As DataRowView In cboTipoVehiculo.Items
+                If item("Nombre").ToString() = nuevoTipoVehiculo Then
+                    cboTipoVehiculo.SelectedItem = item
                     Exit For
                 End If
             Next

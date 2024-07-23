@@ -47,6 +47,46 @@ Public Class AD_Vehiculos
         Return tabla
     End Function
 
+    Public Function TipoVehiculoExiste(nombreTipoVehiculo As String) As Boolean
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("ControlarTipoVehiculoExistente", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@nombre", nombreTipoVehiculo)
+                comando.Parameters.Add("@Existe", SqlDbType.Bit).Direction = ParameterDirection.Output
+
+                Try
+                    conexion.Open()
+                    comando.ExecuteNonQuery()
+                    Dim existe As Boolean = Convert.ToBoolean(comando.Parameters("@Existe").Value)
+                    Return existe
+                Catch ex As Exception
+                    Throw New Exception("Error al verificar la existencia del tipo de vehículo en la base de datos", ex)
+                End Try
+            End Using
+        End Using
+    End Function
+
+    Public Function Agregar_TipoVehiculo(nombreTipoVehiculo As String) As Boolean
+        If Not TipoVehiculoExiste(nombreTipoVehiculo) Then
+            Using conexion As New SqlConnection(connectionString)
+                Using comando As New SqlCommand("Agregar_TipoVehiculo", conexion)
+                    comando.CommandType = CommandType.StoredProcedure
+                    comando.Parameters.AddWithValue("@Nombre", nombreTipoVehiculo)
+
+                    Try
+                        conexion.Open()
+                        comando.ExecuteNonQuery()
+                        Return True
+                    Catch ex As Exception
+                        Throw New Exception("Error al agregar el tipo de vehículo a la base de datos: " & ex.Message, ex)
+                    End Try
+                End Using
+            End Using
+        Else
+            Return False
+        End If
+    End Function
+
     Public Function Modificar_TipoVehiculo(ByVal TipoVehiculoID As Integer, ByVal Nombre As String, estado As Boolean) As Boolean
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Modificar_TipoVehiculo", conexion)
