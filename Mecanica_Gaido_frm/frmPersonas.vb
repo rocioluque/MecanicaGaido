@@ -90,24 +90,24 @@ Public Class frmPersonas
 
 #Region "Procedimientos"
     Public Sub Limpiar()
-        txtID.Text = Nothing
-        cboTipoPersona.SelectedIndex = -1
-        txtNombre.Text = Nothing
-        txtApellido.Text = Nothing
-        txtTelefonoMovil.Text = Nothing
-        txtTelefonoFijo.Text = Nothing
+        txtID.Clear()
+        txtNombre.Clear()
+        txtApellido.Clear()
+        txtTelefonoMovil.Clear()
+        txtTelefonoFijo.Clear()
+        txtNumeroDocumento.Clear()
+        txtCorreo.Clear()
+        txtDireccion.Clear()
+        txtNumero.Clear()
+        txtPiso.Clear()
+        txtLetraPuerta.Clear()
+        txtCodigoPostal.Clear()
+        txtNota.Clear()
         dtpFechaNacimiento.Value = DateTime.Today
-        cboTipoDocumento.SelectedIndex = -1
-        txtNumeroDocumento.Text = Nothing
-        txtCorreo.Text = Nothing
-        txtDireccion.Text = Nothing
-        txtNumero.Text = Nothing
-        txtPiso.Text = Nothing
-        txtLetraPuerta.Text = Nothing
-        txtCodigoPostal.Text = Nothing
+        cboTipoPersona.SelectedIndex = -1
         cboProvincia.SelectedIndex = -1
         cboCiudad.SelectedIndex = -1
-        txtNota.Text = Nothing
+        cboTipoDocumento.SelectedIndex = -1
         chkEstado.Checked = False
     End Sub
 
@@ -166,9 +166,9 @@ Public Class frmPersonas
         conexion.Close()
     End Sub
 
-    Public Sub cargardatosentextboxes(ByVal rowindex As Integer)
+    Public Sub CargarDatosEnTxt(ByVal rowindex As Integer)
         If grdPersonas.Rows.Count > 0 AndAlso rowindex >= 0 AndAlso rowindex < grdPersonas.Rows.Count Then
-            ' Cargar datos de la grilla
+
             txtID.Text = grdPersonas.Rows(rowindex).Cells("N° Persona").Value.ToString()
             txtNombre.Text = grdPersonas.Rows(rowindex).Cells("Nombre / Razon Social").Value.ToString()
             txtApellido.Text = grdPersonas.Rows(rowindex).Cells("Apellido").Value.ToString()
@@ -182,7 +182,7 @@ Public Class frmPersonas
 
     Private Sub grdPersonas_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdPersonas.CellClick
         If e.RowIndex >= 0 Then
-            CargarDatosEnTextBoxes(e.RowIndex)
+            CargarDatosEnTxt(e.RowIndex)
         End If
     End Sub
 
@@ -277,38 +277,6 @@ Public Class frmPersonas
             MsgBox("Complete Datos", vbInformation, "Error")
         End If
     End Sub
-
-    Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Not Char.IsLetter(e.KeyChar) _
-           AndAlso Not Char.IsControl(e.KeyChar) _
-           AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
-            e.Handled = True
-        End If
-    End Sub
-
-
-    Private Sub txtApellido_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Not Char.IsLetter(e.KeyChar) _
-         AndAlso Not Char.IsControl(e.KeyChar) _
-         AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
-            e.Handled = True
-        End If
-
-    End Sub
-
-
-    Private Sub txtTelefono_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
-
-    End Sub
 #End Region
 
 #Region "Css trucho"
@@ -350,6 +318,37 @@ Public Class frmPersonas
             Dim rect As New Rectangle(0, 0, PanelNotas.Width - 1, PanelNotas.Height - 1)
             e.Graphics.DrawRectangle(pen, rect)
         End Using
+    End Sub
+#End Region
+
+#Region "Keypress"
+    Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs)
+        If Not Char.IsLetter(e.KeyChar) _
+           AndAlso Not Char.IsControl(e.KeyChar) _
+           AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtApellido_KeyPress(sender As Object, e As KeyPressEventArgs)
+        If Not Char.IsLetter(e.KeyChar) _
+         AndAlso Not Char.IsControl(e.KeyChar) _
+         AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
+            e.Handled = True
+        End If
+
+    End Sub
+
+    Private Sub txtTelefono_KeyPress(sender As Object, e As KeyPressEventArgs)
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
     End Sub
 #End Region
 End Class

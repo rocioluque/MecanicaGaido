@@ -45,17 +45,11 @@ Public Class frmAgregarCiudad
     End Sub
 #End Region
 
-    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
-        Me.Close()
-    End Sub
-
 #Region "Cargar"
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         Try
-            Dim nombreCiudad As String = txtCiudad.Text
-            Dim idProvincia As Integer = CInt(cboProvincia.SelectedValue)
 
-            If o_Ciudad.Agregar_Ciudad(nombreCiudad, idProvincia) Then
+            If o_Ciudad.Agregar_Ciudad(txtCiudad.Text, CInt(cboProvincia.SelectedValue)) Then
                 MsgBox("Ciudad agregada correctamente.", vbInformation, "Éxito")
                 Me.DialogResult = DialogResult.OK
                 Me.Close()
@@ -67,4 +61,8 @@ Public Class frmAgregarCiudad
         End Try
     End Sub
 #End Region
+
+    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        Me.Close()
+    End Sub
 End Class

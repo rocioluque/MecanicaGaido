@@ -10,10 +10,6 @@ Public Class frmVentas
         frmAgregarCuentas.ShowDialog()
     End Sub
 
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        limpiar()
-    End Sub
-
 #Region "Procedimientos"
     Private Sub frmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Combo_Cuenta()
@@ -27,16 +23,20 @@ Public Class frmVentas
         txtID.Clear()
         txtFechaVenta.Clear()
         txtNumComprobante.Clear()
-        cboCuenta.SelectedIndex = 0
-        cboEmpleado.SelectedIndex = 0
-        cboFormaPago.SelectedIndex = 0
         txtSubtotal.Clear()
         txtIVA.Clear()
         txtOtrosImpuestos.Clear()
         txtTotal.Clear()
-        cboTipoVenta.SelectedIndex = 0
-        cboFormaEntrega.SelectedIndex = 0
+        cboTipoVenta.SelectedIndex = -1
+        cboFormaEntrega.SelectedIndex = -1
+        cboCuenta.SelectedIndex = -1
+        cboEmpleado.SelectedIndex = -1
+        cboFormaPago.SelectedIndex = -1
         chkEstado.Checked = False
+    End Sub
+
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiar()
     End Sub
 #End Region
 

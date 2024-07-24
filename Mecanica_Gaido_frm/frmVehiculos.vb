@@ -15,15 +15,19 @@ Public Class frmVehiculos
 
     Public Sub Limpiar()
         txtID.Clear()
-        cboTipo.SelectedIndex = -1
-        cboMarca.SelectedIndex = -1
         txtNombre.Clear()
         txtModelo.Clear()
         txtColor.Clear()
         txtNumchasis.Clear()
         txtNumotor.Clear()
         txtMatricula.Clear()
+        cboTipoVehiculo.SelectedIndex = -1
+        cboMarca.SelectedIndex = -1
         chkEstado.Checked = False
+    End Sub
+
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        Limpiar()
     End Sub
 #End Region
 
@@ -51,10 +55,10 @@ Public Class frmVehiculos
             Dim tabla As DataTable = o_vehiculo.Cargar_Combo_TipoVehiculo()
 
             If tabla.Rows.Count > 0 Then
-                cboTipo.DataSource = tabla
-                cboTipo.DisplayMember = "Nombre"
-                cboTipo.ValueMember = "ID_TipoVehiculo"
-                cboTipo.SelectedValue = -1
+                cboTipoVehiculo.DataSource = tabla
+                cboTipoVehiculo.DisplayMember = "Nombre"
+                cboTipoVehiculo.ValueMember = "ID_TipoVehiculo"
+                cboTipoVehiculo.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Vehiculos.", vbInformation, "Información")
             End If
@@ -85,7 +89,23 @@ Public Class frmVehiculos
     End Sub
 #End Region
 
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        Limpiar()
+#Region "Tipo de Vehiculo"
+    Private Sub btnAgregarTipoVehiculo_Click(sender As Object, e As EventArgs) Handles btnAgregarTipoVehiculo.Click
+        Dim frm As New frmAgregarTipoVehiculo()
+
+        'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
+        If frm.ShowDialog() = DialogResult.OK Then
+            Cargar_Combo_TipoVehiculo()
+
+            ' Buscar y seleccionar la nueva marca en el ComboBox
+            Dim nuevoTipoVehiculo As String = frm.NuevoTipoVehiculoNombre
+            For Each item As DataRowView In cboTipoVehiculo.Items
+                If item("Nombre").ToString() = nuevoTipoVehiculo Then
+                    cboTipoVehiculo.SelectedItem = item
+                    Exit For
+                End If
+            Next
+        End If
     End Sub
+#End Region
 End Class

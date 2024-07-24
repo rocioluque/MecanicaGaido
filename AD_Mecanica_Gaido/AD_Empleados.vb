@@ -37,7 +37,7 @@ Public Class AD_Empleados
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar los empleados desde la base de datos", ex)
+                    Throw New Exception("Error al cargar los empleados desde la base de datos: " & ex.Message, ex)
                 End Try
 
             End Using
@@ -57,7 +57,7 @@ Public Class AD_Empleados
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar la seccion desde la base de datos", ex)
+                    Throw New Exception("Error al cargar la seccion desde la base de datos: " & ex.Message, ex)
                 End Try
 
             End Using
@@ -77,7 +77,7 @@ Public Class AD_Empleados
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar los roles desde la base de datos", ex)
+                    Throw New Exception("Error al cargar los roles desde la base de datos: " & ex.Message, ex)
                 End Try
 
             End Using

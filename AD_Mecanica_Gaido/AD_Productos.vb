@@ -22,7 +22,7 @@ Public Class AD_Productos
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar las marcas desde la base de datos", ex)
+                    Throw New Exception("Error al cargar las marcas desde la base de datos: " & ex.Message, ex)
                 End Try
 
             End Using
@@ -41,7 +41,7 @@ Public Class AD_Productos
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar los rubros desde la base de datos", ex)
+                    Throw New Exception("Error al cargar los rubros desde la base de datos: " & ex.Message, ex)
                 End Try
 
             End Using

@@ -11,13 +11,13 @@ Public Class frmCompras
         txtID.Clear()
         txtFechaCompra.Clear()
         txtNumComprobante.Clear()
-        cboCuenta.SelectedIndex = -1
-        cboFormaPago.SelectedIndex = -1
         txtSubTotal.Clear()
         txtIVA.Clear()
         txtIvaMonto.Clear()
         txtOtrosImpuestos.Clear()
         txtTotal.Clear()
+        cboCuenta.SelectedIndex = -1
+        cboFormaPago.SelectedIndex = -1
         chkEstado.Checked = False
     End Sub
 
@@ -86,6 +86,7 @@ Public Class frmCompras
     End Sub
 
 #End Region
+
     Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
         frmAgregarCuentas.ShowDialog()
     End Sub

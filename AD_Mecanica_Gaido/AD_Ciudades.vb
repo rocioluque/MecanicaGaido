@@ -26,7 +26,7 @@ Public Class AD_Ciudades
                     Dim existe As Boolean = Convert.ToBoolean(comando.Parameters("@Existe").Value)
                     Return existe
                 Catch ex As Exception
-                    Throw New Exception("Error al verificar la existencia de la ciudad en la base de datos", ex)
+                    Throw New Exception("Error al verificar la existencia de la ciudad en la base de datos: " & ex.Message, ex)
                 End Try
             End Using
         End Using
@@ -68,7 +68,7 @@ Public Class AD_Ciudades
                     comando.ExecuteNonQuery()
                     Return True
                 Catch ex As Exception
-                    Throw New Exception("Error al modificar la ciudad en la base de datos", ex)
+                    Throw New Exception("Error al modificar la ciudad en la base de datos: " & ex.Message, ex)
                 End Try
             End Using
         End Using
@@ -86,7 +86,7 @@ Public Class AD_Ciudades
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar las provincias desde la base de datos", ex)
+                    Throw New Exception("Error al cargar las provincias desde la base de datos: " & ex.Message, ex)
                 End Try
 
             End Using

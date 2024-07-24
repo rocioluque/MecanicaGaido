@@ -22,7 +22,7 @@ Public Class AD_Compras
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar las cuentas desde la base de datos", ex)
+                    Throw New Exception("Error al cargar las cuentas desde la base de datos: " & ex.Message, ex)
                 End Try
 
             End Using
@@ -42,7 +42,7 @@ Public Class AD_Compras
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar las formas de pago desde la base de datos", ex)
+                    Throw New Exception("Error al cargar las formas de pago desde la base de datos: " & ex.Message, ex)
                 End Try
 
             End Using
