@@ -113,10 +113,10 @@ Public Class frmPersonas
 
     Private Sub frmPersonas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Limpiar()
-        Cargar_Grilla()
         Cargar_Provincias()
         Cargar_Combo_TipoDocumento()
         Cargar_Combo_TipoPersona()
+        Cargar_Grilla()
 
 
         ' Configuración del estilo de la grilla
@@ -142,28 +142,44 @@ Public Class frmPersonas
     End Sub
 
     Public Sub Cargar_Grilla()
-        Dim conexion As SqlConnection
-        Dim comando As New SqlCommand
+        Try
+            Dim conexion As SqlConnection
+            Dim comando As New SqlCommand
 
-        conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
+            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
 
-        conexion.Open()
-        comando.Connection = conexion
-        comando.CommandType = CommandType.StoredProcedure
-        comando.CommandText = ("Cargar_Grilla_Persona")
+            conexion.Open()
+            comando.Connection = conexion
+            comando.CommandType = CommandType.StoredProcedure
+            comando.CommandText = ("Cargar_Grilla_Persona")
 
-        Dim datadapter As New SqlDataAdapter(comando)
-        Dim oDs As New DataSet
-        datadapter.Fill(oDs)
+            Dim datadapter As New SqlDataAdapter(comando)
+            Dim oDs As New DataSet
+            datadapter.Fill(oDs)
 
-        If oDs.Tables(0).Rows.Count > 0 Then
-            grdPersonas.AutoGenerateColumns = True
-            grdPersonas.DataSource = oDs.Tables(0)
-            grdPersonas.Refresh()
-        End If
+            If oDs.Tables(0).Rows.Count > 0 Then
+                grdPersonas.AutoGenerateColumns = True
+                grdPersonas.DataSource = oDs.Tables(0)
 
-        oDs = Nothing
-        conexion.Close()
+                ' Verificar si las columnas existen antes de ocultarlas
+                Dim columnasParaOcultar As String() = {"ID_Provincia", "ID_Ciudad", "ID_TipoPersona", "ID_TipoDocumento", "Direccion",
+                                                        "Numero", "Piso", "Letra/Puerta", "Codigo_Postal", "Nota", "Estado"}
+                For Each colName As String In columnasParaOcultar
+                    If grdPersonas.Columns.Contains(colName) Then
+                        grdPersonas.Columns(colName).Visible = False
+                    End If
+                Next
+                grdPersonas.Refresh()
+            Else
+                MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
+            End If
+
+            oDs = Nothing
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox("Error al cargar la grilla: " & ex.Message, vbCritical, "Error")
+        Finally
+        End Try
     End Sub
 
     Public Sub CargarDatosEnTxt(ByVal rowindex As Integer)
@@ -172,9 +188,22 @@ Public Class frmPersonas
             txtID.Text = grdPersonas.Rows(rowindex).Cells("N° Persona").Value.ToString()
             txtNombre.Text = grdPersonas.Rows(rowindex).Cells("Nombre / Razon Social").Value.ToString()
             txtApellido.Text = grdPersonas.Rows(rowindex).Cells("Apellido").Value.ToString()
+            txtNumeroDocumento.Text = grdPersonas.Rows(rowindex).Cells("Documento").Value.ToString()
             txtTelefonoMovil.Text = grdPersonas.Rows(rowindex).Cells("Teléfono Móvil").Value.ToString()
             txtTelefonoFijo.Text = grdPersonas.Rows(rowindex).Cells("Teléfono Fijo").Value.ToString()
             txtCorreo.Text = grdPersonas.Rows(rowindex).Cells("Correo").Value.ToString()
+
+
+            cboCiudad.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_Ciudad").Value
+            cboTipoPersona.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_TipoPersona").Value
+            cboTipoDocumento.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_TipoDocumento").Value
+            txtDireccion.Text = grdPersonas.Rows(rowindex).Cells("Direccion").Value.ToString()
+            txtNumero.Text = grdPersonas.Rows(rowindex).Cells("Numero").Value.ToString()
+            txtPiso.Text = grdPersonas.Rows(rowindex).Cells("Piso").Value.ToString()
+            txtLetraPuerta.Text = grdPersonas.Rows(rowindex).Cells("Letra/Puerta").Value.ToString()
+            txtCodigoPostal.Text = grdPersonas.Rows(rowindex).Cells("Codigo_Postal").Value.ToString()
+            txtNota.Text = grdPersonas.Rows(rowindex).Cells("Nota").Value.ToString()
+            chkEstado.Checked = grdPersonas.Rows(rowindex).Cells("Estado").Value.ToString()
 
         End If
     End Sub
@@ -248,7 +277,10 @@ Public Class frmPersonas
                 MsgBox("Persona agregada correctamente.", vbInformation, "Información")
                 Limpiar()
 
-                Cargar_Grilla()
+                If cboProvincia.SelectedValue IsNot Nothing Then
+                    Dim idProvincia As Integer = Convert.ToInt32(cboProvincia.SelectedValue)
+                    Cargar_Grilla()
+                End If
             Catch ex As Exception
                 MsgBox("Error al agregar la persona: " & ex.Message, vbCritical, "Error")
             End Try
@@ -268,7 +300,11 @@ Public Class frmPersonas
                        Convert.ToInt32(cboCiudad.SelectedValue), txtNota.Text, chkEstado.Checked)
                 MsgBox("Persona modificada correctamente.", vbInformation, "Información")
                 Limpiar()
-                Cargar_Grilla()
+
+                If cboProvincia.SelectedValue IsNot Nothing Then
+                    Dim idProvincia As Integer = Convert.ToInt32(cboProvincia.SelectedValue)
+                    Cargar_Grilla()
+                End If
 
             Catch ex As Exception
                 MsgBox("Error al modificar la persona: " & ex.Message, vbCritical, "Error")
