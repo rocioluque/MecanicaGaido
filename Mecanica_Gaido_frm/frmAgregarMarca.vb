@@ -9,6 +9,7 @@ Public Class frmAgregarMarca
     Public Property NuevaMarcaNombre As String
     Public Property NuevaMarcaVehiculoNombre As String
 
+#Region "Cargar"
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         If txtMarca.Text <> Nothing Then
             Try
@@ -32,6 +33,7 @@ Public Class frmAgregarMarca
             MsgBox("Complete Datos", vbInformation, "Error")
         End If
     End Sub
+#End Region
 
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
         Me.Close()

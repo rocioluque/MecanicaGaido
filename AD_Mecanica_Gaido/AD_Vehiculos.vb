@@ -22,7 +22,7 @@ Public Class AD_Vehiculos
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar las Marcas desde la base de datos", ex)
+                    Throw New Exception("Error al cargar las Marcas desde la base de datos: " & ex.Message, ex)
                 End Try
             End Using
         End Using
@@ -40,7 +40,7 @@ Public Class AD_Vehiculos
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar el tipo de vehiculo desde la base de datos", ex)
+                    Throw New Exception("Error al cargar el tipo de vehiculo desde la base de datos: " & ex.Message, ex)
                 End Try
             End Using
         End Using
@@ -60,7 +60,7 @@ Public Class AD_Vehiculos
                     Dim existe As Boolean = Convert.ToBoolean(comando.Parameters("@Existe").Value)
                     Return existe
                 Catch ex As Exception
-                    Throw New Exception("Error al verificar la existencia del tipo de vehículo en la base de datos", ex)
+                    Throw New Exception("Error al verificar la existencia del tipo de vehículo en la base de datos: " & ex.Message, ex)
                 End Try
             End Using
         End Using

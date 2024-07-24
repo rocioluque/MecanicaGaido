@@ -2,13 +2,13 @@
 
 #Region "Procedimientos"
     Public Sub limpiar()
-        txtID.Text = ""
-        txtEmpresa.Text = ""
-        txtCUIT = Nothing
-        txtIngresosBrutos.Text = ""
-        txtFechaAlta.Text = ""
-        txtCargo.Text = ""
-        txtSaldo.Text = ""
+        txtID.Clear()
+        txtEmpresa.Clear()
+        txtCUIT.Clear()
+        txtIngresosBrutos.Clear()
+        txtFechaAlta.Clear()
+        txtCargo.Clear()
+        txtSaldo.Clear()
         chkEstado.Checked = False
     End Sub
 #End Region
@@ -41,6 +41,7 @@
             End If
         End If
     End Sub
+
 #End Region
 
 

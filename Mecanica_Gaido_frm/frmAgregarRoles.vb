@@ -7,7 +7,6 @@ Public Class frmAgregarRoles
     ' Propiedad para almacenar el nombre del nuevo rol agregado
     Public Property NuevoRolNombre As String
 
-
 #Region "Cargar"
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         If txtRol.Text <> Nothing Then

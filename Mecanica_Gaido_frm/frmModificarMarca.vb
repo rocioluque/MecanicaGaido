@@ -12,8 +12,8 @@ Public Class frmModificarMarca
     End Sub
 
     Public Sub limpiar()
-        txtId.Text = Nothing
-        txtMarca.Text = Nothing
+        txtId.Clear()
+        txtMarca.Clear()
         chkProducto.Checked = False
         chkVehiculo.Checked = False
         chkEstado.Checked = False
@@ -69,13 +69,7 @@ Public Class frmModificarMarca
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         If txtId.Text <> Nothing And txtMarca.Text <> Nothing Then
             Try
-                Dim idMarca As Integer = Convert.ToInt32(txtId.Text)
-                Dim nombre As String = txtMarca.Text
-                Dim EsRepuesto As Boolean = chkProducto.Checked
-                Dim EsVehiculo As Boolean = chkVehiculo.Checked
-                Dim estado As Boolean = chkEstado.Checked
-
-                o_Marca.Modificar_Marca(idMarca, nombre, EsRepuesto, EsVehiculo, estado)
+                o_Marca.Modificar_Marca(Convert.ToInt32(txtId.Text), txtMarca.Text, chkProducto.Checked, chkVehiculo.Checked, chkEstado.Checked)
                 MsgBox("Marca modificada correctamente.", vbInformation, "Información")
                 limpiar()
                 Cargar_Grilla()

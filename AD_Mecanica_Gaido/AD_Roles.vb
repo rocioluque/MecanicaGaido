@@ -24,7 +24,7 @@ Public Class AD_Roles
                     Dim existe As Boolean = Convert.ToBoolean(comando.Parameters("@Existe").Value)
                     Return existe
                 Catch ex As Exception
-                    Throw New Exception("Error al verificar la existencia del rol en la base de datos", ex)
+                    Throw New Exception("Error al verificar la existencia del rol en la base de datos: " & ex.Message, ex)
                 End Try
             End Using
         End Using

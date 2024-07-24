@@ -37,6 +37,9 @@ Public Class frmProductos
         chkActivo.Checked = False
     End Sub
 
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiar()
+    End Sub
 #End Region
 
 #Region "Carga de Combos"
@@ -186,8 +189,4 @@ Public Class frmProductos
         End If
     End Sub
 #End Region
-
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        limpiar()
-    End Sub
 End Class

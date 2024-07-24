@@ -5,18 +5,16 @@ Imports System.Data.SqlClient
 
 Public Class frmModificarFormaPago
     Dim o_FormasDePago As New AD_FormasDePago
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        Me.Close()
-    End Sub
 
+#Region "Procedimientos"
     Private Sub frmModificarFormaPago_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         limpiar()
         Cargar_Grilla()
     End Sub
 
     Public Sub limpiar()
-        txtIdFP.Text = Nothing
-        txtFormaDePago.Text = Nothing
+        txtIdFP.Clear()
+        txtFormaDePago.Clear()
         chkEstadoFP.Checked = False
     End Sub
 
@@ -59,13 +57,15 @@ Public Class frmModificarFormaPago
         End If
     End Sub
 
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        Me.Close()
+    End Sub
+#End Region
+
+#Region "Modificar"
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         Try
-            Dim ID_FP As Integer = Convert.ToInt32(txtIdFP.Text)
-            Dim nombreFP As String = txtFormaDePago.Text
-            Dim estado As Boolean = chkEstadoFP.Checked
-
-            o_FormasDePago.Modificar_FormasDePago(ID_FP, nombreFP, estado)
+            o_FormasDePago.Modificar_FormasDePago(Convert.ToInt32(txtIdFP.Text), txtFormaDePago.Text, chkEstadoFP.Checked)
             MsgBox("Forma de pago modificada correctamente.", vbInformation, "Éxito")
             limpiar()
             Cargar_Grilla()
@@ -74,6 +74,5 @@ Public Class frmModificarFormaPago
             limpiar()
         End Try
     End Sub
-
-
+#End Region
 End Class

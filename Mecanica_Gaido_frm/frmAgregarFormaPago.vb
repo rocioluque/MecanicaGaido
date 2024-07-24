@@ -8,8 +8,6 @@ Public Class frmAgregarFormaPago
     Public Property NuevaFormaPagoNombre As String
     Public Property NuevaFormaPagoComprasNombre As String
 
-
-
 #Region "Cargar"
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         If txtFormaPago.Text <> Nothing Then

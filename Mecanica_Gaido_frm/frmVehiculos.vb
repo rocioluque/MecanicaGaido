@@ -15,15 +15,19 @@ Public Class frmVehiculos
 
     Public Sub Limpiar()
         txtID.Clear()
-        cboTipoVehiculo.SelectedIndex = -1
-        cboMarca.SelectedIndex = -1
         txtNombre.Clear()
         txtModelo.Clear()
         txtColor.Clear()
         txtNumchasis.Clear()
         txtNumotor.Clear()
         txtMatricula.Clear()
+        cboTipoVehiculo.SelectedIndex = -1
+        cboMarca.SelectedIndex = -1
         chkEstado.Checked = False
+    End Sub
+
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        Limpiar()
     End Sub
 #End Region
 
@@ -104,8 +108,4 @@ Public Class frmVehiculos
         End If
     End Sub
 #End Region
-
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        Limpiar()
-    End Sub
 End Class

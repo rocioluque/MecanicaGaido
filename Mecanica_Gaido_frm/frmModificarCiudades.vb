@@ -51,8 +51,8 @@ Public Class frmModificarCiudades
     End Sub
 
     Public Sub limpiar()
-        txtId.Text = Nothing
-        txtCiudad.Text = Nothing
+        txtId.Clear()
+        txtCiudad.Clear()
         cboProvincia.SelectedIndex = -1
         chkEstado.Checked = False
     End Sub
@@ -112,12 +112,7 @@ Public Class frmModificarCiudades
 #Region "Modificar"
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         Try
-            Dim CiudadID As Integer = txtId.Text
-            Dim nombreCiudad As String = txtCiudad.Text
-            Dim idProvincia As Integer = CInt(cboProvincia.SelectedValue)
-            Dim estado As Boolean = chkEstado.Checked
-
-            o_Ciudad.Modificar_Ciudad(CiudadID, nombreCiudad, idProvincia, estado)
+            o_Ciudad.Modificar_Ciudad(txtId.Text, txtCiudad.Text, CInt(cboProvincia.SelectedValue), chkEstado.Checked)
             MsgBox("Ciudad modificada correctamente.", vbInformation, "Éxito")
             Me.DialogResult = DialogResult.OK
             Me.Close()

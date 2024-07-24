@@ -20,7 +20,7 @@ Public Class AD_Ventas
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar las cuentas desde la base de datos", ex)
+                    Throw New Exception("Error al cargar las cuentas desde la base de datos: " & ex.Message, ex)
                 End Try
 
             End Using
@@ -39,7 +39,7 @@ Public Class AD_Ventas
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar los empleados desde la base de datos", ex)
+                    Throw New Exception("Error al cargar los empleados desde la base de datos: " & ex.Message, ex)
                 End Try
 
             End Using
@@ -58,7 +58,7 @@ Public Class AD_Ventas
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar las formas de pago desde la base de datos", ex)
+                    Throw New Exception("Error al cargar las formas de pago desde la base de datos: " & ex.Message, ex)
                 End Try
 
             End Using
@@ -77,7 +77,7 @@ Public Class AD_Ventas
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar el tipo de venta desde la base de datos", ex)
+                    Throw New Exception("Error al cargar el tipo de venta desde la base de datos: " & ex.Message, ex)
                 End Try
 
             End Using
@@ -96,7 +96,7 @@ Public Class AD_Ventas
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar las formas de entrega desde la base de datos", ex)
+                    Throw New Exception("Error al cargar las formas de entrega desde la base de datos: " & ex.Message, ex)
                 End Try
 
             End Using

@@ -50,7 +50,6 @@ Partial Class frmMenuPrincipal
         Me.btnOrdenReparacón = New System.Windows.Forms.Button()
         Me.btnVentas = New System.Windows.Forms.Button()
         Me.btnPersonas = New System.Windows.Forms.Button()
-        Me.lblUsuarioBarra = New System.Windows.Forms.Label()
         Me.panelNav = New System.Windows.Forms.Panel()
         Me.btnRestaurar = New System.Windows.Forms.PictureBox()
         Me.btnMinimizar = New System.Windows.Forms.PictureBox()
@@ -438,18 +437,6 @@ Partial Class frmMenuPrincipal
         Me.btnPersonas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnPersonas.UseVisualStyleBackColor = False
         '
-        'lblUsuarioBarra
-        '
-        Me.lblUsuarioBarra.AutoSize = True
-        Me.lblUsuarioBarra.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUsuarioBarra.ForeColor = System.Drawing.Color.White
-        Me.lblUsuarioBarra.Location = New System.Drawing.Point(12, 6)
-        Me.lblUsuarioBarra.Name = "lblUsuarioBarra"
-        Me.lblUsuarioBarra.Size = New System.Drawing.Size(11, 16)
-        Me.lblUsuarioBarra.TabIndex = 27
-        Me.lblUsuarioBarra.Text = ":"
-        Me.lblUsuarioBarra.Visible = False
-        '
         'panelNav
         '
         Me.panelNav.BackColor = System.Drawing.Color.SeaGreen
@@ -457,7 +444,6 @@ Partial Class frmMenuPrincipal
         Me.panelNav.Controls.Add(Me.btnMinimizar)
         Me.panelNav.Controls.Add(Me.btnMaximizar)
         Me.panelNav.Controls.Add(Me.btnCerrar)
-        Me.panelNav.Controls.Add(Me.lblUsuarioBarra)
         Me.panelNav.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelNav.Location = New System.Drawing.Point(0, 0)
         Me.panelNav.Name = "panelNav"
@@ -540,7 +526,6 @@ Partial Class frmMenuPrincipal
         Me.PanelMenu.PerformLayout()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelNav.ResumeLayout(False)
-        Me.panelNav.PerformLayout()
         CType(Me.btnRestaurar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnMinimizar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnMaximizar, System.ComponentModel.ISupportInitialize).EndInit()
@@ -571,7 +556,6 @@ Partial Class frmMenuPrincipal
     Friend WithEvents panelContenedor As Panel
     Friend WithEvents btnCerrarSesion As Button
     Friend WithEvents lblRol As Label
-    Friend WithEvents lblUsuarioBarra As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label

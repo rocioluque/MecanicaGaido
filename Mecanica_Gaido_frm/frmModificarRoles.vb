@@ -3,6 +3,7 @@ Imports AD_Mecanica_Gaido
 Imports System.Data.SqlClient
 Public Class frmModificarRoles
     Dim o_roles As New AD_Roles
+
 #Region "Procedimientos"
     Private Sub frmPersonas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         limpiar()
@@ -10,8 +11,8 @@ Public Class frmModificarRoles
     End Sub
 
     Public Sub limpiar()
-        txtId.Text = Nothing
-        txtRol.Text = Nothing
+        txtId.Clear()
+        txtRol.Clear()
         chkEstado.Checked = False
     End Sub
 
@@ -62,11 +63,7 @@ Public Class frmModificarRoles
 #Region "Modificar"
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         Try
-            Dim RolID As Integer = Convert.ToInt32(txtId.Text)
-            Dim nombreRol As String = txtRol.Text
-            Dim estado As Boolean = chkEstado.Checked
-
-            o_roles.Modificar_Rubro(RolID, nombreRol, estado)
+            o_roles.Modificar_Rubro(Convert.ToInt32(txtId.Text), txtRol.Text, chkEstado.Checked)
             MsgBox("Rol modificado correctamente.", vbInformation, "Éxito")
             limpiar()
             Cargar_Grilla()

@@ -24,7 +24,7 @@ Public Class AD_OrdenReparacion
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar los Vehiculos desde la base de datos", ex)
+                    Throw New Exception("Error al cargar los Vehiculos desde la base de datos: " & ex.Message, ex)
                 End Try
 
             End Using
