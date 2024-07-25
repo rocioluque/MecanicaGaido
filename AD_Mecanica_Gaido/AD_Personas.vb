@@ -5,7 +5,6 @@ Imports System.IO
 Imports System.Configuration
 Imports System.Data.Common
 
-
 Public Class AD_Personas
     Private connectionString As String
 

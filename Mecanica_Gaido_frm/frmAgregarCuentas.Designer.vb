@@ -24,26 +24,24 @@ Partial Class frmAgregarCuentas
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAgregarCuentas))
         Me.btnCerrar = New System.Windows.Forms.PictureBox()
-        Me.txtEmpresa = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.lblNombre = New System.Windows.Forms.Label()
         Me.btnBuscar = New System.Windows.Forms.Button()
-        Me.txtFechaAlta = New System.Windows.Forms.TextBox()
         Me.txtIngresosBrutos = New System.Windows.Forms.TextBox()
-        Me.txtCUIT = New System.Windows.Forms.TextBox()
         Me.txtID = New System.Windows.Forms.TextBox()
         Me.chkEstado = New System.Windows.Forms.CheckBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblDocumento = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtSaldo = New System.Windows.Forms.TextBox()
-        Me.txtCargo = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.btnModificar = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.btnAceptar = New System.Windows.Forms.Button()
         Me.grdCuenta = New System.Windows.Forms.DataGridView()
+        Me.lblNombreResultado = New System.Windows.Forms.Label()
+        Me.lblDocumentoResultado = New System.Windows.Forms.Label()
+        Me.dtpFechaAlta = New System.Windows.Forms.DateTimePicker()
         CType(Me.btnCerrar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdCuenta, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -58,26 +56,17 @@ Partial Class frmAgregarCuentas
         Me.btnCerrar.TabIndex = 62
         Me.btnCerrar.TabStop = False
         '
-        'txtEmpresa
+        'lblNombre
         '
-        Me.txtEmpresa.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtEmpresa.Location = New System.Drawing.Point(148, 69)
-        Me.txtEmpresa.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.txtEmpresa.Name = "txtEmpresa"
-        Me.txtEmpresa.Size = New System.Drawing.Size(133, 23)
-        Me.txtEmpresa.TabIndex = 3
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(46, 75)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(63, 17)
-        Me.Label6.TabIndex = 73
-        Me.Label6.Text = "Empresa"
+        Me.lblNombre.AutoSize = True
+        Me.lblNombre.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNombre.ForeColor = System.Drawing.Color.White
+        Me.lblNombre.Location = New System.Drawing.Point(46, 69)
+        Me.lblNombre.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblNombre.Name = "lblNombre"
+        Me.lblNombre.Size = New System.Drawing.Size(90, 34)
+        Me.lblNombre.TabIndex = 73
+        Me.lblNombre.Text = "Nombre /" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Razón Social"
         '
         'btnBuscar
         '
@@ -96,38 +85,20 @@ Partial Class frmAgregarCuentas
         Me.btnBuscar.Text = "..."
         Me.btnBuscar.UseVisualStyleBackColor = False
         '
-        'txtFechaAlta
-        '
-        Me.txtFechaAlta.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFechaAlta.Location = New System.Drawing.Point(415, 31)
-        Me.txtFechaAlta.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.txtFechaAlta.Name = "txtFechaAlta"
-        Me.txtFechaAlta.Size = New System.Drawing.Size(133, 23)
-        Me.txtFechaAlta.TabIndex = 6
-        '
         'txtIngresosBrutos
         '
         Me.txtIngresosBrutos.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIngresosBrutos.Location = New System.Drawing.Point(148, 145)
-        Me.txtIngresosBrutos.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtIngresosBrutos.Location = New System.Drawing.Point(416, 31)
+        Me.txtIngresosBrutos.Margin = New System.Windows.Forms.Padding(2)
         Me.txtIngresosBrutos.Name = "txtIngresosBrutos"
         Me.txtIngresosBrutos.Size = New System.Drawing.Size(133, 23)
         Me.txtIngresosBrutos.TabIndex = 5
-        '
-        'txtCUIT
-        '
-        Me.txtCUIT.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCUIT.Location = New System.Drawing.Point(148, 107)
-        Me.txtCUIT.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.txtCUIT.Name = "txtCUIT"
-        Me.txtCUIT.Size = New System.Drawing.Size(133, 23)
-        Me.txtCUIT.TabIndex = 4
         '
         'txtID
         '
         Me.txtID.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtID.Location = New System.Drawing.Point(148, 31)
-        Me.txtID.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtID.Margin = New System.Windows.Forms.Padding(2)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(43, 23)
         Me.txtID.TabIndex = 1
@@ -137,8 +108,8 @@ Partial Class frmAgregarCuentas
         Me.chkEstado.AutoSize = True
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
-        Me.chkEstado.Location = New System.Drawing.Point(310, 150)
-        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.chkEstado.Location = New System.Drawing.Point(49, 146)
+        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
         Me.chkEstado.TabIndex = 9
@@ -150,7 +121,7 @@ Partial Class frmAgregarCuentas
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(307, 37)
+        Me.Label4.Location = New System.Drawing.Point(308, 75)
         Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(77, 17)
@@ -162,24 +133,24 @@ Partial Class frmAgregarCuentas
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(46, 148)
+        Me.Label3.Location = New System.Drawing.Point(308, 34)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(101, 17)
         Me.Label3.TabIndex = 65
         Me.Label3.Text = "Ingresos Brutos"
         '
-        'Label2
+        'lblDocumento
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(46, 113)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(35, 17)
-        Me.Label2.TabIndex = 64
-        Me.Label2.Text = "CUIT"
+        Me.lblDocumento.AutoSize = True
+        Me.lblDocumento.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDocumento.ForeColor = System.Drawing.Color.White
+        Me.lblDocumento.Location = New System.Drawing.Point(46, 113)
+        Me.lblDocumento.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblDocumento.Name = "lblDocumento"
+        Me.lblDocumento.Size = New System.Drawing.Size(86, 17)
+        Me.lblDocumento.TabIndex = 64
+        Me.lblDocumento.Text = "Documento"
         '
         'Label1
         '
@@ -189,51 +160,30 @@ Partial Class frmAgregarCuentas
         Me.Label1.Location = New System.Drawing.Point(46, 37)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(21, 17)
+        Me.Label1.Size = New System.Drawing.Size(76, 17)
         Me.Label1.TabIndex = 63
-        Me.Label1.Text = "ID"
+        Me.Label1.Text = "N° Cuenta"
         '
         'txtSaldo
         '
         Me.txtSaldo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSaldo.Location = New System.Drawing.Point(415, 107)
-        Me.txtSaldo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtSaldo.Location = New System.Drawing.Point(416, 107)
+        Me.txtSaldo.Margin = New System.Windows.Forms.Padding(2)
         Me.txtSaldo.Name = "txtSaldo"
         Me.txtSaldo.Size = New System.Drawing.Size(133, 23)
-        Me.txtSaldo.TabIndex = 8
-        '
-        'txtCargo
-        '
-        Me.txtCargo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCargo.Location = New System.Drawing.Point(415, 69)
-        Me.txtCargo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.txtCargo.Name = "txtCargo"
-        Me.txtCargo.Size = New System.Drawing.Size(133, 23)
-        Me.txtCargo.TabIndex = 7
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(307, 113)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(101, 17)
-        Me.Label5.TabIndex = 76
-        Me.Label5.Text = "Saldo Cta Cte"
+        Me.txtSaldo.TabIndex = 7
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(307, 75)
+        Me.Label7.Location = New System.Drawing.Point(308, 113)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(54, 17)
+        Me.Label7.Size = New System.Drawing.Size(44, 17)
         Me.Label7.TabIndex = 75
-        Me.Label7.Text = "Cargo "
+        Me.Label7.Text = "Saldo"
         '
         'btnModificar
         '
@@ -300,31 +250,61 @@ Partial Class frmAgregarCuentas
         Me.grdCuenta.Size = New System.Drawing.Size(652, 176)
         Me.grdCuenta.TabIndex = 82
         '
+        'lblNombreResultado
+        '
+        Me.lblNombreResultado.AutoSize = True
+        Me.lblNombreResultado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNombreResultado.ForeColor = System.Drawing.Color.White
+        Me.lblNombreResultado.Location = New System.Drawing.Point(147, 72)
+        Me.lblNombreResultado.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblNombreResultado.Name = "lblNombreResultado"
+        Me.lblNombreResultado.Size = New System.Drawing.Size(0, 17)
+        Me.lblNombreResultado.TabIndex = 83
+        '
+        'lblDocumentoResultado
+        '
+        Me.lblDocumentoResultado.AutoSize = True
+        Me.lblDocumentoResultado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDocumentoResultado.ForeColor = System.Drawing.Color.White
+        Me.lblDocumentoResultado.Location = New System.Drawing.Point(147, 113)
+        Me.lblDocumentoResultado.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblDocumentoResultado.Name = "lblDocumentoResultado"
+        Me.lblDocumentoResultado.Size = New System.Drawing.Size(0, 17)
+        Me.lblDocumentoResultado.TabIndex = 84
+        '
+        'dtpFechaAlta
+        '
+        Me.dtpFechaAlta.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.dtpFechaAlta.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtpFechaAlta.Location = New System.Drawing.Point(416, 70)
+        Me.dtpFechaAlta.Name = "dtpFechaAlta"
+        Me.dtpFechaAlta.Size = New System.Drawing.Size(133, 23)
+        Me.dtpFechaAlta.TabIndex = 85
+        Me.dtpFechaAlta.Value = New Date(2024, 7, 25, 0, 0, 0, 0)
+        '
         'frmAgregarCuentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(738, 407)
+        Me.Controls.Add(Me.dtpFechaAlta)
+        Me.Controls.Add(Me.lblDocumentoResultado)
+        Me.Controls.Add(Me.lblNombreResultado)
         Me.Controls.Add(Me.grdCuenta)
         Me.Controls.Add(Me.btnModificar)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnAceptar)
         Me.Controls.Add(Me.txtSaldo)
-        Me.Controls.Add(Me.txtCargo)
-        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.txtEmpresa)
-        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.lblNombre)
         Me.Controls.Add(Me.btnBuscar)
-        Me.Controls.Add(Me.txtFechaAlta)
         Me.Controls.Add(Me.txtIngresosBrutos)
-        Me.Controls.Add(Me.txtCUIT)
         Me.Controls.Add(Me.txtID)
         Me.Controls.Add(Me.chkEstado)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.lblDocumento)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnCerrar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -340,24 +320,22 @@ Partial Class frmAgregarCuentas
     End Sub
 
     Friend WithEvents btnCerrar As PictureBox
-    Friend WithEvents txtEmpresa As TextBox
-    Friend WithEvents Label6 As Label
+    Friend WithEvents lblNombre As Label
     Friend WithEvents btnBuscar As Button
-    Friend WithEvents txtFechaAlta As TextBox
     Friend WithEvents txtIngresosBrutos As TextBox
-    Friend WithEvents txtCUIT As TextBox
     Friend WithEvents txtID As TextBox
     Friend WithEvents chkEstado As CheckBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents Label2 As Label
+    Friend WithEvents lblDocumento As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents txtSaldo As TextBox
-    Friend WithEvents txtCargo As TextBox
-    Friend WithEvents Label5 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents btnModificar As Button
     Friend WithEvents btnCancelar As Button
     Friend WithEvents btnAceptar As Button
     Friend WithEvents grdCuenta As DataGridView
+    Friend WithEvents lblNombreResultado As Label
+    Friend WithEvents lblDocumentoResultado As Label
+    Friend WithEvents dtpFechaAlta As DateTimePicker
 End Class

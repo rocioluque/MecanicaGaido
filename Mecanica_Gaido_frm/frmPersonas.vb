@@ -208,7 +208,6 @@ Public Class frmPersonas
         End If
     End Sub
 
-
     Private Sub grdPersonas_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdPersonas.CellClick
         If e.RowIndex >= 0 Then
             CargarDatosEnTxt(e.RowIndex)
@@ -229,7 +228,8 @@ Public Class frmPersonas
     End Sub
 
     Private Sub btnCtasCtes_Click(sender As Object, e As EventArgs) Handles btnCuentas.Click
-        frmAgregarCuentas.txtEmpresa.Text = txtApellido.Text & " " & txtNombre.Text
+        frmAgregarCuentas.lblNombreResultado.Text = txtApellido.Text & " " & txtNombre.Text
+        frmAgregarCuentas.lblDocumentoResultado.Text = txtNumeroDocumento.Text
         frmAgregarCuentas.ShowDialog()
     End Sub
 

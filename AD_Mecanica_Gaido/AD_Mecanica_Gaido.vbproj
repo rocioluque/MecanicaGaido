@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="AD_Ciudades.vb" />
     <Compile Include="AD_Compras.vb" />
+    <Compile Include="AD_Cuentas.vb" />
     <Compile Include="AD_Empleados.vb" />
     <Compile Include="AD_FormasDeEntrega.vb" />
     <Compile Include="AD_FormasDePago.vb" />
