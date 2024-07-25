@@ -276,11 +276,8 @@ Public Class frmPersonas
 
                 MsgBox("Persona agregada correctamente.", vbInformation, "Información")
                 Limpiar()
+                Cargar_Grilla()
 
-                If cboProvincia.SelectedValue IsNot Nothing Then
-                    Dim idProvincia As Integer = Convert.ToInt32(cboProvincia.SelectedValue)
-                    Cargar_Grilla()
-                End If
             Catch ex As Exception
                 MsgBox("Error al agregar la persona: " & ex.Message, vbCritical, "Error")
             End Try
@@ -300,11 +297,7 @@ Public Class frmPersonas
                        Convert.ToInt32(cboCiudad.SelectedValue), txtNota.Text, chkEstado.Checked)
                 MsgBox("Persona modificada correctamente.", vbInformation, "Información")
                 Limpiar()
-
-                If cboProvincia.SelectedValue IsNot Nothing Then
-                    Dim idProvincia As Integer = Convert.ToInt32(cboProvincia.SelectedValue)
-                    Cargar_Grilla()
-                End If
+                Cargar_Grilla()
 
             Catch ex As Exception
                 MsgBox("Error al modificar la persona: " & ex.Message, vbCritical, "Error")
