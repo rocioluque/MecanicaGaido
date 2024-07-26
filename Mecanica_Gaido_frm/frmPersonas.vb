@@ -199,6 +199,7 @@ Public Class frmPersonas
 
 
             cboCiudad.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_Ciudad").Value
+            cboProvincia.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_Provincia").Value
             cboTipoPersona.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_TipoPersona").Value
             cboTipoDocumento.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_TipoDocumento").Value
             txtDireccion.Text = grdPersonas.Rows(rowindex).Cells("Direccion").Value.ToString()

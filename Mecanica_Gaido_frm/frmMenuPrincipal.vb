@@ -188,4 +188,5 @@ Public Class frmMenuPrincipal
         lblCorreo.Text = UsuarioActivo.correoPersona
         PintarBotonInicio()
     End Sub
+
 End Class
