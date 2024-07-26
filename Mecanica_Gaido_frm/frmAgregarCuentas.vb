@@ -5,6 +5,11 @@ Imports System.Configuration
 Public Class frmAgregarCuentas
     Dim o_Cuentas As New AD_Cuentas
 
+    ' Propiedades públicas para recibir los datos
+    Public Property IdPersona As Integer
+    Public Property NombrePersona As String
+    Public Property DocumentoPersona As String
+
 #Region "Procedimientos"
     Public Sub limpiar()
         txtID.Clear()
@@ -14,8 +19,19 @@ Public Class frmAgregarCuentas
         chkEstado.Checked = False
     End Sub
 
+    Private Sub frmAgregarCuentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        limpiar()
+        Cargar_Grilla()
+
+        ' Usa las propiedades públicas para establecer los valores en los controles del formulario
+        lblNombreResultado.Text = NombrePersona
+        lblDocumentoResultado.Text = DocumentoPersona
+    End Sub
+
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
+        lblNombreResultado.Text = Nothing
+        lblDocumentoResultado.Text = Nothing
     End Sub
 
     Public Sub Cargar_Grilla()
@@ -37,6 +53,15 @@ Public Class frmAgregarCuentas
             If oDs.Tables(0).Rows.Count > 0 Then
                 grdCuenta.AutoGenerateColumns = True
                 grdCuenta.DataSource = oDs.Tables(0)
+
+                ' Verificar si las columnas existen antes de ocultarlas
+                Dim columnasParaOcultar As String() = {"Documento", "Estado"}
+                For Each colName As String In columnasParaOcultar
+                    If grdCuenta.Columns.Contains(colName) Then
+                        grdCuenta.Columns(colName).Visible = False
+                    End If
+                Next
+
                 grdCuenta.Refresh()
             Else
                 MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
@@ -54,14 +79,16 @@ Public Class frmAgregarCuentas
         If grdCuenta.Rows.Count > 0 Then
 
             txtID.Text = grdCuenta.Rows(rowindex).Cells("N° Cuenta").Value.ToString()
+            lblNombreResultado.Text = grdCuenta.Rows(rowindex).Cells("Cuenta").Value.ToString()
             txtIngresosBrutos.Text = grdCuenta.Rows(rowindex).Cells("Ingresos Brutos").Value.ToString()
-
+            dtpFechaAlta.Value = grdCuenta.Rows(rowindex).Cells("Fecha de Alta").Value
             txtSaldo.Text = grdCuenta.Rows(rowindex).Cells("Saldo").Value.ToString()
             chkEstado.Checked = grdCuenta.Rows(rowindex).Cells("Estado").Value.ToString()
 
+
+            lblDocumentoResultado.Text = grdCuenta.Rows(rowindex).Cells("Documento").Value.ToString()
         End If
     End Sub
-
 
     Private Sub grdCuenta_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdCuenta.CellClick
         If e.RowIndex >= 0 Then
@@ -74,11 +101,13 @@ Public Class frmAgregarCuentas
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         If txtIngresosBrutos.Text <> Nothing And txtSaldo.Text <> Nothing Then
             Try
-                o_Cuentas.Agregar_Persona(txtIngresosBrutos.Text, dtpFechaAlta.Value, txtSaldo.Text, chkEstado.Checked)
+                o_Cuentas.Agregar_Persona(IdPersona, txtIngresosBrutos.Text, dtpFechaAlta.Value, txtSaldo.Text)
 
                 MsgBox("Cuenta agregada correctamente.", vbInformation, "Información")
                 limpiar()
                 Cargar_Grilla()
+                lblNombreResultado.Text = Nothing
+                lblDocumentoResultado.Text = Nothing
 
             Catch ex As Exception
                 MsgBox("Error al agregar la cuenta: " & ex.Message, vbCritical, "Error")
@@ -93,27 +122,5 @@ Public Class frmAgregarCuentas
         Me.Close()
     End Sub
 
-#Region "Keypress"
-    Private Sub txtCargo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSaldo.KeyPress
-        If Not Char.IsLetter(e.KeyChar) _
-                 AndAlso Not Char.IsControl(e.KeyChar) _
-                 AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
-            e.Handled = True
-        End If
-    End Sub
 
-    Private Sub txtSaldo_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
-    End Sub
-
-
-#End Region
 End Class

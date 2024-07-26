@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmAgregarCuentas
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,9 +20,10 @@ Partial Class frmAgregarCuentas
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAgregarCuentas))
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnCerrar = New System.Windows.Forms.PictureBox()
         Me.lblNombre = New System.Windows.Forms.Label()
         Me.btnBuscar = New System.Windows.Forms.Button()
@@ -92,7 +93,7 @@ Partial Class frmAgregarCuentas
         Me.txtIngresosBrutos.Margin = New System.Windows.Forms.Padding(2)
         Me.txtIngresosBrutos.Name = "txtIngresosBrutos"
         Me.txtIngresosBrutos.Size = New System.Drawing.Size(133, 23)
-        Me.txtIngresosBrutos.TabIndex = 5
+        Me.txtIngresosBrutos.TabIndex = 3
         '
         'txtID
         '
@@ -171,7 +172,7 @@ Partial Class frmAgregarCuentas
         Me.txtSaldo.Margin = New System.Windows.Forms.Padding(2)
         Me.txtSaldo.Name = "txtSaldo"
         Me.txtSaldo.Size = New System.Drawing.Size(133, 23)
-        Me.txtSaldo.TabIndex = 7
+        Me.txtSaldo.TabIndex = 5
         '
         'Label7
         '
@@ -198,7 +199,7 @@ Partial Class frmAgregarCuentas
         Me.btnModificar.Location = New System.Drawing.Point(584, 74)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(117, 37)
-        Me.btnModificar.TabIndex = 11
+        Me.btnModificar.TabIndex = 7
         Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = False
         '
@@ -216,7 +217,7 @@ Partial Class frmAgregarCuentas
         Me.btnCancelar.Location = New System.Drawing.Point(584, 121)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(117, 37)
-        Me.btnCancelar.TabIndex = 12
+        Me.btnCancelar.TabIndex = 8
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = False
         '
@@ -233,14 +234,23 @@ Partial Class frmAgregarCuentas
         Me.btnAceptar.Location = New System.Drawing.Point(584, 27)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(117, 37)
-        Me.btnAceptar.TabIndex = 10
+        Me.btnAceptar.TabIndex = 6
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = False
         '
         'grdCuenta
         '
+        Me.grdCuenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdCuenta.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.grdCuenta.BorderStyle = System.Windows.Forms.BorderStyle.None
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdCuenta.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.grdCuenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdCuenta.GridColor = System.Drawing.Color.DarkGray
         Me.grdCuenta.Location = New System.Drawing.Point(49, 198)
@@ -279,7 +289,7 @@ Partial Class frmAgregarCuentas
         Me.dtpFechaAlta.Location = New System.Drawing.Point(416, 70)
         Me.dtpFechaAlta.Name = "dtpFechaAlta"
         Me.dtpFechaAlta.Size = New System.Drawing.Size(133, 23)
-        Me.dtpFechaAlta.TabIndex = 85
+        Me.dtpFechaAlta.TabIndex = 4
         Me.dtpFechaAlta.Value = New Date(2024, 7, 25, 0, 0, 0, 0)
         '
         'frmAgregarCuentas

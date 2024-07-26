@@ -24,14 +24,14 @@ Public Class AD_Cuentas
         Return tabla
     End Function
 
-    Public Sub Agregar_Persona(IngresosBrutos As Integer, FechaAlta As Date, Saldo As String, Estado As Boolean)
+    Public Sub Agregar_Persona(IdPersona As Integer, IngresosBrutos As Integer, FechaAlta As Date, Saldo As String)
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Agregar_Cuenta", conexion)
                 comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@idPersona", IdPersona)
                 comando.Parameters.AddWithValue("@IngresosBrutos", IngresosBrutos)
                 comando.Parameters.AddWithValue("@FechaAlta", FechaAlta)
                 comando.Parameters.AddWithValue("@Saldo", Saldo)
-                comando.Parameters.AddWithValue("@Estado", Estado)
 
                 conexion.Open()
                 comando.ExecuteNonQuery()

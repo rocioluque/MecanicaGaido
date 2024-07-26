@@ -5,6 +5,10 @@ Imports System.Configuration
 Public Class frmPersonas
     Dim o_Personas As New AD_Personas
 
+    Public Property IdPersona As Integer
+    Public Property NombrePersona As String
+    Public Property DocumentoPersona As String
+
 #Region "Carga de Cbos"
     Private Sub Cargar_Provincias()
         Try
@@ -162,7 +166,7 @@ Public Class frmPersonas
                 grdPersonas.DataSource = oDs.Tables(0)
 
                 ' Verificar si las columnas existen antes de ocultarlas
-                Dim columnasParaOcultar As String() = {"ID_Provincia", "ID_Ciudad", "ID_TipoPersona", "ID_TipoDocumento", "Direccion",
+                Dim columnasParaOcultar As String() = {"ID_Provincia", "ID_Ciudad", "ID_TipoPersona", "ID_TipoDocumento", "Fecha_Nacimiento", "Direccion",
                                                         "Numero", "Piso", "Letra/Puerta", "Codigo_Postal", "Nota", "Estado"}
                 For Each colName As String In columnasParaOcultar
                     If grdPersonas.Columns.Contains(colName) Then
@@ -204,7 +208,7 @@ Public Class frmPersonas
             txtCodigoPostal.Text = grdPersonas.Rows(rowindex).Cells("Codigo_Postal").Value.ToString()
             txtNota.Text = grdPersonas.Rows(rowindex).Cells("Nota").Value.ToString()
             chkEstado.Checked = grdPersonas.Rows(rowindex).Cells("Estado").Value.ToString()
-
+            'dtpFechaNacimiento.Value = grdPersonas.Rows(rowindex).Cells("Fecha_Nacimiento").Value
         End If
     End Sub
 
@@ -228,9 +232,24 @@ Public Class frmPersonas
     End Sub
 
     Private Sub btnCtasCtes_Click(sender As Object, e As EventArgs) Handles btnCuentas.Click
-        frmAgregarCuentas.lblNombreResultado.Text = txtApellido.Text & " " & txtNombre.Text
-        frmAgregarCuentas.lblDocumentoResultado.Text = txtNumeroDocumento.Text
-        frmAgregarCuentas.ShowDialog()
+        If txtID.Text <> Nothing And txtNombre.Text <> Nothing And txtNumeroDocumento.Text <> Nothing Then
+            IdPersona = txtID.Text
+            NombrePersona = txtApellido.Text & " " & txtNombre.Text
+            DocumentoPersona = txtNumeroDocumento.Text
+
+            ' Crea una nueva instancia de frmAgregarCuentas
+            Dim frmAgregar As New frmAgregarCuentas()
+
+            ' Pasa los valores a las propiedades públicas del nuevo formulario
+            frmAgregar.IdPersona = IdPersona
+            frmAgregar.NombrePersona = NombrePersona
+            frmAgregar.DocumentoPersona = DocumentoPersona
+
+            ' Muestra el nuevo formulario
+            frmAgregar.ShowDialog()
+        Else
+            MsgBox("Por favor seleccione una persona para cargar su cuenta corriente.", vbInformation, "Información")
+        End If
     End Sub
 
     Private Sub btnAgregarCiudad_Click(sender As Object, e As EventArgs)

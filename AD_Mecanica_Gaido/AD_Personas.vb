@@ -161,7 +161,6 @@ Public Class AD_Personas
                 comando.Parameters.AddWithValue("@Nota", Nota)
                 comando.Parameters.AddWithValue("@Estado", Estado)
 
-
                 conexion.Open()
                 comando.ExecuteNonQuery()
             End Using

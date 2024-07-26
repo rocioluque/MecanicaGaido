@@ -188,6 +188,7 @@ Partial Class frmPersonas
         'grdPersonas
         '
         Me.grdPersonas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.grdPersonas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         Me.grdPersonas.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdPersonas.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
@@ -422,7 +423,7 @@ Partial Class frmPersonas
         Me.txtCodigoPostal.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCodigoPostal.Name = "txtCodigoPostal"
         Me.txtCodigoPostal.Size = New System.Drawing.Size(88, 23)
-        Me.txtCodigoPostal.TabIndex = 14
+        Me.txtCodigoPostal.TabIndex = 15
         '
         'lblTelefonoFijo
         '
@@ -540,7 +541,7 @@ Partial Class frmPersonas
         Me.cboCiudad.Margin = New System.Windows.Forms.Padding(2)
         Me.cboCiudad.Name = "cboCiudad"
         Me.cboCiudad.Size = New System.Drawing.Size(133, 25)
-        Me.cboCiudad.TabIndex = 13
+        Me.cboCiudad.TabIndex = 14
         '
         'chkEstado
         '
@@ -577,7 +578,7 @@ Partial Class frmPersonas
         Me.cboProvincia.Margin = New System.Windows.Forms.Padding(2)
         Me.cboProvincia.Name = "cboProvincia"
         Me.cboProvincia.Size = New System.Drawing.Size(164, 25)
-        Me.cboProvincia.TabIndex = 15
+        Me.cboProvincia.TabIndex = 13
         Me.cboProvincia.ValueMember = "ID_Provincia"
         '
         'txtDireccion
