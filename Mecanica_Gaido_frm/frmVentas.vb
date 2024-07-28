@@ -30,7 +30,7 @@ Public Class frmVentas
         cboTipoVenta.SelectedIndex = -1
         cboFormaEntrega.SelectedIndex = -1
         cboCuenta.SelectedIndex = -1
-        cboEmpleado.SelectedIndex = -1
+        cboVendedor.SelectedIndex = -1
         cboFormaPago.SelectedIndex = -1
         chkEstado.Checked = False
     End Sub
@@ -47,8 +47,8 @@ Public Class frmVentas
 
             If tabla.Rows.Count > 0 Then
                 cboCuenta.DataSource = tabla
-                cboCuenta.DisplayMember = "Empresa"
-                cboCuenta.ValueMember = "ID_Cuenta"
+                cboCuenta.DisplayMember = "Cuenta"
+                cboCuenta.ValueMember = "ID_DatoFiscal"
                 cboCuenta.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Cuentas.", vbInformation, "Información")
@@ -64,10 +64,10 @@ Public Class frmVentas
             Dim tabla As DataTable = o_ventas.Cargar_Combo_Empleados()
 
             If tabla.Rows.Count > 0 Then
-                cboEmpleado.DataSource = tabla
-                cboEmpleado.DisplayMember = "Nombre/RazonSocial"
-                cboEmpleado.ValueMember = "ID_Persona"
-                cboEmpleado.SelectedValue = -1
+                cboVendedor.DataSource = tabla
+                cboVendedor.DisplayMember = "Nombre/RazonSocial"
+                cboVendedor.ValueMember = "ID_Persona"
+                cboVendedor.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Empleados.", vbInformation, "Información")
             End If

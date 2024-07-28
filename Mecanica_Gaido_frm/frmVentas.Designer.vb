@@ -42,7 +42,7 @@ Partial Class frmVentas
         Me.txtNumComprobante = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.cboEmpleado = New System.Windows.Forms.ComboBox()
+        Me.cboVendedor = New System.Windows.Forms.ComboBox()
         Me.cboFormaPago = New System.Windows.Forms.ComboBox()
         Me.cboFormaEntrega = New System.Windows.Forms.ComboBox()
         Me.cboTipoVenta = New System.Windows.Forms.ComboBox()
@@ -187,9 +187,9 @@ Partial Class frmVentas
         Me.Label6.ForeColor = System.Drawing.Color.White
         Me.Label6.Location = New System.Drawing.Point(98, 156)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(75, 17)
+        Me.Label6.Size = New System.Drawing.Size(72, 17)
         Me.Label6.TabIndex = 84
-        Me.Label6.Text = "Empleado"
+        Me.Label6.Text = "Vendedor"
         '
         'Label5
         '
@@ -267,13 +267,13 @@ Partial Class frmVentas
         Me.Label1.TabIndex = 75
         Me.Label1.Text = "ID"
         '
-        'cboEmpleado
+        'cboVendedor
         '
-        Me.cboEmpleado.FormattingEnabled = True
-        Me.cboEmpleado.Location = New System.Drawing.Point(251, 154)
-        Me.cboEmpleado.Name = "cboEmpleado"
-        Me.cboEmpleado.Size = New System.Drawing.Size(121, 21)
-        Me.cboEmpleado.TabIndex = 6
+        Me.cboVendedor.FormattingEnabled = True
+        Me.cboVendedor.Location = New System.Drawing.Point(251, 154)
+        Me.cboVendedor.Name = "cboVendedor"
+        Me.cboVendedor.Size = New System.Drawing.Size(121, 21)
+        Me.cboVendedor.TabIndex = 6
         '
         'cboFormaPago
         '
@@ -588,7 +588,7 @@ Partial Class frmVentas
         Me.Controls.Add(Me.txtNumComprobante)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.cboEmpleado)
+        Me.Controls.Add(Me.cboVendedor)
         Me.Controls.Add(Me.cboFormaPago)
         Me.Controls.Add(Me.cboFormaEntrega)
         Me.Controls.Add(Me.cboTipoVenta)
@@ -630,7 +630,7 @@ Partial Class frmVentas
     Friend WithEvents txtNumComprobante As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents cboEmpleado As ComboBox
+    Friend WithEvents cboVendedor As ComboBox
     Friend WithEvents cboFormaPago As ComboBox
     Friend WithEvents cboFormaEntrega As ComboBox
     Friend WithEvents cboTipoVenta As ComboBox
