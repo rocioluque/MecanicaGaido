@@ -124,24 +124,24 @@ Public Class frmPersonas
 
 
         ' Configuración del estilo de la grilla
-        Dim cellStyle As New DataGridViewCellStyle()
-        cellStyle.BackColor = Color.FromArgb(65, 65, 65)
-        cellStyle.ForeColor = Color.White
-        cellStyle.SelectionBackColor = Color.SeaGreen
-        cellStyle.SelectionForeColor = SystemColors.HighlightText
-        cellStyle.Font = New Font("Microsoft Sans Serif", 8.25, FontStyle.Regular, GraphicsUnit.Point, 0)
-        cellStyle.WrapMode = DataGridViewTriState.True
+        'Dim cellStyle As New DataGridViewCellStyle()
+        'cellStyle.BackColor = Color.FromArgb(65, 65, 65)
+        'cellStyle.ForeColor = Color.White
+        'cellStyle.SelectionBackColor = Color.SeaGreen
+        'cellStyle.SelectionForeColor = SystemColors.HighlightText
+        'cellStyle.Font = New Font("Microsoft Sans Serif", 8.25, FontStyle.Regular, GraphicsUnit.Point, 0)
+        'cellStyle.WrapMode = DataGridViewTriState.True
 
-        grdPersonas.DefaultCellStyle = cellStyle
+        'grdPersonas.DefaultCellStyle = cellStyle
 
         ' Configuración del estilo del encabezado
-        Dim headerStyle As New DataGridViewCellStyle()
-        headerStyle.BackColor = Color.SeaGreen
-        headerStyle.ForeColor = Color.White
-        headerStyle.Font = New Font("Microsoft Sans Serif", 8.25, FontStyle.Regular, GraphicsUnit.Point, 0)
-        headerStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        'Dim headerStyle As New DataGridViewCellStyle()
+        'headerStyle.BackColor = Color.SeaGreen
+        'headerStyle.ForeColor = Color.White
+        'headerStyle.Font = New Font("Microsoft Sans Serif", 8.25, FontStyle.Regular, GraphicsUnit.Point, 0)
+        'headerStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
-        grdPersonas.ColumnHeadersDefaultCellStyle = headerStyle
+        'grdPersonas.ColumnHeadersDefaultCellStyle = headerStyle
 
     End Sub
 
