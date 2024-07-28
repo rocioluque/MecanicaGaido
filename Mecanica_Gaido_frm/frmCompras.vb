@@ -88,7 +88,7 @@ Public Class frmCompras
 #End Region
 
     Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
-        frmAgregarCuentas.ShowDialog()
+        frmAgregarDatosFiscales.ShowDialog()
     End Sub
 
 #Region "Keypress"

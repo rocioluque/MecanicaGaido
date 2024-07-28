@@ -232,14 +232,14 @@ Public Class frmPersonas
         frmAgregarEmpleados.ShowDialog()
     End Sub
 
-    Private Sub btnCtasCtes_Click(sender As Object, e As EventArgs) Handles btnCuentas.Click
+    Private Sub btnDatoFiscals_Click(sender As Object, e As EventArgs) Handles btnDatoFiscal.Click
         If txtID.Text <> Nothing And txtNombre.Text <> Nothing And txtNumeroDocumento.Text <> Nothing Then
             IdPersona = txtID.Text
             NombrePersona = txtApellido.Text & " " & txtNombre.Text
             DocumentoPersona = txtNumeroDocumento.Text
 
-            ' Crea una nueva instancia de frmAgregarCuentas
-            Dim frmAgregar As New frmAgregarCuentas()
+            ' Crea una nueva instancia de frmDatoFiscal
+            Dim frmAgregar As New frmAgregarDatosFiscales()
 
             ' Pasa los valores a las propiedades públicas del nuevo formulario
             frmAgregar.IdPersona = IdPersona
@@ -249,7 +249,7 @@ Public Class frmPersonas
             ' Muestra el nuevo formulario
             frmAgregar.ShowDialog()
         Else
-            MsgBox("Por favor seleccione una persona para cargar su cuenta corriente.", vbInformation, "Información")
+            MsgBox("Por favor seleccione una persona para cargar sus datos físcales.", vbInformation, "Información")
         End If
     End Sub
 

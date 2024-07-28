@@ -7,7 +7,7 @@ Public Class frmVentas
 
     Dim o_ventas As New AD_Ventas
     Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
-        frmAgregarCuentas.ShowDialog()
+        frmAgregarDatosFiscales.ShowDialog()
     End Sub
 
 #Region "Procedimientos"

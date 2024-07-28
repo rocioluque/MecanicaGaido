@@ -4,7 +4,7 @@ Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Configuration
 Imports System.Data.Common
-Public Class AD_Cuentas
+Public Class AD_DatosFiscales
     Private connectionString As String
 
     Public Sub New()
@@ -15,7 +15,7 @@ Public Class AD_Cuentas
         Dim tabla As New DataTable
 
         Using conexion As New SqlConnection(connectionString)
-            Using comando As New SqlCommand("Cargar_Grilla_Cuenta", conexion)
+            Using comando As New SqlCommand("Cargar_Grilla_DatoFiscal", conexion)
                 comando.CommandType = CommandType.StoredProcedure
                 Dim datadapter As New SqlDataAdapter(comando)
                 datadapter.Fill(tabla)
@@ -24,9 +24,9 @@ Public Class AD_Cuentas
         Return tabla
     End Function
 
-    Public Sub Agregar_Persona(IdPersona As Integer, IngresosBrutos As Integer, FechaAlta As Date, Saldo As String)
+    Public Sub Agregar_DatoFiscal(IdPersona As Integer, IngresosBrutos As Integer, FechaAlta As Date, Saldo As String)
         Using conexion As New SqlConnection(connectionString)
-            Using comando As New SqlCommand("Agregar_Cuenta", conexion)
+            Using comando As New SqlCommand("Agregar_DatoFiscal", conexion)
                 comando.CommandType = CommandType.StoredProcedure
                 comando.Parameters.AddWithValue("@idPersona", IdPersona)
                 comando.Parameters.AddWithValue("@IngresosBrutos", IngresosBrutos)

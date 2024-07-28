@@ -22,13 +22,13 @@ Partial Class frmPersonas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPersonas))
         Me.txtID = New System.Windows.Forms.TextBox()
         Me.lblId = New System.Windows.Forms.Label()
         Me.btnBuscar = New System.Windows.Forms.Button()
         Me.btnEmpleados = New System.Windows.Forms.Button()
-        Me.btnCuentas = New System.Windows.Forms.Button()
+        Me.btnDatoFiscal = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.btnAceptar = New System.Windows.Forms.Button()
         Me.grdPersonas = New System.Windows.Forms.DataGridView()
@@ -136,21 +136,21 @@ Partial Class frmPersonas
         Me.btnEmpleados.Text = "Empleados"
         Me.btnEmpleados.UseVisualStyleBackColor = False
         '
-        'btnCuentas
+        'btnDatoFiscal
         '
-        Me.btnCuentas.BackColor = System.Drawing.Color.Transparent
-        Me.btnCuentas.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnCuentas.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.btnCuentas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
-        Me.btnCuentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCuentas.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCuentas.ForeColor = System.Drawing.Color.White
-        Me.btnCuentas.Location = New System.Drawing.Point(51, 425)
-        Me.btnCuentas.Name = "btnCuentas"
-        Me.btnCuentas.Size = New System.Drawing.Size(117, 37)
-        Me.btnCuentas.TabIndex = 22
-        Me.btnCuentas.Text = "Cuentas"
-        Me.btnCuentas.UseVisualStyleBackColor = False
+        Me.btnDatoFiscal.BackColor = System.Drawing.Color.Transparent
+        Me.btnDatoFiscal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnDatoFiscal.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.btnDatoFiscal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.btnDatoFiscal.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDatoFiscal.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDatoFiscal.ForeColor = System.Drawing.Color.White
+        Me.btnDatoFiscal.Location = New System.Drawing.Point(51, 425)
+        Me.btnDatoFiscal.Name = "btnDatoFiscal"
+        Me.btnDatoFiscal.Size = New System.Drawing.Size(117, 37)
+        Me.btnDatoFiscal.TabIndex = 22
+        Me.btnDatoFiscal.Text = "Datos Fiscales"
+        Me.btnDatoFiscal.UseVisualStyleBackColor = False
         '
         'btnCancelar
         '
@@ -191,14 +191,14 @@ Partial Class frmPersonas
         Me.grdPersonas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         Me.grdPersonas.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdPersonas.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdPersonas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdPersonas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.grdPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdPersonas.Location = New System.Drawing.Point(51, 497)
         Me.grdPersonas.Name = "grdPersonas"
@@ -716,7 +716,7 @@ Partial Class frmPersonas
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnAceptar)
         Me.Controls.Add(Me.btnEmpleados)
-        Me.Controls.Add(Me.btnCuentas)
+        Me.Controls.Add(Me.btnDatoFiscal)
         Me.Controls.Add(Me.btnBuscar)
         Me.Controls.Add(Me.txtID)
         Me.Controls.Add(Me.lblId)
@@ -740,7 +740,7 @@ Partial Class frmPersonas
     Friend WithEvents lblId As Label
     Friend WithEvents btnBuscar As Button
     Friend WithEvents btnEmpleados As Button
-    Friend WithEvents btnCuentas As Button
+    Friend WithEvents btnDatoFiscal As Button
     Friend WithEvents btnCancelar As Button
     Friend WithEvents btnAceptar As Button
     Friend WithEvents grdPersonas As DataGridView

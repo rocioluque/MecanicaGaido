@@ -2,8 +2,8 @@
 Imports AD_Mecanica_Gaido
 Imports System.Data.SqlClient
 Imports System.Configuration
-Public Class frmAgregarCuentas
-    Dim o_Cuentas As New AD_Cuentas
+Public Class frmAgregarDatosFiscales
+    Dim o_DatosFiscales As New AD_DatosFiscales
 
     ' Propiedades públicas para recibir los datos
     Public Property IdPersona As Integer
@@ -19,7 +19,7 @@ Public Class frmAgregarCuentas
         chkEstado.Checked = False
     End Sub
 
-    Private Sub frmAgregarCuentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub frmAgregarDatosFiscales_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         limpiar()
         Cargar_Grilla()
 
@@ -44,7 +44,7 @@ Public Class frmAgregarCuentas
             conexion.Open()
             comando.Connection = conexion
             comando.CommandType = CommandType.StoredProcedure
-            comando.CommandText = ("Cargar_Grilla_Cuenta")
+            comando.CommandText = ("Cargar_Grilla_DatoFiscal")
 
             Dim datadapter As New SqlDataAdapter(comando)
             Dim oDs As New DataSet
@@ -78,7 +78,7 @@ Public Class frmAgregarCuentas
     Public Sub CargarDatosEnTxt(ByVal rowindex As Integer)
         If grdCuenta.Rows.Count > 0 Then
 
-            txtID.Text = grdCuenta.Rows(rowindex).Cells("N° Cuenta").Value.ToString()
+            txtID.Text = grdCuenta.Rows(rowindex).Cells("N° Dato Fiscal").Value.ToString()
             lblNombreResultado.Text = grdCuenta.Rows(rowindex).Cells("Cuenta").Value.ToString()
             txtIngresosBrutos.Text = grdCuenta.Rows(rowindex).Cells("Ingresos Brutos").Value.ToString()
             dtpFechaAlta.Value = grdCuenta.Rows(rowindex).Cells("Fecha de Alta").Value
@@ -101,16 +101,16 @@ Public Class frmAgregarCuentas
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         If txtIngresosBrutos.Text <> Nothing And txtSaldo.Text <> Nothing Then
             Try
-                o_Cuentas.Agregar_Persona(IdPersona, txtIngresosBrutos.Text, dtpFechaAlta.Value, txtSaldo.Text)
+                o_DatosFiscales.Agregar_DatoFiscal(IdPersona, txtIngresosBrutos.Text, dtpFechaAlta.Value, txtSaldo.Text)
 
-                MsgBox("Cuenta agregada correctamente.", vbInformation, "Información")
+                MsgBox("Dato Fiscal agregado correctamente.", vbInformation, "Información")
                 limpiar()
                 Cargar_Grilla()
                 lblNombreResultado.Text = Nothing
                 lblDocumentoResultado.Text = Nothing
 
             Catch ex As Exception
-                MsgBox("Error al agregar la cuenta: " & ex.Message, vbCritical, "Error")
+                MsgBox("Error al agregar el dato fiscal: " & ex.Message, vbCritical, "Error")
             End Try
         Else
             MsgBox("Complete los datos correspondientes.", vbInformation, "Error")
@@ -121,6 +121,4 @@ Public Class frmAgregarCuentas
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
         Me.Close()
     End Sub
-
-
 End Class
