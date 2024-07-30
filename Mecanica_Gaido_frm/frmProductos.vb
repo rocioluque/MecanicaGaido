@@ -10,6 +10,7 @@ Public Class frmProductos
     Private Sub frmProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Combo_Marcas()
         Cargar_Combo_Rubros()
+        Cargar_Combo_Original
         limpiar()
     End Sub
 
@@ -21,8 +22,8 @@ Public Class frmProductos
         txtStockReal.Clear()
         txtStockDisponible.Clear()
         txtCompra.Clear()
-        txtLista.Clear()
         txtUtilidad.Clear()
+        txtLista.Clear()
         txtFechaUltCompra.Clear()
         txtFechaUltVenta.Clear()
         txtEstanteria.Clear()
@@ -73,6 +74,22 @@ Public Class frmProductos
             MsgBox("Error al cargar los rubros: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+
+    Private Sub Cargar_Combo_Original()
+        Try
+            Dim tabla As DataTable = o_productos.Cargar_Combo_Original
+
+            If tabla.Rows.Count > 0 Then
+                cboRubro.DataSource = tabla
+                cboRubro.DisplayMember = "Descripcion"
+                cboRubro.ValueMember = "ID_Producto"
+            Else
+                MsgBox("No se encontraron productos originales.", vbInformation, "Información")
+            End If
+        Catch ex As Exception
+            MsgBox("Error al cargar los productos originales: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
 #End Region
 
 #Region "Marca"
@@ -111,6 +128,14 @@ Public Class frmProductos
                     Exit For
                 End If
             Next
+        End If
+    End Sub
+#End Region
+
+#Region "Alternativo"
+    Private Sub chkAlternativo_CheckedChanged(sender As Object, e As EventArgs) Handles chkAlternativo.CheckedChanged
+        If chkAlternativo.Checked = True Then
+            cboOriginal.Enabled = True
         End If
     End Sub
 #End Region
