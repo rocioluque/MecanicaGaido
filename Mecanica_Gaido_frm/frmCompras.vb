@@ -35,15 +35,15 @@ Public Class frmCompras
 
             If tabla.Rows.Count > 0 Then
                 cboCuenta.DataSource = tabla
-                cboCuenta.DisplayMember = "Empresa"
-                cboCuenta.ValueMember = "ID_Cuenta"
+                cboCuenta.DisplayMember = "Cuenta"
+                cboCuenta.ValueMember = "ID_DatoFiscal"
                 cboCuenta.SelectedValue = -1
             Else
-                MsgBox("No se encontraron cuentas.", vbInformation, "Información")
+                MsgBox("No se encontraron Cuentas.", vbInformation, "Información")
             End If
 
         Catch ex As Exception
-            MsgBox("Error al cargar la cuenta: " & ex.Message, vbCritical, "Error")
+            MsgBox("Error al cargar las Cuentas: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
 
@@ -169,4 +169,6 @@ Public Class frmCompras
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
     End Sub
+
+
 End Class
