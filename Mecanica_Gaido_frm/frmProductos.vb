@@ -10,8 +10,9 @@ Public Class frmProductos
     Private Sub frmProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Combo_Marcas()
         Cargar_Combo_Rubros()
-        Cargar_Combo_Original
+        Cargar_Combo_Original()
         limpiar()
+        Cargar_Grilla()
     End Sub
 
     Public Sub limpiar()
@@ -21,20 +22,96 @@ Public Class frmProductos
         txtCantidadBulto.Clear()
         txtStockReal.Clear()
         txtStockDisponible.Clear()
-        txtCompra.Clear()
+        txtPrecioCompra.Clear()
         txtUtilidad.Clear()
-        txtLista.Clear()
-        txtFechaUltCompra.Clear()
-        txtFechaUltVenta.Clear()
+        txtPrecioLista.Clear()
         txtEstanteria.Clear()
         txtNumeroFila.Clear()
         txtCodigoBarra.Clear()
-        txtFabricante.Clear()
+        txtCodFabricante.Clear()
         cboRubro.SelectedIndex = -1
         cboMarca.SelectedIndex = -1
         cboOriginal.SelectedIndex = -1
-        chkAlternativo.Checked = False
-        chkActivo.Checked = False
+        dtpFechaCompra.Value = DateTime.Today
+        dtpFechaVenta.Value = DateTime.Today
+        chkAlterntivo.Checked = False
+        chkEstado.Checked = False
+    End Sub
+
+    Public Sub Cargar_Grilla()
+        Try
+            Dim conexion As SqlConnection
+            Dim comando As New SqlCommand
+
+            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
+
+            conexion.Open()
+            comando.Connection = conexion
+            comando.CommandType = CommandType.StoredProcedure
+            comando.CommandText = ("Cargar_Grilla_Producto")
+
+            Dim datadapter As New SqlDataAdapter(comando)
+            Dim oDs As New DataSet
+            datadapter.Fill(oDs)
+
+            If oDs.Tables(0).Rows.Count > 0 Then
+                grdProductos.AutoGenerateColumns = True
+                grdProductos.DataSource = oDs.Tables(0)
+
+                ' Verificar si las columnas existen antes de ocultarlas
+                Dim columnasParaOcultar As String() = {"Rubro", "alternativo", "ID_Original", "Cantidad_X_Bulto", "PrecioCompra", "Utilidad",
+                                                        "FechaUltimaCompra", "FechaUltimaVenta", "CodBarra", "CodFabricante", "Origen", "Estado"}
+                For Each colName As String In columnasParaOcultar
+                    If grdProductos.Columns.Contains(colName) Then
+                        grdProductos.Columns(colName).Visible = False
+                    End If
+                Next
+                grdProductos.Refresh()
+            Else
+                MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
+            End If
+
+            oDs = Nothing
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox("Error al cargar la grilla: " & ex.Message, vbCritical, "Error")
+        Finally
+        End Try
+    End Sub
+
+    Public Sub CargarDatosEnTxt(ByVal rowindex As Integer)
+        If grdProductos.Rows.Count > 0 AndAlso rowindex >= 0 AndAlso rowindex < grdProductos.Rows.Count Then
+
+            txtId.Text = grdProductos.Rows(rowindex).Cells("N° Producto").Value.ToString()
+            txtDescripcion.Text = grdProductos.Rows(rowindex).Cells("Producto").Value.ToString()
+            txtNombreDiario.Text = grdProductos.Rows(rowindex).Cells("Nombre Diario").Value.ToString()
+            cboMarca.SelectedValue = grdProductos.Rows(rowindex).Cells("Marca").Value
+            txtStockReal.Text = grdProductos.Rows(rowindex).Cells("Stock Real").Value.ToString()
+            txtStockDisponible.Text = grdProductos.Rows(rowindex).Cells("Stock Disponible").Value.ToString()
+            txtPrecioLista.Text = grdProductos.Rows(rowindex).Cells("Precio Lista").Value.ToString()
+            txtEstanteria.Text = grdProductos.Rows(rowindex).Cells("Cod. estanteria").Value.ToString()
+            txtNumeroFila.Text = grdProductos.Rows(rowindex).Cells("Fila").Value.ToString()
+
+            cboRubro.SelectedValue = grdProductos.Rows(rowindex).Cells("Rubro").Value
+            chkAlterntivo.Checked = grdProductos.Rows(rowindex).Cells("alternativo").Value.ToString()
+            cboOriginal.SelectedValue = grdProductos.Rows(rowindex).Cells("ID_Original").Value
+            txtCantidadBulto.Text = grdProductos.Rows(rowindex).Cells("Cantidad_X_Bulto").Value.ToString()
+            txtPrecioCompra.Text = grdProductos.Rows(rowindex).Cells("PrecioCompra").Value.ToString()
+            txtUtilidad.Text = grdProductos.Rows(rowindex).Cells("Utilidad").Value.ToString()
+            dtpFechaCompra.Value = grdProductos.Rows(rowindex).Cells("FechaUltimaCompra").Value
+            dtpFechaVenta.Value = grdProductos.Rows(rowindex).Cells("FechaUltimaVenta").Value
+            txtCodigoBarra.Text = grdProductos.Rows(rowindex).Cells("CodBarra").Value.ToString()
+            txtCodFabricante.Text = grdProductos.Rows(rowindex).Cells("CodFabricante").Value.ToString()
+            cboOrigen.SelectedValue = grdProductos.Rows(rowindex).Cells("Origen").Value
+            chkEstado.Checked = grdProductos.Rows(rowindex).Cells("Estado").Value.ToString()
+
+        End If
+    End Sub
+
+    Private Sub grdProductos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdProductos.CellClick
+        If e.RowIndex >= 0 Then
+            CargarDatosEnTxt(e.RowIndex)
+        End If
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -80,15 +157,66 @@ Public Class frmProductos
             Dim tabla As DataTable = o_productos.Cargar_Combo_Original
 
             If tabla.Rows.Count > 0 Then
-                cboRubro.DataSource = tabla
-                cboRubro.DisplayMember = "Descripcion"
-                cboRubro.ValueMember = "ID_Producto"
+                cboOriginal.DataSource = tabla
+                cboOriginal.DisplayMember = "Descripcion"
+                cboOriginal.ValueMember = "ID_Repuestos"
             Else
                 MsgBox("No se encontraron productos originales.", vbInformation, "Información")
             End If
         Catch ex As Exception
             MsgBox("Error al cargar los productos originales: " & ex.Message, vbCritical, "Error")
         End Try
+    End Sub
+#End Region
+
+#Region "Cargar"
+    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
+        If txtDescripcion.Text <> Nothing And cboMarca.SelectedValue <> Nothing And txtCodFabricante.Text <> Nothing And
+            txtEstanteria.Text <> Nothing And txtNumeroFila.Text <> Nothing And txtUtilidad.Text <> Nothing Then
+
+            Try
+                o_productos.Agregar_Producto(txtDescripcion.Text, txtNombreDiario.Text, CInt(cboRubro.SelectedValue),
+                       CInt(cboMarca.SelectedValue), txtCodigoBarra.Text, txtCodFabricante.Text, txtCantidadBulto.Text,
+                       CInt(cboOrigen.SelectedValue), chkAlterntivo.Checked, CInt(cboOriginal.SelectedValue), chkEstado.Checked, txtStockReal.Text,
+                       txtStockDisponible.Text, txtEstanteria.Text, txtNumeroFila.Text, txtPrecioCompra.Text, txtUtilidad.Text, txtPrecioLista.Text,
+                       dtpFechaCompra.Value, dtpFechaVenta.Value)
+
+                MsgBox("Producto agregado correctamente.", vbInformation, "Información")
+                limpiar()
+                Cargar_Grilla()
+                Cargar_Combo_Original()
+
+            Catch ex As Exception
+                MsgBox("Error al agregar el producto: " & ex.Message, vbCritical, "Error")
+            End Try
+        Else
+            MsgBox("Complete los datos correspondientes.", vbInformation, "Error")
+        End If
+    End Sub
+#End Region
+
+#Region "Calculo precio lista"
+    Private Sub txtPrecioCompra_TextChanged(sender As Object, e As EventArgs) Handles txtPrecioCompra.TextChanged
+        CalcularPrecioLista()
+    End Sub
+
+    Private Sub txtUtilidad_TextChanged(sender As Object, e As EventArgs) Handles txtUtilidad.TextChanged
+        CalcularPrecioLista()
+    End Sub
+
+    Private Sub CalcularPrecioLista()
+        Dim precioCompra As Decimal
+        Dim utilidad As Decimal
+
+        ' Verifica que los valores ingresados sean números válidos
+        If Decimal.TryParse(txtPrecioCompra.Text, precioCompra) AndAlso Decimal.TryParse(txtUtilidad.Text, utilidad) Then
+
+            Dim precioLista As Decimal = precioCompra * (utilidad + 1)
+            txtPrecioLista.Text = precioLista.ToString("F2") 'Formatea el resultado a dos decimales
+        Else
+            ' Si los valores no son válidos, limpia el TextBox de precio de lista
+            txtPrecioLista.Text = String.Empty
+        End If
     End Sub
 #End Region
 
@@ -133,8 +261,8 @@ Public Class frmProductos
 #End Region
 
 #Region "Alternativo"
-    Private Sub chkAlternativo_CheckedChanged(sender As Object, e As EventArgs) Handles chkAlternativo.CheckedChanged
-        If chkAlternativo.Checked = True Then
+    Private Sub chkAlternativo_CheckedChanged(sender As Object, e As EventArgs) Handles chkAlterntivo.CheckedChanged
+        If chkAlterntivo.Checked = True Then
             cboOriginal.Enabled = True
         End If
     End Sub

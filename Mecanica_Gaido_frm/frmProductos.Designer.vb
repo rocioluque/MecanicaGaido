@@ -24,12 +24,12 @@ Partial Class frmProductos
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmProductos))
         Me.grdProductos = New System.Windows.Forms.DataGridView()
-        Me.chkActivo = New System.Windows.Forms.CheckBox()
+        Me.chkEstado = New System.Windows.Forms.CheckBox()
         Me.lblOrigen = New System.Windows.Forms.Label()
         Me.lblCodEstanteria = New System.Windows.Forms.Label()
         Me.txtNumeroFila = New System.Windows.Forms.TextBox()
         Me.txtCodigoBarra = New System.Windows.Forms.TextBox()
-        Me.txtFabricante = New System.Windows.Forms.TextBox()
+        Me.txtCodFabricante = New System.Windows.Forms.TextBox()
         Me.lblCodBarra = New System.Windows.Forms.Label()
         Me.lblCodFabricante = New System.Windows.Forms.Label()
         Me.lblNFila = New System.Windows.Forms.Label()
@@ -52,7 +52,7 @@ Partial Class frmProductos
         Me.lblNProducto = New System.Windows.Forms.Label()
         Me.cboRubro = New System.Windows.Forms.ComboBox()
         Me.txtId = New System.Windows.Forms.TextBox()
-        Me.chkAlternativo = New System.Windows.Forms.CheckBox()
+        Me.chkAlterntivo = New System.Windows.Forms.CheckBox()
         Me.btnBuscar = New System.Windows.Forms.Button()
         Me.btnAceptar = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
@@ -66,16 +66,20 @@ Partial Class frmProductos
         Me.PanelExistencia = New System.Windows.Forms.Panel()
         Me.lblMovimientos = New System.Windows.Forms.Label()
         Me.PanelMovimientos = New System.Windows.Forms.Panel()
+        Me.dtpFechaVenta = New System.Windows.Forms.DateTimePicker()
+        Me.dtpFechaCompra = New System.Windows.Forms.DateTimePicker()
         Me.lblPrecioLista = New System.Windows.Forms.Label()
-        Me.txtLista = New System.Windows.Forms.TextBox()
+        Me.txtPrecioLista = New System.Windows.Forms.TextBox()
         Me.lblFechaUltVenta = New System.Windows.Forms.Label()
         Me.lblFechaUltimaCompra = New System.Windows.Forms.Label()
         Me.lblPrecioCompra = New System.Windows.Forms.Label()
         Me.txtUtilidad = New System.Windows.Forms.TextBox()
         Me.lblUtilidad = New System.Windows.Forms.Label()
-        Me.txtCompra = New System.Windows.Forms.TextBox()
-        Me.txtFechaUltCompra = New System.Windows.Forms.TextBox()
-        Me.txtFechaUltVenta = New System.Windows.Forms.TextBox()
+        Me.txtPrecioCompra = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.grdProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarMarca, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarRubro, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,6 +90,8 @@ Partial Class frmProductos
         '
         'grdProductos
         '
+        Me.grdProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.grdProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         Me.grdProductos.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdProductos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -96,17 +102,17 @@ Partial Class frmProductos
         Me.grdProductos.Size = New System.Drawing.Size(858, 290)
         Me.grdProductos.TabIndex = 93
         '
-        'chkActivo
+        'chkEstado
         '
-        Me.chkActivo.AutoSize = True
-        Me.chkActivo.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.chkActivo.ForeColor = System.Drawing.Color.White
-        Me.chkActivo.Location = New System.Drawing.Point(601, 158)
-        Me.chkActivo.Name = "chkActivo"
-        Me.chkActivo.Size = New System.Drawing.Size(82, 21)
-        Me.chkActivo.TabIndex = 22
-        Me.chkActivo.Text = "¿Activo?"
-        Me.chkActivo.UseVisualStyleBackColor = True
+        Me.chkEstado.AutoSize = True
+        Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.chkEstado.ForeColor = System.Drawing.Color.White
+        Me.chkEstado.Location = New System.Drawing.Point(601, 158)
+        Me.chkEstado.Name = "chkEstado"
+        Me.chkEstado.Size = New System.Drawing.Size(82, 21)
+        Me.chkEstado.TabIndex = 22
+        Me.chkEstado.Text = "¿Activo?"
+        Me.chkEstado.UseVisualStyleBackColor = True
         '
         'lblOrigen
         '
@@ -146,13 +152,13 @@ Partial Class frmProductos
         Me.txtCodigoBarra.Size = New System.Drawing.Size(224, 23)
         Me.txtCodigoBarra.TabIndex = 19
         '
-        'txtFabricante
+        'txtCodFabricante
         '
-        Me.txtFabricante.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtFabricante.Location = New System.Drawing.Point(307, 118)
-        Me.txtFabricante.Name = "txtFabricante"
-        Me.txtFabricante.Size = New System.Drawing.Size(224, 23)
-        Me.txtFabricante.TabIndex = 20
+        Me.txtCodFabricante.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtCodFabricante.Location = New System.Drawing.Point(307, 118)
+        Me.txtCodFabricante.Name = "txtCodFabricante"
+        Me.txtCodFabricante.Size = New System.Drawing.Size(224, 23)
+        Me.txtCodFabricante.TabIndex = 20
         '
         'lblCodBarra
         '
@@ -264,7 +270,7 @@ Partial Class frmProductos
         'txtDescripcion
         '
         Me.txtDescripcion.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtDescripcion.Location = New System.Drawing.Point(15, 74)
+        Me.txtDescripcion.Location = New System.Drawing.Point(15, 75)
         Me.txtDescripcion.Name = "txtDescripcion"
         Me.txtDescripcion.Size = New System.Drawing.Size(224, 23)
         Me.txtDescripcion.TabIndex = 3
@@ -370,17 +376,17 @@ Partial Class frmProductos
         Me.txtId.Size = New System.Drawing.Size(50, 23)
         Me.txtId.TabIndex = 1
         '
-        'chkAlternativo
+        'chkAlterntivo
         '
-        Me.chkAlternativo.AutoSize = True
-        Me.chkAlternativo.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.chkAlternativo.ForeColor = System.Drawing.Color.White
-        Me.chkAlternativo.Location = New System.Drawing.Point(600, 70)
-        Me.chkAlternativo.Name = "chkAlternativo"
-        Me.chkAlternativo.Size = New System.Drawing.Size(109, 21)
-        Me.chkAlternativo.TabIndex = 7
-        Me.chkAlternativo.Text = "¿Alternativo?"
-        Me.chkAlternativo.UseVisualStyleBackColor = True
+        Me.chkAlterntivo.AutoSize = True
+        Me.chkAlterntivo.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.chkAlterntivo.ForeColor = System.Drawing.Color.White
+        Me.chkAlterntivo.Location = New System.Drawing.Point(600, 70)
+        Me.chkAlterntivo.Name = "chkAlterntivo"
+        Me.chkAlterntivo.Size = New System.Drawing.Size(109, 21)
+        Me.chkAlterntivo.TabIndex = 7
+        Me.chkAlterntivo.Text = "¿Alternativo?"
+        Me.chkAlterntivo.UseVisualStyleBackColor = True
         '
         'btnBuscar
         '
@@ -480,6 +486,9 @@ Partial Class frmProductos
         '
         'PanelDatosEspecificos
         '
+        Me.PanelDatosEspecificos.Controls.Add(Me.Label3)
+        Me.PanelDatosEspecificos.Controls.Add(Me.Label2)
+        Me.PanelDatosEspecificos.Controls.Add(Me.Label1)
         Me.PanelDatosEspecificos.Controls.Add(Me.cboOrigen)
         Me.PanelDatosEspecificos.Controls.Add(Me.lblDescripcion)
         Me.PanelDatosEspecificos.Controls.Add(Me.txtDescripcion)
@@ -489,17 +498,17 @@ Partial Class frmProductos
         Me.PanelDatosEspecificos.Controls.Add(Me.btnAgregarMarca)
         Me.PanelDatosEspecificos.Controls.Add(Me.lblMarca)
         Me.PanelDatosEspecificos.Controls.Add(Me.btnBuscar)
-        Me.PanelDatosEspecificos.Controls.Add(Me.chkActivo)
+        Me.PanelDatosEspecificos.Controls.Add(Me.chkEstado)
         Me.PanelDatosEspecificos.Controls.Add(Me.txtId)
         Me.PanelDatosEspecificos.Controls.Add(Me.cboOriginal)
         Me.PanelDatosEspecificos.Controls.Add(Me.lblNombreOriginal)
         Me.PanelDatosEspecificos.Controls.Add(Me.cboMarca)
         Me.PanelDatosEspecificos.Controls.Add(Me.lblRubro)
-        Me.PanelDatosEspecificos.Controls.Add(Me.chkAlternativo)
+        Me.PanelDatosEspecificos.Controls.Add(Me.chkAlterntivo)
         Me.PanelDatosEspecificos.Controls.Add(Me.lblOrigen)
         Me.PanelDatosEspecificos.Controls.Add(Me.lblNProducto)
         Me.PanelDatosEspecificos.Controls.Add(Me.cboRubro)
-        Me.PanelDatosEspecificos.Controls.Add(Me.txtFabricante)
+        Me.PanelDatosEspecificos.Controls.Add(Me.txtCodFabricante)
         Me.PanelDatosEspecificos.Controls.Add(Me.txtCodigoBarra)
         Me.PanelDatosEspecificos.Controls.Add(Me.lblCodBarra)
         Me.PanelDatosEspecificos.Controls.Add(Me.lblCodFabricante)
@@ -562,20 +571,41 @@ Partial Class frmProductos
         '
         'PanelMovimientos
         '
+        Me.PanelMovimientos.Controls.Add(Me.Label4)
+        Me.PanelMovimientos.Controls.Add(Me.dtpFechaVenta)
+        Me.PanelMovimientos.Controls.Add(Me.dtpFechaCompra)
         Me.PanelMovimientos.Controls.Add(Me.lblPrecioLista)
-        Me.PanelMovimientos.Controls.Add(Me.txtLista)
+        Me.PanelMovimientos.Controls.Add(Me.txtPrecioLista)
         Me.PanelMovimientos.Controls.Add(Me.lblFechaUltVenta)
         Me.PanelMovimientos.Controls.Add(Me.lblFechaUltimaCompra)
         Me.PanelMovimientos.Controls.Add(Me.lblPrecioCompra)
         Me.PanelMovimientos.Controls.Add(Me.txtUtilidad)
         Me.PanelMovimientos.Controls.Add(Me.lblUtilidad)
-        Me.PanelMovimientos.Controls.Add(Me.txtCompra)
-        Me.PanelMovimientos.Controls.Add(Me.txtFechaUltCompra)
-        Me.PanelMovimientos.Controls.Add(Me.txtFechaUltVenta)
+        Me.PanelMovimientos.Controls.Add(Me.txtPrecioCompra)
         Me.PanelMovimientos.Location = New System.Drawing.Point(429, 248)
         Me.PanelMovimientos.Name = "PanelMovimientos"
         Me.PanelMovimientos.Size = New System.Drawing.Size(316, 157)
         Me.PanelMovimientos.TabIndex = 113
+        '
+        'dtpFechaVenta
+        '
+        Me.dtpFechaVenta.Enabled = False
+        Me.dtpFechaVenta.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.dtpFechaVenta.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaVenta.Location = New System.Drawing.Point(165, 116)
+        Me.dtpFechaVenta.Name = "dtpFechaVenta"
+        Me.dtpFechaVenta.Size = New System.Drawing.Size(121, 23)
+        Me.dtpFechaVenta.TabIndex = 113
+        '
+        'dtpFechaCompra
+        '
+        Me.dtpFechaCompra.Enabled = False
+        Me.dtpFechaCompra.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.dtpFechaCompra.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaCompra.Location = New System.Drawing.Point(165, 91)
+        Me.dtpFechaCompra.Name = "dtpFechaCompra"
+        Me.dtpFechaCompra.Size = New System.Drawing.Size(121, 23)
+        Me.dtpFechaCompra.TabIndex = 112
         '
         'lblPrecioLista
         '
@@ -588,13 +618,13 @@ Partial Class frmProductos
         Me.lblPrecioLista.TabIndex = 111
         Me.lblPrecioLista.Text = "Precio Lista"
         '
-        'txtLista
+        'txtPrecioLista
         '
-        Me.txtLista.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtLista.Location = New System.Drawing.Point(165, 68)
-        Me.txtLista.Name = "txtLista"
-        Me.txtLista.Size = New System.Drawing.Size(121, 23)
-        Me.txtLista.TabIndex = 104
+        Me.txtPrecioLista.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtPrecioLista.Location = New System.Drawing.Point(165, 66)
+        Me.txtPrecioLista.Name = "txtPrecioLista"
+        Me.txtPrecioLista.Size = New System.Drawing.Size(121, 23)
+        Me.txtPrecioLista.TabIndex = 104
         '
         'lblFechaUltVenta
         '
@@ -632,7 +662,7 @@ Partial Class frmProductos
         'txtUtilidad
         '
         Me.txtUtilidad.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtUtilidad.Location = New System.Drawing.Point(165, 42)
+        Me.txtUtilidad.Location = New System.Drawing.Point(165, 41)
         Me.txtUtilidad.Name = "txtUtilidad"
         Me.txtUtilidad.Size = New System.Drawing.Size(121, 23)
         Me.txtUtilidad.TabIndex = 103
@@ -648,31 +678,65 @@ Partial Class frmProductos
         Me.lblUtilidad.TabIndex = 107
         Me.lblUtilidad.Text = "Utilidad"
         '
-        'txtCompra
+        'txtPrecioCompra
         '
-        Me.txtCompra.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtCompra.Location = New System.Drawing.Point(165, 16)
-        Me.txtCompra.Name = "txtCompra"
-        Me.txtCompra.Size = New System.Drawing.Size(121, 23)
-        Me.txtCompra.TabIndex = 102
+        Me.txtPrecioCompra.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtPrecioCompra.Location = New System.Drawing.Point(165, 16)
+        Me.txtPrecioCompra.Name = "txtPrecioCompra"
+        Me.txtPrecioCompra.Size = New System.Drawing.Size(121, 23)
+        Me.txtPrecioCompra.TabIndex = 102
         '
-        'txtFechaUltCompra
+        'Label1
         '
-        Me.txtFechaUltCompra.Enabled = False
-        Me.txtFechaUltCompra.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtFechaUltCompra.Location = New System.Drawing.Point(165, 94)
-        Me.txtFechaUltCompra.Name = "txtFechaUltCompra"
-        Me.txtFechaUltCompra.Size = New System.Drawing.Size(121, 23)
-        Me.txtFechaUltCompra.TabIndex = 105
+        Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label1.ForeColor = System.Drawing.Color.Red
+        Me.Label1.Location = New System.Drawing.Point(94, 55)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(14, 15)
+        Me.Label1.TabIndex = 110
+        Me.Label1.Text = "*"
         '
-        'txtFechaUltVenta
+        'Label2
         '
-        Me.txtFechaUltVenta.Enabled = False
-        Me.txtFechaUltVenta.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtFechaUltVenta.Location = New System.Drawing.Point(165, 120)
-        Me.txtFechaUltVenta.Name = "txtFechaUltVenta"
-        Me.txtFechaUltVenta.Size = New System.Drawing.Size(121, 23)
-        Me.txtFechaUltVenta.TabIndex = 106
+        Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label2.ForeColor = System.Drawing.Color.Red
+        Me.Label2.Location = New System.Drawing.Point(351, 11)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(14, 15)
+        Me.Label2.TabIndex = 111
+        Me.Label2.Text = "*"
+        '
+        'Label3
+        '
+        Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label3.ForeColor = System.Drawing.Color.Red
+        Me.Label3.Location = New System.Drawing.Point(408, 99)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(14, 15)
+        Me.Label3.TabIndex = 112
+        Me.Label3.Text = "*"
+        '
+        'Label4
+        '
+        Me.Label4.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label4.ForeColor = System.Drawing.Color.Red
+        Me.Label4.Location = New System.Drawing.Point(83, 45)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(14, 15)
+        Me.Label4.TabIndex = 113
+        Me.Label4.Text = "*"
         '
         'frmProductos
         '
@@ -712,12 +776,12 @@ Partial Class frmProductos
 
     End Sub
     Friend WithEvents grdProductos As DataGridView
-    Friend WithEvents chkActivo As CheckBox
+    Friend WithEvents chkEstado As CheckBox
     Friend WithEvents lblOrigen As Label
     Friend WithEvents lblCodEstanteria As Label
     Friend WithEvents txtNumeroFila As TextBox
     Friend WithEvents txtCodigoBarra As TextBox
-    Friend WithEvents txtFabricante As TextBox
+    Friend WithEvents txtCodFabricante As TextBox
     Friend WithEvents lblCodBarra As Label
     Friend WithEvents lblCodFabricante As Label
     Friend WithEvents lblNFila As Label
@@ -740,7 +804,7 @@ Partial Class frmProductos
     Friend WithEvents lblNProducto As Label
     Friend WithEvents cboRubro As ComboBox
     Friend WithEvents txtId As TextBox
-    Friend WithEvents chkAlternativo As CheckBox
+    Friend WithEvents chkAlterntivo As CheckBox
     Friend WithEvents btnBuscar As Button
     Friend WithEvents btnAceptar As Button
     Friend WithEvents btnCancelar As Button
@@ -755,13 +819,17 @@ Partial Class frmProductos
     Friend WithEvents lblMovimientos As Label
     Friend WithEvents PanelMovimientos As Panel
     Friend WithEvents lblPrecioLista As Label
-    Friend WithEvents txtLista As TextBox
+    Friend WithEvents txtPrecioLista As TextBox
     Friend WithEvents lblFechaUltVenta As Label
     Friend WithEvents lblFechaUltimaCompra As Label
     Friend WithEvents lblPrecioCompra As Label
     Friend WithEvents txtUtilidad As TextBox
     Friend WithEvents lblUtilidad As Label
-    Friend WithEvents txtCompra As TextBox
-    Friend WithEvents txtFechaUltCompra As TextBox
-    Friend WithEvents txtFechaUltVenta As TextBox
+    Friend WithEvents txtPrecioCompra As TextBox
+    Friend WithEvents dtpFechaVenta As DateTimePicker
+    Friend WithEvents dtpFechaCompra As DateTimePicker
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label4 As Label
 End Class
