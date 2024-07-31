@@ -82,10 +82,10 @@ Public Class AD_Productos
     End Function
 
     Public Sub Agregar_Producto(Descripcion As String, NombreDiario As String, ID_Rubro As Integer, ID_Marca As Integer,
-                                CodigoBarra As String, CodFabricante As String, CantidadBulto As Decimal, ID_Origen As Integer,
-                                Alternativo As Boolean, ID_Original As Integer, Estado As Boolean, StockReal As Decimal,
-                                StockDisponible As Decimal, Estanteria As String, NumeroFila As String, PrecioCompra As Decimal,
-                                Utilidad As Decimal, PrecioLista As String, FechaCompra As Date, FechaVenta As Date)
+                            CodigoBarra As String, CodFabricante As String, CantidadBulto As Decimal, ID_Origen As Integer,
+                            Alternativo As Boolean, ID_Original As Integer, Estado As Boolean, StockReal As Decimal,
+                            StockDisponible As Decimal, Ubicacion As String, PrecioCompra As Decimal,
+                            Utilidad As Decimal, PrecioLista As String, FechaCompra As Date, FechaVenta As Date)
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Agregar_Producto", conexion)
                 comando.CommandType = CommandType.StoredProcedure
@@ -102,8 +102,7 @@ Public Class AD_Productos
                 comando.Parameters.AddWithValue("@Estado", Estado)
                 comando.Parameters.AddWithValue("@StockReal", StockReal)
                 comando.Parameters.AddWithValue("@StockDisponible", StockDisponible)
-                comando.Parameters.AddWithValue("@Estanteria", Estanteria)
-                comando.Parameters.AddWithValue("@NumeroFila", NumeroFila)
+                comando.Parameters.AddWithValue("@Ubicacion", Ubicacion)
                 comando.Parameters.AddWithValue("@PrecioCompra", PrecioCompra)
                 comando.Parameters.AddWithValue("@Utilidad", Utilidad)
                 comando.Parameters.AddWithValue("@PrecioLista", PrecioLista)

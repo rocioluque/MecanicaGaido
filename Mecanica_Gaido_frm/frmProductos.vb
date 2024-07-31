@@ -25,13 +25,13 @@ Public Class frmProductos
         txtPrecioCompra.Clear()
         txtUtilidad.Clear()
         txtPrecioLista.Clear()
-        txtEstanteria.Clear()
-        txtNumeroFila.Clear()
+        txtUbicacion.Clear()
         txtCodigoBarra.Clear()
         txtCodFabricante.Clear()
         cboRubro.SelectedIndex = -1
         cboMarca.SelectedIndex = -1
         cboOriginal.SelectedIndex = -1
+        cboOrigen.SelectedIndex = -1
         dtpFechaCompra.Value = DateTime.Today
         dtpFechaVenta.Value = DateTime.Today
         chkAlterntivo.Checked = False
@@ -81,30 +81,30 @@ Public Class frmProductos
 
     Public Sub CargarDatosEnTxt(ByVal rowindex As Integer)
         If grdProductos.Rows.Count > 0 AndAlso rowindex >= 0 AndAlso rowindex < grdProductos.Rows.Count Then
-
-            txtId.Text = grdProductos.Rows(rowindex).Cells("N° Producto").Value.ToString()
-            txtDescripcion.Text = grdProductos.Rows(rowindex).Cells("Producto").Value.ToString()
-            txtNombreDiario.Text = grdProductos.Rows(rowindex).Cells("Nombre Diario").Value.ToString()
-            cboMarca.SelectedValue = grdProductos.Rows(rowindex).Cells("Marca").Value
-            txtStockReal.Text = grdProductos.Rows(rowindex).Cells("Stock Real").Value.ToString()
-            txtStockDisponible.Text = grdProductos.Rows(rowindex).Cells("Stock Disponible").Value.ToString()
-            txtPrecioLista.Text = grdProductos.Rows(rowindex).Cells("Precio Lista").Value.ToString()
-            txtEstanteria.Text = grdProductos.Rows(rowindex).Cells("Cod. estanteria").Value.ToString()
-            txtNumeroFila.Text = grdProductos.Rows(rowindex).Cells("Fila").Value.ToString()
-
-            cboRubro.SelectedValue = grdProductos.Rows(rowindex).Cells("Rubro").Value
-            chkAlterntivo.Checked = grdProductos.Rows(rowindex).Cells("alternativo").Value.ToString()
-            cboOriginal.SelectedValue = grdProductos.Rows(rowindex).Cells("ID_Original").Value
-            txtCantidadBulto.Text = grdProductos.Rows(rowindex).Cells("Cantidad_X_Bulto").Value.ToString()
-            txtPrecioCompra.Text = grdProductos.Rows(rowindex).Cells("PrecioCompra").Value.ToString()
-            txtUtilidad.Text = grdProductos.Rows(rowindex).Cells("Utilidad").Value.ToString()
-            dtpFechaCompra.Value = grdProductos.Rows(rowindex).Cells("FechaUltimaCompra").Value
-            dtpFechaVenta.Value = grdProductos.Rows(rowindex).Cells("FechaUltimaVenta").Value
-            txtCodigoBarra.Text = grdProductos.Rows(rowindex).Cells("CodBarra").Value.ToString()
-            txtCodFabricante.Text = grdProductos.Rows(rowindex).Cells("CodFabricante").Value.ToString()
-            cboOrigen.SelectedValue = grdProductos.Rows(rowindex).Cells("Origen").Value
-            chkEstado.Checked = grdProductos.Rows(rowindex).Cells("Estado").Value.ToString()
-
+            Try
+                txtId.Text = grdProductos.Rows(rowindex).Cells("N° Producto").Value.ToString()
+                txtDescripcion.Text = grdProductos.Rows(rowindex).Cells("Producto").Value.ToString()
+                txtNombreDiario.Text = grdProductos.Rows(rowindex).Cells("Nombre Diario").Value.ToString()
+                cboMarca.SelectedValue = grdProductos.Rows(rowindex).Cells("Marca").Value.ToString()
+                txtStockReal.Text = grdProductos.Rows(rowindex).Cells("Stock Real").Value.ToString()
+                txtStockDisponible.Text = grdProductos.Rows(rowindex).Cells("Stock Disponible").Value.ToString()
+                txtPrecioLista.Text = grdProductos.Rows(rowindex).Cells("Precio Lista").Value.ToString()
+                txtUbicacion.Text = grdProductos.Rows(rowindex).Cells("Ubicacion").Value.ToString()
+                cboRubro.SelectedValue = grdProductos.Rows(rowindex).Cells("Rubro").Value.ToString()
+                chkAlterntivo.Checked = grdProductos.Rows(rowindex).Cells("alternativo").Value.ToString()
+                cboOriginal.SelectedValue = grdProductos.Rows(rowindex).Cells("ID_Original").Value.ToString()
+                txtCantidadBulto.Text = grdProductos.Rows(rowindex).Cells("Cantidad_X_Bulto").Value.ToString()
+                txtPrecioCompra.Text = grdProductos.Rows(rowindex).Cells("PrecioCompra").Value.ToString()
+                txtUtilidad.Text = grdProductos.Rows(rowindex).Cells("Utilidad").Value.ToString()
+                dtpFechaCompra.Value = grdProductos.Rows(rowindex).Cells("FechaUltimaCompra").Value
+                dtpFechaVenta.Value = grdProductos.Rows(rowindex).Cells("FechaUltimaVenta").Value
+                txtCodigoBarra.Text = grdProductos.Rows(rowindex).Cells("CodBarra").Value.ToString()
+                txtCodFabricante.Text = grdProductos.Rows(rowindex).Cells("CodFabricante").Value.ToString()
+                cboOrigen.SelectedValue = grdProductos.Rows(rowindex).Cells("Origen").Value.ToString()
+                chkEstado.Checked = grdProductos.Rows(rowindex).Cells("Estado").Value.ToString()
+            Catch ex As Exception
+                MessageBox.Show("Error al cargar datos: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
         End If
     End Sub
 
@@ -128,6 +128,7 @@ Public Class frmProductos
                 cboMarca.DataSource = tabla
                 cboMarca.DisplayMember = "Nombre"
                 cboMarca.ValueMember = "ID_Marca"
+                cboMarca.SelectedIndex = -1
             Else
                 MsgBox("No se encontraron marcas.", vbInformation, "Información")
             End If
@@ -144,6 +145,7 @@ Public Class frmProductos
                 cboRubro.DataSource = tabla
                 cboRubro.DisplayMember = "Nombre"
                 cboRubro.ValueMember = "ID_Rubro"
+                cboRubro.SelectedIndex = -1
             Else
                 MsgBox("No se encontraron rubros.", vbInformation, "Información")
             End If
@@ -160,6 +162,7 @@ Public Class frmProductos
                 cboOriginal.DataSource = tabla
                 cboOriginal.DisplayMember = "Descripcion"
                 cboOriginal.ValueMember = "ID_Repuestos"
+                cboOriginal.SelectedIndex = -1
             Else
                 MsgBox("No se encontraron productos originales.", vbInformation, "Información")
             End If
@@ -172,13 +175,13 @@ Public Class frmProductos
 #Region "Cargar"
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         If txtDescripcion.Text <> Nothing And cboMarca.SelectedValue <> Nothing And txtCodFabricante.Text <> Nothing And
-            txtEstanteria.Text <> Nothing And txtNumeroFila.Text <> Nothing And txtUtilidad.Text <> Nothing Then
+            txtUbicacion.Text <> Nothing And txtUtilidad.Text <> Nothing Then
 
             Try
                 o_productos.Agregar_Producto(txtDescripcion.Text, txtNombreDiario.Text, CInt(cboRubro.SelectedValue),
                        CInt(cboMarca.SelectedValue), txtCodigoBarra.Text, txtCodFabricante.Text, txtCantidadBulto.Text,
                        CInt(cboOrigen.SelectedValue), chkAlterntivo.Checked, CInt(cboOriginal.SelectedValue), chkEstado.Checked, txtStockReal.Text,
-                       txtStockDisponible.Text, txtEstanteria.Text, txtNumeroFila.Text, txtPrecioCompra.Text, txtUtilidad.Text, txtPrecioLista.Text,
+                       txtStockDisponible.Text, txtUbicacion.Text, txtPrecioCompra.Text, txtUtilidad.Text, txtPrecioLista.Text,
                        dtpFechaCompra.Value, dtpFechaVenta.Value)
 
                 MsgBox("Producto agregado correctamente.", vbInformation, "Información")
@@ -371,7 +374,7 @@ Public Class frmProductos
         End If
     End Sub
 
-    Private Sub txtNumeroFila_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNumeroFila.KeyPress
+    Private Sub txtNumeroFila_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
         Else
