@@ -37,9 +37,10 @@ Partial Class frmModificarRoles
         'txtRol
         '
         Me.txtRol.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtRol.Location = New System.Drawing.Point(374, 38)
+        Me.txtRol.Location = New System.Drawing.Point(561, 58)
+        Me.txtRol.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtRol.Name = "txtRol"
-        Me.txtRol.Size = New System.Drawing.Size(187, 21)
+        Me.txtRol.Size = New System.Drawing.Size(278, 21)
         Me.txtRol.TabIndex = 33
         '
         'lblRol
@@ -47,7 +48,8 @@ Partial Class frmModificarRoles
         Me.lblRol.AutoSize = True
         Me.lblRol.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRol.ForeColor = System.Drawing.Color.White
-        Me.lblRol.Location = New System.Drawing.Point(281, 39)
+        Me.lblRol.Location = New System.Drawing.Point(422, 60)
+        Me.lblRol.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblRol.Name = "lblRol"
         Me.lblRol.Size = New System.Drawing.Size(31, 20)
         Me.lblRol.TabIndex = 34
@@ -58,8 +60,7 @@ Partial Class frmModificarRoles
         Me.chkEstado.AutoSize = True
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
-        Me.chkEstado.Location = New System.Drawing.Point(77, 86)
-        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
+        Me.chkEstado.Location = New System.Drawing.Point(116, 132)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
         Me.chkEstado.TabIndex = 32
@@ -68,15 +69,20 @@ Partial Class frmModificarRoles
         '
         'grdModificarRol
         '
+        Me.grdModificarRol.AllowUserToAddRows = False
+        Me.grdModificarRol.AllowUserToDeleteRows = False
+        Me.grdModificarRol.AllowUserToResizeRows = False
         Me.grdModificarRol.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdModificarRol.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.grdModificarRol.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
         Me.grdModificarRol.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarRol.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdModificarRol.Location = New System.Drawing.Point(44, 146)
+        Me.grdModificarRol.Location = New System.Drawing.Point(66, 225)
+        Me.grdModificarRol.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.grdModificarRol.Name = "grdModificarRol"
         Me.grdModificarRol.ReadOnly = True
-        Me.grdModificarRol.Size = New System.Drawing.Size(747, 221)
+        Me.grdModificarRol.RowHeadersVisible = False
+        Me.grdModificarRol.Size = New System.Drawing.Size(1120, 340)
         Me.grdModificarRol.TabIndex = 31
         '
         'btnCancelar
@@ -87,9 +93,10 @@ Partial Class frmModificarRoles
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
-        Me.btnCancelar.Location = New System.Drawing.Point(745, 86)
+        Me.btnCancelar.Location = New System.Drawing.Point(1118, 132)
+        Me.btnCancelar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(82, 29)
+        Me.btnCancelar.Size = New System.Drawing.Size(123, 45)
         Me.btnCancelar.TabIndex = 30
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = True
@@ -97,9 +104,10 @@ Partial Class frmModificarRoles
         'txtId
         '
         Me.txtId.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtId.Location = New System.Drawing.Point(172, 38)
+        Me.txtId.Location = New System.Drawing.Point(258, 58)
+        Me.txtId.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtId.Name = "txtId"
-        Me.txtId.Size = New System.Drawing.Size(63, 21)
+        Me.txtId.Size = New System.Drawing.Size(92, 21)
         Me.txtId.TabIndex = 25
         '
         'lblNumeroRol
@@ -107,7 +115,8 @@ Partial Class frmModificarRoles
         Me.lblNumeroRol.AutoSize = True
         Me.lblNumeroRol.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNumeroRol.ForeColor = System.Drawing.Color.White
-        Me.lblNumeroRol.Location = New System.Drawing.Point(73, 39)
+        Me.lblNumeroRol.Location = New System.Drawing.Point(110, 60)
+        Me.lblNumeroRol.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNumeroRol.Name = "lblNumeroRol"
         Me.lblNumeroRol.Size = New System.Drawing.Size(52, 20)
         Me.lblNumeroRol.TabIndex = 29
@@ -121,19 +130,20 @@ Partial Class frmModificarRoles
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
-        Me.btnModificar.Location = New System.Drawing.Point(745, 30)
+        Me.btnModificar.Location = New System.Drawing.Point(1118, 46)
+        Me.btnModificar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnModificar.Name = "btnModificar"
-        Me.btnModificar.Size = New System.Drawing.Size(82, 29)
+        Me.btnModificar.Size = New System.Drawing.Size(123, 45)
         Me.btnModificar.TabIndex = 28
         Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = True
         '
         'frmModificarRoles
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(871, 396)
+        Me.ClientSize = New System.Drawing.Size(1306, 609)
         Me.Controls.Add(Me.txtRol)
         Me.Controls.Add(Me.lblRol)
         Me.Controls.Add(Me.chkEstado)
@@ -144,6 +154,7 @@ Partial Class frmModificarRoles
         Me.Controls.Add(Me.btnModificar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "frmModificarRoles"
         Me.Text = "frmModificarRoles"
         CType(Me.grdModificarRol, System.ComponentModel.ISupportInitialize).EndInit()

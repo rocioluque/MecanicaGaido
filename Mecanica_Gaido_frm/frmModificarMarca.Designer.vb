@@ -41,8 +41,7 @@ Partial Class frmModificarMarca
         Me.chkVehiculo.AutoSize = True
         Me.chkVehiculo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkVehiculo.ForeColor = System.Drawing.Color.White
-        Me.chkVehiculo.Location = New System.Drawing.Point(294, 110)
-        Me.chkVehiculo.Margin = New System.Windows.Forms.Padding(2)
+        Me.chkVehiculo.Location = New System.Drawing.Point(441, 169)
         Me.chkVehiculo.Name = "chkVehiculo"
         Me.chkVehiculo.Size = New System.Drawing.Size(135, 21)
         Me.chkVehiculo.TabIndex = 17
@@ -54,8 +53,7 @@ Partial Class frmModificarMarca
         Me.chkProducto.AutoSize = True
         Me.chkProducto.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkProducto.ForeColor = System.Drawing.Color.White
-        Me.chkProducto.Location = New System.Drawing.Point(86, 110)
-        Me.chkProducto.Margin = New System.Windows.Forms.Padding(2)
+        Me.chkProducto.Location = New System.Drawing.Point(129, 169)
         Me.chkProducto.Name = "chkProducto"
         Me.chkProducto.Size = New System.Drawing.Size(141, 21)
         Me.chkProducto.TabIndex = 16
@@ -65,9 +63,10 @@ Partial Class frmModificarMarca
         'txtId
         '
         Me.txtId.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtId.Location = New System.Drawing.Point(181, 54)
+        Me.txtId.Location = New System.Drawing.Point(272, 83)
+        Me.txtId.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtId.Name = "txtId"
-        Me.txtId.Size = New System.Drawing.Size(63, 21)
+        Me.txtId.Size = New System.Drawing.Size(92, 21)
         Me.txtId.TabIndex = 15
         '
         'lblNumeroMarca
@@ -75,7 +74,8 @@ Partial Class frmModificarMarca
         Me.lblNumeroMarca.AutoSize = True
         Me.lblNumeroMarca.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNumeroMarca.ForeColor = System.Drawing.Color.White
-        Me.lblNumeroMarca.Location = New System.Drawing.Point(82, 55)
+        Me.lblNumeroMarca.Location = New System.Drawing.Point(123, 85)
+        Me.lblNumeroMarca.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNumeroMarca.Name = "lblNumeroMarca"
         Me.lblNumeroMarca.Size = New System.Drawing.Size(80, 20)
         Me.lblNumeroMarca.TabIndex = 19
@@ -89,9 +89,10 @@ Partial Class frmModificarMarca
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
-        Me.btnModificar.Location = New System.Drawing.Point(754, 46)
+        Me.btnModificar.Location = New System.Drawing.Point(1131, 71)
+        Me.btnModificar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnModificar.Name = "btnModificar"
-        Me.btnModificar.Size = New System.Drawing.Size(82, 29)
+        Me.btnModificar.Size = New System.Drawing.Size(123, 45)
         Me.btnModificar.TabIndex = 18
         Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = True
@@ -104,24 +105,30 @@ Partial Class frmModificarMarca
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
-        Me.btnCancelar.Location = New System.Drawing.Point(754, 102)
+        Me.btnCancelar.Location = New System.Drawing.Point(1131, 157)
+        Me.btnCancelar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(82, 29)
+        Me.btnCancelar.Size = New System.Drawing.Size(123, 45)
         Me.btnCancelar.TabIndex = 20
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = True
         '
         'grdModificarMarca
         '
+        Me.grdModificarMarca.AllowUserToAddRows = False
+        Me.grdModificarMarca.AllowUserToDeleteRows = False
+        Me.grdModificarMarca.AllowUserToResizeRows = False
         Me.grdModificarMarca.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdModificarMarca.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.grdModificarMarca.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
         Me.grdModificarMarca.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarMarca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdModificarMarca.Location = New System.Drawing.Point(53, 162)
+        Me.grdModificarMarca.Location = New System.Drawing.Point(80, 249)
+        Me.grdModificarMarca.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.grdModificarMarca.Name = "grdModificarMarca"
         Me.grdModificarMarca.ReadOnly = True
-        Me.grdModificarMarca.Size = New System.Drawing.Size(747, 221)
+        Me.grdModificarMarca.RowHeadersVisible = False
+        Me.grdModificarMarca.Size = New System.Drawing.Size(1120, 340)
         Me.grdModificarMarca.TabIndex = 21
         '
         'chkEstado
@@ -129,8 +136,7 @@ Partial Class frmModificarMarca
         Me.chkEstado.AutoSize = True
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
-        Me.chkEstado.Location = New System.Drawing.Point(496, 110)
-        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
+        Me.chkEstado.Location = New System.Drawing.Point(744, 169)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
         Me.chkEstado.TabIndex = 22
@@ -140,9 +146,10 @@ Partial Class frmModificarMarca
         'txtMarca
         '
         Me.txtMarca.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMarca.Location = New System.Drawing.Point(394, 54)
+        Me.txtMarca.Location = New System.Drawing.Point(591, 83)
+        Me.txtMarca.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtMarca.Name = "txtMarca"
-        Me.txtMarca.Size = New System.Drawing.Size(187, 21)
+        Me.txtMarca.Size = New System.Drawing.Size(278, 21)
         Me.txtMarca.TabIndex = 23
         '
         'lblMarca
@@ -150,7 +157,8 @@ Partial Class frmModificarMarca
         Me.lblMarca.AutoSize = True
         Me.lblMarca.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMarca.ForeColor = System.Drawing.Color.White
-        Me.lblMarca.Location = New System.Drawing.Point(290, 55)
+        Me.lblMarca.Location = New System.Drawing.Point(435, 85)
+        Me.lblMarca.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMarca.Name = "lblMarca"
         Me.lblMarca.Size = New System.Drawing.Size(59, 20)
         Me.lblMarca.TabIndex = 24
@@ -158,10 +166,10 @@ Partial Class frmModificarMarca
         '
         'frmModificarMarca
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(871, 396)
+        Me.ClientSize = New System.Drawing.Size(1306, 609)
         Me.Controls.Add(Me.txtMarca)
         Me.Controls.Add(Me.lblMarca)
         Me.Controls.Add(Me.chkEstado)
@@ -174,6 +182,7 @@ Partial Class frmModificarMarca
         Me.Controls.Add(Me.btnModificar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "frmModificarMarca"
         Me.Text = "frmModificar"
         CType(Me.grdModificarMarca, System.ComponentModel.ISupportInitialize).EndInit()
