@@ -85,13 +85,13 @@ Partial Class frmVentas
         Me.grdVentas.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdVentas.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdVentas.Location = New System.Drawing.Point(36, 458)
-        Me.grdVentas.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.grdVentas.Location = New System.Drawing.Point(24, 298)
         Me.grdVentas.Name = "grdVentas"
         Me.grdVentas.ReadOnly = True
         Me.grdVentas.RowHeadersVisible = False
         Me.grdVentas.RowHeadersWidth = 51
-        Me.grdVentas.Size = New System.Drawing.Size(1332, 402)
+        Me.grdVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.grdVentas.Size = New System.Drawing.Size(888, 261)
         Me.grdVentas.TabIndex = 95
         '
         'chkEstado
@@ -99,8 +99,7 @@ Partial Class frmVentas
         Me.chkEstado.AutoSize = True
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
-        Me.chkEstado.Location = New System.Drawing.Point(150, 317)
-        Me.chkEstado.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.chkEstado.Location = New System.Drawing.Point(100, 206)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
         Me.chkEstado.TabIndex = 8
@@ -112,8 +111,7 @@ Partial Class frmVentas
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label14.ForeColor = System.Drawing.Color.White
-        Me.Label14.Location = New System.Drawing.Point(654, 280)
-        Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label14.Location = New System.Drawing.Point(436, 182)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(124, 17)
         Me.Label14.TabIndex = 92
@@ -124,8 +122,7 @@ Partial Class frmVentas
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.ForeColor = System.Drawing.Color.White
-        Me.Label13.Location = New System.Drawing.Point(658, 238)
-        Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label13.Location = New System.Drawing.Point(439, 155)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(98, 17)
         Me.Label13.TabIndex = 91
@@ -136,8 +133,7 @@ Partial Class frmVentas
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(658, 198)
-        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label11.Location = New System.Drawing.Point(439, 129)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(39, 17)
         Me.Label11.TabIndex = 90
@@ -148,8 +144,7 @@ Partial Class frmVentas
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(658, 78)
-        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label9.Location = New System.Drawing.Point(439, 51)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(62, 17)
         Me.Label9.TabIndex = 89
@@ -160,8 +155,7 @@ Partial Class frmVentas
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(658, 118)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label8.Location = New System.Drawing.Point(439, 77)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(29, 17)
         Me.Label8.TabIndex = 88
@@ -172,8 +166,7 @@ Partial Class frmVentas
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(658, 158)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label7.Location = New System.Drawing.Point(439, 103)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(111, 17)
         Me.Label7.TabIndex = 87
@@ -181,18 +174,16 @@ Partial Class frmVentas
         '
         'txtOtrosImpuestos
         '
-        Me.txtOtrosImpuestos.Location = New System.Drawing.Point(884, 157)
-        Me.txtOtrosImpuestos.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtOtrosImpuestos.Location = New System.Drawing.Point(589, 102)
         Me.txtOtrosImpuestos.Name = "txtOtrosImpuestos"
-        Me.txtOtrosImpuestos.Size = New System.Drawing.Size(180, 26)
+        Me.txtOtrosImpuestos.Size = New System.Drawing.Size(121, 20)
         Me.txtOtrosImpuestos.TabIndex = 11
         '
         'txtTotal
         '
-        Me.txtTotal.Location = New System.Drawing.Point(884, 197)
-        Me.txtTotal.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtTotal.Location = New System.Drawing.Point(589, 128)
         Me.txtTotal.Name = "txtTotal"
-        Me.txtTotal.Size = New System.Drawing.Size(180, 26)
+        Me.txtTotal.Size = New System.Drawing.Size(121, 20)
         Me.txtTotal.TabIndex = 12
         '
         'Label6
@@ -200,8 +191,7 @@ Partial Class frmVentas
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(147, 240)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label6.Location = New System.Drawing.Point(98, 156)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(72, 17)
         Me.Label6.TabIndex = 84
@@ -212,8 +202,7 @@ Partial Class frmVentas
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(146, 198)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label5.Location = New System.Drawing.Point(97, 129)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(57, 17)
         Me.Label5.TabIndex = 83
@@ -224,8 +213,7 @@ Partial Class frmVentas
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(147, 282)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Location = New System.Drawing.Point(98, 183)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(109, 17)
         Me.Label4.TabIndex = 82
@@ -233,18 +221,16 @@ Partial Class frmVentas
         '
         'txtSubtotal
         '
-        Me.txtSubtotal.Location = New System.Drawing.Point(884, 77)
-        Me.txtSubtotal.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtSubtotal.Location = New System.Drawing.Point(589, 50)
         Me.txtSubtotal.Name = "txtSubtotal"
-        Me.txtSubtotal.Size = New System.Drawing.Size(180, 26)
+        Me.txtSubtotal.Size = New System.Drawing.Size(121, 20)
         Me.txtSubtotal.TabIndex = 9
         '
         'txtIVA
         '
-        Me.txtIVA.Location = New System.Drawing.Point(884, 117)
-        Me.txtIVA.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtIVA.Location = New System.Drawing.Point(589, 76)
         Me.txtIVA.Name = "txtIVA"
-        Me.txtIVA.Size = New System.Drawing.Size(180, 26)
+        Me.txtIVA.Size = New System.Drawing.Size(121, 20)
         Me.txtIVA.TabIndex = 10
         '
         'Label3
@@ -252,8 +238,7 @@ Partial Class frmVentas
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(146, 158)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Location = New System.Drawing.Point(97, 103)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(133, 17)
         Me.Label3.TabIndex = 78
@@ -261,10 +246,9 @@ Partial Class frmVentas
         '
         'txtNumComprobante
         '
-        Me.txtNumComprobante.Location = New System.Drawing.Point(376, 154)
-        Me.txtNumComprobante.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtNumComprobante.Location = New System.Drawing.Point(251, 100)
         Me.txtNumComprobante.Name = "txtNumComprobante"
-        Me.txtNumComprobante.Size = New System.Drawing.Size(180, 26)
+        Me.txtNumComprobante.Size = New System.Drawing.Size(121, 20)
         Me.txtNumComprobante.TabIndex = 4
         '
         'Label2
@@ -272,8 +256,7 @@ Partial Class frmVentas
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(146, 118)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(97, 77)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(90, 17)
         Me.Label2.TabIndex = 76
@@ -284,8 +267,7 @@ Partial Class frmVentas
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(146, 77)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Location = New System.Drawing.Point(97, 50)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(21, 17)
         Me.Label1.TabIndex = 75
@@ -294,37 +276,33 @@ Partial Class frmVentas
         'cboVendedor
         '
         Me.cboVendedor.FormattingEnabled = True
-        Me.cboVendedor.Location = New System.Drawing.Point(376, 237)
-        Me.cboVendedor.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.cboVendedor.Location = New System.Drawing.Point(251, 154)
         Me.cboVendedor.Name = "cboVendedor"
-        Me.cboVendedor.Size = New System.Drawing.Size(180, 28)
+        Me.cboVendedor.Size = New System.Drawing.Size(121, 21)
         Me.cboVendedor.TabIndex = 6
         '
         'cboFormaPago
         '
         Me.cboFormaPago.FormattingEnabled = True
-        Me.cboFormaPago.Location = New System.Drawing.Point(376, 282)
-        Me.cboFormaPago.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.cboFormaPago.Location = New System.Drawing.Point(251, 183)
         Me.cboFormaPago.Name = "cboFormaPago"
-        Me.cboFormaPago.Size = New System.Drawing.Size(180, 28)
+        Me.cboFormaPago.Size = New System.Drawing.Size(121, 21)
         Me.cboFormaPago.TabIndex = 7
         '
         'cboFormaEntrega
         '
         Me.cboFormaEntrega.FormattingEnabled = True
-        Me.cboFormaEntrega.Location = New System.Drawing.Point(884, 278)
-        Me.cboFormaEntrega.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.cboFormaEntrega.Location = New System.Drawing.Point(589, 181)
         Me.cboFormaEntrega.Name = "cboFormaEntrega"
-        Me.cboFormaEntrega.Size = New System.Drawing.Size(180, 28)
+        Me.cboFormaEntrega.Size = New System.Drawing.Size(121, 21)
         Me.cboFormaEntrega.TabIndex = 14
         '
         'cboTipoVenta
         '
         Me.cboTipoVenta.FormattingEnabled = True
-        Me.cboTipoVenta.Location = New System.Drawing.Point(884, 237)
-        Me.cboTipoVenta.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.cboTipoVenta.Location = New System.Drawing.Point(589, 154)
         Me.cboTipoVenta.Name = "cboTipoVenta"
-        Me.cboTipoVenta.Size = New System.Drawing.Size(180, 28)
+        Me.cboTipoVenta.Size = New System.Drawing.Size(121, 21)
         Me.cboTipoVenta.TabIndex = 13
         '
         'btnModificar
@@ -337,10 +315,9 @@ Partial Class frmVentas
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
-        Me.btnModificar.Location = New System.Drawing.Point(1167, 180)
-        Me.btnModificar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnModificar.Location = New System.Drawing.Point(778, 117)
         Me.btnModificar.Name = "btnModificar"
-        Me.btnModificar.Size = New System.Drawing.Size(176, 57)
+        Me.btnModificar.Size = New System.Drawing.Size(117, 37)
         Me.btnModificar.TabIndex = 16
         Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = False
@@ -356,10 +333,9 @@ Partial Class frmVentas
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
-        Me.btnCancelar.Location = New System.Drawing.Point(1167, 282)
-        Me.btnCancelar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnCancelar.Location = New System.Drawing.Point(778, 183)
         Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(176, 57)
+        Me.btnCancelar.Size = New System.Drawing.Size(117, 37)
         Me.btnCancelar.TabIndex = 17
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = False
@@ -374,20 +350,18 @@ Partial Class frmVentas
         Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAceptar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAceptar.ForeColor = System.Drawing.Color.White
-        Me.btnAceptar.Location = New System.Drawing.Point(1167, 83)
-        Me.btnAceptar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnAceptar.Location = New System.Drawing.Point(778, 54)
         Me.btnAceptar.Name = "btnAceptar"
-        Me.btnAceptar.Size = New System.Drawing.Size(176, 57)
+        Me.btnAceptar.Size = New System.Drawing.Size(117, 37)
         Me.btnAceptar.TabIndex = 15
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = False
         '
         'txtID
         '
-        Me.txtID.Location = New System.Drawing.Point(376, 72)
-        Me.txtID.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtID.Location = New System.Drawing.Point(251, 47)
         Me.txtID.Name = "txtID"
-        Me.txtID.Size = New System.Drawing.Size(67, 26)
+        Me.txtID.Size = New System.Drawing.Size(46, 20)
         Me.txtID.TabIndex = 1
         '
         'btnBuscar
@@ -400,39 +374,35 @@ Partial Class frmVentas
         Me.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBuscar.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnBuscar.ForeColor = System.Drawing.Color.White
-        Me.btnBuscar.Location = New System.Drawing.Point(483, 60)
-        Me.btnBuscar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnBuscar.Location = New System.Drawing.Point(322, 39)
         Me.btnBuscar.Name = "btnBuscar"
-        Me.btnBuscar.Size = New System.Drawing.Size(75, 43)
+        Me.btnBuscar.Size = New System.Drawing.Size(50, 28)
         Me.btnBuscar.TabIndex = 2
         Me.btnBuscar.Text = "..."
         Me.btnBuscar.UseVisualStyleBackColor = False
         '
         'txtFechaVenta
         '
-        Me.txtFechaVenta.Location = New System.Drawing.Point(376, 114)
-        Me.txtFechaVenta.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtFechaVenta.Location = New System.Drawing.Point(251, 74)
         Me.txtFechaVenta.Name = "txtFechaVenta"
-        Me.txtFechaVenta.Size = New System.Drawing.Size(180, 26)
+        Me.txtFechaVenta.Size = New System.Drawing.Size(121, 20)
         Me.txtFechaVenta.TabIndex = 3
         '
         'cboCuenta
         '
         Me.cboCuenta.FormattingEnabled = True
-        Me.cboCuenta.Location = New System.Drawing.Point(376, 194)
-        Me.cboCuenta.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.cboCuenta.Location = New System.Drawing.Point(251, 126)
         Me.cboCuenta.Name = "cboCuenta"
-        Me.cboCuenta.Size = New System.Drawing.Size(180, 28)
+        Me.cboCuenta.Size = New System.Drawing.Size(121, 21)
         Me.cboCuenta.TabIndex = 5
         '
         'btnAgregarCuenta
         '
         Me.btnAgregarCuenta.BackgroundImage = CType(resources.GetObject("btnAgregarCuenta.BackgroundImage"), System.Drawing.Image)
         Me.btnAgregarCuenta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnAgregarCuenta.Location = New System.Drawing.Point(567, 194)
-        Me.btnAgregarCuenta.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnAgregarCuenta.Location = New System.Drawing.Point(378, 126)
         Me.btnAgregarCuenta.Name = "btnAgregarCuenta"
-        Me.btnAgregarCuenta.Size = New System.Drawing.Size(39, 32)
+        Me.btnAgregarCuenta.Size = New System.Drawing.Size(26, 21)
         Me.btnAgregarCuenta.TabIndex = 107
         Me.btnAgregarCuenta.TabStop = False
         '
@@ -440,10 +410,9 @@ Partial Class frmVentas
         '
         Me.btnAgregarEmpleado.BackgroundImage = CType(resources.GetObject("btnAgregarEmpleado.BackgroundImage"), System.Drawing.Image)
         Me.btnAgregarEmpleado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnAgregarEmpleado.Location = New System.Drawing.Point(567, 237)
-        Me.btnAgregarEmpleado.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnAgregarEmpleado.Location = New System.Drawing.Point(378, 154)
         Me.btnAgregarEmpleado.Name = "btnAgregarEmpleado"
-        Me.btnAgregarEmpleado.Size = New System.Drawing.Size(39, 32)
+        Me.btnAgregarEmpleado.Size = New System.Drawing.Size(26, 21)
         Me.btnAgregarEmpleado.TabIndex = 108
         Me.btnAgregarEmpleado.TabStop = False
         '
@@ -451,10 +420,9 @@ Partial Class frmVentas
         '
         Me.btnAgregarFormaPago.BackgroundImage = CType(resources.GetObject("btnAgregarFormaPago.BackgroundImage"), System.Drawing.Image)
         Me.btnAgregarFormaPago.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnAgregarFormaPago.Location = New System.Drawing.Point(567, 282)
-        Me.btnAgregarFormaPago.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnAgregarFormaPago.Location = New System.Drawing.Point(378, 183)
         Me.btnAgregarFormaPago.Name = "btnAgregarFormaPago"
-        Me.btnAgregarFormaPago.Size = New System.Drawing.Size(39, 32)
+        Me.btnAgregarFormaPago.Size = New System.Drawing.Size(26, 21)
         Me.btnAgregarFormaPago.TabIndex = 109
         Me.btnAgregarFormaPago.TabStop = False
         '
@@ -462,10 +430,9 @@ Partial Class frmVentas
         '
         Me.btnTipoVenta.BackgroundImage = CType(resources.GetObject("btnTipoVenta.BackgroundImage"), System.Drawing.Image)
         Me.btnTipoVenta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnTipoVenta.Location = New System.Drawing.Point(1074, 237)
-        Me.btnTipoVenta.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnTipoVenta.Location = New System.Drawing.Point(716, 154)
         Me.btnTipoVenta.Name = "btnTipoVenta"
-        Me.btnTipoVenta.Size = New System.Drawing.Size(39, 32)
+        Me.btnTipoVenta.Size = New System.Drawing.Size(26, 21)
         Me.btnTipoVenta.TabIndex = 110
         Me.btnTipoVenta.TabStop = False
         '
@@ -473,10 +440,9 @@ Partial Class frmVentas
         '
         Me.btnFormaEntrega.BackgroundImage = CType(resources.GetObject("btnFormaEntrega.BackgroundImage"), System.Drawing.Image)
         Me.btnFormaEntrega.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnFormaEntrega.Location = New System.Drawing.Point(1074, 278)
-        Me.btnFormaEntrega.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnFormaEntrega.Location = New System.Drawing.Point(716, 181)
         Me.btnFormaEntrega.Name = "btnFormaEntrega"
-        Me.btnFormaEntrega.Size = New System.Drawing.Size(39, 32)
+        Me.btnFormaEntrega.Size = New System.Drawing.Size(26, 21)
         Me.btnFormaEntrega.TabIndex = 111
         Me.btnFormaEntrega.TabStop = False
         '
@@ -490,10 +456,9 @@ Partial Class frmVentas
         Me.PanelDetalleDeVentas.Controls.Add(Me.Label12)
         Me.PanelDetalleDeVentas.Controls.Add(Me.cboProductoVenta)
         Me.PanelDetalleDeVentas.Controls.Add(Me.Label10)
-        Me.PanelDetalleDeVentas.Location = New System.Drawing.Point(20, 377)
-        Me.PanelDetalleDeVentas.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.PanelDetalleDeVentas.Location = New System.Drawing.Point(13, 245)
         Me.PanelDetalleDeVentas.Name = "PanelDetalleDeVentas"
-        Me.PanelDetalleDeVentas.Size = New System.Drawing.Size(1371, 498)
+        Me.PanelDetalleDeVentas.Size = New System.Drawing.Size(914, 324)
         Me.PanelDetalleDeVentas.TabIndex = 112
         '
         'btnQuitarVenta
@@ -506,10 +471,9 @@ Partial Class frmVentas
         Me.btnQuitarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnQuitarVenta.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnQuitarVenta.ForeColor = System.Drawing.Color.White
-        Me.btnQuitarVenta.Location = New System.Drawing.Point(1173, 15)
-        Me.btnQuitarVenta.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnQuitarVenta.Location = New System.Drawing.Point(782, 10)
         Me.btnQuitarVenta.Name = "btnQuitarVenta"
-        Me.btnQuitarVenta.Size = New System.Drawing.Size(176, 57)
+        Me.btnQuitarVenta.Size = New System.Drawing.Size(117, 37)
         Me.btnQuitarVenta.TabIndex = 113
         Me.btnQuitarVenta.Text = "Quitar"
         Me.btnQuitarVenta.UseVisualStyleBackColor = False
@@ -524,10 +488,9 @@ Partial Class frmVentas
         Me.btnAgregarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAgregarVenta.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregarVenta.ForeColor = System.Drawing.Color.White
-        Me.btnAgregarVenta.Location = New System.Drawing.Point(981, 15)
-        Me.btnAgregarVenta.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnAgregarVenta.Location = New System.Drawing.Point(654, 10)
         Me.btnAgregarVenta.Name = "btnAgregarVenta"
-        Me.btnAgregarVenta.Size = New System.Drawing.Size(176, 57)
+        Me.btnAgregarVenta.Size = New System.Drawing.Size(117, 37)
         Me.btnAgregarVenta.TabIndex = 113
         Me.btnAgregarVenta.Text = "Agregar"
         Me.btnAgregarVenta.UseVisualStyleBackColor = False
@@ -536,10 +499,9 @@ Partial Class frmVentas
         '
         Me.CboListaPrecios.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CboListaPrecios.FormattingEnabled = True
-        Me.CboListaPrecios.Location = New System.Drawing.Point(860, 25)
-        Me.CboListaPrecios.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.CboListaPrecios.Location = New System.Drawing.Point(573, 16)
         Me.CboListaPrecios.Name = "CboListaPrecios"
-        Me.CboListaPrecios.Size = New System.Drawing.Size(106, 25)
+        Me.CboListaPrecios.Size = New System.Drawing.Size(72, 25)
         Me.CboListaPrecios.TabIndex = 117
         '
         'Label15
@@ -547,8 +509,7 @@ Partial Class frmVentas
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label15.ForeColor = System.Drawing.Color.White
-        Me.Label15.Location = New System.Drawing.Point(795, 31)
-        Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label15.Location = New System.Drawing.Point(530, 20)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(40, 17)
         Me.Label15.TabIndex = 116
@@ -557,10 +518,9 @@ Partial Class frmVentas
         'txtCantidadVentas
         '
         Me.txtCantidadVentas.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCantidadVentas.Location = New System.Drawing.Point(687, 25)
-        Me.txtCantidadVentas.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtCantidadVentas.Location = New System.Drawing.Point(458, 16)
         Me.txtCantidadVentas.Name = "txtCantidadVentas"
-        Me.txtCantidadVentas.Size = New System.Drawing.Size(97, 23)
+        Me.txtCantidadVentas.Size = New System.Drawing.Size(66, 23)
         Me.txtCantidadVentas.TabIndex = 113
         Me.txtCantidadVentas.Text = "1"
         Me.txtCantidadVentas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -570,8 +530,7 @@ Partial Class frmVentas
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.Color.White
-        Me.Label12.Location = New System.Drawing.Point(566, 31)
-        Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label12.Location = New System.Drawing.Point(377, 20)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(75, 17)
         Me.Label12.TabIndex = 115
@@ -581,10 +540,9 @@ Partial Class frmVentas
         '
         Me.cboProductoVenta.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboProductoVenta.FormattingEnabled = True
-        Me.cboProductoVenta.Location = New System.Drawing.Point(140, 25)
-        Me.cboProductoVenta.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.cboProductoVenta.Location = New System.Drawing.Point(93, 16)
         Me.cboProductoVenta.Name = "cboProductoVenta"
-        Me.cboProductoVenta.Size = New System.Drawing.Size(415, 25)
+        Me.cboProductoVenta.Size = New System.Drawing.Size(278, 25)
         Me.cboProductoVenta.TabIndex = 114
         '
         'Label10
@@ -592,8 +550,7 @@ Partial Class frmVentas
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.White
-        Me.Label10.Location = New System.Drawing.Point(22, 31)
-        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label10.Location = New System.Drawing.Point(15, 20)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(72, 17)
         Me.Label10.TabIndex = 113
@@ -601,11 +558,11 @@ Partial Class frmVentas
         '
         'frmVentas
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(1408, 894)
+        Me.ClientSize = New System.Drawing.Size(939, 581)
         Me.Controls.Add(Me.btnFormaEntrega)
         Me.Controls.Add(Me.btnTipoVenta)
         Me.Controls.Add(Me.btnAgregarFormaPago)
@@ -645,7 +602,6 @@ Partial Class frmVentas
         Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "frmVentas"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Ventas"

@@ -37,10 +37,9 @@ Partial Class frmModificarTipoVehiculos
         'txtTipoVehiculo
         '
         Me.txtTipoVehiculo.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTipoVehiculo.Location = New System.Drawing.Point(684, 55)
-        Me.txtTipoVehiculo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtTipoVehiculo.Location = New System.Drawing.Point(456, 36)
         Me.txtTipoVehiculo.Name = "txtTipoVehiculo"
-        Me.txtTipoVehiculo.Size = New System.Drawing.Size(278, 21)
+        Me.txtTipoVehiculo.Size = New System.Drawing.Size(187, 21)
         Me.txtTipoVehiculo.TabIndex = 49
         '
         'lblTipoVehiculo
@@ -48,8 +47,7 @@ Partial Class frmModificarTipoVehiculos
         Me.lblTipoVehiculo.AutoSize = True
         Me.lblTipoVehiculo.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTipoVehiculo.ForeColor = System.Drawing.Color.White
-        Me.lblTipoVehiculo.Location = New System.Drawing.Point(480, 57)
-        Me.lblTipoVehiculo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblTipoVehiculo.Location = New System.Drawing.Point(320, 37)
         Me.lblTipoVehiculo.Name = "lblTipoVehiculo"
         Me.lblTipoVehiculo.Size = New System.Drawing.Size(130, 20)
         Me.lblTipoVehiculo.TabIndex = 50
@@ -60,7 +58,8 @@ Partial Class frmModificarTipoVehiculos
         Me.chkEstado.AutoSize = True
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
-        Me.chkEstado.Location = New System.Drawing.Point(116, 129)
+        Me.chkEstado.Location = New System.Drawing.Point(77, 84)
+        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
         Me.chkEstado.TabIndex = 48
@@ -77,12 +76,12 @@ Partial Class frmModificarTipoVehiculos
         Me.grdModificarTipoVehiculo.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
         Me.grdModificarTipoVehiculo.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarTipoVehiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdModificarTipoVehiculo.Location = New System.Drawing.Point(66, 222)
-        Me.grdModificarTipoVehiculo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.grdModificarTipoVehiculo.Location = New System.Drawing.Point(44, 144)
         Me.grdModificarTipoVehiculo.Name = "grdModificarTipoVehiculo"
         Me.grdModificarTipoVehiculo.ReadOnly = True
         Me.grdModificarTipoVehiculo.RowHeadersVisible = False
-        Me.grdModificarTipoVehiculo.Size = New System.Drawing.Size(1120, 340)
+        Me.grdModificarTipoVehiculo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.grdModificarTipoVehiculo.Size = New System.Drawing.Size(747, 221)
         Me.grdModificarTipoVehiculo.TabIndex = 47
         '
         'btnCancelar
@@ -93,10 +92,9 @@ Partial Class frmModificarTipoVehiculos
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
-        Me.btnCancelar.Location = New System.Drawing.Point(1118, 129)
-        Me.btnCancelar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnCancelar.Location = New System.Drawing.Point(745, 84)
         Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(123, 45)
+        Me.btnCancelar.Size = New System.Drawing.Size(82, 29)
         Me.btnCancelar.TabIndex = 46
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = True
@@ -104,10 +102,9 @@ Partial Class frmModificarTipoVehiculos
         'txtId
         '
         Me.txtId.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtId.Location = New System.Drawing.Point(345, 55)
-        Me.txtId.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtId.Location = New System.Drawing.Point(230, 36)
         Me.txtId.Name = "txtId"
-        Me.txtId.Size = New System.Drawing.Size(92, 21)
+        Me.txtId.Size = New System.Drawing.Size(63, 21)
         Me.txtId.TabIndex = 43
         '
         'lblNumeroTipoVehiculo
@@ -115,8 +112,7 @@ Partial Class frmModificarTipoVehiculos
         Me.lblNumeroTipoVehiculo.AutoSize = True
         Me.lblNumeroTipoVehiculo.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNumeroTipoVehiculo.ForeColor = System.Drawing.Color.White
-        Me.lblNumeroTipoVehiculo.Location = New System.Drawing.Point(110, 57)
-        Me.lblNumeroTipoVehiculo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblNumeroTipoVehiculo.Location = New System.Drawing.Point(73, 37)
         Me.lblNumeroTipoVehiculo.Name = "lblNumeroTipoVehiculo"
         Me.lblNumeroTipoVehiculo.Size = New System.Drawing.Size(151, 20)
         Me.lblNumeroTipoVehiculo.TabIndex = 45
@@ -130,20 +126,19 @@ Partial Class frmModificarTipoVehiculos
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
-        Me.btnModificar.Location = New System.Drawing.Point(1118, 49)
-        Me.btnModificar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnModificar.Location = New System.Drawing.Point(745, 32)
         Me.btnModificar.Name = "btnModificar"
-        Me.btnModificar.Size = New System.Drawing.Size(123, 45)
+        Me.btnModificar.Size = New System.Drawing.Size(82, 29)
         Me.btnModificar.TabIndex = 44
         Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = True
         '
         'frmModificarTipoVehiculos
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1306, 609)
+        Me.ClientSize = New System.Drawing.Size(871, 396)
         Me.Controls.Add(Me.txtTipoVehiculo)
         Me.Controls.Add(Me.lblTipoVehiculo)
         Me.Controls.Add(Me.chkEstado)
@@ -154,7 +149,6 @@ Partial Class frmModificarTipoVehiculos
         Me.Controls.Add(Me.btnModificar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "frmModificarTipoVehiculos"
         Me.Text = "frmModificarTipoVehiculos"
         CType(Me.grdModificarTipoVehiculo, System.ComponentModel.ISupportInitialize).EndInit()

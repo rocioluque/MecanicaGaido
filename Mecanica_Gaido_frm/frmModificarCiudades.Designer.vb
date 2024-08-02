@@ -39,10 +39,9 @@ Partial Class frmModificarCiudades
         'txtCiudad
         '
         Me.txtCiudad.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCiudad.Location = New System.Drawing.Point(258, 138)
-        Me.txtCiudad.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtCiudad.Location = New System.Drawing.Point(172, 90)
         Me.txtCiudad.Name = "txtCiudad"
-        Me.txtCiudad.Size = New System.Drawing.Size(278, 21)
+        Me.txtCiudad.Size = New System.Drawing.Size(187, 21)
         Me.txtCiudad.TabIndex = 33
         '
         'lblCiudad
@@ -50,8 +49,7 @@ Partial Class frmModificarCiudades
         Me.lblCiudad.AutoSize = True
         Me.lblCiudad.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCiudad.ForeColor = System.Drawing.Color.White
-        Me.lblCiudad.Location = New System.Drawing.Point(110, 140)
-        Me.lblCiudad.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblCiudad.Location = New System.Drawing.Point(73, 91)
         Me.lblCiudad.Name = "lblCiudad"
         Me.lblCiudad.Size = New System.Drawing.Size(63, 20)
         Me.lblCiudad.TabIndex = 34
@@ -62,7 +60,8 @@ Partial Class frmModificarCiudades
         Me.chkEstado.AutoSize = True
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
-        Me.chkEstado.Location = New System.Drawing.Point(730, 145)
+        Me.chkEstado.Location = New System.Drawing.Point(487, 94)
+        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
         Me.chkEstado.TabIndex = 32
@@ -79,12 +78,12 @@ Partial Class frmModificarCiudades
         Me.grdModificarCiudad.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
         Me.grdModificarCiudad.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarCiudad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdModificarCiudad.Location = New System.Drawing.Point(66, 225)
-        Me.grdModificarCiudad.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.grdModificarCiudad.Location = New System.Drawing.Point(44, 146)
         Me.grdModificarCiudad.Name = "grdModificarCiudad"
         Me.grdModificarCiudad.ReadOnly = True
         Me.grdModificarCiudad.RowHeadersVisible = False
-        Me.grdModificarCiudad.Size = New System.Drawing.Size(1120, 340)
+        Me.grdModificarCiudad.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.grdModificarCiudad.Size = New System.Drawing.Size(747, 221)
         Me.grdModificarCiudad.TabIndex = 31
         '
         'btnCancelar
@@ -95,10 +94,9 @@ Partial Class frmModificarCiudades
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
-        Me.btnCancelar.Location = New System.Drawing.Point(1118, 132)
-        Me.btnCancelar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnCancelar.Location = New System.Drawing.Point(745, 86)
         Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(123, 45)
+        Me.btnCancelar.Size = New System.Drawing.Size(82, 29)
         Me.btnCancelar.TabIndex = 30
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = True
@@ -106,10 +104,9 @@ Partial Class frmModificarCiudades
         'txtId
         '
         Me.txtId.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtId.Location = New System.Drawing.Point(258, 58)
-        Me.txtId.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtId.Location = New System.Drawing.Point(172, 38)
         Me.txtId.Name = "txtId"
-        Me.txtId.Size = New System.Drawing.Size(92, 21)
+        Me.txtId.Size = New System.Drawing.Size(63, 21)
         Me.txtId.TabIndex = 25
         '
         'lblNumeroCiudad
@@ -117,8 +114,7 @@ Partial Class frmModificarCiudades
         Me.lblNumeroCiudad.AutoSize = True
         Me.lblNumeroCiudad.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNumeroCiudad.ForeColor = System.Drawing.Color.White
-        Me.lblNumeroCiudad.Location = New System.Drawing.Point(110, 60)
-        Me.lblNumeroCiudad.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblNumeroCiudad.Location = New System.Drawing.Point(73, 39)
         Me.lblNumeroCiudad.Name = "lblNumeroCiudad"
         Me.lblNumeroCiudad.Size = New System.Drawing.Size(84, 20)
         Me.lblNumeroCiudad.TabIndex = 29
@@ -132,10 +128,9 @@ Partial Class frmModificarCiudades
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
-        Me.btnModificar.Location = New System.Drawing.Point(1118, 46)
-        Me.btnModificar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnModificar.Location = New System.Drawing.Point(745, 30)
         Me.btnModificar.Name = "btnModificar"
-        Me.btnModificar.Size = New System.Drawing.Size(123, 45)
+        Me.btnModificar.Size = New System.Drawing.Size(82, 29)
         Me.btnModificar.TabIndex = 28
         Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = True
@@ -144,10 +139,9 @@ Partial Class frmModificarCiudades
         '
         Me.cboProvincia.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.cboProvincia.FormattingEnabled = True
-        Me.cboProvincia.Location = New System.Drawing.Point(632, 57)
-        Me.cboProvincia.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.cboProvincia.Location = New System.Drawing.Point(421, 37)
         Me.cboProvincia.Name = "cboProvincia"
-        Me.cboProvincia.Size = New System.Drawing.Size(340, 25)
+        Me.cboProvincia.Size = New System.Drawing.Size(228, 25)
         Me.cboProvincia.TabIndex = 35
         '
         'Label2
@@ -155,8 +149,7 @@ Partial Class frmModificarCiudades
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(447, 57)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(298, 37)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(78, 20)
         Me.Label2.TabIndex = 36
@@ -164,10 +157,10 @@ Partial Class frmModificarCiudades
         '
         'frmModificarCiudades
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1306, 609)
+        Me.ClientSize = New System.Drawing.Size(871, 396)
         Me.Controls.Add(Me.cboProvincia)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtCiudad)
@@ -180,7 +173,6 @@ Partial Class frmModificarCiudades
         Me.Controls.Add(Me.btnModificar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "frmModificarCiudades"
         Me.Text = "frmModificarCiudades"
         CType(Me.grdModificarCiudad, System.ComponentModel.ISupportInitialize).EndInit()
