@@ -81,6 +81,20 @@ Public Class AD_Productos
         Return tabla
     End Function
 
+    Public Function Consultar_ProductoPorID(ByVal idProducto As Integer) As SqlDataReader
+        Dim conexion As New SqlConnection(connectionString)
+        Dim comando As New SqlCommand("Consultar_ProductoPorID", conexion)
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.AddWithValue("@idProducto", idProducto)
+
+        Try
+            conexion.Open()
+            Return comando.ExecuteReader(CommandBehavior.CloseConnection)
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+
     Public Sub Agregar_Producto(Descripcion As String, NombreDiario As String, ID_Rubro As Integer, ID_Marca As Integer,
                             CodigoBarra As String, CodFabricante As String, CantidadBulto As Decimal, ID_Origen As Integer,
                             Alternativo As Boolean, ID_Original As Integer, Estado As Boolean, StockReal As Decimal,

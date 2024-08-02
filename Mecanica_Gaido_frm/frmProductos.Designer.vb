@@ -65,6 +65,7 @@ Partial Class frmProductos
         Me.cboOrigen = New System.Windows.Forms.ComboBox()
         Me.lblExistencia = New System.Windows.Forms.Label()
         Me.PanelExistencia = New System.Windows.Forms.Panel()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.lblMovimientos = New System.Windows.Forms.Label()
         Me.PanelMovimientos = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -562,6 +563,7 @@ Partial Class frmProductos
         '
         'PanelExistencia
         '
+        Me.PanelExistencia.Controls.Add(Me.Label5)
         Me.PanelExistencia.Controls.Add(Me.txtStockDisponible)
         Me.PanelExistencia.Controls.Add(Me.txtStockReal)
         Me.PanelExistencia.Controls.Add(Me.lblStockReal)
@@ -572,6 +574,19 @@ Partial Class frmProductos
         Me.PanelExistencia.Name = "PanelExistencia"
         Me.PanelExistencia.Size = New System.Drawing.Size(316, 157)
         Me.PanelExistencia.TabIndex = 111
+        '
+        'Label5
+        '
+        Me.Label5.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label5.BackColor = System.Drawing.Color.Transparent
+        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label5.ForeColor = System.Drawing.Color.Red
+        Me.Label5.Location = New System.Drawing.Point(85, 115)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(14, 15)
+        Me.Label5.TabIndex = 114
+        Me.Label5.Text = "*"
         '
         'lblMovimientos
         '
@@ -807,4 +822,5 @@ Partial Class frmProductos
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
 End Class

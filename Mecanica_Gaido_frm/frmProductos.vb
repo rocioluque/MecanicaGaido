@@ -79,38 +79,68 @@ Public Class frmProductos
         End Try
     End Sub
 
-    Public Sub CargarDatosEnTxt(ByVal rowindex As Integer)
-        If grdProductos.Rows.Count > 0 AndAlso rowindex >= 0 AndAlso rowindex < grdProductos.Rows.Count Then
-            Try
-                txtId.Text = grdProductos.Rows(rowindex).Cells("N° Producto").Value.ToString()
-                txtDescripcion.Text = grdProductos.Rows(rowindex).Cells("Producto").Value.ToString()
-                txtNombreDiario.Text = grdProductos.Rows(rowindex).Cells("Nombre Diario").Value.ToString()
-                cboMarca.SelectedValue = grdProductos.Rows(rowindex).Cells("Marca").Value.ToString()
-                txtStockReal.Text = grdProductos.Rows(rowindex).Cells("Stock Real").Value.ToString()
-                txtStockDisponible.Text = grdProductos.Rows(rowindex).Cells("Stock Disponible").Value.ToString()
-                txtPrecioLista.Text = grdProductos.Rows(rowindex).Cells("Precio Lista").Value.ToString()
-                txtUbicacion.Text = grdProductos.Rows(rowindex).Cells("Ubicacion").Value.ToString()
-                cboRubro.SelectedValue = grdProductos.Rows(rowindex).Cells("Rubro").Value.ToString()
-                chkAlterntivo.Checked = grdProductos.Rows(rowindex).Cells("alternativo").Value.ToString()
-                cboOriginal.SelectedValue = grdProductos.Rows(rowindex).Cells("ID_Original").Value.ToString()
-                txtCantidadBulto.Text = grdProductos.Rows(rowindex).Cells("Cantidad_X_Bulto").Value.ToString()
-                txtPrecioCompra.Text = grdProductos.Rows(rowindex).Cells("PrecioCompra").Value.ToString()
-                txtUtilidad.Text = grdProductos.Rows(rowindex).Cells("Utilidad").Value.ToString()
-                dtpFechaCompra.Value = grdProductos.Rows(rowindex).Cells("FechaUltimaCompra").Value
-                dtpFechaVenta.Value = grdProductos.Rows(rowindex).Cells("FechaUltimaVenta").Value
-                txtCodigoBarra.Text = grdProductos.Rows(rowindex).Cells("CodBarra").Value.ToString()
-                txtCodFabricante.Text = grdProductos.Rows(rowindex).Cells("CodFabricante").Value.ToString()
-                cboOrigen.SelectedValue = grdProductos.Rows(rowindex).Cells("Origen").Value.ToString()
-                chkEstado.Checked = grdProductos.Rows(rowindex).Cells("Estado").Value.ToString()
-            Catch ex As Exception
-                MessageBox.Show("Error al cargar datos: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-        End If
+    Public Sub CargarDatosEnTxt(ByVal idProducto As Integer)
+        Dim o_Productos As New AD_Productos
+
+        Try
+            Dim datoleido As SqlDataReader = o_Productos.Consultar_ProductoPorID(idProducto)
+
+            If datoleido.Read() Then
+                txtId.Text = If(IsDBNull(datoleido("N° Producto")), String.Empty, datoleido("N° Producto").ToString())
+                txtDescripcion.Text = If(IsDBNull(datoleido("Producto")), String.Empty, datoleido("Producto").ToString())
+                txtNombreDiario.Text = If(IsDBNull(datoleido("Nombre Diario")), String.Empty, datoleido("Nombre Diario").ToString())
+                cboMarca.SelectedValue = If(IsDBNull(datoleido("Marca")), -1, datoleido("Marca"))
+                txtStockReal.Text = If(IsDBNull(datoleido("Stock Real")), String.Empty, datoleido("Stock Real").ToString())
+                txtStockDisponible.Text = If(IsDBNull(datoleido("Stock Disponible")), String.Empty, datoleido("Stock Disponible").ToString())
+                txtPrecioLista.Text = If(IsDBNull(datoleido("Precio Lista")), String.Empty, datoleido("Precio Lista").ToString())
+                txtUbicacion.Text = If(IsDBNull(datoleido("Ubicacion")), String.Empty, datoleido("Ubicacion").ToString())
+                cboRubro.SelectedValue = If(IsDBNull(datoleido("Rubro")), String.Empty, datoleido("Rubro").ToString())
+                chkAlterntivo.Checked = If(IsDBNull(datoleido("alternativo")), False, Convert.ToBoolean(datoleido("alternativo")))
+                cboOriginal.SelectedValue = If(IsDBNull(datoleido("ID_Original")), String.Empty, datoleido("ID_Original").ToString())
+                txtCantidadBulto.Text = If(IsDBNull(datoleido("Cantidad_X_Bulto")), String.Empty, datoleido("Cantidad_X_Bulto").ToString())
+                txtPrecioCompra.Text = If(IsDBNull(datoleido("PrecioCompra")), String.Empty, datoleido("PrecioCompra").ToString())
+                txtUtilidad.Text = If(IsDBNull(datoleido("Utilidad")), String.Empty, datoleido("Utilidad").ToString())
+
+                ' Convert.ToDateTime maneja los valores nulos y fechas inválidas
+                If Not IsDBNull(datoleido("FechaUltimaCompra")) Then
+                    dtpFechaCompra.Value = Convert.ToDateTime(datoleido("FechaUltimaCompra"))
+                Else
+                    dtpFechaCompra.Value = DateTime.Now
+                End If
+
+                If Not IsDBNull(datoleido("FechaUltimaVenta")) Then
+                    dtpFechaVenta.Value = Convert.ToDateTime(datoleido("FechaUltimaVenta"))
+                Else
+                    dtpFechaVenta.Value = DateTime.Now
+                End If
+
+                txtCodigoBarra.Text = If(IsDBNull(datoleido("CodBarra")), String.Empty, datoleido("CodBarra").ToString())
+                txtCodFabricante.Text = If(IsDBNull(datoleido("CodFabricante")), String.Empty, datoleido("CodFabricante").ToString())
+                cboOrigen.Text = If(IsDBNull(datoleido("Origen")), String.Empty, datoleido("Origen").ToString())
+                chkEstado.Checked = If(IsDBNull(datoleido("Estado")), False, Convert.ToBoolean(datoleido("Estado")))
+            Else
+                MsgBox("No se encontraron resultados", vbInformation, "Error")
+            End If
+
+            datoleido.Close()
+        Catch ex As Exception
+            MessageBox.Show("Ocurrió un error al consultar el producto: " & ex.Message, "Error")
+        End Try
     End Sub
 
     Private Sub grdProductos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdProductos.CellClick
         If e.RowIndex >= 0 Then
-            CargarDatosEnTxt(e.RowIndex)
+
+            ' Obtiene el ID de la joya de la celda correspondiente
+            Dim selectedRow As DataGridViewRow = grdProductos.Rows(e.RowIndex)
+            Dim idProducto As Integer
+
+            If selectedRow.Cells("N° Producto").Value IsNot Nothing Then
+                idProducto = Convert.ToInt32(selectedRow.Cells("N° Producto").Value)
+                CargarDatosEnTxt(idProducto)
+            Else
+                MsgBox("El ID del producto no puede ser nulo.", vbCritical, "Error")
+            End If
         End If
     End Sub
 
