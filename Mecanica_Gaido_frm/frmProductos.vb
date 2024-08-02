@@ -415,5 +415,21 @@ Public Class frmProductos
             End If
         End If
     End Sub
+
+    Private Sub txtUtilidad_LostFocus(sender As Object, e As EventArgs) Handles txtUtilidad.LostFocus
+
+        Dim value As Double
+
+        ' Intenta convertir el valor del TextBox a un número
+        If Double.TryParse(txtUtilidad.Text, value) Then
+            ' Si la conversión es exitosa, formatea el número con 2 decimales
+            txtUtilidad.Text = value.ToString("F2")
+        Else
+            ' Si la conversión falla, muestra un mensaje de error o maneja el error según sea necesario
+            MessageBox.Show("Por favor, ingrese un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+
+
+    End Sub
 #End Region
 End Class

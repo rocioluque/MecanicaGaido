@@ -89,6 +89,9 @@ Partial Class frmProductos
         '
         'grdProductos
         '
+        Me.grdProductos.AllowUserToAddRows = False
+        Me.grdProductos.AllowUserToDeleteRows = False
+        Me.grdProductos.AllowUserToResizeRows = False
         Me.grdProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         Me.grdProductos.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
@@ -97,7 +100,9 @@ Partial Class frmProductos
         Me.grdProductos.Location = New System.Drawing.Point(42, 430)
         Me.grdProductos.Name = "grdProductos"
         Me.grdProductos.ReadOnly = True
+        Me.grdProductos.RowHeadersVisible = False
         Me.grdProductos.RowHeadersWidth = 51
+        Me.grdProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdProductos.Size = New System.Drawing.Size(858, 290)
         Me.grdProductos.TabIndex = 93
         '
