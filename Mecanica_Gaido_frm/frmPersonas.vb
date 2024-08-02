@@ -197,9 +197,9 @@ Public Class frmPersonas
             txtTelefonoFijo.Text = grdPersonas.Rows(rowindex).Cells("Teléfono Fijo").Value.ToString()
             txtCorreo.Text = grdPersonas.Rows(rowindex).Cells("Correo").Value.ToString()
 
-
-            cboCiudad.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_Ciudad").Value
             cboProvincia.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_Provincia").Value
+            cboCiudad.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_Ciudad").Value
+
             cboTipoPersona.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_TipoPersona").Value
             cboTipoDocumento.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_TipoDocumento").Value
             txtDireccion.Text = grdPersonas.Rows(rowindex).Cells("Direccion").Value.ToString()
