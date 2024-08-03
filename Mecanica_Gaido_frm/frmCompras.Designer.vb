@@ -65,7 +65,7 @@ Partial Class frmCompras
         Me.grdCompras.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdCompras.Location = New System.Drawing.Point(46, 321)
-        Me.grdCompras.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.grdCompras.Margin = New System.Windows.Forms.Padding(2)
         Me.grdCompras.Name = "grdCompras"
         Me.grdCompras.ReadOnly = True
         Me.grdCompras.RowHeadersVisible = False
@@ -81,7 +81,7 @@ Partial Class frmCompras
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
         Me.chkEstado.Location = New System.Drawing.Point(399, 264)
-        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
         Me.chkEstado.TabIndex = 12
@@ -91,7 +91,7 @@ Partial Class frmCompras
         'txtTotal
         '
         Me.txtTotal.Location = New System.Drawing.Point(524, 224)
-        Me.txtTotal.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtTotal.Margin = New System.Windows.Forms.Padding(2)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.Size = New System.Drawing.Size(123, 20)
         Me.txtTotal.TabIndex = 11
@@ -99,7 +99,7 @@ Partial Class frmCompras
         'txtOtrosImpuestos
         '
         Me.txtOtrosImpuestos.Location = New System.Drawing.Point(524, 179)
-        Me.txtOtrosImpuestos.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtOtrosImpuestos.Margin = New System.Windows.Forms.Padding(2)
         Me.txtOtrosImpuestos.Name = "txtOtrosImpuestos"
         Me.txtOtrosImpuestos.Size = New System.Drawing.Size(123, 20)
         Me.txtOtrosImpuestos.TabIndex = 10
@@ -107,7 +107,7 @@ Partial Class frmCompras
         'txtIvaMonto
         '
         Me.txtIvaMonto.Location = New System.Drawing.Point(524, 134)
-        Me.txtIvaMonto.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtIvaMonto.Margin = New System.Windows.Forms.Padding(2)
         Me.txtIvaMonto.Name = "txtIvaMonto"
         Me.txtIvaMonto.Size = New System.Drawing.Size(123, 20)
         Me.txtIvaMonto.TabIndex = 9
@@ -115,7 +115,7 @@ Partial Class frmCompras
         'txtIVA
         '
         Me.txtIVA.Location = New System.Drawing.Point(524, 89)
-        Me.txtIVA.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtIVA.Margin = New System.Windows.Forms.Padding(2)
         Me.txtIVA.Name = "txtIVA"
         Me.txtIVA.Size = New System.Drawing.Size(123, 20)
         Me.txtIVA.TabIndex = 8
@@ -123,7 +123,7 @@ Partial Class frmCompras
         'txtSubTotal
         '
         Me.txtSubTotal.Location = New System.Drawing.Point(524, 44)
-        Me.txtSubTotal.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtSubTotal.Margin = New System.Windows.Forms.Padding(2)
         Me.txtSubTotal.Name = "txtSubTotal"
         Me.txtSubTotal.Size = New System.Drawing.Size(123, 20)
         Me.txtSubTotal.TabIndex = 7
@@ -131,7 +131,7 @@ Partial Class frmCompras
         'txtNumComprobante
         '
         Me.txtNumComprobante.Location = New System.Drawing.Point(165, 134)
-        Me.txtNumComprobante.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtNumComprobante.Margin = New System.Windows.Forms.Padding(2)
         Me.txtNumComprobante.Name = "txtNumComprobante"
         Me.txtNumComprobante.Size = New System.Drawing.Size(123, 20)
         Me.txtNumComprobante.TabIndex = 4
@@ -139,7 +139,7 @@ Partial Class frmCompras
         'txtFechaCompra
         '
         Me.txtFechaCompra.Location = New System.Drawing.Point(165, 89)
-        Me.txtFechaCompra.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtFechaCompra.Margin = New System.Windows.Forms.Padding(2)
         Me.txtFechaCompra.Name = "txtFechaCompra"
         Me.txtFechaCompra.Size = New System.Drawing.Size(123, 20)
         Me.txtFechaCompra.TabIndex = 3
@@ -147,7 +147,7 @@ Partial Class frmCompras
         'txtID
         '
         Me.txtID.Location = New System.Drawing.Point(165, 44)
-        Me.txtID.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtID.Margin = New System.Windows.Forms.Padding(2)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(46, 20)
         Me.txtID.TabIndex = 1
@@ -157,7 +157,7 @@ Partial Class frmCompras
         Me.cboFormaPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboFormaPago.FormattingEnabled = True
         Me.cboFormaPago.Location = New System.Drawing.Point(165, 223)
-        Me.cboFormaPago.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboFormaPago.Margin = New System.Windows.Forms.Padding(2)
         Me.cboFormaPago.Name = "cboFormaPago"
         Me.cboFormaPago.Size = New System.Drawing.Size(123, 21)
         Me.cboFormaPago.TabIndex = 6
@@ -166,7 +166,7 @@ Partial Class frmCompras
         '
         Me.cboCuenta.FormattingEnabled = True
         Me.cboCuenta.Location = New System.Drawing.Point(165, 179)
-        Me.cboCuenta.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboCuenta.Margin = New System.Windows.Forms.Padding(2)
         Me.cboCuenta.Name = "cboCuenta"
         Me.cboCuenta.Size = New System.Drawing.Size(123, 21)
         Me.cboCuenta.TabIndex = 5
@@ -385,8 +385,7 @@ Partial Class frmCompras
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(939, 581)
+        Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.btnModificar)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnAceptar)
@@ -415,11 +414,9 @@ Partial Class frmCompras
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmCompras"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmCompras"
         CType(Me.grdCompras, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnAgregarCuenta, System.ComponentModel.ISupportInitialize).EndInit()

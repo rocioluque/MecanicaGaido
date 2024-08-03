@@ -62,6 +62,10 @@ Public Class frmMenuPrincipal
         AbrirFormHijo(New frmCompras(), DirectCast(sender, Button))
     End Sub
 
+    Private Sub btnReportes_Click(sender As Object, e As EventArgs) Handles btnReportes.Click
+        AbrirFormHijo(New frmReportes(), DirectCast(sender, Button))
+    End Sub
+
     Private Sub btnGestionDatos_Click(sender As Object, e As EventArgs) Handles btnGestionDatos.Click
         AbrirFormHijo(New frmGestionDatos(), DirectCast(sender, Button))
     End Sub
@@ -189,4 +193,7 @@ Public Class frmMenuPrincipal
         PintarBotonInicio()
     End Sub
 
+    Private Sub btnTipoVehiculos_Click(sender As Object, e As EventArgs) Handles btnTipoVehiculos.Click
+
+    End Sub
 End Class
