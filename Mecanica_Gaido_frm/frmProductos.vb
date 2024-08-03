@@ -6,6 +6,8 @@ Imports System.Configuration
 Public Class frmProductos
     Dim o_productos As New AD_Productos
 
+    Private txtsConDecimales As New List(Of TextBox)
+
 #Region "Procedimientos"
     Private Sub frmProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Combo_Marcas()
@@ -13,7 +15,25 @@ Public Class frmProductos
         Cargar_Combo_Original()
         limpiar()
         Cargar_Grilla()
+
+        'AGREGAR LOS TEXTBOXS QUE NECESITEN QUE SE VALIDEN COMO NUMERO DECIMAL
+        AgregarValidacionATextBox(txtPrecioLista)
+        AgregarValidacionATextBox(txtPrecioCompra)
+        AgregarValidacionATextBox(txtCantidadBulto)
+        AgregarValidacionATextBox(txtStockDisponible)
+        AgregarValidacionATextBox(txtStockReal)
+        AgregarValidacionATextBox(txtUtilidad)
+
+        'AddHandler txtPrecioLista.KeyPress, AddressOf ValidarNumeroDecimal
+        'AddHandler txtStockDisponible.KeyPress, AddressOf ValidarNumeroDecimal
+        'AddHandler txtStockReal.KeyPress, AddressOf ValidarNumeroDecimal
+        'AddHandler txtUtilidad.KeyPress, AddressOf ValidarNumeroDecimal
+        'AddHandler txtPrecioCompra.KeyPress, AddressOf ValidarNumeroDecimal
+        'AddHandler txtCantidadBulto.KeyPress, AddressOf ValidarNumeroDecimal
+
     End Sub
+
+
 
     Public Sub limpiar()
         txtId.Clear()
@@ -244,7 +264,7 @@ Public Class frmProductos
         ' Verifica que los valores ingresados sean números válidos
         If Decimal.TryParse(txtPrecioCompra.Text, precioCompra) AndAlso Decimal.TryParse(txtUtilidad.Text, utilidad) Then
 
-            Dim precioLista As Decimal = precioCompra * (utilidad + 1)
+            Dim precioLista As Decimal = precioCompra * (utilidad / 100 + 1)
             txtPrecioLista.Text = precioLista.ToString("F2") 'Formatea el resultado a dos decimales
         Else
             ' Si los valores no son válidos, limpia el TextBox de precio de lista
@@ -344,77 +364,125 @@ Public Class frmProductos
 #End Region
 
 #Region "KeyPress"
-    Private Sub txtCantidadBulto_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCantidadBulto.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
+
+    Public Sub ValidarNumeroDecimal(sender As Object, e As KeyPressEventArgs)
+        If Char.IsDigit(e.KeyChar) OrElse e.KeyChar = "."c OrElse e.KeyChar = ","c Then
+            Dim textBox = DirectCast(sender, TextBox)
+            If (e.KeyChar = "."c OrElse e.KeyChar = ","c) AndAlso (textBox.Text.Contains(".") OrElse textBox.Text.Contains(",")) Then
+                e.Handled = True
+            Else
+                e.Handled = False
+            End If
+        ElseIf Char.IsControl(e.KeyChar) Then
             e.Handled = False
         Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
+            e.Handled = True
         End If
     End Sub
 
-    Private Sub txtStockReal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtStockReal.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
+    Public Sub FormatearNumero(sender As Object, e As EventArgs)
+        Dim textBox = DirectCast(sender, TextBox)
+        Dim numero As Decimal
+
+        If Decimal.TryParse(textBox.Text.Replace(",", "."), Globalization.NumberStyles.Any, Globalization.CultureInfo.InvariantCulture, numero) Then
+            textBox.Tag = numero.ToString("N2", Globalization.CultureInfo.CurrentCulture) ' Guarda el valor formateado para mostrar
+            textBox.Text = numero.ToString(Globalization.CultureInfo.InvariantCulture) ' Guarda el valor sin formato en Text
+        ElseIf String.IsNullOrWhiteSpace(textBox.Text) Then
+            textBox.Tag = "0,00"
+            textBox.Text = "0.00"
+        End If
+
+        MostrarValorFormateado(textBox)
+    End Sub
+
+    Private Sub MostrarValorFormateado(textBox As TextBox)
+        If textBox.Focused Then
+            ' Si el TextBox tiene el foco, muestra el valor sin formato
+            textBox.Text = textBox.Text
         Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
+            ' Si el TextBox no tiene el foco, muestra el valor formateado
+            textBox.Text = textBox.Tag.ToString()
         End If
     End Sub
 
-    Private Sub txtStockDisponible_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtStockDisponible.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
+
+    Public Sub AgregarValidacionATextBox(textBox As TextBox)
+        If Not txtsConDecimales.Contains(textBox) Then
+            txtsConDecimales.Add(textBox)
+            AddHandler textBox.KeyPress, AddressOf ValidarNumeroDecimal
+            AddHandler textBox.LostFocus, AddressOf FormatearNumero
+            AddHandler textBox.GotFocus, AddressOf TextBox_GotFocus
         End If
+    End Sub
+    Private Sub TextBox_GotFocus(sender As Object, e As EventArgs)
+        Dim textBox = DirectCast(sender, TextBox)
+        textBox.Text = textBox.Text.Replace(",", ".")
     End Sub
 
-    Private Sub txtCompra_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
-    End Sub
+    'Private Sub txtCantidadBulto_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCantidadBulto.KeyPress
+    '    If Char.IsDigit(e.KeyChar) Then
+    '        e.Handled = False
+    '    Else
+    '        If Char.IsControl(e.KeyChar) Then
+    '            e.Handled = False
+    '        Else
+    '            e.Handled = True
+    '        End If
+    '    End If
+    'End Sub
 
-    Private Sub txtLista_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
-    End Sub
+    'Private Sub txtStockReal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtStockReal.KeyPress
+    '    If Char.IsDigit(e.KeyChar) Then
+    '        e.Handled = False
+    '    Else
+    '        If Char.IsControl(e.KeyChar) Then
+    '            e.Handled = False
+    '        Else
+    '            e.Handled = True
+    '        End If
+    '    End If
+    'End Sub
 
-    Private Sub txtNumeroFila_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
-    End Sub
+    'Private Sub txtStockDisponible_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtStockDisponible.KeyPress
+    '    If Char.IsDigit(e.KeyChar) Then
+    '        e.Handled = False
+    '    Else
+    '        If Char.IsControl(e.KeyChar) Then
+    '            e.Handled = False
+    '        Else
+    '            e.Handled = True
+    '        End If
+    '    End If
+    'End Sub
+
+    'Private Sub txtPrecioCompra_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPrecioCompra.KeyPress
+    '    soloNumeros(e)
+    'End Sub
+
+    'Private Sub txtPrecioLista_KeyPress(sender As Object, e As KeyPressEventArgs)
+    '    If Char.IsDigit(e.KeyChar) Then
+    '        e.Handled = False
+    '    Else
+    '        If Char.IsControl(e.KeyChar) Then
+    '            e.Handled = False
+    '        Else
+    '            e.Handled = True
+    '        End If
+    '    End If
+    'End Sub
+
+    'Private Sub txtNumeroFila_KeyPress(sender As Object, e As KeyPressEventArgs)
+    '    If Char.IsDigit(e.KeyChar) Then
+    '        e.Handled = False
+    '    Else
+    '        If Char.IsControl(e.KeyChar) Then
+    '            e.Handled = False
+    '        Else
+    '            e.Handled = True
+    '        End If
+    '    End If
+    'End Sub
+#End Region
 
     Private Sub txtUtilidad_LostFocus(sender As Object, e As EventArgs) Handles txtUtilidad.LostFocus
 
@@ -427,9 +495,8 @@ Public Class frmProductos
         Else
             ' Si la conversión falla, muestra un mensaje de error o maneja el error según sea necesario
             MessageBox.Show("Por favor, ingrese un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End If
+        End If
 
 
     End Sub
-#End Region
 End Class
