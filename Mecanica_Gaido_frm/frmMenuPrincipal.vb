@@ -14,43 +14,43 @@ Public Class frmMenuPrincipal
     End Sub
 
 #Region "Productos"
-    Private Sub btnProductos_Click(sender As Object, e As EventArgs)
+    Private Sub btnProductos_Click(sender As Object, e As EventArgs) Handles btnProductos.Click
         AbrirFormHijo(New frmProductos(), DirectCast(sender, Button))
     End Sub
 #End Region
 
 #Region "Vehiculos"
-    Private Sub btnVehiculos_Click(sender As Object, e As EventArgs)
+    Private Sub btnVehiculos_Click(sender As Object, e As EventArgs) Handles btnVehiculos.Click
         AbrirFormHijo(New frmVehiculos(), DirectCast(sender, Button))
     End Sub
 #End Region
 
 #Region "Personas"
-    Private Sub btnPersonas_Click(sender As Object, e As EventArgs)
+    Private Sub btnPersonas_Click(sender As Object, e As EventArgs) Handles btnPersonas.Click
         AbrirFormHijo(New frmPersonas(), DirectCast(sender, Button))
     End Sub
 #End Region
 
 #Region "Orden Reparcion"
-    Private Sub btnOrdenReparacón_Click(sender As Object, e As EventArgs)
+    Private Sub btnOrdenReparacón_Click(sender As Object, e As EventArgs) Handles btnOrdenReparacón.Click
         AbrirFormHijo(New frmOrdenesReparacion(), DirectCast(sender, Button))
     End Sub
 #End Region
 
 #Region "Ventas"
-    Private Sub btnVentas_Click(sender As Object, e As EventArgs)
+    Private Sub btnVentas_Click(sender As Object, e As EventArgs) Handles btnVentas.Click
         AbrirFormHijo(New frmVentas(), DirectCast(sender, Button))
     End Sub
 #End Region
 
 #Region "Compras"
-    Private Sub btnCompras_Click(sender As Object, e As EventArgs)
+    Private Sub btnCompras_Click(sender As Object, e As EventArgs) Handles btnCompras.Click
         AbrirFormHijo(New frmCompras(), DirectCast(sender, Button))
     End Sub
 #End Region
 
 #Region "Reportes"
-    Private Sub btnReportes_Click(sender As Object, e As EventArgs)
+    Private Sub btnReportes_Click(sender As Object, e As EventArgs) Handles btnReportes.Click
         AbrirFormHijo(New frmReportes(), DirectCast(sender, Button))
     End Sub
 #End Region
