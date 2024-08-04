@@ -5,7 +5,125 @@ Imports Mecanica_Gaido_frm.User32
 
 Public Class frmMenuPrincipal
 
-#Region "Movimiento frm"
+    Private Sub MenuPrincipal_Load(sender As Object, e As EventArgs) Handles Me.Load
+        lblUsuario.Text = UsuarioActivo.usuario
+        lblRol.Text = UsuarioActivo.nombre_rol
+        lblNombre.Text = UsuarioActivo.nombrePersona & " " & UsuarioActivo.apellidoPersona
+        lblCorreo.Text = UsuarioActivo.correoPersona
+        PintarBotonInicio()
+    End Sub
+
+#Region "Productos"
+    Private Sub btnProductos_Click(sender As Object, e As EventArgs)
+        AbrirFormHijo(New frmProductos(), DirectCast(sender, Button))
+    End Sub
+#End Region
+
+#Region "Vehiculos"
+    Private Sub btnVehiculos_Click(sender As Object, e As EventArgs)
+        AbrirFormHijo(New frmVehiculos(), DirectCast(sender, Button))
+    End Sub
+#End Region
+
+#Region "Personas"
+    Private Sub btnPersonas_Click(sender As Object, e As EventArgs)
+        AbrirFormHijo(New frmPersonas(), DirectCast(sender, Button))
+    End Sub
+#End Region
+
+#Region "Orden Reparcion"
+    Private Sub btnOrdenReparacón_Click(sender As Object, e As EventArgs)
+        AbrirFormHijo(New frmOrdenesReparacion(), DirectCast(sender, Button))
+    End Sub
+#End Region
+
+#Region "Ventas"
+    Private Sub btnVentas_Click(sender As Object, e As EventArgs)
+        AbrirFormHijo(New frmVentas(), DirectCast(sender, Button))
+    End Sub
+#End Region
+
+#Region "Compras"
+    Private Sub btnCompras_Click(sender As Object, e As EventArgs)
+        AbrirFormHijo(New frmCompras(), DirectCast(sender, Button))
+    End Sub
+#End Region
+
+#Region "Reportes"
+    Private Sub btnReportes_Click(sender As Object, e As EventArgs)
+        AbrirFormHijo(New frmReportes(), DirectCast(sender, Button))
+    End Sub
+#End Region
+
+#Region "Gestion de Datos"
+    Private Sub btnGestionDatos_Click(sender As Object, e As EventArgs) Handles btnGestionDatos.Click
+        MostrarPaneles(PanelCboGestion)
+    End Sub
+
+    Private Sub OcultarPaneles()
+        If PanelCboGestion.Visible = True Then
+            PanelCboGestion.Visible = False
+        End If
+    End Sub
+
+    Private Sub MostrarPaneles(subMenu As Panel)
+        If subMenu.Visible = False Then
+            OcultarPaneles()
+            subMenu.Visible = True
+        Else
+            subMenu.Visible = False
+        End If
+    End Sub
+#End Region
+
+#Region "Cbo Gestion de Datos"
+    Private Sub btnCiudad_Click(sender As Object, e As EventArgs) Handles btnCiudad.Click
+        AbrirFormCbo(New frmModificarCiudades(), DirectCast(sender, Button))
+        OcultarPaneles()
+    End Sub
+
+    Private Sub btnMarca_Click(sender As Object, e As EventArgs) Handles btnMarca.Click
+        AbrirFormCbo(New frmModificarMarca(), DirectCast(sender, Button))
+        OcultarPaneles()
+    End Sub
+
+    Private Sub btnRoles_Click(sender As Object, e As EventArgs) Handles btnRol.Click
+        AbrirFormCbo(New frmModificarRoles(), DirectCast(sender, Button))
+        OcultarPaneles()
+    End Sub
+
+    Private Sub btnRubro_Click(sender As Object, e As EventArgs) Handles btnRubro.Click
+        AbrirFormCbo(New frmModificarRubros(), DirectCast(sender, Button))
+        OcultarPaneles()
+    End Sub
+
+    Private Sub btnSeccion_Click(sender As Object, e As EventArgs) Handles btnSeccion.Click
+        AbrirFormCbo(New frmModificarSecciones(), DirectCast(sender, Button))
+        OcultarPaneles()
+    End Sub
+
+    Private Sub btnFormaEntrega_Click(sender As Object, e As EventArgs) Handles btnFormaEntrega.Click
+        AbrirFormCbo(New frmModificarFormaEntrega(), DirectCast(sender, Button))
+        OcultarPaneles()
+    End Sub
+
+    Private Sub btnFormaPago_Click(sender As Object, e As EventArgs) Handles btnFormaPago.Click
+        AbrirFormCbo(New frmModificarFormaPago(), DirectCast(sender, Button))
+        OcultarPaneles()
+    End Sub
+
+    Private Sub btnTipoVehiculos_Click(sender As Object, e As EventArgs) Handles btnTipoVehiculos.Click
+        AbrirFormCbo(New frmModificarTipoVehiculos(), DirectCast(sender, Button))
+        OcultarPaneles()
+    End Sub
+
+    Private Sub btnTipoVenta_Click(sender As Object, e As EventArgs) Handles btnTipoVenta.Click
+        AbrirFormCbo(New frmModificarTipoVenta(), DirectCast(sender, Button))
+        OcultarPaneles()
+    End Sub
+#End Region
+
+#Region "Movimiento formulario"
     ' Evento MouseDown hace que al mantener apretado el formulario se mueva y no esté estático
     Private Sub frmMenuPrincipal_MouseDown(sender As Object, e As MouseEventArgs) Handles Me.MouseDown
         If e.Button = MouseButtons.Left Then
@@ -37,40 +155,9 @@ Public Class frmMenuPrincipal
     End Sub
 #End Region
 
-#Region "Control btn"
-    Private Sub btnVehiculos_Click(sender As Object, e As EventArgs) Handles btnVehiculos.Click
-        AbrirFormHijo(New frmVehiculos(), DirectCast(sender, Button))
-    End Sub
+#Region "Control botones"
 
-    Private Sub btnPersonas_Click(sender As Object, e As EventArgs) Handles btnPersonas.Click
-        AbrirFormHijo(New frmPersonas(), DirectCast(sender, Button))
-    End Sub
-
-    Private Sub btnProductos_Click(sender As Object, e As EventArgs) Handles btnProductos.Click
-        AbrirFormHijo(New frmProductos(), DirectCast(sender, Button))
-    End Sub
-
-    Private Sub btnOrdenReparacón_Click(sender As Object, e As EventArgs) Handles btnOrdenReparacón.Click
-        AbrirFormHijo(New frmOrdenesReparacion(), DirectCast(sender, Button))
-    End Sub
-
-    Private Sub btnVentas_Click(sender As Object, e As EventArgs) Handles btnVentas.Click
-        AbrirFormHijo(New frmVentas(), DirectCast(sender, Button))
-    End Sub
-
-    Private Sub btnCompras_Click(sender As Object, e As EventArgs) Handles btnCompras.Click
-        AbrirFormHijo(New frmCompras(), DirectCast(sender, Button))
-    End Sub
-
-    Private Sub btnReportes_Click(sender As Object, e As EventArgs) Handles btnReportes.Click
-        AbrirFormHijo(New frmReportes(), DirectCast(sender, Button))
-    End Sub
-
-    Private Sub btnGestionDatos_Click(sender As Object, e As EventArgs) Handles btnGestionDatos.Click
-        AbrirFormHijo(New frmGestionDatos(), DirectCast(sender, Button))
-    End Sub
-
-    Private Sub btnInicio_Click(sender As Object, e As EventArgs) Handles btnInicio.Click
+    Private Sub btnInicio_Click(sender As Object, e As EventArgs)
         'Restablecer el color del botón anterior
         If btnAnterior IsNot Nothing Then
             btnAnterior.BackColor = Color.FromArgb(65, 65, 65)
@@ -116,13 +203,51 @@ Public Class frmMenuPrincipal
     End Sub
 #End Region
 
-#Region "frm Padre y resize"
+#Region "Formulario Padre y resize"
     Private btnAnterior As Button = Nothing
 
     Private Sub AbrirFormHijo(formHijo As Object, sender As Button)
         ' Restablecer el color del botón anterior
         If btnAnterior IsNot Nothing Then
             btnAnterior.BackColor = Color.FromArgb(65, 65, 65)
+        End If
+
+        ' Actualizar el color del botón actual
+        btnAnterior = sender
+        sender.BackColor = Color.SeaGreen
+
+        'Si el contenedor panelContenedor ya tiene controles hijos, elimina el primer control
+        If Me.panelContenedor.Controls.Count > 0 Then
+            Me.panelContenedor.Controls.RemoveAt(0)
+        End If
+
+        'Convierte el objeto formHijo a un tipo Form
+        Dim fh As Form = TryCast(formHijo, Form)
+
+        If fh IsNot Nothing Then
+            'Esto indica que el formulario no es un formulario de nivel superior
+            fh.TopLevel = False
+            ' El formulario se ajustará al tamaño completo del contenedor
+            fh.Dock = DockStyle.Fill
+            'Agrega el formulario al contenedor
+            Me.panelContenedor.Controls.Add(fh)
+            'Almacena una referencia al formulario hijo en la propiedad Tag del contenedor.
+            Me.panelContenedor.Tag = fh
+            fh.Show()
+            'Trae el formulario al frente de cualquier otro control
+            fh.BringToFront()
+        End If
+
+        ' Si no se agregó ningún formulario hijo, pinta el botón "Inicio"
+        If Me.panelContenedor.Controls.Count = 0 Then
+            PintarBotonInicio()
+        End If
+    End Sub
+
+    Private Sub AbrirFormCbo(formHijo As Object, sender As Button)
+        ' Restablecer el color del botón anterior
+        If btnAnterior IsNot Nothing Then
+            btnAnterior.BackColor = Color.FromArgb(91, 91, 91)
         End If
 
         ' Actualizar el color del botón actual
@@ -185,15 +310,4 @@ Public Class frmMenuPrincipal
     End Sub
 #End Region
 
-    Private Sub MenuPrincipal_Load(sender As Object, e As EventArgs) Handles Me.Load
-        lblUsuario.Text = UsuarioActivo.usuario
-        lblRol.Text = UsuarioActivo.nombre_rol
-        lblNombre.Text = UsuarioActivo.nombrePersona & " " & UsuarioActivo.apellidoPersona
-        lblCorreo.Text = UsuarioActivo.correoPersona
-        PintarBotonInicio()
-    End Sub
-
-    Private Sub btnTipoVehiculos_Click(sender As Object, e As EventArgs) Handles btnTipoVehiculos.Click
-
-    End Sub
 End Class
