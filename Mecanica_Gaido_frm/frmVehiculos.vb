@@ -10,7 +10,14 @@ Public Class frmVehiculos
     Private Sub frmVehiculos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Combo_Marcas()
         Cargar_Combo_TipoVehiculo()
-        limpiar
+        Limpiar()
+
+        ' Manejar eventos para concatenar datos
+        AddHandler cboTipoVehiculo.SelectedIndexChanged, AddressOf ActualizarNombre
+        AddHandler cboMarca.SelectedIndexChanged, AddressOf ActualizarNombre
+        AddHandler txtModelo.TextChanged, AddressOf ActualizarNombre
+        AddHandler txtNumMotor.TextChanged, AddressOf ActualizarNombre
+        AddHandler cboCuenta.SelectedIndexChanged, AddressOf ActualizarNombre
     End Sub
 
     Public Sub Limpiar()
@@ -18,8 +25,8 @@ Public Class frmVehiculos
         txtNombre.Clear()
         txtModelo.Clear()
         txtColor.Clear()
-        txtNumchasis.Clear()
-        txtNumotor.Clear()
+        txtNumChasis.Clear()
+        txtNumMotor.Clear()
         txtMatricula.Clear()
         cboTipoVehiculo.SelectedIndex = -1
         cboMarca.SelectedIndex = -1
@@ -28,6 +35,18 @@ Public Class frmVehiculos
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         Limpiar()
+    End Sub
+#End Region
+
+#Region "Concatenar Nombre"
+    Private Sub ActualizarNombre(sender As Object, e As EventArgs)
+        Dim tipoVehiculo As String = If(cboTipoVehiculo.SelectedItem IsNot Nothing, cboTipoVehiculo.Text, String.Empty)
+        Dim marca As String = If(cboMarca.SelectedItem IsNot Nothing, cboMarca.Text, String.Empty)
+        Dim modelo As String = txtModelo.Text
+        Dim nroMotor As String = txtNumMotor.Text
+        Dim cuenta As String = If(cboCuenta.SelectedItem IsNot Nothing, cboCuenta.Text, String.Empty)
+
+        txtNombre.Text = $"{tipoVehiculo}.{marca}.{modelo}.{nroMotor}.{cuenta}".Trim()
     End Sub
 #End Region
 
@@ -70,7 +89,7 @@ Public Class frmVehiculos
 #End Region
 
 #Region "Marca"
-    Private Sub btnAgregarMarca_Click(sender As Object, e As EventArgs)
+    Private Sub btnAgregarMarca_Click(sender As Object, e As EventArgs) Handles btnAgregarMarca.Click
         Dim frm As New frmAgregarMarca()
 
         'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
@@ -106,6 +125,22 @@ Public Class frmVehiculos
                 End If
             Next
         End If
+    End Sub
+
+    Private Sub cboTipoVehiculo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTipoVehiculo.SelectedIndexChanged
+        ' Ocultar lblMatricula y txtMatricula si se selecciona Tractor o Maquinaria Agrícola
+        Dim tipoSeleccionado As String = cboTipoVehiculo.Text
+
+        If tipoSeleccionado = "Tractor" OrElse tipoSeleccionado = "Maquinaria Agrícola" Then
+            lblMatricula.Visible = False
+            txtMatricula.Visible = False
+        Else
+            lblMatricula.Visible = True
+            txtMatricula.Visible = True
+        End If
+
+        ' Actualizar el nombre concatenado también
+        ActualizarNombre(sender, e)
     End Sub
 
 #End Region

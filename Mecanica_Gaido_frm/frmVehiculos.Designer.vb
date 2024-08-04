@@ -25,14 +25,14 @@ Partial Class frmVehiculos
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVehiculos))
         Me.grdVehiculo = New System.Windows.Forms.DataGridView()
         Me.txtMatricula = New System.Windows.Forms.TextBox()
-        Me.txtNumotor = New System.Windows.Forms.TextBox()
-        Me.txtNumchasis = New System.Windows.Forms.TextBox()
+        Me.txtNumMotor = New System.Windows.Forms.TextBox()
+        Me.txtNumChasis = New System.Windows.Forms.TextBox()
         Me.txtID = New System.Windows.Forms.TextBox()
         Me.cboTipoVehiculo = New System.Windows.Forms.ComboBox()
         Me.chkEstado = New System.Windows.Forms.CheckBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
+        Me.lblMatricula = New System.Windows.Forms.Label()
+        Me.lblNumMotor = New System.Windows.Forms.Label()
+        Me.lblNumChasis = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnModificar = New System.Windows.Forms.Button()
@@ -42,10 +42,10 @@ Partial Class frmVehiculos
         Me.btnAgregarTipoVehiculo = New System.Windows.Forms.PictureBox()
         Me.lblDatosVehiculo = New System.Windows.Forms.Label()
         Me.PanelDatoVehiculo = New System.Windows.Forms.Panel()
-        Me.lblIdentificacionVehiculo = New System.Windows.Forms.Label()
-        Me.PanelIdentificacionVehiculo = New System.Windows.Forms.Panel()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.cboCuenta = New System.Windows.Forms.ComboBox()
+        Me.btnAgregarCuenta = New System.Windows.Forms.PictureBox()
+        Me.Label15 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.cboMarca = New System.Windows.Forms.ComboBox()
@@ -57,19 +57,19 @@ Partial Class frmVehiculos
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.txtColor = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.cboCuenta = New System.Windows.Forms.ComboBox()
-        Me.btnAgregarCuenta = New System.Windows.Forms.PictureBox()
-        Me.Label15 = New System.Windows.Forms.Label()
+        Me.lblIdentificacionVehiculo = New System.Windows.Forms.Label()
+        Me.PanelIdentificacionVehiculo = New System.Windows.Forms.Panel()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.lblNota = New System.Windows.Forms.Label()
         Me.PanelNotas = New System.Windows.Forms.Panel()
         Me.txtNota = New System.Windows.Forms.RichTextBox()
         CType(Me.grdVehiculo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarTipoVehiculo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDatoVehiculo.SuspendLayout()
-        Me.PanelIdentificacionVehiculo.SuspendLayout()
-        CType(Me.btnAgregarMarca, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarCuenta, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btnAgregarMarca, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelIdentificacionVehiculo.SuspendLayout()
         Me.PanelNotas.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -103,23 +103,23 @@ Partial Class frmVehiculos
         Me.txtMatricula.Size = New System.Drawing.Size(253, 23)
         Me.txtMatricula.TabIndex = 10
         '
-        'txtNumotor
+        'txtNumMotor
         '
-        Me.txtNumotor.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtNumotor.Location = New System.Drawing.Point(174, 58)
-        Me.txtNumotor.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtNumotor.Name = "txtNumotor"
-        Me.txtNumotor.Size = New System.Drawing.Size(253, 23)
-        Me.txtNumotor.TabIndex = 9
+        Me.txtNumMotor.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtNumMotor.Location = New System.Drawing.Point(174, 58)
+        Me.txtNumMotor.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtNumMotor.Name = "txtNumMotor"
+        Me.txtNumMotor.Size = New System.Drawing.Size(253, 23)
+        Me.txtNumMotor.TabIndex = 9
         '
-        'txtNumchasis
+        'txtNumChasis
         '
-        Me.txtNumchasis.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtNumchasis.Location = New System.Drawing.Point(174, 24)
-        Me.txtNumchasis.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtNumchasis.Name = "txtNumchasis"
-        Me.txtNumchasis.Size = New System.Drawing.Size(253, 23)
-        Me.txtNumchasis.TabIndex = 8
+        Me.txtNumChasis.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtNumChasis.Location = New System.Drawing.Point(174, 24)
+        Me.txtNumChasis.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtNumChasis.Name = "txtNumChasis"
+        Me.txtNumChasis.Size = New System.Drawing.Size(253, 23)
+        Me.txtNumChasis.TabIndex = 8
         '
         'txtID
         '
@@ -154,41 +154,41 @@ Partial Class frmVehiculos
         Me.chkEstado.Text = "¿Activo?"
         Me.chkEstado.UseVisualStyleBackColor = True
         '
-        'Label9
+        'lblMatricula
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(13, 95)
-        Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(68, 17)
-        Me.Label9.TabIndex = 31
-        Me.Label9.Text = "Matricula"
+        Me.lblMatricula.AutoSize = True
+        Me.lblMatricula.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMatricula.ForeColor = System.Drawing.Color.White
+        Me.lblMatricula.Location = New System.Drawing.Point(13, 95)
+        Me.lblMatricula.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblMatricula.Name = "lblMatricula"
+        Me.lblMatricula.Size = New System.Drawing.Size(68, 17)
+        Me.lblMatricula.TabIndex = 31
+        Me.lblMatricula.Text = "Matricula"
         '
-        'Label8
+        'lblNumMotor
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(13, 61)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(125, 17)
-        Me.Label8.TabIndex = 30
-        Me.Label8.Text = "Numero de motor"
+        Me.lblNumMotor.AutoSize = True
+        Me.lblNumMotor.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNumMotor.ForeColor = System.Drawing.Color.White
+        Me.lblNumMotor.Location = New System.Drawing.Point(13, 61)
+        Me.lblNumMotor.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblNumMotor.Name = "lblNumMotor"
+        Me.lblNumMotor.Size = New System.Drawing.Size(125, 17)
+        Me.lblNumMotor.TabIndex = 30
+        Me.lblNumMotor.Text = "Numero de motor"
         '
-        'Label7
+        'lblNumChasis
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(13, 27)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(123, 17)
-        Me.Label7.TabIndex = 29
-        Me.Label7.Text = "Numero de chasis"
+        Me.lblNumChasis.AutoSize = True
+        Me.lblNumChasis.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNumChasis.ForeColor = System.Drawing.Color.White
+        Me.lblNumChasis.Location = New System.Drawing.Point(13, 27)
+        Me.lblNumChasis.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblNumChasis.Name = "lblNumChasis"
+        Me.lblNumChasis.Size = New System.Drawing.Size(123, 17)
+        Me.lblNumChasis.TabIndex = 29
+        Me.lblNumChasis.Text = "Numero de chasis"
         '
         'Label2
         '
@@ -323,58 +323,51 @@ Partial Class frmVehiculos
         Me.PanelDatoVehiculo.Size = New System.Drawing.Size(279, 255)
         Me.PanelDatoVehiculo.TabIndex = 113
         '
-        'lblIdentificacionVehiculo
+        'Label14
         '
-        Me.lblIdentificacionVehiculo.AutoSize = True
-        Me.lblIdentificacionVehiculo.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblIdentificacionVehiculo.ForeColor = System.Drawing.Color.White
-        Me.lblIdentificacionVehiculo.Location = New System.Drawing.Point(404, 85)
-        Me.lblIdentificacionVehiculo.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.lblIdentificacionVehiculo.Name = "lblIdentificacionVehiculo"
-        Me.lblIdentificacionVehiculo.Size = New System.Drawing.Size(169, 17)
-        Me.lblIdentificacionVehiculo.TabIndex = 116
-        Me.lblIdentificacionVehiculo.Text = "Identificación del Vehículo"
+        Me.Label14.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label14.BackColor = System.Drawing.Color.Transparent
+        Me.Label14.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label14.ForeColor = System.Drawing.Color.Red
+        Me.Label14.Location = New System.Drawing.Point(62, 16)
+        Me.Label14.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(14, 15)
+        Me.Label14.TabIndex = 128
+        Me.Label14.Text = "*"
         '
-        'PanelIdentificacionVehiculo
+        'cboCuenta
         '
-        Me.PanelIdentificacionVehiculo.Controls.Add(Me.Label12)
-        Me.PanelIdentificacionVehiculo.Controls.Add(Me.txtNumchasis)
-        Me.PanelIdentificacionVehiculo.Controls.Add(Me.Label7)
-        Me.PanelIdentificacionVehiculo.Controls.Add(Me.Label8)
-        Me.PanelIdentificacionVehiculo.Controls.Add(Me.Label9)
-        Me.PanelIdentificacionVehiculo.Controls.Add(Me.chkEstado)
-        Me.PanelIdentificacionVehiculo.Controls.Add(Me.txtNumotor)
-        Me.PanelIdentificacionVehiculo.Controls.Add(Me.txtMatricula)
-        Me.PanelIdentificacionVehiculo.Location = New System.Drawing.Point(394, 93)
-        Me.PanelIdentificacionVehiculo.Name = "PanelIdentificacionVehiculo"
-        Me.PanelIdentificacionVehiculo.Size = New System.Drawing.Size(454, 165)
-        Me.PanelIdentificacionVehiculo.TabIndex = 115
+        Me.cboCuenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboCuenta.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.cboCuenta.FormattingEnabled = True
+        Me.cboCuenta.Location = New System.Drawing.Point(13, 35)
+        Me.cboCuenta.Margin = New System.Windows.Forms.Padding(2)
+        Me.cboCuenta.Name = "cboCuenta"
+        Me.cboCuenta.Size = New System.Drawing.Size(222, 25)
+        Me.cboCuenta.TabIndex = 125
         '
-        'Label12
+        'btnAgregarCuenta
         '
-        Me.Label12.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Label12.BackColor = System.Drawing.Color.Transparent
-        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 16.0!)
-        Me.Label12.ForeColor = System.Drawing.Color.Red
-        Me.Label12.Location = New System.Drawing.Point(141, 61)
-        Me.Label12.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(14, 15)
-        Me.Label12.TabIndex = 111
-        Me.Label12.Text = "*"
+        Me.btnAgregarCuenta.BackgroundImage = CType(resources.GetObject("btnAgregarCuenta.BackgroundImage"), System.Drawing.Image)
+        Me.btnAgregarCuenta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnAgregarCuenta.Location = New System.Drawing.Point(240, 35)
+        Me.btnAgregarCuenta.Name = "btnAgregarCuenta"
+        Me.btnAgregarCuenta.Size = New System.Drawing.Size(26, 25)
+        Me.btnAgregarCuenta.TabIndex = 127
+        Me.btnAgregarCuenta.TabStop = False
         '
-        'Label13
+        'Label15
         '
-        Me.Label13.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Label13.BackColor = System.Drawing.Color.Transparent
-        Me.Label13.Font = New System.Drawing.Font("Century Gothic", 16.0!)
-        Me.Label13.ForeColor = System.Drawing.Color.Red
-        Me.Label13.Location = New System.Drawing.Point(524, 78)
-        Me.Label13.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(14, 15)
-        Me.Label13.TabIndex = 117
-        Me.Label13.Text = "*"
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.ForeColor = System.Drawing.Color.White
+        Me.Label15.Location = New System.Drawing.Point(10, 16)
+        Me.Label15.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(57, 17)
+        Me.Label15.TabIndex = 126
+        Me.Label15.Text = "Cuenta"
         '
         'Label10
         '
@@ -470,6 +463,7 @@ Partial Class frmVehiculos
         '
         'txtNombre
         '
+        Me.txtNombre.Enabled = False
         Me.txtNombre.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtNombre.Location = New System.Drawing.Point(13, 81)
         Me.txtNombre.Margin = New System.Windows.Forms.Padding(2)
@@ -498,51 +492,59 @@ Partial Class frmVehiculos
         Me.Label6.TabIndex = 121
         Me.Label6.Text = "Color"
         '
-        'Label14
+        'lblIdentificacionVehiculo
         '
-        Me.Label14.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Label14.BackColor = System.Drawing.Color.Transparent
-        Me.Label14.Font = New System.Drawing.Font("Century Gothic", 16.0!)
-        Me.Label14.ForeColor = System.Drawing.Color.Red
-        Me.Label14.Location = New System.Drawing.Point(62, 16)
-        Me.Label14.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(14, 15)
-        Me.Label14.TabIndex = 128
-        Me.Label14.Text = "*"
+        Me.lblIdentificacionVehiculo.AutoSize = True
+        Me.lblIdentificacionVehiculo.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.lblIdentificacionVehiculo.ForeColor = System.Drawing.Color.White
+        Me.lblIdentificacionVehiculo.Location = New System.Drawing.Point(404, 85)
+        Me.lblIdentificacionVehiculo.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblIdentificacionVehiculo.Name = "lblIdentificacionVehiculo"
+        Me.lblIdentificacionVehiculo.Size = New System.Drawing.Size(169, 17)
+        Me.lblIdentificacionVehiculo.TabIndex = 116
+        Me.lblIdentificacionVehiculo.Text = "Identificación del Vehículo"
         '
-        'cboCuenta
+        'PanelIdentificacionVehiculo
         '
-        Me.cboCuenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboCuenta.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.cboCuenta.FormattingEnabled = True
-        Me.cboCuenta.Location = New System.Drawing.Point(13, 35)
-        Me.cboCuenta.Margin = New System.Windows.Forms.Padding(2)
-        Me.cboCuenta.Name = "cboCuenta"
-        Me.cboCuenta.Size = New System.Drawing.Size(222, 25)
-        Me.cboCuenta.TabIndex = 125
+        Me.PanelIdentificacionVehiculo.Controls.Add(Me.Label12)
+        Me.PanelIdentificacionVehiculo.Controls.Add(Me.txtNumChasis)
+        Me.PanelIdentificacionVehiculo.Controls.Add(Me.Label13)
+        Me.PanelIdentificacionVehiculo.Controls.Add(Me.lblNumChasis)
+        Me.PanelIdentificacionVehiculo.Controls.Add(Me.lblNumMotor)
+        Me.PanelIdentificacionVehiculo.Controls.Add(Me.lblMatricula)
+        Me.PanelIdentificacionVehiculo.Controls.Add(Me.chkEstado)
+        Me.PanelIdentificacionVehiculo.Controls.Add(Me.txtNumMotor)
+        Me.PanelIdentificacionVehiculo.Controls.Add(Me.txtMatricula)
+        Me.PanelIdentificacionVehiculo.Location = New System.Drawing.Point(394, 93)
+        Me.PanelIdentificacionVehiculo.Name = "PanelIdentificacionVehiculo"
+        Me.PanelIdentificacionVehiculo.Size = New System.Drawing.Size(454, 165)
+        Me.PanelIdentificacionVehiculo.TabIndex = 115
         '
-        'btnAgregarCuenta
+        'Label12
         '
-        Me.btnAgregarCuenta.BackgroundImage = CType(resources.GetObject("btnAgregarCuenta.BackgroundImage"), System.Drawing.Image)
-        Me.btnAgregarCuenta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnAgregarCuenta.Location = New System.Drawing.Point(240, 35)
-        Me.btnAgregarCuenta.Name = "btnAgregarCuenta"
-        Me.btnAgregarCuenta.Size = New System.Drawing.Size(26, 25)
-        Me.btnAgregarCuenta.TabIndex = 127
-        Me.btnAgregarCuenta.TabStop = False
+        Me.Label12.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label12.BackColor = System.Drawing.Color.Transparent
+        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label12.ForeColor = System.Drawing.Color.Red
+        Me.Label12.Location = New System.Drawing.Point(141, 61)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(14, 15)
+        Me.Label12.TabIndex = 111
+        Me.Label12.Text = "*"
         '
-        'Label15
+        'Label13
         '
-        Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.ForeColor = System.Drawing.Color.White
-        Me.Label15.Location = New System.Drawing.Point(10, 16)
-        Me.Label15.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(57, 17)
-        Me.Label15.TabIndex = 126
-        Me.Label15.Text = "Cuenta"
+        Me.Label13.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label13.BackColor = System.Drawing.Color.Transparent
+        Me.Label13.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label13.ForeColor = System.Drawing.Color.Red
+        Me.Label13.Location = New System.Drawing.Point(139, 27)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(14, 15)
+        Me.Label13.TabIndex = 117
+        Me.Label13.Text = "*"
         '
         'lblNota
         '
@@ -580,10 +582,9 @@ Partial Class frmVehiculos
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(939, 581)
+        Me.ClientSize = New System.Drawing.Size(956, 581)
         Me.Controls.Add(Me.lblNota)
         Me.Controls.Add(Me.PanelNotas)
-        Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.lblIdentificacionVehiculo)
         Me.Controls.Add(Me.PanelIdentificacionVehiculo)
         Me.Controls.Add(Me.lblDatosVehiculo)
@@ -608,10 +609,10 @@ Partial Class frmVehiculos
         CType(Me.btnAgregarTipoVehiculo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelDatoVehiculo.ResumeLayout(False)
         Me.PanelDatoVehiculo.PerformLayout()
+        CType(Me.btnAgregarCuenta, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btnAgregarMarca, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelIdentificacionVehiculo.ResumeLayout(False)
         Me.PanelIdentificacionVehiculo.PerformLayout()
-        CType(Me.btnAgregarMarca, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.btnAgregarCuenta, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelNotas.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -620,14 +621,14 @@ Partial Class frmVehiculos
 
     Friend WithEvents grdVehiculo As DataGridView
     Friend WithEvents txtMatricula As TextBox
-    Friend WithEvents txtNumotor As TextBox
-    Friend WithEvents txtNumchasis As TextBox
+    Friend WithEvents txtNumMotor As TextBox
+    Friend WithEvents txtNumChasis As TextBox
     Friend WithEvents txtID As TextBox
     Friend WithEvents cboTipoVehiculo As ComboBox
     Friend WithEvents chkEstado As CheckBox
-    Friend WithEvents Label9 As Label
-    Friend WithEvents Label8 As Label
-    Friend WithEvents Label7 As Label
+    Friend WithEvents lblMatricula As Label
+    Friend WithEvents lblNumMotor As Label
+    Friend WithEvents lblNumChasis As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents btnModificar As Button
