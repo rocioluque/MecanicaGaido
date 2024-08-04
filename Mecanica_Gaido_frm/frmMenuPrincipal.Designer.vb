@@ -86,7 +86,7 @@ Partial Class frmMenuPrincipal
         Me.PanelCboGestion.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelCboGestion.Location = New System.Drawing.Point(0, 404)
         Me.PanelCboGestion.Name = "PanelCboGestion"
-        Me.PanelCboGestion.Size = New System.Drawing.Size(246, 225)
+        Me.PanelCboGestion.Size = New System.Drawing.Size(230, 225)
         Me.PanelCboGestion.TabIndex = 0
         Me.PanelCboGestion.Tag = "0"
         Me.PanelCboGestion.Visible = False
@@ -98,11 +98,11 @@ Partial Class frmMenuPrincipal
         Me.btnTipoVenta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
         Me.btnTipoVenta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnTipoVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnTipoVenta.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnTipoVenta.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnTipoVenta.ForeColor = System.Drawing.Color.White
-        Me.btnTipoVenta.Location = New System.Drawing.Point(0, 192)
+        Me.btnTipoVenta.Location = New System.Drawing.Point(0, 194)
         Me.btnTipoVenta.Name = "btnTipoVenta"
-        Me.btnTipoVenta.Size = New System.Drawing.Size(246, 24)
+        Me.btnTipoVenta.Size = New System.Drawing.Size(230, 24)
         Me.btnTipoVenta.TabIndex = 12
         Me.btnTipoVenta.Text = "Tipos de Ventas"
         Me.btnTipoVenta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -116,12 +116,11 @@ Partial Class frmMenuPrincipal
         Me.btnTipoVehiculos.FlatAppearance.BorderSize = 0
         Me.btnTipoVehiculos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
         Me.btnTipoVehiculos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnTipoVehiculos.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnTipoVehiculos.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnTipoVehiculos.ForeColor = System.Drawing.Color.White
-        Me.btnTipoVehiculos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnTipoVehiculos.Location = New System.Drawing.Point(0, 168)
+        Me.btnTipoVehiculos.Location = New System.Drawing.Point(0, 170)
         Me.btnTipoVehiculos.Name = "btnTipoVehiculos"
-        Me.btnTipoVehiculos.Size = New System.Drawing.Size(246, 24)
+        Me.btnTipoVehiculos.Size = New System.Drawing.Size(230, 24)
         Me.btnTipoVehiculos.TabIndex = 37
         Me.btnTipoVehiculos.Text = "Tipos de Vehiculos"
         Me.btnTipoVehiculos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -134,11 +133,11 @@ Partial Class frmMenuPrincipal
         Me.btnFormaPago.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
         Me.btnFormaPago.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnFormaPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnFormaPago.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFormaPago.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnFormaPago.ForeColor = System.Drawing.Color.White
-        Me.btnFormaPago.Location = New System.Drawing.Point(0, 144)
+        Me.btnFormaPago.Location = New System.Drawing.Point(0, 145)
         Me.btnFormaPago.Name = "btnFormaPago"
-        Me.btnFormaPago.Size = New System.Drawing.Size(246, 24)
+        Me.btnFormaPago.Size = New System.Drawing.Size(230, 25)
         Me.btnFormaPago.TabIndex = 14
         Me.btnFormaPago.Text = "Formas de Pago"
         Me.btnFormaPago.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -151,11 +150,11 @@ Partial Class frmMenuPrincipal
         Me.btnFormaEntrega.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
         Me.btnFormaEntrega.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnFormaEntrega.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnFormaEntrega.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFormaEntrega.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnFormaEntrega.ForeColor = System.Drawing.Color.White
         Me.btnFormaEntrega.Location = New System.Drawing.Point(0, 120)
         Me.btnFormaEntrega.Name = "btnFormaEntrega"
-        Me.btnFormaEntrega.Size = New System.Drawing.Size(246, 24)
+        Me.btnFormaEntrega.Size = New System.Drawing.Size(230, 25)
         Me.btnFormaEntrega.TabIndex = 11
         Me.btnFormaEntrega.Text = "Formas de Entrega"
         Me.btnFormaEntrega.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -168,11 +167,11 @@ Partial Class frmMenuPrincipal
         Me.btnSeccion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
         Me.btnSeccion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnSeccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSeccion.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSeccion.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnSeccion.ForeColor = System.Drawing.Color.White
         Me.btnSeccion.Location = New System.Drawing.Point(0, 96)
         Me.btnSeccion.Name = "btnSeccion"
-        Me.btnSeccion.Size = New System.Drawing.Size(246, 24)
+        Me.btnSeccion.Size = New System.Drawing.Size(230, 24)
         Me.btnSeccion.TabIndex = 10
         Me.btnSeccion.Text = "Secciones"
         Me.btnSeccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -185,11 +184,11 @@ Partial Class frmMenuPrincipal
         Me.btnRubro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
         Me.btnRubro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnRubro.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnRubro.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRubro.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnRubro.ForeColor = System.Drawing.Color.White
         Me.btnRubro.Location = New System.Drawing.Point(0, 72)
         Me.btnRubro.Name = "btnRubro"
-        Me.btnRubro.Size = New System.Drawing.Size(246, 24)
+        Me.btnRubro.Size = New System.Drawing.Size(230, 24)
         Me.btnRubro.TabIndex = 12
         Me.btnRubro.Text = "Rubros"
         Me.btnRubro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -202,11 +201,11 @@ Partial Class frmMenuPrincipal
         Me.btnRol.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
         Me.btnRol.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnRol.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRol.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnRol.ForeColor = System.Drawing.Color.White
         Me.btnRol.Location = New System.Drawing.Point(0, 48)
         Me.btnRol.Name = "btnRol"
-        Me.btnRol.Size = New System.Drawing.Size(246, 24)
+        Me.btnRol.Size = New System.Drawing.Size(230, 24)
         Me.btnRol.TabIndex = 13
         Me.btnRol.Text = "Roles"
         Me.btnRol.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -219,11 +218,11 @@ Partial Class frmMenuPrincipal
         Me.btnMarca.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
         Me.btnMarca.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnMarca.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnMarca.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnMarca.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnMarca.ForeColor = System.Drawing.Color.White
         Me.btnMarca.Location = New System.Drawing.Point(0, 24)
         Me.btnMarca.Name = "btnMarca"
-        Me.btnMarca.Size = New System.Drawing.Size(246, 24)
+        Me.btnMarca.Size = New System.Drawing.Size(230, 24)
         Me.btnMarca.TabIndex = 11
         Me.btnMarca.Text = "Marcas"
         Me.btnMarca.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -236,11 +235,11 @@ Partial Class frmMenuPrincipal
         Me.btnCiudad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
         Me.btnCiudad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnCiudad.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCiudad.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCiudad.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnCiudad.ForeColor = System.Drawing.Color.White
         Me.btnCiudad.Location = New System.Drawing.Point(0, 0)
         Me.btnCiudad.Name = "btnCiudad"
-        Me.btnCiudad.Size = New System.Drawing.Size(246, 24)
+        Me.btnCiudad.Size = New System.Drawing.Size(230, 24)
         Me.btnCiudad.TabIndex = 10
         Me.btnCiudad.Text = "Ciudades"
         Me.btnCiudad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -309,9 +308,9 @@ Partial Class frmMenuPrincipal
         Me.panelContenedor.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.panelContenedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.panelContenedor.Dock = System.Windows.Forms.DockStyle.Right
-        Me.panelContenedor.Location = New System.Drawing.Point(241, 30)
+        Me.panelContenedor.Location = New System.Drawing.Point(228, 30)
         Me.panelContenedor.Name = "panelContenedor"
-        Me.panelContenedor.Size = New System.Drawing.Size(959, 670)
+        Me.panelContenedor.Size = New System.Drawing.Size(972, 670)
         Me.panelContenedor.TabIndex = 2
         '
         'PictureBox7
@@ -338,7 +337,7 @@ Partial Class frmMenuPrincipal
         Me.btnCerrarSesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnCerrarSesion.Location = New System.Drawing.Point(0, 635)
         Me.btnCerrarSesion.Name = "btnCerrarSesion"
-        Me.btnCerrarSesion.Size = New System.Drawing.Size(246, 35)
+        Me.btnCerrarSesion.Size = New System.Drawing.Size(230, 35)
         Me.btnCerrarSesion.TabIndex = 32
         Me.btnCerrarSesion.Text = "        Cerrar Sesión"
         Me.btnCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -452,7 +451,7 @@ Partial Class frmMenuPrincipal
         Me.PanelMenu.Controls.Add(Me.btnCerrarSesion)
         Me.PanelMenu.Location = New System.Drawing.Point(0, 30)
         Me.PanelMenu.Name = "PanelMenu"
-        Me.PanelMenu.Size = New System.Drawing.Size(246, 670)
+        Me.PanelMenu.Size = New System.Drawing.Size(230, 670)
         Me.PanelMenu.TabIndex = 0
         '
         'btnGestionDatos
@@ -470,7 +469,7 @@ Partial Class frmMenuPrincipal
         Me.btnGestionDatos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnGestionDatos.Location = New System.Drawing.Point(0, 369)
         Me.btnGestionDatos.Name = "btnGestionDatos"
-        Me.btnGestionDatos.Size = New System.Drawing.Size(246, 35)
+        Me.btnGestionDatos.Size = New System.Drawing.Size(230, 35)
         Me.btnGestionDatos.TabIndex = 47
         Me.btnGestionDatos.Text = "        Gestión de Datos "
         Me.btnGestionDatos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -490,7 +489,7 @@ Partial Class frmMenuPrincipal
         Me.btnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnReportes.Location = New System.Drawing.Point(0, 334)
         Me.btnReportes.Name = "btnReportes"
-        Me.btnReportes.Size = New System.Drawing.Size(246, 35)
+        Me.btnReportes.Size = New System.Drawing.Size(230, 35)
         Me.btnReportes.TabIndex = 46
         Me.btnReportes.Text = "        Reportes "
         Me.btnReportes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -510,7 +509,7 @@ Partial Class frmMenuPrincipal
         Me.btnCompras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnCompras.Location = New System.Drawing.Point(0, 299)
         Me.btnCompras.Name = "btnCompras"
-        Me.btnCompras.Size = New System.Drawing.Size(246, 35)
+        Me.btnCompras.Size = New System.Drawing.Size(230, 35)
         Me.btnCompras.TabIndex = 45
         Me.btnCompras.Text = "        Compras "
         Me.btnCompras.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -530,7 +529,7 @@ Partial Class frmMenuPrincipal
         Me.btnVentas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnVentas.Location = New System.Drawing.Point(0, 264)
         Me.btnVentas.Name = "btnVentas"
-        Me.btnVentas.Size = New System.Drawing.Size(246, 35)
+        Me.btnVentas.Size = New System.Drawing.Size(230, 35)
         Me.btnVentas.TabIndex = 44
         Me.btnVentas.Text = "        Ventas"
         Me.btnVentas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -550,7 +549,7 @@ Partial Class frmMenuPrincipal
         Me.btnOrdenReparacón.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnOrdenReparacón.Location = New System.Drawing.Point(0, 229)
         Me.btnOrdenReparacón.Name = "btnOrdenReparacón"
-        Me.btnOrdenReparacón.Size = New System.Drawing.Size(246, 35)
+        Me.btnOrdenReparacón.Size = New System.Drawing.Size(230, 35)
         Me.btnOrdenReparacón.TabIndex = 43
         Me.btnOrdenReparacón.Text = "        Ordenes de Reparación"
         Me.btnOrdenReparacón.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -570,7 +569,7 @@ Partial Class frmMenuPrincipal
         Me.btnVehiculos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnVehiculos.Location = New System.Drawing.Point(0, 194)
         Me.btnVehiculos.Name = "btnVehiculos"
-        Me.btnVehiculos.Size = New System.Drawing.Size(246, 35)
+        Me.btnVehiculos.Size = New System.Drawing.Size(230, 35)
         Me.btnVehiculos.TabIndex = 42
         Me.btnVehiculos.Text = "        Vehículos"
         Me.btnVehiculos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -590,7 +589,7 @@ Partial Class frmMenuPrincipal
         Me.btnProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnProductos.Location = New System.Drawing.Point(0, 159)
         Me.btnProductos.Name = "btnProductos"
-        Me.btnProductos.Size = New System.Drawing.Size(246, 35)
+        Me.btnProductos.Size = New System.Drawing.Size(230, 35)
         Me.btnProductos.TabIndex = 41
         Me.btnProductos.Text = "        Productos"
         Me.btnProductos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -611,7 +610,7 @@ Partial Class frmMenuPrincipal
         Me.btnPersonas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnPersonas.Location = New System.Drawing.Point(0, 124)
         Me.btnPersonas.Name = "btnPersonas"
-        Me.btnPersonas.Size = New System.Drawing.Size(246, 35)
+        Me.btnPersonas.Size = New System.Drawing.Size(230, 35)
         Me.btnPersonas.TabIndex = 40
         Me.btnPersonas.Text = "        Personas"
         Me.btnPersonas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -632,7 +631,7 @@ Partial Class frmMenuPrincipal
         Me.btnInicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnInicio.Location = New System.Drawing.Point(0, 89)
         Me.btnInicio.Name = "btnInicio"
-        Me.btnInicio.Size = New System.Drawing.Size(246, 35)
+        Me.btnInicio.Size = New System.Drawing.Size(230, 35)
         Me.btnInicio.TabIndex = 39
         Me.btnInicio.Text = "        Inicio"
         Me.btnInicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -652,7 +651,7 @@ Partial Class frmMenuPrincipal
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(246, 89)
+        Me.Panel3.Size = New System.Drawing.Size(230, 89)
         Me.Panel3.TabIndex = 1
         '
         'frmMenuPrincipal
