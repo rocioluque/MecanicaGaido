@@ -107,5 +107,36 @@ Public Class frmVehiculos
             Next
         End If
     End Sub
+
 #End Region
+
+#Region "Css trucho"
+    Private Sub PanelDatoVehiculo_Paint(sender As Object, e As PaintEventArgs) Handles PanelDatoVehiculo.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelDatoVehiculo.Width - 1, PanelDatoVehiculo.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+
+    Private Sub PanelIdentificacionVehiculo_Paint(sender As Object, e As PaintEventArgs) Handles PanelIdentificacionVehiculo.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelIdentificacionVehiculo.Width - 1, PanelIdentificacionVehiculo.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+#End Region
+
 End Class
