@@ -70,7 +70,7 @@ Public Class frmVehiculos
 #End Region
 
 #Region "Marca"
-    Private Sub btnAgregarMarca_Click(sender As Object, e As EventArgs) Handles btnAgregarMarca.Click
+    Private Sub btnAgregarMarca_Click(sender As Object, e As EventArgs)
         Dim frm As New frmAgregarMarca()
 
         'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
@@ -134,6 +134,19 @@ Public Class frmVehiculos
         Using pen As New Pen(borderColor, borderWidth)
             ' Ajustar el área para dibujar el borde sin recortes
             Dim rect As New Rectangle(0, 0, PanelIdentificacionVehiculo.Width - 1, PanelIdentificacionVehiculo.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub PanelNotas_Paint(sender As Object, e As PaintEventArgs) Handles PanelNotas.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelNotas.Width - 1, PanelNotas.Height - 1)
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
