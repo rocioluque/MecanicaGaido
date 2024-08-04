@@ -96,7 +96,7 @@ Public Class AD_Productos
     End Function
 
     Public Sub Agregar_Producto(Descripcion As String, NombreDiario As String, ID_Rubro As Integer, ID_Marca As Integer,
-                            CodigoBarra As String, CodFabricante As String, CantidadBulto As Decimal, ID_Origen As Integer,
+                            CodigoBarra As String, CodFabricante As String, CantidadBulto As Decimal, origen As String,
                             Alternativo As Boolean, ID_Original As Integer, Estado As Boolean, StockReal As Decimal,
                             StockDisponible As Decimal, Ubicacion As String, PrecioCompra As Decimal,
                             Utilidad As Decimal, PrecioLista As String, FechaCompra As Date, FechaVenta As Date)
@@ -110,7 +110,7 @@ Public Class AD_Productos
                 comando.Parameters.AddWithValue("@CodigoBarra", CodigoBarra)
                 comando.Parameters.AddWithValue("@CodFabricante", CodFabricante)
                 comando.Parameters.AddWithValue("@CantidadBulto", CantidadBulto)
-                comando.Parameters.AddWithValue("@ID_Origen", ID_Origen)
+                comando.Parameters.AddWithValue("@Origen", origen)
                 comando.Parameters.AddWithValue("@Alternativo", Alternativo)
                 comando.Parameters.AddWithValue("@ID_Original", ID_Original)
                 comando.Parameters.AddWithValue("@Estado", Estado)

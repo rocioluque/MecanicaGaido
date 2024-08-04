@@ -228,9 +228,11 @@ Public Class frmProductos
             txtUbicacion.Text <> Nothing And txtUtilidad.Text <> Nothing Then
 
             Try
+                Dim origen As String = cboOrigen.SelectedItem.ToString()
+
                 o_productos.Agregar_Producto(txtDescripcion.Text, txtNombreDiario.Text, CInt(cboRubro.SelectedValue),
                        CInt(cboMarca.SelectedValue), txtCodigoBarra.Text, txtCodFabricante.Text, txtCantidadBulto.Text,
-                       CInt(cboOrigen.SelectedValue), chkAlterntivo.Checked, CInt(cboOriginal.SelectedValue), chkEstado.Checked, txtStockReal.Text,
+                       origen, chkAlterntivo.Checked, CInt(cboOriginal.SelectedValue), chkEstado.Checked, txtStockReal.Text,
                        txtStockDisponible.Text, txtUbicacion.Text, txtPrecioCompra.Text, txtUtilidad.Text, txtPrecioLista.Text,
                        dtpFechaCompra.Value, dtpFechaVenta.Value)
 
