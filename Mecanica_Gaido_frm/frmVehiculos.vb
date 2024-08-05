@@ -82,28 +82,81 @@ Public Class frmVehiculos
             Dim datoleido As SqlDataReader = o_vehiculo.Consultar_VehiculoPorID(idVehiculo)
 
             If datoleido.Read() Then
-
                 txtID.Text = If(IsDBNull(datoleido("N° Vehículo")), String.Empty, datoleido("N° Vehículo").ToString())
-                cboPersona.SelectedValue = If(IsDBNull(datoleido("Dueño")), -1, datoleido("Dueño").ToString())
+
+                ' Conversión segura del ID del dueño
+                If Not IsDBNull(datoleido("Dueño")) Then
+                    Dim dueñoID As Integer
+                    If Integer.TryParse(datoleido("Dueño").ToString(), dueñoID) Then
+                        If cboPersona.Items.Cast(Of DataRowView)().Any(Function(item) Convert.ToInt32(item("ID_Persona")) = dueñoID) Then
+                            cboPersona.SelectedValue = dueñoID
+                        Else
+                            cboPersona.SelectedIndex = -1
+                        End If
+                    Else
+                        cboPersona.SelectedIndex = -1
+                    End If
+                Else
+                    cboPersona.SelectedIndex = -1
+                End If
+
                 txtNombre.Text = If(IsDBNull(datoleido("Vehículo")), String.Empty, datoleido("Vehículo").ToString())
                 txtNumChasis.Text = If(IsDBNull(datoleido("N° Chasis")), String.Empty, datoleido("N° Chasis").ToString())
                 txtNumMotor.Text = If(IsDBNull(datoleido("N° Motor")), String.Empty, datoleido("N° Motor").ToString())
-                cboTipoVehiculo.SelectedValue = If(IsDBNull(datoleido("Tipo de Vehículo")), -1, datoleido("Tipo de Vehículo").ToString())
-                cboMarca.SelectedValue = If(IsDBNull(datoleido("Marca")), -1, datoleido("Marca").ToString())
+
+                ' Conversión segura del tipo de vehículo
+                If Not IsDBNull(datoleido("Tipo de Vehículo")) Then
+                    Dim tipoVehiculoID As Integer
+                    If Integer.TryParse(datoleido("Tipo de Vehículo").ToString(), tipoVehiculoID) Then
+                        If cboTipoVehiculo.Items.Cast(Of DataRowView)().Any(Function(item) Convert.ToInt32(item("ID_TipoVehiculo")) = tipoVehiculoID) Then
+                            cboTipoVehiculo.SelectedValue = tipoVehiculoID
+                        Else
+                            cboTipoVehiculo.SelectedIndex = -1
+                        End If
+                    Else
+                        cboTipoVehiculo.SelectedIndex = -1
+                    End If
+                Else
+                    cboTipoVehiculo.SelectedIndex = -1
+                End If
+
+                ' Conversión segura de la marca
+                If Not IsDBNull(datoleido("Marca")) Then
+                    Dim marcaID As Integer
+                    If Integer.TryParse(datoleido("Marca").ToString(), marcaID) Then
+                        If cboMarca.Items.Cast(Of DataRowView)().Any(Function(item) Convert.ToInt32(item("ID_Marca")) = marcaID) Then
+                            cboMarca.SelectedValue = marcaID
+                        Else
+                            cboMarca.SelectedIndex = -1
+                        End If
+                    Else
+                        cboMarca.SelectedIndex = -1
+                    End If
+                Else
+                    cboMarca.SelectedIndex = -1
+                End If
+
                 txtModelo.Text = If(IsDBNull(datoleido("Modelo")), String.Empty, datoleido("Modelo").ToString())
                 txtColor.Text = If(IsDBNull(datoleido("Color")), String.Empty, datoleido("Color").ToString())
                 txtMatricula.Text = If(IsDBNull(datoleido("Matricula")), String.Empty, datoleido("Matricula").ToString())
                 txtNota.Text = If(IsDBNull(datoleido("Nota")), String.Empty, datoleido("Nota").ToString())
-                chkEstado.Checked = If(IsDBNull(datoleido("Estado")), False, Convert.ToBoolean(datoleido("Estado")))
+
+                ' Conversión segura del estado
+                If Not IsDBNull(datoleido("Estado")) Then
+                    chkEstado.Checked = Convert.ToBoolean(datoleido("Estado"))
+                Else
+                    chkEstado.Checked = False
+                End If
             Else
                 MsgBox("No se encontraron resultados", vbInformation, "Error")
             End If
 
             datoleido.Close()
         Catch ex As Exception
-            MsgBox("Ocurrió un error al consultar el vehículo: " & ex.Message, vbInformation, "Error")
+            MessageBox.Show("Ocurrió un error al consultar el vehículo: " & ex.Message, "Error")
         End Try
     End Sub
+
 
     Private Sub grdVehiculo_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdVehiculo.CellClick
         If e.RowIndex >= 0 Then
