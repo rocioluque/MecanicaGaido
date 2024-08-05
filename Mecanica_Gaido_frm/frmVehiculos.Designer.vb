@@ -525,7 +525,7 @@ Partial Class frmVehiculos
         Me.Label12.BackColor = System.Drawing.Color.Transparent
         Me.Label12.Font = New System.Drawing.Font("Century Gothic", 16.0!)
         Me.Label12.ForeColor = System.Drawing.Color.Red
-        Me.Label12.Location = New System.Drawing.Point(141, 61)
+        Me.Label12.Location = New System.Drawing.Point(104, 61)
         Me.Label12.Margin = New System.Windows.Forms.Padding(0)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(14, 15)

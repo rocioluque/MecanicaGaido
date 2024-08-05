@@ -155,9 +155,11 @@ Public Class AD_Vehiculos
         End Try
     End Function
 
-    Public Sub Agregar_Vehiculo(ID_TipoVehiculo As Integer, ID_Marca As Integer, Nombre As String,
+    Public Function Agregar_Vehiculo(ID_TipoVehiculo As Integer, ID_Marca As Integer, Nombre As String,
                             Modelo As String, Color As String, NumChasis As String, NumMotor As String,
                             Matricula As String, Nota As String, Estado As Boolean)
+
+        Dim idVehiculo As Integer
 
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Agregar_Vehiculo", conexion)
@@ -171,6 +173,27 @@ Public Class AD_Vehiculos
                 comando.Parameters.AddWithValue("@NumMotor", NumMotor)
                 comando.Parameters.AddWithValue("@Matricula", Matricula)
                 comando.Parameters.AddWithValue("@Nota", Nota)
+                comando.Parameters.AddWithValue("@Estado", Estado)
+
+                Dim idVehiculoParam As New SqlParameter("@ID_Vehiculo", SqlDbType.Int)
+                idVehiculoParam.Direction = ParameterDirection.Output
+                comando.Parameters.Add(idVehiculoParam)
+
+                conexion.Open()
+                comando.ExecuteNonQuery()
+
+                idVehiculo = Convert.ToInt32(idVehiculoParam.Value)
+            End Using
+        End Using
+        Return idVehiculo
+    End Function
+
+    Public Sub Agregar_VehiculoXPersona(ID_Persona As Integer, ID_Vehiculo As Integer, Estado As Boolean)
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Agregar_VehiculoXPersona", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@ID_Persona", ID_Persona)
+                comando.Parameters.AddWithValue("@ID_Vehiculo", ID_Vehiculo)
                 comando.Parameters.AddWithValue("@Estado", Estado)
 
                 conexion.Open()

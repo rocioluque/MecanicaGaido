@@ -82,14 +82,14 @@ Public Class frmVehiculos
             Dim datoleido As SqlDataReader = o_vehiculo.Consultar_VehiculoPorID(idVehiculo)
 
             If datoleido.Read() Then
+
                 txtID.Text = If(IsDBNull(datoleido("N° Vehículo")), String.Empty, datoleido("N° Vehículo").ToString())
-                cboPersona.SelectedValue = If(IsDBNull(datoleido("Dueño")), String.Empty, datoleido("Dueño").ToString())
+                cboPersona.SelectedValue = If(IsDBNull(datoleido("Dueño")), -1, datoleido("Dueño").ToString())
                 txtNombre.Text = If(IsDBNull(datoleido("Vehículo")), String.Empty, datoleido("Vehículo").ToString())
                 txtNumChasis.Text = If(IsDBNull(datoleido("N° Chasis")), String.Empty, datoleido("N° Chasis").ToString())
-
                 txtNumMotor.Text = If(IsDBNull(datoleido("N° Motor")), String.Empty, datoleido("N° Motor").ToString())
-                cboTipoVehiculo.SelectedValue = If(IsDBNull(datoleido("Tipo de Vehículo")), String.Empty, datoleido("Tipo de Vehículo").ToString())
-                cboMarca.SelectedValue = If(IsDBNull(datoleido("Marca")), -1, datoleido("Marca"))
+                cboTipoVehiculo.SelectedValue = If(IsDBNull(datoleido("Tipo de Vehículo")), -1, datoleido("Tipo de Vehículo").ToString())
+                cboMarca.SelectedValue = If(IsDBNull(datoleido("Marca")), -1, datoleido("Marca").ToString())
                 txtModelo.Text = If(IsDBNull(datoleido("Modelo")), String.Empty, datoleido("Modelo").ToString())
                 txtColor.Text = If(IsDBNull(datoleido("Color")), String.Empty, datoleido("Color").ToString())
                 txtMatricula.Text = If(IsDBNull(datoleido("Matricula")), String.Empty, datoleido("Matricula").ToString())
@@ -101,7 +101,7 @@ Public Class frmVehiculos
 
             datoleido.Close()
         Catch ex As Exception
-            MessageBox.Show("Ocurrió un error al consultar el vehículo: " & ex.Message, "Error")
+            MsgBox("Ocurrió un error al consultar el vehículo: " & ex.Message, vbInformation, "Error")
         End Try
     End Sub
 
@@ -112,8 +112,8 @@ Public Class frmVehiculos
             Dim selectedRow As DataGridViewRow = grdVehiculo.Rows(e.RowIndex)
             Dim idVehiculo As Integer
 
-            If selectedRow.Cells("N° Vehiculo").Value IsNot Nothing Then
-                idVehiculo = Convert.ToInt32(selectedRow.Cells("N° Vehiculo").Value)
+            If selectedRow.Cells("N° Vehículo").Value IsNot Nothing Then
+                idVehiculo = Convert.ToInt32(selectedRow.Cells("N° Vehículo").Value)
                 CargarDatosEnTxt(idVehiculo)
             Else
                 MsgBox("El ID del vehículo no puede ser nulo.", vbCritical, "Error")
@@ -133,8 +133,10 @@ Public Class frmVehiculos
             txtModelo.Text <> Nothing And txtNumMotor.Text <> Nothing Then
 
             Try
-                o_vehiculo.Agregar_Vehiculo(CInt(cboTipoVehiculo.SelectedValue), CInt(cboMarca.SelectedValue), txtNombre.Text,
+                Dim idVehiculo As Integer = o_vehiculo.Agregar_Vehiculo(CInt(cboTipoVehiculo.SelectedValue), CInt(cboMarca.SelectedValue), txtNombre.Text,
                        txtModelo.Text, txtColor.Text, txtNumChasis.Text, txtNumMotor.Text, txtMatricula.Text, txtNota.Text, chkEstado.Checked)
+
+                o_vehiculo.Agregar_VehiculoXPersona(CInt(cboPersona.SelectedValue), idVehiculo, chkEstado.Checked)
 
                 MsgBox("Vehículo agregado correctamente.", vbInformation, "Información")
                 Limpiar()
