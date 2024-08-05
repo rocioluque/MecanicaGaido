@@ -63,7 +63,7 @@ Partial Class frmVehiculos
         Me.lblNota = New System.Windows.Forms.Label()
         Me.PanelNotas = New System.Windows.Forms.Panel()
         Me.txtNota = New System.Windows.Forms.RichTextBox()
-        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
         CType(Me.grdVehiculo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarTipoVehiculo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDatoVehiculo.SuspendLayout()
@@ -561,18 +561,18 @@ Partial Class frmVehiculos
         Me.txtNota.TabIndex = 18
         Me.txtNota.Text = ""
         '
-        'Label13
+        'Label7
         '
-        Me.Label13.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Label13.BackColor = System.Drawing.Color.Transparent
-        Me.Label13.Font = New System.Drawing.Font("Century Gothic", 16.0!)
-        Me.Label13.ForeColor = System.Drawing.Color.Red
-        Me.Label13.Location = New System.Drawing.Point(524, 52)
-        Me.Label13.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(14, 15)
-        Me.Label13.TabIndex = 120
-        Me.Label13.Text = "*"
+        Me.Label7.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label7.BackColor = System.Drawing.Color.Transparent
+        Me.Label7.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label7.ForeColor = System.Drawing.Color.Red
+        Me.Label7.Location = New System.Drawing.Point(524, 52)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(14, 15)
+        Me.Label7.TabIndex = 112
+        Me.Label7.Text = "*"
         '
         'frmVehiculos
         '
@@ -582,7 +582,7 @@ Partial Class frmVehiculos
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(973, 581)
-        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.lblNota)
         Me.Controls.Add(Me.PanelNotas)
         Me.Controls.Add(Me.lblIdentificacionVehiculo)
@@ -659,5 +659,5 @@ Partial Class frmVehiculos
     Friend WithEvents lblNota As Label
     Friend WithEvents PanelNotas As Panel
     Friend WithEvents txtNota As RichTextBox
-    Friend WithEvents Label13 As Label
+    Friend WithEvents Label7 As Label
 End Class
