@@ -33,8 +33,6 @@ Public Class frmProductos
 
     End Sub
 
-
-
     Public Sub limpiar()
         txtId.Clear()
         txtDescripcion.Clear()
@@ -151,7 +149,7 @@ Public Class frmProductos
     Private Sub grdProductos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdProductos.CellClick
         If e.RowIndex >= 0 Then
 
-            ' Obtiene el ID de la joya de la celda correspondiente
+            ' Obtiene el ID del producto de la celda correspondiente
             Dim selectedRow As DataGridViewRow = grdProductos.Rows(e.RowIndex)
             Dim idProducto As Integer
 

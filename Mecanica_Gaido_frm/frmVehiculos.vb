@@ -10,6 +10,8 @@ Public Class frmVehiculos
     Private Sub frmVehiculos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Combo_Marcas()
         Cargar_Combo_TipoVehiculo()
+        Cargar_Combo_Personas()
+        Cargar_Grilla()
         Limpiar()
 
         ' Manejar eventos para concatenar datos
@@ -17,7 +19,7 @@ Public Class frmVehiculos
         AddHandler cboMarca.SelectedIndexChanged, AddressOf ActualizarNombre
         AddHandler txtModelo.TextChanged, AddressOf ActualizarNombre
         AddHandler txtNumMotor.TextChanged, AddressOf ActualizarNombre
-        AddHandler cboCuenta.SelectedIndexChanged, AddressOf ActualizarNombre
+        AddHandler cboPersona.SelectedIndexChanged, AddressOf ActualizarNombre
     End Sub
 
     Public Sub Limpiar()
@@ -28,13 +30,122 @@ Public Class frmVehiculos
         txtNumChasis.Clear()
         txtNumMotor.Clear()
         txtMatricula.Clear()
+        txtNota.Clear()
         cboTipoVehiculo.SelectedIndex = -1
         cboMarca.SelectedIndex = -1
+        cboPersona.SelectedIndex = -1
         chkEstado.Checked = False
+    End Sub
+
+    Public Sub Cargar_Grilla()
+        Try
+            Dim conexion As SqlConnection
+            Dim comando As New SqlCommand
+
+            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
+
+            conexion.Open()
+            comando.Connection = conexion
+            comando.CommandType = CommandType.StoredProcedure
+            comando.CommandText = ("Cargar_Grilla_Vehiculo")
+
+            Dim datadapter As New SqlDataAdapter(comando)
+            Dim oDs As New DataSet
+            datadapter.Fill(oDs)
+
+            If oDs.Tables(0).Rows.Count > 0 Then
+                grdVehiculo.AutoGenerateColumns = True
+                grdVehiculo.DataSource = oDs.Tables(0)
+
+                ' Verificar si las columnas existen antes de ocultarlas
+                Dim columnasParaOcultar As String() = {"Tipo de Vehículo", "Color", "Modelo", "Marca", "Matricula", "N° Motor", "Nota", "Estado"}
+                For Each colName As String In columnasParaOcultar
+                    If grdVehiculo.Columns.Contains(colName) Then
+                        grdVehiculo.Columns(colName).Visible = False
+                    End If
+                Next
+                grdVehiculo.Refresh()
+            Else
+                MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
+            End If
+
+            oDs = Nothing
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox("Error al cargar la grilla: " & ex.Message, vbCritical, "Error")
+        Finally
+        End Try
+    End Sub
+
+    Public Sub CargarDatosEnTxt(ByVal idVehiculo As Integer)
+        Try
+            Dim datoleido As SqlDataReader = o_vehiculo.Consultar_VehiculoPorID(idVehiculo)
+
+            If datoleido.Read() Then
+                txtID.Text = If(IsDBNull(datoleido("N° Vehículo")), String.Empty, datoleido("N° Vehículo").ToString())
+                cboPersona.SelectedValue = If(IsDBNull(datoleido("Dueño")), String.Empty, datoleido("Dueño").ToString())
+                txtNombre.Text = If(IsDBNull(datoleido("Vehículo")), String.Empty, datoleido("Vehículo").ToString())
+                txtNumChasis.Text = If(IsDBNull(datoleido("N° Chasis")), String.Empty, datoleido("N° Chasis").ToString())
+
+                txtNumMotor.Text = If(IsDBNull(datoleido("N° Motor")), String.Empty, datoleido("N° Motor").ToString())
+                cboTipoVehiculo.SelectedValue = If(IsDBNull(datoleido("Tipo de Vehículo")), String.Empty, datoleido("Tipo de Vehículo").ToString())
+                cboMarca.SelectedValue = If(IsDBNull(datoleido("Marca")), -1, datoleido("Marca"))
+                txtModelo.Text = If(IsDBNull(datoleido("Modelo")), String.Empty, datoleido("Modelo").ToString())
+                txtColor.Text = If(IsDBNull(datoleido("Color")), String.Empty, datoleido("Color").ToString())
+                txtMatricula.Text = If(IsDBNull(datoleido("Matricula")), String.Empty, datoleido("Matricula").ToString())
+                txtNota.Text = If(IsDBNull(datoleido("Nota")), String.Empty, datoleido("Nota").ToString())
+                chkEstado.Checked = If(IsDBNull(datoleido("Estado")), False, Convert.ToBoolean(datoleido("Estado")))
+            Else
+                MsgBox("No se encontraron resultados", vbInformation, "Error")
+            End If
+
+            datoleido.Close()
+        Catch ex As Exception
+            MessageBox.Show("Ocurrió un error al consultar el vehículo: " & ex.Message, "Error")
+        End Try
+    End Sub
+
+    Private Sub grdVehiculo_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdVehiculo.CellClick
+        If e.RowIndex >= 0 Then
+
+            ' Obtiene el ID del vehiculo de la celda correspondiente
+            Dim selectedRow As DataGridViewRow = grdVehiculo.Rows(e.RowIndex)
+            Dim idVehiculo As Integer
+
+            If selectedRow.Cells("N° Vehiculo").Value IsNot Nothing Then
+                idVehiculo = Convert.ToInt32(selectedRow.Cells("N° Vehiculo").Value)
+                CargarDatosEnTxt(idVehiculo)
+            Else
+                MsgBox("El ID del vehículo no puede ser nulo.", vbCritical, "Error")
+            End If
+        End If
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         Limpiar()
+    End Sub
+
+#End Region
+
+#Region "Cargar"
+    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
+        If cboPersona.SelectedValue <> Nothing And cboMarca.SelectedValue <> Nothing And cboTipoVehiculo.SelectedValue <> Nothing And
+            txtModelo.Text <> Nothing And txtNumMotor.Text <> Nothing Then
+
+            Try
+                o_vehiculo.Agregar_Vehiculo(CInt(cboTipoVehiculo.SelectedValue), CInt(cboMarca.SelectedValue), txtNombre.Text,
+                       txtModelo.Text, txtColor.Text, txtNumChasis.Text, txtNumMotor.Text, txtMatricula.Text, txtNota.Text, chkEstado.Checked)
+
+                MsgBox("Vehículo agregado correctamente.", vbInformation, "Información")
+                Limpiar()
+                Cargar_Grilla()
+
+            Catch ex As Exception
+                MsgBox("Error al agregar el vehículo: " & ex.Message, vbCritical, "Error")
+            End Try
+        Else
+            MsgBox("Complete los datos correspondientes.", vbInformation, "Error")
+        End If
     End Sub
 #End Region
 
@@ -44,9 +155,9 @@ Public Class frmVehiculos
         Dim marca As String = If(cboMarca.SelectedItem IsNot Nothing, cboMarca.Text, String.Empty)
         Dim modelo As String = txtModelo.Text
         Dim nroMotor As String = txtNumMotor.Text
-        Dim cuenta As String = If(cboCuenta.SelectedItem IsNot Nothing, cboCuenta.Text, String.Empty)
+        Dim dueño As String = If(cboPersona.SelectedItem IsNot Nothing, cboPersona.Text, String.Empty)
 
-        txtNombre.Text = $"{tipoVehiculo}.{marca}.{modelo}.{nroMotor}.{cuenta}".Trim()
+        txtNombre.Text = $"{tipoVehiculo}.{marca}.{modelo}.{nroMotor}.{dueño}".Trim()
     End Sub
 #End Region
 
@@ -84,6 +195,24 @@ Public Class frmVehiculos
 
         Catch ex As Exception
             MsgBox("Error al cargar el tipo de Vehiculo: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub Cargar_Combo_Personas()
+        Try
+            Dim tabla As DataTable = o_vehiculo.Cargar_Combo_Personas()
+
+            If tabla.Rows.Count > 0 Then
+                cboPersona.DataSource = tabla
+                cboPersona.DisplayMember = "Persona"
+                cboPersona.ValueMember = "ID_Persona"
+                cboPersona.SelectedValue = -1
+            Else
+                MsgBox("No se encontraron Personas.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar la persona: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
 #End Region

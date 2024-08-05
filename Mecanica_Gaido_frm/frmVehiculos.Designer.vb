@@ -43,7 +43,7 @@ Partial Class frmVehiculos
         Me.lblDatosVehiculo = New System.Windows.Forms.Label()
         Me.PanelDatoVehiculo = New System.Windows.Forms.Panel()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.cboCuenta = New System.Windows.Forms.ComboBox()
+        Me.cboPersona = New System.Windows.Forms.ComboBox()
         Me.btnAgregarCuenta = New System.Windows.Forms.PictureBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -60,10 +60,10 @@ Partial Class frmVehiculos
         Me.lblIdentificacionVehiculo = New System.Windows.Forms.Label()
         Me.PanelIdentificacionVehiculo = New System.Windows.Forms.Panel()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
         Me.lblNota = New System.Windows.Forms.Label()
         Me.PanelNotas = New System.Windows.Forms.Panel()
         Me.txtNota = New System.Windows.Forms.RichTextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
         CType(Me.grdVehiculo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarTipoVehiculo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDatoVehiculo.SuspendLayout()
@@ -174,9 +174,9 @@ Partial Class frmVehiculos
         Me.lblNumMotor.Location = New System.Drawing.Point(13, 61)
         Me.lblNumMotor.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblNumMotor.Name = "lblNumMotor"
-        Me.lblNumMotor.Size = New System.Drawing.Size(125, 17)
+        Me.lblNumMotor.Size = New System.Drawing.Size(88, 17)
         Me.lblNumMotor.TabIndex = 30
-        Me.lblNumMotor.Text = "Numero de motor"
+        Me.lblNumMotor.Text = "N° de motor"
         '
         'lblNumChasis
         '
@@ -186,9 +186,9 @@ Partial Class frmVehiculos
         Me.lblNumChasis.Location = New System.Drawing.Point(13, 27)
         Me.lblNumChasis.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblNumChasis.Name = "lblNumChasis"
-        Me.lblNumChasis.Size = New System.Drawing.Size(123, 17)
+        Me.lblNumChasis.Size = New System.Drawing.Size(86, 17)
         Me.lblNumChasis.TabIndex = 29
-        Me.lblNumChasis.Text = "Numero de chasis"
+        Me.lblNumChasis.Text = "N° de chasis"
         '
         'Label2
         '
@@ -304,7 +304,7 @@ Partial Class frmVehiculos
         'PanelDatoVehiculo
         '
         Me.PanelDatoVehiculo.Controls.Add(Me.Label14)
-        Me.PanelDatoVehiculo.Controls.Add(Me.cboCuenta)
+        Me.PanelDatoVehiculo.Controls.Add(Me.cboPersona)
         Me.PanelDatoVehiculo.Controls.Add(Me.btnAgregarCuenta)
         Me.PanelDatoVehiculo.Controls.Add(Me.Label15)
         Me.PanelDatoVehiculo.Controls.Add(Me.Label10)
@@ -336,16 +336,16 @@ Partial Class frmVehiculos
         Me.Label14.TabIndex = 128
         Me.Label14.Text = "*"
         '
-        'cboCuenta
+        'cboPersona
         '
-        Me.cboCuenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboCuenta.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.cboCuenta.FormattingEnabled = True
-        Me.cboCuenta.Location = New System.Drawing.Point(13, 35)
-        Me.cboCuenta.Margin = New System.Windows.Forms.Padding(2)
-        Me.cboCuenta.Name = "cboCuenta"
-        Me.cboCuenta.Size = New System.Drawing.Size(222, 25)
-        Me.cboCuenta.TabIndex = 125
+        Me.cboPersona.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboPersona.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.cboPersona.FormattingEnabled = True
+        Me.cboPersona.Location = New System.Drawing.Point(13, 35)
+        Me.cboPersona.Margin = New System.Windows.Forms.Padding(2)
+        Me.cboPersona.Name = "cboPersona"
+        Me.cboPersona.Size = New System.Drawing.Size(222, 25)
+        Me.cboPersona.TabIndex = 125
         '
         'btnAgregarCuenta
         '
@@ -365,9 +365,9 @@ Partial Class frmVehiculos
         Me.Label15.Location = New System.Drawing.Point(10, 16)
         Me.Label15.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(57, 17)
+        Me.Label15.Size = New System.Drawing.Size(51, 17)
         Me.Label15.TabIndex = 126
-        Me.Label15.Text = "Cuenta"
+        Me.Label15.Text = "Dueño"
         '
         'Label10
         '
@@ -508,7 +508,6 @@ Partial Class frmVehiculos
         '
         Me.PanelIdentificacionVehiculo.Controls.Add(Me.Label12)
         Me.PanelIdentificacionVehiculo.Controls.Add(Me.txtNumChasis)
-        Me.PanelIdentificacionVehiculo.Controls.Add(Me.Label13)
         Me.PanelIdentificacionVehiculo.Controls.Add(Me.lblNumChasis)
         Me.PanelIdentificacionVehiculo.Controls.Add(Me.lblNumMotor)
         Me.PanelIdentificacionVehiculo.Controls.Add(Me.lblMatricula)
@@ -532,19 +531,6 @@ Partial Class frmVehiculos
         Me.Label12.Size = New System.Drawing.Size(14, 15)
         Me.Label12.TabIndex = 111
         Me.Label12.Text = "*"
-        '
-        'Label13
-        '
-        Me.Label13.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Label13.BackColor = System.Drawing.Color.Transparent
-        Me.Label13.Font = New System.Drawing.Font("Century Gothic", 16.0!)
-        Me.Label13.ForeColor = System.Drawing.Color.Red
-        Me.Label13.Location = New System.Drawing.Point(139, 27)
-        Me.Label13.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(14, 15)
-        Me.Label13.TabIndex = 117
-        Me.Label13.Text = "*"
         '
         'lblNota
         '
@@ -575,6 +561,19 @@ Partial Class frmVehiculos
         Me.txtNota.TabIndex = 18
         Me.txtNota.Text = ""
         '
+        'Label13
+        '
+        Me.Label13.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label13.BackColor = System.Drawing.Color.Transparent
+        Me.Label13.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label13.ForeColor = System.Drawing.Color.Red
+        Me.Label13.Location = New System.Drawing.Point(524, 52)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(14, 15)
+        Me.Label13.TabIndex = 120
+        Me.Label13.Text = "*"
+        '
         'frmVehiculos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -582,7 +581,8 @@ Partial Class frmVehiculos
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(956, 581)
+        Me.ClientSize = New System.Drawing.Size(973, 581)
+        Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.lblNota)
         Me.Controls.Add(Me.PanelNotas)
         Me.Controls.Add(Me.lblIdentificacionVehiculo)
@@ -641,7 +641,7 @@ Partial Class frmVehiculos
     Friend WithEvents lblIdentificacionVehiculo As Label
     Friend WithEvents PanelIdentificacionVehiculo As Panel
     Friend WithEvents Label14 As Label
-    Friend WithEvents cboCuenta As ComboBox
+    Friend WithEvents cboPersona As ComboBox
     Friend WithEvents btnAgregarCuenta As PictureBox
     Friend WithEvents Label15 As Label
     Friend WithEvents Label10 As Label
@@ -656,8 +656,8 @@ Partial Class frmVehiculos
     Friend WithEvents txtColor As TextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents Label12 As Label
-    Friend WithEvents Label13 As Label
     Friend WithEvents lblNota As Label
     Friend WithEvents PanelNotas As Panel
     Friend WithEvents txtNota As RichTextBox
+    Friend WithEvents Label13 As Label
 End Class
