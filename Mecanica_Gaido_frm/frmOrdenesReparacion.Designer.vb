@@ -36,7 +36,7 @@ Partial Class frmOrdenesReparacion
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cboServicios = New System.Windows.Forms.ComboBox()
-        Me.cboCuenta = New System.Windows.Forms.ComboBox()
+        Me.cboPersonas = New System.Windows.Forms.ComboBox()
         Me.txtMotivo = New System.Windows.Forms.TextBox()
         Me.txtSeñasParticulares = New System.Windows.Forms.TextBox()
         Me.txtFechaestimada = New System.Windows.Forms.TextBox()
@@ -133,24 +133,27 @@ Partial Class frmOrdenesReparacion
         '
         'txtFechaentrada
         '
+        Me.txtFechaentrada.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtFechaentrada.Location = New System.Drawing.Point(569, 37)
         Me.txtFechaentrada.Name = "txtFechaentrada"
-        Me.txtFechaentrada.Size = New System.Drawing.Size(121, 20)
+        Me.txtFechaentrada.Size = New System.Drawing.Size(121, 23)
         Me.txtFechaentrada.TabIndex = 7
         '
         'txtFechaturno
         '
+        Me.txtFechaturno.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtFechaturno.Location = New System.Drawing.Point(205, 207)
         Me.txtFechaturno.Name = "txtFechaturno"
-        Me.txtFechaturno.Size = New System.Drawing.Size(121, 20)
+        Me.txtFechaturno.Size = New System.Drawing.Size(121, 23)
         Me.txtFechaturno.TabIndex = 6
         '
         'cboVehiculo
         '
+        Me.cboVehiculo.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.cboVehiculo.FormattingEnabled = True
         Me.cboVehiculo.Location = New System.Drawing.Point(206, 80)
         Me.cboVehiculo.Name = "cboVehiculo"
-        Me.cboVehiculo.Size = New System.Drawing.Size(121, 21)
+        Me.cboVehiculo.Size = New System.Drawing.Size(121, 25)
         Me.cboVehiculo.TabIndex = 3
         '
         'Label12
@@ -160,9 +163,9 @@ Partial Class frmOrdenesReparacion
         Me.Label12.ForeColor = System.Drawing.Color.White
         Me.Label12.Location = New System.Drawing.Point(391, 165)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(57, 17)
+        Me.Label12.Size = New System.Drawing.Size(75, 17)
         Me.Label12.TabIndex = 78
-        Me.Label12.Text = "Cuenta"
+        Me.Label12.Text = "Solicitante"
         '
         'Label10
         '
@@ -188,46 +191,52 @@ Partial Class frmOrdenesReparacion
         '
         'cboServicios
         '
+        Me.cboServicios.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.cboServicios.FormattingEnabled = True
         Me.cboServicios.Location = New System.Drawing.Point(569, 206)
         Me.cboServicios.Name = "cboServicios"
-        Me.cboServicios.Size = New System.Drawing.Size(121, 21)
+        Me.cboServicios.Size = New System.Drawing.Size(121, 25)
         Me.cboServicios.TabIndex = 11
         '
-        'cboCuenta
+        'cboPersonas
         '
-        Me.cboCuenta.FormattingEnabled = True
-        Me.cboCuenta.Location = New System.Drawing.Point(569, 164)
-        Me.cboCuenta.Name = "cboCuenta"
-        Me.cboCuenta.Size = New System.Drawing.Size(121, 21)
-        Me.cboCuenta.TabIndex = 10
+        Me.cboPersonas.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.cboPersonas.FormattingEnabled = True
+        Me.cboPersonas.Location = New System.Drawing.Point(569, 164)
+        Me.cboPersonas.Name = "cboPersonas"
+        Me.cboPersonas.Size = New System.Drawing.Size(121, 25)
+        Me.cboPersonas.TabIndex = 10
         '
         'txtMotivo
         '
+        Me.txtMotivo.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtMotivo.Location = New System.Drawing.Point(206, 164)
         Me.txtMotivo.Name = "txtMotivo"
-        Me.txtMotivo.Size = New System.Drawing.Size(121, 20)
+        Me.txtMotivo.Size = New System.Drawing.Size(121, 23)
         Me.txtMotivo.TabIndex = 5
         '
         'txtSeñasParticulares
         '
+        Me.txtSeñasParticulares.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtSeñasParticulares.Location = New System.Drawing.Point(205, 122)
         Me.txtSeñasParticulares.Name = "txtSeñasParticulares"
-        Me.txtSeñasParticulares.Size = New System.Drawing.Size(121, 20)
+        Me.txtSeñasParticulares.Size = New System.Drawing.Size(121, 23)
         Me.txtSeñasParticulares.TabIndex = 4
         '
         'txtFechaestimada
         '
+        Me.txtFechaestimada.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtFechaestimada.Location = New System.Drawing.Point(569, 80)
         Me.txtFechaestimada.Name = "txtFechaestimada"
-        Me.txtFechaestimada.Size = New System.Drawing.Size(121, 20)
+        Me.txtFechaestimada.Size = New System.Drawing.Size(121, 23)
         Me.txtFechaestimada.TabIndex = 8
         '
         'txtFechasalida
         '
+        Me.txtFechasalida.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtFechasalida.Location = New System.Drawing.Point(569, 122)
         Me.txtFechasalida.Name = "txtFechasalida"
-        Me.txtFechasalida.Size = New System.Drawing.Size(121, 20)
+        Me.txtFechasalida.Size = New System.Drawing.Size(121, 23)
         Me.txtFechasalida.TabIndex = 9
         '
         'Label8
@@ -334,9 +343,10 @@ Partial Class frmOrdenesReparacion
         '
         'txtID
         '
+        Me.txtID.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtID.Location = New System.Drawing.Point(205, 37)
         Me.txtID.Name = "txtID"
-        Me.txtID.Size = New System.Drawing.Size(43, 20)
+        Me.txtID.Size = New System.Drawing.Size(43, 23)
         Me.txtID.TabIndex = 1
         '
         'btnAgregarCuenta
@@ -345,7 +355,7 @@ Partial Class frmOrdenesReparacion
         Me.btnAgregarCuenta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnAgregarCuenta.Location = New System.Drawing.Point(696, 164)
         Me.btnAgregarCuenta.Name = "btnAgregarCuenta"
-        Me.btnAgregarCuenta.Size = New System.Drawing.Size(26, 21)
+        Me.btnAgregarCuenta.Size = New System.Drawing.Size(26, 25)
         Me.btnAgregarCuenta.TabIndex = 95
         Me.btnAgregarCuenta.TabStop = False
         '
@@ -355,7 +365,7 @@ Partial Class frmOrdenesReparacion
         Me.btnAgregarServiciosTerceros.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnAgregarServiciosTerceros.Location = New System.Drawing.Point(696, 206)
         Me.btnAgregarServiciosTerceros.Name = "btnAgregarServiciosTerceros"
-        Me.btnAgregarServiciosTerceros.Size = New System.Drawing.Size(26, 21)
+        Me.btnAgregarServiciosTerceros.Size = New System.Drawing.Size(26, 25)
         Me.btnAgregarServiciosTerceros.TabIndex = 96
         Me.btnAgregarServiciosTerceros.TabStop = False
         '
@@ -365,7 +375,7 @@ Partial Class frmOrdenesReparacion
         Me.btnAgregarMarca.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnAgregarMarca.Location = New System.Drawing.Point(333, 81)
         Me.btnAgregarMarca.Name = "btnAgregarMarca"
-        Me.btnAgregarMarca.Size = New System.Drawing.Size(26, 21)
+        Me.btnAgregarMarca.Size = New System.Drawing.Size(26, 25)
         Me.btnAgregarMarca.TabIndex = 97
         Me.btnAgregarMarca.TabStop = False
         '
@@ -397,7 +407,7 @@ Partial Class frmOrdenesReparacion
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cboServicios)
-        Me.Controls.Add(Me.cboCuenta)
+        Me.Controls.Add(Me.cboPersonas)
         Me.Controls.Add(Me.txtMotivo)
         Me.Controls.Add(Me.txtSeñasParticulares)
         Me.Controls.Add(Me.txtFechaestimada)
@@ -432,7 +442,7 @@ Partial Class frmOrdenesReparacion
     Friend WithEvents Label10 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents cboServicios As ComboBox
-    Friend WithEvents cboCuenta As ComboBox
+    Friend WithEvents cboPersonas As ComboBox
     Friend WithEvents txtMotivo As TextBox
     Friend WithEvents txtSeñasParticulares As TextBox
     Friend WithEvents txtFechaestimada As TextBox

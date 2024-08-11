@@ -15,13 +15,19 @@ Public Class frmOrdenesReparacion
         txtFechaentrada.Clear()
         txtFechaestimada.Clear()
         txtFechasalida.Clear()
-        cboCuenta.SelectedIndex = -1
+        cboPersonas.SelectedIndex = -1
         cboServicios.SelectedIndex = -1
         cboVehiculo.SelectedIndex = -1
         chkActivo.Checked = False
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiar()
+    End Sub
+
+    Private Sub frmOrdenesReparacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Cargar_Combo_Vehiculos()
+        Cargar_Combo_Personas()
         limpiar()
     End Sub
 #End Region
@@ -32,16 +38,34 @@ Public Class frmOrdenesReparacion
             Dim tabla As DataTable = o_Orden.Cargar_Combo_Vehiculos()
 
             If tabla.Rows.Count > 0 Then
-                cboCuenta.DataSource = tabla
-                cboVehiculo.DisplayMember = "Nombre/RazonSocial"
-                cboVehiculo.ValueMember = "ID_Persona"
+                cboVehiculo.DataSource = tabla
+                cboVehiculo.DisplayMember = "Nombre"
+                cboVehiculo.ValueMember = "ID_Vehiculo"
                 cboVehiculo.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Vehiculos.", vbInformation, "Información")
             End If
 
         Catch ex As Exception
-            MsgBox("Error al cargar los Vehiculos-: " & ex.Message, vbCritical, "Error")
+            MsgBox("Error al cargar los Vehiculos: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub Cargar_Combo_Personas()
+        Try
+            Dim tabla As DataTable = o_Orden.Cargar_Combo_Personas()
+
+            If tabla.Rows.Count > 0 Then
+                cboPersonas.DataSource = tabla
+                cboPersonas.DisplayMember = "Persona"
+                cboPersonas.ValueMember = "ID_Persona"
+                cboPersonas.SelectedValue = -1
+            Else
+                MsgBox("No se encontraron personas.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar las personas: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
 #End Region

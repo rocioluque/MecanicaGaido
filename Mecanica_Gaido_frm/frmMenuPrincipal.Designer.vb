@@ -308,9 +308,9 @@ Partial Class frmMenuPrincipal
         Me.panelContenedor.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.panelContenedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.panelContenedor.Dock = System.Windows.Forms.DockStyle.Right
-        Me.panelContenedor.Location = New System.Drawing.Point(228, 30)
+        Me.panelContenedor.Location = New System.Drawing.Point(227, 30)
         Me.panelContenedor.Name = "panelContenedor"
-        Me.panelContenedor.Size = New System.Drawing.Size(972, 670)
+        Me.panelContenedor.Size = New System.Drawing.Size(973, 670)
         Me.panelContenedor.TabIndex = 2
         '
         'PictureBox7
