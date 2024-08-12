@@ -482,7 +482,7 @@ Partial Class frmMenuPrincipal
         Me.btnOrdenReparacón.Name = "btnOrdenReparacón"
         Me.btnOrdenReparacón.Size = New System.Drawing.Size(230, 35)
         Me.btnOrdenReparacón.TabIndex = 43
-        Me.btnOrdenReparacón.Text = "        Ordenes de Reparación"
+        Me.btnOrdenReparacón.Text = "        Reparaciones"
         Me.btnOrdenReparacón.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnOrdenReparacón.UseVisualStyleBackColor = False
         '
