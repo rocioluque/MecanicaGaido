@@ -186,8 +186,18 @@ Public Class frmPersonas
             txtLetraPuerta.Text = grdPersonas.Rows(rowindex).Cells("Letra/Puerta").Value.ToString()
             txtCodigoPostal.Text = grdPersonas.Rows(rowindex).Cells("Codigo_Postal").Value.ToString()
             txtNota.Text = grdPersonas.Rows(rowindex).Cells("Nota").Value.ToString()
+
+            Dim fechaNacimiento As Object = grdPersonas.Rows(rowindex).Cells("Fecha_Nacimiento").Value
+
+            If IsDBNull(fechaNacimiento) Then
+
+                dtpFechaNacimiento.Value = DateTime.Today
+            Else
+                dtpFechaNacimiento.Value = grdPersonas.Rows(rowindex).Cells("Fecha_Nacimiento").Value
+            End If
+
             chkEstado.Checked = grdPersonas.Rows(rowindex).Cells("Estado").Value.ToString()
-            'dtpFechaNacimiento.Value = grdPersonas.Rows(rowindex).Cells("Fecha_Nacimiento").Value
+
         End If
     End Sub
 
