@@ -31,7 +31,7 @@ Public Class frmMenuPrincipal
     End Sub
 #End Region
 
-#Region "Orden Reparcion"
+#Region "Orden Reparacion"
     Private Sub btnOrdenReparacón_Click(sender As Object, e As EventArgs) Handles btnOrdenReparacón.Click
         AbrirFormHijo(New frmOrdenesReparacion(), DirectCast(sender, Button))
     End Sub
@@ -147,7 +147,7 @@ Public Class frmMenuPrincipal
         End If
     End Sub
 
-    Private Sub PanelNav_MouseDown(sender As Object, e As MouseEventArgs) Handles panelNav.MouseDown
+    Private Sub PanelNav_MouseDown(sender As Object, e As MouseEventArgs)
         If e.Button = MouseButtons.Left Then
             ReleaseCapture()
             SendMessage(Me.Handle, &HA1, 2, 0)
@@ -172,23 +172,23 @@ Public Class frmMenuPrincipal
         End If
     End Sub
 
-    Private Sub btnMaximizar_Click(sender As Object, e As EventArgs) Handles btnMaximizar.Click
-        Me.WindowState = FormWindowState.Maximized
-        btnMaximizar.Visible = False
-        btnRestaurar.Visible = True
-    End Sub
+    'Private Sub btnMaximizar_Click(sender As Object, e As EventArgs)
+    '    Me.WindowState = FormWindowState.Maximized
+    '    btnMaximizar.Visible = False
+    '    btnRestaurar.Visible = True
+    'End Sub
 
-    Private Sub btnRestaurar_Click(sender As Object, e As EventArgs) Handles btnRestaurar.Click
-        Me.WindowState = FormWindowState.Normal
-        btnMaximizar.Visible = True
-        btnRestaurar.Visible = False
-    End Sub
+    'Private Sub btnRestaurar_Click(sender As Object, e As EventArgs)
+    '    Me.WindowState = FormWindowState.Normal
+    '    btnMaximizar.Visible = True
+    '    btnRestaurar.Visible = False
+    'End Sub
 
-    Private Sub btnMinimizar_Click(sender As Object, e As EventArgs) Handles btnMinimizar.Click
-        Me.WindowState = FormWindowState.Minimized
-    End Sub
+    'Private Sub btnMinimizar_Click(sender As Object, e As EventArgs)
+    '    Me.WindowState = FormWindowState.Minimized
+    'End Sub
 
-    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+    Private Sub btnCerrar_Click(sender As Object, e As EventArgs)
         If MessageBox.Show("¿Estás seguro de cerrar la aplicación?", "Warning",
             MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
             Application.Exit()

@@ -55,6 +55,36 @@ Public Class frmAgregarEmpleados
         oDs = Nothing
         conexion.Close()
     End Sub
+
+    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        Me.Close()
+    End Sub
+
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiar()
+        lblCargaEmpleado.Text = ""
+        Me.Close()
+    End Sub
+#End Region
+
+#Region "Cargar"
+    'Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
+    '    If cboUsuario.SelectedValue <> Nothing And txtContraseña.Text <> Nothing And cboSeccion.SelectedValue <> Nothing Then
+
+    '        Try
+    '            o_empleados.Agregar_Empleado(idusuario, contraseña, idseccion, nota, estado)
+    '            MsgBox("Empleado agregado correctamente.", vbInformation, "Información")
+    '            limpiar()
+
+    '            Cargar_Grilla_Empleados()
+    '        Catch ex As Exception
+    '            MsgBox("Error al agregar el empleado: " & ex.Message, vbCritical, "Error")
+    '            limpiar()
+    '        End Try
+    '    Else
+    '        MsgBox("Complete Datos", vbInformation, "Error")
+    '    End If
+    'End Sub
 #End Region
 
 #Region "Carga Cbo"
@@ -152,43 +182,5 @@ Public Class frmAgregarEmpleados
         End If
     End Sub
 #End Region
-
-    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
-        Me.Close()
-    End Sub
-
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        limpiar()
-        lblCargaEmpleado.Text = ""
-        Me.Close()
-    End Sub
-
-
-    'Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
-    '    If  cboUsuario.SelectedValue <> Nothing And txtContraseña.Text <> Nothing And cboSeccion.SelectedValue <> Nothing Then
-
-    '        Try
-    '            
-    '            Dim idusuario As Integer = Convert.ToInt32(cboUsuario.SelectedValue)
-    '            Dim contraseña As String = txtContraseña.Text
-    '            Dim idseccion As Integer = Convert.ToInt32(cboSeccion.SelectedValue)
-    '            Dim nota As String = txtNota.Text
-    '            Dim estado As Boolean = chkEstado.Checked
-
-    '            o_empleados.Agregar_Empleado( idusuario,
-    '            contraseña, idseccion, nota, estado)
-    '            MsgBox("Empleado agregado correctamente.", vbInformation, "Información")
-    '            limpiar()
-
-    '            Cargar_Grilla_Empleados()
-    '        Catch ex As Exception
-    '            MsgBox("Error al agregar el empleado: " & ex.Message, vbCritical, "Error")
-    '            limpiar()
-    '        End Try
-    '    Else
-    '        MsgBox("Complete Datos", vbInformation, "Error")
-    '        limpiar()
-    '    End If
-    'End Sub
 
 End Class
