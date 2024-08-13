@@ -94,7 +94,7 @@ Partial Class frmPersonas
         Me.txtID.Location = New System.Drawing.Point(257, 40)
         Me.txtID.Margin = New System.Windows.Forms.Padding(2)
         Me.txtID.Name = "txtID"
-        Me.txtID.Size = New System.Drawing.Size(26, 23)
+        Me.txtID.Size = New System.Drawing.Size(60, 23)
         Me.txtID.TabIndex = 1
         Me.txtID.Tag = ""
         '
@@ -119,7 +119,7 @@ Partial Class frmPersonas
         Me.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBuscar.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnBuscar.ForeColor = System.Drawing.Color.White
-        Me.btnBuscar.Location = New System.Drawing.Point(317, 36)
+        Me.btnBuscar.Location = New System.Drawing.Point(340, 36)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(56, 28)
         Me.btnBuscar.TabIndex = 2
@@ -136,7 +136,7 @@ Partial Class frmPersonas
         Me.btnEmpleados.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEmpleados.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEmpleados.ForeColor = System.Drawing.Color.White
-        Me.btnEmpleados.Location = New System.Drawing.Point(317, 426)
+        Me.btnEmpleados.Location = New System.Drawing.Point(342, 426)
         Me.btnEmpleados.Name = "btnEmpleados"
         Me.btnEmpleados.Size = New System.Drawing.Size(100, 37)
         Me.btnEmpleados.TabIndex = 23
@@ -154,7 +154,7 @@ Partial Class frmPersonas
         Me.btnDatoFiscal.ForeColor = System.Drawing.Color.White
         Me.btnDatoFiscal.Location = New System.Drawing.Point(138, 426)
         Me.btnDatoFiscal.Name = "btnDatoFiscal"
-        Me.btnDatoFiscal.Size = New System.Drawing.Size(100, 37)
+        Me.btnDatoFiscal.Size = New System.Drawing.Size(121, 37)
         Me.btnDatoFiscal.TabIndex = 22
         Me.btnDatoFiscal.Text = "Datos Fiscales"
         Me.btnDatoFiscal.UseVisualStyleBackColor = False
@@ -169,7 +169,7 @@ Partial Class frmPersonas
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
-        Me.btnCancelar.Location = New System.Drawing.Point(854, 426)
+        Me.btnCancelar.Location = New System.Drawing.Point(891, 426)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(100, 37)
         Me.btnCancelar.TabIndex = 21
@@ -185,7 +185,7 @@ Partial Class frmPersonas
         Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAceptar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAceptar.ForeColor = System.Drawing.Color.White
-        Me.btnAceptar.Location = New System.Drawing.Point(496, 426)
+        Me.btnAceptar.Location = New System.Drawing.Point(525, 426)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(100, 37)
         Me.btnAceptar.TabIndex = 19
@@ -216,7 +216,7 @@ Partial Class frmPersonas
         Me.grdPersonas.RowHeadersVisible = False
         Me.grdPersonas.RowHeadersWidth = 51
         Me.grdPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdPersonas.Size = New System.Drawing.Size(834, 297)
+        Me.grdPersonas.Size = New System.Drawing.Size(847, 297)
         Me.grdPersonas.TabIndex = 60
         '
         'btnModificar
@@ -228,7 +228,7 @@ Partial Class frmPersonas
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
-        Me.btnModificar.Location = New System.Drawing.Point(675, 426)
+        Me.btnModificar.Location = New System.Drawing.Point(708, 426)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(100, 37)
         Me.btnModificar.TabIndex = 20
@@ -256,7 +256,7 @@ Partial Class frmPersonas
         Me.cboTipoPersona.Location = New System.Drawing.Point(257, 79)
         Me.cboTipoPersona.Margin = New System.Windows.Forms.Padding(2)
         Me.cboTipoPersona.Name = "cboTipoPersona"
-        Me.cboTipoPersona.Size = New System.Drawing.Size(116, 25)
+        Me.cboTipoPersona.Size = New System.Drawing.Size(139, 25)
         Me.cboTipoPersona.TabIndex = 3
         Me.cboTipoPersona.ValueMember = "ID_Provincia"
         '
@@ -277,7 +277,7 @@ Partial Class frmPersonas
         Me.PanelDatosPersonales.Controls.Add(Me.txtApellido)
         Me.PanelDatosPersonales.Location = New System.Drawing.Point(138, 124)
         Me.PanelDatosPersonales.Name = "PanelDatosPersonales"
-        Me.PanelDatosPersonales.Size = New System.Drawing.Size(235, 283)
+        Me.PanelDatosPersonales.Size = New System.Drawing.Size(258, 283)
         Me.PanelDatosPersonales.TabIndex = 53
         '
         'Label3
@@ -459,7 +459,7 @@ Partial Class frmPersonas
         Me.PanelDirecciones.Controls.Add(Me.txtTelefonoMovil)
         Me.PanelDirecciones.Location = New System.Drawing.Point(421, 39)
         Me.PanelDirecciones.Name = "PanelDirecciones"
-        Me.PanelDirecciones.Size = New System.Drawing.Size(532, 267)
+        Me.PanelDirecciones.Size = New System.Drawing.Size(571, 267)
         Me.PanelDirecciones.TabIndex = 77
         '
         'Label10
@@ -793,7 +793,7 @@ Partial Class frmPersonas
         Me.PanelNotas.Controls.Add(Me.txtNota)
         Me.PanelNotas.Location = New System.Drawing.Point(421, 322)
         Me.PanelNotas.Name = "PanelNotas"
-        Me.PanelNotas.Size = New System.Drawing.Size(531, 84)
+        Me.PanelNotas.Size = New System.Drawing.Size(571, 84)
         Me.PanelNotas.TabIndex = 79
         '
         'txtNota
