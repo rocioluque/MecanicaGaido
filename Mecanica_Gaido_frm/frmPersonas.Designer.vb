@@ -90,20 +90,16 @@ Partial Class frmPersonas
         '
         'txtID
         '
-        Me.txtID.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtID.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtID.Location = New System.Drawing.Point(257, 40)
         Me.txtID.Margin = New System.Windows.Forms.Padding(2)
         Me.txtID.Name = "txtID"
-        Me.txtID.Size = New System.Drawing.Size(43, 23)
+        Me.txtID.Size = New System.Drawing.Size(26, 23)
         Me.txtID.TabIndex = 1
         Me.txtID.Tag = ""
         '
         'lblId
         '
-        Me.lblId.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblId.AutoSize = True
         Me.lblId.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblId.ForeColor = System.Drawing.Color.White
@@ -116,8 +112,6 @@ Partial Class frmPersonas
         '
         'btnBuscar
         '
-        Me.btnBuscar.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnBuscar.BackColor = System.Drawing.Color.Transparent
         Me.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnBuscar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
@@ -125,17 +119,15 @@ Partial Class frmPersonas
         Me.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBuscar.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnBuscar.ForeColor = System.Drawing.Color.White
-        Me.btnBuscar.Location = New System.Drawing.Point(340, 36)
+        Me.btnBuscar.Location = New System.Drawing.Point(317, 36)
         Me.btnBuscar.Name = "btnBuscar"
-        Me.btnBuscar.Size = New System.Drawing.Size(50, 28)
+        Me.btnBuscar.Size = New System.Drawing.Size(56, 28)
         Me.btnBuscar.TabIndex = 2
         Me.btnBuscar.Text = "..."
         Me.btnBuscar.UseVisualStyleBackColor = False
         '
         'btnEmpleados
         '
-        Me.btnEmpleados.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnEmpleados.BackColor = System.Drawing.Color.Transparent
         Me.btnEmpleados.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnEmpleados.Cursor = System.Windows.Forms.Cursors.Hand
@@ -146,15 +138,13 @@ Partial Class frmPersonas
         Me.btnEmpleados.ForeColor = System.Drawing.Color.White
         Me.btnEmpleados.Location = New System.Drawing.Point(317, 426)
         Me.btnEmpleados.Name = "btnEmpleados"
-        Me.btnEmpleados.Size = New System.Drawing.Size(117, 37)
+        Me.btnEmpleados.Size = New System.Drawing.Size(100, 37)
         Me.btnEmpleados.TabIndex = 23
         Me.btnEmpleados.Text = "Empleados"
         Me.btnEmpleados.UseVisualStyleBackColor = False
         '
         'btnDatoFiscal
         '
-        Me.btnDatoFiscal.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnDatoFiscal.BackColor = System.Drawing.Color.Transparent
         Me.btnDatoFiscal.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnDatoFiscal.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
@@ -164,15 +154,13 @@ Partial Class frmPersonas
         Me.btnDatoFiscal.ForeColor = System.Drawing.Color.White
         Me.btnDatoFiscal.Location = New System.Drawing.Point(138, 426)
         Me.btnDatoFiscal.Name = "btnDatoFiscal"
-        Me.btnDatoFiscal.Size = New System.Drawing.Size(117, 37)
+        Me.btnDatoFiscal.Size = New System.Drawing.Size(100, 37)
         Me.btnDatoFiscal.TabIndex = 22
         Me.btnDatoFiscal.Text = "Datos Fiscales"
         Me.btnDatoFiscal.UseVisualStyleBackColor = False
         '
         'btnCancelar
         '
-        Me.btnCancelar.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCancelar.BackColor = System.Drawing.Color.Transparent
         Me.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand
@@ -183,15 +171,13 @@ Partial Class frmPersonas
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
         Me.btnCancelar.Location = New System.Drawing.Point(854, 426)
         Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(117, 37)
+        Me.btnCancelar.Size = New System.Drawing.Size(100, 37)
         Me.btnCancelar.TabIndex = 21
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = False
         '
         'btnAceptar
         '
-        Me.btnAceptar.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnAceptar.BackColor = System.Drawing.Color.Transparent
         Me.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnAceptar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
@@ -201,7 +187,7 @@ Partial Class frmPersonas
         Me.btnAceptar.ForeColor = System.Drawing.Color.White
         Me.btnAceptar.Location = New System.Drawing.Point(496, 426)
         Me.btnAceptar.Name = "btnAceptar"
-        Me.btnAceptar.Size = New System.Drawing.Size(117, 37)
+        Me.btnAceptar.Size = New System.Drawing.Size(100, 37)
         Me.btnAceptar.TabIndex = 19
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = False
@@ -235,8 +221,6 @@ Partial Class frmPersonas
         '
         'btnModificar
         '
-        Me.btnModificar.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnModificar.BackColor = System.Drawing.Color.Transparent
         Me.btnModificar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnModificar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
@@ -246,15 +230,13 @@ Partial Class frmPersonas
         Me.btnModificar.ForeColor = System.Drawing.Color.White
         Me.btnModificar.Location = New System.Drawing.Point(675, 426)
         Me.btnModificar.Name = "btnModificar"
-        Me.btnModificar.Size = New System.Drawing.Size(117, 37)
+        Me.btnModificar.Size = New System.Drawing.Size(100, 37)
         Me.btnModificar.TabIndex = 20
         Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = False
         '
         'lblTipoPersona
         '
-        Me.lblTipoPersona.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblTipoPersona.AutoSize = True
         Me.lblTipoPersona.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblTipoPersona.ForeColor = System.Drawing.Color.White
@@ -267,8 +249,6 @@ Partial Class frmPersonas
         '
         'cboTipoPersona
         '
-        Me.cboTipoPersona.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cboTipoPersona.DisplayMember = "Nombre"
         Me.cboTipoPersona.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboTipoPersona.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -276,14 +256,12 @@ Partial Class frmPersonas
         Me.cboTipoPersona.Location = New System.Drawing.Point(257, 79)
         Me.cboTipoPersona.Margin = New System.Windows.Forms.Padding(2)
         Me.cboTipoPersona.Name = "cboTipoPersona"
-        Me.cboTipoPersona.Size = New System.Drawing.Size(133, 25)
+        Me.cboTipoPersona.Size = New System.Drawing.Size(116, 25)
         Me.cboTipoPersona.TabIndex = 3
         Me.cboTipoPersona.ValueMember = "ID_Provincia"
         '
         'PanelDatosPersonales
         '
-        Me.PanelDatosPersonales.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PanelDatosPersonales.Controls.Add(Me.Label3)
         Me.PanelDatosPersonales.Controls.Add(Me.Label2)
         Me.PanelDatosPersonales.Controls.Add(Me.Label1)
@@ -299,7 +277,7 @@ Partial Class frmPersonas
         Me.PanelDatosPersonales.Controls.Add(Me.txtApellido)
         Me.PanelDatosPersonales.Location = New System.Drawing.Point(138, 124)
         Me.PanelDatosPersonales.Name = "PanelDatosPersonales"
-        Me.PanelDatosPersonales.Size = New System.Drawing.Size(252, 283)
+        Me.PanelDatosPersonales.Size = New System.Drawing.Size(235, 283)
         Me.PanelDatosPersonales.TabIndex = 53
         '
         'Label3
@@ -453,8 +431,6 @@ Partial Class frmPersonas
         '
         'PanelDirecciones
         '
-        Me.PanelDirecciones.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PanelDirecciones.Controls.Add(Me.Label10)
         Me.PanelDirecciones.Controls.Add(Me.Label8)
         Me.PanelDirecciones.Controls.Add(Me.Label6)
@@ -483,7 +459,7 @@ Partial Class frmPersonas
         Me.PanelDirecciones.Controls.Add(Me.txtTelefonoMovil)
         Me.PanelDirecciones.Location = New System.Drawing.Point(421, 39)
         Me.PanelDirecciones.Name = "PanelDirecciones"
-        Me.PanelDirecciones.Size = New System.Drawing.Size(549, 267)
+        Me.PanelDirecciones.Size = New System.Drawing.Size(532, 267)
         Me.PanelDirecciones.TabIndex = 77
         '
         'Label10
@@ -778,8 +754,6 @@ Partial Class frmPersonas
         '
         'lblDirecciones
         '
-        Me.lblDirecciones.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblDirecciones.AutoSize = True
         Me.lblDirecciones.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblDirecciones.ForeColor = System.Drawing.Color.White
@@ -792,8 +766,6 @@ Partial Class frmPersonas
         '
         'lblDatosPersonales
         '
-        Me.lblDatosPersonales.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblDatosPersonales.AutoSize = True
         Me.lblDatosPersonales.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblDatosPersonales.ForeColor = System.Drawing.Color.White
@@ -806,8 +778,6 @@ Partial Class frmPersonas
         '
         'lblNota
         '
-        Me.lblNota.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblNota.AutoSize = True
         Me.lblNota.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblNota.ForeColor = System.Drawing.Color.White
@@ -820,12 +790,10 @@ Partial Class frmPersonas
         '
         'PanelNotas
         '
-        Me.PanelNotas.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PanelNotas.Controls.Add(Me.txtNota)
         Me.PanelNotas.Location = New System.Drawing.Point(421, 322)
         Me.PanelNotas.Name = "PanelNotas"
-        Me.PanelNotas.Size = New System.Drawing.Size(548, 84)
+        Me.PanelNotas.Size = New System.Drawing.Size(531, 84)
         Me.PanelNotas.TabIndex = 79
         '
         'txtNota
