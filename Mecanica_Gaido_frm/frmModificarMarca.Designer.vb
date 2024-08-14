@@ -113,14 +113,19 @@ Partial Class frmModificarMarca
         '
         'grdModificarMarca
         '
+        Me.grdModificarMarca.AllowUserToAddRows = False
+        Me.grdModificarMarca.AllowUserToDeleteRows = False
+        Me.grdModificarMarca.AllowUserToResizeRows = False
         Me.grdModificarMarca.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdModificarMarca.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.grdModificarMarca.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.grdModificarMarca.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdModificarMarca.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarMarca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdModificarMarca.Location = New System.Drawing.Point(53, 162)
         Me.grdModificarMarca.Name = "grdModificarMarca"
         Me.grdModificarMarca.ReadOnly = True
+        Me.grdModificarMarca.RowHeadersVisible = False
+        Me.grdModificarMarca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdModificarMarca.Size = New System.Drawing.Size(747, 221)
         Me.grdModificarMarca.TabIndex = 21
         '
@@ -160,7 +165,7 @@ Partial Class frmModificarMarca
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(871, 396)
         Me.Controls.Add(Me.txtMarca)
         Me.Controls.Add(Me.lblMarca)

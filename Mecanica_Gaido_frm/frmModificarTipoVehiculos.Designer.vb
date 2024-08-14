@@ -68,14 +68,19 @@ Partial Class frmModificarTipoVehiculos
         '
         'grdModificarTipoVehiculo
         '
+        Me.grdModificarTipoVehiculo.AllowUserToAddRows = False
+        Me.grdModificarTipoVehiculo.AllowUserToDeleteRows = False
+        Me.grdModificarTipoVehiculo.AllowUserToResizeRows = False
         Me.grdModificarTipoVehiculo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdModificarTipoVehiculo.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.grdModificarTipoVehiculo.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.grdModificarTipoVehiculo.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdModificarTipoVehiculo.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarTipoVehiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdModificarTipoVehiculo.Location = New System.Drawing.Point(44, 144)
         Me.grdModificarTipoVehiculo.Name = "grdModificarTipoVehiculo"
         Me.grdModificarTipoVehiculo.ReadOnly = True
+        Me.grdModificarTipoVehiculo.RowHeadersVisible = False
+        Me.grdModificarTipoVehiculo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdModificarTipoVehiculo.Size = New System.Drawing.Size(747, 221)
         Me.grdModificarTipoVehiculo.TabIndex = 47
         '
@@ -132,7 +137,7 @@ Partial Class frmModificarTipoVehiculos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(871, 396)
         Me.Controls.Add(Me.txtTipoVehiculo)
         Me.Controls.Add(Me.lblTipoVehiculo)

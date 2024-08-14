@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmVentas
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmVentas
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVentas))
         Me.grdVentas = New System.Windows.Forms.DataGridView()
@@ -42,7 +42,7 @@ Partial Class frmVentas
         Me.txtNumComprobante = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.cboEmpleado = New System.Windows.Forms.ComboBox()
+        Me.cboVendedor = New System.Windows.Forms.ComboBox()
         Me.cboFormaPago = New System.Windows.Forms.ComboBox()
         Me.cboFormaEntrega = New System.Windows.Forms.ComboBox()
         Me.cboTipoVenta = New System.Windows.Forms.ComboBox()
@@ -58,24 +58,40 @@ Partial Class frmVentas
         Me.btnAgregarFormaPago = New System.Windows.Forms.PictureBox()
         Me.btnTipoVenta = New System.Windows.Forms.PictureBox()
         Me.btnFormaEntrega = New System.Windows.Forms.PictureBox()
+        Me.PanelDetalleDeVentas = New System.Windows.Forms.Panel()
+        Me.btnQuitarVenta = New System.Windows.Forms.Button()
+        Me.btnAgregarVenta = New System.Windows.Forms.Button()
+        Me.CboListaPrecios = New System.Windows.Forms.ComboBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.txtCantidadVentas = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.cboProductoVenta = New System.Windows.Forms.ComboBox()
+        Me.Label10 = New System.Windows.Forms.Label()
         CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarCuenta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarEmpleado, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarFormaPago, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnTipoVenta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnFormaEntrega, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelDetalleDeVentas.SuspendLayout()
         Me.SuspendLayout()
         '
         'grdVentas
         '
+        Me.grdVentas.AllowUserToAddRows = False
+        Me.grdVentas.AllowUserToDeleteRows = False
+        Me.grdVentas.AllowUserToOrderColumns = True
+        Me.grdVentas.AllowUserToResizeRows = False
         Me.grdVentas.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdVentas.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdVentas.Location = New System.Drawing.Point(55, 304)
+        Me.grdVentas.Location = New System.Drawing.Point(24, 298)
         Me.grdVentas.Name = "grdVentas"
         Me.grdVentas.ReadOnly = True
+        Me.grdVentas.RowHeadersVisible = False
         Me.grdVentas.RowHeadersWidth = 51
-        Me.grdVentas.Size = New System.Drawing.Size(830, 246)
+        Me.grdVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.grdVentas.Size = New System.Drawing.Size(888, 261)
         Me.grdVentas.TabIndex = 95
         '
         'chkEstado
@@ -177,9 +193,9 @@ Partial Class frmVentas
         Me.Label6.ForeColor = System.Drawing.Color.White
         Me.Label6.Location = New System.Drawing.Point(98, 156)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(75, 17)
+        Me.Label6.Size = New System.Drawing.Size(72, 17)
         Me.Label6.TabIndex = 84
-        Me.Label6.Text = "Empleado"
+        Me.Label6.Text = "Vendedor"
         '
         'Label5
         '
@@ -257,13 +273,13 @@ Partial Class frmVentas
         Me.Label1.TabIndex = 75
         Me.Label1.Text = "ID"
         '
-        'cboEmpleado
+        'cboVendedor
         '
-        Me.cboEmpleado.FormattingEnabled = True
-        Me.cboEmpleado.Location = New System.Drawing.Point(251, 154)
-        Me.cboEmpleado.Name = "cboEmpleado"
-        Me.cboEmpleado.Size = New System.Drawing.Size(121, 21)
-        Me.cboEmpleado.TabIndex = 6
+        Me.cboVendedor.FormattingEnabled = True
+        Me.cboVendedor.Location = New System.Drawing.Point(251, 154)
+        Me.cboVendedor.Name = "cboVendedor"
+        Me.cboVendedor.Size = New System.Drawing.Size(121, 21)
+        Me.cboVendedor.TabIndex = 6
         '
         'cboFormaPago
         '
@@ -317,7 +333,7 @@ Partial Class frmVentas
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
-        Me.btnCancelar.Location = New System.Drawing.Point(775, 180)
+        Me.btnCancelar.Location = New System.Drawing.Point(778, 183)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(117, 37)
         Me.btnCancelar.TabIndex = 17
@@ -430,6 +446,116 @@ Partial Class frmVentas
         Me.btnFormaEntrega.TabIndex = 111
         Me.btnFormaEntrega.TabStop = False
         '
+        'PanelDetalleDeVentas
+        '
+        Me.PanelDetalleDeVentas.Controls.Add(Me.btnQuitarVenta)
+        Me.PanelDetalleDeVentas.Controls.Add(Me.btnAgregarVenta)
+        Me.PanelDetalleDeVentas.Controls.Add(Me.CboListaPrecios)
+        Me.PanelDetalleDeVentas.Controls.Add(Me.Label15)
+        Me.PanelDetalleDeVentas.Controls.Add(Me.txtCantidadVentas)
+        Me.PanelDetalleDeVentas.Controls.Add(Me.Label12)
+        Me.PanelDetalleDeVentas.Controls.Add(Me.cboProductoVenta)
+        Me.PanelDetalleDeVentas.Controls.Add(Me.Label10)
+        Me.PanelDetalleDeVentas.Location = New System.Drawing.Point(13, 245)
+        Me.PanelDetalleDeVentas.Name = "PanelDetalleDeVentas"
+        Me.PanelDetalleDeVentas.Size = New System.Drawing.Size(914, 324)
+        Me.PanelDetalleDeVentas.TabIndex = 112
+        '
+        'btnQuitarVenta
+        '
+        Me.btnQuitarVenta.BackColor = System.Drawing.Color.Transparent
+        Me.btnQuitarVenta.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnQuitarVenta.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.btnQuitarVenta.FlatAppearance.BorderSize = 2
+        Me.btnQuitarVenta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.btnQuitarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnQuitarVenta.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnQuitarVenta.ForeColor = System.Drawing.Color.White
+        Me.btnQuitarVenta.Location = New System.Drawing.Point(782, 10)
+        Me.btnQuitarVenta.Name = "btnQuitarVenta"
+        Me.btnQuitarVenta.Size = New System.Drawing.Size(117, 37)
+        Me.btnQuitarVenta.TabIndex = 113
+        Me.btnQuitarVenta.Text = "Quitar"
+        Me.btnQuitarVenta.UseVisualStyleBackColor = False
+        '
+        'btnAgregarVenta
+        '
+        Me.btnAgregarVenta.BackColor = System.Drawing.Color.Transparent
+        Me.btnAgregarVenta.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnAgregarVenta.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.btnAgregarVenta.FlatAppearance.BorderSize = 2
+        Me.btnAgregarVenta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.btnAgregarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAgregarVenta.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAgregarVenta.ForeColor = System.Drawing.Color.White
+        Me.btnAgregarVenta.Location = New System.Drawing.Point(654, 10)
+        Me.btnAgregarVenta.Name = "btnAgregarVenta"
+        Me.btnAgregarVenta.Size = New System.Drawing.Size(117, 37)
+        Me.btnAgregarVenta.TabIndex = 113
+        Me.btnAgregarVenta.Text = "Agregar"
+        Me.btnAgregarVenta.UseVisualStyleBackColor = False
+        '
+        'CboListaPrecios
+        '
+        Me.CboListaPrecios.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CboListaPrecios.FormattingEnabled = True
+        Me.CboListaPrecios.Location = New System.Drawing.Point(573, 16)
+        Me.CboListaPrecios.Name = "CboListaPrecios"
+        Me.CboListaPrecios.Size = New System.Drawing.Size(72, 25)
+        Me.CboListaPrecios.TabIndex = 117
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.ForeColor = System.Drawing.Color.White
+        Me.Label15.Location = New System.Drawing.Point(530, 20)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(40, 17)
+        Me.Label15.TabIndex = 116
+        Me.Label15.Text = "Lista:"
+        '
+        'txtCantidadVentas
+        '
+        Me.txtCantidadVentas.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCantidadVentas.Location = New System.Drawing.Point(458, 16)
+        Me.txtCantidadVentas.Name = "txtCantidadVentas"
+        Me.txtCantidadVentas.Size = New System.Drawing.Size(66, 23)
+        Me.txtCantidadVentas.TabIndex = 113
+        Me.txtCantidadVentas.Text = "1"
+        Me.txtCantidadVentas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.ForeColor = System.Drawing.Color.White
+        Me.Label12.Location = New System.Drawing.Point(377, 20)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(75, 17)
+        Me.Label12.TabIndex = 115
+        Me.Label12.Text = "Cantidad:"
+        '
+        'cboProductoVenta
+        '
+        Me.cboProductoVenta.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboProductoVenta.FormattingEnabled = True
+        Me.cboProductoVenta.Location = New System.Drawing.Point(93, 16)
+        Me.cboProductoVenta.Name = "cboProductoVenta"
+        Me.cboProductoVenta.Size = New System.Drawing.Size(278, 25)
+        Me.cboProductoVenta.TabIndex = 114
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.ForeColor = System.Drawing.Color.White
+        Me.Label10.Location = New System.Drawing.Point(15, 20)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(72, 17)
+        Me.Label10.TabIndex = 113
+        Me.Label10.Text = "Producto:"
+        '
         'frmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -468,10 +594,11 @@ Partial Class frmVentas
         Me.Controls.Add(Me.txtNumComprobante)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.cboEmpleado)
+        Me.Controls.Add(Me.cboVendedor)
         Me.Controls.Add(Me.cboFormaPago)
         Me.Controls.Add(Me.cboFormaEntrega)
         Me.Controls.Add(Me.cboTipoVenta)
+        Me.Controls.Add(Me.PanelDetalleDeVentas)
         Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -484,6 +611,8 @@ Partial Class frmVentas
         CType(Me.btnAgregarFormaPago, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnTipoVenta, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnFormaEntrega, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelDetalleDeVentas.ResumeLayout(False)
+        Me.PanelDetalleDeVentas.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -507,7 +636,7 @@ Partial Class frmVentas
     Friend WithEvents txtNumComprobante As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents cboEmpleado As ComboBox
+    Friend WithEvents cboVendedor As ComboBox
     Friend WithEvents cboFormaPago As ComboBox
     Friend WithEvents cboFormaEntrega As ComboBox
     Friend WithEvents cboTipoVenta As ComboBox
@@ -523,4 +652,13 @@ Partial Class frmVentas
     Friend WithEvents btnAgregarFormaPago As PictureBox
     Friend WithEvents btnTipoVenta As PictureBox
     Friend WithEvents btnFormaEntrega As PictureBox
+    Friend WithEvents PanelDetalleDeVentas As Panel
+    Friend WithEvents btnQuitarVenta As Button
+    Friend WithEvents btnAgregarVenta As Button
+    Friend WithEvents CboListaPrecios As ComboBox
+    Friend WithEvents Label15 As Label
+    Friend WithEvents txtCantidadVentas As TextBox
+    Friend WithEvents Label12 As Label
+    Friend WithEvents cboProductoVenta As ComboBox
+    Friend WithEvents Label10 As Label
 End Class

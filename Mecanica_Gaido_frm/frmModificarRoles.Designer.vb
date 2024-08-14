@@ -68,14 +68,19 @@ Partial Class frmModificarRoles
         '
         'grdModificarRol
         '
+        Me.grdModificarRol.AllowUserToAddRows = False
+        Me.grdModificarRol.AllowUserToDeleteRows = False
+        Me.grdModificarRol.AllowUserToResizeRows = False
         Me.grdModificarRol.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdModificarRol.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.grdModificarRol.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.grdModificarRol.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdModificarRol.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarRol.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdModificarRol.Location = New System.Drawing.Point(44, 146)
         Me.grdModificarRol.Name = "grdModificarRol"
         Me.grdModificarRol.ReadOnly = True
+        Me.grdModificarRol.RowHeadersVisible = False
+        Me.grdModificarRol.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdModificarRol.Size = New System.Drawing.Size(747, 221)
         Me.grdModificarRol.TabIndex = 31
         '
@@ -132,7 +137,7 @@ Partial Class frmModificarRoles
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(871, 396)
         Me.Controls.Add(Me.txtRol)
         Me.Controls.Add(Me.lblRol)

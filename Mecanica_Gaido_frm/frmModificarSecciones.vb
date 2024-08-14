@@ -3,7 +3,7 @@ Imports AD_Mecanica_Gaido
 Imports System.Data.SqlClient
 
 Public Class frmModificarSecciones
-    Dim o_secciones As New AD_Seciones
+    Dim o_secciones As New AD_Secciones
 
 #Region "Procedimientos"
     Private Sub frmModificarSeccion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -12,8 +12,8 @@ Public Class frmModificarSecciones
     End Sub
 
     Public Sub limpiar()
-        txtId.Text = Nothing
-        txtSeccion.Text = Nothing
+        txtId.Clear()
+        txtSeccion.Clear()
         chkEstado.Checked = False
     End Sub
 
@@ -64,11 +64,7 @@ Public Class frmModificarSecciones
 #Region "Modificar"
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         Try
-            Dim SeccionID As Integer = Convert.ToInt32(txtId.Text)
-            Dim nombreSeccion As String = txtSeccion.Text
-            Dim estado As Boolean = chkEstado.Checked
-
-            o_secciones.Modificar_Seccion(SeccionID, nombreSeccion, estado)
+            o_secciones.Modificar_Seccion(Convert.ToInt32(txtId.Text), txtSeccion.Text, chkEstado.Checked)
             MsgBox("Sección modificada correctamente.", vbInformation, "Éxito")
             limpiar()
             Cargar_Grilla()

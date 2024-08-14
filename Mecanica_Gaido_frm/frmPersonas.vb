@@ -5,6 +5,10 @@ Imports System.Configuration
 Public Class frmPersonas
     Dim o_Personas As New AD_Personas
 
+    Public Property IdPersona As Integer
+    Public Property NombrePersona As String
+    Public Property DocumentoPersona As String
+
 #Region "Carga de Cbos"
     Private Sub Cargar_Provincias()
         Try
@@ -90,99 +94,106 @@ Public Class frmPersonas
 
 #Region "Procedimientos"
     Public Sub Limpiar()
-        txtID.Text = Nothing
-        cboTipoPersona.SelectedIndex = -1
-        txtNombre.Text = Nothing
-        txtApellido.Text = Nothing
-        txtTelefonoMovil.Text = Nothing
-        txtTelefonoFijo.Text = Nothing
+        txtID.Clear()
+        txtNombre.Clear()
+        txtApellido.Clear()
+        txtTelefonoMovil.Clear()
+        txtTelefonoFijo.Clear()
+        txtNumeroDocumento.Clear()
+        txtCorreo.Clear()
+        txtDireccion.Clear()
+        txtNumero.Clear()
+        txtPiso.Clear()
+        txtLetraPuerta.Clear()
+        txtCodigoPostal.Clear()
+        txtNota.Clear()
         dtpFechaNacimiento.Value = DateTime.Today
-        cboTipoDocumento.SelectedIndex = -1
-        txtNumeroDocumento.Text = Nothing
-        txtCorreo.Text = Nothing
-        txtDireccion.Text = Nothing
-        txtNumero.Text = Nothing
-        txtPiso.Text = Nothing
-        txtLetraPuerta.Text = Nothing
-        txtCodigoPostal.Text = Nothing
+        cboTipoPersona.SelectedIndex = -1
         cboProvincia.SelectedIndex = -1
         cboCiudad.SelectedIndex = -1
-        txtNota.Text = Nothing
+        cboTipoDocumento.SelectedIndex = -1
         chkEstado.Checked = False
     End Sub
 
     Private Sub frmPersonas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Limpiar()
-        Cargar_Grilla()
         Cargar_Provincias()
         Cargar_Combo_TipoDocumento()
         Cargar_Combo_TipoPersona()
-
-
-        ' Configuración del estilo de la grilla
-        Dim cellStyle As New DataGridViewCellStyle()
-        cellStyle.BackColor = Color.FromArgb(65, 65, 65)
-        cellStyle.ForeColor = Color.White
-        cellStyle.SelectionBackColor = Color.SeaGreen
-        cellStyle.SelectionForeColor = SystemColors.HighlightText
-        cellStyle.Font = New Font("Microsoft Sans Serif", 8.25, FontStyle.Regular, GraphicsUnit.Point, 0)
-        cellStyle.WrapMode = DataGridViewTriState.True
-
-        grdPersonas.DefaultCellStyle = cellStyle
-
-        ' Configuración del estilo del encabezado
-        Dim headerStyle As New DataGridViewCellStyle()
-        headerStyle.BackColor = Color.SeaGreen
-        headerStyle.ForeColor = Color.White
-        headerStyle.Font = New Font("Microsoft Sans Serif", 8.25, FontStyle.Regular, GraphicsUnit.Point, 0)
-        headerStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-
-        grdPersonas.ColumnHeadersDefaultCellStyle = headerStyle
-
+        Cargar_Grilla()
     End Sub
 
     Public Sub Cargar_Grilla()
-        Dim conexion As SqlConnection
-        Dim comando As New SqlCommand
+        Try
+            Dim conexion As SqlConnection
+            Dim comando As New SqlCommand
 
-        conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
+            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
 
-        conexion.Open()
-        comando.Connection = conexion
-        comando.CommandType = CommandType.StoredProcedure
-        comando.CommandText = ("Cargar_Grilla_Persona")
+            conexion.Open()
+            comando.Connection = conexion
+            comando.CommandType = CommandType.StoredProcedure
+            comando.CommandText = ("Cargar_Grilla_Persona")
 
-        Dim datadapter As New SqlDataAdapter(comando)
-        Dim oDs As New DataSet
-        datadapter.Fill(oDs)
+            Dim datadapter As New SqlDataAdapter(comando)
+            Dim oDs As New DataSet
+            datadapter.Fill(oDs)
 
-        If oDs.Tables(0).Rows.Count > 0 Then
-            grdPersonas.AutoGenerateColumns = True
-            grdPersonas.DataSource = oDs.Tables(0)
-            grdPersonas.Refresh()
-        End If
+            If oDs.Tables(0).Rows.Count > 0 Then
+                grdPersonas.AutoGenerateColumns = True
+                grdPersonas.DataSource = oDs.Tables(0)
 
-        oDs = Nothing
-        conexion.Close()
+                ' Verificar si las columnas existen antes de ocultarlas
+                Dim columnasParaOcultar As String() = {"ID_Provincia", "ID_Ciudad", "ID_TipoPersona", "ID_TipoDocumento", "Fecha_Nacimiento", "Direccion",
+                                                        "Numero", "Piso", "Letra/Puerta", "Codigo_Postal", "Nota", "Estado"}
+                For Each colName As String In columnasParaOcultar
+                    If grdPersonas.Columns.Contains(colName) Then
+                        grdPersonas.Columns(colName).Visible = False
+                    End If
+                Next
+                grdPersonas.Refresh()
+            Else
+                MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
+            End If
+
+            oDs = Nothing
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox("Error al cargar la grilla: " & ex.Message, vbCritical, "Error")
+        Finally
+        End Try
     End Sub
 
-    Public Sub cargardatosentextboxes(ByVal rowindex As Integer)
+    Public Sub CargarDatosEnTxt(ByVal rowindex As Integer)
         If grdPersonas.Rows.Count > 0 AndAlso rowindex >= 0 AndAlso rowindex < grdPersonas.Rows.Count Then
-            ' Cargar datos de la grilla
+
             txtID.Text = grdPersonas.Rows(rowindex).Cells("N° Persona").Value.ToString()
             txtNombre.Text = grdPersonas.Rows(rowindex).Cells("Nombre / Razon Social").Value.ToString()
             txtApellido.Text = grdPersonas.Rows(rowindex).Cells("Apellido").Value.ToString()
+            txtNumeroDocumento.Text = grdPersonas.Rows(rowindex).Cells("Documento").Value.ToString()
             txtTelefonoMovil.Text = grdPersonas.Rows(rowindex).Cells("Teléfono Móvil").Value.ToString()
             txtTelefonoFijo.Text = grdPersonas.Rows(rowindex).Cells("Teléfono Fijo").Value.ToString()
             txtCorreo.Text = grdPersonas.Rows(rowindex).Cells("Correo").Value.ToString()
 
+            cboProvincia.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_Provincia").Value
+            cboCiudad.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_Ciudad").Value
+
+            cboTipoPersona.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_TipoPersona").Value
+            cboTipoDocumento.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_TipoDocumento").Value
+            txtDireccion.Text = grdPersonas.Rows(rowindex).Cells("Direccion").Value.ToString()
+            txtNumero.Text = grdPersonas.Rows(rowindex).Cells("Numero").Value.ToString()
+            txtPiso.Text = grdPersonas.Rows(rowindex).Cells("Piso").Value.ToString()
+            txtLetraPuerta.Text = grdPersonas.Rows(rowindex).Cells("Letra/Puerta").Value.ToString()
+            txtCodigoPostal.Text = grdPersonas.Rows(rowindex).Cells("Codigo_Postal").Value.ToString()
+            txtNota.Text = grdPersonas.Rows(rowindex).Cells("Nota").Value.ToString()
+            chkEstado.Checked = grdPersonas.Rows(rowindex).Cells("Estado").Value.ToString()
+            'dtpFechaNacimiento.Value = grdPersonas.Rows(rowindex).Cells("Fecha_Nacimiento").Value
         End If
     End Sub
 
-
     Private Sub grdPersonas_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdPersonas.CellClick
         If e.RowIndex >= 0 Then
-            CargarDatosEnTextBoxes(e.RowIndex)
+            CargarDatosEnTxt(e.RowIndex)
         End If
     End Sub
 
@@ -199,9 +210,25 @@ Public Class frmPersonas
         frmAgregarEmpleados.ShowDialog()
     End Sub
 
-    Private Sub btnCtasCtes_Click(sender As Object, e As EventArgs) Handles btnCuentas.Click
-        frmAgregarCuentas.txtEmpresa.Text = txtApellido.Text & " " & txtNombre.Text
-        frmAgregarCuentas.ShowDialog()
+    Private Sub btnDatoFiscals_Click(sender As Object, e As EventArgs) Handles btnDatoFiscal.Click
+        If txtID.Text <> Nothing And txtNombre.Text <> Nothing And txtNumeroDocumento.Text <> Nothing Then
+            IdPersona = txtID.Text
+            NombrePersona = txtApellido.Text & " " & txtNombre.Text
+            DocumentoPersona = txtNumeroDocumento.Text
+
+            ' Crea una nueva instancia de frmDatoFiscal
+            Dim frmAgregar As New frmAgregarDatosFiscales()
+
+            ' Pasa los valores a las propiedades públicas del nuevo formulario
+            frmAgregar.IdPersona = IdPersona
+            frmAgregar.NombrePersona = NombrePersona
+            frmAgregar.DocumentoPersona = DocumentoPersona
+
+            ' Muestra el nuevo formulario
+            frmAgregar.ShowDialog()
+        Else
+            MsgBox("Por favor seleccione una persona para cargar sus datos físcales.", vbInformation, "Información")
+        End If
     End Sub
 
     Private Sub btnAgregarCiudad_Click(sender As Object, e As EventArgs)
@@ -247,8 +274,8 @@ Public Class frmPersonas
 
                 MsgBox("Persona agregada correctamente.", vbInformation, "Información")
                 Limpiar()
-
                 Cargar_Grilla()
+
             Catch ex As Exception
                 MsgBox("Error al agregar la persona: " & ex.Message, vbCritical, "Error")
             End Try
@@ -276,38 +303,6 @@ Public Class frmPersonas
         Else
             MsgBox("Complete Datos", vbInformation, "Error")
         End If
-    End Sub
-
-    Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Not Char.IsLetter(e.KeyChar) _
-           AndAlso Not Char.IsControl(e.KeyChar) _
-           AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
-            e.Handled = True
-        End If
-    End Sub
-
-
-    Private Sub txtApellido_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Not Char.IsLetter(e.KeyChar) _
-         AndAlso Not Char.IsControl(e.KeyChar) _
-         AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
-            e.Handled = True
-        End If
-
-    End Sub
-
-
-    Private Sub txtTelefono_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
-
     End Sub
 #End Region
 
@@ -350,6 +345,37 @@ Public Class frmPersonas
             Dim rect As New Rectangle(0, 0, PanelNotas.Width - 1, PanelNotas.Height - 1)
             e.Graphics.DrawRectangle(pen, rect)
         End Using
+    End Sub
+#End Region
+
+#Region "Keypress"
+    Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs)
+        If Not Char.IsLetter(e.KeyChar) _
+           AndAlso Not Char.IsControl(e.KeyChar) _
+           AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtApellido_KeyPress(sender As Object, e As KeyPressEventArgs)
+        If Not Char.IsLetter(e.KeyChar) _
+         AndAlso Not Char.IsControl(e.KeyChar) _
+         AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
+            e.Handled = True
+        End If
+
+    End Sub
+
+    Private Sub txtTelefono_KeyPress(sender As Object, e As KeyPressEventArgs)
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
     End Sub
 #End Region
 End Class

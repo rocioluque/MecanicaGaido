@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="AD_Ciudades.vb" />
     <Compile Include="AD_Compras.vb" />
+    <Compile Include="AD_DatosFiscales.vb" />
     <Compile Include="AD_Empleados.vb" />
     <Compile Include="AD_FormasDeEntrega.vb" />
     <Compile Include="AD_FormasDePago.vb" />
@@ -100,7 +101,7 @@
     <Compile Include="AD_Productos.vb" />
     <Compile Include="AD_Roles.vb" />
     <Compile Include="AD_Rubros.vb" />
-    <Compile Include="AD_Seciones.vb" />
+    <Compile Include="AD_Secciones.vb" />
     <Compile Include="AD_TiposDeVenta.vb" />
     <Compile Include="AD_Vehiculos.vb" />
     <Compile Include="AD_Ventas.vb" />

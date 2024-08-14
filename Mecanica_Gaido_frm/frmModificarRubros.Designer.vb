@@ -68,14 +68,19 @@ Partial Class frmModificarRubros
         '
         'grdModificarRubros
         '
+        Me.grdModificarRubros.AllowUserToAddRows = False
+        Me.grdModificarRubros.AllowUserToDeleteRows = False
+        Me.grdModificarRubros.AllowUserToResizeRows = False
         Me.grdModificarRubros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdModificarRubros.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.grdModificarRubros.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.grdModificarRubros.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdModificarRubros.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarRubros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdModificarRubros.Location = New System.Drawing.Point(44, 146)
         Me.grdModificarRubros.Name = "grdModificarRubros"
         Me.grdModificarRubros.ReadOnly = True
+        Me.grdModificarRubros.RowHeadersVisible = False
+        Me.grdModificarRubros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdModificarRubros.Size = New System.Drawing.Size(747, 221)
         Me.grdModificarRubros.TabIndex = 41
         '
@@ -132,7 +137,7 @@ Partial Class frmModificarRubros
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(871, 396)
         Me.Controls.Add(Me.txtRubro)
         Me.Controls.Add(Me.lblCiudad)

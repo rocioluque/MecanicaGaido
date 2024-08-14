@@ -5,7 +5,6 @@ Imports System.IO
 Imports System.Configuration
 Imports System.Data.Common
 
-
 Public Class AD_Personas
     Private connectionString As String
 
@@ -161,7 +160,6 @@ Public Class AD_Personas
                 comando.Parameters.AddWithValue("@ID_Ciudad", idCiudad)
                 comando.Parameters.AddWithValue("@Nota", Nota)
                 comando.Parameters.AddWithValue("@Estado", Estado)
-
 
                 conexion.Open()
                 comando.ExecuteNonQuery()

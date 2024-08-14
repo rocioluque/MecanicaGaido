@@ -7,23 +7,19 @@ Public Class frmAgregarMarca
 
     ' Propiedad para almacenar el nombre de la nueva marca agregada
     Public Property NuevaMarcaNombre As String
-
-    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
-        Me.Close()
-    End Sub
+    Public Property NuevaMarcaVehiculoNombre As String
 
 #Region "Cargar"
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         If txtMarca.Text <> Nothing Then
             Try
-                Dim NombreMarca As String = txtMarca.Text
-                Dim Repuesto As Boolean = chkProducto.Checked
-                Dim Vehiculo As Boolean = chkVehiculo.Checked
+                If o_marca.Agregar_Marca(txtMarca.Text, chkProducto.Checked, chkVehiculo.Checked) Then
 
-                If o_marca.Agregar_Marca(NombreMarca, Repuesto, Vehiculo) Then
                     'Almacenar el nombre de la nueva marca
-                    NuevaMarcaNombre = NombreMarca
+                    NuevaMarcaNombre = txtMarca.Text
+                    NuevaMarcaVehiculoNombre = txtMarca.Text
                     MsgBox("Marca agregada correctamente.", vbInformation, "Información")
+
                     'Al cerrar el modal devuelve un resultado específico en el frmProductos
                     Me.DialogResult = DialogResult.OK
                     Me.Close()
@@ -39,4 +35,7 @@ Public Class frmAgregarMarca
     End Sub
 #End Region
 
+    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        Me.Close()
+    End Sub
 End Class

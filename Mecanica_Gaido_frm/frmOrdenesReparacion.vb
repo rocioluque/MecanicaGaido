@@ -3,42 +3,30 @@ Imports AD_Mecanica_Gaido
 Imports System.Data.SqlClient
 Imports System.Configuration
 
-
 Public Class frmOrdenesReparacion
-
     Dim o_Orden As New AD_OrdenReparacion
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+
+#Region "Procedimientos"
+    Public Sub limpiar()
         txtID.Clear()
-        'ver que hacer con el cboVehiculo'
         txtSeñasParticulares.Clear()
         txtMotivo.Clear()
         txtFechaturno.Clear()
         txtFechaentrada.Clear()
         txtFechaestimada.Clear()
         txtFechasalida.Clear()
-        cboCuenta.SelectedIndex = 0
-        cboServicios.SelectedIndex = 0
+        cboCuenta.SelectedIndex = -1
+        cboServicios.SelectedIndex = -1
+        cboVehiculo.SelectedIndex = -1
         chkActivo.Checked = False
     End Sub
 
-
-    Private Sub txtSeñasParticulares_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSeñasParticulares.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiar()
     End Sub
+#End Region
 
-    Private Sub frmOrdenesReparacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
-
+#Region "Cargar cbo"
     Private Sub Cargar_Combo_Vehiculos()
         Try
             Dim tabla As DataTable = o_Orden.Cargar_Combo_Vehiculos()
@@ -56,3 +44,19 @@ Public Class frmOrdenesReparacion
             MsgBox("Error al cargar los Vehiculos-: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+#End Region
+
+#Region "Keypress"
+    Private Sub txtSeñasParticulares_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSeñasParticulares.KeyPress
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
+    End Sub
+#End Region
+End Class

@@ -6,17 +6,7 @@ Public Class frmAgregarFormaPago
 
     ' Propiedad para almacenar el nombre de la nueva forma de pago agregada
     Public Property NuevaFormaPagoNombre As String
-    Public Property NuevaFormaPagoNombreCompra As String
-
-#Region "Keypress"
-    Private Sub txtFormaPago_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtFormaPago.KeyPress
-        If Not Char.IsLetter(e.KeyChar) _
-      AndAlso Not Char.IsControl(e.KeyChar) _
-      AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
-            e.Handled = True
-        End If
-    End Sub
-#End Region
+    Public Property NuevaFormaPagoComprasNombre As String
 
 #Region "Cargar"
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
@@ -26,7 +16,8 @@ Public Class frmAgregarFormaPago
 
                     'Almacenar el nombre de la nueva forma de pago
                     NuevaFormaPagoNombre = txtFormaPago.Text
-                    NuevaFormaPagoNombreCompra = txtFormaPago.Text
+                    NuevaFormaPagoComprasNombre = txtFormaPago.Text
+
                     MsgBox("Forma de pago agregada correctamente.", vbInformation, "Información")
 
                     'Al cerrar el modal devuelve un resultado específico en el frmVenta
@@ -47,4 +38,15 @@ Public Class frmAgregarFormaPago
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
         Me.Close()
     End Sub
+
+#Region "Keypress"
+    Private Sub txtFormaPago_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtFormaPago.KeyPress
+        If Not Char.IsLetter(e.KeyChar) _
+      AndAlso Not Char.IsControl(e.KeyChar) _
+      AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+#End Region
+
 End Class

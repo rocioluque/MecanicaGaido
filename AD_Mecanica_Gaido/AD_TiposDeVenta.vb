@@ -24,7 +24,7 @@ Public Class AD_TiposDeVenta
                     Dim existe As Boolean = Convert.ToBoolean(comando.Parameters("@Existe").Value)
                     Return existe
                 Catch ex As Exception
-                    Throw New Exception("Error al verificar la existencia de el tipo de venta en la base de datos", ex)
+                    Throw New Exception("Error al verificar la existencia de el tipo de venta en la base de datos: " & ex.Message, ex)
                 End Try
             End Using
         End Using

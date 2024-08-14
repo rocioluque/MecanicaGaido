@@ -68,14 +68,19 @@ Partial Class frmModificarFormaEntrega
         '
         'grdModificarFormaEntrega
         '
+        Me.grdModificarFormaEntrega.AllowUserToAddRows = False
+        Me.grdModificarFormaEntrega.AllowUserToDeleteRows = False
+        Me.grdModificarFormaEntrega.AllowUserToResizeRows = False
         Me.grdModificarFormaEntrega.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdModificarFormaEntrega.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.grdModificarFormaEntrega.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.grdModificarFormaEntrega.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdModificarFormaEntrega.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarFormaEntrega.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdModificarFormaEntrega.Location = New System.Drawing.Point(44, 144)
         Me.grdModificarFormaEntrega.Name = "grdModificarFormaEntrega"
         Me.grdModificarFormaEntrega.ReadOnly = True
+        Me.grdModificarFormaEntrega.RowHeadersVisible = False
+        Me.grdModificarFormaEntrega.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdModificarFormaEntrega.Size = New System.Drawing.Size(747, 221)
         Me.grdModificarFormaEntrega.TabIndex = 55
         '
@@ -132,7 +137,7 @@ Partial Class frmModificarFormaEntrega
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(871, 396)
         Me.Controls.Add(Me.txtFormaEntrega)
         Me.Controls.Add(Me.lblFormaEntrega)

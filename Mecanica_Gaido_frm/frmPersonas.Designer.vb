@@ -28,7 +28,7 @@ Partial Class frmPersonas
         Me.lblId = New System.Windows.Forms.Label()
         Me.btnBuscar = New System.Windows.Forms.Button()
         Me.btnEmpleados = New System.Windows.Forms.Button()
-        Me.btnCuentas = New System.Windows.Forms.Button()
+        Me.btnDatoFiscal = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.btnAceptar = New System.Windows.Forms.Button()
         Me.grdPersonas = New System.Windows.Forms.DataGridView()
@@ -74,6 +74,13 @@ Partial Class frmPersonas
         Me.lblNota = New System.Windows.Forms.Label()
         Me.PanelNotas = New System.Windows.Forms.Panel()
         Me.txtNota = New System.Windows.Forms.RichTextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
         CType(Me.grdPersonas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDatosPersonales.SuspendLayout()
         Me.PanelDirecciones.SuspendLayout()
@@ -136,21 +143,21 @@ Partial Class frmPersonas
         Me.btnEmpleados.Text = "Empleados"
         Me.btnEmpleados.UseVisualStyleBackColor = False
         '
-        'btnCuentas
+        'btnDatoFiscal
         '
-        Me.btnCuentas.BackColor = System.Drawing.Color.Transparent
-        Me.btnCuentas.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnCuentas.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.btnCuentas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
-        Me.btnCuentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCuentas.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCuentas.ForeColor = System.Drawing.Color.White
-        Me.btnCuentas.Location = New System.Drawing.Point(51, 425)
-        Me.btnCuentas.Name = "btnCuentas"
-        Me.btnCuentas.Size = New System.Drawing.Size(117, 37)
-        Me.btnCuentas.TabIndex = 22
-        Me.btnCuentas.Text = "Cuentas"
-        Me.btnCuentas.UseVisualStyleBackColor = False
+        Me.btnDatoFiscal.BackColor = System.Drawing.Color.Transparent
+        Me.btnDatoFiscal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnDatoFiscal.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.btnDatoFiscal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.btnDatoFiscal.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDatoFiscal.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDatoFiscal.ForeColor = System.Drawing.Color.White
+        Me.btnDatoFiscal.Location = New System.Drawing.Point(51, 425)
+        Me.btnDatoFiscal.Name = "btnDatoFiscal"
+        Me.btnDatoFiscal.Size = New System.Drawing.Size(117, 37)
+        Me.btnDatoFiscal.TabIndex = 22
+        Me.btnDatoFiscal.Text = "Datos Fiscales"
+        Me.btnDatoFiscal.UseVisualStyleBackColor = False
         '
         'btnCancelar
         '
@@ -187,7 +194,11 @@ Partial Class frmPersonas
         '
         'grdPersonas
         '
+        Me.grdPersonas.AllowUserToAddRows = False
+        Me.grdPersonas.AllowUserToDeleteRows = False
+        Me.grdPersonas.AllowUserToResizeRows = False
         Me.grdPersonas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.grdPersonas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         Me.grdPersonas.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdPersonas.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
@@ -202,7 +213,9 @@ Partial Class frmPersonas
         Me.grdPersonas.Location = New System.Drawing.Point(51, 497)
         Me.grdPersonas.Name = "grdPersonas"
         Me.grdPersonas.ReadOnly = True
+        Me.grdPersonas.RowHeadersVisible = False
         Me.grdPersonas.RowHeadersWidth = 51
+        Me.grdPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdPersonas.Size = New System.Drawing.Size(834, 297)
         Me.grdPersonas.TabIndex = 60
         '
@@ -249,6 +262,9 @@ Partial Class frmPersonas
         '
         'PanelDatosPersonales
         '
+        Me.PanelDatosPersonales.Controls.Add(Me.Label3)
+        Me.PanelDatosPersonales.Controls.Add(Me.Label2)
+        Me.PanelDatosPersonales.Controls.Add(Me.Label1)
         Me.PanelDatosPersonales.Controls.Add(Me.cboTipoDocumento)
         Me.PanelDatosPersonales.Controls.Add(Me.dtpFechaNacimiento)
         Me.PanelDatosPersonales.Controls.Add(Me.lblNumeroDocumento)
@@ -376,6 +392,10 @@ Partial Class frmPersonas
         '
         'PanelDirecciones
         '
+        Me.PanelDirecciones.Controls.Add(Me.Label10)
+        Me.PanelDirecciones.Controls.Add(Me.Label8)
+        Me.PanelDirecciones.Controls.Add(Me.Label6)
+        Me.PanelDirecciones.Controls.Add(Me.Label4)
         Me.PanelDirecciones.Controls.Add(Me.lblCodigoPostal)
         Me.PanelDirecciones.Controls.Add(Me.txtCodigoPostal)
         Me.PanelDirecciones.Controls.Add(Me.lblTelefonoFijo)
@@ -422,7 +442,7 @@ Partial Class frmPersonas
         Me.txtCodigoPostal.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCodigoPostal.Name = "txtCodigoPostal"
         Me.txtCodigoPostal.Size = New System.Drawing.Size(88, 23)
-        Me.txtCodigoPostal.TabIndex = 14
+        Me.txtCodigoPostal.TabIndex = 15
         '
         'lblTelefonoFijo
         '
@@ -540,7 +560,7 @@ Partial Class frmPersonas
         Me.cboCiudad.Margin = New System.Windows.Forms.Padding(2)
         Me.cboCiudad.Name = "cboCiudad"
         Me.cboCiudad.Size = New System.Drawing.Size(133, 25)
-        Me.cboCiudad.TabIndex = 13
+        Me.cboCiudad.TabIndex = 14
         '
         'chkEstado
         '
@@ -577,7 +597,7 @@ Partial Class frmPersonas
         Me.cboProvincia.Margin = New System.Windows.Forms.Padding(2)
         Me.cboProvincia.Name = "cboProvincia"
         Me.cboProvincia.Size = New System.Drawing.Size(164, 25)
-        Me.cboProvincia.TabIndex = 15
+        Me.cboProvincia.TabIndex = 13
         Me.cboProvincia.ValueMember = "ID_Provincia"
         '
         'txtDireccion
@@ -694,6 +714,97 @@ Partial Class frmPersonas
         Me.txtNota.TabIndex = 18
         Me.txtNota.Text = ""
         '
+        'Label1
+        '
+        Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label1.ForeColor = System.Drawing.Color.Red
+        Me.Label1.Location = New System.Drawing.Point(162, 23)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(14, 15)
+        Me.Label1.TabIndex = 111
+        Me.Label1.Text = "*"
+        '
+        'Label2
+        '
+        Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label2.ForeColor = System.Drawing.Color.Red
+        Me.Label2.Location = New System.Drawing.Point(165, 209)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(14, 15)
+        Me.Label2.TabIndex = 112
+        Me.Label2.Text = "*"
+        '
+        'Label3
+        '
+        Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label3.ForeColor = System.Drawing.Color.Red
+        Me.Label3.Location = New System.Drawing.Point(143, 161)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(14, 15)
+        Me.Label3.TabIndex = 113
+        Me.Label3.Text = "*"
+        '
+        'Label4
+        '
+        Me.Label4.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label4.ForeColor = System.Drawing.Color.Red
+        Me.Label4.Location = New System.Drawing.Point(307, 135)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(14, 15)
+        Me.Label4.TabIndex = 111
+        Me.Label4.Text = "*"
+        '
+        'Label6
+        '
+        Me.Label6.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label6.BackColor = System.Drawing.Color.Transparent
+        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label6.ForeColor = System.Drawing.Color.Red
+        Me.Label6.Location = New System.Drawing.Point(70, 79)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(14, 15)
+        Me.Label6.TabIndex = 112
+        Me.Label6.Text = "*"
+        '
+        'Label8
+        '
+        Me.Label8.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label8.BackColor = System.Drawing.Color.Transparent
+        Me.Label8.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label8.ForeColor = System.Drawing.Color.Red
+        Me.Label8.Location = New System.Drawing.Point(137, 23)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(14, 15)
+        Me.Label8.TabIndex = 113
+        Me.Label8.Text = "*"
+        '
+        'Label10
+        '
+        Me.Label10.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label10.BackColor = System.Drawing.Color.Transparent
+        Me.Label10.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label10.ForeColor = System.Drawing.Color.Red
+        Me.Label10.Location = New System.Drawing.Point(412, 135)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(14, 15)
+        Me.Label10.TabIndex = 114
+        Me.Label10.Text = "*"
+        '
         'frmPersonas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -701,7 +812,7 @@ Partial Class frmPersonas
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(972, 760)
+        Me.ClientSize = New System.Drawing.Size(972, 598)
         Me.Controls.Add(Me.lblNota)
         Me.Controls.Add(Me.PanelNotas)
         Me.Controls.Add(Me.lblDatosPersonales)
@@ -715,7 +826,7 @@ Partial Class frmPersonas
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnAceptar)
         Me.Controls.Add(Me.btnEmpleados)
-        Me.Controls.Add(Me.btnCuentas)
+        Me.Controls.Add(Me.btnDatoFiscal)
         Me.Controls.Add(Me.btnBuscar)
         Me.Controls.Add(Me.txtID)
         Me.Controls.Add(Me.lblId)
@@ -739,7 +850,7 @@ Partial Class frmPersonas
     Friend WithEvents lblId As Label
     Friend WithEvents btnBuscar As Button
     Friend WithEvents btnEmpleados As Button
-    Friend WithEvents btnCuentas As Button
+    Friend WithEvents btnDatoFiscal As Button
     Friend WithEvents btnCancelar As Button
     Friend WithEvents btnAceptar As Button
     Friend WithEvents grdPersonas As DataGridView
@@ -785,4 +896,11 @@ Partial Class frmPersonas
     Friend WithEvents lblNota As Label
     Friend WithEvents PanelNotas As Panel
     Friend WithEvents txtNota As RichTextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label4 As Label
 End Class

@@ -11,13 +11,13 @@ Public Class frmCompras
         txtID.Clear()
         txtFechaCompra.Clear()
         txtNumComprobante.Clear()
-        cboCuenta.SelectedIndex = -1
-        cboFormaPago.SelectedIndex = -1
         txtSubTotal.Clear()
         txtIVA.Clear()
         txtIvaMonto.Clear()
         txtOtrosImpuestos.Clear()
         txtTotal.Clear()
+        cboCuenta.SelectedIndex = -1
+        cboFormaPago.SelectedIndex = -1
         chkEstado.Checked = False
     End Sub
 
@@ -35,14 +35,15 @@ Public Class frmCompras
 
             If tabla.Rows.Count > 0 Then
                 cboCuenta.DataSource = tabla
-                cboCuenta.DisplayMember = "Empresa"
-                cboCuenta.ValueMember = "ID_Cuenta"
+                cboCuenta.DisplayMember = "Cuenta"
+                cboCuenta.ValueMember = "ID_DatoFiscal"
+                cboCuenta.SelectedValue = -1
             Else
-                MsgBox("No se encontraron cuentas.", vbInformation, "Información")
+                MsgBox("No se encontraron Cuentas.", vbInformation, "Información")
             End If
 
         Catch ex As Exception
-            MsgBox("Error al cargar la cuenta: " & ex.Message, vbCritical, "Error")
+            MsgBox("Error al cargar las Cuentas: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
 
@@ -67,11 +68,6 @@ Public Class frmCompras
 
 #Region "Forma de Pago"
     Private Sub btnAgregarFormaPago_Click(sender As Object, e As EventArgs) Handles btnAgregarFormaPago.Click
-        frmAgregarFormaPago.ShowDialog()
-    End Sub
-
-#End Region
-    Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
         Dim frm As New frmAgregarFormaPago()
 
         'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
@@ -79,14 +75,20 @@ Public Class frmCompras
             Cargar_Combo_FormaPago()
 
             ' Buscar y seleccionar la nueva forma de pago en el ComboBox
-            Dim nuevaFormaPago As String = frm.NuevaFormaPagoNombreCompra
+            Dim nuevaFormaPagoCompras As String = frm.NuevaFormaPagoComprasNombre
             For Each item As DataRowView In cboFormaPago.Items
-                If item("Nombre").ToString() = nuevaFormaPago Then
+                If item("Nombre").ToString() = nuevaFormaPagoCompras Then
                     cboFormaPago.SelectedItem = item
                     Exit For
                 End If
             Next
         End If
+    End Sub
+
+#End Region
+
+    Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
+        frmAgregarDatosFiscales.ShowDialog()
     End Sub
 
 #Region "Keypress"
@@ -167,4 +169,6 @@ Public Class frmCompras
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
     End Sub
+
+
 End Class

@@ -58,6 +58,9 @@ Partial Class frmCompras
         '
         'grdCompras
         '
+        Me.grdCompras.AllowUserToAddRows = False
+        Me.grdCompras.AllowUserToDeleteRows = False
+        Me.grdCompras.AllowUserToResizeRows = False
         Me.grdCompras.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdCompras.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -65,8 +68,10 @@ Partial Class frmCompras
         Me.grdCompras.Margin = New System.Windows.Forms.Padding(2)
         Me.grdCompras.Name = "grdCompras"
         Me.grdCompras.ReadOnly = True
+        Me.grdCompras.RowHeadersVisible = False
         Me.grdCompras.RowHeadersWidth = 51
         Me.grdCompras.RowTemplate.Height = 24
+        Me.grdCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdCompras.Size = New System.Drawing.Size(838, 220)
         Me.grdCompras.TabIndex = 45
         '
@@ -380,8 +385,7 @@ Partial Class frmCompras
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(939, 581)
+        Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.btnModificar)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnAceptar)
@@ -410,11 +414,9 @@ Partial Class frmCompras
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmCompras"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmCompras"
         CType(Me.grdCompras, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnAgregarCuenta, System.ComponentModel.ISupportInitialize).EndInit()

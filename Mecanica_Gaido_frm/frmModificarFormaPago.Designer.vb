@@ -37,10 +37,9 @@ Partial Class frmModificarFormaPago
         'txtFormaDePago
         '
         Me.txtFormaDePago.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFormaDePago.Location = New System.Drawing.Point(574, 46)
-        Me.txtFormaDePago.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtFormaDePago.Location = New System.Drawing.Point(431, 38)
         Me.txtFormaDePago.Name = "txtFormaDePago"
-        Me.txtFormaDePago.Size = New System.Drawing.Size(308, 24)
+        Me.txtFormaDePago.Size = New System.Drawing.Size(232, 21)
         Me.txtFormaDePago.TabIndex = 41
         '
         'lblFormaDePago
@@ -48,10 +47,9 @@ Partial Class frmModificarFormaPago
         Me.lblFormaDePago.AutoSize = True
         Me.lblFormaDePago.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblFormaDePago.ForeColor = System.Drawing.Color.White
-        Me.lblFormaDePago.Location = New System.Drawing.Point(375, 47)
-        Me.lblFormaDePago.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblFormaDePago.Location = New System.Drawing.Point(281, 38)
         Me.lblFormaDePago.Name = "lblFormaDePago"
-        Me.lblFormaDePago.Size = New System.Drawing.Size(151, 22)
+        Me.lblFormaDePago.Size = New System.Drawing.Size(121, 20)
         Me.lblFormaDePago.TabIndex = 42
         Me.lblFormaDePago.Text = "Forma de Pago"
         '
@@ -60,27 +58,31 @@ Partial Class frmModificarFormaPago
         Me.chkEstadoFP.AutoSize = True
         Me.chkEstadoFP.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstadoFP.ForeColor = System.Drawing.Color.White
-        Me.chkEstadoFP.Location = New System.Drawing.Point(103, 105)
-        Me.chkEstadoFP.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.chkEstadoFP.Location = New System.Drawing.Point(77, 85)
+        Me.chkEstadoFP.Margin = New System.Windows.Forms.Padding(2, 1, 2, 1)
         Me.chkEstadoFP.Name = "chkEstadoFP"
-        Me.chkEstadoFP.Size = New System.Drawing.Size(108, 25)
+        Me.chkEstadoFP.Size = New System.Drawing.Size(85, 21)
         Me.chkEstadoFP.TabIndex = 40
         Me.chkEstadoFP.Text = "¿Activo?"
         Me.chkEstadoFP.UseVisualStyleBackColor = True
         '
         'grdModificarFP
         '
+        Me.grdModificarFP.AllowUserToAddRows = False
+        Me.grdModificarFP.AllowUserToDeleteRows = False
+        Me.grdModificarFP.AllowUserToResizeRows = False
         Me.grdModificarFP.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdModificarFP.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.grdModificarFP.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.grdModificarFP.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdModificarFP.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarFP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdModificarFP.Location = New System.Drawing.Point(59, 179)
-        Me.grdModificarFP.Margin = New System.Windows.Forms.Padding(4)
+        Me.grdModificarFP.Location = New System.Drawing.Point(44, 146)
         Me.grdModificarFP.Name = "grdModificarFP"
         Me.grdModificarFP.ReadOnly = True
+        Me.grdModificarFP.RowHeadersVisible = False
         Me.grdModificarFP.RowHeadersWidth = 51
-        Me.grdModificarFP.Size = New System.Drawing.Size(996, 272)
+        Me.grdModificarFP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.grdModificarFP.Size = New System.Drawing.Size(747, 221)
         Me.grdModificarFP.TabIndex = 39
         '
         'btnCancelar
@@ -91,10 +93,9 @@ Partial Class frmModificarFormaPago
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
-        Me.btnCancelar.Location = New System.Drawing.Point(993, 105)
-        Me.btnCancelar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnCancelar.Location = New System.Drawing.Point(745, 85)
         Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(109, 36)
+        Me.btnCancelar.Size = New System.Drawing.Size(82, 29)
         Me.btnCancelar.TabIndex = 38
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = True
@@ -102,10 +103,9 @@ Partial Class frmModificarFormaPago
         'txtIdFP
         '
         Me.txtIdFP.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIdFP.Location = New System.Drawing.Point(229, 46)
-        Me.txtIdFP.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtIdFP.Location = New System.Drawing.Point(172, 38)
         Me.txtIdFP.Name = "txtIdFP"
-        Me.txtIdFP.Size = New System.Drawing.Size(83, 24)
+        Me.txtIdFP.Size = New System.Drawing.Size(63, 21)
         Me.txtIdFP.TabIndex = 35
         '
         'lblNumeroFP
@@ -113,10 +113,9 @@ Partial Class frmModificarFormaPago
         Me.lblNumeroFP.AutoSize = True
         Me.lblNumeroFP.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNumeroFP.ForeColor = System.Drawing.Color.White
-        Me.lblNumeroFP.Location = New System.Drawing.Point(97, 47)
-        Me.lblNumeroFP.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblNumeroFP.Location = New System.Drawing.Point(73, 38)
         Me.lblNumeroFP.Name = "lblNumeroFP"
-        Me.lblNumeroFP.Size = New System.Drawing.Size(78, 22)
+        Me.lblNumeroFP.Size = New System.Drawing.Size(64, 20)
         Me.lblNumeroFP.TabIndex = 37
         Me.lblNumeroFP.Text = "Código"
         '
@@ -128,20 +127,19 @@ Partial Class frmModificarFormaPago
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
-        Me.btnModificar.Location = New System.Drawing.Point(993, 36)
-        Me.btnModificar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnModificar.Location = New System.Drawing.Point(745, 29)
         Me.btnModificar.Name = "btnModificar"
-        Me.btnModificar.Size = New System.Drawing.Size(109, 36)
+        Me.btnModificar.Size = New System.Drawing.Size(82, 29)
         Me.btnModificar.TabIndex = 36
         Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = True
         '
         'frmModificarFormaPago
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1161, 487)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(871, 396)
         Me.Controls.Add(Me.txtFormaDePago)
         Me.Controls.Add(Me.lblFormaDePago)
         Me.Controls.Add(Me.chkEstadoFP)
@@ -152,7 +150,6 @@ Partial Class frmModificarFormaPago
         Me.Controls.Add(Me.btnModificar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmModificarFormaPago"
         Me.Text = "frmModificarFormaPago"
         CType(Me.grdModificarFP, System.ComponentModel.ISupportInitialize).EndInit()

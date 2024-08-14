@@ -11,8 +11,8 @@ Public Class frmModificarTipoVehiculos
     End Sub
 
     Public Sub limpiar()
-        txtId.Text = Nothing
-        txtTipoVehiculo.Text = Nothing
+        txtId.Clear()
+        txtTipoVehiculo.Clear()
         chkEstado.Checked = False
     End Sub
 
@@ -63,11 +63,7 @@ Public Class frmModificarTipoVehiculos
 #Region "Modificar"
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         Try
-            Dim TipoVehiculoID As Integer = Convert.ToInt32(txtId.Text)
-            Dim nombreTipoVehiculo As String = txtTipoVehiculo.Text
-            Dim estado As Boolean = chkEstado.Checked
-
-            o_vehiculo.Modificar_TipoVehiculo(TipoVehiculoID, nombreTipoVehiculo, estado)
+            o_vehiculo.Modificar_TipoVehiculo(Convert.ToInt32(txtId.Text), txtTipoVehiculo.Text, chkEstado.Checked)
             MsgBox("Tipo de Vehiculo modificado correctamente.", vbInformation, "Éxito")
             limpiar()
             Cargar_Grilla()

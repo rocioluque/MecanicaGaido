@@ -11,8 +11,8 @@ Public Class frmModificarFormaEntrega
     End Sub
 
     Public Sub limpiar()
-        txtId.Text = Nothing
-        txtFormaEntrega.Text = Nothing
+        txtId.Clear()
+        txtFormaEntrega.Clear()
         chkEstado.Checked = False
     End Sub
 
@@ -63,12 +63,9 @@ Public Class frmModificarFormaEntrega
 #Region "Modificar"
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         Try
-            Dim FormaEntregaID As Integer = Convert.ToInt32(txtId.Text)
-            Dim nombreFormaEntrega As String = txtFormaEntrega.Text
-            Dim estado As Boolean = chkEstado.Checked
-
-            o_entrega.Modificar_FormaEntrega(FormaEntregaID, nombreFormaEntrega, estado)
+            o_entrega.Modificar_FormaEntrega(Convert.ToInt32(txtId.Text), txtFormaEntrega.Text, chkEstado.Checked)
             MsgBox("Forma de Entrega modificada correctamente.", vbInformation, "Éxito")
+
             limpiar()
             Cargar_Grilla()
         Catch ex As Exception

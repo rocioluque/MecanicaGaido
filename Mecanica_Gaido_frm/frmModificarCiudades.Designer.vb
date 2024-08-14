@@ -70,14 +70,19 @@ Partial Class frmModificarCiudades
         '
         'grdModificarCiudad
         '
+        Me.grdModificarCiudad.AllowUserToAddRows = False
+        Me.grdModificarCiudad.AllowUserToDeleteRows = False
+        Me.grdModificarCiudad.AllowUserToResizeRows = False
         Me.grdModificarCiudad.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdModificarCiudad.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.grdModificarCiudad.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.grdModificarCiudad.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdModificarCiudad.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarCiudad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdModificarCiudad.Location = New System.Drawing.Point(44, 146)
         Me.grdModificarCiudad.Name = "grdModificarCiudad"
         Me.grdModificarCiudad.ReadOnly = True
+        Me.grdModificarCiudad.RowHeadersVisible = False
+        Me.grdModificarCiudad.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdModificarCiudad.Size = New System.Drawing.Size(747, 221)
         Me.grdModificarCiudad.TabIndex = 31
         '
@@ -154,7 +159,7 @@ Partial Class frmModificarCiudades
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(871, 396)
         Me.Controls.Add(Me.cboProvincia)
         Me.Controls.Add(Me.Label2)

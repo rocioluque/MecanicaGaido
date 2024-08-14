@@ -68,14 +68,19 @@ Partial Class frmModificarSecciones
         '
         'grdModificarSeccion
         '
+        Me.grdModificarSeccion.AllowUserToAddRows = False
+        Me.grdModificarSeccion.AllowUserToDeleteRows = False
+        Me.grdModificarSeccion.AllowUserToResizeRows = False
         Me.grdModificarSeccion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdModificarSeccion.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.grdModificarSeccion.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.grdModificarSeccion.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdModificarSeccion.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarSeccion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdModificarSeccion.Location = New System.Drawing.Point(44, 146)
         Me.grdModificarSeccion.Name = "grdModificarSeccion"
         Me.grdModificarSeccion.ReadOnly = True
+        Me.grdModificarSeccion.RowHeadersVisible = False
+        Me.grdModificarSeccion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdModificarSeccion.Size = New System.Drawing.Size(747, 221)
         Me.grdModificarSeccion.TabIndex = 39
         '
@@ -132,7 +137,7 @@ Partial Class frmModificarSecciones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(871, 396)
         Me.Controls.Add(Me.txtSeccion)
         Me.Controls.Add(Me.lblSeccion)

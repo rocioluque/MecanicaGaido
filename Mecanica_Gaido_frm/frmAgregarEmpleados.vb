@@ -17,16 +17,16 @@ Public Class frmAgregarEmpleados
     End Sub
 
     Public Sub limpiar()
-        txtID.Text = Nothing
+        txtID.Clear()
+        txtCuil.Clear()
+        txtFechaNacimiento.Clear()
+        txtFechaContratacion.Clear()
+        txtCargo.Clear()
+        txtContraseña.Clear()
+        txtNota.Clear()
         cboSeccion.SelectedIndex = -1
-        txtCuil.Text = Nothing
-        txtFechaNacimiento.Text = Nothing
-        txtFechaContratacion.Text = Nothing
-        txtCargo.Text = Nothing
         cboUsuario.SelectedIndex = -1
-        txtContraseña = Nothing
         cboRol.SelectedIndex = -1
-        txtNota.Text = Nothing
         chkEstado.Enabled = False
         txtID.Enabled = False
     End Sub
@@ -57,7 +57,7 @@ Public Class frmAgregarEmpleados
     End Sub
 #End Region
 
-#Region "Cargar Combos"
+#Region "Carga Cbo"
     Private Sub Cargar_Combo_Usuarios()
         Try
             Dim tabla As DataTable = o_empleados.Cargar_Combo_Usuarios
@@ -113,6 +113,46 @@ Public Class frmAgregarEmpleados
     End Sub
 #End Region
 
+#Region "Seccion"
+    Private Sub btnAgregarSeccion_Click(sender As Object, e As EventArgs) Handles btnAgregarSeccion.Click
+        Dim frm As New frmAgregarSeccion()
+
+        'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
+        If frm.ShowDialog() = DialogResult.OK Then
+            Cargar_Combo_Seccion()
+
+            ' Buscar y seleccionar la nueva seccion en el ComboBox
+            Dim nuevaSeccion As String = frm.NuevaSeccionNombre
+            For Each item As DataRowView In cboSeccion.Items
+                If item("Nombre").ToString() = nuevaSeccion Then
+                    cboSeccion.SelectedItem = item
+                    Exit For
+                End If
+            Next
+        End If
+    End Sub
+#End Region
+
+#Region "Rol"
+    Private Sub btnAgregarRol_Click(sender As Object, e As EventArgs) Handles btnAgregarRol.Click
+        Dim frm As New frmAgregarRoles()
+
+        'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
+        If frm.ShowDialog() = DialogResult.OK Then
+            Cargar_Combo_Rol()
+
+            ' Buscar y seleccionar el nuevo rol en el ComboBox
+            Dim nuevoRol As String = frm.NuevoRolNombre
+            For Each item As DataRowView In cboRol.Items
+                If item("Nombre").ToString() = nuevoRol Then
+                    cboRol.SelectedItem = item
+                    Exit For
+                End If
+            Next
+        End If
+    End Sub
+#End Region
+
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
         Me.Close()
     End Sub
@@ -124,23 +164,19 @@ Public Class frmAgregarEmpleados
     End Sub
 
 
-
     'Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
-    '    If txtDireccion.Text <> Nothing And txtNombre.Text <> Nothing And txtApellido.Text <> Nothing And txtTelefono.Text <> Nothing And cboUsuario.SelectedValue <> Nothing And
-    '       txtContraseña.Text <> Nothing And cboSeccion.SelectedValue <> Nothing And txtNota.Text <> Nothing Then
+    '    If  cboUsuario.SelectedValue <> Nothing And txtContraseña.Text <> Nothing And cboSeccion.SelectedValue <> Nothing Then
 
     '        Try
-    '            Dim direccion As String = txtDireccion.Text
-    '            Dim nombre As String = txtNombre.Text
-    '            Dim apellido As String = txtApellido.Text
-    '            Dim telefono As String = txtTelefono.Text
+    '            
     '            Dim idusuario As Integer = Convert.ToInt32(cboUsuario.SelectedValue)
     '            Dim contraseña As String = txtContraseña.Text
     '            Dim idseccion As Integer = Convert.ToInt32(cboSeccion.SelectedValue)
     '            Dim nota As String = txtNota.Text
     '            Dim estado As Boolean = chkEstado.Checked
 
-    '            o_empleados.Agregar_Empleado(direccion, nombre, apellido, telefono, idusuario, contraseña, idseccion, nota, estado)
+    '            o_empleados.Agregar_Empleado( idusuario,
+    '            contraseña, idseccion, nota, estado)
     '            MsgBox("Empleado agregado correctamente.", vbInformation, "Información")
     '            limpiar()
 

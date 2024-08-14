@@ -3,6 +3,7 @@ Imports AD_Mecanica_Gaido
 Imports System.Data.SqlClient
 Public Class frmModificarRubros
     Dim o_rubro As New AD_Rubros
+
 #Region "Procedimientos"
     Private Sub frmPersonas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         limpiar()
@@ -10,8 +11,8 @@ Public Class frmModificarRubros
     End Sub
 
     Public Sub limpiar()
-        txtId.Text = Nothing
-        txtRubro.Text = Nothing
+        txtId.Clear()
+        txtRubro.Clear()
         chkEstado.Checked = False
     End Sub
 
@@ -62,11 +63,7 @@ Public Class frmModificarRubros
 #Region "Modificar"
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         Try
-            Dim RubroID As Integer = txtId.Text
-            Dim nombreRubro As String = txtRubro.Text
-            Dim estado As Boolean = chkEstado.Checked
-
-            o_rubro.Modificar_Rubro(RubroID, nombreRubro, estado)
+            o_rubro.Modificar_Rubro(txtId.Text, txtRubro.Text, chkEstado.Checked)
             MsgBox("Rubro modificado correctamente.", vbInformation, "Éxito")
             Cargar_Grilla()
         Catch ex As Exception

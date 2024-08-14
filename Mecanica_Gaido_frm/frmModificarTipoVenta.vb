@@ -4,6 +4,8 @@ Imports System.Data.SqlClient
 
 Public Class frmModificarTipoVenta
     Dim o_TiposDeVenta As New AD_TiposDeVenta
+
+#Region "Procedimientos"
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
     End Sub
@@ -14,8 +16,8 @@ Public Class frmModificarTipoVenta
     End Sub
 
     Public Sub limpiar()
-        txtIdTipoDeVenta.Text = Nothing
-        txtIdTipoDeVenta.Text = Nothing
+        txtIdTipoDeVenta.Clear()
+        txtIdTipoDeVenta.Clear()
         chkEstadoTV.Checked = False
     End Sub
     Public Sub Cargar_Grilla()
@@ -56,14 +58,12 @@ Public Class frmModificarTipoVenta
             CargarDatosEnTextBoxes(e.RowIndex)
         End If
     End Sub
+#End Region
 
+#Region "Modificar"
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         Try
-            Dim ID_TV As Integer = Convert.ToInt32(txtIdTipoDeVenta.Text)
-            Dim nombreTV As String = txtTipoDeVenta.Text
-            Dim estado As Boolean = chkEstadoTV.Checked
-
-            o_TiposDeVenta.Modificar_TipoDeVenta(ID_TV, nombreTV, estado)
+            o_TiposDeVenta.Modificar_TipoDeVenta(Convert.ToInt32(txtIdTipoDeVenta.Text), txtTipoDeVenta.Text, chkEstadoTV.Checked)
             MsgBox("Tipo de venta modificado correctamente.", vbInformation, "Éxito")
             limpiar()
             Cargar_Grilla()
@@ -72,5 +72,5 @@ Public Class frmModificarTipoVenta
             limpiar()
         End Try
     End Sub
-
+#End Region
 End Class

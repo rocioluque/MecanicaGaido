@@ -126,10 +126,10 @@
     <Compile Include="frmCompras.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAgregarCuentas.Designer.vb">
-      <DependentUpon>frmAgregarCuentas.vb</DependentUpon>
+    <Compile Include="frmAgregarDatosFiscales.Designer.vb">
+      <DependentUpon>frmAgregarDatosFiscales.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmAgregarCuentas.vb">
+    <Compile Include="frmAgregarDatosFiscales.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAgregarEmpleados.Designer.vb">
@@ -252,6 +252,12 @@
     <Compile Include="frmAgregarTipoVenta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmReportes.Designer.vb">
+      <DependentUpon>frmReportes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmVehiculos.Designer.vb">
       <DependentUpon>frmVehiculos.vb</DependentUpon>
     </Compile>
@@ -311,8 +317,8 @@
     <EmbeddedResource Include="frmCompras.resx">
       <DependentUpon>frmCompras.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAgregarCuentas.resx">
-      <DependentUpon>frmAgregarCuentas.vb</DependentUpon>
+    <EmbeddedResource Include="frmAgregarDatosFiscales.resx">
+      <DependentUpon>frmAgregarDatosFiscales.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarEmpleados.resx">
       <DependentUpon>frmAgregarEmpleados.vb</DependentUpon>
@@ -370,6 +376,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarTipoVehiculo.resx">
       <DependentUpon>frmAgregarTipoVehiculo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportes.resx">
+      <DependentUpon>frmReportes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVehiculos.resx">
       <DependentUpon>frmVehiculos.vb</DependentUpon>

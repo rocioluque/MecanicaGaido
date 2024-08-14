@@ -60,13 +60,18 @@ Partial Class frmOrdenesReparacion
         '
         'grdOrdenReparacion
         '
+        Me.grdOrdenReparacion.AllowUserToAddRows = False
+        Me.grdOrdenReparacion.AllowUserToDeleteRows = False
+        Me.grdOrdenReparacion.AllowUserToResizeRows = False
         Me.grdOrdenReparacion.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdOrdenReparacion.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdOrdenReparacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdOrdenReparacion.Location = New System.Drawing.Point(54, 338)
         Me.grdOrdenReparacion.Name = "grdOrdenReparacion"
         Me.grdOrdenReparacion.ReadOnly = True
+        Me.grdOrdenReparacion.RowHeadersVisible = False
         Me.grdOrdenReparacion.RowHeadersWidth = 51
+        Me.grdOrdenReparacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdOrdenReparacion.Size = New System.Drawing.Size(843, 241)
         Me.grdOrdenReparacion.TabIndex = 89
         '
@@ -370,7 +375,7 @@ Partial Class frmOrdenesReparacion
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(955, 620)
+        Me.ClientSize = New System.Drawing.Size(955, 598)
         Me.Controls.Add(Me.btnAgregarMarca)
         Me.Controls.Add(Me.btnAgregarServiciosTerceros)
         Me.Controls.Add(Me.btnAgregarCuenta)
