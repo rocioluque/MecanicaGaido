@@ -12,19 +12,7 @@ Public Class AD_Empleados
         connectionString = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123"
     End Sub
 
-    Public Function Cargar_Grilla_Empleados() As DataTable
-        Dim tabla As New DataTable
-
-        Using conexion As New SqlConnection(connectionString)
-            Using comando As New SqlCommand("Cargar_Grilla_Empleados", conexion)
-                comando.CommandType = CommandType.StoredProcedure
-                Dim datadapter As New SqlDataAdapter(comando)
-                datadapter.Fill(tabla)
-            End Using
-        End Using
-        Return tabla
-    End Function
-
+#Region "carga cbo"
     Public Function Cargar_Combo_Usuarios() As DataTable
         Dim tabla As New DataTable
 
@@ -84,6 +72,21 @@ Public Class AD_Empleados
         End Using
         Return tabla
     End Function
+#End Region
+
+    Public Function Cargar_Grilla_Empleados() As DataTable
+        Dim tabla As New DataTable
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Grilla_Empleados", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                Dim datadapter As New SqlDataAdapter(comando)
+                datadapter.Fill(tabla)
+            End Using
+        End Using
+        Return tabla
+    End Function
+
 
     'Modificar esto, el procedimiento no está creado
     Public Sub Agregar_Empleado(ID_Persona As Integer, ID_Usuario As Integer, ID_Seccion As Integer, CUIL As String, FNac As Date, FContrato As Date, Cargo As String, Nota As String, estado As Boolean)

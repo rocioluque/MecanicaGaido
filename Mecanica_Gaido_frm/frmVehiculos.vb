@@ -369,6 +369,8 @@ Public Class frmVehiculos
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
+
+
 #End Region
 
 End Class

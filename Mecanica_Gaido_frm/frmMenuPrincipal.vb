@@ -16,42 +16,49 @@ Public Class frmMenuPrincipal
 #Region "Productos"
     Private Sub btnProductos_Click(sender As Object, e As EventArgs) Handles btnProductos.Click
         AbrirFormHijo(New frmProductos(), DirectCast(sender, Button))
+        OcultarPaneles()
     End Sub
 #End Region
 
 #Region "Vehiculos"
     Private Sub btnVehiculos_Click(sender As Object, e As EventArgs) Handles btnVehiculos.Click
         AbrirFormHijo(New frmVehiculos(), DirectCast(sender, Button))
+        OcultarPaneles()
     End Sub
 #End Region
 
 #Region "Personas"
     Private Sub btnPersonas_Click(sender As Object, e As EventArgs) Handles btnPersonas.Click
         AbrirFormHijo(New frmPersonas(), DirectCast(sender, Button))
+        OcultarPaneles()
     End Sub
 #End Region
 
-#Region "Orden Reparcion"
+#Region "Orden Reparacion"
     Private Sub btnOrdenReparacón_Click(sender As Object, e As EventArgs) Handles btnOrdenReparacón.Click
         AbrirFormHijo(New frmOrdenesReparacion(), DirectCast(sender, Button))
+        OcultarPaneles()
     End Sub
 #End Region
 
 #Region "Ventas"
     Private Sub btnVentas_Click(sender As Object, e As EventArgs) Handles btnVentas.Click
         AbrirFormHijo(New frmVentas(), DirectCast(sender, Button))
+        OcultarPaneles()
     End Sub
 #End Region
 
 #Region "Compras"
     Private Sub btnCompras_Click(sender As Object, e As EventArgs) Handles btnCompras.Click
         AbrirFormHijo(New frmCompras(), DirectCast(sender, Button))
+        OcultarPaneles()
     End Sub
 #End Region
 
 #Region "Reportes"
     Private Sub btnReportes_Click(sender As Object, e As EventArgs) Handles btnReportes.Click
         AbrirFormHijo(New frmReportes(), DirectCast(sender, Button))
+        OcultarPaneles()
     End Sub
 #End Region
 
@@ -147,7 +154,7 @@ Public Class frmMenuPrincipal
         End If
     End Sub
 
-    Private Sub PanelNav_MouseDown(sender As Object, e As MouseEventArgs) Handles panelNav.MouseDown
+    Private Sub PanelNav_MouseDown(sender As Object, e As MouseEventArgs)
         If e.Button = MouseButtons.Left Then
             ReleaseCapture()
             SendMessage(Me.Handle, &HA1, 2, 0)
@@ -157,7 +164,7 @@ Public Class frmMenuPrincipal
 
 #Region "Control botones"
 
-    Private Sub btnInicio_Click(sender As Object, e As EventArgs)
+    Private Sub btnInicio_Click(sender As Object, e As EventArgs) Handles btnInicio.Click
         'Restablecer el color del botón anterior
         If btnAnterior IsNot Nothing Then
             btnAnterior.BackColor = Color.FromArgb(65, 65, 65)
@@ -172,26 +179,13 @@ Public Class frmMenuPrincipal
         End If
     End Sub
 
-    Private Sub btnMaximizar_Click(sender As Object, e As EventArgs) Handles btnMaximizar.Click
-        Me.WindowState = FormWindowState.Maximized
-        btnMaximizar.Visible = False
-        btnRestaurar.Visible = True
-    End Sub
+    Private Sub frmMenuPrincipal_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        'Mostrar un mensaje de confirmación
+        Dim resultado As DialogResult = MessageBox.Show("¿Estás seguro de que quieres cerrar la aplicación?", "Confirmar cierre", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-    Private Sub btnRestaurar_Click(sender As Object, e As EventArgs) Handles btnRestaurar.Click
-        Me.WindowState = FormWindowState.Normal
-        btnMaximizar.Visible = True
-        btnRestaurar.Visible = False
-    End Sub
-
-    Private Sub btnMinimizar_Click(sender As Object, e As EventArgs) Handles btnMinimizar.Click
-        Me.WindowState = FormWindowState.Minimized
-    End Sub
-
-    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
-        If MessageBox.Show("¿Estás seguro de cerrar la aplicación?", "Warning",
-            MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            Application.Exit()
+        ' Si el usuario elige 'No', cancelar el cierre
+        If resultado = DialogResult.No Then
+            e.Cancel = True
         End If
     End Sub
 

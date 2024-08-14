@@ -105,7 +105,7 @@ Partial Class frmProductos
         Me.grdProductos.RowHeadersWidth = 51
         Me.grdProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdProductos.Size = New System.Drawing.Size(858, 290)
-        Me.grdProductos.TabIndex = 93
+        Me.grdProductos.TabIndex = 25
         '
         'chkEstado
         '
@@ -115,7 +115,7 @@ Partial Class frmProductos
         Me.chkEstado.Location = New System.Drawing.Point(601, 158)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(82, 21)
-        Me.chkEstado.TabIndex = 22
+        Me.chkEstado.TabIndex = 13
         Me.chkEstado.Text = "¿Activo?"
         Me.chkEstado.UseVisualStyleBackColor = True
         '
@@ -147,7 +147,7 @@ Partial Class frmProductos
         Me.txtCodigoBarra.Location = New System.Drawing.Point(307, 74)
         Me.txtCodigoBarra.Name = "txtCodigoBarra"
         Me.txtCodigoBarra.Size = New System.Drawing.Size(224, 23)
-        Me.txtCodigoBarra.TabIndex = 19
+        Me.txtCodigoBarra.TabIndex = 7
         '
         'txtCodFabricante
         '
@@ -155,7 +155,7 @@ Partial Class frmProductos
         Me.txtCodFabricante.Location = New System.Drawing.Point(307, 118)
         Me.txtCodFabricante.Name = "txtCodFabricante"
         Me.txtCodFabricante.Size = New System.Drawing.Size(224, 23)
-        Me.txtCodFabricante.TabIndex = 20
+        Me.txtCodFabricante.TabIndex = 8
         '
         'lblCodBarra
         '
@@ -241,7 +241,7 @@ Partial Class frmProductos
         Me.cboMarca.Location = New System.Drawing.Point(307, 30)
         Me.cboMarca.Name = "cboMarca"
         Me.cboMarca.Size = New System.Drawing.Size(186, 25)
-        Me.cboMarca.TabIndex = 5
+        Me.cboMarca.TabIndex = 6
         '
         'cboOriginal
         '
@@ -251,7 +251,7 @@ Partial Class frmProductos
         Me.cboOriginal.Location = New System.Drawing.Point(601, 118)
         Me.cboOriginal.Name = "cboOriginal"
         Me.cboOriginal.Size = New System.Drawing.Size(223, 25)
-        Me.cboOriginal.TabIndex = 8
+        Me.cboOriginal.TabIndex = 12
         '
         'txtDescripcion
         '
@@ -283,7 +283,7 @@ Partial Class frmProductos
         Me.txtStockReal.Location = New System.Drawing.Point(152, 24)
         Me.txtStockReal.Name = "txtStockReal"
         Me.txtStockReal.Size = New System.Drawing.Size(121, 23)
-        Me.txtStockReal.TabIndex = 10
+        Me.txtStockReal.TabIndex = 14
         '
         'txtStockDisponible
         '
@@ -291,7 +291,7 @@ Partial Class frmProductos
         Me.txtStockDisponible.Location = New System.Drawing.Point(152, 68)
         Me.txtStockDisponible.Name = "txtStockDisponible"
         Me.txtStockDisponible.Size = New System.Drawing.Size(121, 23)
-        Me.txtStockDisponible.TabIndex = 11
+        Me.txtStockDisponible.TabIndex = 15
         '
         'txtUbicacion
         '
@@ -299,7 +299,7 @@ Partial Class frmProductos
         Me.txtUbicacion.Location = New System.Drawing.Point(152, 112)
         Me.txtUbicacion.Name = "txtUbicacion"
         Me.txtUbicacion.Size = New System.Drawing.Size(121, 23)
-        Me.txtUbicacion.TabIndex = 17
+        Me.txtUbicacion.TabIndex = 16
         '
         'lblDescripcion
         '
@@ -352,7 +352,7 @@ Partial Class frmProductos
         Me.cboRubro.Location = New System.Drawing.Point(15, 162)
         Me.cboRubro.Name = "cboRubro"
         Me.cboRubro.Size = New System.Drawing.Size(186, 25)
-        Me.cboRubro.TabIndex = 6
+        Me.cboRubro.TabIndex = 5
         '
         'txtId
         '
@@ -370,7 +370,7 @@ Partial Class frmProductos
         Me.chkAlterntivo.Location = New System.Drawing.Point(600, 70)
         Me.chkAlterntivo.Name = "chkAlterntivo"
         Me.chkAlterntivo.Size = New System.Drawing.Size(109, 21)
-        Me.chkAlterntivo.TabIndex = 7
+        Me.chkAlterntivo.TabIndex = 11
         Me.chkAlterntivo.Text = "¿Alternativo?"
         Me.chkAlterntivo.UseVisualStyleBackColor = True
         '
@@ -402,7 +402,7 @@ Partial Class frmProductos
         Me.btnAceptar.Location = New System.Drawing.Point(818, 248)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(82, 28)
-        Me.btnAceptar.TabIndex = 23
+        Me.btnAceptar.TabIndex = 22
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = False
         '
@@ -418,7 +418,7 @@ Partial Class frmProductos
         Me.btnCancelar.Location = New System.Drawing.Point(818, 376)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(82, 28)
-        Me.btnCancelar.TabIndex = 25
+        Me.btnCancelar.TabIndex = 24
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = False
         '
@@ -434,7 +434,7 @@ Partial Class frmProductos
         Me.btnModificar.Location = New System.Drawing.Point(818, 312)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(82, 28)
-        Me.btnModificar.TabIndex = 24
+        Me.btnModificar.TabIndex = 23
         Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = False
         '
@@ -549,11 +549,12 @@ Partial Class frmProductos
         Me.cboOrigen.DisplayMember = "Nacional"
         Me.cboOrigen.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.cboOrigen.FormattingEnabled = True
+        Me.cboOrigen.ItemHeight = 17
         Me.cboOrigen.Items.AddRange(New Object() {"Nacional", "Importado"})
         Me.cboOrigen.Location = New System.Drawing.Point(600, 30)
         Me.cboOrigen.Name = "cboOrigen"
         Me.cboOrigen.Size = New System.Drawing.Size(224, 25)
-        Me.cboOrigen.TabIndex = 109
+        Me.cboOrigen.TabIndex = 10
         '
         'lblExistencia
         '
@@ -645,7 +646,7 @@ Partial Class frmProductos
         Me.dtpFechaVenta.Location = New System.Drawing.Point(165, 116)
         Me.dtpFechaVenta.Name = "dtpFechaVenta"
         Me.dtpFechaVenta.Size = New System.Drawing.Size(121, 23)
-        Me.dtpFechaVenta.TabIndex = 113
+        Me.dtpFechaVenta.TabIndex = 21
         '
         'dtpFechaCompra
         '
@@ -655,7 +656,7 @@ Partial Class frmProductos
         Me.dtpFechaCompra.Location = New System.Drawing.Point(165, 91)
         Me.dtpFechaCompra.Name = "dtpFechaCompra"
         Me.dtpFechaCompra.Size = New System.Drawing.Size(121, 23)
-        Me.dtpFechaCompra.TabIndex = 112
+        Me.dtpFechaCompra.TabIndex = 20
         '
         'lblPrecioLista
         '
@@ -674,7 +675,8 @@ Partial Class frmProductos
         Me.txtPrecioLista.Location = New System.Drawing.Point(165, 66)
         Me.txtPrecioLista.Name = "txtPrecioLista"
         Me.txtPrecioLista.Size = New System.Drawing.Size(121, 23)
-        Me.txtPrecioLista.TabIndex = 104
+        Me.txtPrecioLista.TabIndex = 19
+        Me.txtPrecioLista.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'lblFechaUltVenta
         '
@@ -715,7 +717,8 @@ Partial Class frmProductos
         Me.txtUtilidad.Location = New System.Drawing.Point(165, 41)
         Me.txtUtilidad.Name = "txtUtilidad"
         Me.txtUtilidad.Size = New System.Drawing.Size(121, 23)
-        Me.txtUtilidad.TabIndex = 103
+        Me.txtUtilidad.TabIndex = 18
+        Me.txtUtilidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'lblUtilidad
         '
@@ -734,7 +737,8 @@ Partial Class frmProductos
         Me.txtPrecioCompra.Location = New System.Drawing.Point(165, 16)
         Me.txtPrecioCompra.Name = "txtPrecioCompra"
         Me.txtPrecioCompra.Size = New System.Drawing.Size(121, 23)
-        Me.txtPrecioCompra.TabIndex = 102
+        Me.txtPrecioCompra.TabIndex = 17
+        Me.txtPrecioCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'frmProductos
         '
@@ -743,7 +747,7 @@ Partial Class frmProductos
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(972, 598)
+        Me.ClientSize = New System.Drawing.Size(989, 673)
         Me.Controls.Add(Me.lblMovimientos)
         Me.Controls.Add(Me.PanelMovimientos)
         Me.Controls.Add(Me.lblExistencia)
