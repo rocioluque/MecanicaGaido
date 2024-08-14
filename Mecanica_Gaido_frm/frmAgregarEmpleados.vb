@@ -181,6 +181,10 @@ Public Class frmAgregarEmpleados
             Next
         End If
     End Sub
+
+    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
+
+    End Sub
 #End Region
 
 End Class
