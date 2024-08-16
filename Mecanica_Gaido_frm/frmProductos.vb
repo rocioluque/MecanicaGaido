@@ -9,6 +9,10 @@ Public Class frmProductos
 
     Private txtsConDecimales As New List(Of TextBox)
 
+
+
+
+
 #Region "Procedimientos"
     Private Sub frmProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Combo_Marcas()
@@ -166,7 +170,7 @@ Public Class frmProductos
                 chkAlterntivo.Checked = If(IsDBNull(datoleido("alternativo")), False, Convert.ToBoolean(datoleido("alternativo")))
                 cboOriginal.SelectedValue = If(IsDBNull(datoleido("ID_Original")), String.Empty, datoleido("ID_Original").ToString())
                 txtCantidadBulto.Text = If(IsDBNull(datoleido("Cantidad_X_Bulto")), String.Empty, datoleido("Cantidad_X_Bulto").ToString())
-                txtUtilidad.Text = If(IsDBNull(datoleido("Utilidad")), String.Empty, datoleido("Utilidad").ToString())
+                txtUtilidad.Text = If(IsDBNull(datoleido("Utilidad")), String.Empty, Convert.ToDecimal(datoleido("Utilidad")).ToString("N2"))
 
                 ' Convert.ToDateTime maneja los valores nulos y fechas inválidas
                 If Not IsDBNull(datoleido("FechaUltimaCompra")) Then
@@ -320,22 +324,22 @@ Public Class frmProductos
 
 #Region "Cargar"
 
+
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         If txtDescripcion.Text <> Nothing And cboMarca.SelectedValue <> Nothing And txtCodFabricante.Text <> Nothing And
-        txtUbicacion.Text <> Nothing And txtUtilidad.Text <> Nothing Then
+            txtUbicacion.Text <> Nothing And txtUtilidad.Text <> Nothing Then
 
             Try
                 Dim origen As String = cboOrigen.SelectedItem.ToString()
-
-                Dim precioCompra As Decimal = Decimal.Parse(Replace(txtPrecioCompra.Text, ",", "."), CultureInfo.InvariantCulture)
-                Dim precioLista As Decimal = Decimal.Parse(txtPrecioLista.Text, CultureInfo.InvariantCulture)
+                Dim precioCompra As Decimal = Convert.ToDecimal(txtPrecioCompra.Text).ToString("N2")
+                Dim utilidad As Decimal = Convert.ToDecimal(txtUtilidad.Text).ToString("N2")
+                Dim precioLista As Decimal = Convert.ToDecimal(txtPrecioLista.Text).ToString("N2")
 
                 o_productos.Agregar_Producto(txtDescripcion.Text, txtNombreDiario.Text, CInt(cboRubro.SelectedValue),
-                   CInt(cboMarca.SelectedValue), txtCodigoBarra.Text, txtCodFabricante.Text, txtCantidadBulto.Text,
-                   origen, chkAlterntivo.Checked, CInt(cboOriginal.SelectedValue), chkEstado.Checked,
-                   txtStockReal.Text, txtStockDisponible.Text, txtUbicacion.Text,
-                   precioCompra.ToString(CultureInfo.InvariantCulture), txtUtilidad.Text,
-                   precioLista.ToString(CultureInfo.InvariantCulture), dtpFechaCompra.Value, dtpFechaVenta.Value)
+                       CInt(cboMarca.SelectedValue), txtCodigoBarra.Text, txtCodFabricante.Text, txtCantidadBulto.Text,
+                       origen, chkAlterntivo.Checked, CInt(cboOriginal.SelectedValue), chkEstado.Checked, txtStockReal.Text,
+                       txtStockDisponible.Text, txtUbicacion.Text, precioCompra, utilidad, precioLista,
+                       dtpFechaCompra.Value, dtpFechaVenta.Value)
 
                 MsgBox("Producto agregado correctamente.", vbInformation, "Información")
                 limpiar()
@@ -349,34 +353,6 @@ Public Class frmProductos
             MsgBox("Complete los datos correspondientes.", vbInformation, "Error")
         End If
     End Sub
-
-
-
-    '    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
-    '        If txtDescripcion.Text <> Nothing And cboMarca.SelectedValue <> Nothing And txtCodFabricante.Text <> Nothing And
-    '            txtUbicacion.Text <> Nothing And txtUtilidad.Text <> Nothing Then
-
-    '            Try
-    '                Dim origen As String = cboOrigen.SelectedItem.ToString()
-
-    '                o_productos.Agregar_Producto(txtDescripcion.Text, txtNombreDiario.Text, CInt(cboRubro.SelectedValue),
-    '                       CInt(cboMarca.SelectedValue), txtCodigoBarra.Text, txtCodFabricante.Text, txtCantidadBulto.Text,
-    '                       origen, chkAlterntivo.Checked, CInt(cboOriginal.SelectedValue), chkEstado.Checked, txtStockReal.Text,
-    '                       txtStockDisponible.Text, txtUbicacion.Text, txtPrecioCompra.Text, txtUtilidad.Text, txtPrecioLista.Text,
-    '                       dtpFechaCompra.Value, dtpFechaVenta.Value)
-
-    '                MsgBox("Producto agregado correctamente.", vbInformation, "Información")
-    '                limpiar()
-    '                Cargar_Grilla()
-    '                Cargar_Combo_Original()
-
-    '            Catch ex As Exception
-    '                MsgBox("Error al agregar el producto: " & ex.Message, vbCritical, "Error")
-    '            End Try
-    '        Else
-    '            MsgBox("Complete los datos correspondientes.", vbInformation, "Error")
-    '        End If
-    '    End Sub
 #End Region
 
 #Region "Modificar"
@@ -387,18 +363,16 @@ Public Class frmProductos
             Try
 
                 Dim origen As String = cboOrigen.SelectedItem.ToString()
-                txtPrecioCompra.Text = Replace(txtPrecioCompra.Text, ".", "")
-                txtUtilidad.Text = Replace(txtUtilidad.Text, ".", "")
-                CalcularPrecioLista()
-                Dim precioCompra As Decimal = Decimal.Parse(Replace(txtPrecioCompra.Text, ",", "."), CultureInfo.InvariantCulture)
-                Dim precioLista As Decimal = Decimal.Parse(txtPrecioLista.Text, CultureInfo.InvariantCulture)
+                Dim precioCompra As Decimal = Convert.ToDecimal(txtPrecioCompra.Text).ToString("N2")
+                Dim utilidad As Decimal = Convert.ToDecimal(txtUtilidad.Text).ToString("N2")
+                Dim precioLista As Decimal = Convert.ToDecimal(txtPrecioLista.Text).ToString("N2")
 
                 o_productos.Modificar_Producto(CInt(txtId.Text), txtDescripcion.Text, txtNombreDiario.Text, CInt(cboRubro.SelectedValue),
                    CInt(cboMarca.SelectedValue), txtCodigoBarra.Text, txtCodFabricante.Text, txtCantidadBulto.Text,
                    origen, chkAlterntivo.Checked, CInt(cboOriginal.SelectedValue), chkEstado.Checked,
                    txtStockReal.Text, txtStockDisponible.Text, txtUbicacion.Text,
-                   precioCompra.ToString(CultureInfo.InvariantCulture), txtUtilidad.Text,
-                   precioLista.ToString(CultureInfo.InvariantCulture), dtpFechaCompra.Value, dtpFechaVenta.Value)
+                   precioCompra, utilidad,
+                   precioLista, dtpFechaCompra.Value, dtpFechaVenta.Value)
 
                 MsgBox("Producto modificado correctamente.", vbInformation, "Información")
                 limpiar()
@@ -415,11 +389,15 @@ Public Class frmProductos
 #End Region
 
 #Region "Calculo precio lista"
+
     Private Sub txtPrecioCompra_LostFocus(sender As Object, e As EventArgs) Handles txtPrecioCompra.LostFocus
         Try
+            Dim precioCompra As Decimal
             txtPrecioCompra.Text = Decimal.Parse(Replace(txtPrecioCompra.Text, ",", "."), CultureInfo.InvariantCulture)
 
             CalcularPrecioLista()
+            precioCompra = txtPrecioCompra.Text
+            txtPrecioCompra.Text = Convert.ToDecimal(precioCompra).ToString("N2")
         Catch
             txtPrecioCompra.Text = 0
         End Try
@@ -428,14 +406,32 @@ Public Class frmProductos
 
     Private Sub txtUtilidad_LostFocus(sender As Object, e As EventArgs) Handles txtUtilidad.LostFocus
         Try
-            txtPrecioCompra.Text = Decimal.Parse(Replace(txtPrecioCompra.Text, ",", "."), CultureInfo.InvariantCulture)
+            Dim utilidad As Decimal
+            txtUtilidad.Text = Decimal.Parse(Replace(txtUtilidad.Text, ",", "."), CultureInfo.InvariantCulture)
 
             CalcularPrecioLista()
+            utilidad = txtUtilidad.Text
+            txtUtilidad.Text = Math.Round(Convert.ToDecimal(utilidad), 2).ToString("N2")
         Catch
             txtPrecioCompra.Text = 0
             txtUtilidad.Text = 0
         End Try
     End Sub
+
+    Private Sub txtPrecioLista_LostFocus(sender As Object, e As EventArgs) Handles txtPrecioLista.LostFocus
+        Try
+            Dim precioLista
+            txtPrecioLista.Text = Decimal.Parse(Replace(txtPrecioLista.Text, ",", "."), CultureInfo.InvariantCulture)
+
+            CalcularUtilidad()
+            precioLista = txtPrecioLista.Text
+            txtPrecioLista.Text = Convert.ToDecimal(precioLista).ToString("N2")
+        Catch
+
+        End Try
+
+    End Sub
+
 
     Private Sub CalcularPrecioLista()
         Dim precioCompra As Decimal
@@ -445,28 +441,36 @@ Public Class frmProductos
 
             Dim precioLista As Decimal = precioCompra * (utilidad / 100 + 1)
 
-            txtPrecioLista.Text = precioLista.ToString("F2", CultureInfo.InvariantCulture)
+            txtPrecioLista.Text = Convert.ToDecimal(precioLista).ToString("N2")
+
         Else
             txtPrecioLista.Text = String.Empty
         End If
     End Sub
 
+    Private Sub CalcularUtilidad()
+        Dim precioCompra As Decimal
+        Dim precioLista As Decimal
 
-    '    Private Sub CalcularPrecioLista()
-    '        Dim precioCompra As Double
-    '        Dim utilidad As Double
+        If Decimal.TryParse(txtPrecioCompra.Text, precioCompra) AndAlso Decimal.TryParse(txtPrecioLista.Text, precioLista) Then
 
-    '        ' Verifica que los valores ingresados sean números válidos
-    '        If Double.TryParse(txtPrecioCompra.Text, precioCompra) AndAlso Double.TryParse(txtUtilidad.Text, utilidad) Then
+            If precioCompra > 0 Then
+                ' Calcular la utilidad como un porcentaje
+                Dim utilidad As Decimal = ((precioLista / precioCompra) - 1) * 100
 
-    '            Dim precioLista As Double = precioCompra * (utilidad / 100 + 1)
-    '            txtPrecioLista.Text = precioLista
-    '            '.ToString("F2") 'Formatea el resultado a dos decimales
-    '        Else
-    '            ' Si los valores no son válidos, limpia el TextBox de precio de lista
-    '            txtPrecioLista.Text = String.Empty
-    '        End If
-    '    End Sub
+                txtUtilidad.Text = Convert.ToDecimal(utilidad)
+                '.ToString("N2") si agrego esto al final de la linea anterior lo
+            Else
+                txtUtilidad.Text = String.Empty
+            End If
+
+        Else
+            txtUtilidad.Text = String.Empty
+        End If
+    End Sub
+
+
+
 #End Region
 
 #Region "Marca"
@@ -564,9 +568,9 @@ Public Class frmProductos
 
 #Region "KeyPress"
     Public Sub ValidarNumeroDecimal(sender As Object, e As KeyPressEventArgs)
-        If Char.IsDigit(e.KeyChar) OrElse e.KeyChar = "."c OrElse e.KeyChar = ","c Then
+        If Char.IsDigit(e.KeyChar) OrElse e.KeyChar = "."c Then
             Dim textBox = DirectCast(sender, TextBox)
-            If (e.KeyChar = "."c OrElse e.KeyChar = ","c) AndAlso (textBox.Text.Contains(".") OrElse textBox.Text.Contains(",")) Then
+            If (e.KeyChar = "."c) AndAlso (textBox.Text.Contains(".")) Then
                 e.Handled = True
             Else
                 e.Handled = False
@@ -586,9 +590,7 @@ Public Class frmProductos
         End If
     End Sub
 
-    Private Sub txtPrecioCompra_GotFocus(sender As Object, e As EventArgs) Handles txtPrecioCompra.GotFocus
-        txtPrecioCompra.Text = Replace(txtPrecioCompra.Text, ".", "")
-    End Sub
+
 
     Private Sub lblCodBarra_KeyPress(sender As Object, e As KeyPressEventArgs) Handles lblCodBarra.KeyPress
         If Char.IsDigit(e.KeyChar) Then
