@@ -34,8 +34,6 @@ Partial Class frmAgregarEmpleados
         Me.btnModificar = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.btnAceptar = New System.Windows.Forms.Button()
-        Me.btnAgregarUsuario = New System.Windows.Forms.PictureBox()
-        Me.cboUsuario = New System.Windows.Forms.ComboBox()
         Me.lblNombre = New System.Windows.Forms.Label()
         Me.cboSeccion = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -57,12 +55,18 @@ Partial Class frmAgregarEmpleados
         Me.PanelDatosPersonales = New System.Windows.Forms.Panel()
         Me.lblDetallesContratación = New System.Windows.Forms.Label()
         Me.PanelDetallesContratación = New System.Windows.Forms.Panel()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.dtpFechaContratacion = New System.Windows.Forms.DateTimePicker()
         Me.lblUsuario = New System.Windows.Forms.Label()
         Me.PanelUsuario = New System.Windows.Forms.Panel()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.lblNota = New System.Windows.Forms.Label()
         Me.PanelNotas = New System.Windows.Forms.Panel()
-        CType(Me.btnAgregarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.txtUsuario = New System.Windows.Forms.TextBox()
         CType(Me.btnCerrar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarSeccion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdEmpleados, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -101,7 +105,7 @@ Partial Class frmAgregarEmpleados
         'txtID
         '
         Me.txtID.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtID.Location = New System.Drawing.Point(145, 29)
+        Me.txtID.Location = New System.Drawing.Point(156, 29)
         Me.txtID.Margin = New System.Windows.Forms.Padding(2)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(61, 23)
@@ -216,27 +220,6 @@ Partial Class frmAgregarEmpleados
         Me.btnAceptar.TabIndex = 13
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = False
-        '
-        'btnAgregarUsuario
-        '
-        Me.btnAgregarUsuario.BackgroundImage = CType(resources.GetObject("btnAgregarUsuario.BackgroundImage"), System.Drawing.Image)
-        Me.btnAgregarUsuario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnAgregarUsuario.Location = New System.Drawing.Point(195, 35)
-        Me.btnAgregarUsuario.Name = "btnAgregarUsuario"
-        Me.btnAgregarUsuario.Size = New System.Drawing.Size(26, 25)
-        Me.btnAgregarUsuario.TabIndex = 59
-        Me.btnAgregarUsuario.TabStop = False
-        '
-        'cboUsuario
-        '
-        Me.cboUsuario.DisplayMember = "Nombre"
-        Me.cboUsuario.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cboUsuario.FormattingEnabled = True
-        Me.cboUsuario.Location = New System.Drawing.Point(15, 35)
-        Me.cboUsuario.Margin = New System.Windows.Forms.Padding(2)
-        Me.cboUsuario.Name = "cboUsuario"
-        Me.cboUsuario.Size = New System.Drawing.Size(175, 25)
-        Me.cboUsuario.TabIndex = 8
         '
         'lblNombre
         '
@@ -470,6 +453,9 @@ Partial Class frmAgregarEmpleados
         '
         'PanelDetallesContratación
         '
+        Me.PanelDetallesContratación.Controls.Add(Me.Label12)
+        Me.PanelDetallesContratación.Controls.Add(Me.Label9)
+        Me.PanelDetallesContratación.Controls.Add(Me.Label8)
         Me.PanelDetallesContratación.Controls.Add(Me.dtpFechaContratacion)
         Me.PanelDetallesContratación.Controls.Add(Me.Label10)
         Me.PanelDetallesContratación.Controls.Add(Me.Label11)
@@ -482,6 +468,39 @@ Partial Class frmAgregarEmpleados
         Me.PanelDetallesContratación.Name = "PanelDetallesContratación"
         Me.PanelDetallesContratación.Size = New System.Drawing.Size(281, 171)
         Me.PanelDetallesContratación.TabIndex = 83
+        '
+        'Label12
+        '
+        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label12.ForeColor = System.Drawing.Color.Red
+        Me.Label12.Location = New System.Drawing.Point(70, 101)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(15, 17)
+        Me.Label12.TabIndex = 77
+        Me.Label12.Text = "*"
+        '
+        'Label9
+        '
+        Me.Label9.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label9.ForeColor = System.Drawing.Color.Red
+        Me.Label9.Location = New System.Drawing.Point(62, 59)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(15, 17)
+        Me.Label9.TabIndex = 76
+        Me.Label9.Text = "*"
+        '
+        'Label8
+        '
+        Me.Label8.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label8.ForeColor = System.Drawing.Color.Red
+        Me.Label8.Location = New System.Drawing.Point(172, 17)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(15, 17)
+        Me.Label8.TabIndex = 75
+        Me.Label8.Text = "*"
         '
         'dtpFechaContratacion
         '
@@ -506,11 +525,13 @@ Partial Class frmAgregarEmpleados
         '
         'PanelUsuario
         '
-        Me.PanelUsuario.Controls.Add(Me.cboUsuario)
+        Me.PanelUsuario.Controls.Add(Me.txtUsuario)
+        Me.PanelUsuario.Controls.Add(Me.Label15)
+        Me.PanelUsuario.Controls.Add(Me.Label14)
+        Me.PanelUsuario.Controls.Add(Me.Label13)
         Me.PanelUsuario.Controls.Add(Me.Label5)
         Me.PanelUsuario.Controls.Add(Me.txtContraseña)
         Me.PanelUsuario.Controls.Add(Me.lblNombre)
-        Me.PanelUsuario.Controls.Add(Me.btnAgregarUsuario)
         Me.PanelUsuario.Controls.Add(Me.Label2)
         Me.PanelUsuario.Controls.Add(Me.btnAgregarRol)
         Me.PanelUsuario.Controls.Add(Me.cboRol)
@@ -518,6 +539,39 @@ Partial Class frmAgregarEmpleados
         Me.PanelUsuario.Name = "PanelUsuario"
         Me.PanelUsuario.Size = New System.Drawing.Size(281, 168)
         Me.PanelUsuario.TabIndex = 85
+        '
+        'Label15
+        '
+        Me.Label15.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label15.ForeColor = System.Drawing.Color.Red
+        Me.Label15.Location = New System.Drawing.Point(40, 106)
+        Me.Label15.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(15, 17)
+        Me.Label15.TabIndex = 78
+        Me.Label15.Text = "*"
+        '
+        'Label14
+        '
+        Me.Label14.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label14.ForeColor = System.Drawing.Color.Red
+        Me.Label14.Location = New System.Drawing.Point(96, 62)
+        Me.Label14.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(15, 17)
+        Me.Label14.TabIndex = 77
+        Me.Label14.Text = "*"
+        '
+        'Label13
+        '
+        Me.Label13.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label13.ForeColor = System.Drawing.Color.Red
+        Me.Label13.Location = New System.Drawing.Point(75, 16)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(15, 17)
+        Me.Label13.TabIndex = 76
+        Me.Label13.Text = "*"
         '
         'lblNota
         '
@@ -539,13 +593,22 @@ Partial Class frmAgregarEmpleados
         Me.PanelNotas.Size = New System.Drawing.Size(281, 120)
         Me.PanelNotas.TabIndex = 87
         '
+        'txtUsuario
+        '
+        Me.txtUsuario.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtUsuario.Location = New System.Drawing.Point(15, 35)
+        Me.txtUsuario.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtUsuario.Name = "txtUsuario"
+        Me.txtUsuario.Size = New System.Drawing.Size(206, 23)
+        Me.txtUsuario.TabIndex = 79
+        '
         'frmAgregarEmpleados
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(832, 524)
+        Me.ClientSize = New System.Drawing.Size(818, 524)
         Me.Controls.Add(Me.lblNota)
         Me.Controls.Add(Me.PanelNotas)
         Me.Controls.Add(Me.lblUsuario)
@@ -567,7 +630,6 @@ Partial Class frmAgregarEmpleados
         Me.Name = "frmAgregarEmpleados"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Empleados"
-        CType(Me.btnAgregarUsuario, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnCerrar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnAgregarSeccion, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdEmpleados, System.ComponentModel.ISupportInitialize).EndInit()
@@ -595,8 +657,6 @@ Partial Class frmAgregarEmpleados
     Friend WithEvents btnModificar As Button
     Friend WithEvents btnCancelar As Button
     Friend WithEvents btnAceptar As Button
-    Friend WithEvents btnAgregarUsuario As PictureBox
-    Friend WithEvents cboUsuario As ComboBox
     Friend WithEvents lblNombre As Label
     Friend WithEvents cboSeccion As ComboBox
     Friend WithEvents Label7 As Label
@@ -623,4 +683,11 @@ Partial Class frmAgregarEmpleados
     Friend WithEvents PanelUsuario As Panel
     Friend WithEvents lblNota As Label
     Friend WithEvents PanelNotas As Panel
+    Friend WithEvents Label12 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label15 As Label
+    Friend WithEvents Label14 As Label
+    Friend WithEvents Label13 As Label
+    Friend WithEvents txtUsuario As TextBox
 End Class

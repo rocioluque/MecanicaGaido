@@ -216,8 +216,8 @@ Public Class frmPersonas
     Private Sub btnEmpleados_Click(sender As Object, e As EventArgs) Handles btnEmpleados.Click
         If cboTipoPersona.Text = "Personas Físicas" Then
             If txtID.Text <> Nothing And txtNombre.Text <> Nothing And txtApellido.Text <> Nothing And txtNumeroDocumento.Text <> Nothing Then
-                'frmAgregarEmpleados.txt_ID_Persona.Text = txtID.Text
-                IdPersona = txtID.Text
+                frmAgregarEmpleados.IdPersona = Convert.ToInt32(txtID.Text)
+
                 frmAgregarEmpleados.lblCargaEmpleado.Text = txtApellido.Text & " " & txtNombre.Text
                 frmAgregarEmpleados.lblCargaCuil.Text = txtNumeroDocumento.Text
                 frmAgregarEmpleados.lblCargaFechaNacimiento.Text = dtpFechaNacimiento.Value.ToString("dd/MM/yyyy")
@@ -231,7 +231,7 @@ Public Class frmPersonas
         End If
     End Sub
 
-    Private Sub btnDatoFiscals_Click(sender As Object, e As EventArgs) Handles btnDatoFiscal.Click
+    Private Sub btnDatoFiscal_Click(sender As Object, e As EventArgs) Handles btnDatoFiscal.Click
         If txtID.Text <> Nothing And txtNombre.Text <> Nothing And txtNumeroDocumento.Text <> Nothing Then
             IdPersona = txtID.Text
             NombrePersona = txtApellido.Text & " " & txtNombre.Text

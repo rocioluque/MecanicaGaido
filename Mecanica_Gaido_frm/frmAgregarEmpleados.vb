@@ -5,14 +5,27 @@ Imports System.Configuration
 
 Public Class frmAgregarEmpleados
     Dim o_empleados As New AD_Empleados
+    Public Property IdPersona As Integer
 
 #Region "Procedimientos"
     Private Sub frmEmpleados_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Cargar_Combo_Usuarios()
         Cargar_Grilla_Empleados()
         Cargar_Combo_Seccion()
         Cargar_Combo_Rol()
         cboSeccion.TabIndex = 1
+
+        Dim o_empleados As New AD_Empleados
+        If o_empleados.ControlarIdPersonaEnEmpleado(IdPersona) Then
+            ' Si la persona ya es un empleado, deshabilitar el botón "Aceptar"
+            btnAceptar.Enabled = False
+            btnModificar.Enabled = True
+
+            ' Cargar los datos del empleado para modificación
+            CargarDatosPorIDPersona(IdPersona)
+        Else
+            ' Si no es un empleado, habilitar el botón "Aceptar"
+            btnAceptar.Enabled = True
+        End If
     End Sub
 
     Public Sub limpiar()
@@ -20,11 +33,12 @@ Public Class frmAgregarEmpleados
         txtCargo.Clear()
         txtContraseña.Clear()
         txtNota.Clear()
+        txtUsuario.Clear()
         dtpFechaContratacion.Value = DateTime.Today
         cboSeccion.SelectedIndex = -1
-        cboUsuario.SelectedIndex = -1
         cboRol.SelectedIndex = -1
-        chkEstado.Enabled = False
+        chkEstado.Checked = False
+        btnAceptar.Enabled = True
     End Sub
 
     Public Sub Cargar_Grilla_Empleados()
@@ -48,7 +62,7 @@ Public Class frmAgregarEmpleados
                 grdEmpleados.DataSource = oDs.Tables(0)
 
                 ' Verificar si las columnas existen antes de ocultarlas
-                Dim columnasParaOcultar As String() = {"Fecha_Nacimiento", "Contraseña", "Nota", "Estado"}
+                Dim columnasParaOcultar As String() = {"Fecha_Nacimiento", "Contraseña", "Nota", "Estado", "Documento"}
                 For Each colName As String In columnasParaOcultar
                     If grdEmpleados.Columns.Contains(colName) Then
                         grdEmpleados.Columns(colName).Visible = False
@@ -89,7 +103,7 @@ Public Class frmAgregarEmpleados
                 dtpFechaContratacion.Value = Convert.ToDateTime(datoleido("Fecha de Contratación"))
                 txtCargo.Text = datoleido("Cargo").ToString()
                 cboSeccion.SelectedValue = datoleido("Seccion").ToString()
-                cboUsuario.SelectedValue = datoleido("Usuario").ToString()
+                txtUsuario.Text = datoleido("Usuario").ToString()
                 txtContraseña.Text = datoleido("Contraseña").ToString()
 
                 cboRol.SelectedValue = datoleido("Rol").ToString()
@@ -136,44 +150,43 @@ Public Class frmAgregarEmpleados
 #End Region
 
 #Region "Cargar"
-    'Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
-    '    If cboUsuario.SelectedValue <> Nothing And txtContraseña.Text <> Nothing And cboSeccion.SelectedValue <> Nothing Then
+    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
+        If txtUsuario.Text <> Nothing And txtContraseña.Text <> Nothing And cboSeccion.SelectedValue <> Nothing Then
 
-    '        Try
-    '            o_empleados.Agregar_Empleado(idusuario, contraseña, idseccion, nota, estado)
-    '            MsgBox("Empleado agregado correctamente.", vbInformation, "Información")
-    '            limpiar()
+            Try
+                o_empleados.Agregar_Empleado_Usuario(IdPersona, txtUsuario.Text, txtContraseña.Text, CInt(cboRol.SelectedValue),
+                                                     dtpFechaContratacion.Value, txtCargo.Text, txtNota.Text, chkEstado.Checked, CInt(cboSeccion.SelectedValue))
+                MsgBox("Empleado y usuario agregado correctamente.", vbInformation, "Información")
+                limpiar()
 
-    '            Cargar_Grilla_Empleados()
-    '        Catch ex As Exception
-    '            MsgBox("Error al agregar el empleado: " & ex.Message, vbCritical, "Error")
-    '            limpiar()
-    '        End Try
-    '    Else
-    '        MsgBox("Complete Datos", vbInformation, "Error")
-    '    End If
-    'End Sub
+                Cargar_Grilla_Empleados()
+            Catch ex As Exception
+                MsgBox("Error al agregar el empleado: " & ex.Message, vbCritical, "Error")
+                limpiar()
+            End Try
+        Else
+            MsgBox("Complete Datos", vbInformation, "Error")
+        End If
+    End Sub
+#End Region
+
+#Region "Modificar"
+    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
+        Try
+            ' Llamar a la función para modificar empleado y usuario
+            o_empleados.Modificar_Empleado_Usuario(Convert.ToInt32(txtID.Text), txtUsuario.Text, txtContraseña.Text, CInt(cboRol.SelectedValue),
+                                                   dtpFechaContratacion.Value, txtCargo.Text, txtNota.Text, chkEstado.Checked, CInt(cboSeccion.SelectedValue))
+            MessageBox.Show("Empleado y usuario modificados correctamente.", "Éxito")
+            limpiar()
+
+            Cargar_Grilla_Empleados()
+        Catch ex As Exception
+            MsgBox("Error al modificar el empleado: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
 #End Region
 
 #Region "Carga Cbo"
-    Private Sub Cargar_Combo_Usuarios()
-        Try
-            Dim tabla As DataTable = o_empleados.Cargar_Combo_Usuarios
-
-            If tabla.Rows.Count > 0 Then
-                cboUsuario.DataSource = tabla
-                cboUsuario.DisplayMember = "Usuario"
-                cboUsuario.ValueMember = "ID_Usuario"
-                cboUsuario.SelectedValue = -1
-            Else
-                MsgBox("No se encontraron usuarios.", vbInformation, "Información")
-            End If
-
-        Catch ex As Exception
-            MsgBox("Error al cargar los usuarios: " & ex.Message, vbCritical, "Error")
-        End Try
-    End Sub
-
     Private Sub Cargar_Combo_Seccion()
         Try
             Dim tabla As DataTable = o_empleados.Cargar_Combo_Seccion
@@ -251,6 +264,45 @@ Public Class frmAgregarEmpleados
     End Sub
 #End Region
 
+#Region "Cargar datos de empleado ya cargado"
+    Public Sub CargarDatosPorIDPersona(ByVal idPersona As Integer)
+        Dim o_Empleados As New AD_Empleados
+
+        Try
+            Dim datoleido As SqlDataReader = o_Empleados.Consultar_EmpleadoPorIDPersona(idPersona)
+
+            If datoleido.Read() Then
+                ' Si el empleado existe, carga los datos en los controles
+                txtID.Text = datoleido("N° Empleado").ToString()
+                lblCargaEmpleado.Text = datoleido("Empleado").ToString()
+                lblCargaCuil.Text = datoleido("Documento").ToString()
+
+                Dim fechaNacimiento As Object = datoleido("Fecha de Nacimiento")
+
+                If IsDate(fechaNacimiento) Then
+                    lblCargaFechaNacimiento.Text = Convert.ToDateTime(fechaNacimiento).ToString("dd/MM/yyyy")
+                Else
+                    lblCargaFechaNacimiento.Text = "Fecha inválida"
+                End If
+
+                dtpFechaContratacion.Value = Convert.ToDateTime(datoleido("Fecha de Contratación"))
+                txtCargo.Text = datoleido("Cargo").ToString()
+                cboSeccion.SelectedValue = datoleido("Seccion").ToString()
+                txtUsuario.Text = datoleido("Usuario").ToString()
+                txtContraseña.Text = datoleido("Contraseña").ToString()
+                cboRol.SelectedValue = datoleido("Rol").ToString()
+                txtNota.Text = datoleido("Nota").ToString()
+
+                chkEstado.Checked = Convert.ToBoolean(datoleido("Estado"))
+            End If
+
+            datoleido.Close()
+        Catch ex As Exception
+            MessageBox.Show("Ocurrió un error al consultar el empleado: " & ex.Message, "Error")
+        End Try
+    End Sub
+#End Region
+
 #Region "Css trucho"
     Private Sub PanelDatosPersonales_Paint(sender As Object, e As PaintEventArgs) Handles PanelDatosPersonales.Paint
         ' Configurar los colores y el grosor del borde
@@ -264,7 +316,6 @@ Public Class frmAgregarEmpleados
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
-
 
     Private Sub PanelDetallesContratación_Paint(sender As Object, e As PaintEventArgs) Handles PanelDetallesContratación.Paint
         ' Configurar los colores y el grosor del borde
@@ -305,5 +356,4 @@ Public Class frmAgregarEmpleados
         End Using
     End Sub
 #End Region
-
 End Class
