@@ -12,48 +12,115 @@ Public Class frmAgregarEmpleados
         Cargar_Grilla_Empleados()
         Cargar_Combo_Seccion()
         Cargar_Combo_Rol()
-        txtID.Enabled = False
         cboSeccion.TabIndex = 1
     End Sub
 
     Public Sub limpiar()
         txtID.Clear()
-        txtCuil.Clear()
-        txtFechaNacimiento.Clear()
-        txtFechaContratacion.Clear()
         txtCargo.Clear()
         txtContraseña.Clear()
         txtNota.Clear()
+        dtpFechaContratacion.Value = DateTime.Today
         cboSeccion.SelectedIndex = -1
         cboUsuario.SelectedIndex = -1
         cboRol.SelectedIndex = -1
         chkEstado.Enabled = False
-        txtID.Enabled = False
     End Sub
 
     Public Sub Cargar_Grilla_Empleados()
-        Dim conexion As SqlConnection
-        Dim comando As New SqlCommand
+        Try
+            Dim conexion As SqlConnection
+            Dim comando As New SqlCommand
 
-        conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
+            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
 
-        conexion.Open()
-        comando.Connection = conexion
-        comando.CommandType = CommandType.StoredProcedure
-        comando.CommandText = ("Cargar_Grilla_Empleados")
+            conexion.Open()
+            comando.Connection = conexion
+            comando.CommandType = CommandType.StoredProcedure
+            comando.CommandText = ("Cargar_Grilla_Empleados")
 
-        Dim datadapter As New SqlDataAdapter(comando)
-        Dim oDs As New DataSet
-        datadapter.Fill(oDs)
+            Dim datadapter As New SqlDataAdapter(comando)
+            Dim oDs As New DataSet
+            datadapter.Fill(oDs)
 
-        If oDs.Tables(0).Rows.Count > 0 Then
-            grdEmpleados.AutoGenerateColumns = True
-            grdEmpleados.DataSource = oDs.Tables(0)
-            grdEmpleados.Refresh()
+            If oDs.Tables(0).Rows.Count > 0 Then
+                grdEmpleados.AutoGenerateColumns = True
+                grdEmpleados.DataSource = oDs.Tables(0)
+
+                ' Verificar si las columnas existen antes de ocultarlas
+                Dim columnasParaOcultar As String() = {"Fecha_Nacimiento", "Contraseña", "Nota", "Estado"}
+                For Each colName As String In columnasParaOcultar
+                    If grdEmpleados.Columns.Contains(colName) Then
+                        grdEmpleados.Columns(colName).Visible = False
+                    End If
+                Next
+                grdEmpleados.Refresh()
+            Else
+                MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
+            End If
+
+            oDs = Nothing
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox("Error al cargar la grilla: " & ex.Message, vbCritical, "Error")
+        Finally
+        End Try
+    End Sub
+
+    Public Sub CargarDatosEnTxt(ByVal idEmpleado As Integer)
+        Dim o_Empleados As New AD_Empleados
+
+        Try
+            Dim datoleido As SqlDataReader = o_Empleados.Consultar_ProductoPorID(idEmpleado)
+
+            If datoleido.Read() Then
+                txtID.Text = datoleido("N° Empleado").ToString()
+                lblCargaEmpleado.Text = datoleido("Empleado").ToString()
+                lblCargaCuil.Text = datoleido("Documento").ToString()
+
+                Dim fechaNacimiento As Object = datoleido("Fecha de Nacimiento")
+
+                If IsDate(fechaNacimiento) Then
+                    lblCargaFechaNacimiento.Text = Convert.ToDateTime(fechaNacimiento).ToString("dd/MM/yyyy")
+                Else
+                    lblCargaFechaNacimiento.Text = "Fecha inválida"
+                End If
+
+                dtpFechaContratacion.Value = Convert.ToDateTime(datoleido("Fecha de Contratación"))
+                txtCargo.Text = datoleido("Cargo").ToString()
+                cboSeccion.SelectedValue = datoleido("Seccion").ToString()
+                cboUsuario.SelectedValue = datoleido("Usuario").ToString()
+                txtContraseña.Text = datoleido("Contraseña").ToString()
+
+                cboRol.SelectedValue = datoleido("Rol").ToString()
+                txtNota.Text = datoleido("Nota").ToString()
+
+                chkEstado.Checked = Convert.ToBoolean(datoleido("Estado"))
+            Else
+                MsgBox("No se encontraron resultados", vbInformation, "Error")
+            End If
+
+            datoleido.Close()
+        Catch ex As Exception
+            MessageBox.Show("Ocurrió un error al consultar el empleado: " & ex.Message, "Error")
+        End Try
+    End Sub
+
+
+    Private Sub grdEmpleados_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdEmpleados.CellClick
+        If e.RowIndex >= 0 Then
+
+            ' Obtiene el ID del producto de la celda correspondiente
+            Dim selectedRow As DataGridViewRow = grdEmpleados.Rows(e.RowIndex)
+            Dim idEmpleado As Integer
+
+            If selectedRow.Cells("N° Empleado").Value IsNot Nothing Then
+                idEmpleado = Convert.ToInt32(selectedRow.Cells("N° Empleado").Value)
+                CargarDatosEnTxt(idEmpleado)
+            Else
+                MsgBox("El ID del empleado no puede ser nulo.", vbCritical, "Error")
+            End If
         End If
-
-        oDs = Nothing
-        conexion.Close()
     End Sub
 
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
@@ -62,8 +129,9 @@ Public Class frmAgregarEmpleados
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
-        lblCargaEmpleado.Text = ""
-        Me.Close()
+        lblCargaEmpleado.Text = Nothing
+        lblCargaCuil.Text = Nothing
+        lblCargaFechaNacimiento.Text = Nothing
     End Sub
 #End Region
 
@@ -180,6 +248,61 @@ Public Class frmAgregarEmpleados
                 End If
             Next
         End If
+    End Sub
+#End Region
+
+#Region "Css trucho"
+    Private Sub PanelDatosPersonales_Paint(sender As Object, e As PaintEventArgs) Handles PanelDatosPersonales.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelDatosPersonales.Width - 1, PanelDatosPersonales.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+
+    Private Sub PanelDetallesContratación_Paint(sender As Object, e As PaintEventArgs) Handles PanelDetallesContratación.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelDetallesContratación.Width - 1, PanelDetallesContratación.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub PanelUsuario_Paint(sender As Object, e As PaintEventArgs) Handles PanelUsuario.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelUsuario.Width - 1, PanelUsuario.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub PanelNotas_Paint(sender As Object, e As PaintEventArgs) Handles PanelNotas.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelNotas.Width - 1, PanelNotas.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
     End Sub
 #End Region
 

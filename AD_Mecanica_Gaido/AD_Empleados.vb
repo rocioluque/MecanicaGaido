@@ -87,6 +87,19 @@ Public Class AD_Empleados
         Return tabla
     End Function
 
+    Public Function Consultar_ProductoPorID(ByVal idEmpleado As Integer) As SqlDataReader
+        Dim conexion As New SqlConnection(connectionString)
+        Dim comando As New SqlCommand("Consultar_EmpleadoPorID", conexion)
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.AddWithValue("@idEmpleado", idEmpleado)
+
+        Try
+            conexion.Open()
+            Return comando.ExecuteReader(CommandBehavior.CloseConnection)
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
 
     'Modificar esto, el procedimiento no está creado
     Public Sub Agregar_Empleado(ID_Persona As Integer, ID_Usuario As Integer, ID_Seccion As Integer, CUIL As String, FNac As Date, FContrato As Date, Cargo As String, Nota As String, estado As Boolean)

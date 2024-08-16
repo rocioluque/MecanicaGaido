@@ -214,10 +214,21 @@ Public Class frmPersonas
 
 #Region "Abrir frm para agregar datos"
     Private Sub btnEmpleados_Click(sender As Object, e As EventArgs) Handles btnEmpleados.Click
-        frmAgregarEmpleados.txt_ID_Persona.Text = txtID.Text
-        frmAgregarEmpleados.lblCargaEmpleado.Text = txtApellido.Text & " " & txtNombre.Text
+        If cboTipoPersona.Text = "Personas Físicas" Then
+            If txtID.Text <> Nothing And txtNombre.Text <> Nothing And txtApellido.Text <> Nothing And txtNumeroDocumento.Text <> Nothing Then
+                'frmAgregarEmpleados.txt_ID_Persona.Text = txtID.Text
+                IdPersona = txtID.Text
+                frmAgregarEmpleados.lblCargaEmpleado.Text = txtApellido.Text & " " & txtNombre.Text
+                frmAgregarEmpleados.lblCargaCuil.Text = txtNumeroDocumento.Text
+                frmAgregarEmpleados.lblCargaFechaNacimiento.Text = dtpFechaNacimiento.Value.ToString("dd/MM/yyyy")
 
-        frmAgregarEmpleados.ShowDialog()
+                frmAgregarEmpleados.ShowDialog()
+            Else
+                MsgBox("Por favor seleccione una persona para cargar sus datos de empleado.", vbInformation, "Información")
+            End If
+        Else
+            MsgBox("Por favor seleccione una persona física.", vbInformation, "Información")
+        End If
     End Sub
 
     Private Sub btnDatoFiscals_Click(sender As Object, e As EventArgs) Handles btnDatoFiscal.Click
