@@ -55,6 +55,16 @@ Public Class frmPersonas
         Catch ex As Exception
             MsgBox("Error al cargar ciudades: " & ex.Message, vbCritical, "Error")
         End Try
+
+        If cboProvincia.SelectedIndex <> -1 Then
+            cboCiudad.Enabled = True
+            btnAgregarCiudad.Enabled = True
+
+        Else
+            cboCiudad.Enabled = False
+            btnAgregarCiudad.Enabled = False
+
+        End If
     End Sub
 
     Private Sub Cargar_Combo_TipoDocumento()
@@ -121,6 +131,8 @@ Public Class frmPersonas
         Cargar_Combo_TipoDocumento()
         Cargar_Combo_TipoPersona()
         Cargar_Grilla()
+
+        txtNombre.Enabled = True
     End Sub
 
     Public Sub Cargar_Grilla()
@@ -399,8 +411,75 @@ Public Class frmPersonas
         End If
     End Sub
 
+#End Region
+
+
+#Region "Habilitar y deshabilitar botones"
     Private Sub btnAgregarCiudad_Click_1(sender As Object, e As EventArgs) Handles btnAgregarCiudad.Click
+        frmAgregarCiudad.Show()
+    End Sub
+
+    Private Sub cboCiudad_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCiudad.SelectedIndexChanged
+
+
+        If cboCiudad.SelectedIndex <> -1 Then
+
+            txtCodigoPostal.Enabled = True
+        Else
+
+            txtCodigoPostal.Enabled = False
+        End If
+    End Sub
+
+    Private Sub txtCodigoPostal_TextChanged(sender As Object, e As EventArgs) Handles txtCodigoPostal.TextChanged
+        ActualizarEstadoControles()
+    End Sub
+
+    Private Sub txtDireccion_TextChanged(sender As Object, e As EventArgs) Handles txtDireccion.TextChanged
+        ActualizarEstadoControles()
+    End Sub
+
+    Private Sub txtNumero_TextChanged(sender As Object, e As EventArgs) Handles txtNumero.TextChanged
+        ActualizarEstadoControles()
+    End Sub
+
+    Private Sub txtPiso_TextChanged(sender As Object, e As EventArgs) Handles txtPiso.TextChanged
+        ActualizarEstadoControles()
+    End Sub
+
+    Private Sub txtLetraPuerta_TextChanged(sender As Object, e As EventArgs) Handles txtLetraPuerta.TextChanged
+        ActualizarEstadoControles()
+    End Sub
+
+    Private Sub txtTelefonoMovil_TextChanged(sender As Object, e As EventArgs) Handles txtTelefonoMovil.TextChanged
+        ActualizarEstadoControles()
+    End Sub
+
+    Private Sub txtTelefonoFijo_TextChanged(sender As Object, e As EventArgs) Handles txtTelefonoFijo.TextChanged
+        ActualizarEstadoControles()
+    End Sub
+
+    Private Sub txtCorreo_TextChanged(sender As Object, e As EventArgs) Handles txtCorreo.TextChanged
+        ActualizarEstadoControles()
+    End Sub
+
+    Private Sub chkEstado_CheckedChanged(sender As Object, e As EventArgs) Handles chkEstado.CheckedChanged
+        ActualizarEstadoControles()
+    End Sub
+
+    Private Sub ActualizarEstadoControles()
+        Dim habilitar As Boolean = Not String.IsNullOrEmpty(txtCodigoPostal.Text)
+
+        txtDireccion.Enabled = habilitar
+        txtNumero.Enabled = habilitar
+        txtPiso.Enabled = habilitar
+        txtLetraPuerta.Enabled = habilitar
+        txtTelefonoFijo.Enabled = habilitar
+        txtTelefonoMovil.Enabled = habilitar
+        txtCorreo.Enabled = habilitar
+        chkEstado.Enabled = habilitar
 
     End Sub
 #End Region
+
 End Class
