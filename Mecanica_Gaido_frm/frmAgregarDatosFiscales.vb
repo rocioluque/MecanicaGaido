@@ -4,11 +4,7 @@ Imports System.Data.SqlClient
 Imports System.Configuration
 Public Class frmAgregarDatosFiscales
     Dim o_DatosFiscales As New AD_DatosFiscales
-
-    ' Propiedades públicas para recibir los datos
     Public Property IdPersona As Integer
-    Public Property NombrePersona As String
-    Public Property DocumentoPersona As String
 
 #Region "Procedimientos"
     Public Sub limpiar()
@@ -22,12 +18,20 @@ Public Class frmAgregarDatosFiscales
     Private Sub frmAgregarDatosFiscales_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         limpiar()
         Cargar_Grilla()
-
-        ' Usa las propiedades públicas para establecer los valores en los controles del formulario
-        lblNombreResultado.Text = NombrePersona
-        lblDocumentoResultado.Text = DocumentoPersona
     End Sub
 
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiar()
+        lblNombreResultado.Text = Nothing
+        lblDocumentoResultado.Text = Nothing
+    End Sub
+
+    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        Me.Close()
+    End Sub
+#End Region
+
+#Region "Grilla y datos en txt"
     Public Sub Cargar_Grilla()
         Try
             Dim conexion As SqlConnection
@@ -88,16 +92,6 @@ Public Class frmAgregarDatosFiscales
         If e.RowIndex >= 0 Then
             CargarDatosEnTxt(e.RowIndex)
         End If
-    End Sub
-
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        limpiar()
-        lblNombreResultado.Text = Nothing
-        lblDocumentoResultado.Text = Nothing
-    End Sub
-
-    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
-        Me.Close()
     End Sub
 #End Region
 

@@ -4,10 +4,7 @@ Imports System.Data.SqlClient
 Imports System.Configuration
 Public Class frmPersonas
     Dim o_Personas As New AD_Personas
-
     Public Property IdPersona As Integer
-    Public Property NombrePersona As String
-    Public Property DocumentoPersona As String
 
 #Region "Carga de Cbos"
     Private Sub Cargar_Provincias()
@@ -245,27 +242,22 @@ Public Class frmPersonas
 
     Private Sub btnDatoFiscal_Click(sender As Object, e As EventArgs) Handles btnDatoFiscal.Click
         If txtID.Text <> Nothing And txtNombre.Text <> Nothing And txtNumeroDocumento.Text <> Nothing Then
-            IdPersona = txtID.Text
-            NombrePersona = txtApellido.Text & " " & txtNombre.Text
-            DocumentoPersona = txtNumeroDocumento.Text
+            frmAgregarDatosFiscales.IdPersona = Convert.ToInt32(txtID.Text)
 
-            ' Crea una nueva instancia de frmDatoFiscal
-            Dim frmAgregar As New frmAgregarDatosFiscales()
-
-            ' Pasa los valores a las propiedades públicas del nuevo formulario
-            frmAgregar.IdPersona = IdPersona
-            frmAgregar.NombrePersona = NombrePersona
-            frmAgregar.DocumentoPersona = DocumentoPersona
+            frmAgregarDatosFiscales.lblNombreResultado.Text = txtApellido.Text & " " & txtNombre.Text
+            frmAgregarDatosFiscales.lblDocumentoResultado.Text = txtNumeroDocumento.Text
 
             If cboTipoPersona.Text = "Personas Físicas" Then
-                frmAgregar.lblNombre.Text = "Apellido y 
+
+                'NO TOQUEN EL NOMBRE DE DONDE ESTÁ
+
+                frmAgregarDatosFiscales.lblNombre.Text = "Apellido y 
 Nombre"
             Else
-                frmAgregar.lblNombre.Text = "Razón Social"
+                frmAgregarDatosFiscales.lblNombre.Text = "Razón Social"
             End If
 
-            ' Muestra el nuevo formulario
-            frmAgregar.ShowDialog()
+            frmAgregarDatosFiscales.ShowDialog()
         Else
             MsgBox("Por favor seleccione una persona para cargar sus datos físcales.", vbInformation, "Información")
         End If
