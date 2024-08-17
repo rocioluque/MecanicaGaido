@@ -39,6 +39,8 @@ Public Class frmAgregarEmpleados
         cboRol.SelectedIndex = -1
         chkEstado.Checked = False
         btnAceptar.Enabled = True
+
+
     End Sub
 
     Public Sub Cargar_Grilla_Empleados()
@@ -138,7 +140,9 @@ Public Class frmAgregarEmpleados
     End Sub
 
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        limpiar()
         Me.Close()
+
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -297,6 +301,7 @@ Public Class frmAgregarEmpleados
             End If
 
             datoleido.Close()
+
         Catch ex As Exception
             MessageBox.Show("Ocurrió un error al consultar el empleado: " & ex.Message, "Error")
         End Try
