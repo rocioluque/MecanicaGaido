@@ -214,13 +214,24 @@ Public Class frmPersonas
 
 #Region "Abrir frm para agregar datos"
     Private Sub btnEmpleados_Click(sender As Object, e As EventArgs) Handles btnEmpleados.Click
-        frmAgregarEmpleados.txt_ID_Persona.Text = txtID.Text
-        frmAgregarEmpleados.lblCargaEmpleado.Text = txtApellido.Text & " " & txtNombre.Text
+        If cboTipoPersona.Text = "Personas Físicas" Then
+            If txtID.Text <> Nothing And txtNombre.Text <> Nothing And txtApellido.Text <> Nothing And txtNumeroDocumento.Text <> Nothing Then
+                frmAgregarEmpleados.IdPersona = Convert.ToInt32(txtID.Text)
 
-        frmAgregarEmpleados.ShowDialog()
+                frmAgregarEmpleados.lblCargaEmpleado.Text = txtApellido.Text & " " & txtNombre.Text
+                frmAgregarEmpleados.lblCargaCuil.Text = txtNumeroDocumento.Text
+                frmAgregarEmpleados.lblCargaFechaNacimiento.Text = dtpFechaNacimiento.Value.ToString("dd/MM/yyyy")
+
+                frmAgregarEmpleados.ShowDialog()
+            Else
+                MsgBox("Por favor seleccione una persona para cargar sus datos de empleado.", vbInformation, "Información")
+            End If
+        Else
+            MsgBox("Por favor seleccione una persona física.", vbInformation, "Información")
+        End If
     End Sub
 
-    Private Sub btnDatoFiscals_Click(sender As Object, e As EventArgs) Handles btnDatoFiscal.Click
+    Private Sub btnDatoFiscal_Click(sender As Object, e As EventArgs) Handles btnDatoFiscal.Click
         If txtID.Text <> Nothing And txtNombre.Text <> Nothing And txtNumeroDocumento.Text <> Nothing Then
             IdPersona = txtID.Text
             NombrePersona = txtApellido.Text & " " & txtNombre.Text
@@ -386,6 +397,10 @@ Public Class frmPersonas
                 e.Handled = True
             End If
         End If
+    End Sub
+
+    Private Sub btnAgregarCiudad_Click_1(sender As Object, e As EventArgs) Handles btnAgregarCiudad.Click
+
     End Sub
 #End Region
 End Class

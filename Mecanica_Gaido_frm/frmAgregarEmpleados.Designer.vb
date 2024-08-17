@@ -25,8 +25,6 @@ Partial Class frmAgregarEmpleados
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAgregarEmpleados))
         Me.btnBuscar = New System.Windows.Forms.Button()
         Me.txtContraseña = New System.Windows.Forms.TextBox()
-        Me.txtFechaNacimiento = New System.Windows.Forms.TextBox()
-        Me.txtCuil = New System.Windows.Forms.TextBox()
         Me.txtID = New System.Windows.Forms.TextBox()
         Me.chkEstado = New System.Windows.Forms.CheckBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -36,31 +34,47 @@ Partial Class frmAgregarEmpleados
         Me.btnModificar = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.btnAceptar = New System.Windows.Forms.Button()
-        Me.btnAgregarUsuario = New System.Windows.Forms.PictureBox()
-        Me.cboUsuario = New System.Windows.Forms.ComboBox()
-        Me.Label9 = New System.Windows.Forms.Label()
+        Me.lblNombre = New System.Windows.Forms.Label()
         Me.cboSeccion = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.btnCerrar = New System.Windows.Forms.PictureBox()
         Me.btnAgregarSeccion = New System.Windows.Forms.PictureBox()
         Me.txtNota = New System.Windows.Forms.RichTextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
         Me.grdEmpleados = New System.Windows.Forms.DataGridView()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.lblCargaEmpleado = New System.Windows.Forms.Label()
         Me.btnAgregarRol = New System.Windows.Forms.PictureBox()
         Me.cboRol = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.txtFechaContratacion = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtCargo = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.txt_ID_Persona = New System.Windows.Forms.TextBox()
-        CType(Me.btnAgregarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.lblCargaCuil = New System.Windows.Forms.Label()
+        Me.lblCargaFechaNacimiento = New System.Windows.Forms.Label()
+        Me.lblDatosPersonales = New System.Windows.Forms.Label()
+        Me.PanelDatosPersonales = New System.Windows.Forms.Panel()
+        Me.lblDetallesContratación = New System.Windows.Forms.Label()
+        Me.PanelDetallesContratación = New System.Windows.Forms.Panel()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.dtpFechaContratacion = New System.Windows.Forms.DateTimePicker()
+        Me.lblUsuario = New System.Windows.Forms.Label()
+        Me.PanelUsuario = New System.Windows.Forms.Panel()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.lblNota = New System.Windows.Forms.Label()
+        Me.PanelNotas = New System.Windows.Forms.Panel()
+        Me.txtUsuario = New System.Windows.Forms.TextBox()
         CType(Me.btnCerrar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarSeccion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdEmpleados, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarRol, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelDatosPersonales.SuspendLayout()
+        Me.PanelDetallesContratación.SuspendLayout()
+        Me.PanelUsuario.SuspendLayout()
+        Me.PanelNotas.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnBuscar
@@ -68,12 +82,11 @@ Partial Class frmAgregarEmpleados
         Me.btnBuscar.BackColor = System.Drawing.Color.Transparent
         Me.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnBuscar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.btnBuscar.FlatAppearance.BorderSize = 2
         Me.btnBuscar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBuscar.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnBuscar.ForeColor = System.Drawing.Color.White
-        Me.btnBuscar.Location = New System.Drawing.Point(211, 25)
+        Me.btnBuscar.Location = New System.Drawing.Point(268, 24)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(50, 28)
         Me.btnBuscar.TabIndex = 2
@@ -83,37 +96,19 @@ Partial Class frmAgregarEmpleados
         'txtContraseña
         '
         Me.txtContraseña.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtContraseña.Location = New System.Drawing.Point(440, 103)
+        Me.txtContraseña.Location = New System.Drawing.Point(15, 81)
         Me.txtContraseña.Margin = New System.Windows.Forms.Padding(2)
         Me.txtContraseña.Name = "txtContraseña"
-        Me.txtContraseña.Size = New System.Drawing.Size(133, 23)
+        Me.txtContraseña.Size = New System.Drawing.Size(206, 23)
         Me.txtContraseña.TabIndex = 9
-        '
-        'txtFechaNacimiento
-        '
-        Me.txtFechaNacimiento.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFechaNacimiento.Location = New System.Drawing.Point(145, 183)
-        Me.txtFechaNacimiento.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtFechaNacimiento.Name = "txtFechaNacimiento"
-        Me.txtFechaNacimiento.Size = New System.Drawing.Size(133, 23)
-        Me.txtFechaNacimiento.TabIndex = 5
-        '
-        'txtCuil
-        '
-        Me.txtCuil.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCuil.Location = New System.Drawing.Point(145, 145)
-        Me.txtCuil.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtCuil.Name = "txtCuil"
-        Me.txtCuil.Size = New System.Drawing.Size(133, 23)
-        Me.txtCuil.TabIndex = 4
         '
         'txtID
         '
         Me.txtID.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtID.Location = New System.Drawing.Point(145, 29)
+        Me.txtID.Location = New System.Drawing.Point(156, 29)
         Me.txtID.Margin = New System.Windows.Forms.Padding(2)
         Me.txtID.Name = "txtID"
-        Me.txtID.Size = New System.Drawing.Size(43, 23)
+        Me.txtID.Size = New System.Drawing.Size(61, 23)
         Me.txtID.TabIndex = 1
         '
         'chkEstado
@@ -121,7 +116,7 @@ Partial Class frmAgregarEmpleados
         Me.chkEstado.AutoSize = True
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
-        Me.chkEstado.Location = New System.Drawing.Point(335, 222)
+        Me.chkEstado.Location = New System.Drawing.Point(15, 146)
         Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
@@ -134,7 +129,7 @@ Partial Class frmAgregarEmpleados
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(332, 109)
+        Me.Label5.Location = New System.Drawing.Point(12, 62)
         Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(84, 17)
@@ -146,48 +141,47 @@ Partial Class frmAgregarEmpleados
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(43, 177)
+        Me.Label4.Location = New System.Drawing.Point(12, 60)
         Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(84, 34)
+        Me.Label4.Size = New System.Drawing.Size(148, 17)
         Me.Label4.TabIndex = 42
-        Me.Label4.Text = "Fecha de " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Nacimiento"
+        Me.Label4.Text = "Fecha de Nacimiento"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(43, 149)
+        Me.Label3.Location = New System.Drawing.Point(12, 39)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(36, 17)
+        Me.Label3.Size = New System.Drawing.Size(86, 17)
         Me.Label3.TabIndex = 41
-        Me.Label3.Text = "CUIL"
+        Me.Label3.Text = "Documento"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(43, 35)
+        Me.Label1.Location = New System.Drawing.Point(43, 32)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(21, 17)
+        Me.Label1.Size = New System.Drawing.Size(94, 17)
         Me.Label1.TabIndex = 39
-        Me.Label1.Text = "ID"
+        Me.Label1.Text = "N° Empleado"
         '
         'btnModificar
         '
         Me.btnModificar.BackColor = System.Drawing.Color.Transparent
         Me.btnModificar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnModificar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.btnModificar.FlatAppearance.BorderSize = 2
         Me.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
-        Me.btnModificar.Location = New System.Drawing.Point(645, 98)
+        Me.btnModificar.Location = New System.Drawing.Point(661, 173)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(117, 37)
         Me.btnModificar.TabIndex = 14
@@ -200,12 +194,11 @@ Partial Class frmAgregarEmpleados
         Me.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.btnCancelar.FlatAppearance.BorderSize = 2
         Me.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
-        Me.btnCancelar.Location = New System.Drawing.Point(645, 167)
+        Me.btnCancelar.Location = New System.Drawing.Point(661, 298)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(117, 37)
         Me.btnCancelar.TabIndex = 15
@@ -217,59 +210,37 @@ Partial Class frmAgregarEmpleados
         Me.btnAceptar.BackColor = System.Drawing.Color.Transparent
         Me.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnAceptar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.btnAceptar.FlatAppearance.BorderSize = 2
         Me.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAceptar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAceptar.ForeColor = System.Drawing.Color.White
-        Me.btnAceptar.Location = New System.Drawing.Point(645, 29)
+        Me.btnAceptar.Location = New System.Drawing.Point(661, 48)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(117, 37)
         Me.btnAceptar.TabIndex = 13
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = False
         '
-        'btnAgregarUsuario
+        'lblNombre
         '
-        Me.btnAgregarUsuario.BackgroundImage = CType(resources.GetObject("btnAgregarUsuario.BackgroundImage"), System.Drawing.Image)
-        Me.btnAgregarUsuario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnAgregarUsuario.Location = New System.Drawing.Point(578, 65)
-        Me.btnAgregarUsuario.Name = "btnAgregarUsuario"
-        Me.btnAgregarUsuario.Size = New System.Drawing.Size(26, 25)
-        Me.btnAgregarUsuario.TabIndex = 59
-        Me.btnAgregarUsuario.TabStop = False
-        '
-        'cboUsuario
-        '
-        Me.cboUsuario.DisplayMember = "Nombre"
-        Me.cboUsuario.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cboUsuario.FormattingEnabled = True
-        Me.cboUsuario.Location = New System.Drawing.Point(440, 65)
-        Me.cboUsuario.Margin = New System.Windows.Forms.Padding(2)
-        Me.cboUsuario.Name = "cboUsuario"
-        Me.cboUsuario.Size = New System.Drawing.Size(133, 25)
-        Me.cboUsuario.TabIndex = 8
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(332, 71)
-        Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(54, 17)
-        Me.Label9.TabIndex = 57
-        Me.Label9.Text = "Usuario"
+        Me.lblNombre.AutoSize = True
+        Me.lblNombre.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNombre.ForeColor = System.Drawing.Color.White
+        Me.lblNombre.Location = New System.Drawing.Point(14, 16)
+        Me.lblNombre.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblNombre.Name = "lblNombre"
+        Me.lblNombre.Size = New System.Drawing.Size(61, 17)
+        Me.lblNombre.TabIndex = 57
+        Me.lblNombre.Text = "Nombre"
         '
         'cboSeccion
         '
         Me.cboSeccion.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboSeccion.FormattingEnabled = True
-        Me.cboSeccion.Location = New System.Drawing.Point(145, 105)
+        Me.cboSeccion.Location = New System.Drawing.Point(15, 119)
         Me.cboSeccion.Margin = New System.Windows.Forms.Padding(2)
         Me.cboSeccion.Name = "cboSeccion"
-        Me.cboSeccion.Size = New System.Drawing.Size(133, 25)
+        Me.cboSeccion.Size = New System.Drawing.Size(175, 25)
         Me.cboSeccion.TabIndex = 3
         '
         'Label7
@@ -277,7 +248,7 @@ Partial Class frmAgregarEmpleados
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(43, 113)
+        Me.Label7.Location = New System.Drawing.Point(12, 101)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(58, 17)
@@ -298,7 +269,7 @@ Partial Class frmAgregarEmpleados
         '
         Me.btnAgregarSeccion.BackgroundImage = CType(resources.GetObject("btnAgregarSeccion.BackgroundImage"), System.Drawing.Image)
         Me.btnAgregarSeccion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnAgregarSeccion.Location = New System.Drawing.Point(283, 105)
+        Me.btnAgregarSeccion.Location = New System.Drawing.Point(195, 119)
         Me.btnAgregarSeccion.Name = "btnAgregarSeccion"
         Me.btnAgregarSeccion.Size = New System.Drawing.Size(26, 25)
         Me.btnAgregarSeccion.TabIndex = 62
@@ -306,34 +277,27 @@ Partial Class frmAgregarEmpleados
         '
         'txtNota
         '
-        Me.txtNota.Location = New System.Drawing.Point(440, 181)
+        Me.txtNota.Location = New System.Drawing.Point(15, 28)
         Me.txtNota.Name = "txtNota"
-        Me.txtNota.Size = New System.Drawing.Size(164, 59)
+        Me.txtNota.Size = New System.Drawing.Size(250, 67)
         Me.txtNota.TabIndex = 11
         Me.txtNota.Text = ""
         '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(332, 185)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(41, 17)
-        Me.Label8.TabIndex = 63
-        Me.Label8.Text = "Nota"
-        '
         'grdEmpleados
         '
-        Me.grdEmpleados.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.grdEmpleados.AllowUserToAddRows = False
+        Me.grdEmpleados.AllowUserToDeleteRows = False
+        Me.grdEmpleados.AllowUserToResizeRows = False
+        Me.grdEmpleados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.grdEmpleados.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
+        Me.grdEmpleados.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
         Me.grdEmpleados.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdEmpleados.Location = New System.Drawing.Point(47, 271)
+        Me.grdEmpleados.Location = New System.Drawing.Point(46, 370)
         Me.grdEmpleados.Name = "grdEmpleados"
         Me.grdEmpleados.ReadOnly = True
         Me.grdEmpleados.RowHeadersWidth = 51
-        Me.grdEmpleados.Size = New System.Drawing.Size(703, 146)
+        Me.grdEmpleados.Size = New System.Drawing.Size(732, 194)
         Me.grdEmpleados.TabIndex = 65
         '
         'Label6
@@ -341,7 +305,7 @@ Partial Class frmAgregarEmpleados
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(43, 73)
+        Me.Label6.Location = New System.Drawing.Point(12, 18)
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(75, 17)
@@ -351,19 +315,20 @@ Partial Class frmAgregarEmpleados
         'lblCargaEmpleado
         '
         Me.lblCargaEmpleado.AutoSize = True
-        Me.lblCargaEmpleado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCargaEmpleado.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblCargaEmpleado.ForeColor = System.Drawing.Color.White
-        Me.lblCargaEmpleado.Location = New System.Drawing.Point(142, 73)
+        Me.lblCargaEmpleado.Location = New System.Drawing.Point(91, 18)
         Me.lblCargaEmpleado.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblCargaEmpleado.Name = "lblCargaEmpleado"
-        Me.lblCargaEmpleado.Size = New System.Drawing.Size(0, 17)
+        Me.lblCargaEmpleado.Size = New System.Drawing.Size(15, 17)
         Me.lblCargaEmpleado.TabIndex = 66
+        Me.lblCargaEmpleado.Text = "1"
         '
         'btnAgregarRol
         '
         Me.btnAgregarRol.BackgroundImage = CType(resources.GetObject("btnAgregarRol.BackgroundImage"), System.Drawing.Image)
         Me.btnAgregarRol.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnAgregarRol.Location = New System.Drawing.Point(578, 141)
+        Me.btnAgregarRol.Location = New System.Drawing.Point(195, 125)
         Me.btnAgregarRol.Name = "btnAgregarRol"
         Me.btnAgregarRol.Size = New System.Drawing.Size(26, 25)
         Me.btnAgregarRol.TabIndex = 69
@@ -374,10 +339,10 @@ Partial Class frmAgregarEmpleados
         Me.cboRol.DisplayMember = "Nombre"
         Me.cboRol.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboRol.FormattingEnabled = True
-        Me.cboRol.Location = New System.Drawing.Point(440, 141)
+        Me.cboRol.Location = New System.Drawing.Point(15, 125)
         Me.cboRol.Margin = New System.Windows.Forms.Padding(2)
         Me.cboRol.Name = "cboRol"
-        Me.cboRol.Size = New System.Drawing.Size(133, 25)
+        Me.cboRol.Size = New System.Drawing.Size(175, 25)
         Me.cboRol.TabIndex = 10
         '
         'Label2
@@ -385,41 +350,32 @@ Partial Class frmAgregarEmpleados
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(332, 147)
+        Me.Label2.Location = New System.Drawing.Point(12, 106)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(28, 17)
         Me.Label2.TabIndex = 67
         Me.Label2.Text = "Rol"
         '
-        'txtFechaContratacion
-        '
-        Me.txtFechaContratacion.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFechaContratacion.Location = New System.Drawing.Point(145, 221)
-        Me.txtFechaContratacion.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtFechaContratacion.Name = "txtFechaContratacion"
-        Me.txtFechaContratacion.Size = New System.Drawing.Size(133, 23)
-        Me.txtFechaContratacion.TabIndex = 6
-        '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.White
-        Me.Label10.Location = New System.Drawing.Point(43, 217)
+        Me.Label10.Location = New System.Drawing.Point(12, 17)
         Me.Label10.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(96, 34)
+        Me.Label10.Size = New System.Drawing.Size(160, 17)
         Me.Label10.TabIndex = 70
-        Me.Label10.Text = "Fecha de " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Contratación"
+        Me.Label10.Text = "Fecha de Contratación"
         '
         'txtCargo
         '
         Me.txtCargo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCargo.Location = New System.Drawing.Point(440, 29)
+        Me.txtCargo.Location = New System.Drawing.Point(15, 77)
         Me.txtCargo.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCargo.Name = "txtCargo"
-        Me.txtCargo.Size = New System.Drawing.Size(133, 23)
+        Me.txtCargo.Size = New System.Drawing.Size(206, 23)
         Me.txtCargo.TabIndex = 7
         '
         'Label11
@@ -427,72 +383,264 @@ Partial Class frmAgregarEmpleados
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(332, 35)
+        Me.Label11.Location = New System.Drawing.Point(12, 59)
         Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(50, 17)
         Me.Label11.TabIndex = 72
         Me.Label11.Text = "Cargo"
         '
-        'txt_ID_Persona
+        'lblCargaCuil
         '
-        Me.txt_ID_Persona.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_ID_Persona.Location = New System.Drawing.Point(80, 29)
-        Me.txt_ID_Persona.Margin = New System.Windows.Forms.Padding(2)
-        Me.txt_ID_Persona.Name = "txt_ID_Persona"
-        Me.txt_ID_Persona.Size = New System.Drawing.Size(43, 23)
-        Me.txt_ID_Persona.TabIndex = 73
-        Me.txt_ID_Persona.Visible = False
+        Me.lblCargaCuil.AutoSize = True
+        Me.lblCargaCuil.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.lblCargaCuil.ForeColor = System.Drawing.Color.White
+        Me.lblCargaCuil.Location = New System.Drawing.Point(96, 39)
+        Me.lblCargaCuil.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblCargaCuil.Name = "lblCargaCuil"
+        Me.lblCargaCuil.Size = New System.Drawing.Size(15, 17)
+        Me.lblCargaCuil.TabIndex = 73
+        Me.lblCargaCuil.Text = "2"
+        '
+        'lblCargaFechaNacimiento
+        '
+        Me.lblCargaFechaNacimiento.AutoSize = True
+        Me.lblCargaFechaNacimiento.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.lblCargaFechaNacimiento.ForeColor = System.Drawing.Color.White
+        Me.lblCargaFechaNacimiento.Location = New System.Drawing.Point(164, 60)
+        Me.lblCargaFechaNacimiento.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblCargaFechaNacimiento.Name = "lblCargaFechaNacimiento"
+        Me.lblCargaFechaNacimiento.Size = New System.Drawing.Size(15, 17)
+        Me.lblCargaFechaNacimiento.TabIndex = 74
+        Me.lblCargaFechaNacimiento.Text = "3"
+        '
+        'lblDatosPersonales
+        '
+        Me.lblDatosPersonales.AutoSize = True
+        Me.lblDatosPersonales.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.lblDatosPersonales.ForeColor = System.Drawing.Color.White
+        Me.lblDatosPersonales.Location = New System.Drawing.Point(58, 59)
+        Me.lblDatosPersonales.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblDatosPersonales.Name = "lblDatosPersonales"
+        Me.lblDatosPersonales.Size = New System.Drawing.Size(109, 17)
+        Me.lblDatosPersonales.TabIndex = 80
+        Me.lblDatosPersonales.Text = "Datos Personales"
+        '
+        'PanelDatosPersonales
+        '
+        Me.PanelDatosPersonales.Controls.Add(Me.Label6)
+        Me.PanelDatosPersonales.Controls.Add(Me.lblCargaEmpleado)
+        Me.PanelDatosPersonales.Controls.Add(Me.lblCargaFechaNacimiento)
+        Me.PanelDatosPersonales.Controls.Add(Me.Label3)
+        Me.PanelDatosPersonales.Controls.Add(Me.lblCargaCuil)
+        Me.PanelDatosPersonales.Controls.Add(Me.Label4)
+        Me.PanelDatosPersonales.Location = New System.Drawing.Point(46, 67)
+        Me.PanelDatosPersonales.Name = "PanelDatosPersonales"
+        Me.PanelDatosPersonales.Size = New System.Drawing.Size(281, 93)
+        Me.PanelDatosPersonales.TabIndex = 81
+        '
+        'lblDetallesContratación
+        '
+        Me.lblDetallesContratación.AutoSize = True
+        Me.lblDetallesContratación.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.lblDetallesContratación.ForeColor = System.Drawing.Color.White
+        Me.lblDetallesContratación.Location = New System.Drawing.Point(58, 173)
+        Me.lblDetallesContratación.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblDetallesContratación.Name = "lblDetallesContratación"
+        Me.lblDetallesContratación.Size = New System.Drawing.Size(159, 17)
+        Me.lblDetallesContratación.TabIndex = 82
+        Me.lblDetallesContratación.Text = "Detalles de Contratación"
+        '
+        'PanelDetallesContratación
+        '
+        Me.PanelDetallesContratación.Controls.Add(Me.Label12)
+        Me.PanelDetallesContratación.Controls.Add(Me.Label9)
+        Me.PanelDetallesContratación.Controls.Add(Me.Label8)
+        Me.PanelDetallesContratación.Controls.Add(Me.dtpFechaContratacion)
+        Me.PanelDetallesContratación.Controls.Add(Me.Label10)
+        Me.PanelDetallesContratación.Controls.Add(Me.Label11)
+        Me.PanelDetallesContratación.Controls.Add(Me.txtCargo)
+        Me.PanelDetallesContratación.Controls.Add(Me.Label7)
+        Me.PanelDetallesContratación.Controls.Add(Me.cboSeccion)
+        Me.PanelDetallesContratación.Controls.Add(Me.btnAgregarSeccion)
+        Me.PanelDetallesContratación.Controls.Add(Me.chkEstado)
+        Me.PanelDetallesContratación.Location = New System.Drawing.Point(46, 181)
+        Me.PanelDetallesContratación.Name = "PanelDetallesContratación"
+        Me.PanelDetallesContratación.Size = New System.Drawing.Size(281, 171)
+        Me.PanelDetallesContratación.TabIndex = 83
+        '
+        'Label12
+        '
+        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label12.ForeColor = System.Drawing.Color.Red
+        Me.Label12.Location = New System.Drawing.Point(70, 101)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(15, 17)
+        Me.Label12.TabIndex = 77
+        Me.Label12.Text = "*"
+        '
+        'Label9
+        '
+        Me.Label9.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label9.ForeColor = System.Drawing.Color.Red
+        Me.Label9.Location = New System.Drawing.Point(62, 59)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(15, 17)
+        Me.Label9.TabIndex = 76
+        Me.Label9.Text = "*"
+        '
+        'Label8
+        '
+        Me.Label8.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label8.ForeColor = System.Drawing.Color.Red
+        Me.Label8.Location = New System.Drawing.Point(172, 17)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(15, 17)
+        Me.Label8.TabIndex = 75
+        Me.Label8.Text = "*"
+        '
+        'dtpFechaContratacion
+        '
+        Me.dtpFechaContratacion.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.dtpFechaContratacion.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaContratacion.Location = New System.Drawing.Point(15, 35)
+        Me.dtpFechaContratacion.Name = "dtpFechaContratacion"
+        Me.dtpFechaContratacion.Size = New System.Drawing.Size(206, 23)
+        Me.dtpFechaContratacion.TabIndex = 71
+        '
+        'lblUsuario
+        '
+        Me.lblUsuario.AutoSize = True
+        Me.lblUsuario.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.lblUsuario.ForeColor = System.Drawing.Color.White
+        Me.lblUsuario.Location = New System.Drawing.Point(367, 24)
+        Me.lblUsuario.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblUsuario.Name = "lblUsuario"
+        Me.lblUsuario.Size = New System.Drawing.Size(51, 17)
+        Me.lblUsuario.TabIndex = 84
+        Me.lblUsuario.Text = "Usuario"
+        '
+        'PanelUsuario
+        '
+        Me.PanelUsuario.Controls.Add(Me.txtUsuario)
+        Me.PanelUsuario.Controls.Add(Me.Label15)
+        Me.PanelUsuario.Controls.Add(Me.Label14)
+        Me.PanelUsuario.Controls.Add(Me.Label13)
+        Me.PanelUsuario.Controls.Add(Me.Label5)
+        Me.PanelUsuario.Controls.Add(Me.txtContraseña)
+        Me.PanelUsuario.Controls.Add(Me.lblNombre)
+        Me.PanelUsuario.Controls.Add(Me.Label2)
+        Me.PanelUsuario.Controls.Add(Me.btnAgregarRol)
+        Me.PanelUsuario.Controls.Add(Me.cboRol)
+        Me.PanelUsuario.Location = New System.Drawing.Point(355, 32)
+        Me.PanelUsuario.Name = "PanelUsuario"
+        Me.PanelUsuario.Size = New System.Drawing.Size(281, 168)
+        Me.PanelUsuario.TabIndex = 85
+        '
+        'Label15
+        '
+        Me.Label15.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label15.ForeColor = System.Drawing.Color.Red
+        Me.Label15.Location = New System.Drawing.Point(40, 106)
+        Me.Label15.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(15, 17)
+        Me.Label15.TabIndex = 78
+        Me.Label15.Text = "*"
+        '
+        'Label14
+        '
+        Me.Label14.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label14.ForeColor = System.Drawing.Color.Red
+        Me.Label14.Location = New System.Drawing.Point(96, 62)
+        Me.Label14.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(15, 17)
+        Me.Label14.TabIndex = 77
+        Me.Label14.Text = "*"
+        '
+        'Label13
+        '
+        Me.Label13.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.Label13.ForeColor = System.Drawing.Color.Red
+        Me.Label13.Location = New System.Drawing.Point(75, 16)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(15, 17)
+        Me.Label13.TabIndex = 76
+        Me.Label13.Text = "*"
+        '
+        'lblNota
+        '
+        Me.lblNota.AutoSize = True
+        Me.lblNota.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.lblNota.ForeColor = System.Drawing.Color.White
+        Me.lblNota.Location = New System.Drawing.Point(367, 224)
+        Me.lblNota.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblNota.Name = "lblNota"
+        Me.lblNota.Size = New System.Drawing.Size(140, 17)
+        Me.lblNota.TabIndex = 86
+        Me.lblNota.Text = "Nota (250 caracteres)"
+        '
+        'PanelNotas
+        '
+        Me.PanelNotas.Controls.Add(Me.txtNota)
+        Me.PanelNotas.Location = New System.Drawing.Point(355, 232)
+        Me.PanelNotas.Name = "PanelNotas"
+        Me.PanelNotas.Size = New System.Drawing.Size(281, 120)
+        Me.PanelNotas.TabIndex = 87
+        '
+        'txtUsuario
+        '
+        Me.txtUsuario.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtUsuario.Location = New System.Drawing.Point(15, 35)
+        Me.txtUsuario.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtUsuario.Name = "txtUsuario"
+        Me.txtUsuario.Size = New System.Drawing.Size(206, 23)
+        Me.txtUsuario.TabIndex = 79
         '
         'frmAgregarEmpleados
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.txt_ID_Persona)
-        Me.Controls.Add(Me.txtCargo)
-        Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.txtFechaContratacion)
-        Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.btnAgregarRol)
-        Me.Controls.Add(Me.cboRol)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.lblCargaEmpleado)
+        Me.AutoScroll = True
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(818, 524)
+        Me.Controls.Add(Me.lblNota)
+        Me.Controls.Add(Me.PanelNotas)
+        Me.Controls.Add(Me.lblUsuario)
+        Me.Controls.Add(Me.PanelUsuario)
+        Me.Controls.Add(Me.lblDetallesContratación)
+        Me.Controls.Add(Me.PanelDetallesContratación)
+        Me.Controls.Add(Me.lblDatosPersonales)
+        Me.Controls.Add(Me.PanelDatosPersonales)
         Me.Controls.Add(Me.grdEmpleados)
-        Me.Controls.Add(Me.txtNota)
-        Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.btnAgregarSeccion)
         Me.Controls.Add(Me.btnCerrar)
-        Me.Controls.Add(Me.btnAgregarUsuario)
-        Me.Controls.Add(Me.cboUsuario)
-        Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.cboSeccion)
-        Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.btnModificar)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnAceptar)
         Me.Controls.Add(Me.btnBuscar)
-        Me.Controls.Add(Me.txtContraseña)
-        Me.Controls.Add(Me.txtFechaNacimiento)
-        Me.Controls.Add(Me.txtCuil)
         Me.Controls.Add(Me.txtID)
-        Me.Controls.Add(Me.chkEstado)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmAgregarEmpleados"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Empleados"
-        CType(Me.btnAgregarUsuario, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnCerrar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnAgregarSeccion, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdEmpleados, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnAgregarRol, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelDatosPersonales.ResumeLayout(False)
+        Me.PanelDatosPersonales.PerformLayout()
+        Me.PanelDetallesContratación.ResumeLayout(False)
+        Me.PanelDetallesContratación.PerformLayout()
+        Me.PanelUsuario.ResumeLayout(False)
+        Me.PanelUsuario.PerformLayout()
+        Me.PanelNotas.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -500,8 +648,6 @@ Partial Class frmAgregarEmpleados
 
     Friend WithEvents btnBuscar As Button
     Friend WithEvents txtContraseña As TextBox
-    Friend WithEvents txtFechaNacimiento As TextBox
-    Friend WithEvents txtCuil As TextBox
     Friend WithEvents txtID As TextBox
     Friend WithEvents chkEstado As CheckBox
     Friend WithEvents Label5 As Label
@@ -511,24 +657,37 @@ Partial Class frmAgregarEmpleados
     Friend WithEvents btnModificar As Button
     Friend WithEvents btnCancelar As Button
     Friend WithEvents btnAceptar As Button
-    Friend WithEvents btnAgregarUsuario As PictureBox
-    Friend WithEvents cboUsuario As ComboBox
-    Friend WithEvents Label9 As Label
+    Friend WithEvents lblNombre As Label
     Friend WithEvents cboSeccion As ComboBox
     Friend WithEvents Label7 As Label
     Friend WithEvents btnCerrar As PictureBox
     Friend WithEvents btnAgregarSeccion As PictureBox
     Friend WithEvents txtNota As RichTextBox
-    Friend WithEvents Label8 As Label
     Friend WithEvents grdEmpleados As DataGridView
     Friend WithEvents Label6 As Label
     Friend WithEvents lblCargaEmpleado As Label
     Friend WithEvents btnAgregarRol As PictureBox
     Friend WithEvents cboRol As ComboBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents txtFechaContratacion As TextBox
     Friend WithEvents Label10 As Label
     Friend WithEvents txtCargo As TextBox
     Friend WithEvents Label11 As Label
-    Friend WithEvents txt_ID_Persona As TextBox
+    Friend WithEvents lblCargaCuil As Label
+    Friend WithEvents lblCargaFechaNacimiento As Label
+    Friend WithEvents lblDatosPersonales As Label
+    Friend WithEvents PanelDatosPersonales As Panel
+    Friend WithEvents lblDetallesContratación As Label
+    Friend WithEvents PanelDetallesContratación As Panel
+    Friend WithEvents dtpFechaContratacion As DateTimePicker
+    Friend WithEvents lblUsuario As Label
+    Friend WithEvents PanelUsuario As Panel
+    Friend WithEvents lblNota As Label
+    Friend WithEvents PanelNotas As Panel
+    Friend WithEvents Label12 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label15 As Label
+    Friend WithEvents Label14 As Label
+    Friend WithEvents Label13 As Label
+    Friend WithEvents txtUsuario As TextBox
 End Class
