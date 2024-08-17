@@ -87,7 +87,7 @@ Public Class AD_Empleados
         Return tabla
     End Function
 
-    Public Function Consultar_ProductoPorID(ByVal idEmpleado As Integer) As SqlDataReader
+    Public Function Consultar_EmpleadoPorID(ByVal idEmpleado As Integer) As SqlDataReader
         Dim conexion As New SqlConnection(connectionString)
         Dim comando As New SqlCommand("Consultar_EmpleadoPorID", conexion)
         comando.CommandType = CommandType.StoredProcedure

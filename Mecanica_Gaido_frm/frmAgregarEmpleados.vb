@@ -14,7 +14,6 @@ Public Class frmAgregarEmpleados
         Cargar_Combo_Rol()
         cboSeccion.TabIndex = 1
 
-        Dim o_empleados As New AD_Empleados
         If o_empleados.ControlarIdPersonaEnEmpleado(IdPersona) Then
             ' Si la persona ya es un empleado, deshabilitar el botón "Aceptar"
             btnAceptar.Enabled = False
@@ -25,24 +24,42 @@ Public Class frmAgregarEmpleados
         Else
             ' Si no es un empleado, habilitar el botón "Aceptar"
             btnAceptar.Enabled = True
+            btnModificar.Enabled = False
         End If
     End Sub
 
     Public Sub limpiar()
         txtID.Clear()
         txtCargo.Clear()
+        txtUsuario.Clear()
         txtContraseña.Clear()
         txtNota.Clear()
-        txtUsuario.Clear()
         dtpFechaContratacion.Value = DateTime.Today
         cboSeccion.SelectedIndex = -1
         cboRol.SelectedIndex = -1
         chkEstado.Checked = False
-        btnAceptar.Enabled = True
-
-
     End Sub
 
+    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        limpiar()
+        Me.Close()
+        lblCargaEmpleado.Text = Nothing
+        lblCargaCuil.Text = Nothing
+        lblCargaFechaNacimiento.Text = Nothing
+    End Sub
+
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiar()
+        lblCargaEmpleado.Text = Nothing
+        lblCargaCuil.Text = Nothing
+        lblCargaFechaNacimiento.Text = Nothing
+
+        btnAceptar.Enabled = True
+        btnModificar.Enabled = False
+    End Sub
+#End Region
+
+#Region "Grilla y datos en txt"
     Public Sub Cargar_Grilla_Empleados()
         Try
             Dim conexion As SqlConnection
@@ -84,10 +101,8 @@ Public Class frmAgregarEmpleados
     End Sub
 
     Public Sub CargarDatosEnTxt(ByVal idEmpleado As Integer)
-        Dim o_Empleados As New AD_Empleados
-
         Try
-            Dim datoleido As SqlDataReader = o_Empleados.Consultar_ProductoPorID(idEmpleado)
+            Dim datoleido As SqlDataReader = o_empleados.Consultar_EmpleadoPorID(idEmpleado)
 
             If datoleido.Read() Then
                 txtID.Text = datoleido("N° Empleado").ToString()
@@ -112,6 +127,9 @@ Public Class frmAgregarEmpleados
                 txtNota.Text = datoleido("Nota").ToString()
 
                 chkEstado.Checked = Convert.ToBoolean(datoleido("Estado"))
+
+                btnAceptar.Enabled = False
+                btnModificar.Enabled = True
             Else
                 MsgBox("No se encontraron resultados", vbInformation, "Error")
             End If
@@ -121,7 +139,6 @@ Public Class frmAgregarEmpleados
             MessageBox.Show("Ocurrió un error al consultar el empleado: " & ex.Message, "Error")
         End Try
     End Sub
-
 
     Private Sub grdEmpleados_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdEmpleados.CellClick
         If e.RowIndex >= 0 Then
@@ -137,19 +154,6 @@ Public Class frmAgregarEmpleados
                 MsgBox("El ID del empleado no puede ser nulo.", vbCritical, "Error")
             End If
         End If
-    End Sub
-
-    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
-        limpiar()
-        Me.Close()
-
-    End Sub
-
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        limpiar()
-        lblCargaEmpleado.Text = Nothing
-        lblCargaCuil.Text = Nothing
-        lblCargaFechaNacimiento.Text = Nothing
     End Sub
 #End Region
 
@@ -270,10 +274,8 @@ Public Class frmAgregarEmpleados
 
 #Region "Cargar datos de empleado ya cargado"
     Public Sub CargarDatosPorIDPersona(ByVal idPersona As Integer)
-        Dim o_Empleados As New AD_Empleados
-
         Try
-            Dim datoleido As SqlDataReader = o_Empleados.Consultar_EmpleadoPorIDPersona(idPersona)
+            Dim datoleido As SqlDataReader = o_empleados.Consultar_EmpleadoPorIDPersona(idPersona)
 
             If datoleido.Read() Then
                 ' Si el empleado existe, carga los datos en los controles
@@ -298,6 +300,9 @@ Public Class frmAgregarEmpleados
                 txtNota.Text = datoleido("Nota").ToString()
 
                 chkEstado.Checked = Convert.ToBoolean(datoleido("Estado"))
+
+                btnAceptar.Enabled = False
+
             End If
 
             datoleido.Close()

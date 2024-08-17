@@ -28,12 +28,6 @@ Public Class frmAgregarDatosFiscales
         lblDocumentoResultado.Text = DocumentoPersona
     End Sub
 
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        limpiar()
-        lblNombreResultado.Text = Nothing
-        lblDocumentoResultado.Text = Nothing
-    End Sub
-
     Public Sub Cargar_Grilla()
         Try
             Dim conexion As SqlConnection
@@ -95,6 +89,16 @@ Public Class frmAgregarDatosFiscales
             CargarDatosEnTxt(e.RowIndex)
         End If
     End Sub
+
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiar()
+        lblNombreResultado.Text = Nothing
+        lblDocumentoResultado.Text = Nothing
+    End Sub
+
+    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        Me.Close()
+    End Sub
 #End Region
 
 #Region "Cargar"
@@ -118,7 +122,32 @@ Public Class frmAgregarDatosFiscales
     End Sub
 #End Region
 
-    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
-        Me.Close()
+#Region "Css trucho"
+    Private Sub PanelInformacionFiscal_Paint(sender As Object, e As PaintEventArgs) Handles PanelInformacionFiscal.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelInformacionFiscal.Width - 1, PanelInformacionFiscal.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
     End Sub
+
+
+    Private Sub PanelDetallesTributarios_Paint(sender As Object, e As PaintEventArgs) Handles PanelDetallesTributarios.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelDetallesTributarios.Width - 1, PanelDetallesTributarios.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+#End Region
 End Class

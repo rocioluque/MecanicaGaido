@@ -257,6 +257,13 @@ Public Class frmPersonas
             frmAgregar.NombrePersona = NombrePersona
             frmAgregar.DocumentoPersona = DocumentoPersona
 
+            If cboTipoPersona.Text = "Personas Físicas" Then
+                frmAgregar.lblNombre.Text = "Apellido y 
+Nombre"
+            Else
+                frmAgregar.lblNombre.Text = "Razón Social"
+            End If
+
             ' Muestra el nuevo formulario
             frmAgregar.ShowDialog()
         Else
@@ -264,7 +271,7 @@ Public Class frmPersonas
         End If
     End Sub
 
-    Private Sub btnAgregarCiudad_Click(sender As Object, e As EventArgs)
+    Private Sub btnAgregarCiudad_Click(sender As Object, e As EventArgs) Handles btnAgregarCiudad.Click
         If cboCiudad.SelectedValue <> Nothing And cboProvincia.SelectedValue <> Nothing Then
             Dim frm As New frmAgregarCiudad()
 
@@ -413,15 +420,8 @@ Public Class frmPersonas
 
 #End Region
 
-
 #Region "Habilitar y deshabilitar botones"
-    Private Sub btnAgregarCiudad_Click_1(sender As Object, e As EventArgs) Handles btnAgregarCiudad.Click
-        frmAgregarCiudad.Show()
-    End Sub
-
     Private Sub cboCiudad_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCiudad.SelectedIndexChanged
-
-
         If cboCiudad.SelectedIndex <> -1 Then
 
             txtCodigoPostal.Enabled = True
