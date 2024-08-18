@@ -110,6 +110,8 @@ Partial Class frmProductos
         'chkEstado
         '
         Me.chkEstado.AutoSize = True
+        Me.chkEstado.Checked = True
+        Me.chkEstado.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.chkEstado.ForeColor = System.Drawing.Color.White
         Me.chkEstado.Location = New System.Drawing.Point(601, 158)
@@ -276,6 +278,7 @@ Partial Class frmProductos
         Me.txtCantidadBulto.Name = "txtCantidadBulto"
         Me.txtCantidadBulto.Size = New System.Drawing.Size(224, 23)
         Me.txtCantidadBulto.TabIndex = 9
+        Me.txtCantidadBulto.Text = "1"
         '
         'txtStockReal
         '
@@ -284,6 +287,7 @@ Partial Class frmProductos
         Me.txtStockReal.Name = "txtStockReal"
         Me.txtStockReal.Size = New System.Drawing.Size(121, 23)
         Me.txtStockReal.TabIndex = 14
+        Me.txtStockReal.Text = "0"
         '
         'txtStockDisponible
         '
@@ -292,6 +296,7 @@ Partial Class frmProductos
         Me.txtStockDisponible.Name = "txtStockDisponible"
         Me.txtStockDisponible.Size = New System.Drawing.Size(121, 23)
         Me.txtStockDisponible.TabIndex = 15
+        Me.txtStockDisponible.Text = "0"
         '
         'txtUbicacion
         '

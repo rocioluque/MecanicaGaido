@@ -12,12 +12,12 @@ Public Class frmOrdenesReparacion
         txtSeñasParticulares.Clear()
         txtMotivoReparacion.Clear()
         cboPersonas.SelectedIndex = -1
-        cboServicios.SelectedIndex = -1
+        'cboServicios.SelectedIndex = -1
         cboVehiculo.SelectedIndex = -1
         chkActivo.Checked = False
     End Sub
 
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click, BtnCancelarS3.Click
         limpiar()
     End Sub
 
@@ -119,6 +119,26 @@ Public Class frmOrdenesReparacion
             Dim rect As New Rectangle(0, 0, PanelServiciosTerceros.Width - 1, PanelServiciosTerceros.Height - 1)
             e.Graphics.DrawRectangle(pen, rect)
         End Using
+    End Sub
+
+    Private Sub btnAgregarMarca_Click(sender As Object, e As EventArgs) Handles btnAgregarVehiculo.Click
+
+    End Sub
+
+    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
+
+    End Sub
+
+    Private Sub Label13_Click(sender As Object, e As EventArgs) Handles Label13.Click
+
+    End Sub
+
+    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
+
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles chkAvanceServ3.CheckedChanged
+
     End Sub
 #End Region
 
