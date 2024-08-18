@@ -138,10 +138,6 @@
     <Compile Include="frmAgregarEmpleados.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDetalleRepuestos.Designer.vb">
-      <DependentUpon>frmDetalleRepuestos.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmDetalleRepuestos.vb" />
     <Compile Include="frmGestionDatos.Designer.vb">
       <DependentUpon>frmGestionDatos.vb</DependentUpon>
     </Compile>
