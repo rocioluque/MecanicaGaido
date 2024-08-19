@@ -62,6 +62,7 @@ Partial Class frmOrdenesReparacion
         Me.txtMontoManoObra = New System.Windows.Forms.RichTextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.PanelServ3 = New System.Windows.Forms.Panel()
+        Me.lblResultado = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.chkActivoS3 = New System.Windows.Forms.CheckBox()
         Me.chkAvanceServ3 = New System.Windows.Forms.CheckBox()
@@ -72,7 +73,6 @@ Partial Class frmOrdenesReparacion
         Me.txtCostoEstimadoS3 = New System.Windows.Forms.RichTextBox()
         Me.grdServiciosTerceros = New System.Windows.Forms.DataGridView()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.lblNombreResultado = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.CboPersonaServ3 = New System.Windows.Forms.ComboBox()
         Me.btnAgregarServiciosTerceros = New System.Windows.Forms.PictureBox()
@@ -96,6 +96,7 @@ Partial Class frmOrdenesReparacion
         Me.cboProductoOR = New System.Windows.Forms.ComboBox()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
+        Me.grdRepuestos = New System.Windows.Forms.DataGridView()
         CType(Me.grdOrdenReparacion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarVehiculo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDetallesOrden.SuspendLayout()
@@ -108,6 +109,7 @@ Partial Class frmOrdenesReparacion
         Me.PanelReparaciones.SuspendLayout()
         CType(Me.grdRepuestosOR, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDetalleDeRepuestos.SuspendLayout()
+        CType(Me.grdRepuestos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'grdOrdenReparacion
@@ -541,6 +543,7 @@ Partial Class frmOrdenesReparacion
         '
         'PanelServ3
         '
+        Me.PanelServ3.Controls.Add(Me.lblResultado)
         Me.PanelServ3.Controls.Add(Me.Label20)
         Me.PanelServ3.Controls.Add(Me.chkActivoS3)
         Me.PanelServ3.Controls.Add(Me.chkAvanceServ3)
@@ -551,7 +554,6 @@ Partial Class frmOrdenesReparacion
         Me.PanelServ3.Controls.Add(Me.txtCostoEstimadoS3)
         Me.PanelServ3.Controls.Add(Me.grdServiciosTerceros)
         Me.PanelServ3.Controls.Add(Me.Label14)
-        Me.PanelServ3.Controls.Add(Me.lblNombreResultado)
         Me.PanelServ3.Controls.Add(Me.Label11)
         Me.PanelServ3.Controls.Add(Me.CboPersonaServ3)
         Me.PanelServ3.Controls.Add(Me.btnAgregarServiciosTerceros)
@@ -564,6 +566,15 @@ Partial Class frmOrdenesReparacion
         Me.PanelServ3.Name = "PanelServ3"
         Me.PanelServ3.Size = New System.Drawing.Size(461, 374)
         Me.PanelServ3.TabIndex = 105
+        '
+        'lblResultado
+        '
+        Me.lblResultado.AutoSize = True
+        Me.lblResultado.Location = New System.Drawing.Point(129, 36)
+        Me.lblResultado.Name = "lblResultado"
+        Me.lblResultado.Size = New System.Drawing.Size(45, 13)
+        Me.lblResultado.TabIndex = 111
+        Me.lblResultado.Text = "Label25"
         '
         'Label20
         '
@@ -679,17 +690,6 @@ Partial Class frmOrdenesReparacion
         Me.Label14.Size = New System.Drawing.Size(125, 17)
         Me.Label14.TabIndex = 100
         Me.Label14.Text = "Servicio Solicitado"
-        '
-        'lblNombreResultado
-        '
-        Me.lblNombreResultado.AutoSize = True
-        Me.lblNombreResultado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNombreResultado.ForeColor = System.Drawing.Color.White
-        Me.lblNombreResultado.Location = New System.Drawing.Point(150, 40)
-        Me.lblNombreResultado.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.lblNombreResultado.Name = "lblNombreResultado"
-        Me.lblNombreResultado.Size = New System.Drawing.Size(0, 17)
-        Me.lblNombreResultado.TabIndex = 103
         '
         'Label11
         '
@@ -864,6 +864,7 @@ Partial Class frmOrdenesReparacion
         '
         'PanelDetalleDeRepuestos
         '
+        Me.PanelDetalleDeRepuestos.Controls.Add(Me.grdRepuestos)
         Me.PanelDetalleDeRepuestos.Controls.Add(Me.Label24)
         Me.PanelDetalleDeRepuestos.Controls.Add(Me.btnQuitarRepOR)
         Me.PanelDetalleDeRepuestos.Controls.Add(Me.btnAgregarRepOR)
@@ -945,6 +946,8 @@ Partial Class frmOrdenesReparacion
         '
         'cboProductoOR
         '
+        Me.cboProductoOR.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboProductoOR.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cboProductoOR.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboProductoOR.FormattingEnabled = True
         Me.cboProductoOR.Location = New System.Drawing.Point(93, 16)
@@ -974,6 +977,23 @@ Partial Class frmOrdenesReparacion
         Me.Label21.Size = New System.Drawing.Size(119, 17)
         Me.Label21.TabIndex = 115
         Me.Label21.Text = "Monto Total Orden"
+        '
+        'grdRepuestos
+        '
+        Me.grdRepuestos.AllowUserToAddRows = False
+        Me.grdRepuestos.AllowUserToDeleteRows = False
+        Me.grdRepuestos.AllowUserToResizeRows = False
+        Me.grdRepuestos.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.grdRepuestos.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.grdRepuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdRepuestos.Location = New System.Drawing.Point(18, 99)
+        Me.grdRepuestos.Name = "grdRepuestos"
+        Me.grdRepuestos.ReadOnly = True
+        Me.grdRepuestos.RowHeadersVisible = False
+        Me.grdRepuestos.RowHeadersWidth = 51
+        Me.grdRepuestos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.grdRepuestos.Size = New System.Drawing.Size(767, 207)
+        Me.grdRepuestos.TabIndex = 116
         '
         'frmOrdenesReparacion
         '
@@ -1027,6 +1047,7 @@ Partial Class frmOrdenesReparacion
         CType(Me.grdRepuestosOR, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelDetalleDeRepuestos.ResumeLayout(False)
         Me.PanelDetalleDeRepuestos.PerformLayout()
+        CType(Me.grdRepuestos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1073,7 +1094,6 @@ Partial Class frmOrdenesReparacion
     Friend WithEvents PanelReparaciones As Panel
     Friend WithEvents grdServiciosTerceros As DataGridView
     Friend WithEvents Label14 As Label
-    Friend WithEvents lblNombreResultado As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents txtMontoRepuestos As RichTextBox
@@ -1104,4 +1124,6 @@ Partial Class frmOrdenesReparacion
     Friend WithEvents Label21 As Label
     Friend WithEvents txtServicioSolicitado As TextBox
     Friend WithEvents txtID_Serv3 As TextBox
+    Friend WithEvents lblResultado As Label
+    Friend WithEvents grdRepuestos As DataGridView
 End Class
