@@ -144,4 +144,46 @@ Public Class frmAgregarDatosFiscales
         End Using
     End Sub
 #End Region
+
+#Region "Modificar"
+
+    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
+        If txtIngresosBrutos.Text <> Nothing And txtSaldo.Text <> Nothing Then
+            Try
+                ' Crear la conexión a la base de datos
+                Using conn As New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
+
+                    conn.Open()
+
+                    ' Crear el comando para ejecutar el procedimiento almacenado
+                    Using cmd As New SqlCommand("Modificar_DatoFiscal", conn)
+                        cmd.CommandType = CommandType.StoredProcedure
+
+                        ' Agregar los parámetros al comando
+                        cmd.Parameters.AddWithValue("@idPersona", Convert.ToInt32(txtID.Text))
+                        cmd.Parameters.AddWithValue("@IngresosBrutos", txtIngresosBrutos.Text)
+                        cmd.Parameters.AddWithValue("@fechaAlta", dtpFechaAlta.Value)
+                        cmd.Parameters.AddWithValue("@Saldo", Convert.ToDecimal(txtSaldo.Text))
+
+                        ' Ejecutar el procedimiento almacenado
+                        cmd.ExecuteNonQuery()
+                    End Using
+                End Using
+
+                ' Mostrar mensaje 
+                MsgBox("Dato Fiscal modificado correctamente.", vbInformation, "Información")
+                limpiar()
+                Cargar_Grilla()
+                lblNombreResultado.Text = Nothing
+                lblDocumentoResultado.Text = Nothing
+
+            Catch ex As Exception
+                MsgBox("Error al modificar el dato fiscal: " & ex.Message, vbCritical, "Error")
+            End Try
+        Else
+            MsgBox("Complete los datos correspondientes.", vbInformation, "Error")
+        End If
+    End Sub
+
+#End Region
 End Class
