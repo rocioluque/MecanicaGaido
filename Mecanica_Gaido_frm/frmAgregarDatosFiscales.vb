@@ -4,11 +4,7 @@ Imports System.Data.SqlClient
 Imports System.Configuration
 Public Class frmAgregarDatosFiscales
     Dim o_DatosFiscales As New AD_DatosFiscales
-
-    ' Propiedades públicas para recibir los datos
     Public Property IdPersona As Integer
-    Public Property NombrePersona As String
-    Public Property DocumentoPersona As String
 
 #Region "Procedimientos"
     Public Sub limpiar()
@@ -22,10 +18,6 @@ Public Class frmAgregarDatosFiscales
     Private Sub frmAgregarDatosFiscales_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         limpiar()
         Cargar_Grilla()
-
-        ' Usa las propiedades públicas para establecer los valores en los controles del formulario
-        lblNombreResultado.Text = NombrePersona
-        lblDocumentoResultado.Text = DocumentoPersona
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -34,6 +26,12 @@ Public Class frmAgregarDatosFiscales
         lblDocumentoResultado.Text = Nothing
     End Sub
 
+    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        Me.Close()
+    End Sub
+#End Region
+
+#Region "Grilla y datos en txt"
     Public Sub Cargar_Grilla()
         Try
             Dim conexion As SqlConnection
@@ -118,7 +116,32 @@ Public Class frmAgregarDatosFiscales
     End Sub
 #End Region
 
-    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
-        Me.Close()
+#Region "Css trucho"
+    Private Sub PanelInformacionFiscal_Paint(sender As Object, e As PaintEventArgs) Handles PanelInformacionFiscal.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelInformacionFiscal.Width - 1, PanelInformacionFiscal.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
     End Sub
+
+
+    Private Sub PanelDetallesTributarios_Paint(sender As Object, e As PaintEventArgs) Handles PanelDetallesTributarios.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelDetallesTributarios.Width - 1, PanelDetallesTributarios.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+#End Region
 End Class

@@ -4,10 +4,7 @@ Imports System.Data.SqlClient
 Imports System.Configuration
 Public Class frmPersonas
     Dim o_Personas As New AD_Personas
-
     Public Property IdPersona As Integer
-    Public Property NombrePersona As String
-    Public Property DocumentoPersona As String
 
 #Region "Carga de Cbos"
     Private Sub Cargar_Provincias()
@@ -245,26 +242,28 @@ Public Class frmPersonas
 
     Private Sub btnDatoFiscal_Click(sender As Object, e As EventArgs) Handles btnDatoFiscal.Click
         If txtID.Text <> Nothing And txtNombre.Text <> Nothing And txtNumeroDocumento.Text <> Nothing Then
-            IdPersona = txtID.Text
-            NombrePersona = txtApellido.Text & " " & txtNombre.Text
-            DocumentoPersona = txtNumeroDocumento.Text
+            frmAgregarDatosFiscales.IdPersona = Convert.ToInt32(txtID.Text)
 
-            ' Crea una nueva instancia de frmDatoFiscal
-            Dim frmAgregar As New frmAgregarDatosFiscales()
+            frmAgregarDatosFiscales.lblNombreResultado.Text = txtApellido.Text & " " & txtNombre.Text
+            frmAgregarDatosFiscales.lblDocumentoResultado.Text = txtNumeroDocumento.Text
 
-            ' Pasa los valores a las propiedades públicas del nuevo formulario
-            frmAgregar.IdPersona = IdPersona
-            frmAgregar.NombrePersona = NombrePersona
-            frmAgregar.DocumentoPersona = DocumentoPersona
+            If cboTipoPersona.Text = "Personas Físicas" Then
 
-            ' Muestra el nuevo formulario
-            frmAgregar.ShowDialog()
+                'NO TOQUEN EL NOMBRE DE DONDE ESTÁ
+
+                frmAgregarDatosFiscales.lblNombre.Text = "Apellido y 
+Nombre"
+            Else
+                frmAgregarDatosFiscales.lblNombre.Text = "Razón Social"
+            End If
+
+            frmAgregarDatosFiscales.ShowDialog()
         Else
             MsgBox("Por favor seleccione una persona para cargar sus datos físcales.", vbInformation, "Información")
         End If
     End Sub
 
-    Private Sub btnAgregarCiudad_Click(sender As Object, e As EventArgs)
+    Private Sub btnAgregarCiudad_Click(sender As Object, e As EventArgs) Handles btnAgregarCiudad.Click
         If cboCiudad.SelectedValue <> Nothing And cboProvincia.SelectedValue <> Nothing Then
             Dim frm As New frmAgregarCiudad()
 
@@ -413,15 +412,8 @@ Public Class frmPersonas
 
 #End Region
 
-
 #Region "Habilitar y deshabilitar botones"
-    Private Sub btnAgregarCiudad_Click_1(sender As Object, e As EventArgs) Handles btnAgregarCiudad.Click
-        frmAgregarCiudad.Show()
-    End Sub
-
     Private Sub cboCiudad_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCiudad.SelectedIndexChanged
-
-
         If cboCiudad.SelectedIndex <> -1 Then
 
             txtCodigoPostal.Enabled = True
