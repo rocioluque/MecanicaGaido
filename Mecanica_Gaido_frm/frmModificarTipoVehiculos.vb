@@ -72,5 +72,6 @@ Public Class frmModificarTipoVehiculos
             limpiar()
         End Try
     End Sub
+
 #End Region
 End Class

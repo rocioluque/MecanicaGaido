@@ -57,9 +57,10 @@ Partial Class frmAgregarDatosFiscales
         '
         Me.btnCerrar.BackgroundImage = CType(resources.GetObject("btnCerrar.BackgroundImage"), System.Drawing.Image)
         Me.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnCerrar.Location = New System.Drawing.Point(715, 3)
+        Me.btnCerrar.Location = New System.Drawing.Point(953, 4)
+        Me.btnCerrar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(20, 20)
+        Me.btnCerrar.Size = New System.Drawing.Size(27, 25)
         Me.btnCerrar.TabIndex = 62
         Me.btnCerrar.TabStop = False
         '
@@ -68,10 +69,9 @@ Partial Class frmAgregarDatosFiscales
         Me.lblNombre.AutoSize = True
         Me.lblNombre.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNombre.ForeColor = System.Drawing.Color.White
-        Me.lblNombre.Location = New System.Drawing.Point(12, 21)
-        Me.lblNombre.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblNombre.Location = New System.Drawing.Point(16, 26)
         Me.lblNombre.Name = "lblNombre"
-        Me.lblNombre.Size = New System.Drawing.Size(90, 34)
+        Me.lblNombre.Size = New System.Drawing.Size(113, 42)
         Me.lblNombre.TabIndex = 73
         Me.lblNombre.Text = "Nombre /" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Razón Social"
         '
@@ -84,9 +84,10 @@ Partial Class frmAgregarDatosFiscales
         Me.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBuscar.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnBuscar.ForeColor = System.Drawing.Color.White
-        Me.btnBuscar.Location = New System.Drawing.Point(294, 26)
+        Me.btnBuscar.Location = New System.Drawing.Point(392, 32)
+        Me.btnBuscar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnBuscar.Name = "btnBuscar"
-        Me.btnBuscar.Size = New System.Drawing.Size(50, 28)
+        Me.btnBuscar.Size = New System.Drawing.Size(67, 34)
         Me.btnBuscar.TabIndex = 2
         Me.btnBuscar.Text = "..."
         Me.btnBuscar.UseVisualStyleBackColor = False
@@ -94,19 +95,19 @@ Partial Class frmAgregarDatosFiscales
         'txtIngresosBrutos
         '
         Me.txtIngresosBrutos.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIngresosBrutos.Location = New System.Drawing.Point(118, 20)
-        Me.txtIngresosBrutos.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtIngresosBrutos.Location = New System.Drawing.Point(157, 25)
+        Me.txtIngresosBrutos.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txtIngresosBrutos.Name = "txtIngresosBrutos"
-        Me.txtIngresosBrutos.Size = New System.Drawing.Size(133, 23)
+        Me.txtIngresosBrutos.Size = New System.Drawing.Size(176, 27)
         Me.txtIngresosBrutos.TabIndex = 3
         '
         'txtID
         '
         Me.txtID.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtID.Location = New System.Drawing.Point(183, 31)
-        Me.txtID.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtID.Location = New System.Drawing.Point(244, 38)
+        Me.txtID.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txtID.Name = "txtID"
-        Me.txtID.Size = New System.Drawing.Size(72, 23)
+        Me.txtID.Size = New System.Drawing.Size(95, 27)
         Me.txtID.TabIndex = 1
         '
         'chkEstado
@@ -114,11 +115,11 @@ Partial Class frmAgregarDatosFiscales
         Me.chkEstado.AutoSize = True
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
-        Me.chkEstado.Location = New System.Drawing.Point(13, 111)
-        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
+        Me.chkEstado.Location = New System.Drawing.Point(17, 137)
+        Me.chkEstado.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.chkEstado.Name = "chkEstado"
-        Me.chkEstado.Size = New System.Drawing.Size(85, 21)
-        Me.chkEstado.TabIndex = 9
+        Me.chkEstado.Size = New System.Drawing.Size(108, 25)
+        Me.chkEstado.TabIndex = 6
         Me.chkEstado.Text = "¿Activo?"
         Me.chkEstado.UseVisualStyleBackColor = True
         '
@@ -127,10 +128,9 @@ Partial Class frmAgregarDatosFiscales
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(10, 53)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label4.Location = New System.Drawing.Point(13, 65)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(77, 17)
+        Me.Label4.Size = New System.Drawing.Size(102, 21)
         Me.Label4.TabIndex = 66
         Me.Label4.Text = "Fecha Alta"
         '
@@ -139,10 +139,9 @@ Partial Class frmAgregarDatosFiscales
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(10, 24)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label3.Location = New System.Drawing.Point(13, 30)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(101, 17)
+        Me.Label3.Size = New System.Drawing.Size(132, 21)
         Me.Label3.TabIndex = 65
         Me.Label3.Text = "Ingresos Brutos"
         '
@@ -151,10 +150,9 @@ Partial Class frmAgregarDatosFiscales
         Me.lblDocumento.AutoSize = True
         Me.lblDocumento.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDocumento.ForeColor = System.Drawing.Color.White
-        Me.lblDocumento.Location = New System.Drawing.Point(12, 65)
-        Me.lblDocumento.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblDocumento.Location = New System.Drawing.Point(16, 80)
         Me.lblDocumento.Name = "lblDocumento"
-        Me.lblDocumento.Size = New System.Drawing.Size(86, 17)
+        Me.lblDocumento.Size = New System.Drawing.Size(109, 21)
         Me.lblDocumento.TabIndex = 64
         Me.lblDocumento.Text = "Documento"
         '
@@ -163,20 +161,19 @@ Partial Class frmAgregarDatosFiscales
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(46, 37)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label1.Location = New System.Drawing.Point(61, 46)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(98, 17)
+        Me.Label1.Size = New System.Drawing.Size(127, 21)
         Me.Label1.TabIndex = 63
         Me.Label1.Text = "N° Dato Fiscal"
         '
         'txtSaldo
         '
         Me.txtSaldo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSaldo.Location = New System.Drawing.Point(118, 79)
-        Me.txtSaldo.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtSaldo.Location = New System.Drawing.Point(157, 97)
+        Me.txtSaldo.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txtSaldo.Name = "txtSaldo"
-        Me.txtSaldo.Size = New System.Drawing.Size(133, 23)
+        Me.txtSaldo.Size = New System.Drawing.Size(176, 27)
         Me.txtSaldo.TabIndex = 5
         '
         'Label7
@@ -184,10 +181,9 @@ Partial Class frmAgregarDatosFiscales
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(10, 82)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label7.Location = New System.Drawing.Point(13, 101)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(44, 17)
+        Me.Label7.Size = New System.Drawing.Size(56, 21)
         Me.Label7.TabIndex = 75
         Me.Label7.Text = "Saldo"
         '
@@ -200,10 +196,11 @@ Partial Class frmAgregarDatosFiscales
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
-        Me.btnModificar.Location = New System.Drawing.Point(296, 199)
+        Me.btnModificar.Location = New System.Drawing.Point(395, 245)
+        Me.btnModificar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnModificar.Name = "btnModificar"
-        Me.btnModificar.Size = New System.Drawing.Size(117, 37)
-        Me.btnModificar.TabIndex = 7
+        Me.btnModificar.Size = New System.Drawing.Size(156, 46)
+        Me.btnModificar.TabIndex = 8
         Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = False
         '
@@ -217,10 +214,11 @@ Partial Class frmAgregarDatosFiscales
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
-        Me.btnCancelar.Location = New System.Drawing.Point(543, 199)
+        Me.btnCancelar.Location = New System.Drawing.Point(724, 245)
+        Me.btnCancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(117, 37)
-        Me.btnCancelar.TabIndex = 8
+        Me.btnCancelar.Size = New System.Drawing.Size(156, 46)
+        Me.btnCancelar.TabIndex = 9
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = False
         '
@@ -233,10 +231,11 @@ Partial Class frmAgregarDatosFiscales
         Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAceptar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAceptar.ForeColor = System.Drawing.Color.White
-        Me.btnAceptar.Location = New System.Drawing.Point(49, 199)
+        Me.btnAceptar.Location = New System.Drawing.Point(65, 245)
+        Me.btnAceptar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnAceptar.Name = "btnAceptar"
-        Me.btnAceptar.Size = New System.Drawing.Size(117, 37)
-        Me.btnAceptar.TabIndex = 6
+        Me.btnAceptar.Size = New System.Drawing.Size(156, 46)
+        Me.btnAceptar.TabIndex = 7
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = False
         '
@@ -255,11 +254,12 @@ Partial Class frmAgregarDatosFiscales
         Me.grdCuenta.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.grdCuenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdCuenta.GridColor = System.Drawing.Color.DarkGray
-        Me.grdCuenta.Location = New System.Drawing.Point(49, 268)
+        Me.grdCuenta.Location = New System.Drawing.Point(65, 330)
+        Me.grdCuenta.Margin = New System.Windows.Forms.Padding(4)
         Me.grdCuenta.Name = "grdCuenta"
         Me.grdCuenta.ReadOnly = True
         Me.grdCuenta.RowHeadersWidth = 51
-        Me.grdCuenta.Size = New System.Drawing.Size(611, 176)
+        Me.grdCuenta.Size = New System.Drawing.Size(815, 217)
         Me.grdCuenta.TabIndex = 82
         '
         'lblNombreResultado
@@ -267,10 +267,9 @@ Partial Class frmAgregarDatosFiscales
         Me.lblNombreResultado.AutoSize = True
         Me.lblNombreResultado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNombreResultado.ForeColor = System.Drawing.Color.White
-        Me.lblNombreResultado.Location = New System.Drawing.Point(113, 24)
-        Me.lblNombreResultado.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblNombreResultado.Location = New System.Drawing.Point(151, 30)
         Me.lblNombreResultado.Name = "lblNombreResultado"
-        Me.lblNombreResultado.Size = New System.Drawing.Size(0, 17)
+        Me.lblNombreResultado.Size = New System.Drawing.Size(0, 21)
         Me.lblNombreResultado.TabIndex = 83
         '
         'lblDocumentoResultado
@@ -278,19 +277,19 @@ Partial Class frmAgregarDatosFiscales
         Me.lblDocumentoResultado.AutoSize = True
         Me.lblDocumentoResultado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDocumentoResultado.ForeColor = System.Drawing.Color.White
-        Me.lblDocumentoResultado.Location = New System.Drawing.Point(113, 65)
-        Me.lblDocumentoResultado.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblDocumentoResultado.Location = New System.Drawing.Point(151, 80)
         Me.lblDocumentoResultado.Name = "lblDocumentoResultado"
-        Me.lblDocumentoResultado.Size = New System.Drawing.Size(0, 17)
+        Me.lblDocumentoResultado.Size = New System.Drawing.Size(0, 21)
         Me.lblDocumentoResultado.TabIndex = 84
         '
         'dtpFechaAlta
         '
         Me.dtpFechaAlta.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.dtpFechaAlta.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaAlta.Location = New System.Drawing.Point(118, 48)
+        Me.dtpFechaAlta.Location = New System.Drawing.Point(157, 59)
+        Me.dtpFechaAlta.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpFechaAlta.Name = "dtpFechaAlta"
-        Me.dtpFechaAlta.Size = New System.Drawing.Size(133, 23)
+        Me.dtpFechaAlta.Size = New System.Drawing.Size(176, 27)
         Me.dtpFechaAlta.TabIndex = 4
         Me.dtpFechaAlta.Value = New Date(2024, 7, 25, 0, 0, 0, 0)
         '
@@ -299,10 +298,9 @@ Partial Class frmAgregarDatosFiscales
         Me.lblDetallesTributarios.AutoSize = True
         Me.lblDetallesTributarios.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblDetallesTributarios.ForeColor = System.Drawing.Color.White
-        Me.lblDetallesTributarios.Location = New System.Drawing.Point(404, 23)
-        Me.lblDetallesTributarios.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblDetallesTributarios.Location = New System.Drawing.Point(539, 28)
         Me.lblDetallesTributarios.Name = "lblDetallesTributarios"
-        Me.lblDetallesTributarios.Size = New System.Drawing.Size(120, 17)
+        Me.lblDetallesTributarios.Size = New System.Drawing.Size(142, 20)
         Me.lblDetallesTributarios.TabIndex = 85
         Me.lblDetallesTributarios.Text = "Detalles Tributarios"
         '
@@ -315,9 +313,10 @@ Partial Class frmAgregarDatosFiscales
         Me.PanelDetallesTributarios.Controls.Add(Me.Label4)
         Me.PanelDetallesTributarios.Controls.Add(Me.Label7)
         Me.PanelDetallesTributarios.Controls.Add(Me.txtSaldo)
-        Me.PanelDetallesTributarios.Location = New System.Drawing.Point(392, 31)
+        Me.PanelDetallesTributarios.Location = New System.Drawing.Point(523, 38)
+        Me.PanelDetallesTributarios.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelDetallesTributarios.Name = "PanelDetallesTributarios"
-        Me.PanelDetallesTributarios.Size = New System.Drawing.Size(268, 151)
+        Me.PanelDetallesTributarios.Size = New System.Drawing.Size(357, 186)
         Me.PanelDetallesTributarios.TabIndex = 86
         '
         'lblInformacionFiscal
@@ -325,10 +324,9 @@ Partial Class frmAgregarDatosFiscales
         Me.lblInformacionFiscal.AutoSize = True
         Me.lblInformacionFiscal.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblInformacionFiscal.ForeColor = System.Drawing.Color.White
-        Me.lblInformacionFiscal.Location = New System.Drawing.Point(61, 69)
-        Me.lblInformacionFiscal.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblInformacionFiscal.Location = New System.Drawing.Point(81, 85)
         Me.lblInformacionFiscal.Name = "lblInformacionFiscal"
-        Me.lblInformacionFiscal.Size = New System.Drawing.Size(115, 17)
+        Me.lblInformacionFiscal.Size = New System.Drawing.Size(141, 20)
         Me.lblInformacionFiscal.TabIndex = 87
         Me.lblInformacionFiscal.Text = "Información Fiscal"
         '
@@ -338,18 +336,19 @@ Partial Class frmAgregarDatosFiscales
         Me.PanelInformacionFiscal.Controls.Add(Me.lblDocumento)
         Me.PanelInformacionFiscal.Controls.Add(Me.lblNombreResultado)
         Me.PanelInformacionFiscal.Controls.Add(Me.lblDocumentoResultado)
-        Me.PanelInformacionFiscal.Location = New System.Drawing.Point(49, 77)
+        Me.PanelInformacionFiscal.Location = New System.Drawing.Point(65, 95)
+        Me.PanelInformacionFiscal.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelInformacionFiscal.Name = "PanelInformacionFiscal"
-        Me.PanelInformacionFiscal.Size = New System.Drawing.Size(296, 105)
+        Me.PanelInformacionFiscal.Size = New System.Drawing.Size(395, 129)
         Me.PanelInformacionFiscal.TabIndex = 88
         '
         'frmAgregarDatosFiscales
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(752, 407)
+        Me.ClientSize = New System.Drawing.Size(1003, 501)
         Me.Controls.Add(Me.lblInformacionFiscal)
         Me.Controls.Add(Me.PanelInformacionFiscal)
         Me.Controls.Add(Me.lblDetallesTributarios)
@@ -364,6 +363,7 @@ Partial Class frmAgregarDatosFiscales
         Me.Controls.Add(Me.btnCerrar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmAgregarDatosFiscales"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Cuentas Corrientes"
