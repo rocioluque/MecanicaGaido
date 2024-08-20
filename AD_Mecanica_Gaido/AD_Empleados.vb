@@ -74,19 +74,7 @@ Public Class AD_Empleados
     End Function
 #End Region
 
-    Public Function Cargar_Grilla_Empleados() As DataTable
-        Dim tabla As New DataTable
-
-        Using conexion As New SqlConnection(connectionString)
-            Using comando As New SqlCommand("Cargar_Grilla_Empleados", conexion)
-                comando.CommandType = CommandType.StoredProcedure
-                Dim datadapter As New SqlDataAdapter(comando)
-                datadapter.Fill(tabla)
-            End Using
-        End Using
-        Return tabla
-    End Function
-
+#Region "consultar y controlar"
     Public Function Consultar_EmpleadoPorID(ByVal idEmpleado As Integer) As SqlDataReader
         Dim conexion As New SqlConnection(connectionString)
         Dim comando As New SqlCommand("Consultar_EmpleadoPorID", conexion)
@@ -137,6 +125,20 @@ Public Class AD_Empleados
         End Try
 
         Return resultado
+    End Function
+#End Region
+
+    Public Function Cargar_Grilla_Empleados() As DataTable
+        Dim tabla As New DataTable
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Grilla_Empleados", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                Dim datadapter As New SqlDataAdapter(comando)
+                datadapter.Fill(tabla)
+            End Using
+        End Using
+        Return tabla
     End Function
 
     Public Sub Agregar_Empleado_Usuario(ByVal idPersona As Integer, ByVal usuario As String, ByVal contraseña As String, ByVal idRol As Integer,

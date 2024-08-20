@@ -9,10 +9,6 @@ Public Class frmProductos
 
     Private txtsConDecimales As New List(Of TextBox)
 
-
-
-
-
 #Region "Procedimientos"
     Private Sub frmProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Combo_Marcas()
