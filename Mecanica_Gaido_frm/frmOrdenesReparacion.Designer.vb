@@ -1022,6 +1022,7 @@ Partial Class frmOrdenesReparacion
         'Precio
         '
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle5.Format = "N2"
         DataGridViewCellStyle5.NullValue = Nothing
         Me.Precio.DefaultCellStyle = DataGridViewCellStyle5

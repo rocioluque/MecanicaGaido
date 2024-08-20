@@ -37,6 +37,12 @@ Public Class frmVehiculos
         chkEstado.Checked = False
     End Sub
 
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        Limpiar()
+    End Sub
+#End Region
+
+#Region "Cargar grilla y datos en txt"
     Public Sub Cargar_Grilla()
         Try
             Dim conexion As SqlConnection
@@ -56,14 +62,6 @@ Public Class frmVehiculos
             If oDs.Tables(0).Rows.Count > 0 Then
                 grdVehiculo.AutoGenerateColumns = True
                 grdVehiculo.DataSource = oDs.Tables(0)
-
-                ' Verificar si las columnas existen antes de ocultarlas
-                Dim columnasParaOcultar As String() = {"Tipo de Vehículo", "Color", "Modelo", "Marca", "Matricula", "N° Motor", "Nota", "Estado"}
-                For Each colName As String In columnasParaOcultar
-                    If grdVehiculo.Columns.Contains(colName) Then
-                        grdVehiculo.Columns(colName).Visible = False
-                    End If
-                Next
                 grdVehiculo.Refresh()
             Else
                 MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
@@ -82,71 +80,20 @@ Public Class frmVehiculos
             Dim datoleido As SqlDataReader = o_vehiculo.Consultar_VehiculoPorID(idVehiculo)
 
             If datoleido.Read() Then
-                txtID.Text = If(IsDBNull(datoleido("N° Vehículo")), String.Empty, datoleido("N° Vehículo").ToString())
+                txtID.Text = datoleido("N° Vehículo").ToString()
+                cboPersona.SelectedValue = datoleido("Dueño").ToString
+                txtNombre.Text = datoleido("Vehículo").ToString()
+                txtNumChasis.Text = datoleido("N° Chasis").ToString()
+                txtNumMotor.Text = datoleido("N° Motor").ToString()
+                cboTipoVehiculo.SelectedValue = datoleido("Tipo de Vehículo").ToString()
+                cboMarca.SelectedValue = datoleido("Marca").ToString()
+                txtModelo.Text = datoleido("Modelo").ToString()
+                txtColor.Text = datoleido("Color").ToString()
+                txtMatricula.Text = datoleido("Matricula").ToString()
+                txtNota.Text = datoleido("Nota").ToString()
+                chkEstado.Checked = Convert.ToBoolean(datoleido("Estado"))
 
-                ' Conversión segura del ID del dueño
-                If Not IsDBNull(datoleido("Dueño")) Then
-                    Dim dueñoID As Integer
-                    If Integer.TryParse(datoleido("Dueño").ToString(), dueñoID) Then
-                        If cboPersona.Items.Cast(Of DataRowView)().Any(Function(item) Convert.ToInt32(item("ID_Persona")) = dueñoID) Then
-                            cboPersona.SelectedValue = dueñoID
-                        Else
-                            cboPersona.SelectedIndex = -1
-                        End If
-                    Else
-                        cboPersona.SelectedIndex = -1
-                    End If
-                Else
-                    cboPersona.SelectedIndex = -1
-                End If
 
-                txtNombre.Text = If(IsDBNull(datoleido("Vehículo")), String.Empty, datoleido("Vehículo").ToString())
-                txtNumChasis.Text = If(IsDBNull(datoleido("N° Chasis")), String.Empty, datoleido("N° Chasis").ToString())
-                txtNumMotor.Text = If(IsDBNull(datoleido("N° Motor")), String.Empty, datoleido("N° Motor").ToString())
-
-                ' Conversión segura del tipo de vehículo
-                If Not IsDBNull(datoleido("Tipo de Vehículo")) Then
-                    Dim tipoVehiculoID As Integer
-                    If Integer.TryParse(datoleido("Tipo de Vehículo").ToString(), tipoVehiculoID) Then
-                        If cboTipoVehiculo.Items.Cast(Of DataRowView)().Any(Function(item) Convert.ToInt32(item("ID_TipoVehiculo")) = tipoVehiculoID) Then
-                            cboTipoVehiculo.SelectedValue = tipoVehiculoID
-                        Else
-                            cboTipoVehiculo.SelectedIndex = -1
-                        End If
-                    Else
-                        cboTipoVehiculo.SelectedIndex = -1
-                    End If
-                Else
-                    cboTipoVehiculo.SelectedIndex = -1
-                End If
-
-                ' Conversión segura de la marca
-                If Not IsDBNull(datoleido("Marca")) Then
-                    Dim marcaID As Integer
-                    If Integer.TryParse(datoleido("Marca").ToString(), marcaID) Then
-                        If cboMarca.Items.Cast(Of DataRowView)().Any(Function(item) Convert.ToInt32(item("ID_Marca")) = marcaID) Then
-                            cboMarca.SelectedValue = marcaID
-                        Else
-                            cboMarca.SelectedIndex = -1
-                        End If
-                    Else
-                        cboMarca.SelectedIndex = -1
-                    End If
-                Else
-                    cboMarca.SelectedIndex = -1
-                End If
-
-                txtModelo.Text = If(IsDBNull(datoleido("Modelo")), String.Empty, datoleido("Modelo").ToString())
-                txtColor.Text = If(IsDBNull(datoleido("Color")), String.Empty, datoleido("Color").ToString())
-                txtMatricula.Text = If(IsDBNull(datoleido("Matricula")), String.Empty, datoleido("Matricula").ToString())
-                txtNota.Text = If(IsDBNull(datoleido("Nota")), String.Empty, datoleido("Nota").ToString())
-
-                ' Conversión segura del estado
-                If Not IsDBNull(datoleido("Estado")) Then
-                    chkEstado.Checked = Convert.ToBoolean(datoleido("Estado"))
-                Else
-                    chkEstado.Checked = False
-                End If
             Else
                 MsgBox("No se encontraron resultados", vbInformation, "Error")
             End If
@@ -173,11 +120,6 @@ Public Class frmVehiculos
             End If
         End If
     End Sub
-
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        Limpiar()
-    End Sub
-
 #End Region
 
 #Region "Cargar"

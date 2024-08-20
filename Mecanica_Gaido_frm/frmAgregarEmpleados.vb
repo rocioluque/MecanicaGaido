@@ -76,14 +76,6 @@ Public Class frmAgregarEmpleados
             If oDs.Tables(0).Rows.Count > 0 Then
                 grdEmpleados.AutoGenerateColumns = True
                 grdEmpleados.DataSource = oDs.Tables(0)
-
-                ' Verificar si las columnas existen antes de ocultarlas
-                Dim columnasParaOcultar As String() = {"Fecha_Nacimiento", "Contraseña", "Nota", "Estado", "Documento"}
-                For Each colName As String In columnasParaOcultar
-                    If grdEmpleados.Columns.Contains(colName) Then
-                        grdEmpleados.Columns(colName).Visible = False
-                    End If
-                Next
                 grdEmpleados.Refresh()
             Else
                 MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
@@ -139,8 +131,6 @@ Public Class frmAgregarEmpleados
 
     Private Sub grdEmpleados_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdEmpleados.CellClick
         If e.RowIndex >= 0 Then
-
-            ' Obtiene el ID del producto de la celda correspondiente
             Dim selectedRow As DataGridViewRow = grdEmpleados.Rows(e.RowIndex)
             Dim idEmpleado As Integer
 

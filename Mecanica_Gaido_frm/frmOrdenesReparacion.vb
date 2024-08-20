@@ -34,8 +34,6 @@ Public Class frmOrdenesReparacion
     End Sub
 #End Region
 
-
-
 #Region "Cargar cbo"
     Private Sub Cargar_Combo_Vehiculos()
         Try

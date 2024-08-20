@@ -6,7 +6,6 @@ Imports System.Configuration
 Imports System.Data.Common
 
 Public Class AD_OrdenReparacion
-
     Private connectionString As String
 
     Public Sub New()
@@ -88,6 +87,9 @@ Public Class AD_OrdenReparacion
         Return tabla
     End Function
 
+
+#End Region
+
     Public Function Cargar_Grilla_Terceros() As DataTable
         Dim tabla As New DataTable
 
@@ -126,5 +128,4 @@ Public Class AD_OrdenReparacion
         End Using
         Return tabla
     End Function
-#End Region
 End Class
