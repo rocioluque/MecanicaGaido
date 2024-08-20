@@ -242,6 +242,19 @@ Public Class frmOrdenesReparacion
 #End Region
 
 #Region "Css trucho"
+    Private Sub PanelDetallesOrden_Paint(sender As Object, e As PaintEventArgs) Handles PanelDetallesOrden.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelDetallesOrden.Width - 1, PanelDetallesOrden.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
     Private Sub PanelInfoVehiculo_Paint(sender As Object, e As PaintEventArgs) Handles PanelInfoVehiculo.Paint
         ' Configurar los colores y el grosor del borde
         Dim borderColor As Color = Color.SeaGreen
@@ -255,8 +268,7 @@ Public Class frmOrdenesReparacion
         End Using
     End Sub
 
-
-    Private Sub PanelDetallesOrden_Paint(sender As Object, e As PaintEventArgs) Handles PanelDetallesOrden.Paint
+    Private Sub PanelCostos_Paint(sender As Object, e As PaintEventArgs) Handles PanelCostos.Paint
         ' Configurar los colores y el grosor del borde
         Dim borderColor As Color = Color.SeaGreen
         Dim borderWidth As Integer = 1
@@ -264,7 +276,20 @@ Public Class frmOrdenesReparacion
         ' Crear un objeto Pen para dibujar el borde
         Using pen As New Pen(borderColor, borderWidth)
             ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelDetallesOrden.Width - 1, PanelDetallesOrden.Height - 1)
+            Dim rect As New Rectangle(0, 0, PanelCostos.Width - 1, PanelCostos.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub PanelDetalleDeRepuestos_Paint(sender As Object, e As PaintEventArgs) Handles PanelDetalleDeRepuestos.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelDetalleDeRepuestos.Width - 1, PanelDetalleDeRepuestos.Height - 1)
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
@@ -282,7 +307,22 @@ Public Class frmOrdenesReparacion
         End Using
     End Sub
 
-    Private Sub lblResultado_Click(sender As Object, e As EventArgs) Handles lblResultado.Click
+    Private Sub PanelReparaciones_Paint(sender As Object, e As PaintEventArgs) Handles PanelReparaciones.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelReparaciones.Width - 1, PanelReparaciones.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+#End Region
+
+    Private Sub lblResultado_Click(sender As Object, e As EventArgs) Handles lblResultadoPrestador.Click
 
     End Sub
 
@@ -294,15 +334,12 @@ Public Class frmOrdenesReparacion
             Dim selectedRow As DataRowView = CType(CboPersonaServ3.SelectedItem, DataRowView)
 
             ' Accede a la columna específica que deseas mostrar en la Label
-            lblResultado.Text = selectedRow("Detalle_Prestacion").ToString()
+            lblResultadoPrestador.Text = selectedRow("Detalle_Prestacion").ToString()
             txtID_Serv3.Text = selectedRow("ID_ServicioTercero").ToString()
         Else
             ' Opcionalmente, puedes manejar el caso donde no hay selección
-            lblResultado.Text = "-"
+            lblResultadoPrestador.Text = "-"
             txtID_Serv3.Text = "-"
         End If
     End Sub
-
-#End Region
-
 End Class
