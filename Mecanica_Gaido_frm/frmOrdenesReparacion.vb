@@ -76,8 +76,8 @@ Public Class frmOrdenesReparacion
 
             If tabla.Rows.Count > 0 Then
                 CboPersonaServ3.DataSource = tabla
-                CboPersonaServ3.DisplayMember = "Detalle_Prestacion"
-                CboPersonaServ3.ValueMember = "ID_ServicioTercero"
+                CboPersonaServ3.DisplayMember = "Persona"
+                CboPersonaServ3.ValueMember = "ID_Persona"
                 CboPersonaServ3.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Servicios.", vbInformation, "Información")
@@ -334,12 +334,12 @@ Public Class frmOrdenesReparacion
             Dim selectedRow As DataRowView = CType(CboPersonaServ3.SelectedItem, DataRowView)
 
             ' Accede a la columna específica que deseas mostrar en la Label
-            lblResultadoPrestador.Text = selectedRow("Detalle_Prestacion").ToString()
-            txtID_Serv3.Text = selectedRow("ID_ServicioTercero").ToString()
+            lblResultadoPrestador.Text = selectedRow("Persona").ToString()
+            'txtID_Serv3.Text = selectedRow("ID_Persona").ToString()
         Else
             ' Opcionalmente, puedes manejar el caso donde no hay selección
             lblResultadoPrestador.Text = "-"
-            txtID_Serv3.Text = "-"
+            '  txtID_Serv3.Text = "-"
         End If
     End Sub
 End Class
