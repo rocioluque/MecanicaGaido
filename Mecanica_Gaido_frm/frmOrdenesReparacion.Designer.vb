@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmOrdenesReparacion
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,9 +20,15 @@ Partial Class frmOrdenesReparacion
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmOrdenesReparacion))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.grdOrdenReparacion = New System.Windows.Forms.DataGridView()
         Me.chkActivo = New System.Windows.Forms.CheckBox()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -94,6 +100,12 @@ Partial Class frmOrdenesReparacion
         Me.cboProductoOR = New System.Windows.Forms.ComboBox()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
+        Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Diario = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.grdOrdenReparacion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarVehiculo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDetallesOrden.SuspendLayout()
@@ -114,6 +126,7 @@ Partial Class frmOrdenesReparacion
         Me.grdOrdenReparacion.AllowUserToAddRows = False
         Me.grdOrdenReparacion.AllowUserToDeleteRows = False
         Me.grdOrdenReparacion.AllowUserToResizeRows = False
+        Me.grdOrdenReparacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.grdOrdenReparacion.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdOrdenReparacion.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdOrdenReparacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -218,7 +231,7 @@ Partial Class frmOrdenesReparacion
         Me.lbl1.AutoSize = True
         Me.lbl1.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lbl1.ForeColor = System.Drawing.Color.White
-        Me.lbl1.Location = New System.Drawing.Point(33, 38)
+        Me.lbl1.Location = New System.Drawing.Point(14, 28)
         Me.lbl1.Name = "lbl1"
         Me.lbl1.Size = New System.Drawing.Size(62, 17)
         Me.lbl1.TabIndex = 67
@@ -233,7 +246,7 @@ Partial Class frmOrdenesReparacion
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
-        Me.btnModificar.Location = New System.Drawing.Point(520, 235)
+        Me.btnModificar.Location = New System.Drawing.Point(501, 225)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(117, 37)
         Me.btnModificar.TabIndex = 25
@@ -250,7 +263,7 @@ Partial Class frmOrdenesReparacion
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
-        Me.btnCancelar.Location = New System.Drawing.Point(720, 236)
+        Me.btnCancelar.Location = New System.Drawing.Point(701, 226)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(117, 37)
         Me.btnCancelar.TabIndex = 26
@@ -266,7 +279,7 @@ Partial Class frmOrdenesReparacion
         Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAceptar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAceptar.ForeColor = System.Drawing.Color.White
-        Me.btnAceptar.Location = New System.Drawing.Point(331, 235)
+        Me.btnAceptar.Location = New System.Drawing.Point(312, 225)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(117, 37)
         Me.btnAceptar.TabIndex = 24
@@ -282,7 +295,7 @@ Partial Class frmOrdenesReparacion
         Me.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBuscar.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnBuscar.ForeColor = System.Drawing.Color.White
-        Me.btnBuscar.Location = New System.Drawing.Point(258, 31)
+        Me.btnBuscar.Location = New System.Drawing.Point(239, 21)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(50, 28)
         Me.btnBuscar.TabIndex = 2
@@ -292,7 +305,7 @@ Partial Class frmOrdenesReparacion
         'txtID
         '
         Me.txtID.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtID.Location = New System.Drawing.Point(145, 35)
+        Me.txtID.Location = New System.Drawing.Point(126, 25)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(86, 23)
         Me.txtID.TabIndex = 1
@@ -312,7 +325,7 @@ Partial Class frmOrdenesReparacion
         Me.lblNota.AutoSize = True
         Me.lblNota.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblNota.ForeColor = System.Drawing.Color.White
-        Me.lblNota.Location = New System.Drawing.Point(48, 74)
+        Me.lblNota.Location = New System.Drawing.Point(29, 64)
         Me.lblNota.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblNota.Name = "lblNota"
         Me.lblNota.Size = New System.Drawing.Size(130, 17)
@@ -333,7 +346,7 @@ Partial Class frmOrdenesReparacion
         Me.PanelDetallesOrden.Controls.Add(Me.btnAgregarCuenta)
         Me.PanelDetallesOrden.Controls.Add(Me.Label3)
         Me.PanelDetallesOrden.Controls.Add(Me.Label4)
-        Me.PanelDetallesOrden.Location = New System.Drawing.Point(36, 82)
+        Me.PanelDetallesOrden.Location = New System.Drawing.Point(17, 72)
         Me.PanelDetallesOrden.Name = "PanelDetallesOrden"
         Me.PanelDetallesOrden.Size = New System.Drawing.Size(272, 208)
         Me.PanelDetallesOrden.TabIndex = 99
@@ -427,7 +440,7 @@ Partial Class frmOrdenesReparacion
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(328, 26)
+        Me.Label2.Location = New System.Drawing.Point(309, 16)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(157, 17)
@@ -444,7 +457,7 @@ Partial Class frmOrdenesReparacion
         Me.PanelInfoVehiculo.Controls.Add(Me.Label7)
         Me.PanelInfoVehiculo.Controls.Add(Me.Label1)
         Me.PanelInfoVehiculo.Controls.Add(Me.chkActivo)
-        Me.PanelInfoVehiculo.Location = New System.Drawing.Point(316, 34)
+        Me.PanelInfoVehiculo.Location = New System.Drawing.Point(297, 24)
         Me.PanelInfoVehiculo.Name = "PanelInfoVehiculo"
         Me.PanelInfoVehiculo.Size = New System.Drawing.Size(535, 183)
         Me.PanelInfoVehiculo.TabIndex = 101
@@ -472,7 +485,7 @@ Partial Class frmOrdenesReparacion
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(48, 293)
+        Me.Label6.Location = New System.Drawing.Point(49, 283)
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(133, 17)
@@ -485,53 +498,61 @@ Partial Class frmOrdenesReparacion
         Me.PanelCostos.Controls.Add(Me.txtMontoRepuestos)
         Me.PanelCostos.Controls.Add(Me.txtMontoServ3)
         Me.PanelCostos.Controls.Add(Me.txtMontoManoObra)
-        Me.PanelCostos.Location = New System.Drawing.Point(36, 305)
+        Me.PanelCostos.Location = New System.Drawing.Point(17, 295)
         Me.PanelCostos.Name = "PanelCostos"
         Me.PanelCostos.Size = New System.Drawing.Size(815, 57)
         Me.PanelCostos.TabIndex = 103
         '
         'txtMontoTotalOR
         '
+        Me.txtMontoTotalOR.Enabled = False
         Me.txtMontoTotalOR.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtMontoTotalOR.Location = New System.Drawing.Point(620, 12)
+        Me.txtMontoTotalOR.Location = New System.Drawing.Point(637, 12)
+        Me.txtMontoTotalOR.Multiline = False
         Me.txtMontoTotalOR.Name = "txtMontoTotalOR"
         Me.txtMontoTotalOR.Size = New System.Drawing.Size(130, 29)
         Me.txtMontoTotalOR.TabIndex = 111
-        Me.txtMontoTotalOR.Text = ""
+        Me.txtMontoTotalOR.Text = "0"
         '
         'txtMontoRepuestos
         '
+        Me.txtMontoRepuestos.AutoWordSelection = True
         Me.txtMontoRepuestos.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtMontoRepuestos.Location = New System.Drawing.Point(434, 12)
+        Me.txtMontoRepuestos.Multiline = False
         Me.txtMontoRepuestos.Name = "txtMontoRepuestos"
         Me.txtMontoRepuestos.Size = New System.Drawing.Size(130, 29)
         Me.txtMontoRepuestos.TabIndex = 110
-        Me.txtMontoRepuestos.Text = ""
+        Me.txtMontoRepuestos.Text = "0"
         '
         'txtMontoServ3
         '
+        Me.txtMontoServ3.AutoWordSelection = True
         Me.txtMontoServ3.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtMontoServ3.Location = New System.Drawing.Point(240, 12)
+        Me.txtMontoServ3.Multiline = False
         Me.txtMontoServ3.Name = "txtMontoServ3"
         Me.txtMontoServ3.Size = New System.Drawing.Size(130, 29)
         Me.txtMontoServ3.TabIndex = 101
-        Me.txtMontoServ3.Text = ""
+        Me.txtMontoServ3.Text = "0"
         '
         'txtMontoManoObra
         '
+        Me.txtMontoManoObra.AutoWordSelection = True
         Me.txtMontoManoObra.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtMontoManoObra.Location = New System.Drawing.Point(15, 12)
+        Me.txtMontoManoObra.Location = New System.Drawing.Point(33, 12)
+        Me.txtMontoManoObra.Multiline = False
         Me.txtMontoManoObra.Name = "txtMontoManoObra"
         Me.txtMontoManoObra.Size = New System.Drawing.Size(130, 29)
         Me.txtMontoManoObra.TabIndex = 100
-        Me.txtMontoManoObra.Text = ""
+        Me.txtMontoManoObra.Text = "0"
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(869, 26)
+        Me.Label9.Location = New System.Drawing.Point(850, 16)
         Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(134, 17)
@@ -558,7 +579,7 @@ Partial Class frmOrdenesReparacion
         Me.PanelServiciosTerceros.Controls.Add(Me.txtID_Serv3)
         Me.PanelServiciosTerceros.Controls.Add(Me.BtnCancelarS3)
         Me.PanelServiciosTerceros.Controls.Add(Me.btnAceptarS3)
-        Me.PanelServiciosTerceros.Location = New System.Drawing.Point(857, 34)
+        Me.PanelServiciosTerceros.Location = New System.Drawing.Point(838, 24)
         Me.PanelServiciosTerceros.Name = "PanelServiciosTerceros"
         Me.PanelServiciosTerceros.Size = New System.Drawing.Size(461, 374)
         Me.PanelServiciosTerceros.TabIndex = 105
@@ -609,12 +630,14 @@ Partial Class frmOrdenesReparacion
         '
         'txtCostoRealS3
         '
+        Me.txtCostoRealS3.AutoWordSelection = True
         Me.txtCostoRealS3.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtCostoRealS3.Location = New System.Drawing.Point(183, 152)
+        Me.txtCostoRealS3.Multiline = False
         Me.txtCostoRealS3.Name = "txtCostoRealS3"
         Me.txtCostoRealS3.Size = New System.Drawing.Size(117, 29)
         Me.txtCostoRealS3.TabIndex = 18
-        Me.txtCostoRealS3.Text = ""
+        Me.txtCostoRealS3.Text = "0"
         '
         'Label17
         '
@@ -642,16 +665,18 @@ Partial Class frmOrdenesReparacion
         '
         Me.txtCostoEstimadoS3.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtCostoEstimadoS3.Location = New System.Drawing.Point(15, 152)
+        Me.txtCostoEstimadoS3.Multiline = False
         Me.txtCostoEstimadoS3.Name = "txtCostoEstimadoS3"
         Me.txtCostoEstimadoS3.Size = New System.Drawing.Size(117, 29)
         Me.txtCostoEstimadoS3.TabIndex = 17
-        Me.txtCostoEstimadoS3.Text = ""
+        Me.txtCostoEstimadoS3.Text = "0"
         '
         'grdServiciosTerceros
         '
         Me.grdServiciosTerceros.AllowUserToAddRows = False
         Me.grdServiciosTerceros.AllowUserToDeleteRows = False
         Me.grdServiciosTerceros.AllowUserToResizeRows = False
+        Me.grdServiciosTerceros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.grdServiciosTerceros.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdServiciosTerceros.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdServiciosTerceros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -774,7 +799,7 @@ Partial Class frmOrdenesReparacion
         'PanelReparaciones
         '
         Me.PanelReparaciones.Controls.Add(Me.grdOrdenReparacion)
-        Me.PanelReparaciones.Location = New System.Drawing.Point(857, 419)
+        Me.PanelReparaciones.Location = New System.Drawing.Point(838, 409)
         Me.PanelReparaciones.Name = "PanelReparaciones"
         Me.PanelReparaciones.Size = New System.Drawing.Size(461, 273)
         Me.PanelReparaciones.TabIndex = 106
@@ -784,7 +809,7 @@ Partial Class frmOrdenesReparacion
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label13.ForeColor = System.Drawing.Color.White
-        Me.Label13.Location = New System.Drawing.Point(869, 413)
+        Me.Label13.Location = New System.Drawing.Point(850, 403)
         Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(164, 17)
@@ -796,7 +821,7 @@ Partial Class frmOrdenesReparacion
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(273, 293)
+        Me.Label5.Location = New System.Drawing.Point(254, 283)
         Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(134, 17)
@@ -808,7 +833,7 @@ Partial Class frmOrdenesReparacion
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label15.ForeColor = System.Drawing.Color.White
-        Me.Label15.Location = New System.Drawing.Point(499, 296)
+        Me.Label15.Location = New System.Drawing.Point(480, 286)
         Me.Label15.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(69, 17)
@@ -824,7 +849,7 @@ Partial Class frmOrdenesReparacion
         Me.grdRepuestosOR.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdRepuestosOR.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdRepuestosOR.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdRepuestosOR.Location = New System.Drawing.Point(47, 425)
+        Me.grdRepuestosOR.Location = New System.Drawing.Point(28, 415)
         Me.grdRepuestosOR.Name = "grdRepuestosOR"
         Me.grdRepuestosOR.ReadOnly = True
         Me.grdRepuestosOR.RowHeadersVisible = False
@@ -842,7 +867,7 @@ Partial Class frmOrdenesReparacion
         Me.PanelDetalleDeRepuestos.Controls.Add(Me.Label22)
         Me.PanelDetalleDeRepuestos.Controls.Add(Me.cboProductoOR)
         Me.PanelDetalleDeRepuestos.Controls.Add(Me.Label23)
-        Me.PanelDetalleDeRepuestos.Location = New System.Drawing.Point(36, 368)
+        Me.PanelDetalleDeRepuestos.Location = New System.Drawing.Point(17, 358)
         Me.PanelDetalleDeRepuestos.Name = "PanelDetalleDeRepuestos"
         Me.PanelDetalleDeRepuestos.Size = New System.Drawing.Size(816, 324)
         Me.PanelDetalleDeRepuestos.TabIndex = 114
@@ -851,10 +876,12 @@ Partial Class frmOrdenesReparacion
         '
         Me.grdRepuestos.AllowUserToAddRows = False
         Me.grdRepuestos.AllowUserToDeleteRows = False
+        Me.grdRepuestos.AllowUserToOrderColumns = True
         Me.grdRepuestos.AllowUserToResizeRows = False
         Me.grdRepuestos.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdRepuestos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdRepuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdRepuestos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.Descripcion, Me.Diario, Me.Cantidad, Me.Precio, Me.Total})
         Me.grdRepuestos.Location = New System.Drawing.Point(18, 79)
         Me.grdRepuestos.Name = "grdRepuestos"
         Me.grdRepuestos.ReadOnly = True
@@ -873,7 +900,7 @@ Partial Class frmOrdenesReparacion
         Me.btnQuitarRepOR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnQuitarRepOR.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnQuitarRepOR.ForeColor = System.Drawing.Color.White
-        Me.btnQuitarRepOR.Location = New System.Drawing.Point(680, 10)
+        Me.btnQuitarRepOR.Location = New System.Drawing.Point(684, 10)
         Me.btnQuitarRepOR.Name = "btnQuitarRepOR"
         Me.btnQuitarRepOR.Size = New System.Drawing.Size(117, 37)
         Me.btnQuitarRepOR.TabIndex = 30
@@ -944,12 +971,74 @@ Partial Class frmOrdenesReparacion
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label21.ForeColor = System.Drawing.Color.White
-        Me.Label21.Location = New System.Drawing.Point(660, 296)
+        Me.Label21.Location = New System.Drawing.Point(655, 286)
         Me.Label21.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(119, 17)
         Me.Label21.TabIndex = 115
         Me.Label21.Text = "Monto Total Orden"
+        '
+        'ID
+        '
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        Me.ID.DefaultCellStyle = DataGridViewCellStyle1
+        Me.ID.HeaderText = "ID"
+        Me.ID.Name = "ID"
+        Me.ID.ReadOnly = True
+        Me.ID.Width = 50
+        '
+        'Descripcion
+        '
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        Me.Descripcion.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Descripcion.HeaderText = "Repuesto"
+        Me.Descripcion.Name = "Descripcion"
+        Me.Descripcion.ReadOnly = True
+        Me.Descripcion.Width = 200
+        '
+        'Diario
+        '
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        Me.Diario.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Diario.HeaderText = "Nombre común"
+        Me.Diario.Name = "Diario"
+        Me.Diario.ReadOnly = True
+        Me.Diario.Width = 200
+        '
+        'Cantidad
+        '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.Format = "N2"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Cantidad.HeaderText = "Cant."
+        Me.Cantidad.Name = "Cantidad"
+        Me.Cantidad.ReadOnly = True
+        '
+        'Precio
+        '
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.Format = "N2"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.Precio.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Precio.HeaderText = "Precio"
+        Me.Precio.Name = "Precio"
+        Me.Precio.ReadOnly = True
+        '
+        'Total
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.Format = "N2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.Total.DefaultCellStyle = DataGridViewCellStyle6
+        Me.Total.HeaderText = "Total"
+        Me.Total.Name = "Total"
+        Me.Total.ReadOnly = True
         '
         'frmOrdenesReparacion
         '
@@ -1078,4 +1167,10 @@ Partial Class frmOrdenesReparacion
     Friend WithEvents txtID_Serv3 As TextBox
     Friend WithEvents lblResultadoPrestador As Label
     Friend WithEvents grdRepuestos As DataGridView
+    Friend WithEvents ID As DataGridViewTextBoxColumn
+    Friend WithEvents Descripcion As DataGridViewTextBoxColumn
+    Friend WithEvents Diario As DataGridViewTextBoxColumn
+    Friend WithEvents Cantidad As DataGridViewTextBoxColumn
+    Friend WithEvents Precio As DataGridViewTextBoxColumn
+    Friend WithEvents Total As DataGridViewTextBoxColumn
 End Class

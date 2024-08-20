@@ -26,12 +26,15 @@ Public Class frmOrdenesReparacion
         Cargar_Combo_Personas()
         Cargar_Combo_Prestador()
         Cargar_Combo_Repuestos()
-        Cargar_Grilla_Terceros()
-        Cargar_Grilla_RepuestosPorOrden()
+        'Cargar_Grilla_Terceros()
+        'Cargar_Grilla_RepuestosPorOrden()
         Cargar_Grilla_Ordenes()
         limpiar()
+        ponerDecimales()
     End Sub
 #End Region
+
+
 
 #Region "Cargar cbo"
     Private Sub Cargar_Combo_Vehiculos()
@@ -78,6 +81,7 @@ Public Class frmOrdenesReparacion
                 CboPersonaServ3.DataSource = tabla
                 CboPersonaServ3.DisplayMember = "Persona"
                 CboPersonaServ3.ValueMember = "ID_Persona"
+
                 CboPersonaServ3.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Servicios.", vbInformation, "Información")
@@ -87,15 +91,16 @@ Public Class frmOrdenesReparacion
             MsgBox("Error al cargar los Servicios: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
-
     Private Sub Cargar_Combo_Repuestos()
         Try
-            Dim tabla As DataTable = o_Orden.Cargar_Combo_Repuestos()
+            Dim tablaRep As DataTable = o_Orden.Cargar_Combo_Repuestos()
 
-            If tabla.Rows.Count > 0 Then
-                cboProductoOR.DataSource = tabla
+            If tablaRep.Rows.Count > 0 Then
+                cboProductoOR.DataSource = tablaRep
                 cboProductoOR.DisplayMember = "Descripcion"
                 cboProductoOR.ValueMember = "ID_Repuestos"
+
+                ' Asegúrate de que la tabla incluya las columnas Precio y NombreDiario
                 cboProductoOR.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Repuestos.", vbInformation, "Información")
@@ -105,6 +110,72 @@ Public Class frmOrdenesReparacion
             MsgBox("Error al cargar los Repuestos: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+    Private Sub btnAgregarRepOR_Click(sender As Object, e As EventArgs) Handles btnAgregarRepOR.Click
+        Try
+            ' Verifica que se haya seleccionado un repuesto y que la cantidad no esté vacía
+            If cboProductoOR.SelectedValue IsNot Nothing AndAlso Not String.IsNullOrEmpty(txtCantidadRepOR.Text) Then
+                ' Obtiene los valores necesarios desde el DataRowView del combo box
+                Dim rowView As DataRowView = CType(cboProductoOR.SelectedItem, DataRowView)
+                Dim idRepuesto As Integer = Convert.ToInt32(rowView("ID_Repuestos"))
+                Dim descripcionRepuesto As String = rowView("Descripcion").ToString()
+                Dim nombreDiario As String = rowView("nombreDiario").ToString()
+                Dim precio As Decimal = Convert.ToDecimal(rowView("PrecioLista"))
+                Dim cantidad As Integer = Convert.ToDecimal(txtCantidadRepOR.Text)
+                Dim total As Decimal = precio * cantidad
+
+                ' Agrega una nueva fila a la grilla
+                grdRepuestos.Rows.Add(idRepuesto, descripcionRepuesto, nombreDiario, cantidad, precio, total)
+                Cargar_Combo_Repuestos()
+                txtCantidadRepOR.Text = Convert.ToDecimal(0).ToString("N2")
+                ActualizarMontoTotal()
+
+            Else
+                MsgBox("Por favor, seleccione un repuesto y especifique la cantidad.", vbExclamation, "Advertencia")
+            End If
+        Catch ex As Exception
+            MsgBox("Error al agregar el repuesto: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub btnQuitar_Click(sender As Object, e As EventArgs) Handles btnQuitarRepOR.Click
+        Try
+            ' Verifica si hay una fila seleccionada
+            If grdRepuestos.SelectedRows.Count > 0 Then
+                ' Elimina la fila seleccionada
+                grdRepuestos.Rows.Remove(grdRepuestos.SelectedRows(0))
+
+                ' Actualiza el monto total de los repuestos
+                ActualizarMontoTotal()
+            Else
+                MsgBox("Por favor, seleccione una fila para quitar.", vbExclamation, "Advertencia")
+            End If
+        Catch ex As Exception
+            MsgBox("Error al quitar el repuesto: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+
+    'Private Sub Cargar_Combo_Repuestos()
+    '    Try
+    '        Dim tabla As DataTable = o_Orden.Cargar_Combo_Repuestos()
+
+    '        If tabla.Rows.Count > 0 Then
+    '            cboProductoOR.DataSource = tabla
+    '            cboProductoOR.DisplayMember = "Descripcion"
+    '            cboProductoOR.ValueMember = "ID_Repuestos"
+
+
+    '            cboProductoOR.SelectedValue = -1
+    '        Else
+    '            MsgBox("No se encontraron Repuestos.", vbInformation, "Información")
+    '        End If
+
+    '    Catch ex As Exception
+    '        MsgBox("Error al cargar los Repuestos: " & ex.Message, vbCritical, "Error")
+    '    End Try
+    'End Sub
+
+
 
     Public Sub Cargar_Grilla_Terceros()
         Try
@@ -135,7 +206,7 @@ Public Class frmOrdenesReparacion
                 Next
                 grdServiciosTerceros.Refresh()
             Else
-                MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
+                MsgBox("No hay Servicios de terceros asociados a esta orden.", vbInformation, "Información")
             End If
 
             oDs = Nothing
@@ -175,7 +246,7 @@ Public Class frmOrdenesReparacion
                 Next
                 grdRepuestos.Refresh()
             Else
-                MsgBox("No se encontraron Repuestos Por Orden para mostrar.", vbInformation, "Información")
+                MsgBox("No se Repuestos asociados a esta Orden.", vbInformation, "Información")
             End If
 
             oDs = Nothing
@@ -226,7 +297,7 @@ Public Class frmOrdenesReparacion
         End Try
     End Sub
 #End Region
-
+    'SEGURO QUE VA ESTO?
 #Region "Keypress"
     Private Sub txtSeñasParticulares_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
@@ -342,4 +413,54 @@ Public Class frmOrdenesReparacion
             '  txtID_Serv3.Text = "-"
         End If
     End Sub
+
+    Private Sub btnAceptarS3_Click(sender As Object, e As EventArgs) Handles btnAceptarS3.Click
+        Cargar_Grilla_Terceros()
+    End Sub
+
+    Private Sub ponerDecimales()
+        txtCostoEstimadoS3.Text = Convert.ToDecimal(txtCostoEstimadoS3.Text).ToString("N2")
+        txtCostoRealS3.Text = Convert.ToDecimal(txtCostoRealS3.Text).ToString("N2")
+        txtMontoManoObra.Text = Convert.ToDecimal(txtMontoManoObra.Text).ToString("N2")
+        txtMontoRepuestos.Text = Convert.ToDecimal(txtMontoRepuestos.Text).ToString("N2")
+        txtMontoServ3.Text = Convert.ToDecimal(txtMontoServ3.Text).ToString("N2")
+        txtMontoTotalOR.Text = Convert.ToDecimal(txtMontoTotalOR.Text).ToString("N2")
+        txtCantidadRepOR.Text = Convert.ToDecimal(txtCantidadRepOR.Text).ToString("N2")
+
+    End Sub
+    Private Sub CalcularTotalOR()
+        txtMontoTotalOR.Text = Convert.ToDecimal(CDec(txtMontoManoObra.Text) + CDec(txtMontoRepuestos.Text) + CDec(txtMontoServ3.Text)).ToString("N2")
+    End Sub
+
+
+
+
+
+    Private Sub txtMontoManoObra_Leave(sender As Object, e As EventArgs) Handles txtMontoManoObra.Leave
+        ponerDecimales()
+        CalcularTotalOR()
+    End Sub
+
+    Private Sub txtMontoServ3_Leave(sender As Object, e As EventArgs) Handles txtMontoServ3.Leave
+        ponerDecimales()
+        CalcularTotalOR()
+    End Sub
+
+    Private Sub txtMontoRepuestos_Leave(sender As Object, e As EventArgs) Handles txtMontoRepuestos.Leave
+        ponerDecimales()
+        CalcularTotalOR()
+    End Sub
+
+    Private Sub ActualizarMontoTotal()
+        Dim montoTotal As Decimal = 0
+
+        ' Recorre todas las filas de la grilla y suma los valores de la columna Total
+        For Each row As DataGridViewRow In grdRepuestos.Rows
+            montoTotal += Convert.ToDecimal(row.Cells("Total").Value)
+        Next
+
+        ' Muestra el monto total en el TextBox
+        txtMontoRepuestos.Text = montoTotal.ToString("F2")
+    End Sub
+
 End Class
