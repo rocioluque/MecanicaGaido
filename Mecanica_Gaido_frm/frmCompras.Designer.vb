@@ -105,7 +105,7 @@ Partial Class frmCompras
         Me.txtIVA.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtIVA.Size = New System.Drawing.Size(123, 23)
         Me.txtIVA.TabIndex = 8
-        Me.txtIVA.Text = "0"
+        Me.txtIVA.Text = "21"
         '
         'txtNumComprobante
         '

@@ -11,11 +11,11 @@ Public Class frmCompras
         txtID.Clear()
         dtpFechaCompra.Value = Date.Today
         txtNumComprobante.Clear()
-        txtSubtotal.Clear()
-        txtIVA.Clear()
-        txtIvaMonto.Clear()
-        txtOtrosImpuestos.Clear()
-        txtTotal.Clear()
+        txtSubtotal.Text = Convert.ToDecimal(0)
+        txtIVA.Text = Convert.ToDecimal(0)
+        txtIvaMonto.Text = Convert.ToDecimal(0)
+        txtOtrosImpuestos.Text = Convert.ToDecimal(0)
+        txtTotal.Text = Convert.ToDecimal(0)
         cboPersona.SelectedIndex = -1
         cboFormaPago.SelectedIndex = -1
         chkEstado.Checked = False
