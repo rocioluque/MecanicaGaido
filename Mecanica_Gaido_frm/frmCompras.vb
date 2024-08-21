@@ -11,7 +11,7 @@ Public Class frmCompras
         txtID.Clear()
         dtpFechaCompra.Value = Date.Today
         txtNumComprobante.Clear()
-        txtSubTotal.Clear()
+        txtSubtotal.Clear()
         txtIVA.Clear()
         txtIvaMonto.Clear()
         txtOtrosImpuestos.Clear()
@@ -22,8 +22,10 @@ Public Class frmCompras
     End Sub
 
     Private Sub frmCompras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Cargar_Combo_Cuentas()
+        Cargar_Combo_Persona()
         Cargar_Combo_FormaPago()
+        Cargar_Combo_Repuestos()
+        'ponerDecimales()
         limpiar()
     End Sub
 
@@ -32,22 +34,57 @@ Public Class frmCompras
     End Sub
 #End Region
 
-#Region "Cargar cbo"
-    Private Sub Cargar_Combo_Cuentas()
+#Region "Cargar grilla y datos en txt"
+    Public Sub Cargar_Grilla_DetalleCompra()
         Try
-            Dim tabla As DataTable = o_Compras.Cargar_Combo_Cuentas()
+            Dim conexion As SqlConnection
+            Dim comando As New SqlCommand
+
+            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
+
+            conexion.Open()
+            comando.Connection = conexion
+            comando.CommandType = CommandType.StoredProcedure
+            comando.CommandText = ("Cargar_Grilla_DetalleCompra")
+
+            Dim datadapter As New SqlDataAdapter(comando)
+            Dim oDs As New DataSet
+            datadapter.Fill(oDs)
+
+            If oDs.Tables(0).Rows.Count > 0 Then
+                grdRepuestos.AutoGenerateColumns = True
+                grdRepuestos.DataSource = oDs.Tables(0)
+                grdRepuestos.Refresh()
+            Else
+                MsgBox("No hay repuestos asociados a esta compra.", vbInformation, "Información")
+            End If
+
+            oDs = Nothing
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox("Error al cargar la grilla: " & ex.Message, vbCritical, "Error")
+        Finally
+        End Try
+    End Sub
+
+#End Region
+
+#Region "Cargar cbo"
+    Private Sub Cargar_Combo_Persona()
+        Try
+            Dim tabla As DataTable = o_Compras.Cargar_Combo_Personas()
 
             If tabla.Rows.Count > 0 Then
                 cboPersona.DataSource = tabla
-                cboPersona.DisplayMember = "Cuenta"
-                cboPersona.ValueMember = "ID_DatoFiscal"
+                cboPersona.DisplayMember = "Persona"
+                cboPersona.ValueMember = "ID_Persona"
                 cboPersona.SelectedValue = -1
             Else
-                MsgBox("No se encontraron Cuentas.", vbInformation, "Información")
+                MsgBox("No se encontraron Personas.", vbInformation, "Información")
             End If
 
         Catch ex As Exception
-            MsgBox("Error al cargar las Cuentas: " & ex.Message, vbCritical, "Error")
+            MsgBox("Error al cargar las personas: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
 
@@ -66,6 +103,71 @@ Public Class frmCompras
 
         Catch ex As Exception
             MsgBox("Error al cargar la Forma de Pago: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub Cargar_Combo_Repuestos()
+        Try
+            Dim tablaRep As DataTable = o_Compras.Cargar_Combo_Repuestos()
+
+            If tablaRep.Rows.Count > 0 Then
+                cboProductoCompra.DataSource = tablaRep
+                cboProductoCompra.DisplayMember = "Descripcion"
+                cboProductoCompra.ValueMember = "ID_Repuestos"
+                cboProductoCompra.SelectedValue = -1
+            Else
+                MsgBox("No se encontraron Repuestos.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar los Repuestos: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+#End Region
+
+#Region "Cargar Productos"
+    Private Sub btnAgregarCompra_Click(sender As Object, e As EventArgs) Handles btnAgregarCompra.Click
+        Try
+            ' Verifica que se haya seleccionado un repuesto y que la cantidad no esté vacía
+            If cboProductoCompra.SelectedValue <> Nothing AndAlso Not String.IsNullOrEmpty(txtCantidadCompra.Text) Then
+
+                ' Obtiene los valores necesarios desde el DataRowView del combo box
+                Dim rowView As DataRowView = CType(cboProductoCompra.SelectedItem, DataRowView)
+                Dim idRepuesto As Integer = Convert.ToInt32(rowView("ID_Repuestos"))
+                Dim descripcionRepuesto As String = rowView("Descripcion").ToString()
+                Dim nombreDiario As String = rowView("nombreDiario").ToString()
+                Dim precio As Decimal = Convert.ToDecimal(rowView("PrecioLista"))
+                Dim cantidad As Integer = Convert.ToDecimal(txtCantidadCompra.Text)
+                Dim total As Decimal = precio * cantidad
+
+                ' Agrega una nueva fila a la grilla
+                grdRepuestos.Rows.Add(idRepuesto, descripcionRepuesto, nombreDiario, cantidad, precio, total)
+                Cargar_Combo_Repuestos()
+                txtCantidadCompra.Text = Convert.ToDecimal(0).ToString("N2")
+                ActualizarMontoTotal()
+
+            Else
+                MsgBox("Por favor, seleccione un repuesto y especifique la cantidad.", vbExclamation, "Advertencia")
+            End If
+        Catch ex As Exception
+            MsgBox("Error al agregar el repuesto: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub btnQuitarCompra_Click(sender As Object, e As EventArgs) Handles btnQuitarCompra.Click
+        Try
+            ' Verifica si hay una fila seleccionada
+            If grdRepuestos.SelectedRows.Count > 0 Then
+                ' Elimina la fila seleccionada
+                grdRepuestos.Rows.Remove(grdRepuestos.SelectedRows(0))
+
+                ' Actualiza el monto total de los repuestos
+                ActualizarMontoTotal()
+            Else
+                MsgBox("Por favor, seleccione una fila para quitar.", vbExclamation, "Advertencia")
+            End If
+        Catch ex As Exception
+            MsgBox("Error al quitar el repuesto: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
 #End Region
@@ -88,12 +190,7 @@ Public Class frmCompras
             Next
         End If
     End Sub
-
 #End Region
-
-    Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
-        frmAgregarDatosFiscales.ShowDialog()
-    End Sub
 
 #Region "Keypress"
     Private Sub txtNumComprobante_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNumComprobante.KeyPress
@@ -107,7 +204,6 @@ Public Class frmCompras
             End If
         End If
     End Sub
-
 
     Private Sub txtSubTotal_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
@@ -223,5 +319,10 @@ Public Class frmCompras
         End Using
     End Sub
 #End Region
+
+    Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
+        frmAgregarDatosFiscales.ShowDialog()
+    End Sub
+
 
 End Class
