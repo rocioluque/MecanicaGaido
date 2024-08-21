@@ -25,8 +25,8 @@ Public Class frmCompras
         Cargar_Combo_Persona()
         Cargar_Combo_FormaPago()
         Cargar_Combo_Repuestos()
-        'ponerDecimales()
         limpiar()
+        PonerDecimales()
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -170,6 +170,53 @@ Public Class frmCompras
             MsgBox("Error al quitar el repuesto: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+#End Region
+
+#Region "Formato numero y calculo montos"
+    Private Sub PonerDecimales()
+        txtIVA.Text = Convert.ToDecimal(txtIVA.Text).ToString("N2")
+        txtIvaMonto.Text = Convert.ToDecimal(txtIvaMonto.Text).ToString("N2")
+        txtOtrosImpuestos.Text = Convert.ToDecimal(txtOtrosImpuestos.Text).ToString("N2")
+        txtSubtotal.Text = Convert.ToDecimal(txtSubtotal.Text).ToString("N2")
+        txtTotal.Text = Convert.ToDecimal(txtTotal.Text).ToString("N2")
+    End Sub
+
+    Private Sub CalcularTotalCompra()
+        txtTotal.Text = Convert.ToDecimal(CDec(txtOtrosImpuestos.Text) + CDec(txtSubtotal.Text) + CDec(txtIvaMonto.Text)).ToString("N2")
+    End Sub
+
+    Private Sub txtSubtotal_TextChanged(sender As Object, e As EventArgs) Handles txtSubtotal.TextChanged
+        PonerDecimales()
+        CalcularTotalCompra()
+    End Sub
+
+    Private Sub txtOtrosImpuestos_Leave(sender As Object, e As EventArgs) Handles txtOtrosImpuestos.Leave
+        PonerDecimales()
+        CalcularTotalCompra()
+    End Sub
+
+    Private Sub txtIvaMonto_Leave(sender As Object, e As EventArgs) Handles txtIvaMonto.Leave
+        PonerDecimales()
+        CalcularTotalCompra()
+    End Sub
+
+    Public Sub ActualizarMontoTotal()
+        Dim montoTotal As Decimal = 0
+        Dim IvaMonto As Decimal = 0
+        Dim iva = txtIVA.Text
+
+        ' Recorre todas las filas de la grilla y suma los valores de la columna Total
+        For Each row As DataGridViewRow In grdRepuestos.Rows
+            montoTotal += Convert.ToDecimal(row.Cells("Total").Value)
+        Next
+
+        ' Muestra el monto total en el TextBox
+        txtSubtotal.Text = montoTotal.ToString("F2")
+
+        IvaMonto = montoTotal + ((montoTotal * iva) / 100)
+        'txtIvaMonto = IvaMonto.ToString("N2")
+    End Sub
+
 #End Region
 
 #Region "Forma de Pago"
@@ -323,6 +370,5 @@ Public Class frmCompras
     Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
         frmAgregarDatosFiscales.ShowDialog()
     End Sub
-
 
 End Class

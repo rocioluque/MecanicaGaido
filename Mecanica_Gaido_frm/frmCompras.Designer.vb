@@ -91,8 +91,10 @@ Partial Class frmCompras
         Me.txtOtrosImpuestos.Location = New System.Drawing.Point(125, 61)
         Me.txtOtrosImpuestos.Margin = New System.Windows.Forms.Padding(2)
         Me.txtOtrosImpuestos.Name = "txtOtrosImpuestos"
+        Me.txtOtrosImpuestos.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtOtrosImpuestos.Size = New System.Drawing.Size(123, 23)
         Me.txtOtrosImpuestos.TabIndex = 10
+        Me.txtOtrosImpuestos.Text = "0"
         '
         'txtIVA
         '
@@ -100,8 +102,10 @@ Partial Class frmCompras
         Me.txtIVA.Location = New System.Drawing.Point(125, 25)
         Me.txtIVA.Margin = New System.Windows.Forms.Padding(2)
         Me.txtIVA.Name = "txtIVA"
+        Me.txtIVA.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtIVA.Size = New System.Drawing.Size(123, 23)
         Me.txtIVA.TabIndex = 8
+        Me.txtIVA.Text = "0"
         '
         'txtNumComprobante
         '
@@ -527,27 +531,33 @@ Partial Class frmCompras
         '
         'txtTotal
         '
+        Me.txtTotal.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTotal.Location = New System.Drawing.Point(634, 17)
         Me.txtTotal.Name = "txtTotal"
+        Me.txtTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtTotal.Size = New System.Drawing.Size(139, 28)
         Me.txtTotal.TabIndex = 13
-        Me.txtTotal.Text = ""
+        Me.txtTotal.Text = "0"
         '
         'txtIvaMonto
         '
+        Me.txtIvaMonto.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtIvaMonto.Location = New System.Drawing.Point(336, 17)
         Me.txtIvaMonto.Name = "txtIvaMonto"
+        Me.txtIvaMonto.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtIvaMonto.Size = New System.Drawing.Size(139, 28)
         Me.txtIvaMonto.TabIndex = 12
-        Me.txtIvaMonto.Text = ""
+        Me.txtIvaMonto.Text = "0"
         '
         'txtSubtotal
         '
+        Me.txtSubtotal.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSubtotal.Location = New System.Drawing.Point(40, 17)
         Me.txtSubtotal.Name = "txtSubtotal"
+        Me.txtSubtotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtSubtotal.Size = New System.Drawing.Size(139, 28)
         Me.txtSubtotal.TabIndex = 11
-        Me.txtSubtotal.Text = ""
+        Me.txtSubtotal.Text = "0"
         '
         'frmCompras
         '
