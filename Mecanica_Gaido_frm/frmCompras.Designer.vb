@@ -121,6 +121,7 @@ Partial Class frmCompras
         '
         'txtNumComprobante
         '
+        Me.txtNumComprobante.Enabled = False
         Me.txtNumComprobante.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNumComprobante.Location = New System.Drawing.Point(298, 36)
         Me.txtNumComprobante.Margin = New System.Windows.Forms.Padding(2)

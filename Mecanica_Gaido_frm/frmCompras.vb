@@ -27,6 +27,11 @@ Public Class frmCompras
         Cargar_Combo_Repuestos()
         limpiar()
         PonerDecimales()
+
+        ' Manejar eventos para concatenar datos
+        'NO ESTA LISTO
+        AddHandler txtID.TextChanged, AddressOf ActualizarNombre
+        AddHandler cboPersona.SelectedIndexChanged, AddressOf ActualizarNombre
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -217,6 +222,16 @@ Public Class frmCompras
         txtIvaMonto.Text = IvaMonto.ToString("N2")
     End Sub
 
+#End Region
+
+    'NO ESTA LISTO
+#Region "Concatenar N° Comprobante"
+    Private Sub ActualizarNombre(sender As Object, e As EventArgs)
+        Dim idCompra As String = txtID.Text
+        Dim vendedor As String = If(cboPersona.SelectedItem IsNot Nothing, cboPersona.Text, String.Empty)
+
+        txtNumComprobante.Text = $"{idCompra}.{vendedor}".Trim()
+    End Sub
 #End Region
 
 #Region "Forma de Pago"
