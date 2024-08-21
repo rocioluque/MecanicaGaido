@@ -136,7 +136,7 @@ Public Class frmCompras
                 Dim idRepuesto As Integer = Convert.ToInt32(rowView("ID_Repuestos"))
                 Dim descripcionRepuesto As String = rowView("Descripcion").ToString()
                 Dim nombreDiario As String = rowView("nombreDiario").ToString()
-                Dim precio As Decimal = Convert.ToDecimal(rowView("PrecioLista"))
+                Dim precio As Decimal = Convert.ToDecimal(rowView("PrecioCompra"))
                 Dim cantidad As Integer = Convert.ToDecimal(txtCantidadCompra.Text)
                 Dim total As Decimal = precio * cantidad
 
@@ -195,7 +195,7 @@ Public Class frmCompras
         CalcularTotalCompra()
     End Sub
 
-    Private Sub txtIvaMonto_Leave(sender As Object, e As EventArgs) Handles txtIvaMonto.Leave
+    Private Sub txtIvaMonto_TextChanged(sender As Object, e As EventArgs) Handles txtIvaMonto.TextChanged
         PonerDecimales()
         CalcularTotalCompra()
     End Sub
@@ -213,8 +213,9 @@ Public Class frmCompras
         ' Muestra el monto total en el TextBox
         txtSubtotal.Text = montoTotal.ToString("F2")
 
-        IvaMonto = montoTotal + ((montoTotal * iva) / 100)
-        'txtIvaMonto = IvaMonto.ToString("N2")
+        IvaMonto = ((montoTotal * iva) / 100)
+
+        txtIvaMonto.Text = IvaMonto.ToString("N2")
     End Sub
 
 #End Region
