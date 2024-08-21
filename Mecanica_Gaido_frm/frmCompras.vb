@@ -12,7 +12,7 @@ Public Class frmCompras
         dtpFechaCompra.Value = Date.Today
         txtNumComprobante.Clear()
         txtSubtotal.Text = Convert.ToDecimal(0)
-        txtIVA.Text = Convert.ToDecimal(0)
+        txtIVA.Text = Convert.ToDecimal(21)
         txtIvaMonto.Text = Convert.ToDecimal(0)
         txtOtrosImpuestos.Text = Convert.ToDecimal(0)
         txtTotal.Text = Convert.ToDecimal(0)
