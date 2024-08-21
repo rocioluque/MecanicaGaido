@@ -5,6 +5,7 @@ Imports System.Configuration
 
 Public Class frmVehiculos
     Dim o_vehiculo As New AD_Vehiculos
+    Private VehiculoPersona As Integer
 
 #Region "Procedimientos"
     Private Sub frmVehiculos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -93,7 +94,7 @@ Public Class frmVehiculos
                 txtNota.Text = datoleido("Nota").ToString()
                 chkEstado.Checked = Convert.ToBoolean(datoleido("Estado"))
 
-
+                VehiculoPersona = Convert.ToInt32(datoleido("ID_VehiculoPersona"))
             Else
                 MsgBox("No se encontraron resultados", vbInformation, "Error")
             End If
@@ -139,6 +140,30 @@ Public Class frmVehiculos
 
             Catch ex As Exception
                 MsgBox("Error al agregar el vehículo: " & ex.Message, vbCritical, "Error")
+            End Try
+        Else
+            MsgBox("Complete los datos correspondientes.", vbInformation, "Error")
+        End If
+    End Sub
+#End Region
+
+#Region "Modificar"
+    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
+        If txtModelo.Text <> Nothing And txtNumMotor.Text <> Nothing And cboPersona.SelectedValue <> Nothing And
+            cboMarca.SelectedValue <> Nothing And cboTipoVehiculo.SelectedValue <> Nothing Then
+            Try
+                o_vehiculo.Modificar_Vehiculo(CInt(txtID.Text), CInt(cboTipoVehiculo.SelectedValue), CInt(cboMarca.SelectedValue),
+                txtNombre.Text, txtModelo.Text, txtColor.Text, txtNumChasis.Text, txtNumMotor.Text, txtMatricula.Text,
+                txtNota.Text, chkEstado.Checked)
+
+                o_vehiculo.Modificar_VehiculoXPersona(VehiculoPersona, CInt(cboPersona.SelectedValue), CInt(txtID.Text), chkEstado.Checked)
+
+                MsgBox("Vehículo modificado correctamente.", vbInformation, "Información")
+                Limpiar()
+
+                Cargar_Grilla()
+            Catch ex As Exception
+                MsgBox("Error al modificar el vehículo: " & ex.Message, vbCritical, "Error")
             End Try
         Else
             MsgBox("Complete los datos correspondientes.", vbInformation, "Error")
@@ -311,8 +336,6 @@ Public Class frmVehiculos
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
-
-
 #End Region
 
 End Class
