@@ -9,14 +9,14 @@ Public Class frmCompras
 #Region "Procedimientos"
     Public Sub limpiar()
         txtID.Clear()
-        txtFechaCompra.Clear()
+        dtpFechaCompra.Value = Date.Today
         txtNumComprobante.Clear()
         txtSubTotal.Clear()
         txtIVA.Clear()
         txtIvaMonto.Clear()
         txtOtrosImpuestos.Clear()
         txtTotal.Clear()
-        cboCuenta.SelectedIndex = -1
+        cboPersona.SelectedIndex = -1
         cboFormaPago.SelectedIndex = -1
         chkEstado.Checked = False
     End Sub
@@ -24,6 +24,10 @@ Public Class frmCompras
     Private Sub frmCompras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Combo_Cuentas()
         Cargar_Combo_FormaPago()
+        limpiar()
+    End Sub
+
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
     End Sub
 #End Region
@@ -34,10 +38,10 @@ Public Class frmCompras
             Dim tabla As DataTable = o_Compras.Cargar_Combo_Cuentas()
 
             If tabla.Rows.Count > 0 Then
-                cboCuenta.DataSource = tabla
-                cboCuenta.DisplayMember = "Cuenta"
-                cboCuenta.ValueMember = "ID_DatoFiscal"
-                cboCuenta.SelectedValue = -1
+                cboPersona.DataSource = tabla
+                cboPersona.DisplayMember = "Cuenta"
+                cboPersona.ValueMember = "ID_DatoFiscal"
+                cboPersona.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Cuentas.", vbInformation, "Información")
             End If
@@ -105,7 +109,7 @@ Public Class frmCompras
     End Sub
 
 
-    Private Sub txtSubTotal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSubTotal.KeyPress
+    Private Sub txtSubTotal_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
         Else
@@ -129,7 +133,7 @@ Public Class frmCompras
         End If
     End Sub
 
-    Private Sub txtIvaMonto_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtIvaMonto.KeyPress
+    Private Sub txtIvaMonto_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
         Else
@@ -153,7 +157,7 @@ Public Class frmCompras
         End If
     End Sub
 
-    Private Sub txtTotal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTotal.KeyPress
+    Private Sub txtTotal_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
         Else
@@ -166,9 +170,58 @@ Public Class frmCompras
     End Sub
 #End Region
 
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        limpiar()
+#Region "Css trucho"
+    Private Sub PanelInformacionGeneral_Paint(sender As Object, e As PaintEventArgs) Handles PanelInformacionGeneral.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelInformacionGeneral.Width - 1, PanelInformacionGeneral.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
     End Sub
 
+    Private Sub PanelImpuestos_Paint(sender As Object, e As PaintEventArgs) Handles PanelImpuestos.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelImpuestos.Width - 1, PanelImpuestos.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub PanelTotales_Paint(sender As Object, e As PaintEventArgs) Handles PanelTotales.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelTotales.Width - 1, PanelTotales.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub PanelDetalleDeCompras_Paint(sender As Object, e As PaintEventArgs) Handles PanelDetalleDeCompras.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelDetalleDeCompras.Width - 1, PanelDetalleDeCompras.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+#End Region
 
 End Class
