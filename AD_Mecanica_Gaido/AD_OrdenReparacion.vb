@@ -32,6 +32,26 @@ Public Class AD_OrdenReparacion
 
         Return tabla
     End Function
+    Public Function Cargar_Combo_Vehiculos(ID_Persona) As DataTable
+        Dim tabla As New DataTable
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Combo_Vehiculos_Persona", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.Add(New SqlParameter("@ID_Persona", SqlDbType.Int)).Value = ID_Persona
+                Try
+                    conexion.Open()
+                    Dim datadapter As New SqlDataAdapter(comando)
+                    datadapter.Fill(tabla)
+                Catch ex As Exception
+                    Throw New Exception("Error al cargar los Vehiculos desde la base de datos: " & ex.Message, ex)
+                End Try
+
+            End Using
+        End Using
+
+        Return tabla
+    End Function
 
     Public Function Cargar_Combo_Personas() As DataTable
         Dim tabla As New DataTable

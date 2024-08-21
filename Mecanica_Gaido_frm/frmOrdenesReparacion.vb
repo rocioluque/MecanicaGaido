@@ -12,7 +12,7 @@ Public Class frmOrdenesReparacion
         txtSeñasParticulares.Clear()
         txtMotivoReparacion.Clear()
         cboPersonas.SelectedIndex = -1
-        'cboServicios.SelectedIndex = -1
+        CboPersonaServ3.SelectedIndex = -1
         cboVehiculo.SelectedIndex = -1
         chkActivo.Checked = False
     End Sub
@@ -52,7 +52,25 @@ Public Class frmOrdenesReparacion
             MsgBox("Error al cargar los Vehiculos: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+    Private Sub Cargar_Combo_Vehiculos(ID_Persona)
+        Try
+            Dim tabla As DataTable = o_Orden.Cargar_Combo_Vehiculos(ID_Persona)
 
+            If tabla.Rows.Count > 0 Then
+                cboVehiculo.DataSource = tabla
+                cboVehiculo.DisplayMember = "Nombre"
+                cboVehiculo.ValueMember = "ID_Vehiculo"
+                cboVehiculo.SelectedValue = -1
+            Else
+                MsgBox("No se encontraron Vehiculos para esta persona.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar los Vehiculos: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private combopersonacargado = False
     Private Sub Cargar_Combo_Personas()
         Try
             Dim tabla As DataTable = o_Orden.Cargar_Combo_Personas()
@@ -69,6 +87,7 @@ Public Class frmOrdenesReparacion
         Catch ex As Exception
             MsgBox("Error al cargar las personas: " & ex.Message, vbCritical, "Error")
         End Try
+        combopersonacargado = True
     End Sub
 
     Private Sub Cargar_Combo_Prestador()
@@ -98,7 +117,6 @@ Public Class frmOrdenesReparacion
                 cboProductoOR.DisplayMember = "Descripcion"
                 cboProductoOR.ValueMember = "ID_Repuestos"
 
-                ' Asegúrate de que la tabla incluya las columnas Precio y NombreDiario
                 cboProductoOR.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Repuestos.", vbInformation, "Información")
@@ -124,8 +142,8 @@ Public Class frmOrdenesReparacion
 
                 grdRepuestos.Rows.Add(idRepuesto, descripcionRepuesto, nombreDiario, cantidad, precio, total)
                 Cargar_Combo_Repuestos()
-                txtCantidadRepOR.Text = Convert.ToDecimal(0).ToString("N2")
-                ActualizarMontoTotal()
+                txtCantidadRepOR.Text = Convert.ToDecimal(1).ToString("N2")
+                ActualizarMontoTotalRep()
 
             Else
                 MsgBox("Por favor, seleccione un repuesto y especifique la cantidad.", vbExclamation, "Advertencia")
@@ -142,7 +160,7 @@ Public Class frmOrdenesReparacion
 
                 grdRepuestos.Rows.Remove(grdRepuestos.SelectedRows(0))
 
-                ActualizarMontoTotal()
+                ActualizarMontoTotalRep()
             Else
                 MsgBox("Por favor, seleccione una fila para quitar.", vbExclamation, "Advertencia")
             End If
@@ -381,7 +399,7 @@ Public Class frmOrdenesReparacion
     End Sub
 
     Private Sub btnAceptarS3_Click(sender As Object, e As EventArgs) Handles btnAceptarS3.Click
-        Cargar_Grilla_Terceros()
+        'Cargar_Grilla_Terceros()
     End Sub
 
     Private Sub ponerDecimales()
@@ -407,17 +425,17 @@ Public Class frmOrdenesReparacion
         CalcularTotalOR()
     End Sub
 
-    Private Sub txtMontoServ3_Leave(sender As Object, e As EventArgs) Handles txtMontoServ3.Leave
+    Private Sub txtMontoServ3_TextChanged(sender As Object, e As EventArgs) Handles txtMontoServ3.TextChanged
         ponerDecimales()
         CalcularTotalOR()
     End Sub
 
-    Private Sub txtMontoRepuestos_Leave(sender As Object, e As EventArgs) Handles txtMontoRepuestos.Leave
+    Private Sub txtMontoRepuestos_TextChanged(sender As Object, e As EventArgs) Handles txtMontoRepuestos.TextChanged
         ponerDecimales()
         CalcularTotalOR()
     End Sub
 
-    Private Sub ActualizarMontoTotal()
+    Private Sub ActualizarMontoTotalRep()
         Dim montoTotal As Decimal = 0
 
         For Each row As DataGridViewRow In grdRepuestos.Rows
@@ -436,5 +454,18 @@ Public Class frmOrdenesReparacion
         txtServicioSolicitado.Text = ""
         txtCostoEstimadoS3.Text = Convert.ToDecimal(0).ToString("N2")
         txtCostoRealS3.Text = Convert.ToDecimal(0).ToString("N2")
+    End Sub
+
+    Private Sub cboPersonas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPersonas.SelectedIndexChanged
+        If combopersonacargado Then
+            Try
+                Dim ID_Persona = cboPersonas.SelectedValue
+                cboVehiculo.Items.Clear()
+                Cargar_Combo_Vehiculos(ID_Persona)
+            Catch ex As Exception
+                MsgBox("Error al cargar vehículos: " & ex.Message, vbCritical, "Error")
+
+            End Try
+        End If
     End Sub
 End Class
