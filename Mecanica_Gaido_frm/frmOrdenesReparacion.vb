@@ -144,6 +144,7 @@ Public Class frmOrdenesReparacion
                 Cargar_Combo_Repuestos()
                 txtCantidadRepOR.Text = Convert.ToDecimal(1).ToString("N2")
                 ActualizarMontoTotalRep()
+                btnQuitarRepOR.Enabled = True
 
             Else
                 MsgBox("Por favor, seleccione un repuesto y especifique la cantidad.", vbExclamation, "Advertencia")
@@ -161,6 +162,9 @@ Public Class frmOrdenesReparacion
                 grdRepuestos.Rows.Remove(grdRepuestos.SelectedRows(0))
 
                 ActualizarMontoTotalRep()
+                If grdRepuestos.Rows.Count = 0 Then
+                    btnQuitarRepOR.Enabled = False
+                End If
             Else
                 MsgBox("Por favor, seleccione una fila para quitar.", vbExclamation, "Advertencia")
             End If
@@ -468,4 +472,6 @@ Public Class frmOrdenesReparacion
             End Try
         End If
     End Sub
+
+
 End Class
