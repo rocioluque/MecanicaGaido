@@ -125,7 +125,7 @@ Public Class frmCompras
     End Sub
 #End Region
 
-#Region "Cargar Productos"
+#Region "Agregar / Quitar Productos"
     Private Sub btnAgregarCompra_Click(sender As Object, e As EventArgs) Handles btnAgregarCompra.Click
         Try
             ' Verifica que se haya seleccionado un repuesto y que la cantidad no esté vacía
@@ -210,7 +210,6 @@ Public Class frmCompras
             montoTotal += Convert.ToDecimal(row.Cells("Total").Value)
         Next
 
-        ' Muestra el monto total en el TextBox
         txtSubtotal.Text = montoTotal.ToString("F2")
 
         IvaMonto = ((montoTotal * iva) / 100)
@@ -372,4 +371,7 @@ Public Class frmCompras
         frmAgregarDatosFiscales.ShowDialog()
     End Sub
 
+    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
+
+    End Sub
 End Class
