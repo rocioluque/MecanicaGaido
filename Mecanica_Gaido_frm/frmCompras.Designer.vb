@@ -51,12 +51,6 @@ Partial Class frmCompras
         Me.btnBuscar = New System.Windows.Forms.Button()
         Me.PanelDetalleDeCompras = New System.Windows.Forms.Panel()
         Me.grdRepuestos = New System.Windows.Forms.DataGridView()
-        Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Diario = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnQuitarCompra = New System.Windows.Forms.Button()
         Me.btnAgregarCompra = New System.Windows.Forms.Button()
         Me.txtCantidadCompra = New System.Windows.Forms.TextBox()
@@ -75,6 +69,12 @@ Partial Class frmCompras
         Me.txtTotal = New System.Windows.Forms.RichTextBox()
         Me.txtIvaMonto = New System.Windows.Forms.RichTextBox()
         Me.txtSubtotal = New System.Windows.Forms.RichTextBox()
+        Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Diario = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.btnAgregarCuenta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarFormaPago, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDetalleDeCompras.SuspendLayout()
@@ -360,83 +360,6 @@ Partial Class frmCompras
         Me.grdRepuestos.Size = New System.Drawing.Size(808, 256)
         Me.grdRepuestos.TabIndex = 117
         '
-        'ID
-        '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        Me.ID.DefaultCellStyle = DataGridViewCellStyle1
-        Me.ID.HeaderText = "ID"
-        Me.ID.MinimumWidth = 6
-        Me.ID.Name = "ID"
-        Me.ID.ReadOnly = True
-        Me.ID.Width = 50
-        '
-        'Descripcion
-        '
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        Me.Descripcion.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Descripcion.HeaderText = "Repuesto"
-        Me.Descripcion.MinimumWidth = 6
-        Me.Descripcion.Name = "Descripcion"
-        Me.Descripcion.ReadOnly = True
-        Me.Descripcion.Width = 200
-        '
-        'Diario
-        '
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        Me.Diario.DefaultCellStyle = DataGridViewCellStyle3
-        Me.Diario.HeaderText = "Nombre común"
-        Me.Diario.MinimumWidth = 6
-        Me.Diario.Name = "Diario"
-        Me.Diario.ReadOnly = True
-        Me.Diario.Width = 200
-        '
-        'Cantidad
-        '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.Format = "N2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Cantidad.HeaderText = "Cant."
-        Me.Cantidad.MinimumWidth = 6
-        Me.Cantidad.Name = "Cantidad"
-        Me.Cantidad.ReadOnly = True
-        Me.Cantidad.Width = 125
-        '
-        'Precio
-        '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.Format = "N2"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.Precio.DefaultCellStyle = DataGridViewCellStyle5
-        Me.Precio.HeaderText = "Precio"
-        Me.Precio.MinimumWidth = 6
-        Me.Precio.Name = "Precio"
-        Me.Precio.ReadOnly = True
-        Me.Precio.Width = 125
-        '
-        'Total
-        '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.Format = "N2"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.Total.DefaultCellStyle = DataGridViewCellStyle6
-        Me.Total.HeaderText = "Total"
-        Me.Total.MinimumWidth = 6
-        Me.Total.Name = "Total"
-        Me.Total.ReadOnly = True
-        Me.Total.Width = 125
-        '
         'btnQuitarCompra
         '
         Me.btnQuitarCompra.BackColor = System.Drawing.Color.Transparent
@@ -648,6 +571,83 @@ Partial Class frmCompras
         Me.txtSubtotal.Size = New System.Drawing.Size(139, 28)
         Me.txtSubtotal.TabIndex = 11
         Me.txtSubtotal.Text = "0"
+        '
+        'ID
+        '
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        Me.ID.DefaultCellStyle = DataGridViewCellStyle1
+        Me.ID.HeaderText = "ID"
+        Me.ID.MinimumWidth = 6
+        Me.ID.Name = "ID"
+        Me.ID.ReadOnly = True
+        Me.ID.Width = 50
+        '
+        'Descripcion
+        '
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        Me.Descripcion.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Descripcion.HeaderText = "Repuesto"
+        Me.Descripcion.MinimumWidth = 6
+        Me.Descripcion.Name = "Descripcion"
+        Me.Descripcion.ReadOnly = True
+        Me.Descripcion.Width = 200
+        '
+        'Diario
+        '
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        Me.Diario.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Diario.HeaderText = "Nombre común"
+        Me.Diario.MinimumWidth = 6
+        Me.Diario.Name = "Diario"
+        Me.Diario.ReadOnly = True
+        Me.Diario.Width = 200
+        '
+        'Cantidad
+        '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.Format = "N2"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Cantidad.HeaderText = "Cant."
+        Me.Cantidad.MinimumWidth = 6
+        Me.Cantidad.Name = "Cantidad"
+        Me.Cantidad.ReadOnly = True
+        Me.Cantidad.Width = 125
+        '
+        'Precio
+        '
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.Format = "N2"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.Precio.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Precio.HeaderText = "Precio"
+        Me.Precio.MinimumWidth = 6
+        Me.Precio.Name = "Precio"
+        Me.Precio.ReadOnly = True
+        Me.Precio.Width = 116
+        '
+        'Total
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.Format = "N2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.Total.DefaultCellStyle = DataGridViewCellStyle6
+        Me.Total.HeaderText = "Total"
+        Me.Total.MinimumWidth = 6
+        Me.Total.Name = "Total"
+        Me.Total.ReadOnly = True
+        Me.Total.Width = 116
         '
         'frmCompras
         '
