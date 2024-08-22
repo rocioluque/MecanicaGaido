@@ -22,12 +22,10 @@ Public Class frmOrdenesReparacion
     End Sub
 
     Private Sub frmOrdenesReparacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Cargar_Combo_Vehiculos()
+
         Cargar_Combo_Personas()
         Cargar_Combo_Prestador()
         Cargar_Combo_Repuestos()
-        'Cargar_Grilla_Terceros()
-        'Cargar_Grilla_RepuestosPorOrden()
         Cargar_Grilla_Ordenes()
         limpiar()
         ponerDecimales()
@@ -88,23 +86,7 @@ Public Class frmOrdenesReparacion
 
 #End Region
 #Region "Cargar cbo"
-    Private Sub Cargar_Combo_Vehiculos()
-        Try
-            Dim tabla As DataTable = o_Orden.Cargar_Combo_Vehiculos()
 
-            If tabla.Rows.Count > 0 Then
-                cboVehiculo.DataSource = tabla
-                cboVehiculo.DisplayMember = "Nombre"
-                cboVehiculo.ValueMember = "ID_Vehiculo"
-                cboVehiculo.SelectedValue = -1
-            Else
-                MsgBox("No se encontraron Vehiculos.", vbInformation, "Información")
-            End If
-
-        Catch ex As Exception
-            MsgBox("Error al cargar los Vehiculos: " & ex.Message, vbCritical, "Error")
-        End Try
-    End Sub
     Private Sub Cargar_Combo_Vehiculos(ID_Persona)
         Try
             Dim tabla As DataTable = o_Orden.Cargar_Combo_Vehiculos(ID_Persona)
@@ -598,6 +580,8 @@ Public Class frmOrdenesReparacion
             MsgBox("Error al quitar el registro: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+#Region "Focus txt"
+
 
     Private Sub txtCostoEstimadoS3_GotFocus(sender As Object, e As EventArgs) Handles txtCostoEstimadoS3.GotFocus
         txtCostoEstimadoS3.SelectAll()
@@ -615,5 +599,12 @@ Public Class frmOrdenesReparacion
     Private Sub txtMontoManoObra_GotFocus(sender As Object, e As EventArgs) Handles txtMontoManoObra.GotFocus
         txtMontoManoObra.SelectAll()
     End Sub
+
+
+#End Region
+
+
+
+
 
 End Class
