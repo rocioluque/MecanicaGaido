@@ -12,12 +12,12 @@ Public Class frmOrdenesReparacion
         txtSeñasParticulares.Clear()
         txtMotivoReparacion.Clear()
         cboPersonas.SelectedIndex = -1
-        'cboServicios.SelectedIndex = -1
+        CboPersonaServ3.SelectedIndex = -1
         cboVehiculo.SelectedIndex = -1
         chkActivo.Checked = False
     End Sub
 
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click, BtnCancelarS3.Click
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
     End Sub
 
@@ -26,10 +26,11 @@ Public Class frmOrdenesReparacion
         Cargar_Combo_Personas()
         Cargar_Combo_Prestador()
         Cargar_Combo_Repuestos()
-        Cargar_Grilla_Terceros()
-        Cargar_Grilla_RepuestosPorOrden()
+        'Cargar_Grilla_Terceros()
+        'Cargar_Grilla_RepuestosPorOrden()
         Cargar_Grilla_Ordenes()
         limpiar()
+        ponerDecimales()
     End Sub
 #End Region
 
@@ -51,7 +52,25 @@ Public Class frmOrdenesReparacion
             MsgBox("Error al cargar los Vehiculos: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+    Private Sub Cargar_Combo_Vehiculos(ID_Persona)
+        Try
+            Dim tabla As DataTable = o_Orden.Cargar_Combo_Vehiculos(ID_Persona)
 
+            If tabla.Rows.Count > 0 Then
+                cboVehiculo.DataSource = tabla
+                cboVehiculo.DisplayMember = "Nombre"
+                cboVehiculo.ValueMember = "ID_Vehiculo"
+                cboVehiculo.SelectedValue = -1
+            Else
+                MsgBox("No se encontraron Vehiculos para esta persona.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar los Vehiculos: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private combopersonacargado = False
     Private Sub Cargar_Combo_Personas()
         Try
             Dim tabla As DataTable = o_Orden.Cargar_Combo_Personas()
@@ -68,6 +87,7 @@ Public Class frmOrdenesReparacion
         Catch ex As Exception
             MsgBox("Error al cargar las personas: " & ex.Message, vbCritical, "Error")
         End Try
+        combopersonacargado = True
     End Sub
 
     Private Sub Cargar_Combo_Prestador()
@@ -76,8 +96,9 @@ Public Class frmOrdenesReparacion
 
             If tabla.Rows.Count > 0 Then
                 CboPersonaServ3.DataSource = tabla
-                CboPersonaServ3.DisplayMember = "Detalle_Prestacion"
-                CboPersonaServ3.ValueMember = "ID_ServicioTercero"
+                CboPersonaServ3.DisplayMember = "Persona"
+                CboPersonaServ3.ValueMember = "ID_Persona"
+
                 CboPersonaServ3.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Servicios.", vbInformation, "Información")
@@ -87,15 +108,15 @@ Public Class frmOrdenesReparacion
             MsgBox("Error al cargar los Servicios: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
-
     Private Sub Cargar_Combo_Repuestos()
         Try
-            Dim tabla As DataTable = o_Orden.Cargar_Combo_Repuestos()
+            Dim tablaRep As DataTable = o_Orden.Cargar_Combo_Repuestos()
 
-            If tabla.Rows.Count > 0 Then
-                cboProductoOR.DataSource = tabla
+            If tablaRep.Rows.Count > 0 Then
+                cboProductoOR.DataSource = tablaRep
                 cboProductoOR.DisplayMember = "Descripcion"
                 cboProductoOR.ValueMember = "ID_Repuestos"
+
                 cboProductoOR.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Repuestos.", vbInformation, "Información")
@@ -103,6 +124,52 @@ Public Class frmOrdenesReparacion
 
         Catch ex As Exception
             MsgBox("Error al cargar los Repuestos: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+    Private Sub btnAgregarRepOR_Click(sender As Object, e As EventArgs) Handles btnAgregarRepOR.Click
+        Try
+
+            If cboProductoOR.SelectedValue IsNot Nothing AndAlso Not String.IsNullOrEmpty(txtCantidadRepOR.Text) Then
+
+                Dim rowView As DataRowView = CType(cboProductoOR.SelectedItem, DataRowView)
+                Dim idRepuesto As Integer = Convert.ToInt32(rowView("ID_Repuestos"))
+                Dim descripcionRepuesto As String = rowView("Descripcion").ToString()
+                Dim nombreDiario As String = rowView("nombreDiario").ToString()
+                Dim precio As Decimal = Convert.ToDecimal(rowView("PrecioLista"))
+                Dim cantidad As Integer = Convert.ToDecimal(txtCantidadRepOR.Text)
+                Dim total As Decimal = precio * cantidad
+
+
+                grdRepuestos.Rows.Add(idRepuesto, descripcionRepuesto, nombreDiario, cantidad, precio, total)
+                Cargar_Combo_Repuestos()
+                txtCantidadRepOR.Text = Convert.ToDecimal(1).ToString("N2")
+                ActualizarMontoTotalRep()
+                btnQuitarRepOR.Enabled = True
+
+            Else
+                MsgBox("Por favor, seleccione un repuesto y especifique la cantidad.", vbExclamation, "Advertencia")
+            End If
+        Catch ex As Exception
+            MsgBox("Error al agregar el repuesto: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub btnQuitar_Click(sender As Object, e As EventArgs) Handles btnQuitarRepOR.Click
+        Try
+
+            If grdRepuestos.SelectedRows.Count > 0 Then
+
+                grdRepuestos.Rows.Remove(grdRepuestos.SelectedRows(0))
+
+                ActualizarMontoTotalRep()
+                If grdRepuestos.Rows.Count = 0 Then
+                    btnQuitarRepOR.Enabled = False
+                End If
+            Else
+                MsgBox("Por favor, seleccione una fila para quitar.", vbExclamation, "Advertencia")
+            End If
+        Catch ex As Exception
+            MsgBox("Error al quitar el repuesto: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
 
@@ -126,7 +193,6 @@ Public Class frmOrdenesReparacion
                 grdServiciosTerceros.AutoGenerateColumns = True
                 grdServiciosTerceros.DataSource = oDs.Tables(0)
 
-                ' Verificar si las columnas existen antes de ocultarlas
                 Dim columnasParaOcultar As String() = {}
                 For Each colName As String In columnasParaOcultar
                     If grdServiciosTerceros.Columns.Contains(colName) Then
@@ -135,7 +201,7 @@ Public Class frmOrdenesReparacion
                 Next
                 grdServiciosTerceros.Refresh()
             Else
-                MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
+                MsgBox("No hay Servicios de terceros asociados a esta orden.", vbInformation, "Información")
             End If
 
             oDs = Nothing
@@ -166,7 +232,6 @@ Public Class frmOrdenesReparacion
                 grdRepuestos.AutoGenerateColumns = True
                 grdRepuestos.DataSource = oDs.Tables(0)
 
-                ' Verificar si las columnas existen antes de ocultarlas
                 Dim columnasParaOcultar As String() = {}
                 For Each colName As String In columnasParaOcultar
                     If grdRepuestos.Columns.Contains(colName) Then
@@ -175,7 +240,7 @@ Public Class frmOrdenesReparacion
                 Next
                 grdRepuestos.Refresh()
             Else
-                MsgBox("No se encontraron Repuestos Por Orden para mostrar.", vbInformation, "Información")
+                MsgBox("No se Repuestos asociados a esta Orden.", vbInformation, "Información")
             End If
 
             oDs = Nothing
@@ -206,7 +271,6 @@ Public Class frmOrdenesReparacion
                 grdOrdenReparacion.AutoGenerateColumns = True
                 grdOrdenReparacion.DataSource = oDs.Tables(0)
 
-                ' Verificar si las columnas existen antes de ocultarlas
                 Dim columnasParaOcultar As String() = {}
                 For Each colName As String In columnasParaOcultar
                     If grdOrdenReparacion.Columns.Contains(colName) Then
@@ -228,6 +292,7 @@ Public Class frmOrdenesReparacion
 #End Region
 
 #Region "Keypress"
+    'SEGURO QUE VA ESTO?
     Private Sub txtSeñasParticulares_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
@@ -242,6 +307,19 @@ Public Class frmOrdenesReparacion
 #End Region
 
 #Region "Css trucho"
+    Private Sub PanelDetallesOrden_Paint(sender As Object, e As PaintEventArgs) Handles PanelDetallesOrden.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelDetallesOrden.Width - 1, PanelDetallesOrden.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
     Private Sub PanelInfoVehiculo_Paint(sender As Object, e As PaintEventArgs) Handles PanelInfoVehiculo.Paint
         ' Configurar los colores y el grosor del borde
         Dim borderColor As Color = Color.SeaGreen
@@ -255,8 +333,7 @@ Public Class frmOrdenesReparacion
         End Using
     End Sub
 
-
-    Private Sub PanelDetallesOrden_Paint(sender As Object, e As PaintEventArgs) Handles PanelDetallesOrden.Paint
+    Private Sub PanelCostos_Paint(sender As Object, e As PaintEventArgs) Handles PanelCostos.Paint
         ' Configurar los colores y el grosor del borde
         Dim borderColor As Color = Color.SeaGreen
         Dim borderWidth As Integer = 1
@@ -264,7 +341,20 @@ Public Class frmOrdenesReparacion
         ' Crear un objeto Pen para dibujar el borde
         Using pen As New Pen(borderColor, borderWidth)
             ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelDetallesOrden.Width - 1, PanelDetallesOrden.Height - 1)
+            Dim rect As New Rectangle(0, 0, PanelCostos.Width - 1, PanelCostos.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub PanelDetalleDeRepuestos_Paint(sender As Object, e As PaintEventArgs) Handles PanelDetalleDeRepuestos.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelDetalleDeRepuestos.Width - 1, PanelDetalleDeRepuestos.Height - 1)
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
@@ -282,27 +372,106 @@ Public Class frmOrdenesReparacion
         End Using
     End Sub
 
-    Private Sub lblResultado_Click(sender As Object, e As EventArgs) Handles lblResultado.Click
+    Private Sub PanelReparaciones_Paint(sender As Object, e As PaintEventArgs) Handles PanelReparaciones.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelReparaciones.Width - 1, PanelReparaciones.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+#End Region
+
+    Private Sub lblResultado_Click(sender As Object, e As EventArgs) Handles lblResultadoPrestador.Click
 
     End Sub
 
     Private Sub CboPersonaServ3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboPersonaServ3.SelectedIndexChanged
-        ' Verifica si hay un elemento seleccionado
         If CboPersonaServ3.SelectedItem IsNot Nothing Then
 
-            ' Cast del SelectedItem a DataRowView
             Dim selectedRow As DataRowView = CType(CboPersonaServ3.SelectedItem, DataRowView)
 
-            ' Accede a la columna específica que deseas mostrar en la Label
-            lblResultado.Text = selectedRow("Detalle_Prestacion").ToString()
-            txtID_Serv3.Text = selectedRow("ID_ServicioTercero").ToString()
+            lblResultadoPrestador.Text = selectedRow("Persona").ToString()
         Else
-            ' Opcionalmente, puedes manejar el caso donde no hay selección
-            lblResultado.Text = "-"
-            txtID_Serv3.Text = "-"
+            lblResultadoPrestador.Text = ""
         End If
     End Sub
 
-#End Region
+    Private Sub btnAceptarS3_Click(sender As Object, e As EventArgs) Handles btnAceptarS3.Click
+        'Cargar_Grilla_Terceros()
+    End Sub
+
+    Private Sub ponerDecimales()
+        txtCostoEstimadoS3.Text = Convert.ToDecimal(txtCostoEstimadoS3.Text).ToString("N2")
+        txtCostoRealS3.Text = Convert.ToDecimal(txtCostoRealS3.Text).ToString("N2")
+        txtMontoManoObra.Text = Convert.ToDecimal(txtMontoManoObra.Text).ToString("N2")
+        txtMontoRepuestos.Text = Convert.ToDecimal(txtMontoRepuestos.Text).ToString("N2")
+        txtMontoServ3.Text = Convert.ToDecimal(txtMontoServ3.Text).ToString("N2")
+        txtMontoTotalOR.Text = Convert.ToDecimal(txtMontoTotalOR.Text).ToString("N2")
+        txtCantidadRepOR.Text = Convert.ToDecimal(txtCantidadRepOR.Text).ToString("N2")
+
+    End Sub
+    Private Sub CalcularTotalOR()
+        txtMontoTotalOR.Text = Convert.ToDecimal(CDec(txtMontoManoObra.Text) + CDec(txtMontoRepuestos.Text) + CDec(txtMontoServ3.Text)).ToString("N2")
+    End Sub
+
+
+
+
+
+    Private Sub txtMontoManoObra_Leave(sender As Object, e As EventArgs) Handles txtMontoManoObra.Leave
+        ponerDecimales()
+        CalcularTotalOR()
+    End Sub
+
+    Private Sub txtMontoServ3_TextChanged(sender As Object, e As EventArgs) Handles txtMontoServ3.TextChanged
+        ponerDecimales()
+        CalcularTotalOR()
+    End Sub
+
+    Private Sub txtMontoRepuestos_TextChanged(sender As Object, e As EventArgs) Handles txtMontoRepuestos.TextChanged
+        ponerDecimales()
+        CalcularTotalOR()
+    End Sub
+
+    Private Sub ActualizarMontoTotalRep()
+        Dim montoTotal As Decimal = 0
+
+        For Each row As DataGridViewRow In grdRepuestos.Rows
+            montoTotal += Convert.ToDecimal(row.Cells("Total").Value)
+        Next
+
+        txtMontoRepuestos.Text = montoTotal.ToString("F2")
+    End Sub
+
+    Private Sub BtnCancelarS3_Click(sender As Object, e As EventArgs) Handles BtnCancelarS3.Click
+        limpiarServ3()
+    End Sub
+    Private Sub limpiarServ3()
+        CboPersonaServ3.SelectedIndex = -1
+        txtID_Serv3.Text = ""
+        txtServicioSolicitado.Text = ""
+        txtCostoEstimadoS3.Text = Convert.ToDecimal(0).ToString("N2")
+        txtCostoRealS3.Text = Convert.ToDecimal(0).ToString("N2")
+    End Sub
+
+    Private Sub cboPersonas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPersonas.SelectedIndexChanged
+        If combopersonacargado Then
+            Try
+                Dim ID_Persona = cboPersonas.SelectedValue
+                cboVehiculo.Items.Clear()
+                Cargar_Combo_Vehiculos(ID_Persona)
+            Catch ex As Exception
+                MsgBox("Error al cargar vehículos: " & ex.Message, vbCritical, "Error")
+
+            End Try
+        End If
+    End Sub
+
 
 End Class

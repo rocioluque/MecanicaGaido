@@ -38,21 +38,18 @@ Public Class frmAgregarEmpleados
         cboSeccion.SelectedIndex = -1
         cboRol.SelectedIndex = -1
         chkEstado.Checked = False
+        lblCargaEmpleado.Text = Nothing
+        lblCargaCuil.Text = Nothing
+        lblCargaFechaNacimiento.Text = Nothing
     End Sub
 
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
         limpiar()
         Me.Close()
-        lblCargaEmpleado.Text = Nothing
-        lblCargaCuil.Text = Nothing
-        lblCargaFechaNacimiento.Text = Nothing
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
-        lblCargaEmpleado.Text = Nothing
-        lblCargaCuil.Text = Nothing
-        lblCargaFechaNacimiento.Text = Nothing
 
         btnAceptar.Enabled = True
         btnModificar.Enabled = False
@@ -79,14 +76,6 @@ Public Class frmAgregarEmpleados
             If oDs.Tables(0).Rows.Count > 0 Then
                 grdEmpleados.AutoGenerateColumns = True
                 grdEmpleados.DataSource = oDs.Tables(0)
-
-                ' Verificar si las columnas existen antes de ocultarlas
-                Dim columnasParaOcultar As String() = {"Fecha_Nacimiento", "Contraseña", "Nota", "Estado", "Documento"}
-                For Each colName As String In columnasParaOcultar
-                    If grdEmpleados.Columns.Contains(colName) Then
-                        grdEmpleados.Columns(colName).Visible = False
-                    End If
-                Next
                 grdEmpleados.Refresh()
             Else
                 MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
@@ -142,8 +131,6 @@ Public Class frmAgregarEmpleados
 
     Private Sub grdEmpleados_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdEmpleados.CellClick
         If e.RowIndex >= 0 Then
-
-            ' Obtiene el ID del producto de la celda correspondiente
             Dim selectedRow As DataGridViewRow = grdEmpleados.Rows(e.RowIndex)
             Dim idEmpleado As Integer
 
@@ -170,7 +157,6 @@ Public Class frmAgregarEmpleados
                 Cargar_Grilla_Empleados()
             Catch ex As Exception
                 MsgBox("Error al agregar el empleado: " & ex.Message, vbCritical, "Error")
-                limpiar()
             End Try
         Else
             MsgBox("Complete Datos", vbInformation, "Error")
@@ -180,17 +166,21 @@ Public Class frmAgregarEmpleados
 
 #Region "Modificar"
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
-        Try
-            ' Llamar a la función para modificar empleado y usuario
-            o_empleados.Modificar_Empleado_Usuario(Convert.ToInt32(txtID.Text), txtUsuario.Text, txtContraseña.Text, CInt(cboRol.SelectedValue),
-                                                   dtpFechaContratacion.Value, txtCargo.Text, txtNota.Text, chkEstado.Checked, CInt(cboSeccion.SelectedValue))
-            MessageBox.Show("Empleado y usuario modificados correctamente.", "Éxito")
-            limpiar()
+        If txtCargo.Text <> Nothing And txtUsuario.Text <> Nothing And txtContraseña.Text <> Nothing And
+            cboSeccion.SelectedValue <> Nothing And cboRol.SelectedValue <> Nothing Then
+            Try
+                o_empleados.Modificar_Empleado_Usuario(Convert.ToInt32(txtID.Text), txtUsuario.Text, txtContraseña.Text, CInt(cboRol.SelectedValue),
+                                                       dtpFechaContratacion.Value, txtCargo.Text, txtNota.Text, chkEstado.Checked, CInt(cboSeccion.SelectedValue))
+                MessageBox.Show("Empleado y usuario modificados correctamente.", "Éxito")
+                limpiar()
 
-            Cargar_Grilla_Empleados()
-        Catch ex As Exception
-            MsgBox("Error al modificar el empleado: " & ex.Message, vbCritical, "Error")
-        End Try
+                Cargar_Grilla_Empleados()
+            Catch ex As Exception
+                MsgBox("Error al modificar el empleado: " & ex.Message, vbCritical, "Error")
+            End Try
+        Else
+            MsgBox("Complete los datos correspondientes.", vbInformation, "Error")
+        End If
     End Sub
 #End Region
 

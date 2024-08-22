@@ -12,6 +12,7 @@ Public Class AD_Ventas
         connectionString = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123"
     End Sub
 
+#Region "carga de cbo"
     Public Function Cargar_Combo_Cuentas() As DataTable
         Dim tabla As New DataTable
 
@@ -107,4 +108,6 @@ Public Class AD_Ventas
 
         Return tabla
     End Function
+#End Region
+
 End Class

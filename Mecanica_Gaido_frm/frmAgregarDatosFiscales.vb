@@ -7,26 +7,42 @@ Public Class frmAgregarDatosFiscales
     Public Property IdPersona As Integer
 
 #Region "Procedimientos"
+    Private Sub frmAgregarDatosFiscales_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        limpiar()
+        Cargar_Grilla()
+        If o_DatosFiscales.ControlarIdPersonaEnDatoFiscal(IdPersona) Then
+            ' Si la persona ya es un empleado, deshabilitar el botón "Aceptar"
+            btnAceptar.Enabled = False
+            btnModificar.Enabled = True
+
+            ' Cargar los datos del empleado para modificación
+            CargarDatosPorIDPersona(IdPersona)
+        Else
+            ' Si no es un empleado, habilitar el botón "Aceptar"
+            btnAceptar.Enabled = True
+            btnModificar.Enabled = False
+        End If
+    End Sub
+
     Public Sub limpiar()
         txtID.Clear()
         txtIngresosBrutos.Clear()
         txtSaldo.Clear()
         dtpFechaAlta.Value = DateTime.Today
         chkEstado.Checked = False
-    End Sub
-
-    Private Sub frmAgregarDatosFiscales_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        limpiar()
-        Cargar_Grilla()
-    End Sub
-
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        limpiar()
         lblNombreResultado.Text = Nothing
         lblDocumentoResultado.Text = Nothing
     End Sub
 
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiar()
+
+        btnAceptar.Enabled = True
+        btnModificar.Enabled = False
+    End Sub
+
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        limpiar()
         Me.Close()
     End Sub
 #End Region
@@ -51,15 +67,6 @@ Public Class frmAgregarDatosFiscales
             If oDs.Tables(0).Rows.Count > 0 Then
                 grdCuenta.AutoGenerateColumns = True
                 grdCuenta.DataSource = oDs.Tables(0)
-
-                ' Verificar si las columnas existen antes de ocultarlas
-                Dim columnasParaOcultar As String() = {"Documento", "Estado"}
-                For Each colName As String In columnasParaOcultar
-                    If grdCuenta.Columns.Contains(colName) Then
-                        grdCuenta.Columns(colName).Visible = False
-                    End If
-                Next
-
                 grdCuenta.Refresh()
             Else
                 MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
@@ -73,24 +80,42 @@ Public Class frmAgregarDatosFiscales
         End Try
     End Sub
 
-    Public Sub CargarDatosEnTxt(ByVal rowindex As Integer)
-        If grdCuenta.Rows.Count > 0 Then
+    Public Sub CargarDatosEnTxt(ByVal idDatoFiscal As Integer)
+        Try
+            Dim datoleido As SqlDataReader = o_DatosFiscales.Consultar_DatoFiscalPorID(idDatoFiscal)
+            If datoleido.Read() Then
+                txtID.Text = datoleido("N° Dato Fiscal").ToString()
+                lblNombreResultado.Text = datoleido("Cuenta").ToString()
+                txtIngresosBrutos.Text = datoleido("Ingresos Brutos").ToString()
+                dtpFechaAlta.Value = Convert.ToDateTime(datoleido("Fecha de Alta"))
+                txtSaldo.Text = datoleido("Saldo").ToString()
+                chkEstado.Checked = datoleido("Estado").ToString()
 
-            txtID.Text = grdCuenta.Rows(rowindex).Cells("N° Dato Fiscal").Value.ToString()
-            lblNombreResultado.Text = grdCuenta.Rows(rowindex).Cells("Cuenta").Value.ToString()
-            txtIngresosBrutos.Text = grdCuenta.Rows(rowindex).Cells("Ingresos Brutos").Value.ToString()
-            dtpFechaAlta.Value = grdCuenta.Rows(rowindex).Cells("Fecha de Alta").Value
-            txtSaldo.Text = grdCuenta.Rows(rowindex).Cells("Saldo").Value.ToString()
-            chkEstado.Checked = grdCuenta.Rows(rowindex).Cells("Estado").Value.ToString()
+                lblDocumentoResultado.Text = datoleido("Documento").ToString()
 
+                btnAceptar.Enabled = False
+                btnModificar.Enabled = True
+            Else
+                MsgBox("No se encontraron resultados", vbInformation, "Error")
+            End If
 
-            lblDocumentoResultado.Text = grdCuenta.Rows(rowindex).Cells("Documento").Value.ToString()
-        End If
+            datoleido.Close()
+        Catch ex As Exception
+            MessageBox.Show("Ocurrió un error al consultar el dato fiscal: " & ex.Message, "Error")
+        End Try
     End Sub
 
     Private Sub grdCuenta_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdCuenta.CellClick
         If e.RowIndex >= 0 Then
-            CargarDatosEnTxt(e.RowIndex)
+            Dim selectedRow As DataGridViewRow = grdCuenta.Rows(e.RowIndex)
+            Dim idDatoFiscal As Integer
+
+            If selectedRow.Cells("N° Dato Fiscal").Value IsNot Nothing Then
+                idDatoFiscal = Convert.ToInt32(selectedRow.Cells("N° Dato Fiscal").Value)
+                CargarDatosEnTxt(idDatoFiscal)
+            Else
+                MsgBox("El ID del dato fiscal no puede ser nulo.", vbCritical, "Error")
+            End If
         End If
     End Sub
 #End Region
@@ -104,8 +129,6 @@ Public Class frmAgregarDatosFiscales
                 MsgBox("Dato Fiscal agregado correctamente.", vbInformation, "Información")
                 limpiar()
                 Cargar_Grilla()
-                lblNombreResultado.Text = Nothing
-                lblDocumentoResultado.Text = Nothing
 
             Catch ex As Exception
                 MsgBox("Error al agregar el dato fiscal: " & ex.Message, vbCritical, "Error")
@@ -113,6 +136,52 @@ Public Class frmAgregarDatosFiscales
         Else
             MsgBox("Complete los datos correspondientes.", vbInformation, "Error")
         End If
+    End Sub
+#End Region
+
+#Region "Modificar"
+    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
+        If txtIngresosBrutos.Text <> Nothing And txtSaldo.Text <> Nothing Then
+            Try
+                o_DatosFiscales.Modificar_DatoFiscal(Convert.ToInt32(txtID.Text), txtIngresosBrutos.Text, dtpFechaAlta.Value,
+                                                        txtSaldo.Text, chkEstado.Checked)
+
+
+                MsgBox("Dato Fiscal modificado correctamente.", vbInformation, "Información")
+                limpiar()
+                Cargar_Grilla()
+
+            Catch ex As Exception
+                MsgBox("Error al modificar el dato fiscal: " & ex.Message, vbCritical, "Error")
+            End Try
+        Else
+            MsgBox("Complete los datos correspondientes.", vbInformation, "Error")
+        End If
+    End Sub
+
+#End Region
+
+#Region "Cargar datos de datos fiscales ya cargado"
+    Public Sub CargarDatosPorIDPersona(ByVal idPersona As Integer)
+        Try
+            Dim datoleido As SqlDataReader = o_DatosFiscales.Consultar_DatoFiscalPorIDPersona(idPersona)
+
+            If datoleido.Read() Then
+                txtID.Text = datoleido("N° Dato Fiscal").ToString()
+                lblNombreResultado.Text = datoleido("Cuenta").ToString()
+                txtIngresosBrutos.Text = datoleido("Ingresos Brutos").ToString()
+                dtpFechaAlta.Value = Convert.ToDateTime(datoleido("Fecha de Alta"))
+                txtSaldo.Text = datoleido("Saldo").ToString()
+                chkEstado.Checked = datoleido("Estado").ToString()
+
+                lblDocumentoResultado.Text = datoleido("Documento").ToString()
+
+                btnAceptar.Enabled = False
+            End If
+            datoleido.Close()
+        Catch ex As Exception
+            MessageBox.Show("Ocurrió un error al consultar el dato fiscal: " & ex.Message, "Error")
+        End Try
     End Sub
 #End Region
 

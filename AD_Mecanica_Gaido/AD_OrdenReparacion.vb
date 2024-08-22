@@ -6,7 +6,6 @@ Imports System.Configuration
 Imports System.Data.Common
 
 Public Class AD_OrdenReparacion
-
     Private connectionString As String
 
     Public Sub New()
@@ -20,6 +19,26 @@ Public Class AD_OrdenReparacion
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Cargar_Combo_Vehiculos", conexion)
                 comando.CommandType = CommandType.StoredProcedure
+                Try
+                    conexion.Open()
+                    Dim datadapter As New SqlDataAdapter(comando)
+                    datadapter.Fill(tabla)
+                Catch ex As Exception
+                    Throw New Exception("Error al cargar los Vehiculos desde la base de datos: " & ex.Message, ex)
+                End Try
+
+            End Using
+        End Using
+
+        Return tabla
+    End Function
+    Public Function Cargar_Combo_Vehiculos(ID_Persona) As DataTable
+        Dim tabla As New DataTable
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Combo_Vehiculos_Persona", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.Add(New SqlParameter("@ID_Persona", SqlDbType.Int)).Value = ID_Persona
                 Try
                     conexion.Open()
                     Dim datadapter As New SqlDataAdapter(comando)
@@ -88,6 +107,9 @@ Public Class AD_OrdenReparacion
         Return tabla
     End Function
 
+
+#End Region
+
     Public Function Cargar_Grilla_Terceros() As DataTable
         Dim tabla As New DataTable
 
@@ -126,5 +148,4 @@ Public Class AD_OrdenReparacion
         End Using
         Return tabla
     End Function
-#End Region
 End Class

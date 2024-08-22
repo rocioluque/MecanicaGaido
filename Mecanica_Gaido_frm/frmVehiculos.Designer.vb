@@ -84,7 +84,7 @@ Partial Class frmVehiculos
         Me.grdVehiculo.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdVehiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdVehiculo.Location = New System.Drawing.Point(82, 419)
-        Me.grdVehiculo.Margin = New System.Windows.Forms.Padding(2)
+        Me.grdVehiculo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.grdVehiculo.Name = "grdVehiculo"
         Me.grdVehiculo.ReadOnly = True
         Me.grdVehiculo.RowHeadersVisible = False
@@ -98,7 +98,7 @@ Partial Class frmVehiculos
         '
         Me.txtID.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtID.Location = New System.Drawing.Point(210, 49)
-        Me.txtID.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtID.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(48, 23)
         Me.txtID.TabIndex = 1
@@ -109,7 +109,7 @@ Partial Class frmVehiculos
         Me.cboTipoVehiculo.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.cboTipoVehiculo.FormattingEnabled = True
         Me.cboTipoVehiculo.Location = New System.Drawing.Point(568, 49)
-        Me.cboTipoVehiculo.Margin = New System.Windows.Forms.Padding(2)
+        Me.cboTipoVehiculo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cboTipoVehiculo.Name = "cboTipoVehiculo"
         Me.cboTipoVehiculo.Size = New System.Drawing.Size(222, 25)
         Me.cboTipoVehiculo.TabIndex = 3
@@ -150,7 +150,7 @@ Partial Class frmVehiculos
         Me.btnModificar.Location = New System.Drawing.Point(406, 365)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(117, 37)
-        Me.btnModificar.TabIndex = 13
+        Me.btnModificar.TabIndex = 15
         Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = False
         '
@@ -167,7 +167,7 @@ Partial Class frmVehiculos
         Me.btnCancelar.Location = New System.Drawing.Point(730, 365)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(117, 37)
-        Me.btnCancelar.TabIndex = 14
+        Me.btnCancelar.TabIndex = 16
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = False
         '
@@ -183,7 +183,7 @@ Partial Class frmVehiculos
         Me.btnAceptar.Location = New System.Drawing.Point(82, 365)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(117, 37)
-        Me.btnAceptar.TabIndex = 12
+        Me.btnAceptar.TabIndex = 14
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = False
         '
@@ -266,10 +266,10 @@ Partial Class frmVehiculos
         Me.cboPersona.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.cboPersona.FormattingEnabled = True
         Me.cboPersona.Location = New System.Drawing.Point(13, 35)
-        Me.cboPersona.Margin = New System.Windows.Forms.Padding(2)
+        Me.cboPersona.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cboPersona.Name = "cboPersona"
         Me.cboPersona.Size = New System.Drawing.Size(222, 25)
-        Me.cboPersona.TabIndex = 125
+        Me.cboPersona.TabIndex = 4
         '
         'btnAgregarCuenta
         '
@@ -325,10 +325,10 @@ Partial Class frmVehiculos
         Me.cboMarca.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.cboMarca.FormattingEnabled = True
         Me.cboMarca.Location = New System.Drawing.Point(13, 125)
-        Me.cboMarca.Margin = New System.Windows.Forms.Padding(2)
+        Me.cboMarca.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cboMarca.Name = "cboMarca"
         Me.cboMarca.Size = New System.Drawing.Size(222, 25)
-        Me.cboMarca.TabIndex = 114
+        Me.cboMarca.TabIndex = 6
         '
         'btnAgregarMarca
         '
@@ -356,10 +356,10 @@ Partial Class frmVehiculos
         '
         Me.txtModelo.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtModelo.Location = New System.Drawing.Point(13, 171)
-        Me.txtModelo.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtModelo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtModelo.Name = "txtModelo"
         Me.txtModelo.Size = New System.Drawing.Size(253, 23)
-        Me.txtModelo.TabIndex = 116
+        Me.txtModelo.TabIndex = 7
         '
         'Label4
         '
@@ -390,19 +390,19 @@ Partial Class frmVehiculos
         Me.txtNombre.Enabled = False
         Me.txtNombre.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtNombre.Location = New System.Drawing.Point(13, 81)
-        Me.txtNombre.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtNombre.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(253, 23)
-        Me.txtNombre.TabIndex = 115
+        Me.txtNombre.TabIndex = 5
         '
         'txtColor
         '
         Me.txtColor.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtColor.Location = New System.Drawing.Point(13, 215)
-        Me.txtColor.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtColor.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtColor.Name = "txtColor"
         Me.txtColor.Size = New System.Drawing.Size(253, 23)
-        Me.txtColor.TabIndex = 117
+        Me.txtColor.TabIndex = 8
         '
         'Label6
         '
@@ -442,7 +442,7 @@ Partial Class frmVehiculos
         Me.txtNota.Location = New System.Drawing.Point(13, 19)
         Me.txtNota.Name = "txtNota"
         Me.txtNota.Size = New System.Drawing.Size(414, 40)
-        Me.txtNota.TabIndex = 18
+        Me.txtNota.TabIndex = 13
         Me.txtNota.Text = ""
         '
         'lblIdentificacionVehiculo
@@ -489,10 +489,10 @@ Partial Class frmVehiculos
         '
         Me.txtNumChasis.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtNumChasis.Location = New System.Drawing.Point(174, 24)
-        Me.txtNumChasis.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtNumChasis.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtNumChasis.Name = "txtNumChasis"
         Me.txtNumChasis.Size = New System.Drawing.Size(253, 23)
-        Me.txtNumChasis.TabIndex = 8
+        Me.txtNumChasis.TabIndex = 9
         '
         'lblNumChasis
         '
@@ -536,10 +536,10 @@ Partial Class frmVehiculos
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
         Me.chkEstado.Location = New System.Drawing.Point(16, 129)
-        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
+        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
-        Me.chkEstado.TabIndex = 11
+        Me.chkEstado.TabIndex = 12
         Me.chkEstado.Text = "¿Activo?"
         Me.chkEstado.UseVisualStyleBackColor = True
         '
@@ -547,19 +547,19 @@ Partial Class frmVehiculos
         '
         Me.txtNumMotor.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtNumMotor.Location = New System.Drawing.Point(174, 58)
-        Me.txtNumMotor.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtNumMotor.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtNumMotor.Name = "txtNumMotor"
         Me.txtNumMotor.Size = New System.Drawing.Size(253, 23)
-        Me.txtNumMotor.TabIndex = 9
+        Me.txtNumMotor.TabIndex = 10
         '
         'txtMatricula
         '
         Me.txtMatricula.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtMatricula.Location = New System.Drawing.Point(174, 92)
-        Me.txtMatricula.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtMatricula.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtMatricula.Name = "txtMatricula"
         Me.txtMatricula.Size = New System.Drawing.Size(253, 23)
-        Me.txtMatricula.TabIndex = 10
+        Me.txtMatricula.TabIndex = 11
         '
         'Label7
         '
