@@ -24,6 +24,10 @@ Partial Class frmOrdenesReparacion
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmOrdenesReparacion))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -33,10 +37,6 @@ Partial Class frmOrdenesReparacion
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.grdOrdenReparacion = New System.Windows.Forms.DataGridView()
         Me.chkActivo = New System.Windows.Forms.CheckBox()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -89,6 +89,14 @@ Partial Class frmOrdenesReparacion
         Me.Label16 = New System.Windows.Forms.Label()
         Me.txtCostoEstimadoS3 = New System.Windows.Forms.RichTextBox()
         Me.grdServiciosTerceros = New System.Windows.Forms.DataGridView()
+        Me.NroServicio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ID_Prestador = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Prestador = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServSolicitado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CostoEstimado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CostoReal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Finalizado = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Estado = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.CboPersonaServ3 = New System.Windows.Forms.ComboBox()
@@ -117,14 +125,6 @@ Partial Class frmOrdenesReparacion
         Me.cboProductoOR = New System.Windows.Forms.ComboBox()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.NroServicio = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ID_Prestador = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Prestador = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServSolicitado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CostoEstimado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CostoReal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Finalizado = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.Estado = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         CType(Me.grdOrdenReparacion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarVehiculo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDetallesOrden.SuspendLayout()
@@ -346,7 +346,7 @@ Partial Class frmOrdenesReparacion
         Me.lblNota.AutoSize = True
         Me.lblNota.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblNota.ForeColor = System.Drawing.Color.White
-        Me.lblNota.Location = New System.Drawing.Point(29, 64)
+        Me.lblNota.Location = New System.Drawing.Point(29, 58)
         Me.lblNota.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblNota.Name = "lblNota"
         Me.lblNota.Size = New System.Drawing.Size(130, 17)
@@ -367,7 +367,7 @@ Partial Class frmOrdenesReparacion
         Me.PanelDetallesOrden.Controls.Add(Me.btnAgregarCuenta)
         Me.PanelDetallesOrden.Controls.Add(Me.Label3)
         Me.PanelDetallesOrden.Controls.Add(Me.Label4)
-        Me.PanelDetallesOrden.Location = New System.Drawing.Point(17, 72)
+        Me.PanelDetallesOrden.Location = New System.Drawing.Point(17, 66)
         Me.PanelDetallesOrden.Name = "PanelDetallesOrden"
         Me.PanelDetallesOrden.Size = New System.Drawing.Size(272, 206)
         Me.PanelDetallesOrden.TabIndex = 99
@@ -788,6 +788,80 @@ Partial Class frmOrdenesReparacion
         Me.grdServiciosTerceros.Size = New System.Drawing.Size(833, 101)
         Me.grdServiciosTerceros.TabIndex = 104
         '
+        'NroServicio
+        '
+        Me.NroServicio.HeaderText = "Nro Servicio"
+        Me.NroServicio.Name = "NroServicio"
+        Me.NroServicio.ReadOnly = True
+        Me.NroServicio.Visible = False
+        Me.NroServicio.Width = 71
+        '
+        'ID_Prestador
+        '
+        Me.ID_Prestador.HeaderText = "ID Prestador"
+        Me.ID_Prestador.Name = "ID_Prestador"
+        Me.ID_Prestador.ReadOnly = True
+        Me.ID_Prestador.Visible = False
+        Me.ID_Prestador.Width = 72
+        '
+        'Prestador
+        '
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        Me.Prestador.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Prestador.HeaderText = "Prestador"
+        Me.Prestador.Name = "Prestador"
+        Me.Prestador.ReadOnly = True
+        Me.Prestador.Width = 250
+        '
+        'ServSolicitado
+        '
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        Me.ServSolicitado.DefaultCellStyle = DataGridViewCellStyle3
+        Me.ServSolicitado.HeaderText = "Servicio Solicitado"
+        Me.ServSolicitado.Name = "ServSolicitado"
+        Me.ServSolicitado.ReadOnly = True
+        Me.ServSolicitado.Width = 290
+        '
+        'CostoEstimado
+        '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.Format = "N2"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.CostoEstimado.DefaultCellStyle = DataGridViewCellStyle4
+        Me.CostoEstimado.HeaderText = "C. Estimado"
+        Me.CostoEstimado.Name = "CostoEstimado"
+        Me.CostoEstimado.ReadOnly = True
+        Me.CostoEstimado.Width = 120
+        '
+        'CostoReal
+        '
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.Format = "N2"
+        Me.CostoReal.DefaultCellStyle = DataGridViewCellStyle5
+        Me.CostoReal.HeaderText = "C. Real"
+        Me.CostoReal.Name = "CostoReal"
+        Me.CostoReal.ReadOnly = True
+        Me.CostoReal.Width = 120
+        '
+        'Finalizado
+        '
+        Me.Finalizado.HeaderText = "Fin.?"
+        Me.Finalizado.Name = "Finalizado"
+        Me.Finalizado.ReadOnly = True
+        Me.Finalizado.Width = 50
+        '
+        'Estado
+        '
+        Me.Estado.HeaderText = "Activo?"
+        Me.Estado.Name = "Estado"
+        Me.Estado.ReadOnly = True
+        Me.Estado.Visible = False
+        Me.Estado.Width = 49
+        '
         'Label14
         '
         Me.Label14.AutoSize = True
@@ -1163,80 +1237,6 @@ Partial Class frmOrdenesReparacion
         Me.Label19.Size = New System.Drawing.Size(137, 17)
         Me.Label19.TabIndex = 115
         Me.Label19.Text = "Totales por Concepto"
-        '
-        'NroServicio
-        '
-        Me.NroServicio.HeaderText = "Nro Servicio"
-        Me.NroServicio.Name = "NroServicio"
-        Me.NroServicio.ReadOnly = True
-        Me.NroServicio.Visible = False
-        Me.NroServicio.Width = 71
-        '
-        'ID_Prestador
-        '
-        Me.ID_Prestador.HeaderText = "ID Prestador"
-        Me.ID_Prestador.Name = "ID_Prestador"
-        Me.ID_Prestador.ReadOnly = True
-        Me.ID_Prestador.Visible = False
-        Me.ID_Prestador.Width = 72
-        '
-        'Prestador
-        '
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        Me.Prestador.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Prestador.HeaderText = "Prestador"
-        Me.Prestador.Name = "Prestador"
-        Me.Prestador.ReadOnly = True
-        Me.Prestador.Width = 250
-        '
-        'ServSolicitado
-        '
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        Me.ServSolicitado.DefaultCellStyle = DataGridViewCellStyle3
-        Me.ServSolicitado.HeaderText = "Servicio Solicitado"
-        Me.ServSolicitado.Name = "ServSolicitado"
-        Me.ServSolicitado.ReadOnly = True
-        Me.ServSolicitado.Width = 290
-        '
-        'CostoEstimado
-        '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.Format = "N2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.CostoEstimado.DefaultCellStyle = DataGridViewCellStyle4
-        Me.CostoEstimado.HeaderText = "C. Estimado"
-        Me.CostoEstimado.Name = "CostoEstimado"
-        Me.CostoEstimado.ReadOnly = True
-        Me.CostoEstimado.Width = 120
-        '
-        'CostoReal
-        '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.Format = "N2"
-        Me.CostoReal.DefaultCellStyle = DataGridViewCellStyle5
-        Me.CostoReal.HeaderText = "C. Real"
-        Me.CostoReal.Name = "CostoReal"
-        Me.CostoReal.ReadOnly = True
-        Me.CostoReal.Width = 120
-        '
-        'Finalizado
-        '
-        Me.Finalizado.HeaderText = "Fin.?"
-        Me.Finalizado.Name = "Finalizado"
-        Me.Finalizado.ReadOnly = True
-        Me.Finalizado.Width = 50
-        '
-        'Estado
-        '
-        Me.Estado.HeaderText = "Activo?"
-        Me.Estado.Name = "Estado"
-        Me.Estado.ReadOnly = True
-        Me.Estado.Visible = False
-        Me.Estado.Width = 49
         '
         'frmOrdenesReparacion
         '

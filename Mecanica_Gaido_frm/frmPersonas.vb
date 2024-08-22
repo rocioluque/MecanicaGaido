@@ -272,7 +272,7 @@ Nombre"
             frm.CiudadID = Convert.ToInt32(cboCiudad.SelectedValue)
             frm.CiudadNombre = cboCiudad.Text
             frm.ProvinciaSeleccionada = Convert.ToInt32(cboProvincia.SelectedValue)
-            frm.CiudadEstado = grdPersonas.CurrentRow.Cells("Estado").Value
+            'frm.CiudadEstado = grdPersonas.CurrentRow.Cells("Estado").Value
             frm.EsModificacion = True
 
             If frm.ShowDialog() = DialogResult.OK Then

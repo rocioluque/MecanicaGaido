@@ -8,8 +8,12 @@ Public Class frmMenuPrincipal
     Private Sub MenuPrincipal_Load(sender As Object, e As EventArgs) Handles Me.Load
         lblUsuario.Text = UsuarioActivo.usuario
         lblRol.Text = UsuarioActivo.nombre_rol
-        lblNombre.Text = UsuarioActivo.nombrePersona & " " & UsuarioActivo.apellidoPersona
-        lblCorreo.Text = UsuarioActivo.correoPersona
+        'lblNombre.Text = UsuarioActivo.nombrePersona & " " & UsuarioActivo.apellidoPersona
+        'lblCorreo.Text = UsuarioActivo.correoPersona
+        lblNombre.Visible = False
+        lblCorreo.Visible = False
+        Label4.Visible = False
+        Label3.Visible = False
         PintarBotonInicio()
     End Sub
 
