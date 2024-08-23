@@ -18,7 +18,12 @@ Public Class frmOrdenesReparacion
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiarServ3()
         limpiar()
+        grdRepuestos.Rows.Clear()
+        ActualizarMontoTotalRep()
+        ActualizarMontoTotalS3()
+        txtMontoManoObra.Text = Convert.ToDecimal(0).ToString("N2")
     End Sub
 
     Private Sub frmOrdenesReparacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -36,7 +41,21 @@ Public Class frmOrdenesReparacion
 
 
 #Region "Repuestos"
+    Private Sub habilitarCambioPrecio(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles grdRepuestos.DataBindingComplete
+        grdRepuestos.ReadOnly = True
+        grdRepuestos.Columns("Precio").ReadOnly = False
+    End Sub
+    Private Sub DataGridView1_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) Handles grdRepuestos.CellValidating
+        If grdRepuestos.Columns(e.ColumnIndex).Name = "Precio" Then
+            Dim newPrice As Decimal
+            If Not Decimal.TryParse(e.FormattedValue.ToString(), newPrice) Then
+                e.Cancel = True
+                MessageBox.Show("Por favor, ingrese un valor numérico válido para el precio.")
+            End If
+        End If
+    End Sub
     Private Sub btnAgregarRepOR_Click(sender As Object, e As EventArgs) Handles btnAgregarRepOR.Click
+
         Try
 
             If cboProductoOR.SelectedValue IsNot Nothing AndAlso Not String.IsNullOrEmpty(txtCantidadRepOR.Text) Then
@@ -46,11 +65,13 @@ Public Class frmOrdenesReparacion
                 Dim descripcionRepuesto As String = rowView("Descripcion").ToString()
                 Dim nombreDiario As String = rowView("nombreDiario").ToString()
                 Dim precio As Decimal = Convert.ToDecimal(rowView("PrecioLista"))
+                precio = InputBox("Confirme el Precio", "Precio Sugerido", Convert.ToDecimal(precio).ToString("N2"))
                 Dim cantidad As Integer = Convert.ToDecimal(txtCantidadRepOR.Text)
                 Dim total As Decimal = precio * cantidad
 
 
                 grdRepuestos.Rows.Add(idRepuesto, descripcionRepuesto, nombreDiario, cantidad, precio, total)
+
                 Cargar_Combo_Repuestos()
                 txtCantidadRepOR.Text = Convert.ToDecimal(1).ToString("N2")
                 ActualizarMontoTotalRep()
@@ -474,6 +495,7 @@ Public Class frmOrdenesReparacion
 
 
     Private Sub ponerDecimales()
+
         txtCostoEstimadoS3.Text = Convert.ToDecimal(txtCostoEstimadoS3.Text).ToString("N2")
         txtCostoRealS3.Text = Convert.ToDecimal(txtCostoRealS3.Text).ToString("N2")
         txtMontoManoObra.Text = Convert.ToDecimal(txtMontoManoObra.Text).ToString("N2")
@@ -598,6 +620,14 @@ Public Class frmOrdenesReparacion
     End Sub
     Private Sub txtMontoManoObra_GotFocus(sender As Object, e As EventArgs) Handles txtMontoManoObra.GotFocus
         txtMontoManoObra.SelectAll()
+    End Sub
+
+    Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
+
+    End Sub
+
+    Private Sub btnAgregarVehiculo_Click(sender As Object, e As EventArgs) Handles btnAgregarVehiculo.Click
+
     End Sub
 
 

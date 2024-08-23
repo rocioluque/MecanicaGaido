@@ -17,6 +17,7 @@ Public Class frmProductos
         limpiar()
         Cargar_Grilla()
 
+
         'AGREGAR LOS TEXTBOXS QUE NECESITEN QUE SE VALIDEN COMO NUMERO DECIMAL
         AgregarValidacionATextBox(txtPrecioLista)
         AgregarValidacionATextBox(txtPrecioCompra)
@@ -24,8 +25,9 @@ Public Class frmProductos
         AgregarValidacionATextBox(txtStockDisponible)
         AgregarValidacionATextBox(txtStockReal)
         AgregarValidacionATextBox(txtUtilidad)
-    End Sub
 
+
+    End Sub
     Public Sub limpiar()
         txtId.Clear()
         txtDescripcion.Clear()
@@ -135,6 +137,7 @@ Public Class frmProductos
                 txtCodFabricante.Text = If(IsDBNull(datoleido("CodFabricante")), String.Empty, datoleido("CodFabricante").ToString())
                 cboOrigen.Text = If(IsDBNull(datoleido("Origen")), String.Empty, datoleido("Origen").ToString())
                 chkEstado.Checked = If(IsDBNull(datoleido("Estado")), False, Convert.ToBoolean(datoleido("Estado")))
+                btnModificar.Enabled = True
             Else
                 MsgBox("No se encontraron resultados", vbInformation, "Error")
             End If
@@ -155,6 +158,7 @@ Public Class frmProductos
             If selectedRow.Cells("N° Producto").Value IsNot Nothing Then
                 idProducto = Convert.ToInt32(selectedRow.Cells("N° Producto").Value)
                 CargarDatosEnTxt(idProducto)
+
             Else
                 MsgBox("El ID del producto no puede ser nulo.", vbCritical, "Error")
             End If
@@ -271,7 +275,7 @@ Public Class frmProductos
                 limpiar()
                 Cargar_Grilla()
                 Cargar_Combo_Original()
-
+                btnModificar.Enabled = False
             Catch ex As Exception
                 MsgBox("Error al modificar el producto: " & ex.Message, vbCritical, "Error")
             End Try
