@@ -26,3 +26,12 @@ C:\Users\Carabante\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Sopo
 C:\Users\Carabante\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.dll
 C:\Users\Carabante\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.xml
 C:\Users\Carabante\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.pdb
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\LiveCharts.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\LiveCharts.pdb
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\LiveCharts.xml
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\LiveCharts.Wpf.xml
