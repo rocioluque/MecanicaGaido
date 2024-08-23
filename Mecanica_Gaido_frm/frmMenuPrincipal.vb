@@ -2,6 +2,10 @@
 Imports System.Runtime.InteropServices
 Imports Comun_Soporte
 Imports Mecanica_Gaido_frm.User32
+Imports System.Windows.Forms.DataVisualization.Charting
+Imports System.Data.SqlClient
+Imports System.Configuration
+Imports System.Globalization
 
 Public Class frmMenuPrincipal
 
@@ -15,7 +19,10 @@ Public Class frmMenuPrincipal
         Label4.Visible = False
         Label3.Visible = False
         PintarBotonInicio()
+
     End Sub
+
+
 
 #Region "Productos"
     Private Sub btnProductos_Click(sender As Object, e As EventArgs) Handles btnProductos.Click
@@ -305,7 +312,13 @@ Public Class frmMenuPrincipal
         ' Establecer el nuevo tamaño y posición del panel contenedor
         panelContenedor.Size = New Size(panelContenedorWidth, panelContenedorHeight)
         panelContenedor.Location = panelContenedorLocation
+
+
     End Sub
+
+
 #End Region
+
+
 
 End Class

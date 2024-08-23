@@ -163,3 +163,12 @@ C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\LiveChart
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\LiveCharts.WinForms.xml
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\LiveCharts.Wpf.pdb
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\LiveCharts.dll
+C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\LiveCharts.pdb
+C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\LiveCharts.xml
+C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\LiveCharts.Wpf.xml
