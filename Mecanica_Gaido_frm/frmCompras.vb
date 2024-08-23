@@ -5,6 +5,7 @@ Imports System.Configuration
 
 Public Class frmCompras
     Dim o_Compras As New AD_Compras
+    Private denominacionLote As String
 
 #Region "Procedimientos"
     Public Sub limpiar()
@@ -27,6 +28,11 @@ Public Class frmCompras
         Cargar_Combo_Repuestos()
         limpiar()
         PonerDecimales()
+
+        ' Manejar eventos para concatenar datos
+        AddHandler txtNumComprobante.TextChanged, AddressOf ActualizarNombre
+        AddHandler cboPersona.SelectedIndexChanged, AddressOf ActualizarNombre
+        AddHandler dtpFechaCompra.ValueChanged, AddressOf ActualizarNombre
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -217,6 +223,16 @@ Public Class frmCompras
         txtIvaMonto.Text = IvaMonto.ToString("N2")
     End Sub
 
+#End Region
+
+#Region "Concatenar N° Comprobante"
+    Private Sub ActualizarNombre(sender As Object, e As EventArgs)
+        Dim numComprobante As String = txtNumComprobante.Text
+        Dim vendedor As String = If(cboPersona.SelectedItem IsNot Nothing, cboPersona.Text, String.Empty)
+        Dim fecha As String = dtpFechaCompra.Value.ToString("ddMMyy")
+
+        denominacionLote = $"{fecha}.{numComprobante}.{vendedor}".Trim()
+    End Sub
 #End Region
 
 #Region "Forma de Pago"
