@@ -630,6 +630,62 @@ Public Class frmOrdenesReparacion
 
     End Sub
 
+    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
+
+        ' REGISTRAR LA OR Y OBTENER UN ID EN LA TABLA ORDENES DE REPARACION
+
+        '@ID_Vehiculo int,  
+        '@Senas varchar(100),  
+        '@Motivo varchar(200),  
+        '@Turno datetime,  
+        '@Entrada datetime ,  
+        '@Salida datetime,  
+        '@ID_Persona int ,  
+        '@Repuestos money ,  
+        '@Serv3 money ,  
+        '@MObra money ,  
+        '@Total money ,  
+        '@Estado bit,  
+        '@ID_Orden
+
+
+        'REGISTRAR LOS SERVICIOS DE TERCEROS EN BASE AL ID DE LA OR EN LA TABLA SERVICIOS TERCEROS
+
+        '@ID_OrdenReparacion int,  
+        '@Fecha_Solicitud_Trabajo date,  
+        '@ID_Persona int,  
+        '@Detalle_Prestacion varchar(50),  
+        '@Costo_Estimado decimal(10,2),  
+        '@Costo_Real decimal(10,2),  
+        '@Estado_Trabajo bit,  
+        '@Estado bit  
+
+        ' REGISTRAR REPUESTOS X ORDENES EN BASE AL ID DE LA OR EN LA TABLA REPUESTOS POR ORDENES
+
+        '@ID_Repuesto int,  
+        '@ID_OrdenReparacion int,  
+        '@Cantidad decimal(10,2),  
+        '@Precio money,  
+        '@Estado bit  
+
+
+        ' MODIFICAR EL STOCK DISPONIBLE EN BASE AL ID DE REPUESTOS EN LA TABLA REPUESTOS
+
+        '@ID_Repuestos INT  
+
+        ' *************************************************
+        ' Y SI AGREGAMOS UN CAMPO QUE DIGA PUNTO DE PEDIDO?
+        ' CADA PRODUCTO TIENE ROTACION DISTINTA ASÍ QUE
+        ' CADA PRODUTO DEBERÍA TENER UN VALOR ASIGNADO
+        ' PARA QUE EL SISTEMA AVISE CUANDO ES NECESARIO PEDIR
+        ' *************************************************
+
+
+
+
+
+    End Sub
+
 
 #End Region
 

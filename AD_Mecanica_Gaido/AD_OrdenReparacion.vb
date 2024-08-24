@@ -148,4 +148,40 @@ Public Class AD_OrdenReparacion
         End Using
         Return tabla
     End Function
+
+
+#Region "FUNCION DE EJEMPLO"
+    'Public Sub Agregar_Empleado_Usuario(ByVal idPersona As Integer, ByVal usuario As String, ByVal contraseña As String, ByVal idRol As Integer,
+    '                                    ByVal fechaContratacion As Date, ByVal cargo As String, ByVal nota As String, ByVal estado As Boolean,
+    '                                    ByVal idSeccion As Integer)
+    '    Dim conexion As New SqlConnection(connectionString)
+    '    Dim comando As New SqlCommand("Agregar_Empleado_Usuario", conexion)
+    '    comando.CommandType = CommandType.StoredProcedure
+
+    '    ' Agregar parámetros
+    '    comando.Parameters.AddWithValue("@ID_Persona", idPersona)
+    '    comando.Parameters.AddWithValue("@Usuario", usuario)
+    '    comando.Parameters.AddWithValue("@Contraseña", contraseña)
+    '    comando.Parameters.AddWithValue("@ID_Rol", idRol)
+    '    comando.Parameters.AddWithValue("@FechaDeContratacion", fechaContratacion)
+    '    comando.Parameters.AddWithValue("@Cargo", cargo)
+    '    comando.Parameters.AddWithValue("@Nota", nota)
+    '    comando.Parameters.AddWithValue("@Estado", estado)
+    '    comando.Parameters.AddWithValue("@ID_Seccion", idSeccion)
+
+    '    Try
+    '        conexion.Open()
+    '        comando.ExecuteNonQuery()
+    '    Catch ex As Exception
+    '        Throw New Exception("Ocurrió un error al insertar los datos: " & ex.Message)
+    '    Finally
+    '        conexion.Close()
+    '    End Try
+    'End Sub
+
+#End Region
+
+
+
+
 End Class
