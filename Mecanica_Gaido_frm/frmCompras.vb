@@ -11,7 +11,7 @@ Public Class frmCompras
     Public Sub limpiar()
         txtID.Clear()
         dtpFechaCompra.Value = Date.Today
-        txtNumComprobante.Clear()
+        txtNumComprobante.Text = Nothing
         txtSubtotal.Text = Convert.ToDecimal(0)
         txtIVA.Text = Convert.ToDecimal(21)
         txtIvaMonto.Text = Convert.ToDecimal(0)
@@ -390,4 +390,5 @@ Public Class frmCompras
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
 
     End Sub
+
 End Class
