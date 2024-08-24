@@ -18,9 +18,20 @@ Public Class frmMenuPrincipal
         lblUsuario.Text = UsuarioActivo.usuario
         lblRol.Text = UsuarioActivo.nombre_rol
         PintarBotonInicio()
-
-        CargarGrillaProductosBajoStock()
+        MostrarInicio()
     End Sub
+
+
+    Public Sub MostrarInicio()
+        AbrirFormHijo(New frmInicio(), Nothing)
+    End Sub
+
+#Region "Inicio"
+    Private Sub btnInicio_Click(sender As Object, e As EventArgs) Handles btnInicio.Click
+        AbrirFormHijo(New frmInicio(), DirectCast(sender, Button))
+        OcultarPaneles()
+    End Sub
+#End Region
 
 #Region "Productos"
     Private Sub btnProductos_Click(sender As Object, e As EventArgs) Handles btnProductos.Click
@@ -172,22 +183,6 @@ Public Class frmMenuPrincipal
 #End Region
 
 #Region "Control botones"
-
-    Private Sub btnInicio_Click(sender As Object, e As EventArgs) Handles btnInicio.Click
-        'Restablecer el color del botón anterior
-        If btnAnterior IsNot Nothing Then
-            btnAnterior.BackColor = Color.FromArgb(65, 65, 65)
-        End If
-
-        ' Pintar el botón "Inicio"
-        PintarBotonInicio()
-
-        ' Cerrar todos los formularios hijos
-        If Me.panelContenedor.Controls.Count > 0 Then
-            Me.panelContenedor.Controls.RemoveAt(0)
-        End If
-    End Sub
-
     Private Sub frmMenuPrincipal_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         'Mostrar un mensaje de confirmación
         Dim resultado As DialogResult = MessageBox.Show("¿Estás seguro de que quieres cerrar la aplicación?", "Confirmar cierre", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -197,13 +192,6 @@ Public Class frmMenuPrincipal
             e.Cancel = True
         End If
     End Sub
-
-    Private Sub btnCerrarSesion_Click(sender As Object, e As EventArgs) Handles btnCerrarSesion.Click
-        If MessageBox.Show("¿Estás seguro de cerrar sesión?", "Warning",
-            MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            Me.Close()
-        End If
-    End Sub
 #End Region
 
 #Region "Formulario Padre y resize"
@@ -211,13 +199,14 @@ Public Class frmMenuPrincipal
 
     Private Sub AbrirFormHijo(formHijo As Object, sender As Button)
         ' Restablecer el color del botón anterior
-        If btnAnterior IsNot Nothing Then
+        If btnAnterior IsNot Nothing AndAlso sender IsNot Nothing Then
             btnAnterior.BackColor = Color.FromArgb(65, 65, 65)
         End If
 
-        ' Actualizar el color del botón actual
         btnAnterior = sender
-        sender.BackColor = Color.SeaGreen
+        If sender IsNot Nothing Then
+            sender.BackColor = Color.SeaGreen
+        End If
 
         'Si el contenedor panelContenedor ya tiene controles hijos, elimina el primer control
         If Me.panelContenedor.Controls.Count > 0 Then
@@ -313,89 +302,4 @@ Public Class frmMenuPrincipal
     End Sub
 #End Region
 
-#Region "Panel Principal"
-    Private Sub horaFecha_Tick(sender As Object, e As EventArgs) Handles horaFecha.Tick
-        lblHora.Text = DateTime.Now.ToLongTimeString
-        lblFecha.Text = DateTime.Now.ToString("dddd, dd MMMM yyyy")
-    End Sub
-
-    Private Sub CargarGrillaProductosBajoStock()
-        Dim dtProductos As DataTable = o_MenuPrincipal.ObtenerProductosBajoStock()
-
-        'grdProductosBajoStock.Rows.Clear()
-
-        For Each row As DataRow In dtProductos.Rows
-            Dim fila As DataGridViewRow = CType(grdProductosBajoStock.Rows(grdProductosBajoStock.Rows.Add()), DataGridViewRow)
-            fila.Cells("id_Repuesto").Value = row("N° Repuesto")
-            fila.Cells("Descripcion").Value = row("Descripcion")
-            fila.Cells("StockDisponible").Value = row("Stock Disponible")
-        Next
-
-        AltoFila()
-    End Sub
-
-    Private Sub AltoFila()
-        For Each row As DataGridViewRow In grdProductosBajoStock.Rows
-            row.Height = 120
-        Next
-    End Sub
-
-    Public Function GetColumnasSize(dg As DataGridView) As Single()
-        Dim values As Single() = New Single(dg.ColumnCount - 1) {}
-        For i As Integer = 0 To dg.ColumnCount - 1
-            values(i) = CSng(dg.Columns(i).Width)
-        Next
-        Return values
-    End Function
-
-    Public Sub ExportarDatosPDF(ByVal document As Document)
-        Dim datatable As New PdfPTable(grdProductosBajoStock.ColumnCount)
-        datatable.DefaultCell.Padding = 3
-        Dim headerwidths As Single() = GetColumnasSize(grdProductosBajoStock)
-        datatable.SetWidths(headerwidths)
-        datatable.WidthPercentage = 100
-        datatable.DefaultCell.BorderWidth = 2
-        datatable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER
-
-        Dim encabezado As New Paragraph("PRODUCTOS BAJO STOCK")
-        Dim texto As New Phrase("Reporte productos: " + Now.Date.ToString("d"))
-
-        For i As Integer = 0 To grdProductosBajoStock.ColumnCount - 1
-            datatable.AddCell(grdProductosBajoStock.Columns(i).HeaderText)
-        Next
-
-        datatable.HeaderRows = 1
-        datatable.DefaultCell.BorderWidth = 1
-
-        For i As Integer = 0 To grdProductosBajoStock.RowCount - 1 'Recorre la filas del datagridview
-            For j As Integer = 0 To grdProductosBajoStock.ColumnCount - 1 'Recorre las columnas del datagridview
-                datatable.AddCell(grdProductosBajoStock(j, i).Value.ToString())
-
-            Next
-            datatable.CompleteRow()
-        Next
-
-        document.Add(encabezado)
-        document.Add(texto)
-        document.Add(datatable)
-    End Sub
-
-    Private Sub btnExportarPDF_Click(sender As Object, e As EventArgs) Handles btnExportarPDF.Click
-        Try
-            Dim doc As New Document(PageSize.A4.Rotate(), 10, 10, 10, 10)
-            Dim filename As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "Reporteproductos.pdf")
-
-            Using file As New FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.ReadWrite)
-                PdfWriter.GetInstance(doc, file)
-                doc.Open()
-                ExportarDatosPDF(doc)
-                doc.Close()
-            End Using
-
-            Process.Start(filename)
-        Catch ex As Exception
-            MessageBox.Show("No se puede generar el documento PDF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-#End Region
 End Class

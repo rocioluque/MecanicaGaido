@@ -231,3 +231,4 @@ C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\bcpkix-fi
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\itext.bouncy-castle-fips-adapter.dll
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\itext.bouncy-castle-fips-adapter.xml
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\itextsharp.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.frmInicio.resources
