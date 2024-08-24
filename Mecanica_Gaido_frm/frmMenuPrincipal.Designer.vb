@@ -23,6 +23,7 @@ Partial Class frmMenuPrincipal
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMenuPrincipal))
         Me.PanelCboGestion = New System.Windows.Forms.Panel()
         Me.btnTipoVenta = New System.Windows.Forms.Button()
@@ -35,6 +36,9 @@ Partial Class frmMenuPrincipal
         Me.btnMarca = New System.Windows.Forms.Button()
         Me.btnCiudad = New System.Windows.Forms.Button()
         Me.panelContenedor = New System.Windows.Forms.Panel()
+        Me.grdProductosBajoStock = New System.Windows.Forms.DataGridView()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.btnExportarPDF = New System.Windows.Forms.Button()
         Me.lblFecha = New System.Windows.Forms.Label()
         Me.lblHora = New System.Windows.Forms.Label()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
@@ -55,8 +59,12 @@ Partial Class frmMenuPrincipal
         Me.btnInicio = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.horaFecha = New System.Windows.Forms.Timer(Me.components)
+        Me.id_Repuesto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StockDisponible = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PanelCboGestion.SuspendLayout()
         Me.panelContenedor.SuspendLayout()
+        CType(Me.grdProductosBajoStock, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelMenu.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -240,6 +248,9 @@ Partial Class frmMenuPrincipal
         '
         Me.panelContenedor.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.panelContenedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.panelContenedor.Controls.Add(Me.grdProductosBajoStock)
+        Me.panelContenedor.Controls.Add(Me.Label3)
+        Me.panelContenedor.Controls.Add(Me.btnExportarPDF)
         Me.panelContenedor.Controls.Add(Me.lblFecha)
         Me.panelContenedor.Controls.Add(Me.lblHora)
         Me.panelContenedor.Dock = System.Windows.Forms.DockStyle.Right
@@ -247,6 +258,66 @@ Partial Class frmMenuPrincipal
         Me.panelContenedor.Name = "panelContenedor"
         Me.panelContenedor.Size = New System.Drawing.Size(976, 700)
         Me.panelContenedor.TabIndex = 2
+        '
+        'grdProductosBajoStock
+        '
+        Me.grdProductosBajoStock.AllowUserToAddRows = False
+        Me.grdProductosBajoStock.AllowUserToDeleteRows = False
+        Me.grdProductosBajoStock.AllowUserToResizeRows = False
+        Me.grdProductosBajoStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.grdProductosBajoStock.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
+        Me.grdProductosBajoStock.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.grdProductosBajoStock.BorderStyle = System.Windows.Forms.BorderStyle.None
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdProductosBajoStock.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.grdProductosBajoStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdProductosBajoStock.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_Repuesto, Me.Descripcion, Me.StockDisponible})
+        Me.grdProductosBajoStock.Location = New System.Drawing.Point(46, 391)
+        Me.grdProductosBajoStock.Name = "grdProductosBajoStock"
+        Me.grdProductosBajoStock.ReadOnly = True
+        Me.grdProductosBajoStock.RowHeadersVisible = False
+        Me.grdProductosBajoStock.RowHeadersWidth = 51
+        Me.grdProductosBajoStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.grdProductosBajoStock.Size = New System.Drawing.Size(638, 297)
+        Me.grdProductosBajoStock.TabIndex = 108
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 14.0!)
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(42, 354)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(238, 22)
+        Me.Label3.TabIndex = 107
+        Me.Label3.Text = "Productos de bajo Stock:"
+        '
+        'btnExportarPDF
+        '
+        Me.btnExportarPDF.BackColor = System.Drawing.Color.Transparent
+        Me.btnExportarPDF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnExportarPDF.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnExportarPDF.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.btnExportarPDF.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
+        Me.btnExportarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnExportarPDF.Font = New System.Drawing.Font("Century Gothic", 11.25!)
+        Me.btnExportarPDF.ForeColor = System.Drawing.Color.White
+        Me.btnExportarPDF.Image = CType(resources.GetObject("btnExportarPDF.Image"), System.Drawing.Image)
+        Me.btnExportarPDF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnExportarPDF.Location = New System.Drawing.Point(590, 346)
+        Me.btnExportarPDF.Name = "btnExportarPDF"
+        Me.btnExportarPDF.Size = New System.Drawing.Size(94, 35)
+        Me.btnExportarPDF.TabIndex = 106
+        Me.btnExportarPDF.Text = "        PDF"
+        Me.btnExportarPDF.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnExportarPDF.UseVisualStyleBackColor = False
         '
         'lblFecha
         '
@@ -567,6 +638,24 @@ Partial Class frmMenuPrincipal
         '
         Me.horaFecha.Enabled = True
         '
+        'id_Repuesto
+        '
+        Me.id_Repuesto.HeaderText = "N° Repuesto"
+        Me.id_Repuesto.Name = "id_Repuesto"
+        Me.id_Repuesto.ReadOnly = True
+        '
+        'Descripcion
+        '
+        Me.Descripcion.HeaderText = "Descripcion"
+        Me.Descripcion.Name = "Descripcion"
+        Me.Descripcion.ReadOnly = True
+        '
+        'StockDisponible
+        '
+        Me.StockDisponible.HeaderText = "Stock Disponible"
+        Me.StockDisponible.Name = "StockDisponible"
+        Me.StockDisponible.ReadOnly = True
+        '
         'frmMenuPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -586,6 +675,7 @@ Partial Class frmMenuPrincipal
         Me.PanelCboGestion.ResumeLayout(False)
         Me.panelContenedor.ResumeLayout(False)
         Me.panelContenedor.PerformLayout()
+        CType(Me.grdProductosBajoStock, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelMenu.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
@@ -624,4 +714,10 @@ Partial Class frmMenuPrincipal
     Friend WithEvents lblFecha As Label
     Friend WithEvents lblHora As Label
     Friend WithEvents horaFecha As Timer
+    Friend WithEvents Label3 As Label
+    Friend WithEvents btnExportarPDF As Button
+    Friend WithEvents grdProductosBajoStock As DataGridView
+    Friend WithEvents id_Repuesto As DataGridViewTextBoxColumn
+    Friend WithEvents Descripcion As DataGridViewTextBoxColumn
+    Friend WithEvents StockDisponible As DataGridViewTextBoxColumn
 End Class

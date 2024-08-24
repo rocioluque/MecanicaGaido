@@ -58,3 +58,7 @@ C:\Users\Fabricio\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Sopor
 C:\Users\Fabricio\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.dll
 C:\Users\Fabricio\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.xml
 C:\Users\Fabricio\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.pdb
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\itextsharp.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\itextsharp.xml
