@@ -12,17 +12,8 @@ Public Class frmMenuPrincipal
     Private Sub MenuPrincipal_Load(sender As Object, e As EventArgs) Handles Me.Load
         lblUsuario.Text = UsuarioActivo.usuario
         lblRol.Text = UsuarioActivo.nombre_rol
-        'lblNombre.Text = UsuarioActivo.nombrePersona & " " & UsuarioActivo.apellidoPersona
-        'lblCorreo.Text = UsuarioActivo.correoPersona
-        lblNombre.Visible = False
-        lblCorreo.Visible = False
-        Label4.Visible = False
-        Label3.Visible = False
         PintarBotonInicio()
-
     End Sub
-
-
 
 #Region "Productos"
     Private Sub btnProductos_Click(sender As Object, e As EventArgs) Handles btnProductos.Click
@@ -312,13 +303,12 @@ Public Class frmMenuPrincipal
         ' Establecer el nuevo tamaño y posición del panel contenedor
         panelContenedor.Size = New Size(panelContenedorWidth, panelContenedorHeight)
         panelContenedor.Location = panelContenedorLocation
-
-
     End Sub
-
-
 #End Region
 
-
+    Private Sub horaFecha_Tick(sender As Object, e As EventArgs) Handles horaFecha.Tick
+        lblHora.Text = DateTime.Now.ToLongTimeString
+        lblFecha.Text = DateTime.Now.ToString("dddd, dd MMMM yyyy")
+    End Sub
 
 End Class

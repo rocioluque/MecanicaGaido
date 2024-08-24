@@ -101,7 +101,7 @@ Public Class AD_Productos
     Public Sub Agregar_Producto(Descripcion As String, NombreDiario As String, ID_Rubro As Integer, ID_Marca As Integer,
                             CodigoBarra As String, CodFabricante As String, CantidadBulto As Decimal, origen As String,
                             Alternativo As Boolean, ID_Original As Integer, Estado As Boolean, StockReal As Decimal,
-                            StockDisponible As Decimal, Ubicacion As String, PrecioCompra As Decimal,
+                            StockDisponible As Decimal, StockMinimo As Decimal, Ubicacion As String, PrecioCompra As Decimal,
                             Utilidad As Decimal, PrecioLista As Decimal, FechaCompra As Date, FechaVenta As Date)
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Agregar_Producto", conexion)
@@ -119,6 +119,7 @@ Public Class AD_Productos
                 comando.Parameters.AddWithValue("@Estado", Estado)
                 comando.Parameters.AddWithValue("@StockReal", StockReal)
                 comando.Parameters.AddWithValue("@StockDisponible", StockDisponible)
+                comando.Parameters.AddWithValue("@StockMinimo", StockMinimo)
                 comando.Parameters.AddWithValue("@Ubicacion", Ubicacion)
                 comando.Parameters.AddWithValue("@PrecioCompra", PrecioCompra)
                 comando.Parameters.AddWithValue("@Utilidad", Utilidad)
@@ -135,7 +136,7 @@ Public Class AD_Productos
     Public Sub Modificar_Producto(ID As Integer, Descripcion As String, NombreDiario As String, ID_Rubro As Integer, ID_Marca As Integer,
                           CodigoBarra As String, CodFabricante As String, CantidadBulto As Decimal, origen As String,
                           Alternativo As Boolean, ID_Original As Integer, Estado As Boolean, StockReal As Decimal,
-                          StockDisponible As Decimal, Ubicacion As String, PrecioCompra As Decimal,
+                          StockDisponible As Decimal, StockMinimo As Integer, Ubicacion As String, PrecioCompra As Decimal,
                           Utilidad As Decimal, PrecioLista As Decimal, FechaCompra As Date, FechaVenta As Date)
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Modificar_Producto", conexion)
@@ -154,6 +155,7 @@ Public Class AD_Productos
                 comando.Parameters.AddWithValue("@Estado", Estado)
                 comando.Parameters.AddWithValue("@StockReal", StockReal)
                 comando.Parameters.AddWithValue("@StockDisponible", StockDisponible)
+                comando.Parameters.AddWithValue("@StockMinimo", StockMinimo)
                 comando.Parameters.AddWithValue("@Ubicacion", Ubicacion)
                 comando.Parameters.AddWithValue("@PrecioCompra", PrecioCompra)
                 comando.Parameters.AddWithValue("@Utilidad", Utilidad)

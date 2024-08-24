@@ -79,6 +79,8 @@ Partial Class frmProductos
         Me.txtUtilidad = New System.Windows.Forms.TextBox()
         Me.lblUtilidad = New System.Windows.Forms.Label()
         Me.txtPrecioCompra = New System.Windows.Forms.TextBox()
+        Me.txtStockMinimo = New System.Windows.Forms.TextBox()
+        Me.lblStockMinimo = New System.Windows.Forms.Label()
         CType(Me.grdProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarMarca, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarRubro, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -137,7 +139,7 @@ Partial Class frmProductos
         Me.lblUbicacion.AutoSize = True
         Me.lblUbicacion.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblUbicacion.ForeColor = System.Drawing.Color.White
-        Me.lblUbicacion.Location = New System.Drawing.Point(16, 115)
+        Me.lblUbicacion.Location = New System.Drawing.Point(16, 114)
         Me.lblUbicacion.Name = "lblUbicacion"
         Me.lblUbicacion.Size = New System.Drawing.Size(69, 17)
         Me.lblUbicacion.TabIndex = 89
@@ -186,7 +188,7 @@ Partial Class frmProductos
         Me.lblStockDisponible.AutoSize = True
         Me.lblStockDisponible.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblStockDisponible.ForeColor = System.Drawing.Color.White
-        Me.lblStockDisponible.Location = New System.Drawing.Point(16, 71)
+        Me.lblStockDisponible.Location = New System.Drawing.Point(16, 56)
         Me.lblStockDisponible.Name = "lblStockDisponible"
         Me.lblStockDisponible.Size = New System.Drawing.Size(107, 17)
         Me.lblStockDisponible.TabIndex = 75
@@ -294,7 +296,7 @@ Partial Class frmProductos
         'txtStockDisponible
         '
         Me.txtStockDisponible.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtStockDisponible.Location = New System.Drawing.Point(152, 68)
+        Me.txtStockDisponible.Location = New System.Drawing.Point(152, 53)
         Me.txtStockDisponible.Name = "txtStockDisponible"
         Me.txtStockDisponible.Size = New System.Drawing.Size(121, 23)
         Me.txtStockDisponible.TabIndex = 15
@@ -304,7 +306,7 @@ Partial Class frmProductos
         'txtUbicacion
         '
         Me.txtUbicacion.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtUbicacion.Location = New System.Drawing.Point(152, 112)
+        Me.txtUbicacion.Location = New System.Drawing.Point(152, 111)
         Me.txtUbicacion.Name = "txtUbicacion"
         Me.txtUbicacion.Size = New System.Drawing.Size(121, 23)
         Me.txtUbicacion.TabIndex = 16
@@ -580,6 +582,8 @@ Partial Class frmProductos
         '
         'PanelExistencia
         '
+        Me.PanelExistencia.Controls.Add(Me.txtStockMinimo)
+        Me.PanelExistencia.Controls.Add(Me.lblStockMinimo)
         Me.PanelExistencia.Controls.Add(Me.Label5)
         Me.PanelExistencia.Controls.Add(Me.txtStockDisponible)
         Me.PanelExistencia.Controls.Add(Me.txtStockReal)
@@ -598,7 +602,7 @@ Partial Class frmProductos
         Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.Font = New System.Drawing.Font("Century Gothic", 16.0!)
         Me.Label5.ForeColor = System.Drawing.Color.Red
-        Me.Label5.Location = New System.Drawing.Point(85, 115)
+        Me.Label5.Location = New System.Drawing.Point(85, 116)
         Me.Label5.Margin = New System.Windows.Forms.Padding(0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(14, 15)
@@ -757,6 +761,27 @@ Partial Class frmProductos
         Me.txtPrecioCompra.Text = "0"
         Me.txtPrecioCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
+        'txtStockMinimo
+        '
+        Me.txtStockMinimo.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtStockMinimo.Location = New System.Drawing.Point(152, 82)
+        Me.txtStockMinimo.Name = "txtStockMinimo"
+        Me.txtStockMinimo.Size = New System.Drawing.Size(121, 23)
+        Me.txtStockMinimo.TabIndex = 115
+        Me.txtStockMinimo.Text = "0"
+        Me.txtStockMinimo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'lblStockMinimo
+        '
+        Me.lblStockMinimo.AutoSize = True
+        Me.lblStockMinimo.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.lblStockMinimo.ForeColor = System.Drawing.Color.White
+        Me.lblStockMinimo.Location = New System.Drawing.Point(16, 85)
+        Me.lblStockMinimo.Name = "lblStockMinimo"
+        Me.lblStockMinimo.Size = New System.Drawing.Size(88, 17)
+        Me.lblStockMinimo.TabIndex = 116
+        Me.lblStockMinimo.Text = "Stock Minimo"
+        '
         'frmProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -850,4 +875,6 @@ Partial Class frmProductos
     Friend WithEvents Label1 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
+    Friend WithEvents txtStockMinimo As TextBox
+    Friend WithEvents lblStockMinimo As Label
 End Class
