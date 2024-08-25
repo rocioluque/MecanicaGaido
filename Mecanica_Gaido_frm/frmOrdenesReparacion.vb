@@ -50,33 +50,7 @@ Public Class frmOrdenesReparacion
 
     End Sub
 
-    Private Sub actualizarStockDisponible(ID_Respuestos As Integer)
-        Dim adOrdenReparacion As New AD_OrdenReparacion()
-        Try
-            For Each row As DataGridViewRow In grdRepuestos.Rows
-                Dim idRepuesto As Integer
-                If Integer.TryParse(row.Cells("ID").Value.ToString(), idRepuesto) Then
 
-                    Dim stockDisponible As Decimal = adOrdenReparacion.Consultar_StockDisponiblePorID(idRepuesto)
-
-
-
-                    Dim nuevoStock As Decimal = stockDisponible - Convert.ToDecimal(row.Cells("Cantidad").Value.ToString("N2"))
-
-                    adOrdenReparacion.Modificar_StockDisponiblePorID(idRepuesto, nuevoStock)
-
-
-                Else
-                    MessageBox.Show($"ID inválido en la fila {row.Index}", "Información")
-                End If
-            Next
-
-            MessageBox.Show("Proceso de actualización de stock completado", "Información")
-
-        Catch ex As Exception
-            Throw ex
-        End Try
-    End Sub
 
 
 
@@ -668,39 +642,6 @@ Public Class frmOrdenesReparacion
 
     End Sub
 
-    'Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
-
-
-
-    ' REGISTRAR LA OR Y OBTENER UN ID EN LA TABLA ORDENES DE REPARACION
-
-
-
-    'REGISTRAR LOS SERVICIOS DE TERCEROS EN BASE AL ID DE LA OR EN LA TABLA SERVICIOS TERCEROS
-
-
-
-    ' REGISTRAR REPUESTOS X ORDENES EN BASE AL ID DE LA OR EN LA TABLA REPUESTOS POR ORDENES
-
-
-
-
-    ' MODIFICAR EL STOCK DISPONIBLE EN BASE AL ID DE REPUESTOS EN LA TABLA REPUESTOS
-
-
-
-    ' *************************************************
-    ' Y SI AGREGAMOS UN CAMPO QUE DIGA PUNTO DE PEDIDO?
-    ' CADA PRODUCTO TIENE ROTACION DISTINTA ASÍ QUE
-    ' CADA PRODUTO DEBERÍA TENER UN VALOR ASIGNADO
-    ' PARA QUE EL SISTEMA AVISE CUANDO ES NECESARIO PEDIR
-    ' *************************************************
-
-
-
-
-
-    'End Sub
 
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         ' Crear instancias de las clases de acceso a datos

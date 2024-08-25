@@ -21,7 +21,7 @@ Public Class frmVentas
 
     Public Sub limpiar()
         txtID.Clear()
-        txtFechaVenta.Clear()
+        dtpFechaVenta.Value = Today
         txtNumComprobante.Clear()
         txtSubtotal.Clear()
         txtIVA.Clear()
@@ -30,7 +30,7 @@ Public Class frmVentas
         cboTipoVenta.SelectedIndex = -1
         cboFormaEntrega.SelectedIndex = -1
         cboPersona.SelectedIndex = -1
-        cboVendedor.SelectedIndex = -1
+        cboEmpleado.SelectedIndex = -1
         cboFormaPago.SelectedIndex = -1
         chkEstado.Checked = False
     End Sub
@@ -64,10 +64,10 @@ Public Class frmVentas
             Dim tabla As DataTable = o_ventas.Cargar_Combo_Empleados()
 
             If tabla.Rows.Count > 0 Then
-                cboVendedor.DataSource = tabla
-                cboVendedor.DisplayMember = "Nombre/RazonSocial"
-                cboVendedor.ValueMember = "ID_Persona"
-                cboVendedor.SelectedValue = -1
+                cboEmpleado.DataSource = tabla
+                cboEmpleado.DisplayMember = "Nombre/RazonSocial"
+                cboEmpleado.ValueMember = "ID_Persona"
+                cboEmpleado.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Empleados.", vbInformation, "Información")
             End If
