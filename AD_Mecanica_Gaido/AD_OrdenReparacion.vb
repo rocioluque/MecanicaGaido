@@ -16,50 +16,6 @@ Public Class AD_OrdenReparacion
     End Sub
 
 
-    Public Function Consultar_StockDisponiblePorID(ByVal ID_Repuestos As Integer) As Integer
-        Dim stockDisponible As Integer = 0
-
-        Using conn As New SqlConnection(connectionString)
-            Using command As New SqlCommand("Consultar_StockDisponiblePorID", conn)
-                command.CommandType = CommandType.StoredProcedure
-                command.Parameters.AddWithValue("@ID_Repuestos", ID_Repuestos)
-
-                Try
-                    conn.Open()
-                    Dim result As Object = command.ExecuteNonQuery()
-                    If result IsNot Nothing AndAlso Not DBNull.Value.Equals(result) Then
-                        stockDisponible = Convert.ToDecimal(result)
-                    End If
-                Catch ex As Exception
-                    Throw ex
-                End Try
-            End Using
-        End Using
-
-        Return stockDisponible
-    End Function
-
-    Public Sub Modificar_StockDisponiblePorID(ID_Repuestos As Integer, stockDisponible As Decimal)
-        Using conn As New SqlConnection(connectionString)
-            Using command As New SqlCommand("Modificar_StockDisponiblePorID", conn)
-                command.CommandType = CommandType.StoredProcedure
-                command.Parameters.AddWithValue("@ID_Repuestos", ID_Repuestos)
-                command.Parameters.AddWithValue("@StockDisponible", stockDisponible)
-
-                Try
-                    conn.Open()
-                    command.ExecuteNonQuery()
-
-                Catch ex As Exception
-                    Throw ex
-                End Try
-            End Using
-            conn.Close()
-        End Using
-
-    End Sub
-
-    'REVISAR
     Public Sub Modificar_Orden_Reparacion(
                                                  ID_Orden As Integer,
                                                 ID_Vehiculo As Integer,
@@ -103,7 +59,6 @@ Public Class AD_OrdenReparacion
         End Using
     End Sub
 
-    'REVISAR
     Public Function Agregar_Orden_Reparacion(
                                                 ID_Vehiculo As Integer,
                                                 Senas As String,
@@ -116,7 +71,8 @@ Public Class AD_OrdenReparacion
                                                 Serv3 As Decimal,
                                                 MObra As Decimal,
                                                 Total As Decimal,
-                                                Estado As Boolean)
+                                                Estado As Boolean,
+                                                transaction As SqlTransaction) As Integer
         Dim ID_Orden
         Using conn As New SqlConnection(connectionString)
             Using command As New SqlCommand("Agregar_Orden_Reparacion", conn)
@@ -148,7 +104,6 @@ Public Class AD_OrdenReparacion
         End Using
     End Function
 
-
     Public Sub Agregar_Servicio_Terceros(ID_OrdenReparacion As Integer,
                                                 Fecha_Solicitud_Trabajo As Date,
                                                 ID_Persona As Integer,
@@ -156,7 +111,8 @@ Public Class AD_OrdenReparacion
                                                 Costo_Estimado As Decimal,
                                                 Costo_Real As Decimal,
                                                 Estado_Trabajo As Boolean,
-                                                Estado As Boolean)
+                                                Estado As Boolean,
+                                                transaction As SqlTransaction)
 
         Using conn As New SqlConnection(connectionString)
             Using command As New SqlCommand("Agregar_Servicio_Terceros", conn)
@@ -184,14 +140,12 @@ Public Class AD_OrdenReparacion
         End Using
     End Sub
 
-
     Public Sub Agregar_Repuestos_Ordenes(ID_Repuesto As Integer,
                                            ID_OrdenReparacion As Integer,
                                            Cantidad As Decimal,
                                            Precio As Decimal,
-                                           Estado As Boolean)
-
-
+                                           Estado As Boolean,
+                                           transaction As SqlTransaction)
 
         Using conn As New SqlConnection(connectionString)
             Using command As New SqlCommand("Agregar_Repuestos_Ordenes", conn)
@@ -214,6 +168,50 @@ Public Class AD_OrdenReparacion
             conn.Close()
         End Using
     End Sub
+
+    Public Function Consultar_StockDisponiblePorID(ByVal ID_Repuestos As Integer, transaction As SqlTransaction) As Decimal
+        Dim stockDisponible As Integer = 0
+
+        Using conn As New SqlConnection(connectionString)
+            Using command As New SqlCommand("Consultar_StockDisponiblePorID", conn)
+                command.CommandType = CommandType.StoredProcedure
+                command.Parameters.AddWithValue("@ID_Repuestos", ID_Repuestos)
+
+                Try
+                    conn.Open()
+                    Dim result As Object = command.ExecuteNonQuery()
+                    If result IsNot Nothing AndAlso Not DBNull.Value.Equals(result) Then
+                        stockDisponible = Convert.ToDecimal(result)
+                    End If
+                Catch ex As Exception
+                    Throw ex
+                End Try
+            End Using
+        End Using
+
+        Return stockDisponible
+    End Function
+
+    Public Sub Modificar_StockDisponiblePorID(ID_Repuestos As Integer, stockDisponible As Decimal, transaction As SqlTransaction)
+        Using conn As New SqlConnection(connectionString)
+            Using command As New SqlCommand("Modificar_StockDisponiblePorID", conn)
+                command.CommandType = CommandType.StoredProcedure
+                command.Parameters.AddWithValue("@ID_Repuestos", ID_Repuestos)
+                command.Parameters.AddWithValue("@StockDisponible", stockDisponible)
+
+                Try
+                    conn.Open()
+                    command.ExecuteNonQuery()
+
+                Catch ex As Exception
+                    Throw ex
+                End Try
+            End Using
+            conn.Close()
+        End Using
+
+    End Sub
+
 
 
 
