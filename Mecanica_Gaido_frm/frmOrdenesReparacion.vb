@@ -4,9 +4,22 @@ Imports System.Data.SqlClient
 Imports System.Configuration
 
 Public Class frmOrdenesReparacion
+
     Dim o_Orden As New AD_OrdenReparacion
 
 #Region "Procedimientos"
+    Private Sub cboPersonas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPersonas.SelectedIndexChanged
+        If combopersonacargado Then
+            Try
+                Dim ID_Persona = cboPersonas.SelectedValue
+                cboVehiculo.Items.Clear()
+                Cargar_Combo_Vehiculos(ID_Persona)
+            Catch ex As Exception
+                MsgBox("Error al cargar vehículos: " & ex.Message, vbCritical, "Error")
+
+            End Try
+        End If
+    End Sub
     Public Sub limpiar()
         txtID.Clear()
         txtSeñasParticulares.Clear()
@@ -34,17 +47,43 @@ Public Class frmOrdenesReparacion
         Cargar_Grilla_Ordenes()
         limpiar()
         ponerDecimales()
+
     End Sub
+
+    Private Sub actualizarStockDisponible(ID_Respuestos As Integer)
+        Dim adOrdenReparacion As New AD_OrdenReparacion()
+        Try
+            For Each row As DataGridViewRow In grdRepuestos.Rows
+                Dim idRepuesto As Integer
+                If Integer.TryParse(row.Cells("ID").Value.ToString(), idRepuesto) Then
+
+                    Dim stockDisponible As Decimal = adOrdenReparacion.Consultar_StockDisponiblePorID(idRepuesto)
+
+
+
+                    Dim nuevoStock As Decimal = stockDisponible - Convert.ToDecimal(row.Cells("Cantidad").Value.ToString("N2"))
+
+                    adOrdenReparacion.Modificar_StockDisponiblePorID(idRepuesto, nuevoStock)
+
+
+                Else
+                    MessageBox.Show($"ID inválido en la fila {row.Index}", "Información")
+                End If
+            Next
+
+            MessageBox.Show("Proceso de actualización de stock completado", "Información")
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
 
 
 #End Region
 
-
 #Region "Repuestos"
-    Private Sub habilitarCambioPrecio(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles grdRepuestos.DataBindingComplete
-        grdRepuestos.ReadOnly = True
-        grdRepuestos.Columns("Precio").ReadOnly = False
-    End Sub
+
     Private Sub DataGridView1_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) Handles grdRepuestos.CellValidating
         If grdRepuestos.Columns(e.ColumnIndex).Name = "Precio" Then
             Dim newPrice As Decimal
@@ -77,6 +116,7 @@ Public Class frmOrdenesReparacion
                 ActualizarMontoTotalRep()
                 btnQuitarRepOR.Enabled = True
 
+
             Else
                 MsgBox("Por favor, seleccione un repuesto y especifique la cantidad.", vbExclamation, "Advertencia")
             End If
@@ -95,6 +135,7 @@ Public Class frmOrdenesReparacion
                 ActualizarMontoTotalRep()
                 If grdRepuestos.Rows.Count = 0 Then
                     btnQuitarRepOR.Enabled = False
+
                 End If
             Else
                 MsgBox("Por favor, seleccione una fila para quitar.", vbExclamation, "Advertencia")
@@ -106,6 +147,7 @@ Public Class frmOrdenesReparacion
 
 
 #End Region
+
 #Region "Cargar cbo"
 
     Private Sub Cargar_Combo_Vehiculos(ID_Persona)
@@ -397,6 +439,8 @@ Public Class frmOrdenesReparacion
 
 #End Region
 
+#Region "Servicios de terceros"
+
 
 
     Private Sub CboPersonaServ3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboPersonaServ3.SelectedIndexChanged
@@ -464,6 +508,7 @@ Public Class frmOrdenesReparacion
         End If
         btnAceptarS3.Enabled = False
         BtnModificarS3.Enabled = True
+        chkActivoS3.Visible = True
     End Sub
     Private Sub btnModificarS3_Click(sender As Object, e As EventArgs) Handles BtnModificarS3.Click
         Try
@@ -482,6 +527,7 @@ Public Class frmOrdenesReparacion
                 grdServiciosTerceros.ClearSelection()
                 ActualizarMontoTotalS3()
                 limpiarServ3()
+                chkActivoS3.Visible = False
                 btnAceptarS3.Enabled = True
                 BtnModificarS3.Enabled = False
             Else
@@ -491,8 +537,52 @@ Public Class frmOrdenesReparacion
             MsgBox("Error al modificar el servicio de terceros: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+    Private Sub BtnCancelarS3_Click(sender As Object, e As EventArgs) Handles BtnCancelarS3.Click
+        limpiarServ3()
+
+        grdServiciosTerceros.Rows.Clear()
+        ActualizarMontoTotalS3()
+        btnAceptarS3.Enabled = True
+        BtnModificarS3.Enabled = False
+        btnQuitarS3.Enabled = False
+    End Sub
+    Private Sub limpiarServ3()
+        CboPersonaServ3.SelectedIndex = -1
+        txtID_Serv3.Text = ""
+        txtServicioSolicitado.Text = ""
+        txtCostoEstimadoS3.Text = Convert.ToDecimal(0).ToString("N2")
+        txtCostoRealS3.Text = Convert.ToDecimal(0).ToString("N2")
+        chkAvanceServ3.Checked = False
+        chkActivo.Checked = False
 
 
+    End Sub
+    Private Sub btnQuitarS3_Click(sender As Object, e As EventArgs) Handles btnQuitarS3.Click
+        Try
+
+            If grdServiciosTerceros.SelectedRows.Count > 0 Then
+
+                grdServiciosTerceros.Rows.Remove(grdServiciosTerceros.SelectedRows(0))
+
+                ActualizarMontoTotalS3()
+                If grdServiciosTerceros.Rows.Count = 0 Then
+                    btnQuitarS3.Enabled = False
+                    BtnModificarS3.Enabled = False
+                    chkActivoS3.Visible = False
+                End If
+                limpiarServ3()
+                btnAceptarS3.Enabled = True
+            Else
+                MsgBox("Por favor, seleccione una fila para quitar.", vbExclamation, "Advertencia")
+            End If
+        Catch ex As Exception
+            MsgBox("Error al quitar el registro: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+#End Region
+
+#Region "Calcular Totales"
 
     Private Sub ponerDecimales()
 
@@ -505,6 +595,7 @@ Public Class frmOrdenesReparacion
         txtCantidadRepOR.Text = Convert.ToDecimal(txtCantidadRepOR.Text).ToString("N2")
 
     End Sub
+
     Private Sub CalcularTotalOR()
         txtMontoTotalOR.Text = Convert.ToDecimal(CDec(txtMontoManoObra.Text) + CDec(txtMontoRepuestos.Text) + CDec(txtMontoServ3.Text)).ToString("N2")
     End Sub
@@ -547,61 +638,8 @@ Public Class frmOrdenesReparacion
         txtMontoServ3.Text = montoTotal.ToString("F2")
     End Sub
 
-    Private Sub BtnCancelarS3_Click(sender As Object, e As EventArgs) Handles BtnCancelarS3.Click
-        limpiarServ3()
+#End Region
 
-        grdServiciosTerceros.Rows.Clear()
-        ActualizarMontoTotalS3()
-        btnAceptarS3.Enabled = True
-        BtnModificarS3.Enabled = False
-        btnQuitarS3.Enabled = False
-    End Sub
-    Private Sub limpiarServ3()
-        CboPersonaServ3.SelectedIndex = -1
-        txtID_Serv3.Text = ""
-        txtServicioSolicitado.Text = ""
-        txtCostoEstimadoS3.Text = Convert.ToDecimal(0).ToString("N2")
-        txtCostoRealS3.Text = Convert.ToDecimal(0).ToString("N2")
-        chkAvanceServ3.Checked = False
-        chkActivo.Checked = False
-
-
-    End Sub
-
-    Private Sub cboPersonas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPersonas.SelectedIndexChanged
-        If combopersonacargado Then
-            Try
-                Dim ID_Persona = cboPersonas.SelectedValue
-                cboVehiculo.Items.Clear()
-                Cargar_Combo_Vehiculos(ID_Persona)
-            Catch ex As Exception
-                MsgBox("Error al cargar vehículos: " & ex.Message, vbCritical, "Error")
-
-            End Try
-        End If
-    End Sub
-
-    Private Sub btnQuitarS3_Click(sender As Object, e As EventArgs) Handles btnQuitarS3.Click
-        Try
-
-            If grdServiciosTerceros.SelectedRows.Count > 0 Then
-
-                grdServiciosTerceros.Rows.Remove(grdServiciosTerceros.SelectedRows(0))
-
-                ActualizarMontoTotalS3()
-                If grdServiciosTerceros.Rows.Count = 0 Then
-                    btnQuitarS3.Enabled = False
-                    BtnModificarS3.Enabled = False
-                End If
-                limpiarServ3()
-                btnAceptarS3.Enabled = True
-            Else
-                MsgBox("Por favor, seleccione una fila para quitar.", vbExclamation, "Advertencia")
-            End If
-        Catch ex As Exception
-            MsgBox("Error al quitar el registro: " & ex.Message, vbCritical, "Error")
-        End Try
-    End Sub
 #Region "Focus txt"
 
 
@@ -688,9 +726,5 @@ Public Class frmOrdenesReparacion
 
 
 #End Region
-
-
-
-
 
 End Class
