@@ -281,7 +281,7 @@ Public Class frmMenuPrincipal
         End If
 
         ' Pintar el botón "Inicio" con un color especial cuando no hay formularios hijos abiertos
-        btnInicio.BackColor = Color.SeaGreen
+        'btnInicio.BackColor = Color.SeaGreen
 
         ' Actualizar el botón anterior como btnInicio
         btnAnterior = btnInicio

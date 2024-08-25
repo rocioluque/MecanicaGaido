@@ -8,6 +8,7 @@ Imports AD_Mecanica_Gaido
 Imports System.IO
 Imports iTextSharp.text
 Imports iTextSharp.text.pdf
+
 Public Class frmInicio
     Dim o_MenuPrincipal As New AD_MenuPrincipal()
     Private Sub frmInicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -58,7 +59,7 @@ Public Class frmInicio
         datatable.SetWidths(headerwidths)
         datatable.WidthPercentage = 100
         datatable.DefaultCell.BorderWidth = 2
-        datatable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER
+        datatable.DefaultCell.VerticalAlignment = Element.ALIGN_CENTER
 
         Dim encabezado As New Paragraph("PRODUCTOS BAJO STOCK")
         Dim texto As New Phrase("Reporte productos: " + Now.Date.ToString("d"))
@@ -83,7 +84,7 @@ Public Class frmInicio
         document.Add(datatable)
     End Sub
 
-    Private Sub btnExportarPDF_Click(sender As Object, e As EventArgs)
+    Private Sub btnExportarPDF_Click(sender As Object, e As EventArgs) Handles btnExportarPDF.Click
         Try
             Dim doc As New Document(PageSize.A4.Rotate(), 10, 10, 10, 10)
             Dim filename As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "Reporteproductos.pdf")
@@ -96,6 +97,7 @@ Public Class frmInicio
             End Using
 
             Process.Start(filename)
+            MessageBox.Show("Documento PDF generado con exito.")
         Catch ex As Exception
             MessageBox.Show("No se puede generar el documento PDF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try

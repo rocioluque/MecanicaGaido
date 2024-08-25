@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnAgregarCuenta.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnAgregarPersona.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EwAACxMBAJqcGAAAALFJREFUSEvt1DsOwjAABFEfj1Ag7l8EiU8Bl3DWZliQEE3ICoo8yc0m8nQuq79W
@@ -155,6 +155,15 @@
 </value>
   </data>
   <data name="btnFormaEntrega.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EwAACxMBAJqcGAAAALFJREFUSEvt1DsOwjAABFEfj1Ag7l8EiU8Bl3DWZliQEE3ICoo8yc0m8nQuq79W
+        a93r3HSuOjvmPMUuOg9n5jyCxpxHz5jz6BlzHj1jzqNnzHn0jDmPnjHn0TPm+XTHVufQb1tWu3Mg804f
+        j/23jM8vnD7+LDzojP23ZbU7N2Tmu9/1xJxHz5jz6BlzHj1jzqNnzHn0jDmPnjHn0TPmPLVe3/OROU+x
+        9sKdON+/SKucUiYK2LXv2W+ZPgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnAgregarDetalleFormaPago.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EwAACxMBAJqcGAAAALFJREFUSEvt1DsOwjAABFEfj1Ag7l8EiU8Bl3DWZliQEE3ICoo8yc0m8nQuq79W

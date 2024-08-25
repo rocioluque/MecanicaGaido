@@ -26,14 +26,14 @@ Partial Class frmInicio
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmInicio))
         Me.grdProductosBajoStock = New System.Windows.Forms.DataGridView()
-        Me.id_Repuesto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StockDisponible = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnExportarPDF = New System.Windows.Forms.Button()
         Me.lblFecha = New System.Windows.Forms.Label()
         Me.lblHora = New System.Windows.Forms.Label()
         Me.horaFecha = New System.Windows.Forms.Timer(Me.components)
+        Me.id_Repuesto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StockDisponible = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.grdProductosBajoStock, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -56,42 +56,24 @@ Partial Class frmInicio
         Me.grdProductosBajoStock.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.grdProductosBajoStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdProductosBajoStock.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_Repuesto, Me.Descripcion, Me.StockDisponible})
-        Me.grdProductosBajoStock.Location = New System.Drawing.Point(50, 400)
+        Me.grdProductosBajoStock.Location = New System.Drawing.Point(540, 58)
         Me.grdProductosBajoStock.Name = "grdProductosBajoStock"
         Me.grdProductosBajoStock.ReadOnly = True
         Me.grdProductosBajoStock.RowHeadersVisible = False
         Me.grdProductosBajoStock.RowHeadersWidth = 51
         Me.grdProductosBajoStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdProductosBajoStock.Size = New System.Drawing.Size(638, 297)
+        Me.grdProductosBajoStock.Size = New System.Drawing.Size(562, 297)
         Me.grdProductosBajoStock.TabIndex = 113
-        '
-        'id_Repuesto
-        '
-        Me.id_Repuesto.HeaderText = "N° Repuesto"
-        Me.id_Repuesto.Name = "id_Repuesto"
-        Me.id_Repuesto.ReadOnly = True
-        '
-        'Descripcion
-        '
-        Me.Descripcion.HeaderText = "Descripcion"
-        Me.Descripcion.Name = "Descripcion"
-        Me.Descripcion.ReadOnly = True
-        '
-        'StockDisponible
-        '
-        Me.StockDisponible.HeaderText = "Stock Disponible"
-        Me.StockDisponible.Name = "StockDisponible"
-        Me.StockDisponible.ReadOnly = True
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 14.0!)
+        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 11.0!)
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(46, 363)
+        Me.Label3.Location = New System.Drawing.Point(536, 20)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(238, 22)
+        Me.Label3.Size = New System.Drawing.Size(192, 20)
         Me.Label3.TabIndex = 112
         Me.Label3.Text = "Productos de bajo Stock:"
         '
@@ -107,7 +89,7 @@ Partial Class frmInicio
         Me.btnExportarPDF.ForeColor = System.Drawing.Color.White
         Me.btnExportarPDF.Image = CType(resources.GetObject("btnExportarPDF.Image"), System.Drawing.Image)
         Me.btnExportarPDF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnExportarPDF.Location = New System.Drawing.Point(594, 355)
+        Me.btnExportarPDF.Location = New System.Drawing.Point(1008, 13)
         Me.btnExportarPDF.Name = "btnExportarPDF"
         Me.btnExportarPDF.Size = New System.Drawing.Size(94, 35)
         Me.btnExportarPDF.TabIndex = 111
@@ -118,11 +100,11 @@ Partial Class frmInicio
         'lblFecha
         '
         Me.lblFecha.AutoSize = True
-        Me.lblFecha.Font = New System.Drawing.Font("Century Gothic", 30.0!)
+        Me.lblFecha.Font = New System.Drawing.Font("Century Gothic", 15.0!)
         Me.lblFecha.ForeColor = System.Drawing.Color.MediumSeaGreen
-        Me.lblFecha.Location = New System.Drawing.Point(28, 98)
+        Me.lblFecha.Location = New System.Drawing.Point(12, 58)
         Me.lblFecha.Name = "lblFecha"
-        Me.lblFecha.Size = New System.Drawing.Size(144, 49)
+        Me.lblFecha.Size = New System.Drawing.Size(72, 23)
         Me.lblFecha.TabIndex = 110
         Me.lblFecha.Text = "Fecha"
         '
@@ -130,11 +112,11 @@ Partial Class frmInicio
         '
         Me.lblHora.AutoSize = True
         Me.lblHora.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.lblHora.Font = New System.Drawing.Font("Century Gothic", 60.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblHora.Font = New System.Drawing.Font("Century Gothic", 30.0!)
         Me.lblHora.ForeColor = System.Drawing.Color.White
         Me.lblHora.Location = New System.Drawing.Point(7, 9)
         Me.lblHora.Name = "lblHora"
-        Me.lblHora.Size = New System.Drawing.Size(226, 96)
+        Me.lblHora.Size = New System.Drawing.Size(114, 49)
         Me.lblHora.TabIndex = 109
         Me.lblHora.Text = "Hora"
         '
@@ -142,12 +124,33 @@ Partial Class frmInicio
         '
         Me.horaFecha.Enabled = True
         '
+        'id_Repuesto
+        '
+        Me.id_Repuesto.FillWeight = 50.0!
+        Me.id_Repuesto.HeaderText = "N° Repuesto"
+        Me.id_Repuesto.Name = "id_Repuesto"
+        Me.id_Repuesto.ReadOnly = True
+        '
+        'Descripcion
+        '
+        Me.Descripcion.FillWeight = 111.9289!
+        Me.Descripcion.HeaderText = "Descripcion"
+        Me.Descripcion.Name = "Descripcion"
+        Me.Descripcion.ReadOnly = True
+        '
+        'StockDisponible
+        '
+        Me.StockDisponible.FillWeight = 50.0!
+        Me.StockDisponible.HeaderText = "Stock Disponible"
+        Me.StockDisponible.Name = "StockDisponible"
+        Me.StockDisponible.ReadOnly = True
+        '
         'frmInicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(975, 606)
+        Me.ClientSize = New System.Drawing.Size(1147, 606)
         Me.Controls.Add(Me.grdProductosBajoStock)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.btnExportarPDF)
@@ -165,12 +168,12 @@ Partial Class frmInicio
     End Sub
 
     Friend WithEvents grdProductosBajoStock As DataGridView
-    Friend WithEvents id_Repuesto As DataGridViewTextBoxColumn
-    Friend WithEvents Descripcion As DataGridViewTextBoxColumn
-    Friend WithEvents StockDisponible As DataGridViewTextBoxColumn
     Friend WithEvents Label3 As Label
     Friend WithEvents btnExportarPDF As Button
     Friend WithEvents lblFecha As Label
     Friend WithEvents lblHora As Label
     Friend WithEvents horaFecha As Timer
+    Friend WithEvents id_Repuesto As DataGridViewTextBoxColumn
+    Friend WithEvents Descripcion As DataGridViewTextBoxColumn
+    Friend WithEvents StockDisponible As DataGridViewTextBoxColumn
 End Class
