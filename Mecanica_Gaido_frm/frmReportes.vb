@@ -26,7 +26,7 @@ Public Class frmReportes
 
 
 
-    Private Sub cargar_grafico_Repuestos()
+    Public Sub cargar_grafico_Repuestos()
         ' Limpiar el gráfico existente
         chtRepuestos.Series.Clear()
         chtRepuestos.ChartAreas.Clear()

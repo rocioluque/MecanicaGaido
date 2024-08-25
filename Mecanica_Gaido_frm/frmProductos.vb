@@ -243,6 +243,7 @@ Public Class frmProductos
                 Cargar_Grilla()
                 Cargar_Combo_Original()
 
+
             Catch ex As Exception
                 MsgBox("Error al agregar el producto: " & ex.Message, vbCritical, "Error")
             End Try
