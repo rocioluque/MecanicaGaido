@@ -642,84 +642,116 @@ Public Class frmOrdenesReparacion
 
     End Sub
 
-
+#End Region
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
-        ' Crear instancias de las clases de acceso a datos
+
         Dim ordenReparacionData As New AD_OrdenReparacion
-        Dim servicioTercerosData As New AD_OrdenReparacion
-        Dim repuestosData As New AD_OrdenReparacion
+        Dim servicioTercerosData As New AD_ServicioTerceros
+        Dim repuestosData As New AD_Productos
+
         Dim connectionString = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123"
-        ' Iniciar la conexión y la transacción
+
         Using conn As New SqlConnection(connectionString)
             conn.Open()
             Dim transaction As SqlTransaction = conn.BeginTransaction()
 
+            If cboVehiculo.SelectedValue Is Nothing Then
+                MessageBox.Show("Por favor, seleccione un vehículo.")
+                Exit Sub
+            End If
+
             Try
-                ' 1. Agregar la orden de reparación
-                Dim ID_Orden As Integer = ordenReparacionData.Agregar_Orden_Reparacion(cboVehiculo.SelectedValue,
-                                                                                       txtSeñasParticulares.Text,
-                                                                                       txtMotivoReparacion.Text,
-                                                                                       dtpTurno.Value,
-                                                                                       dtpEntrada.Value,
-                                                                                       dtpSalida.Value,
-                                                                                       cboPersonas.SelectedValue,
-                                                                                       Convert.ToDecimal(txtMontoRepuestos.Text).ToString("N2"),
-                                                                                       Convert.ToDecimal(txtMontoServ3.Text).ToString("N2"),
-                                                                                       Convert.ToDecimal(txtMontoManoObra.Text).ToString("N2"),
-                                                                                       Convert.ToDecimal(txtMontoTotalOR.Text).ToString("N2"),
-                                                                                       Convert.ToBoolean(chkActivo.Checked),
-                                                                                       transaction)
+
+                Dim ID_Orden As Integer = ordenReparacionData.Agregar_Orden_Reparacion(
+                                                                                        Convert.ToInt32(cboVehiculo.SelectedValue),
+                                                                                        txtSeñasParticulares.Text,
+                                                                                        txtMotivoReparacion.Text,
+                                                                                        dtpTurno.Value,
+                                                                                        dtpEntrada.Value,
+                                                                                        dtpSalida.Value,
+                                                                                        cboPersonas.SelectedValue,
+                                                                                        Convert.ToDecimal(txtMontoRepuestos.Text),
+                                                                                        Convert.ToDecimal(txtMontoServ3.Text),
+                                                                                        Convert.ToDecimal(txtMontoManoObra.Text),
+                                                                                        Convert.ToDecimal(txtMontoTotalOR.Text),
+                                                                                        Convert.ToBoolean(chkActivo.Checked),
+                                                                                        transaction)
 
 
 
-                ' 2. Registrar servicios de terceros
-                For Each row As DataGridViewRow In grdServiciosTerceros.Rows
-                    servicioTercerosData.Agregar_Servicio_Terceros(ID_Orden,
-                                                                    dtpEntrada.Value,
-                                                                    CboPersonaServ3.SelectedValue,
-                                                                    txtServicioSolicitado.Text,
-                                                                    Convert.ToDecimal(txtCostoEstimadoS3.Text).ToString("N2"),
-                                                                    Convert.ToDecimal(txtCostoRealS3.Text).ToString("N2"),
-                                                                    Convert.ToBoolean(chkAvanceServ3.Checked),
-                                                                    Convert.ToBoolean(chkActivoS3.Checked),
-                                                                    transaction)
-                Next
+                If grdServiciosTerceros.Rows.Count > 0 Then
+                    For Each row As DataGridViewRow In grdServiciosTerceros.Rows
+                        Dim ID_Prestador As Integer = Convert.ToInt32(row.Cells("ID_Prestador").Value)
+                        Dim ServSolicitado As String = row.Cells("ServSolicitado").Value
+                        Dim CostoEstimado As Decimal = Convert.ToDecimal(row.Cells("CostoEstimado").Value)
+                        Dim CostoReal As Decimal = Convert.ToDecimal(row.Cells("CostoReal").Value)
+                        Dim Finalizado As Boolean = Convert.ToBoolean(row.Cells("Finalizado").Value)
+                        Dim Estado As Boolean = Convert.ToBoolean(row.Cells("Estado").Value)
+
+                        servicioTercerosData.Agregar_Servicio_Terceros(ID_Orden,
+                                                                        dtpEntrada.Value,
+                                                                        ID_Prestador,
+                                                                        ServSolicitado,
+                                                                        CostoEstimado,
+                                                                        CostoReal,
+                                                                        Finalizado,
+                                                                        Estado,
+                                                                        transaction)
+                    Next
+                End If
 
 
-                ' 3. Registrar repuestos y modificar stock disponible
-                For Each row As DataGridViewRow In grdRepuestos.Rows
-                    Dim ID_Repuestos As Integer = Convert.ToInt32(row.Cells("ID").Value)
-                    Dim Cantidad As Decimal = Convert.ToDecimal(row.Cells("Cantidad").Value)
-                    Dim Precio_Rep As Decimal = Convert.ToDecimal(row.Cells("Precio").Value)
+                If grdRepuestos.Rows.Count > 0 Then
+                    For Each row As DataGridViewRow In grdRepuestos.Rows
+                        Dim ID_Repuestos As Integer = Convert.ToInt32(row.Cells("ID").Value)
+                        Dim Cantidad As Decimal = Convert.ToDecimal(row.Cells("Cantidad").Value)
+                        Dim Precio_Rep As Decimal = Convert.ToDecimal(row.Cells("Precio").Value)
 
-                    ' Registrar repuesto
-                    repuestosData.Agregar_Repuestos_Ordenes(ID_Repuestos,
-                                                            ID_Orden,
-                                                            Cantidad,
-                                                            Precio_Rep,
-                                                            True, 'Harcodeado porque no lo tuvimos en cuenta
-                                                            transaction)
+                        repuestosData.Agregar_Repuestos_Ordenes(ID_Repuestos,
+                                                                ID_Orden,
+                                                                Cantidad,
+                                                                Precio_Rep,
+                                                                True, 'Harcodeado porque no lo tuvimos en cuenta
+                                                                transaction)
 
 
-                    ' Consultar y modificar el stock disponible
-                    Dim stockDisponible As Integer = repuestosData.Consultar_StockDisponiblePorID(ID_Repuestos, transaction)
-                    stockDisponible -= Cantidad
-                    repuestosData.Modificar_StockDisponiblePorID(ID_Repuestos, stockDisponible, transaction)
-                Next
+                        Dim stockDisponible As Integer = repuestosData.Consultar_StockDisponiblePorID(ID_Repuestos, transaction)
+                        stockDisponible -= Cantidad
+                        repuestosData.Modificar_StockDisponiblePorID(ID_Repuestos, stockDisponible, transaction)
+                    Next
+                End If
 
-                ' 4. Confirmar la transacción
+
                 transaction.Commit()
-
             Catch ex As Exception
-                ' En caso de error, deshacer los cambios
+
+
                 transaction.Rollback()
                 MessageBox.Show("Error: " & ex.Message)
             End Try
         End Using
+
+        Cargar_Grilla_Ordenes()
+        MessageBox.Show("Orden cargada exitosamente")
+
+        limpiarServ3()
+        txtID.Clear()
+        txtSeñasParticulares.Clear()
+        txtMotivoReparacion.Clear()
+
+        cboPersonas.SelectedIndex = -1
+        CboPersonaServ3.SelectedIndex = -1
+        grdRepuestos.Rows.Clear()
+        ActualizarMontoTotalRep()
+        ActualizarMontoTotalS3()
+        txtMontoManoObra.Text = Convert.ToDecimal(0).ToString("N2")
+
+
+
     End Sub
 
 
 
-#End Region
+
 
 End Class

@@ -202,6 +202,7 @@
     <Compile Include="AD_Roles.vb" />
     <Compile Include="AD_Rubros.vb" />
     <Compile Include="AD_Secciones.vb" />
+    <Compile Include="AD_ServicioTerceros.vb" />
     <Compile Include="AD_TiposDeVenta.vb" />
     <Compile Include="AD_Vehiculos.vb" />
     <Compile Include="AD_Ventas.vb" />

@@ -76,6 +76,77 @@ Public Class frmReportes
     End Sub
 
     Private Sub chtRepuestos_Click(sender As Object, e As EventArgs) Handles chtRepuestos.Click
+        Cargar_Grilla_Reportes1()
+        Cargar_Grilla_Reportes2()
+    End Sub
 
+    Public Sub Cargar_Grilla_Reportes1()
+        Try
+            Dim conexion As SqlConnection
+            Dim comando As New SqlCommand
+
+            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
+
+            conexion.Open()
+            comando.Connection = conexion
+            comando.CommandType = CommandType.StoredProcedure
+            comando.CommandText = ("Cargar_Grilla_Reportes1")
+
+            Dim datadapter As New SqlDataAdapter(comando)
+            Dim oDs As New DataSet
+            datadapter.Fill(oDs)
+
+            If oDs.Tables(0).Rows.Count > 0 Then
+                grdGrilla1.AutoGenerateColumns = True
+                grdGrilla1.DataSource = oDs.Tables(0)
+
+
+
+                grdGrilla1.Refresh()
+            Else
+                MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
+            End If
+
+            oDs = Nothing
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox("Error al cargar la grilla: " & ex.Message, vbCritical, "Error")
+        Finally
+        End Try
+    End Sub
+
+    Public Sub Cargar_Grilla_Reportes2()
+        Try
+            Dim conexion As SqlConnection
+            Dim comando As New SqlCommand
+
+            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
+
+            conexion.Open()
+            comando.Connection = conexion
+            comando.CommandType = CommandType.StoredProcedure
+            comando.CommandText = ("Cargar_Grilla_Reportes2")
+
+            Dim datadapter As New SqlDataAdapter(comando)
+            Dim oDs As New DataSet
+            datadapter.Fill(oDs)
+
+            If oDs.Tables(0).Rows.Count > 0 Then
+                grdGrilla2.AutoGenerateColumns = True
+                grdGrilla2.DataSource = oDs.Tables(0)
+
+
+
+                grdGrilla2.Refresh()
+            Else
+                MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
+            End If
+
+            oDs = Nothing
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox("Error al cargar la grilla: " & ex.Message, vbCritical, "Error")
+        Finally
+        End Try
     End Sub
 End Class
