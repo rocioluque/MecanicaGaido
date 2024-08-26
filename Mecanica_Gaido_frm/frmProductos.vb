@@ -6,7 +6,6 @@ Imports System.Globalization
 
 Public Class frmProductos
     Dim o_productos As New AD_Productos
-
     Private txtsConDecimales As New List(Of TextBox)
 
 #Region "Procedimientos"
@@ -17,7 +16,6 @@ Public Class frmProductos
         limpiar()
         Cargar_Grilla()
 
-
         'AGREGAR LOS TEXTBOXS QUE NECESITEN QUE SE VALIDEN COMO NUMERO DECIMAL
         AgregarValidacionATextBox(txtPrecioLista)
         AgregarValidacionATextBox(txtPrecioCompra)
@@ -25,9 +23,8 @@ Public Class frmProductos
         AgregarValidacionATextBox(txtStockDisponible)
         AgregarValidacionATextBox(txtStockReal)
         AgregarValidacionATextBox(txtUtilidad)
-
-
     End Sub
+
     Public Sub limpiar()
         txtId.Clear()
         txtDescripcion.Clear()
@@ -35,6 +32,7 @@ Public Class frmProductos
         txtCantidadBulto.Clear()
         txtStockReal.Clear()
         txtStockDisponible.Clear()
+        txtStockMinimo.Clear()
         txtPrecioCompra.Clear()
         txtUtilidad.Clear()
         txtPrecioLista.Clear()
@@ -101,42 +99,27 @@ Public Class frmProductos
             Dim datoleido As SqlDataReader = o_Productos.Consultar_ProductoPorID(idProducto)
 
             If datoleido.Read() Then
-                txtId.Text = If(IsDBNull(datoleido("N° Producto")), String.Empty, datoleido("N° Producto").ToString())
-                txtDescripcion.Text = If(IsDBNull(datoleido("Producto")), String.Empty, datoleido("Producto").ToString())
-                txtNombreDiario.Text = If(IsDBNull(datoleido("Nombre Diario")), String.Empty, datoleido("Nombre Diario").ToString())
-                cboMarca.SelectedValue = If(IsDBNull(datoleido("Marca")), -1, datoleido("Marca"))
-                txtStockReal.Text = If(IsDBNull(datoleido("Stock Real")), String.Empty, datoleido("Stock Real").ToString())
-                txtStockDisponible.Text = If(IsDBNull(datoleido("Stock Disponible")), String.Empty, datoleido("Stock Disponible").ToString())
-
-
-                txtPrecioLista.Text = If(IsDBNull(datoleido("Precio Lista")), String.Empty, Convert.ToDecimal(datoleido("Precio Lista")).ToString("N2"))
-
-                txtPrecioCompra.Text = If(IsDBNull(datoleido("PrecioCompra")), String.Empty, Convert.ToDecimal(datoleido("PrecioCompra")).ToString("N2"))
-
-                txtUbicacion.Text = If(IsDBNull(datoleido("Ubicacion")), String.Empty, datoleido("Ubicacion").ToString())
-                cboRubro.SelectedValue = If(IsDBNull(datoleido("Rubro")), String.Empty, datoleido("Rubro").ToString())
-                chkAlterntivo.Checked = If(IsDBNull(datoleido("alternativo")), False, Convert.ToBoolean(datoleido("alternativo")))
-                cboOriginal.SelectedValue = If(IsDBNull(datoleido("ID_Original")), String.Empty, datoleido("ID_Original").ToString())
-                txtCantidadBulto.Text = If(IsDBNull(datoleido("Cantidad_X_Bulto")), String.Empty, datoleido("Cantidad_X_Bulto").ToString())
-                txtUtilidad.Text = If(IsDBNull(datoleido("Utilidad")), String.Empty, Convert.ToDecimal(datoleido("Utilidad")).ToString("N2"))
-
-                ' Convert.ToDateTime maneja los valores nulos y fechas inválidas
-                If Not IsDBNull(datoleido("FechaUltimaCompra")) Then
-                    dtpFechaCompra.Value = Convert.ToDateTime(datoleido("FechaUltimaCompra"))
-                Else
-                    dtpFechaCompra.Value = DateTime.Now
-                End If
-
-                If Not IsDBNull(datoleido("FechaUltimaVenta")) Then
-                    dtpFechaVenta.Value = Convert.ToDateTime(datoleido("FechaUltimaVenta"))
-                Else
-                    dtpFechaVenta.Value = DateTime.Now
-                End If
-
-                txtCodigoBarra.Text = If(IsDBNull(datoleido("CodBarra")), String.Empty, datoleido("CodBarra").ToString())
-                txtCodFabricante.Text = If(IsDBNull(datoleido("CodFabricante")), String.Empty, datoleido("CodFabricante").ToString())
-                cboOrigen.Text = If(IsDBNull(datoleido("Origen")), String.Empty, datoleido("Origen").ToString())
-                chkEstado.Checked = If(IsDBNull(datoleido("Estado")), False, Convert.ToBoolean(datoleido("Estado")))
+                txtId.Text = datoleido("N° Producto").ToString()
+                txtDescripcion.Text = datoleido("Producto").ToString()
+                txtNombreDiario.Text = datoleido("Nombre Diario").ToString()
+                cboMarca.SelectedValue = datoleido("Marca").ToString
+                txtStockReal.Text = datoleido("Stock Real").ToString()
+                txtStockDisponible.Text = datoleido("Stock Disponible").ToString()
+                txtStockMinimo.Text = datoleido("Stock Minimo").ToString
+                txtPrecioLista.Text = Convert.ToDecimal(datoleido("Precio Lista")).ToString("N2")
+                txtPrecioCompra.Text = Convert.ToDecimal(datoleido("PrecioCompra")).ToString("N2")
+                txtUbicacion.Text = datoleido("Ubicacion").ToString()
+                cboRubro.SelectedValue = datoleido("Rubro").ToString()
+                chkAlterntivo.Checked = Convert.ToBoolean(datoleido("alternativo"))
+                cboOriginal.SelectedValue = datoleido("ID_Original").ToString()
+                txtCantidadBulto.Text = datoleido("Cantidad_X_Bulto").ToString()
+                txtUtilidad.Text = Convert.ToDecimal(datoleido("Utilidad")).ToString("N2")
+                dtpFechaCompra.Value = Convert.ToDateTime(datoleido("FechaUltimaCompra"))
+                dtpFechaVenta.Value = Convert.ToDateTime(datoleido("FechaUltimaVenta"))
+                txtCodigoBarra.Text = datoleido("CodBarra").ToString()
+                txtCodFabricante.Text = datoleido("CodFabricante").ToString()
+                cboOrigen.Text = datoleido("Origen").ToString()
+                chkEstado.Checked = Convert.ToBoolean(datoleido("Estado"))
                 btnModificar.Enabled = True
             Else
                 MsgBox("No se encontraron resultados", vbInformation, "Error")
@@ -220,8 +203,6 @@ Public Class frmProductos
 #End Region
 
 #Region "Cargar"
-
-
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         If txtDescripcion.Text <> Nothing And cboMarca.SelectedValue <> Nothing And txtCodFabricante.Text <> Nothing And
             txtUbicacion.Text <> Nothing And txtUtilidad.Text <> Nothing Then
@@ -235,7 +216,7 @@ Public Class frmProductos
                 o_productos.Agregar_Producto(txtDescripcion.Text, txtNombreDiario.Text, CInt(cboRubro.SelectedValue),
                        CInt(cboMarca.SelectedValue), txtCodigoBarra.Text, txtCodFabricante.Text, txtCantidadBulto.Text,
                        origen, chkAlterntivo.Checked, CInt(cboOriginal.SelectedValue), chkEstado.Checked, txtStockReal.Text,
-                       txtStockDisponible.Text, txtUbicacion.Text, precioCompra, utilidad, precioLista,
+                       txtStockDisponible.Text, txtStockMinimo.Text, txtUbicacion.Text, precioCompra, utilidad, precioLista,
                        dtpFechaCompra.Value, dtpFechaVenta.Value)
 
                 MsgBox("Producto agregado correctamente.", vbInformation, "Información")
@@ -259,7 +240,6 @@ Public Class frmProductos
       txtUbicacion.Text <> Nothing And txtUtilidad.Text <> Nothing Then
 
             Try
-
                 Dim origen As String = cboOrigen.SelectedItem.ToString()
                 Dim precioCompra As Decimal = Convert.ToDecimal(txtPrecioCompra.Text).ToString("N2")
                 Dim utilidad As Decimal = Convert.ToDecimal(txtUtilidad.Text).ToString("N2")
@@ -268,9 +248,8 @@ Public Class frmProductos
                 o_productos.Modificar_Producto(CInt(txtId.Text), txtDescripcion.Text, txtNombreDiario.Text, CInt(cboRubro.SelectedValue),
                    CInt(cboMarca.SelectedValue), txtCodigoBarra.Text, txtCodFabricante.Text, txtCantidadBulto.Text,
                    origen, chkAlterntivo.Checked, CInt(cboOriginal.SelectedValue), chkEstado.Checked,
-                   txtStockReal.Text, txtStockDisponible.Text, txtUbicacion.Text,
-                   precioCompra, utilidad,
-                   precioLista, dtpFechaCompra.Value, dtpFechaVenta.Value)
+                   txtStockReal.Text, txtStockDisponible.Text, txtStockMinimo.Text, txtUbicacion.Text,
+                   precioCompra, utilidad, precioLista, dtpFechaCompra.Value, dtpFechaVenta.Value)
 
                 MsgBox("Producto modificado correctamente.", vbInformation, "Información")
                 limpiar()
@@ -299,7 +278,6 @@ Public Class frmProductos
         Catch
             txtPrecioCompra.Text = 0
         End Try
-
     End Sub
 
     Private Sub txtUtilidad_LostFocus(sender As Object, e As EventArgs) Handles txtUtilidad.LostFocus
@@ -325,22 +303,17 @@ Public Class frmProductos
             precioLista = txtPrecioLista.Text
             txtPrecioLista.Text = Convert.ToDecimal(precioLista).ToString("N2")
         Catch
-
         End Try
-
     End Sub
-
 
     Private Sub CalcularPrecioLista()
         Dim precioCompra As Decimal
         Dim utilidad As Decimal
 
         If Decimal.TryParse(txtPrecioCompra.Text, precioCompra) AndAlso Decimal.TryParse(txtUtilidad.Text, utilidad) Then
-
             Dim precioLista As Decimal = precioCompra * (utilidad / 100 + 1)
 
             txtPrecioLista.Text = Convert.ToDecimal(precioLista).ToString("N2")
-
         Else
             txtPrecioLista.Text = String.Empty
         End If
@@ -351,7 +324,6 @@ Public Class frmProductos
         Dim precioLista As Decimal
 
         If Decimal.TryParse(txtPrecioCompra.Text, precioCompra) AndAlso Decimal.TryParse(txtPrecioLista.Text, precioLista) Then
-
             If precioCompra > 0 Then
                 ' Calcular la utilidad como un porcentaje
                 Dim utilidad As Decimal = ((precioLista / precioCompra) - 1) * 100
@@ -361,14 +333,10 @@ Public Class frmProductos
             Else
                 txtUtilidad.Text = String.Empty
             End If
-
         Else
             txtUtilidad.Text = String.Empty
         End If
     End Sub
-
-
-
 #End Region
 
 #Region "Marca"
@@ -487,8 +455,6 @@ Public Class frmProductos
 
         End If
     End Sub
-
-
 
     Private Sub lblCodBarra_KeyPress(sender As Object, e As KeyPressEventArgs) Handles lblCodBarra.KeyPress
         If Char.IsDigit(e.KeyChar) Then
