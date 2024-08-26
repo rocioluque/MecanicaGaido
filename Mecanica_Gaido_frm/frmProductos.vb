@@ -6,12 +6,7 @@ Imports System.Globalization
 
 Public Class frmProductos
     Dim o_productos As New AD_Productos
-
     Private txtsConDecimales As New List(Of TextBox)
-
-
-
-
 
 #Region "Procedimientos"
     Private Sub frmProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -37,6 +32,7 @@ Public Class frmProductos
         txtCantidadBulto.Clear()
         txtStockReal.Clear()
         txtStockDisponible.Clear()
+        txtStockMinimo.Clear()
         txtPrecioCompra.Clear()
         txtUtilidad.Clear()
         txtPrecioLista.Clear()
@@ -53,6 +49,12 @@ Public Class frmProductos
         chkEstado.Checked = False
     End Sub
 
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiar()
+    End Sub
+#End Region
+
+#Region "Grilla y carga de txt"
     Public Sub Cargar_Grilla()
         Try
             Dim conexion As SqlConnection
@@ -73,23 +75,9 @@ Public Class frmProductos
                 grdProductos.AutoGenerateColumns = True
                 grdProductos.DataSource = oDs.Tables(0)
 
-
-                If grdProductos.Columns.Contains("PrecioCompra") Then
-                    grdProductos.Columns("PrecioCompra").DefaultCellStyle.Format = "N2"
-                End If
-
                 If grdProductos.Columns.Contains("Precio Lista") Then
                     grdProductos.Columns("Precio Lista").DefaultCellStyle.Format = "N2"
                 End If
-
-                ' Verificar si las columnas existen antes de ocultarlas
-                Dim columnasParaOcultar As String() = {"Rubro", "alternativo", "ID_Original", "Cantidad_X_Bulto", "Utilidad",
-                                                    "FechaUltimaCompra", "FechaUltimaVenta", "CodBarra", "CodFabricante", "Origen", "Estado"}
-                For Each colName As String In columnasParaOcultar
-                    If grdProductos.Columns.Contains(colName) Then
-                        grdProductos.Columns(colName).Visible = False
-                    End If
-                Next
 
                 grdProductos.Refresh()
             Else
@@ -104,48 +92,6 @@ Public Class frmProductos
         End Try
     End Sub
 
-    'Public Sub Cargar_Grilla()
-    '    Try
-    '        Dim conexion As SqlConnection
-    '        Dim comando As New SqlCommand
-
-    '        conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
-
-    '        conexion.Open()
-    '        comando.Connection = conexion
-    '        comando.CommandType = CommandType.StoredProcedure
-    '        comando.CommandText = ("Cargar_Grilla_Producto")
-
-    '        Dim datadapter As New SqlDataAdapter(comando)
-    '        Dim oDs As New DataSet
-    '        datadapter.Fill(oDs)
-
-    '        If oDs.Tables(0).Rows.Count > 0 Then
-    '            grdProductos.AutoGenerateColumns = True
-    '            grdProductos.DataSource = oDs.Tables(0)
-
-    '            ' Verificar si las columnas existen antes de ocultarlas
-    '            Dim columnasParaOcultar As String() = {"Rubro", "alternativo", "ID_Original", "Cantidad_X_Bulto", "PrecioCompra", "Utilidad",
-    '                                                    "FechaUltimaCompra", "FechaUltimaVenta", "CodBarra", "CodFabricante", "Origen", "Estado"}
-    '            For Each colName As String In columnasParaOcultar
-    '                If grdProductos.Columns.Contains(colName) Then
-    '                    grdProductos.Columns(colName).Visible = False
-    '                End If
-    '            Next
-    '            grdProductos.Refresh()
-    '        Else
-    '            MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
-    '        End If
-
-    '        oDs = Nothing
-    '        conexion.Close()
-    '    Catch ex As Exception
-    '        MsgBox("Error al cargar la grilla: " & ex.Message, vbCritical, "Error")
-    '    Finally
-    '    End Try
-    'End Sub
-
-
     Public Sub CargarDatosEnTxt(ByVal idProducto As Integer)
         Dim o_Productos As New AD_Productos
 
@@ -153,42 +99,28 @@ Public Class frmProductos
             Dim datoleido As SqlDataReader = o_Productos.Consultar_ProductoPorID(idProducto)
 
             If datoleido.Read() Then
-                txtId.Text = If(IsDBNull(datoleido("N° Producto")), String.Empty, datoleido("N° Producto").ToString())
-                txtDescripcion.Text = If(IsDBNull(datoleido("Producto")), String.Empty, datoleido("Producto").ToString())
-                txtNombreDiario.Text = If(IsDBNull(datoleido("Nombre Diario")), String.Empty, datoleido("Nombre Diario").ToString())
-                cboMarca.SelectedValue = If(IsDBNull(datoleido("Marca")), -1, datoleido("Marca"))
-                txtStockReal.Text = If(IsDBNull(datoleido("Stock Real")), String.Empty, datoleido("Stock Real").ToString())
-                txtStockDisponible.Text = If(IsDBNull(datoleido("Stock Disponible")), String.Empty, datoleido("Stock Disponible").ToString())
-
-
-                txtPrecioLista.Text = If(IsDBNull(datoleido("Precio Lista")), String.Empty, Convert.ToDecimal(datoleido("Precio Lista")).ToString("N2"))
-
-                txtPrecioCompra.Text = If(IsDBNull(datoleido("PrecioCompra")), String.Empty, Convert.ToDecimal(datoleido("PrecioCompra")).ToString("N2"))
-
-                txtUbicacion.Text = If(IsDBNull(datoleido("Ubicacion")), String.Empty, datoleido("Ubicacion").ToString())
-                cboRubro.SelectedValue = If(IsDBNull(datoleido("Rubro")), String.Empty, datoleido("Rubro").ToString())
-                chkAlterntivo.Checked = If(IsDBNull(datoleido("alternativo")), False, Convert.ToBoolean(datoleido("alternativo")))
-                cboOriginal.SelectedValue = If(IsDBNull(datoleido("ID_Original")), String.Empty, datoleido("ID_Original").ToString())
-                txtCantidadBulto.Text = If(IsDBNull(datoleido("Cantidad_X_Bulto")), String.Empty, datoleido("Cantidad_X_Bulto").ToString())
-                txtUtilidad.Text = If(IsDBNull(datoleido("Utilidad")), String.Empty, Convert.ToDecimal(datoleido("Utilidad")).ToString("N2"))
-
-                ' Convert.ToDateTime maneja los valores nulos y fechas inválidas
-                If Not IsDBNull(datoleido("FechaUltimaCompra")) Then
-                    dtpFechaCompra.Value = Convert.ToDateTime(datoleido("FechaUltimaCompra"))
-                Else
-                    dtpFechaCompra.Value = DateTime.Now
-                End If
-
-                If Not IsDBNull(datoleido("FechaUltimaVenta")) Then
-                    dtpFechaVenta.Value = Convert.ToDateTime(datoleido("FechaUltimaVenta"))
-                Else
-                    dtpFechaVenta.Value = DateTime.Now
-                End If
-
-                txtCodigoBarra.Text = If(IsDBNull(datoleido("CodBarra")), String.Empty, datoleido("CodBarra").ToString())
-                txtCodFabricante.Text = If(IsDBNull(datoleido("CodFabricante")), String.Empty, datoleido("CodFabricante").ToString())
-                cboOrigen.Text = If(IsDBNull(datoleido("Origen")), String.Empty, datoleido("Origen").ToString())
-                chkEstado.Checked = If(IsDBNull(datoleido("Estado")), False, Convert.ToBoolean(datoleido("Estado")))
+                txtId.Text = datoleido("N° Producto").ToString()
+                txtDescripcion.Text = datoleido("Producto").ToString()
+                txtNombreDiario.Text = datoleido("Nombre Diario").ToString()
+                cboMarca.SelectedValue = datoleido("Marca").ToString
+                txtStockReal.Text = datoleido("Stock Real").ToString()
+                txtStockDisponible.Text = datoleido("Stock Disponible").ToString()
+                txtStockMinimo.Text = datoleido("Stock Minimo").ToString
+                txtPrecioLista.Text = Convert.ToDecimal(datoleido("Precio Lista")).ToString("N2")
+                txtPrecioCompra.Text = Convert.ToDecimal(datoleido("PrecioCompra")).ToString("N2")
+                txtUbicacion.Text = datoleido("Ubicacion").ToString()
+                cboRubro.SelectedValue = datoleido("Rubro").ToString()
+                chkAlterntivo.Checked = Convert.ToBoolean(datoleido("alternativo"))
+                cboOriginal.SelectedValue = datoleido("ID_Original").ToString()
+                txtCantidadBulto.Text = datoleido("Cantidad_X_Bulto").ToString()
+                txtUtilidad.Text = Convert.ToDecimal(datoleido("Utilidad")).ToString("N2")
+                dtpFechaCompra.Value = Convert.ToDateTime(datoleido("FechaUltimaCompra"))
+                dtpFechaVenta.Value = Convert.ToDateTime(datoleido("FechaUltimaVenta"))
+                txtCodigoBarra.Text = datoleido("CodBarra").ToString()
+                txtCodFabricante.Text = datoleido("CodFabricante").ToString()
+                cboOrigen.Text = datoleido("Origen").ToString()
+                chkEstado.Checked = Convert.ToBoolean(datoleido("Estado"))
+                btnModificar.Enabled = True
             Else
                 MsgBox("No se encontraron resultados", vbInformation, "Error")
             End If
@@ -198,55 +130,6 @@ Public Class frmProductos
             MessageBox.Show("Ocurrió un error al consultar el producto: " & ex.Message, "Error")
         End Try
     End Sub
-
-    'Public Sub CargarDatosEnTxt(ByVal idProducto As Integer)
-    '    Dim o_Productos As New AD_Productos
-
-    '    Try
-    '        Dim datoleido As SqlDataReader = o_Productos.Consultar_ProductoPorID(idProducto)
-
-    '        If datoleido.Read() Then
-    '            txtId.Text = If(IsDBNull(datoleido("N° Producto")), String.Empty, datoleido("N° Producto").ToString())
-    '            txtDescripcion.Text = If(IsDBNull(datoleido("Producto")), String.Empty, datoleido("Producto").ToString())
-    '            txtNombreDiario.Text = If(IsDBNull(datoleido("Nombre Diario")), String.Empty, datoleido("Nombre Diario").ToString())
-    '            cboMarca.SelectedValue = If(IsDBNull(datoleido("Marca")), -1, datoleido("Marca"))
-    '            txtStockReal.Text = If(IsDBNull(datoleido("Stock Real")), String.Empty, datoleido("Stock Real").ToString())
-    '            txtStockDisponible.Text = If(IsDBNull(datoleido("Stock Disponible")), String.Empty, datoleido("Stock Disponible").ToString())
-    '            txtPrecioLista.Text = If(IsDBNull(datoleido("Precio Lista")), String.Empty, datoleido("Precio Lista").ToString())
-    '            txtUbicacion.Text = If(IsDBNull(datoleido("Ubicacion")), String.Empty, datoleido("Ubicacion").ToString())
-    '            cboRubro.SelectedValue = If(IsDBNull(datoleido("Rubro")), String.Empty, datoleido("Rubro").ToString())
-    '            chkAlterntivo.Checked = If(IsDBNull(datoleido("alternativo")), False, Convert.ToBoolean(datoleido("alternativo")))
-    '            cboOriginal.SelectedValue = If(IsDBNull(datoleido("ID_Original")), String.Empty, datoleido("ID_Original").ToString())
-    '            txtCantidadBulto.Text = If(IsDBNull(datoleido("Cantidad_X_Bulto")), String.Empty, datoleido("Cantidad_X_Bulto").ToString())
-    '            txtPrecioCompra.Text = If(IsDBNull(datoleido("PrecioCompra")), String.Empty, datoleido("PrecioCompra").ToString())
-    '            txtUtilidad.Text = If(IsDBNull(datoleido("Utilidad")), String.Empty, datoleido("Utilidad").ToString())
-
-    '            ' Convert.ToDateTime maneja los valores nulos y fechas inválidas
-    '            If Not IsDBNull(datoleido("FechaUltimaCompra")) Then
-    '                dtpFechaCompra.Value = Convert.ToDateTime(datoleido("FechaUltimaCompra"))
-    '            Else
-    '                dtpFechaCompra.Value = DateTime.Now
-    '            End If
-
-    '            If Not IsDBNull(datoleido("FechaUltimaVenta")) Then
-    '                dtpFechaVenta.Value = Convert.ToDateTime(datoleido("FechaUltimaVenta"))
-    '            Else
-    '                dtpFechaVenta.Value = DateTime.Now
-    '            End If
-
-    '            txtCodigoBarra.Text = If(IsDBNull(datoleido("CodBarra")), String.Empty, datoleido("CodBarra").ToString())
-    '            txtCodFabricante.Text = If(IsDBNull(datoleido("CodFabricante")), String.Empty, datoleido("CodFabricante").ToString())
-    '            cboOrigen.Text = If(IsDBNull(datoleido("Origen")), String.Empty, datoleido("Origen").ToString())
-    '            chkEstado.Checked = If(IsDBNull(datoleido("Estado")), False, Convert.ToBoolean(datoleido("Estado")))
-    '        Else
-    '            MsgBox("No se encontraron resultados", vbInformation, "Error")
-    '        End If
-
-    '        datoleido.Close()
-    '    Catch ex As Exception
-    '        MessageBox.Show("Ocurrió un error al consultar el producto: " & ex.Message, "Error")
-    '    End Try
-    'End Sub
 
     Private Sub grdProductos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdProductos.CellClick
         If e.RowIndex >= 0 Then
@@ -258,14 +141,11 @@ Public Class frmProductos
             If selectedRow.Cells("N° Producto").Value IsNot Nothing Then
                 idProducto = Convert.ToInt32(selectedRow.Cells("N° Producto").Value)
                 CargarDatosEnTxt(idProducto)
+
             Else
                 MsgBox("El ID del producto no puede ser nulo.", vbCritical, "Error")
             End If
         End If
-    End Sub
-
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        limpiar()
     End Sub
 #End Region
 
@@ -323,8 +203,6 @@ Public Class frmProductos
 #End Region
 
 #Region "Cargar"
-
-
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         If txtDescripcion.Text <> Nothing And cboMarca.SelectedValue <> Nothing And txtCodFabricante.Text <> Nothing And
             txtUbicacion.Text <> Nothing And txtUtilidad.Text <> Nothing Then
@@ -338,13 +216,14 @@ Public Class frmProductos
                 o_productos.Agregar_Producto(txtDescripcion.Text, txtNombreDiario.Text, CInt(cboRubro.SelectedValue),
                        CInt(cboMarca.SelectedValue), txtCodigoBarra.Text, txtCodFabricante.Text, txtCantidadBulto.Text,
                        origen, chkAlterntivo.Checked, CInt(cboOriginal.SelectedValue), chkEstado.Checked, txtStockReal.Text,
-                       txtStockDisponible.Text, txtUbicacion.Text, precioCompra, utilidad, precioLista,
+                       txtStockDisponible.Text, txtStockMinimo.Text, txtUbicacion.Text, precioCompra, utilidad, precioLista,
                        dtpFechaCompra.Value, dtpFechaVenta.Value)
 
                 MsgBox("Producto agregado correctamente.", vbInformation, "Información")
                 limpiar()
                 Cargar_Grilla()
                 Cargar_Combo_Original()
+
 
             Catch ex As Exception
                 MsgBox("Error al agregar el producto: " & ex.Message, vbCritical, "Error")
@@ -361,7 +240,6 @@ Public Class frmProductos
       txtUbicacion.Text <> Nothing And txtUtilidad.Text <> Nothing Then
 
             Try
-
                 Dim origen As String = cboOrigen.SelectedItem.ToString()
                 Dim precioCompra As Decimal = Convert.ToDecimal(txtPrecioCompra.Text).ToString("N2")
                 Dim utilidad As Decimal = Convert.ToDecimal(txtUtilidad.Text).ToString("N2")
@@ -370,15 +248,14 @@ Public Class frmProductos
                 o_productos.Modificar_Producto(CInt(txtId.Text), txtDescripcion.Text, txtNombreDiario.Text, CInt(cboRubro.SelectedValue),
                    CInt(cboMarca.SelectedValue), txtCodigoBarra.Text, txtCodFabricante.Text, txtCantidadBulto.Text,
                    origen, chkAlterntivo.Checked, CInt(cboOriginal.SelectedValue), chkEstado.Checked,
-                   txtStockReal.Text, txtStockDisponible.Text, txtUbicacion.Text,
-                   precioCompra, utilidad,
-                   precioLista, dtpFechaCompra.Value, dtpFechaVenta.Value)
+                   txtStockReal.Text, txtStockDisponible.Text, txtStockMinimo.Text, txtUbicacion.Text,
+                   precioCompra, utilidad, precioLista, dtpFechaCompra.Value, dtpFechaVenta.Value)
 
                 MsgBox("Producto modificado correctamente.", vbInformation, "Información")
                 limpiar()
                 Cargar_Grilla()
                 Cargar_Combo_Original()
-
+                btnModificar.Enabled = False
             Catch ex As Exception
                 MsgBox("Error al modificar el producto: " & ex.Message, vbCritical, "Error")
             End Try
@@ -401,7 +278,6 @@ Public Class frmProductos
         Catch
             txtPrecioCompra.Text = 0
         End Try
-
     End Sub
 
     Private Sub txtUtilidad_LostFocus(sender As Object, e As EventArgs) Handles txtUtilidad.LostFocus
@@ -427,22 +303,17 @@ Public Class frmProductos
             precioLista = txtPrecioLista.Text
             txtPrecioLista.Text = Convert.ToDecimal(precioLista).ToString("N2")
         Catch
-
         End Try
-
     End Sub
-
 
     Private Sub CalcularPrecioLista()
         Dim precioCompra As Decimal
         Dim utilidad As Decimal
 
         If Decimal.TryParse(txtPrecioCompra.Text, precioCompra) AndAlso Decimal.TryParse(txtUtilidad.Text, utilidad) Then
-
             Dim precioLista As Decimal = precioCompra * (utilidad / 100 + 1)
 
             txtPrecioLista.Text = Convert.ToDecimal(precioLista).ToString("N2")
-
         Else
             txtPrecioLista.Text = String.Empty
         End If
@@ -453,7 +324,6 @@ Public Class frmProductos
         Dim precioLista As Decimal
 
         If Decimal.TryParse(txtPrecioCompra.Text, precioCompra) AndAlso Decimal.TryParse(txtPrecioLista.Text, precioLista) Then
-
             If precioCompra > 0 Then
                 ' Calcular la utilidad como un porcentaje
                 Dim utilidad As Decimal = ((precioLista / precioCompra) - 1) * 100
@@ -463,14 +333,10 @@ Public Class frmProductos
             Else
                 txtUtilidad.Text = String.Empty
             End If
-
         Else
             txtUtilidad.Text = String.Empty
         End If
     End Sub
-
-
-
 #End Region
 
 #Region "Marca"
@@ -589,8 +455,6 @@ Public Class frmProductos
 
         End If
     End Sub
-
-
 
     Private Sub lblCodBarra_KeyPress(sender As Object, e As KeyPressEventArgs) Handles lblCodBarra.KeyPress
         If Char.IsDigit(e.KeyChar) Then

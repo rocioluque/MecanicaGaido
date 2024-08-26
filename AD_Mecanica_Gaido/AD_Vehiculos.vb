@@ -202,4 +202,42 @@ Public Class AD_Vehiculos
         End Using
     End Sub
 
+    Public Sub Modificar_Vehiculo(ID_Vehiculo As Integer, ID_TipoVehiculo As Integer, ID_Marca As Integer, Nombre As String,
+                              Modelo As String, Color As String, NumChasis As String, NumMotor As String,
+                              Matricula As String, Nota As String, Estado As Boolean)
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Modificar_Vehiculo", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@ID_Vehiculo", ID_Vehiculo)
+                comando.Parameters.AddWithValue("@ID_TipoVehiculo", ID_TipoVehiculo)
+                comando.Parameters.AddWithValue("@ID_Marca", ID_Marca)
+                comando.Parameters.AddWithValue("@Nombre", Nombre)
+                comando.Parameters.AddWithValue("@Modelo", Modelo)
+                comando.Parameters.AddWithValue("@Color", Color)
+                comando.Parameters.AddWithValue("@NumChasis", NumChasis)
+                comando.Parameters.AddWithValue("@NumMotor", NumMotor)
+                comando.Parameters.AddWithValue("@Matricula", Matricula)
+                comando.Parameters.AddWithValue("@Nota", Nota)
+                comando.Parameters.AddWithValue("@Estado", Estado)
+
+                conexion.Open()
+                comando.ExecuteNonQuery()
+            End Using
+        End Using
+    End Sub
+
+    Public Sub Modificar_VehiculoXPersona(ID_VehiculoPersona As Integer, ID_Persona As Integer, ID_Vehiculo As Integer, Estado As Boolean)
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Modificar_VehiculoXPersona", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@ID_VehiculoPersona", ID_VehiculoPersona)
+                comando.Parameters.AddWithValue("@ID_Persona", ID_Persona)
+                comando.Parameters.AddWithValue("@ID_Vehiculo", ID_Vehiculo)
+                comando.Parameters.AddWithValue("@Estado", Estado)
+
+                conexion.Open()
+                comando.ExecuteNonQuery()
+            End Using
+        End Using
+    End Sub
 End Class

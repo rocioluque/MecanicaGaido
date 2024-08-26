@@ -6,7 +6,7 @@ Imports System.Configuration
 Public Class frmVentas
 
     Dim o_ventas As New AD_Ventas
-    Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
+    Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarPersona.Click
         frmAgregarDatosFiscales.ShowDialog()
     End Sub
 
@@ -21,7 +21,7 @@ Public Class frmVentas
 
     Public Sub limpiar()
         txtID.Clear()
-        txtFechaVenta.Clear()
+        dtpFechaVenta.Value = Today
         txtNumComprobante.Clear()
         txtSubtotal.Clear()
         txtIVA.Clear()
@@ -29,8 +29,8 @@ Public Class frmVentas
         txtTotal.Clear()
         cboTipoVenta.SelectedIndex = -1
         cboFormaEntrega.SelectedIndex = -1
-        cboCuenta.SelectedIndex = -1
-        cboVendedor.SelectedIndex = -1
+        cboPersona.SelectedIndex = -1
+        cboEmpleado.SelectedIndex = -1
         cboFormaPago.SelectedIndex = -1
         chkEstado.Checked = False
     End Sub
@@ -46,10 +46,10 @@ Public Class frmVentas
             Dim tabla As DataTable = o_ventas.Cargar_Combo_Cuentas()
 
             If tabla.Rows.Count > 0 Then
-                cboCuenta.DataSource = tabla
-                cboCuenta.DisplayMember = "Cuenta"
-                cboCuenta.ValueMember = "ID_DatoFiscal"
-                cboCuenta.SelectedValue = -1
+                cboPersona.DataSource = tabla
+                cboPersona.DisplayMember = "Cuenta"
+                cboPersona.ValueMember = "ID_DatoFiscal"
+                cboPersona.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Cuentas.", vbInformation, "Información")
             End If
@@ -64,10 +64,10 @@ Public Class frmVentas
             Dim tabla As DataTable = o_ventas.Cargar_Combo_Empleados()
 
             If tabla.Rows.Count > 0 Then
-                cboVendedor.DataSource = tabla
-                cboVendedor.DisplayMember = "Nombre/RazonSocial"
-                cboVendedor.ValueMember = "ID_Persona"
-                cboVendedor.SelectedValue = -1
+                cboEmpleado.DataSource = tabla
+                cboEmpleado.DisplayMember = "Nombre/RazonSocial"
+                cboEmpleado.ValueMember = "ID_Persona"
+                cboEmpleado.SelectedValue = -1
             Else
                 MsgBox("No se encontraron Empleados.", vbInformation, "Información")
             End If
@@ -193,7 +193,7 @@ Public Class frmVentas
 #End Region
 
 #Region "KeyPress"
-    Private Sub txtSubtotal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSubtotal.KeyPress
+    Private Sub txtSubtotal_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
         Else
@@ -205,7 +205,7 @@ Public Class frmVentas
         End If
     End Sub
 
-    Private Sub txtIVA_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtIVA.KeyPress
+    Private Sub txtIVA_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
         Else
@@ -217,7 +217,7 @@ Public Class frmVentas
         End If
     End Sub
 
-    Private Sub txtOtrosImpuestos_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtOtrosImpuestos.KeyPress
+    Private Sub txtOtrosImpuestos_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
         Else
@@ -229,7 +229,7 @@ Public Class frmVentas
         End If
     End Sub
 
-    Private Sub txtTotal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTotal.KeyPress
+    Private Sub txtTotal_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
         Else
@@ -241,7 +241,8 @@ Public Class frmVentas
         End If
     End Sub
 #End Region
-    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
 
-    End Sub
+
+
+
 End Class

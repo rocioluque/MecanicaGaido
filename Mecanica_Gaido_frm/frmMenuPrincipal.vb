@@ -2,16 +2,36 @@
 Imports System.Runtime.InteropServices
 Imports Comun_Soporte
 Imports Mecanica_Gaido_frm.User32
+Imports System.Windows.Forms.DataVisualization.Charting
+Imports System.Data.SqlClient
+Imports System.Configuration
+Imports System.Globalization
+Imports AD_Mecanica_Gaido
+Imports System.IO
+Imports iTextSharp.text
+Imports iTextSharp.text.pdf
 
 Public Class frmMenuPrincipal
+    Dim o_MenuPrincipal As New AD_MenuPrincipal()
 
     Private Sub MenuPrincipal_Load(sender As Object, e As EventArgs) Handles Me.Load
         lblUsuario.Text = UsuarioActivo.usuario
         lblRol.Text = UsuarioActivo.nombre_rol
-        lblNombre.Text = UsuarioActivo.nombrePersona & " " & UsuarioActivo.apellidoPersona
-        lblCorreo.Text = UsuarioActivo.correoPersona
         PintarBotonInicio()
+        MostrarInicio()
     End Sub
+
+
+    Public Sub MostrarInicio()
+        AbrirFormHijo(New frmInicio(), Nothing)
+    End Sub
+
+#Region "Inicio"
+    Private Sub btnInicio_Click(sender As Object, e As EventArgs) Handles btnInicio.Click
+        AbrirFormHijo(New frmInicio(), DirectCast(sender, Button))
+        OcultarPaneles()
+    End Sub
+#End Region
 
 #Region "Productos"
     Private Sub btnProductos_Click(sender As Object, e As EventArgs) Handles btnProductos.Click
@@ -163,22 +183,6 @@ Public Class frmMenuPrincipal
 #End Region
 
 #Region "Control botones"
-
-    Private Sub btnInicio_Click(sender As Object, e As EventArgs) Handles btnInicio.Click
-        'Restablecer el color del botón anterior
-        If btnAnterior IsNot Nothing Then
-            btnAnterior.BackColor = Color.FromArgb(65, 65, 65)
-        End If
-
-        ' Pintar el botón "Inicio"
-        PintarBotonInicio()
-
-        ' Cerrar todos los formularios hijos
-        If Me.panelContenedor.Controls.Count > 0 Then
-            Me.panelContenedor.Controls.RemoveAt(0)
-        End If
-    End Sub
-
     Private Sub frmMenuPrincipal_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         'Mostrar un mensaje de confirmación
         Dim resultado As DialogResult = MessageBox.Show("¿Estás seguro de que quieres cerrar la aplicación?", "Confirmar cierre", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -188,13 +192,6 @@ Public Class frmMenuPrincipal
             e.Cancel = True
         End If
     End Sub
-
-    Private Sub btnCerrarSesion_Click(sender As Object, e As EventArgs) Handles btnCerrarSesion.Click
-        If MessageBox.Show("¿Estás seguro de cerrar sesión?", "Warning",
-            MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            Me.Close()
-        End If
-    End Sub
 #End Region
 
 #Region "Formulario Padre y resize"
@@ -202,13 +199,14 @@ Public Class frmMenuPrincipal
 
     Private Sub AbrirFormHijo(formHijo As Object, sender As Button)
         ' Restablecer el color del botón anterior
-        If btnAnterior IsNot Nothing Then
+        If btnAnterior IsNot Nothing AndAlso sender IsNot Nothing Then
             btnAnterior.BackColor = Color.FromArgb(65, 65, 65)
         End If
 
-        ' Actualizar el color del botón actual
         btnAnterior = sender
-        sender.BackColor = Color.SeaGreen
+        If sender IsNot Nothing Then
+            sender.BackColor = Color.SeaGreen
+        End If
 
         'Si el contenedor panelContenedor ya tiene controles hijos, elimina el primer control
         If Me.panelContenedor.Controls.Count > 0 Then
@@ -283,7 +281,7 @@ Public Class frmMenuPrincipal
         End If
 
         ' Pintar el botón "Inicio" con un color especial cuando no hay formularios hijos abiertos
-        btnInicio.BackColor = Color.SeaGreen
+        'btnInicio.BackColor = Color.SeaGreen
 
         ' Actualizar el botón anterior como btnInicio
         btnAnterior = btnInicio

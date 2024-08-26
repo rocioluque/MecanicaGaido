@@ -132,6 +132,12 @@ Public Class frmPersonas
         txtNombre.Enabled = True
     End Sub
 
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        Limpiar()
+    End Sub
+#End Region
+
+#Region "Grilla y datos en txt"
     Public Sub Cargar_Grilla()
         Try
             Dim conexion As SqlConnection
@@ -151,15 +157,6 @@ Public Class frmPersonas
             If oDs.Tables(0).Rows.Count > 0 Then
                 grdPersonas.AutoGenerateColumns = True
                 grdPersonas.DataSource = oDs.Tables(0)
-
-                ' Verificar si las columnas existen antes de ocultarlas
-                Dim columnasParaOcultar As String() = {"ID_Provincia", "ID_Ciudad", "ID_TipoPersona", "ID_TipoDocumento", "Fecha_Nacimiento", "Direccion",
-                                                        "Numero", "Piso", "Letra/Puerta", "Codigo_Postal", "Nota", "Estado"}
-                For Each colName As String In columnasParaOcultar
-                    If grdPersonas.Columns.Contains(colName) Then
-                        grdPersonas.Columns(colName).Visible = False
-                    End If
-                Next
                 grdPersonas.Refresh()
             Else
                 MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
@@ -173,51 +170,55 @@ Public Class frmPersonas
         End Try
     End Sub
 
-    Public Sub CargarDatosEnTxt(ByVal rowindex As Integer)
-        If grdPersonas.Rows.Count > 0 AndAlso rowindex >= 0 AndAlso rowindex < grdPersonas.Rows.Count Then
+    Public Sub CargarDatosEnTxt(ByVal idPersona As Integer)
+        Try
+            Dim datoleido As SqlDataReader = o_Personas.Consultar_PersonaPorID(idPersona)
 
-            txtID.Text = grdPersonas.Rows(rowindex).Cells("N° Persona").Value.ToString()
-            txtNombre.Text = grdPersonas.Rows(rowindex).Cells("Nombre / Razon Social").Value.ToString()
-            txtApellido.Text = grdPersonas.Rows(rowindex).Cells("Apellido").Value.ToString()
-            txtNumeroDocumento.Text = grdPersonas.Rows(rowindex).Cells("Documento").Value.ToString()
-            txtTelefonoMovil.Text = grdPersonas.Rows(rowindex).Cells("Teléfono Móvil").Value.ToString()
-            txtTelefonoFijo.Text = grdPersonas.Rows(rowindex).Cells("Teléfono Fijo").Value.ToString()
-            txtCorreo.Text = grdPersonas.Rows(rowindex).Cells("Correo").Value.ToString()
+            If datoleido.Read() Then
+                txtID.Text = datoleido("N° Persona").ToString()
+                txtNombre.Text = datoleido("Nombre / Razon Social").ToString()
+                txtApellido.Text = datoleido("Apellido").ToString()
+                dtpFechaNacimiento.Value = Convert.ToDateTime(datoleido("Fecha_Nacimiento"))
+                txtNumeroDocumento.Text = datoleido("Documento").ToString()
+                txtTelefonoMovil.Text = datoleido("Teléfono Móvil").ToString()
+                txtTelefonoFijo.Text = datoleido("Teléfono Fijo").ToString()
+                txtCorreo.Text = datoleido("Correo").ToString()
+                cboProvincia.SelectedValue = datoleido("ID_Provincia").ToString()
+                cboCiudad.SelectedValue = datoleido("ID_Ciudad").ToString()
+                cboTipoPersona.SelectedValue = datoleido("ID_TipoPersona").ToString()
+                cboTipoDocumento.SelectedValue = datoleido("ID_TipoDocumento").ToString()
+                txtDireccion.Text = datoleido("Direccion").ToString()
+                txtNumero.Text = datoleido("Numero").ToString()
+                txtPiso.Text = datoleido("Piso").ToString()
+                txtLetraPuerta.Text = datoleido("Letra/Puerta").ToString()
+                txtCodigoPostal.Text = datoleido("Codigo_Postal").ToString()
+                txtNota.Text = datoleido("Nota").ToString()
+                chkEstado.Checked = Convert.ToBoolean(datoleido("Estado"))
 
-            cboProvincia.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_Provincia").Value
-            cboCiudad.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_Ciudad").Value
-
-            cboTipoPersona.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_TipoPersona").Value
-            cboTipoDocumento.SelectedValue = grdPersonas.Rows(rowindex).Cells("ID_TipoDocumento").Value
-            txtDireccion.Text = grdPersonas.Rows(rowindex).Cells("Direccion").Value.ToString()
-            txtNumero.Text = grdPersonas.Rows(rowindex).Cells("Numero").Value.ToString()
-            txtPiso.Text = grdPersonas.Rows(rowindex).Cells("Piso").Value.ToString()
-            txtLetraPuerta.Text = grdPersonas.Rows(rowindex).Cells("Letra/Puerta").Value.ToString()
-            txtCodigoPostal.Text = grdPersonas.Rows(rowindex).Cells("Codigo_Postal").Value.ToString()
-            txtNota.Text = grdPersonas.Rows(rowindex).Cells("Nota").Value.ToString()
-
-            Dim fechaNacimiento As Object = grdPersonas.Rows(rowindex).Cells("Fecha_Nacimiento").Value
-
-            If IsDBNull(fechaNacimiento) Then
-
-                dtpFechaNacimiento.Value = DateTime.Today
             Else
-                dtpFechaNacimiento.Value = grdPersonas.Rows(rowindex).Cells("Fecha_Nacimiento").Value
+                MsgBox("No se encontraron resultados", vbInformation, "Error")
             End If
 
-            chkEstado.Checked = grdPersonas.Rows(rowindex).Cells("Estado").Value.ToString()
-
-        End If
+            datoleido.Close()
+        Catch ex As Exception
+            MessageBox.Show("Ocurrió un error al consultar la persona " & ex.Message, "Error")
+        End Try
     End Sub
 
     Private Sub grdPersonas_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdPersonas.CellClick
         If e.RowIndex >= 0 Then
-            CargarDatosEnTxt(e.RowIndex)
-        End If
-    End Sub
 
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        Limpiar()
+            ' Obtiene el ID de persona de la celda correspondiente
+            Dim selectedRow As DataGridViewRow = grdPersonas.Rows(e.RowIndex)
+            Dim IdPersona As Integer
+
+            If selectedRow.Cells("N° Persona").Value IsNot Nothing Then
+                IdPersona = Convert.ToInt32(selectedRow.Cells("N° Persona").Value)
+                CargarDatosEnTxt(IdPersona)
+            Else
+                MsgBox("El ID de Persona no puede ser nulo.", vbCritical, "Error")
+            End If
+        End If
     End Sub
 #End Region
 
@@ -271,7 +272,7 @@ Nombre"
             frm.CiudadID = Convert.ToInt32(cboCiudad.SelectedValue)
             frm.CiudadNombre = cboCiudad.Text
             frm.ProvinciaSeleccionada = Convert.ToInt32(cboProvincia.SelectedValue)
-            frm.CiudadEstado = grdPersonas.CurrentRow.Cells("Estado").Value
+            'frm.CiudadEstado = grdPersonas.CurrentRow.Cells("Estado").Value
             frm.EsModificacion = True
 
             If frm.ShowDialog() = DialogResult.OK Then
@@ -335,48 +336,6 @@ Nombre"
         Else
             MsgBox("Complete Datos", vbInformation, "Error")
         End If
-    End Sub
-#End Region
-
-#Region "Css trucho"
-    Private Sub PanelDatosPersonales_Paint(sender As Object, e As PaintEventArgs) Handles PanelDatosPersonales.Paint
-        ' Configurar los colores y el grosor del borde
-        Dim borderColor As Color = Color.SeaGreen
-        Dim borderWidth As Integer = 1
-
-        ' Crear un objeto Pen para dibujar el borde
-        Using pen As New Pen(borderColor, borderWidth)
-            ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelDatosPersonales.Width - 1, PanelDatosPersonales.Height - 1)
-            e.Graphics.DrawRectangle(pen, rect)
-        End Using
-    End Sub
-
-
-    Private Sub PanelDirecciones_Paint(sender As Object, e As PaintEventArgs) Handles PanelDirecciones.Paint
-        ' Configurar los colores y el grosor del borde
-        Dim borderColor As Color = Color.SeaGreen
-        Dim borderWidth As Integer = 1
-
-        ' Crear un objeto Pen para dibujar el borde
-        Using pen As New Pen(borderColor, borderWidth)
-            ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelDirecciones.Width - 1, PanelDirecciones.Height - 1)
-            e.Graphics.DrawRectangle(pen, rect)
-        End Using
-    End Sub
-
-    Private Sub PanelNotas_Paint(sender As Object, e As PaintEventArgs) Handles PanelNotas.Paint
-        ' Configurar los colores y el grosor del borde
-        Dim borderColor As Color = Color.SeaGreen
-        Dim borderWidth As Integer = 1
-
-        ' Crear un objeto Pen para dibujar el borde
-        Using pen As New Pen(borderColor, borderWidth)
-            ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelNotas.Width - 1, PanelNotas.Height - 1)
-            e.Graphics.DrawRectangle(pen, rect)
-        End Using
     End Sub
 #End Region
 
@@ -474,4 +433,45 @@ Nombre"
     End Sub
 #End Region
 
+#Region "Css trucho"
+    Private Sub PanelDatosPersonales_Paint(sender As Object, e As PaintEventArgs) Handles PanelDatosPersonales.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelDatosPersonales.Width - 1, PanelDatosPersonales.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+
+    Private Sub PanelDirecciones_Paint(sender As Object, e As PaintEventArgs) Handles PanelDirecciones.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelDirecciones.Width - 1, PanelDirecciones.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub PanelNotas_Paint(sender As Object, e As PaintEventArgs) Handles PanelNotas.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelNotas.Width - 1, PanelNotas.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+#End Region
 End Class
