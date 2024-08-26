@@ -5,7 +5,7 @@ Public Class frmAgregarFormaPago
     Dim o_FormasDePago As New AD_FormasDePago
 
     ' Propiedad para almacenar el nombre de la nueva forma de pago agregada
-    Public Property NuevaFormaPagoNombre As String
+    Public Property NuevaFormaPagoVentasNombre As String
     Public Property NuevaFormaPagoComprasNombre As String
 
 #Region "Cargar"
@@ -15,7 +15,7 @@ Public Class frmAgregarFormaPago
                 If o_FormasDePago.Agregar_FormaPago(txtFormaPago.Text) Then
 
                     'Almacenar el nombre de la nueva forma de pago
-                    NuevaFormaPagoNombre = txtFormaPago.Text
+                    NuevaFormaPagoVentasNombre = txtFormaPago.Text
                     NuevaFormaPagoComprasNombre = txtFormaPago.Text
 
                     MsgBox("Forma de pago agregada correctamente.", vbInformation, "Información")
