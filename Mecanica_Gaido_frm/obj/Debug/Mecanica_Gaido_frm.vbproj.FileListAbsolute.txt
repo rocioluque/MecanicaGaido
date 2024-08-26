@@ -294,3 +294,5 @@ C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\System
 C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\System.ValueTuple.xml
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\AD_Mecanica_Gaido.dll.config
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Comun_Soporte.dll.config
