@@ -22,9 +22,9 @@ Partial Class frmReportes
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.chtRepuestos = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.chtRepuestos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -33,16 +33,16 @@ Partial Class frmReportes
         'chtRepuestos
         '
         Me.chtRepuestos.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
-        ChartArea2.Name = "ChartArea1"
-        Me.chtRepuestos.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.chtRepuestos.Legends.Add(Legend2)
+        ChartArea1.Name = "ChartArea1"
+        Me.chtRepuestos.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.chtRepuestos.Legends.Add(Legend1)
         Me.chtRepuestos.Location = New System.Drawing.Point(12, 36)
         Me.chtRepuestos.Name = "chtRepuestos"
-        Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.chtRepuestos.Series.Add(Series2)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.chtRepuestos.Series.Add(Series1)
         Me.chtRepuestos.Size = New System.Drawing.Size(284, 298)
         Me.chtRepuestos.TabIndex = 0
         Me.chtRepuestos.Text = "Repuestos:"

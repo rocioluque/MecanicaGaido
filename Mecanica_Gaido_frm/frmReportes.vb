@@ -74,4 +74,8 @@ Public Class frmReportes
         chtRepuestos.Series(0).Points(0).Label = String.Format("En Stock.: {0}", activos)
         chtRepuestos.Series(0).Points(1).Label = String.Format("Faltantes: {0}", inactivos)
     End Sub
+
+    Private Sub chtRepuestos_Click(sender As Object, e As EventArgs) Handles chtRepuestos.Click
+
+    End Sub
 End Class
