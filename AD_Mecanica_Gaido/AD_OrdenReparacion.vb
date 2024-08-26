@@ -16,201 +16,98 @@ Public Class AD_OrdenReparacion
     End Sub
 
 
-    Public Sub Modificar_Orden_Reparacion(
-                                                 ID_Orden As Integer,
-                                                ID_Vehiculo As Integer,
-                                                Senas As String,
-                                                Motivo As String,
-                                                Turno As Date,
-                                                Entrada As Date,
-                                                Salida As Date,
-                                                ID_Persona As Integer,
-                                                Repuestos As Decimal,
-                                                Serv3 As Decimal,
-                                                MObra As Decimal,
-                                                Total As Decimal,
-                                                Estado As Boolean)
-        Using conn As New SqlConnection(connectionString)
-            Using command As New SqlCommand("Modificar_Orden_Reparacion", conn)
-                command.CommandType = CommandType.StoredProcedure
-                command.Parameters.AddWithValue("@ID_Orden", ID_Orden)
+    'Public Sub Modificar_Orden_Reparacion(
+    '                                             ID_Orden As Integer,
+    '                                            ID_Vehiculo As Integer,
+    '                                            Senas As String,
+    '                                            Motivo As String,
+    '                                            Turno As Date,
+    '                                            Entrada As Date,
+    '                                            Salida As Date,
+    '                                            ID_Persona As Integer,
+    '                                            Repuestos As Decimal,
+    '                                            Serv3 As Decimal,
+    '                                            MObra As Decimal,
+    '                                            Total As Decimal,
+    '                                            Estado As Boolean)
+    '    Using conn As New SqlConnection(connectionString)
+    '        Using command As New SqlCommand("Modificar_Orden_Reparacion", conn)
+    '            command.CommandType = CommandType.StoredProcedure
+    '            command.Parameters.AddWithValue("@ID_Orden", ID_Orden)
 
-                command.Parameters.AddWithValue("@ID_Vehiculo", ID_Vehiculo)
-                command.Parameters.AddWithValue("@Senas", Senas)
-                command.Parameters.AddWithValue("@Motivo", Motivo)
-                command.Parameters.AddWithValue("@Turno", Turno)
-                command.Parameters.AddWithValue("@Entrada", Entrada)
-                command.Parameters.AddWithValue("@Salida", Salida)
-                command.Parameters.AddWithValue("@ID_Persona", ID_Persona)
-                command.Parameters.AddWithValue("@Repuestos", Repuestos)
-                command.Parameters.AddWithValue("@Serv3", Serv3)
-                command.Parameters.AddWithValue("@MObra", MObra)
-                command.Parameters.AddWithValue("@Total", Total)
-                command.Parameters.AddWithValue("@Estado", Estado)
+    '            command.Parameters.AddWithValue("@ID_Vehiculo", ID_Vehiculo)
+    '            command.Parameters.AddWithValue("@Senas", Senas)
+    '            command.Parameters.AddWithValue("@Motivo", Motivo)
+    '            command.Parameters.AddWithValue("@Turno", Turno)
+    '            command.Parameters.AddWithValue("@Entrada", Entrada)
+    '            command.Parameters.AddWithValue("@Salida", Salida)
+    '            command.Parameters.AddWithValue("@ID_Persona", ID_Persona)
+    '            command.Parameters.AddWithValue("@Repuestos", Repuestos)
+    '            command.Parameters.AddWithValue("@Serv3", Serv3)
+    '            command.Parameters.AddWithValue("@MObra", MObra)
+    '            command.Parameters.AddWithValue("@Total", Total)
+    '            command.Parameters.AddWithValue("@Estado", Estado)
 
-                Try
-                    conn.Open()
-                    command.ExecuteNonQuery()
-                Catch ex As System.Exception
-                    Throw ex
-                End Try
-            End Using
-            conn.Close()
-        End Using
-    End Sub
+    '            Try
+    '                conn.Open()
+    '                command.ExecuteNonQuery()
+    '            Catch ex As System.Exception
+    '                Throw ex
+    '            End Try
+    '        End Using
+    '        conn.Close()
+    '    End Using
+    'End Sub
 
     Public Function Agregar_Orden_Reparacion(
-                                                ID_Vehiculo As Integer,
-                                                Senas As String,
-                                                Motivo As String,
-                                                Turno As Date,
-                                                Entrada As Date,
-                                                Salida As Date,
-                                                ID_Persona As Integer,
-                                                Repuestos As Decimal,
-                                                Serv3 As Decimal,
-                                                MObra As Decimal,
-                                                Total As Decimal,
-                                                Estado As Boolean,
-                                                transaction As SqlTransaction) As Integer
-        Dim ID_Orden
-        Using conn As New SqlConnection(connectionString)
-            Using command As New SqlCommand("Agregar_Orden_Reparacion", conn)
-                ID_Orden = command.CommandType = CommandType.StoredProcedure
+                                         ID_Vehiculo As Integer,
+                                         Senas As String,
+                                         Motivo As String,
+                                         Turno As Date,
+                                         Entrada As Date,
+                                         Salida As Date,
+                                         ID_Persona As Integer,
+                                         Repuestos As Decimal,
+                                         Serv3 As Decimal,
+                                         MObra As Decimal,
+                                         Total As Decimal,
+                                         Estado As Boolean,
+                                         transaction As SqlTransaction) As Integer
 
+        Dim ID_Orden As Integer
 
-                command.Parameters.AddWithValue("@ID_Vehiculo", ID_Vehiculo)
-                command.Parameters.AddWithValue("@Senas", Senas)
-                command.Parameters.AddWithValue("@Motivo", Motivo)
-                command.Parameters.AddWithValue("@Turno", Turno)
-                command.Parameters.AddWithValue("@Entrada", Entrada)
-                command.Parameters.AddWithValue("@Salida", Salida)
-                command.Parameters.AddWithValue("@ID_Persona", ID_Persona)
-                command.Parameters.AddWithValue("@Repuestos", Repuestos)
-                command.Parameters.AddWithValue("@Serv3", Serv3)
-                command.Parameters.AddWithValue("@MObra", MObra)
-                command.Parameters.AddWithValue("@Total", Total)
-                command.Parameters.AddWithValue("@Estado", Estado)
+        Using command As New SqlCommand("Agregar_Orden_Reparacion", transaction.Connection)
+            command.CommandType = CommandType.StoredProcedure
+            command.Transaction = transaction
 
-                Try
-                    conn.Open()
-                    command.ExecuteScalar()
-                    Return ID_Orden
-                Catch ex As System.Exception
-                    Throw ex
-                End Try
-            End Using
-            conn.Close()
+            command.Parameters.AddWithValue("@ID_Vehiculo", ID_Vehiculo)
+            command.Parameters.AddWithValue("@Senas", Senas)
+            command.Parameters.AddWithValue("@Motivo", Motivo)
+            command.Parameters.AddWithValue("@Turno", Turno)
+            command.Parameters.AddWithValue("@Entrada", Entrada)
+            command.Parameters.AddWithValue("@Salida", Salida)
+            command.Parameters.AddWithValue("@ID_Persona", ID_Persona)
+            command.Parameters.AddWithValue("@Repuestos", Repuestos)
+            command.Parameters.AddWithValue("@Serv3", Serv3)
+            command.Parameters.AddWithValue("@MObra", MObra)
+            command.Parameters.AddWithValue("@Total", Total)
+            command.Parameters.AddWithValue("@Estado", Estado)
+
+            Dim outputParam As New SqlParameter("@ID_Orden", SqlDbType.Int)
+            outputParam.Direction = ParameterDirection.Output
+            command.Parameters.Add(outputParam)
+
+            Try
+                command.ExecuteNonQuery()
+
+                ID_Orden = Convert.ToInt32(outputParam.Value)
+            Catch ex As Exception
+                Throw ex
+            End Try
         End Using
+
+        Return ID_Orden
     End Function
-
-    Public Sub Agregar_Servicio_Terceros(ID_OrdenReparacion As Integer,
-                                                Fecha_Solicitud_Trabajo As Date,
-                                                ID_Persona As Integer,
-                                                Detalle_Prestacion As String,
-                                                Costo_Estimado As Decimal,
-                                                Costo_Real As Decimal,
-                                                Estado_Trabajo As Boolean,
-                                                Estado As Boolean,
-                                                transaction As SqlTransaction)
-
-        Using conn As New SqlConnection(connectionString)
-            Using command As New SqlCommand("Agregar_Servicio_Terceros", conn)
-                command.CommandType = CommandType.StoredProcedure
-
-
-                command.Parameters.AddWithValue("@ID_OrdenReparacion", ID_OrdenReparacion)
-                command.Parameters.AddWithValue("@Fecha_Solicitud_Trabajo", Fecha_Solicitud_Trabajo)
-                command.Parameters.AddWithValue("@ID_Persona", ID_Persona)
-                command.Parameters.AddWithValue("@Detalle_Prestacion", Detalle_Prestacion)
-                command.Parameters.AddWithValue("@Costo_Estimado", Costo_Estimado)
-                command.Parameters.AddWithValue("@Costo_Real", Costo_Real)
-                command.Parameters.AddWithValue("@Estado_Trabajo", Estado_Trabajo)
-                command.Parameters.AddWithValue("@Estado", Estado)
-
-                Try
-                    conn.Open()
-                    command.ExecuteScalar()
-
-                Catch ex As System.Exception
-                    Throw ex
-                End Try
-            End Using
-            conn.Close()
-        End Using
-    End Sub
-
-    Public Sub Agregar_Repuestos_Ordenes(ID_Repuesto As Integer,
-                                           ID_OrdenReparacion As Integer,
-                                           Cantidad As Decimal,
-                                           Precio As Decimal,
-                                           Estado As Boolean,
-                                           transaction As SqlTransaction)
-
-        Using conn As New SqlConnection(connectionString)
-            Using command As New SqlCommand("Agregar_Repuestos_Ordenes", conn)
-                command.CommandType = CommandType.StoredProcedure
-
-
-                command.Parameters.AddWithValue("@ID_Repuesto", ID_Repuesto)
-                command.Parameters.AddWithValue("@ID_OrdenReparacion", ID_OrdenReparacion)
-                command.Parameters.AddWithValue("@Cantidad", Cantidad)
-                command.Parameters.AddWithValue("@Precio", Precio)
-                command.Parameters.AddWithValue("@Estado", Estado)
-                Try
-                    conn.Open()
-                    command.ExecuteScalar()
-
-                Catch ex As System.Exception
-                    Throw ex
-                End Try
-            End Using
-            conn.Close()
-        End Using
-    End Sub
-
-    Public Function Consultar_StockDisponiblePorID(ByVal ID_Repuestos As Integer, transaction As SqlTransaction) As Decimal
-        Dim stockDisponible As Integer = 0
-
-        Using conn As New SqlConnection(connectionString)
-            Using command As New SqlCommand("Consultar_StockDisponiblePorID", conn)
-                command.CommandType = CommandType.StoredProcedure
-                command.Parameters.AddWithValue("@ID_Repuestos", ID_Repuestos)
-
-                Try
-                    conn.Open()
-                    Dim result As Object = command.ExecuteNonQuery()
-                    If result IsNot Nothing AndAlso Not DBNull.Value.Equals(result) Then
-                        stockDisponible = Convert.ToDecimal(result)
-                    End If
-                Catch ex As Exception
-                    Throw ex
-                End Try
-            End Using
-        End Using
-
-        Return stockDisponible
-    End Function
-
-    Public Sub Modificar_StockDisponiblePorID(ID_Repuestos As Integer, stockDisponible As Decimal, transaction As SqlTransaction)
-        Using conn As New SqlConnection(connectionString)
-            Using command As New SqlCommand("Modificar_StockDisponiblePorID", conn)
-                command.CommandType = CommandType.StoredProcedure
-                command.Parameters.AddWithValue("@ID_Repuestos", ID_Repuestos)
-                command.Parameters.AddWithValue("@StockDisponible", stockDisponible)
-
-                Try
-                    conn.Open()
-                    command.ExecuteNonQuery()
-
-                Catch ex As Exception
-                    Throw ex
-                End Try
-            End Using
-            conn.Close()
-        End Using
-
-    End Sub
 
 
 
