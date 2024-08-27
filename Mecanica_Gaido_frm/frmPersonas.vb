@@ -340,22 +340,22 @@ Nombre"
 #End Region
 
 #Region "Keypress"
-    Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Not Char.IsLetter(e.KeyChar) _
-           AndAlso Not Char.IsControl(e.KeyChar) _
-           AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
-            e.Handled = True
-        End If
-    End Sub
+    'Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs)
+    '    If Not Char.IsLetter(e.KeyChar) _
+    '       AndAlso Not Char.IsControl(e.KeyChar) _
+    '       AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
+    '        e.Handled = True
+    '    End If
+    'End Sub
 
-    Private Sub txtApellido_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Not Char.IsLetter(e.KeyChar) _
-         AndAlso Not Char.IsControl(e.KeyChar) _
-         AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
-            e.Handled = True
-        End If
+    'Private Sub txtApellido_KeyPress(sender As Object, e As KeyPressEventArgs)
+    '    If Not Char.IsLetter(e.KeyChar) _
+    '     AndAlso Not Char.IsControl(e.KeyChar) _
+    '     AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
+    '        e.Handled = True
+    '    End If
 
-    End Sub
+    'End Sub
 
     Private Sub txtTelefono_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
@@ -369,6 +369,82 @@ Nombre"
         End If
     End Sub
 
+    Private Sub txtDireccion_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDireccion.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtNumero.Focus()
+        End If
+    End Sub
+
+    Private Sub txtNumero_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNumero.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtPiso.Focus()
+        End If
+
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
+
+    End Sub
+
+    Private Sub txtLetraPuerta_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtLetraPuerta.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtTelefonoMovil.Focus()
+        End If
+    End Sub
+
+    Private Sub txtTelefonoMovil_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTelefonoMovil.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtTelefonoFijo.Focus()
+        End If
+    End Sub
+
+    Private Sub txtPiso_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPiso.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtLetraPuerta.Focus()
+        End If
+    End Sub
+
+    Private Sub txtTelefonoFijo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTelefonoFijo.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtCorreo.Focus()
+        End If
+    End Sub
+
+    Private Sub txtCorreo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCorreo.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtNota.Focus()
+        End If
+    End Sub
+
+    Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombre.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtApellido.Focus()
+        End If
+    End Sub
+
+    Private Sub txtApellido_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtApellido.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtNumeroDocumento.Focus()
+        End If
+    End Sub
+
+    Private Sub txtNumeroDocumento_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNumeroDocumento.KeyPress
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
+    End Sub
 #End Region
 
 #Region "Habilitar y deshabilitar botones"
@@ -473,92 +549,6 @@ Nombre"
             Dim rect As New Rectangle(0, 0, PanelNotas.Width - 1, PanelNotas.Height - 1)
             e.Graphics.DrawRectangle(pen, rect)
         End Using
-    End Sub
-
-    Private Sub txtDireccion_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDireccion.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtNumero.Focus()
-        End If
-    End Sub
-
-    Private Sub txtNumero_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNumero.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtPiso.Focus()
-        End If
-
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
-
-    End Sub
-
-    Private Sub txtLetraPuerta_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtLetraPuerta.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtTelefonoMovil.Focus()
-        End If
-    End Sub
-
-    Private Sub txtTelefonoMovil_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTelefonoMovil.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtTelefonoFijo.Focus()
-        End If
-    End Sub
-
-    Private Sub txtPiso_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPiso.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtLetraPuerta.Focus()
-        End If
-    End Sub
-
-    Private Sub txtTelefonoFijo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTelefonoFijo.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtCorreo.Focus()
-        End If
-    End Sub
-
-    Private Sub txtCorreo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCorreo.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtNota.Focus()
-        End If
-    End Sub
-
-    Private Sub txtNombre_TextChanged(sender As Object, e As EventArgs) Handles txtNombre.TextChanged
-
-    End Sub
-
-    Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombre.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtApellido.Focus()
-        End If
-    End Sub
-
-    Private Sub txtApellido_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtApellido.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtNumeroDocumento.Focus()
-        End If
-    End Sub
-
-    Private Sub txtNumeroDocumento_TextChanged(sender As Object, e As EventArgs) Handles txtNumeroDocumento.TextChanged
-
-
-    End Sub
-
-    Private Sub txtNumeroDocumento_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNumeroDocumento.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
     End Sub
 #End Region
 End Class
