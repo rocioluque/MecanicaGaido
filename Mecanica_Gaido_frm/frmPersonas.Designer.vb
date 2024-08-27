@@ -22,7 +22,7 @@ Partial Class frmPersonas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPersonas))
         Me.txtID = New System.Windows.Forms.TextBox()
         Me.lblId = New System.Windows.Forms.Label()
@@ -36,13 +36,13 @@ Partial Class frmPersonas
         Me.lblTipoPersona = New System.Windows.Forms.Label()
         Me.cboTipoPersona = New System.Windows.Forms.ComboBox()
         Me.PanelDatosPersonales = New System.Windows.Forms.Panel()
+        Me.msktxtNumeroDocumento = New System.Windows.Forms.MaskedTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cboTipoDocumento = New System.Windows.Forms.ComboBox()
         Me.dtpFechaNacimiento = New System.Windows.Forms.DateTimePicker()
         Me.lblNumeroDocumento = New System.Windows.Forms.Label()
-        Me.txtNumeroDocumento = New System.Windows.Forms.TextBox()
         Me.lblFechaNacimiento = New System.Windows.Forms.Label()
         Me.lblTipoDocumento = New System.Windows.Forms.Label()
         Me.txtNombre = New System.Windows.Forms.TextBox()
@@ -201,14 +201,14 @@ Partial Class frmPersonas
         Me.grdPersonas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         Me.grdPersonas.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdPersonas.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdPersonas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdPersonas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.grdPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdPersonas.Location = New System.Drawing.Point(138, 498)
         Me.grdPersonas.Name = "grdPersonas"
@@ -262,13 +262,13 @@ Partial Class frmPersonas
         '
         'PanelDatosPersonales
         '
+        Me.PanelDatosPersonales.Controls.Add(Me.msktxtNumeroDocumento)
         Me.PanelDatosPersonales.Controls.Add(Me.Label3)
         Me.PanelDatosPersonales.Controls.Add(Me.Label2)
         Me.PanelDatosPersonales.Controls.Add(Me.Label1)
         Me.PanelDatosPersonales.Controls.Add(Me.cboTipoDocumento)
         Me.PanelDatosPersonales.Controls.Add(Me.dtpFechaNacimiento)
         Me.PanelDatosPersonales.Controls.Add(Me.lblNumeroDocumento)
-        Me.PanelDatosPersonales.Controls.Add(Me.txtNumeroDocumento)
         Me.PanelDatosPersonales.Controls.Add(Me.lblFechaNacimiento)
         Me.PanelDatosPersonales.Controls.Add(Me.lblTipoDocumento)
         Me.PanelDatosPersonales.Controls.Add(Me.txtNombre)
@@ -279,6 +279,16 @@ Partial Class frmPersonas
         Me.PanelDatosPersonales.Name = "PanelDatosPersonales"
         Me.PanelDatosPersonales.Size = New System.Drawing.Size(258, 283)
         Me.PanelDatosPersonales.TabIndex = 53
+        '
+        'msktxtNumeroDocumento
+        '
+        Me.msktxtNumeroDocumento.BeepOnError = True
+        Me.msktxtNumeroDocumento.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.msktxtNumeroDocumento.Location = New System.Drawing.Point(17, 231)
+        Me.msktxtNumeroDocumento.Name = "msktxtNumeroDocumento"
+        Me.msktxtNumeroDocumento.Size = New System.Drawing.Size(220, 23)
+        Me.msktxtNumeroDocumento.TabIndex = 114
+        Me.msktxtNumeroDocumento.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals
         '
         'Label3
         '
@@ -354,15 +364,6 @@ Partial Class frmPersonas
         Me.lblNumeroDocumento.Size = New System.Drawing.Size(148, 17)
         Me.lblNumeroDocumento.TabIndex = 53
         Me.lblNumeroDocumento.Text = "Numero de Documento"
-        '
-        'txtNumeroDocumento
-        '
-        Me.txtNumeroDocumento.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNumeroDocumento.Location = New System.Drawing.Point(17, 231)
-        Me.txtNumeroDocumento.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtNumeroDocumento.Name = "txtNumeroDocumento"
-        Me.txtNumeroDocumento.Size = New System.Drawing.Size(220, 23)
-        Me.txtNumeroDocumento.TabIndex = 8
         '
         'lblFechaNacimiento
         '
@@ -813,7 +814,7 @@ Partial Class frmPersonas
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(1086, 598)
+        Me.ClientSize = New System.Drawing.Size(1118, 598)
         Me.Controls.Add(Me.lblNota)
         Me.Controls.Add(Me.PanelNotas)
         Me.Controls.Add(Me.lblDatosPersonales)
@@ -862,7 +863,6 @@ Partial Class frmPersonas
     Friend WithEvents cboTipoDocumento As ComboBox
     Friend WithEvents dtpFechaNacimiento As DateTimePicker
     Friend WithEvents lblNumeroDocumento As Label
-    Friend WithEvents txtNumeroDocumento As TextBox
     Friend WithEvents lblFechaNacimiento As Label
     Friend WithEvents lblTipoDocumento As Label
     Friend WithEvents txtNombre As TextBox
@@ -904,4 +904,5 @@ Partial Class frmPersonas
     Friend WithEvents Label8 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents Label4 As Label
+    Friend WithEvents msktxtNumeroDocumento As MaskedTextBox
 End Class

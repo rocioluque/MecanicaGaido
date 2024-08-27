@@ -202,9 +202,9 @@ Partial Class frmCompras
         Me.Label4.Location = New System.Drawing.Point(12, 71)
         Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(72, 17)
+        Me.Label4.Size = New System.Drawing.Size(75, 17)
         Me.Label4.TabIndex = 27
-        Me.Label4.Text = "Vendedor"
+        Me.Label4.Text = "Proveedor"
         '
         'Label3
         '

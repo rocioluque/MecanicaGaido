@@ -467,6 +467,12 @@ Public Class frmProductos
             e.Handled = True
         End If
     End Sub
+
+    Private Sub txtDescripcion_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDescripcion.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtNombreDiario.Focus()
+        End If
+    End Sub
 #End Region
 
 End Class

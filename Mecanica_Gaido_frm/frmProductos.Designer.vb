@@ -65,6 +65,8 @@ Partial Class frmProductos
         Me.cboOrigen = New System.Windows.Forms.ComboBox()
         Me.lblExistencia = New System.Windows.Forms.Label()
         Me.PanelExistencia = New System.Windows.Forms.Panel()
+        Me.txtStockMinimo = New System.Windows.Forms.TextBox()
+        Me.lblStockMinimo = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.lblMovimientos = New System.Windows.Forms.Label()
         Me.PanelMovimientos = New System.Windows.Forms.Panel()
@@ -79,8 +81,6 @@ Partial Class frmProductos
         Me.txtUtilidad = New System.Windows.Forms.TextBox()
         Me.lblUtilidad = New System.Windows.Forms.Label()
         Me.txtPrecioCompra = New System.Windows.Forms.TextBox()
-        Me.txtStockMinimo = New System.Windows.Forms.TextBox()
-        Me.lblStockMinimo = New System.Windows.Forms.Label()
         CType(Me.grdProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarMarca, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarRubro, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -170,7 +170,7 @@ Partial Class frmProductos
         Me.lblCodBarra.Name = "lblCodBarra"
         Me.lblCodBarra.Size = New System.Drawing.Size(105, 17)
         Me.lblCodBarra.TabIndex = 82
-        Me.lblCodBarra.Text = "Codigo de Barra"
+        Me.lblCodBarra.Text = "Código de Barra"
         '
         'lblCodFabricante
         '
@@ -181,7 +181,7 @@ Partial Class frmProductos
         Me.lblCodFabricante.Name = "lblCodFabricante"
         Me.lblCodFabricante.Size = New System.Drawing.Size(139, 17)
         Me.lblCodFabricante.TabIndex = 81
-        Me.lblCodFabricante.Text = "Codigo de Fabricante"
+        Me.lblCodFabricante.Text = "Código de Fabricante"
         '
         'lblStockDisponible
         '
@@ -212,9 +212,9 @@ Partial Class frmProductos
         Me.lblCantBulto.ForeColor = System.Drawing.Color.White
         Me.lblCantBulto.Location = New System.Drawing.Point(304, 143)
         Me.lblCantBulto.Name = "lblCantBulto"
-        Me.lblCantBulto.Size = New System.Drawing.Size(124, 17)
+        Me.lblCantBulto.Size = New System.Drawing.Size(120, 17)
         Me.lblCantBulto.TabIndex = 72
-        Me.lblCantBulto.Text = "Cantintad por Bulto"
+        Me.lblCantBulto.Text = "Cantidad por Bulto"
         '
         'lblRubro
         '
@@ -320,7 +320,7 @@ Partial Class frmProductos
         Me.lblDescripcion.Name = "lblDescripcion"
         Me.lblDescripcion.Size = New System.Drawing.Size(79, 17)
         Me.lblDescripcion.TabIndex = 56
-        Me.lblDescripcion.Text = "Descripcion"
+        Me.lblDescripcion.Text = "Descripción"
         '
         'lblNombreDiario
         '
@@ -549,7 +549,7 @@ Partial Class frmProductos
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 16.0!)
         Me.Label1.ForeColor = System.Drawing.Color.Red
-        Me.Label1.Location = New System.Drawing.Point(94, 55)
+        Me.Label1.Location = New System.Drawing.Point(91, 55)
         Me.Label1.Margin = New System.Windows.Forms.Padding(0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(14, 15)
@@ -596,13 +596,35 @@ Partial Class frmProductos
         Me.PanelExistencia.Size = New System.Drawing.Size(316, 157)
         Me.PanelExistencia.TabIndex = 111
         '
+        'txtStockMinimo
+        '
+        Me.txtStockMinimo.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtStockMinimo.Location = New System.Drawing.Point(152, 82)
+        Me.txtStockMinimo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtStockMinimo.Name = "txtStockMinimo"
+        Me.txtStockMinimo.Size = New System.Drawing.Size(121, 23)
+        Me.txtStockMinimo.TabIndex = 115
+        Me.txtStockMinimo.Text = "0"
+        Me.txtStockMinimo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'lblStockMinimo
+        '
+        Me.lblStockMinimo.AutoSize = True
+        Me.lblStockMinimo.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.lblStockMinimo.ForeColor = System.Drawing.Color.White
+        Me.lblStockMinimo.Location = New System.Drawing.Point(16, 85)
+        Me.lblStockMinimo.Name = "lblStockMinimo"
+        Me.lblStockMinimo.Size = New System.Drawing.Size(88, 17)
+        Me.lblStockMinimo.TabIndex = 116
+        Me.lblStockMinimo.Text = "Stock Minimo"
+        '
         'Label5
         '
         Me.Label5.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.Font = New System.Drawing.Font("Century Gothic", 16.0!)
         Me.Label5.ForeColor = System.Drawing.Color.Red
-        Me.Label5.Location = New System.Drawing.Point(85, 116)
+        Me.Label5.Location = New System.Drawing.Point(85, 114)
         Me.Label5.Margin = New System.Windows.Forms.Padding(0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(14, 15)
@@ -673,6 +695,7 @@ Partial Class frmProductos
         Me.dtpFechaCompra.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtpFechaCompra.Location = New System.Drawing.Point(165, 91)
         Me.dtpFechaCompra.Name = "dtpFechaCompra"
+        Me.dtpFechaCompra.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.dtpFechaCompra.Size = New System.Drawing.Size(121, 23)
         Me.dtpFechaCompra.TabIndex = 20
         '
@@ -761,27 +784,6 @@ Partial Class frmProductos
         Me.txtPrecioCompra.Text = "0"
         Me.txtPrecioCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'txtStockMinimo
-        '
-        Me.txtStockMinimo.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtStockMinimo.Location = New System.Drawing.Point(152, 82)
-        Me.txtStockMinimo.Name = "txtStockMinimo"
-        Me.txtStockMinimo.Size = New System.Drawing.Size(121, 23)
-        Me.txtStockMinimo.TabIndex = 115
-        Me.txtStockMinimo.Text = "0"
-        Me.txtStockMinimo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'lblStockMinimo
-        '
-        Me.lblStockMinimo.AutoSize = True
-        Me.lblStockMinimo.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblStockMinimo.ForeColor = System.Drawing.Color.White
-        Me.lblStockMinimo.Location = New System.Drawing.Point(16, 85)
-        Me.lblStockMinimo.Name = "lblStockMinimo"
-        Me.lblStockMinimo.Size = New System.Drawing.Size(88, 17)
-        Me.lblStockMinimo.TabIndex = 116
-        Me.lblStockMinimo.Text = "Stock Minimo"
-        '
         'frmProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -789,7 +791,7 @@ Partial Class frmProductos
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(1152, 673)
+        Me.ClientSize = New System.Drawing.Size(1169, 673)
         Me.Controls.Add(Me.lblMovimientos)
         Me.Controls.Add(Me.PanelMovimientos)
         Me.Controls.Add(Me.lblExistencia)
