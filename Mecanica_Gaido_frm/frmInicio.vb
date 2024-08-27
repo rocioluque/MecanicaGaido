@@ -21,6 +21,7 @@ Public Class frmInicio
     Private Sub horaFecha_Tick(sender As Object, e As EventArgs) Handles horaFecha.Tick
         lblHora.Text = DateTime.Now.ToLongTimeString
         lblFecha.Text = DateTime.Now.ToString("dddd, dd MMMM yyyy")
+
     End Sub
 
     Private Sub CargarGrillaProductosBajoStock()

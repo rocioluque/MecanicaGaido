@@ -177,7 +177,7 @@ Partial Class frmProductos
         Me.lblCodBarra.Name = "lblCodBarra"
         Me.lblCodBarra.Size = New System.Drawing.Size(131, 20)
         Me.lblCodBarra.TabIndex = 82
-        Me.lblCodBarra.Text = "Codigo de Barra"
+        Me.lblCodBarra.Text = "Código de Barra"
         '
         'lblCodFabricante
         '
@@ -189,7 +189,7 @@ Partial Class frmProductos
         Me.lblCodFabricante.Name = "lblCodFabricante"
         Me.lblCodFabricante.Size = New System.Drawing.Size(171, 20)
         Me.lblCodFabricante.TabIndex = 81
-        Me.lblCodFabricante.Text = "Codigo de Fabricante"
+        Me.lblCodFabricante.Text = "Código de Fabricante"
         '
         'lblStockDisponible
         '
@@ -223,9 +223,13 @@ Partial Class frmProductos
         Me.lblCantBulto.Location = New System.Drawing.Point(405, 176)
         Me.lblCantBulto.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCantBulto.Name = "lblCantBulto"
+<<<<<<< HEAD
         Me.lblCantBulto.Size = New System.Drawing.Size(151, 20)
+=======
+        Me.lblCantBulto.Size = New System.Drawing.Size(120, 17)
+>>>>>>> 009acdcb3b82d647fb765479f837eb33c2d6d001
         Me.lblCantBulto.TabIndex = 72
-        Me.lblCantBulto.Text = "Cantintad por Bulto"
+        Me.lblCantBulto.Text = "Cantidad por Bulto"
         '
         'lblRubro
         '
@@ -342,7 +346,7 @@ Partial Class frmProductos
         Me.lblDescripcion.Name = "lblDescripcion"
         Me.lblDescripcion.Size = New System.Drawing.Size(96, 20)
         Me.lblDescripcion.TabIndex = 56
-        Me.lblDescripcion.Text = "Descripcion"
+        Me.lblDescripcion.Text = "Descripción"
         '
         'lblNombreDiario
         '
@@ -583,7 +587,11 @@ Partial Class frmProductos
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 16.0!)
         Me.Label1.ForeColor = System.Drawing.Color.Red
+<<<<<<< HEAD
         Me.Label1.Location = New System.Drawing.Point(125, 68)
+=======
+        Me.Label1.Location = New System.Drawing.Point(91, 55)
+>>>>>>> 009acdcb3b82d647fb765479f837eb33c2d6d001
         Me.Label1.Margin = New System.Windows.Forms.Padding(0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(19, 18)
@@ -634,10 +642,16 @@ Partial Class frmProductos
         'txtStockMinimo
         '
         Me.txtStockMinimo.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+<<<<<<< HEAD
         Me.txtStockMinimo.Location = New System.Drawing.Point(203, 101)
         Me.txtStockMinimo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtStockMinimo.Name = "txtStockMinimo"
         Me.txtStockMinimo.Size = New System.Drawing.Size(160, 27)
+=======
+        Me.txtStockMinimo.Location = New System.Drawing.Point(152, 82)
+        Me.txtStockMinimo.Name = "txtStockMinimo"
+        Me.txtStockMinimo.Size = New System.Drawing.Size(121, 23)
+>>>>>>> 009acdcb3b82d647fb765479f837eb33c2d6d001
         Me.txtStockMinimo.TabIndex = 115
         Me.txtStockMinimo.Text = "0"
         Me.txtStockMinimo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -647,12 +661,20 @@ Partial Class frmProductos
         Me.lblStockMinimo.AutoSize = True
         Me.lblStockMinimo.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblStockMinimo.ForeColor = System.Drawing.Color.White
+<<<<<<< HEAD
         Me.lblStockMinimo.Location = New System.Drawing.Point(21, 105)
         Me.lblStockMinimo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblStockMinimo.Name = "lblStockMinimo"
         Me.lblStockMinimo.Size = New System.Drawing.Size(106, 20)
         Me.lblStockMinimo.TabIndex = 116
         Me.lblStockMinimo.Text = "Stock Minimo"
+=======
+        Me.lblStockMinimo.Location = New System.Drawing.Point(16, 85)
+        Me.lblStockMinimo.Name = "lblStockMinimo"
+        Me.lblStockMinimo.Size = New System.Drawing.Size(88, 17)
+        Me.lblStockMinimo.TabIndex = 116
+        Me.lblStockMinimo.Text = "Stock Mínimo"
+>>>>>>> 009acdcb3b82d647fb765479f837eb33c2d6d001
         '
         'Label5
         '
@@ -660,7 +682,11 @@ Partial Class frmProductos
         Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.Font = New System.Drawing.Font("Century Gothic", 16.0!)
         Me.Label5.ForeColor = System.Drawing.Color.Red
+<<<<<<< HEAD
         Me.Label5.Location = New System.Drawing.Point(113, 143)
+=======
+        Me.Label5.Location = New System.Drawing.Point(85, 114)
+>>>>>>> 009acdcb3b82d647fb765479f837eb33c2d6d001
         Me.Label5.Margin = New System.Windows.Forms.Padding(0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(19, 18)
@@ -720,7 +746,12 @@ Partial Class frmProductos
         Me.dtpFechaVenta.Location = New System.Drawing.Point(220, 143)
         Me.dtpFechaVenta.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dtpFechaVenta.Name = "dtpFechaVenta"
+<<<<<<< HEAD
         Me.dtpFechaVenta.Size = New System.Drawing.Size(160, 27)
+=======
+        Me.dtpFechaVenta.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.dtpFechaVenta.Size = New System.Drawing.Size(121, 23)
+>>>>>>> 009acdcb3b82d647fb765479f837eb33c2d6d001
         Me.dtpFechaVenta.TabIndex = 21
         '
         'dtpFechaCompra
@@ -733,7 +764,12 @@ Partial Class frmProductos
         Me.dtpFechaCompra.Location = New System.Drawing.Point(220, 112)
         Me.dtpFechaCompra.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dtpFechaCompra.Name = "dtpFechaCompra"
+<<<<<<< HEAD
         Me.dtpFechaCompra.Size = New System.Drawing.Size(160, 27)
+=======
+        Me.dtpFechaCompra.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.dtpFechaCompra.Size = New System.Drawing.Size(121, 23)
+>>>>>>> 009acdcb3b82d647fb765479f837eb33c2d6d001
         Me.dtpFechaCompra.TabIndex = 20
         '
         'lblPrecioLista
