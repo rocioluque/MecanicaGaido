@@ -106,7 +106,7 @@ Public Class frmPersonas
         txtApellido.Clear()
         txtTelefonoMovil.Clear()
         txtTelefonoFijo.Clear()
-        txtNumeroDocumento.Clear()
+        msktxtNumeroDocumento.Clear()
         txtCorreo.Clear()
         txtDireccion.Clear()
         txtNumero.Clear()
@@ -179,7 +179,7 @@ Public Class frmPersonas
                 txtNombre.Text = datoleido("Nombre / Razon Social").ToString()
                 txtApellido.Text = datoleido("Apellido").ToString()
                 dtpFechaNacimiento.Value = Convert.ToDateTime(datoleido("Fecha_Nacimiento"))
-                txtNumeroDocumento.Text = datoleido("Documento").ToString()
+                msktxtNumeroDocumento.Text = datoleido("Documento").ToString()
                 txtTelefonoMovil.Text = datoleido("Teléfono Móvil").ToString()
                 txtTelefonoFijo.Text = datoleido("Teléfono Fijo").ToString()
                 txtCorreo.Text = datoleido("Correo").ToString()
@@ -225,11 +225,11 @@ Public Class frmPersonas
 #Region "Abrir frm para agregar datos"
     Private Sub btnEmpleados_Click(sender As Object, e As EventArgs) Handles btnEmpleados.Click
         If cboTipoPersona.Text = "Personas Físicas" Then
-            If txtID.Text <> Nothing And txtNombre.Text <> Nothing And txtApellido.Text <> Nothing And txtNumeroDocumento.Text <> Nothing Then
+            If txtID.Text <> Nothing And txtNombre.Text <> Nothing And txtApellido.Text <> Nothing And msktxtNumeroDocumento.Text <> Nothing Then
                 frmAgregarEmpleados.IdPersona = Convert.ToInt32(txtID.Text)
 
                 frmAgregarEmpleados.lblCargaEmpleado.Text = txtApellido.Text & " " & txtNombre.Text
-                frmAgregarEmpleados.lblCargaCuil.Text = txtNumeroDocumento.Text
+                frmAgregarEmpleados.lblCargaCuil.Text = msktxtNumeroDocumento.Text
                 frmAgregarEmpleados.lblCargaFechaNacimiento.Text = dtpFechaNacimiento.Value.ToString("dd/MM/yyyy")
 
                 frmAgregarEmpleados.ShowDialog()
@@ -242,11 +242,11 @@ Public Class frmPersonas
     End Sub
 
     Private Sub btnDatoFiscal_Click(sender As Object, e As EventArgs) Handles btnDatoFiscal.Click
-        If txtID.Text <> Nothing And txtNombre.Text <> Nothing And txtNumeroDocumento.Text <> Nothing Then
+        If txtID.Text <> Nothing And txtNombre.Text <> Nothing And msktxtNumeroDocumento.Text <> Nothing Then
             frmAgregarDatosFiscales.IdPersona = Convert.ToInt32(txtID.Text)
 
             frmAgregarDatosFiscales.lblNombreResultado.Text = txtApellido.Text & " " & txtNombre.Text
-            frmAgregarDatosFiscales.lblDocumentoResultado.Text = txtNumeroDocumento.Text
+            frmAgregarDatosFiscales.lblDocumentoResultado.Text = msktxtNumeroDocumento.Text
 
             If cboTipoPersona.Text = "Personas Físicas" Then
 
@@ -295,13 +295,13 @@ Nombre"
 
 #Region "Cargar"
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
-        If txtNombre.Text <> Nothing And txtNumeroDocumento.Text <> Nothing And
+        If txtNombre.Text <> Nothing And msktxtNumeroDocumento.Text <> Nothing And
             txtCorreo.Text <> Nothing And txtDireccion.Text <> Nothing And txtNumero.Text <> Nothing And
             txtCodigoPostal.Text <> Nothing Then
 
             Try
                 o_Personas.Agregar_Persona(CInt(cboTipoPersona.SelectedValue), txtNombre.Text, txtApellido.Text, txtTelefonoMovil.Text,
-                       txtTelefonoFijo.Text, dtpFechaNacimiento.Value, CInt(cboTipoDocumento.SelectedValue), txtNumeroDocumento.Text,
+                       txtTelefonoFijo.Text, dtpFechaNacimiento.Value, CInt(cboTipoDocumento.SelectedValue), msktxtNumeroDocumento.Text,
                        txtCorreo.Text, txtDireccion.Text, txtNumero.Text, txtPiso.Text, txtLetraPuerta.Text, txtCodigoPostal.Text,
                        Convert.ToInt32(cboCiudad.SelectedValue), txtNota.Text, chkEstado.Checked)
 
@@ -323,7 +323,7 @@ Nombre"
         If txtID.Text <> Nothing And txtNombre.Text <> Nothing And txtCorreo.Text <> Nothing And txtDireccion.Text <> Nothing Then
             Try
                 o_Personas.Modificar_Persona(txtID.Text, CInt(cboTipoPersona.SelectedValue), txtNombre.Text, txtApellido.Text, txtTelefonoMovil.Text,
-                       txtTelefonoFijo.Text, dtpFechaNacimiento.Value, CInt(cboTipoDocumento.SelectedValue), txtNumeroDocumento.Text,
+                       txtTelefonoFijo.Text, dtpFechaNacimiento.Value, CInt(cboTipoDocumento.SelectedValue), msktxtNumeroDocumento.Text,
                        txtCorreo.Text, txtDireccion.Text, txtNumero.Text, txtPiso.Text, txtLetraPuerta.Text, txtCodigoPostal.Text,
                        Convert.ToInt32(cboCiudad.SelectedValue), txtNota.Text, chkEstado.Checked)
                 MsgBox("Persona modificada correctamente.", vbInformation, "Información")
@@ -430,11 +430,11 @@ Nombre"
 
     Private Sub txtApellido_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtApellido.KeyPress
         If Asc(e.KeyChar) = 13 Then
-            txtNumeroDocumento.Focus()
+            msktxtNumeroDocumento.Focus()
         End If
     End Sub
 
-    Private Sub txtNumeroDocumento_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNumeroDocumento.KeyPress
+    Private Sub txtNumeroDocumento_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
         Else
@@ -444,6 +444,25 @@ Nombre"
                 e.Handled = True
             End If
         End If
+    End Sub
+#End Region
+
+#Region "Mascaras"
+    Public Sub Mascaras()
+        If cboTipoDocumento.Text IsNot Nothing Then
+            Select Case cboTipoDocumento.Text.ToString()
+                Case "CUIL", "CUIT"
+                    msktxtNumeroDocumento.Mask = "00-00000000-0"
+                Case "DNI"
+                    msktxtNumeroDocumento.Mask = "00.000.000"
+                Case Else
+                    msktxtNumeroDocumento.Mask = ""
+            End Select
+        End If
+    End Sub
+
+    Private Sub cboTipoDocumento_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTipoDocumento.SelectedIndexChanged
+        Mascaras()
     End Sub
 #End Region
 
@@ -457,6 +476,8 @@ Nombre"
             txtCodigoPostal.Enabled = False
         End If
     End Sub
+
+
 
     Private Sub txtCodigoPostal_TextChanged(sender As Object, e As EventArgs) Handles txtCodigoPostal.TextChanged
         ActualizarEstadoControles()
@@ -482,7 +503,6 @@ Nombre"
         ActualizarEstadoControles()
     End Sub
 
-
     Private Sub txtTelefonoFijo_TextChanged(sender As Object, e As EventArgs) Handles txtTelefonoFijo.TextChanged
         ActualizarEstadoControles()
     End Sub
@@ -497,7 +517,6 @@ Nombre"
 
     Private Sub ActualizarEstadoControles()
         Dim habilitar As Boolean = Not String.IsNullOrEmpty(txtCodigoPostal.Text)
-
         txtDireccion.Enabled = habilitar
         txtNumero.Enabled = habilitar
         txtPiso.Enabled = habilitar
@@ -506,7 +525,6 @@ Nombre"
         txtTelefonoMovil.Enabled = habilitar
         txtCorreo.Enabled = habilitar
         chkEstado.Enabled = habilitar
-
     End Sub
 #End Region
 
@@ -550,5 +568,7 @@ Nombre"
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
+
+
 #End Region
 End Class
