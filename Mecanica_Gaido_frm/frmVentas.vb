@@ -320,5 +320,10 @@ Public Class frmVentas
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
+
+    Private Sub txtResultadoTelefono_TextChanged(sender As Object, e As EventArgs) Handles txtResultadoTelefono.TextChanged
+        Dim mskTxtTelefono As New MaskedTextBox
+        mskTxtTelefono.Mask = "C000-0000-0000"
+    End Sub
 #End Region
 End Class
