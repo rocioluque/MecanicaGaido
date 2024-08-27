@@ -200,6 +200,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccesoDatos.vb" />
     <Compile Include="frmAgregarFormaEntrega.Designer.vb">
       <DependentUpon>frmAgregarFormaEntrega.vb</DependentUpon>
     </Compile>

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmInicio
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,21 +20,30 @@ Partial Class frmInicio
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmInicio))
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.grdProductosBajoStock = New System.Windows.Forms.DataGridView()
+        Me.id_Repuesto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StockDisponible = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnExportarPDF = New System.Windows.Forms.Button()
         Me.lblFecha = New System.Windows.Forms.Label()
         Me.lblHora = New System.Windows.Forms.Label()
         Me.horaFecha = New System.Windows.Forms.Timer(Me.components)
-        Me.id_Repuesto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StockDisponible = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.chtRepuestos = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.grdGrilla2 = New System.Windows.Forms.DataGridView()
+        Me.grdGrilla1 = New System.Windows.Forms.DataGridView()
         CType(Me.grdProductosBajoStock, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chtRepuestos, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdGrilla2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdGrilla1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'grdProductosBajoStock
@@ -46,14 +55,14 @@ Partial Class frmInicio
         Me.grdProductosBajoStock.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         Me.grdProductosBajoStock.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdProductosBajoStock.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdProductosBajoStock.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdProductosBajoStock.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.grdProductosBajoStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdProductosBajoStock.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_Repuesto, Me.Descripcion, Me.StockDisponible})
         Me.grdProductosBajoStock.Location = New System.Drawing.Point(540, 58)
@@ -64,6 +73,27 @@ Partial Class frmInicio
         Me.grdProductosBajoStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdProductosBajoStock.Size = New System.Drawing.Size(562, 297)
         Me.grdProductosBajoStock.TabIndex = 113
+        '
+        'id_Repuesto
+        '
+        Me.id_Repuesto.FillWeight = 50.0!
+        Me.id_Repuesto.HeaderText = "N° Repuesto"
+        Me.id_Repuesto.Name = "id_Repuesto"
+        Me.id_Repuesto.ReadOnly = True
+        '
+        'Descripcion
+        '
+        Me.Descripcion.FillWeight = 111.9289!
+        Me.Descripcion.HeaderText = "Descripcion"
+        Me.Descripcion.Name = "Descripcion"
+        Me.Descripcion.ReadOnly = True
+        '
+        'StockDisponible
+        '
+        Me.StockDisponible.FillWeight = 50.0!
+        Me.StockDisponible.HeaderText = "Stock Disponible"
+        Me.StockDisponible.Name = "StockDisponible"
+        Me.StockDisponible.ReadOnly = True
         '
         'Label3
         '
@@ -124,26 +154,41 @@ Partial Class frmInicio
         '
         Me.horaFecha.Enabled = True
         '
-        'id_Repuesto
+        'chtRepuestos
         '
-        Me.id_Repuesto.FillWeight = 50.0!
-        Me.id_Repuesto.HeaderText = "N° Repuesto"
-        Me.id_Repuesto.Name = "id_Repuesto"
-        Me.id_Repuesto.ReadOnly = True
+        Me.chtRepuestos.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        ChartArea2.Name = "ChartArea1"
+        Me.chtRepuestos.ChartAreas.Add(ChartArea2)
+        Me.chtRepuestos.Cursor = System.Windows.Forms.Cursors.Hand
+        Legend2.Name = "Legend1"
+        Me.chtRepuestos.Legends.Add(Legend2)
+        Me.chtRepuestos.Location = New System.Drawing.Point(16, 84)
+        Me.chtRepuestos.Name = "chtRepuestos"
+        Series2.ChartArea = "ChartArea1"
+        Series2.Legend = "Legend1"
+        Series2.Name = "Series1"
+        Me.chtRepuestos.Series.Add(Series2)
+        Me.chtRepuestos.Size = New System.Drawing.Size(518, 510)
+        Me.chtRepuestos.TabIndex = 114
+        Me.chtRepuestos.Text = "Repuestos:"
         '
-        'Descripcion
+        'grdGrilla2
         '
-        Me.Descripcion.FillWeight = 111.9289!
-        Me.Descripcion.HeaderText = "Descripcion"
-        Me.Descripcion.Name = "Descripcion"
-        Me.Descripcion.ReadOnly = True
+        Me.grdGrilla2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.grdGrilla2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdGrilla2.Location = New System.Drawing.Point(834, 444)
+        Me.grdGrilla2.Name = "grdGrilla2"
+        Me.grdGrilla2.Size = New System.Drawing.Size(268, 150)
+        Me.grdGrilla2.TabIndex = 116
         '
-        'StockDisponible
+        'grdGrilla1
         '
-        Me.StockDisponible.FillWeight = 50.0!
-        Me.StockDisponible.HeaderText = "Stock Disponible"
-        Me.StockDisponible.Name = "StockDisponible"
-        Me.StockDisponible.ReadOnly = True
+        Me.grdGrilla1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.grdGrilla1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdGrilla1.Location = New System.Drawing.Point(540, 444)
+        Me.grdGrilla1.Name = "grdGrilla1"
+        Me.grdGrilla1.Size = New System.Drawing.Size(268, 150)
+        Me.grdGrilla1.TabIndex = 115
         '
         'frmInicio
         '
@@ -151,6 +196,9 @@ Partial Class frmInicio
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1147, 606)
+        Me.Controls.Add(Me.grdGrilla2)
+        Me.Controls.Add(Me.grdGrilla1)
+        Me.Controls.Add(Me.chtRepuestos)
         Me.Controls.Add(Me.grdProductosBajoStock)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.btnExportarPDF)
@@ -162,6 +210,9 @@ Partial Class frmInicio
         Me.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds
         Me.Text = "frmInicio"
         CType(Me.grdProductosBajoStock, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chtRepuestos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdGrilla2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdGrilla1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -176,4 +227,7 @@ Partial Class frmInicio
     Friend WithEvents id_Repuesto As DataGridViewTextBoxColumn
     Friend WithEvents Descripcion As DataGridViewTextBoxColumn
     Friend WithEvents StockDisponible As DataGridViewTextBoxColumn
+    Friend WithEvents chtRepuestos As DataVisualization.Charting.Chart
+    Friend WithEvents grdGrilla2 As DataGridView
+    Friend WithEvents grdGrilla1 As DataGridView
 End Class
