@@ -161,9 +161,9 @@ Public Class frmVentas
             Cargar_Combo_FormaPago()
 
             ' Buscar y seleccionar la nueva forma de pago en el ComboBox
-            Dim nuevaFormaPago As String = frm.NuevaFormaPagoNombre
+            Dim NuevaFormaPagoVentasNombre As String = frm.NuevaFormaPagoVentasNombre
             For Each item As DataRowView In cboFormaPago.Items
-                If item("Nombre").ToString() = nuevaFormaPago Then
+                If item("Nombre").ToString() = NuevaFormaPagoVentasNombre Then
                     cboFormaPago.SelectedItem = item
                     Exit For
                 End If
@@ -242,7 +242,88 @@ Public Class frmVentas
     End Sub
 #End Region
 
+#Region "Css trucho"
+    Private Sub PanelInformacionGeneral_Paint(sender As Object, e As PaintEventArgs) Handles PanelInformacionGeneral.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
 
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelInformacionGeneral.Width - 1, PanelInformacionGeneral.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
 
+    Private Sub PanelPanelCliente_Paint(sender As Object, e As PaintEventArgs) Handles PanelCliente.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
 
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelCliente.Width - 1, PanelCliente.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub PanelImpuestos_Paint(sender As Object, e As PaintEventArgs) Handles PanelImpuestos.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelImpuestos.Width - 1, PanelImpuestos.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub PanelPanelFormaPago_Paint(sender As Object, e As PaintEventArgs) Handles PanelFormaPago.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelFormaPago.Width - 1, PanelFormaPago.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub PanelDetalleDeVentas_Paint(sender As Object, e As PaintEventArgs) Handles PanelDetalleDeVentas.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelDetalleDeVentas.Width - 1, PanelDetalleDeVentas.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub PanelTotales_Paint(sender As Object, e As PaintEventArgs) Handles PanelTotales.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelTotales.Width - 1, PanelTotales.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub txtResultadoTelefono_TextChanged(sender As Object, e As EventArgs) Handles txtResultadoTelefono.TextChanged
+        Dim mskTxtTelefono As New MaskedTextBox
+        mskTxtTelefono.Mask = "C000-0000-0000"
+    End Sub
+#End Region
 End Class

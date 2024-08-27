@@ -294,6 +294,7 @@ C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\System
 C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\System.ValueTuple.xml
+<<<<<<< HEAD
 C:\Users\Carabante\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\bc-fips-1.0.2.dll
 C:\Users\Carabante\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\bcpkix-fips-1.0.2.dll
 C:\Users\Carabante\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\BouncyCastle.Cryptography.dll
@@ -365,3 +366,7 @@ C:\Users\Carabante\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Syste
 C:\Users\Carabante\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Carabante\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\System.ValueTuple.xml
 C:\Users\Carabante\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.frmInicio.resources
+=======
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\AD_Mecanica_Gaido.dll.config
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Comun_Soporte.dll.config
+>>>>>>> 889c2882c9a0c009c5da71a597608bc792d31109

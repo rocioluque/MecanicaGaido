@@ -75,6 +75,10 @@ Partial Class frmVentas
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.PanelFormaPago = New System.Windows.Forms.Panel()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.rbtDescuento = New System.Windows.Forms.RadioButton()
+        Me.rbtRecargo = New System.Windows.Forms.RadioButton()
         Me.cboDetalleFormaPago = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.btnAgregarDetalleFormaPago = New System.Windows.Forms.PictureBox()
@@ -82,9 +86,11 @@ Partial Class frmVentas
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.PanelTotales = New System.Windows.Forms.Panel()
+        Me.txtMontoDtoRecargo = New System.Windows.Forms.RichTextBox()
         Me.txtTotal = New System.Windows.Forms.RichTextBox()
         Me.txtIvaMonto = New System.Windows.Forms.RichTextBox()
         Me.txtSubtotal = New System.Windows.Forms.RichTextBox()
+        Me.lblMontoDtoRecargo = New System.Windows.Forms.Label()
         CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarPersona, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarEmpleado, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -109,7 +115,7 @@ Partial Class frmVentas
         Me.grdVentas.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdVentas.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdVentas.Location = New System.Drawing.Point(121, 586)
+        Me.grdVentas.Location = New System.Drawing.Point(121, 686)
         Me.grdVentas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdVentas.Name = "grdVentas"
         Me.grdVentas.ReadOnly = True
@@ -184,7 +190,7 @@ Partial Class frmVentas
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
-        Me.btnModificar.Location = New System.Drawing.Point(1307, 145)
+        Me.btnModificar.Location = New System.Drawing.Point(1307, 249)
         Me.btnModificar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(156, 46)
@@ -202,7 +208,7 @@ Partial Class frmVentas
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
-        Me.btnCancelar.Location = New System.Drawing.Point(1307, 235)
+        Me.btnCancelar.Location = New System.Drawing.Point(1307, 444)
         Me.btnCancelar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(156, 46)
@@ -289,7 +295,7 @@ Partial Class frmVentas
         '
         Me.btnAgregarFormaPago.BackgroundImage = CType(resources.GetObject("btnAgregarFormaPago.BackgroundImage"), System.Drawing.Image)
         Me.btnAgregarFormaPago.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnAgregarFormaPago.Location = New System.Drawing.Point(277, 52)
+        Me.btnAgregarFormaPago.Location = New System.Drawing.Point(277, 49)
         Me.btnAgregarFormaPago.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnAgregarFormaPago.Name = "btnAgregarFormaPago"
         Me.btnAgregarFormaPago.Size = New System.Drawing.Size(35, 31)
@@ -328,7 +334,7 @@ Partial Class frmVentas
         Me.PanelDetalleDeVentas.Controls.Add(Me.Label12)
         Me.PanelDetalleDeVentas.Controls.Add(Me.cboProductoVenta)
         Me.PanelDetalleDeVentas.Controls.Add(Me.Label10)
-        Me.PanelDetalleDeVentas.Location = New System.Drawing.Point(107, 521)
+        Me.PanelDetalleDeVentas.Location = New System.Drawing.Point(107, 620)
         Me.PanelDetalleDeVentas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PanelDetalleDeVentas.Name = "PanelDetalleDeVentas"
         Me.PanelDetalleDeVentas.Size = New System.Drawing.Size(1356, 331)
@@ -617,7 +623,7 @@ Partial Class frmVentas
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label22.ForeColor = System.Drawing.Color.White
-        Me.Label22.Location = New System.Drawing.Point(15, 28)
+        Me.Label22.Location = New System.Drawing.Point(15, 26)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(205, 21)
         Me.Label22.TabIndex = 28
@@ -628,7 +634,7 @@ Partial Class frmVentas
         Me.cboFormaPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboFormaPago.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboFormaPago.FormattingEnabled = True
-        Me.cboFormaPago.Location = New System.Drawing.Point(19, 52)
+        Me.cboFormaPago.Location = New System.Drawing.Point(19, 49)
         Me.cboFormaPago.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cboFormaPago.Name = "cboFormaPago"
         Me.cboFormaPago.Size = New System.Drawing.Size(251, 29)
@@ -728,6 +734,10 @@ Partial Class frmVentas
         '
         'PanelFormaPago
         '
+        Me.PanelFormaPago.Controls.Add(Me.Label23)
+        Me.PanelFormaPago.Controls.Add(Me.TextBox1)
+        Me.PanelFormaPago.Controls.Add(Me.rbtDescuento)
+        Me.PanelFormaPago.Controls.Add(Me.rbtRecargo)
         Me.PanelFormaPago.Controls.Add(Me.cboDetalleFormaPago)
         Me.PanelFormaPago.Controls.Add(Me.Label7)
         Me.PanelFormaPago.Controls.Add(Me.btnAgregarDetalleFormaPago)
@@ -740,12 +750,62 @@ Partial Class frmVentas
         Me.PanelFormaPago.Size = New System.Drawing.Size(796, 187)
         Me.PanelFormaPago.TabIndex = 134
         '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label23.ForeColor = System.Drawing.Color.White
+        Me.Label23.Location = New System.Drawing.Point(415, 98)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(84, 21)
+        Me.Label23.TabIndex = 115
+        Me.Label23.Text = "Monto %"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox1.Location = New System.Drawing.Point(417, 124)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.TextBox1.Size = New System.Drawing.Size(292, 27)
+        Me.TextBox1.TabIndex = 33
+        Me.TextBox1.Text = "0"
+        '
+        'rbtDescuento
+        '
+        Me.rbtDescuento.AutoSize = True
+        Me.rbtDescuento.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.rbtDescuento.ForeColor = System.Drawing.Color.White
+        Me.rbtDescuento.Location = New System.Drawing.Point(185, 123)
+        Me.rbtDescuento.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbtDescuento.Name = "rbtDescuento"
+        Me.rbtDescuento.Size = New System.Drawing.Size(122, 25)
+        Me.rbtDescuento.TabIndex = 114
+        Me.rbtDescuento.TabStop = True
+        Me.rbtDescuento.Text = "Descuento"
+        Me.rbtDescuento.UseVisualStyleBackColor = True
+        '
+        'rbtRecargo
+        '
+        Me.rbtRecargo.AutoSize = True
+        Me.rbtRecargo.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.rbtRecargo.ForeColor = System.Drawing.Color.White
+        Me.rbtRecargo.Location = New System.Drawing.Point(19, 123)
+        Me.rbtRecargo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbtRecargo.Name = "rbtRecargo"
+        Me.rbtRecargo.Size = New System.Drawing.Size(102, 25)
+        Me.rbtRecargo.TabIndex = 113
+        Me.rbtRecargo.TabStop = True
+        Me.rbtRecargo.Text = "Recargo"
+        Me.rbtRecargo.UseVisualStyleBackColor = True
+        '
         'cboDetalleFormaPago
         '
         Me.cboDetalleFormaPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboDetalleFormaPago.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboDetalleFormaPago.FormattingEnabled = True
-        Me.cboDetalleFormaPago.Location = New System.Drawing.Point(417, 52)
+        Me.cboDetalleFormaPago.Location = New System.Drawing.Point(417, 49)
         Me.cboDetalleFormaPago.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cboDetalleFormaPago.Name = "cboDetalleFormaPago"
         Me.cboDetalleFormaPago.Size = New System.Drawing.Size(251, 29)
@@ -756,7 +816,7 @@ Partial Class frmVentas
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(413, 28)
+        Me.Label7.Location = New System.Drawing.Point(413, 26)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(77, 21)
         Me.Label7.TabIndex = 111
@@ -766,7 +826,7 @@ Partial Class frmVentas
         '
         Me.btnAgregarDetalleFormaPago.BackgroundImage = CType(resources.GetObject("btnAgregarDetalleFormaPago.BackgroundImage"), System.Drawing.Image)
         Me.btnAgregarDetalleFormaPago.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnAgregarDetalleFormaPago.Location = New System.Drawing.Point(676, 52)
+        Me.btnAgregarDetalleFormaPago.Location = New System.Drawing.Point(676, 49)
         Me.btnAgregarDetalleFormaPago.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnAgregarDetalleFormaPago.Name = "btnAgregarDetalleFormaPago"
         Me.btnAgregarDetalleFormaPago.Size = New System.Drawing.Size(35, 31)
@@ -778,10 +838,10 @@ Partial Class frmVentas
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(1025, 874)
+        Me.Label11.Location = New System.Drawing.Point(1124, 508)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(42, 20)
-        Me.Label11.TabIndex = 138
+        Me.Label11.TabIndex = 142
         Me.Label11.Text = "Total"
         '
         'Label8
@@ -789,10 +849,10 @@ Partial Class frmVentas
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(600, 874)
+        Me.Label8.Location = New System.Drawing.Point(504, 508)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(87, 20)
-        Me.Label8.TabIndex = 137
+        Me.Label8.TabIndex = 141
         Me.Label8.Text = "IVA monto"
         '
         'Label9
@@ -800,27 +860,39 @@ Partial Class frmVentas
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(207, 874)
+        Me.Label9.Location = New System.Drawing.Point(207, 508)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(68, 20)
-        Me.Label9.TabIndex = 135
+        Me.Label9.TabIndex = 139
         Me.Label9.Text = "Subtotal"
         '
         'PanelTotales
         '
+        Me.PanelTotales.Controls.Add(Me.txtMontoDtoRecargo)
         Me.PanelTotales.Controls.Add(Me.txtTotal)
         Me.PanelTotales.Controls.Add(Me.txtIvaMonto)
         Me.PanelTotales.Controls.Add(Me.txtSubtotal)
-        Me.PanelTotales.Location = New System.Drawing.Point(107, 884)
+        Me.PanelTotales.Location = New System.Drawing.Point(107, 518)
         Me.PanelTotales.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PanelTotales.Name = "PanelTotales"
-        Me.PanelTotales.Size = New System.Drawing.Size(1085, 79)
-        Me.PanelTotales.TabIndex = 136
+        Me.PanelTotales.Size = New System.Drawing.Size(1168, 79)
+        Me.PanelTotales.TabIndex = 140
+        '
+        'txtMontoDtoRecargo
+        '
+        Me.txtMontoDtoRecargo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtMontoDtoRecargo.Location = New System.Drawing.Point(651, 21)
+        Me.txtMontoDtoRecargo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtMontoDtoRecargo.Name = "txtMontoDtoRecargo"
+        Me.txtMontoDtoRecargo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtMontoDtoRecargo.Size = New System.Drawing.Size(184, 34)
+        Me.txtMontoDtoRecargo.TabIndex = 14
+        Me.txtMontoDtoRecargo.Text = "0"
         '
         'txtTotal
         '
         Me.txtTotal.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTotal.Location = New System.Drawing.Point(845, 21)
+        Me.txtTotal.Location = New System.Drawing.Point(949, 21)
         Me.txtTotal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -831,7 +903,7 @@ Partial Class frmVentas
         'txtIvaMonto
         '
         Me.txtIvaMonto.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIvaMonto.Location = New System.Drawing.Point(448, 21)
+        Me.txtIvaMonto.Location = New System.Drawing.Point(352, 21)
         Me.txtIvaMonto.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtIvaMonto.Name = "txtIvaMonto"
         Me.txtIvaMonto.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -850,6 +922,17 @@ Partial Class frmVentas
         Me.txtSubtotal.TabIndex = 11
         Me.txtSubtotal.Text = "0"
         '
+        'lblMontoDtoRecargo
+        '
+        Me.lblMontoDtoRecargo.AutoSize = True
+        Me.lblMontoDtoRecargo.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.lblMontoDtoRecargo.ForeColor = System.Drawing.Color.White
+        Me.lblMontoDtoRecargo.Location = New System.Drawing.Point(817, 508)
+        Me.lblMontoDtoRecargo.Name = "lblMontoDtoRecargo"
+        Me.lblMontoDtoRecargo.Size = New System.Drawing.Size(62, 20)
+        Me.lblMontoDtoRecargo.TabIndex = 143
+        Me.lblMontoDtoRecargo.Text = "Monto "
+        '
         'frmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -857,7 +940,8 @@ Partial Class frmVentas
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(1529, 988)
+        Me.ClientSize = New System.Drawing.Size(1529, 977)
+        Me.Controls.Add(Me.lblMontoDtoRecargo)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label9)
@@ -962,11 +1046,17 @@ Partial Class frmVentas
     Friend WithEvents cboDetalleFormaPago As ComboBox
     Friend WithEvents Label7 As Label
     Friend WithEvents btnAgregarDetalleFormaPago As PictureBox
+    Friend WithEvents Label23 As Label
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents rbtDescuento As RadioButton
+    Friend WithEvents rbtRecargo As RadioButton
     Friend WithEvents Label11 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents PanelTotales As Panel
+    Friend WithEvents txtMontoDtoRecargo As RichTextBox
     Friend WithEvents txtTotal As RichTextBox
     Friend WithEvents txtIvaMonto As RichTextBox
     Friend WithEvents txtSubtotal As RichTextBox
+    Friend WithEvents lblMontoDtoRecargo As Label
 End Class
