@@ -18,6 +18,7 @@ Public Class AD_Reportes
 
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Contar_Repuestos_BD", conexion)
+                conexion.Open()
                 comando.CommandType = CommandType.StoredProcedure
 
                 Using reader As SqlDataReader = comando.ExecuteReader()
