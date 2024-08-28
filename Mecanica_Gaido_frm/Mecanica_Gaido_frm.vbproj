@@ -200,6 +200,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccesoDatos.vb" />
     <Compile Include="frmAgregarFormaEntrega.Designer.vb">
       <DependentUpon>frmAgregarFormaEntrega.vb</DependentUpon>
     </Compile>
@@ -216,6 +217,12 @@
       <DependentUpon>frmAgregarCiudad.vb</DependentUpon>
     </Compile>
     <Compile Include="frmAgregarCiudad.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgregarPedidoRepuesto.Designer.vb">
+      <DependentUpon>frmAgregarPedidoRepuesto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAgregarPedidoRepuesto.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAgregarRoles.Designer.vb">
@@ -420,6 +427,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarFormaPago.resx">
       <DependentUpon>frmAgregarFormaPago.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAgregarPedidoRepuesto.resx">
+      <DependentUpon>frmAgregarPedidoRepuesto.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarRoles.resx">
       <DependentUpon>frmAgregarRoles.vb</DependentUpon>
