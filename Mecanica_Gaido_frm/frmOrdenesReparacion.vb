@@ -8,18 +8,17 @@ Public Class frmOrdenesReparacion
     Dim o_Orden As New AD_OrdenReparacion
 
 #Region "Procedimientos"
-    Private Sub cboPersonas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPersonas.SelectedIndexChanged
-        If combopersonacargado Then
-            Try
-                Dim ID_Persona = cboPersonas.SelectedValue
-                cboVehiculo.Items.Clear()
-                Cargar_Combo_Vehiculos(ID_Persona)
-            Catch ex As Exception
-                MsgBox("Error al cargar vehículos: " & ex.Message, vbCritical, "Error")
 
-            End Try
+    Private Sub cboPersonas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPersonas.SelectedIndexChanged
+        If combopersonacargado AndAlso cboPersonas.SelectedIndex <> -1 Then
+            Dim ID_Persona As Integer = Convert.ToInt32(cboPersonas.SelectedValue)
+            Cargar_Combo_Vehiculos(ID_Persona)
         End If
     End Sub
+
+
+
+
     Public Sub limpiar()
         txtID.Clear()
         txtSeñasParticulares.Clear()
@@ -27,7 +26,8 @@ Public Class frmOrdenesReparacion
         cboPersonas.SelectedIndex = -1
         CboPersonaServ3.SelectedIndex = -1
         cboVehiculo.SelectedIndex = -1
-        chkActivo.Checked = False
+        chkActivo.Checked = True
+        chkActivo.Visible = False
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -37,6 +37,7 @@ Public Class frmOrdenesReparacion
         ActualizarMontoTotalRep()
         ActualizarMontoTotalS3()
         txtMontoManoObra.Text = Convert.ToDecimal(0).ToString("N2")
+        CalcularTotalOR()
     End Sub
 
     Private Sub frmOrdenesReparacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -123,35 +124,19 @@ Public Class frmOrdenesReparacion
 #End Region
 
 #Region "Cargar cbo"
-
-    Private Sub Cargar_Combo_Vehiculos(ID_Persona)
-        Try
-            Dim tabla As DataTable = o_Orden.Cargar_Combo_Vehiculos(ID_Persona)
-
-            If tabla.Rows.Count > 0 Then
-                cboVehiculo.DataSource = tabla
-                cboVehiculo.DisplayMember = "Nombre"
-                cboVehiculo.ValueMember = "ID_Vehiculo"
-                cboVehiculo.SelectedValue = -1
-            Else
-                MsgBox("No se encontraron Vehiculos para esta persona.", vbInformation, "Información")
-            End If
-
-        Catch ex As Exception
-            MsgBox("Error al cargar los Vehiculos: " & ex.Message, vbCritical, "Error")
-        End Try
-    End Sub
-
     Private combopersonacargado = False
+
+
     Private Sub Cargar_Combo_Personas()
         Try
             Dim tabla As DataTable = o_Orden.Cargar_Combo_Personas()
 
             If tabla.Rows.Count > 0 Then
+                cboPersonas.DataSource = Nothing  ' Desasignar la fuente de datos para evitar problemas
                 cboPersonas.DataSource = tabla
                 cboPersonas.DisplayMember = "Persona"
                 cboPersonas.ValueMember = "ID_Persona"
-                cboPersonas.SelectedValue = -1
+                cboPersonas.SelectedIndex = -1
             Else
                 MsgBox("No se encontraron personas.", vbInformation, "Información")
             End If
@@ -161,6 +146,28 @@ Public Class frmOrdenesReparacion
         End Try
         combopersonacargado = True
     End Sub
+
+
+    Private Sub Cargar_Combo_Vehiculos(ID_Persona As Integer)
+        Try
+            Dim tabla As DataTable = o_Orden.Cargar_Combo_Vehiculos(ID_Persona)
+
+            If tabla.Rows.Count > 0 Then
+                cboVehiculo.DataSource = Nothing  ' Desasignar la fuente de datos para evitar problemas
+                cboVehiculo.DataSource = tabla
+                cboVehiculo.DisplayMember = "Nombre"
+                cboVehiculo.ValueMember = "ID_Vehiculo"
+                cboVehiculo.SelectedIndex = -1
+            Else
+                MsgBox("No se encontraron vehículos para esta persona.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar los vehículos: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+
 
     Private Sub Cargar_Combo_Prestador()
         Try
@@ -628,7 +635,12 @@ Public Class frmOrdenesReparacion
         txtCostoRealS3.SelectAll()
     End Sub
     Private Sub txtMontoManoObra_LostFocus(sender As Object, e As EventArgs) Handles txtMontoManoObra.LostFocus
-        txtMontoManoObra.Text = Convert.ToDecimal(txtMontoManoObra.Text).ToString("N2")
+        If IsNumeric(txtMontoManoObra.Text) = False Then
+            txtMontoManoObra.Text = Convert.ToDecimal(0).ToString("N2")
+        Else
+
+            txtMontoManoObra.Text = Convert.ToDecimal(txtMontoManoObra.Text).ToString("N2")
+        End If
     End Sub
     Private Sub txtMontoManoObra_GotFocus(sender As Object, e As EventArgs) Handles txtMontoManoObra.GotFocus
         txtMontoManoObra.SelectAll()
@@ -643,6 +655,10 @@ Public Class frmOrdenesReparacion
     End Sub
 
 #End Region
+
+#Region "Botones Principales"
+
+
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
 
         Dim ordenReparacionData As New AD_OrdenReparacion
@@ -715,9 +731,14 @@ Public Class frmOrdenesReparacion
                                                                 transaction)
 
 
-                        Dim stockDisponible As Integer = repuestosData.Consultar_StockDisponiblePorID(ID_Repuestos, transaction)
+                        Dim stockDisponible As Integer = repuestosData.Consultar_StockDisponiblePorID(ID_Repuestos,
+                                                                                                      transaction)
+
                         stockDisponible -= Cantidad
-                        repuestosData.Modificar_StockDisponiblePorID(ID_Repuestos, stockDisponible, transaction)
+
+                        repuestosData.Modificar_StockDisponiblePorID(ID_Repuestos,
+                                                                     stockDisponible,
+                                                                     transaction)
                     Next
                 End If
 
@@ -749,6 +770,233 @@ Public Class frmOrdenesReparacion
 
 
     End Sub
+
+    Private Sub grdOrdenReparacion_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdOrdenReparacion.CellClick
+        If e.RowIndex >= 0 AndAlso e.RowIndex < grdOrdenReparacion.Rows.Count Then
+            Dim selectedRow As DataGridViewRow = grdOrdenReparacion.Rows(e.RowIndex)
+            Dim ID_Orden As Integer = Convert.ToInt32(selectedRow.Cells("ID").Value)
+
+            CargarDatosOrden(ID_Orden)
+        End If
+    End Sub
+    Private Sub CargarDatosOrden(ID_Orden As Integer)
+
+        combopersonacargado = False
+
+
+        Dim connectionString = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123"
+
+        Using conn As New SqlConnection(connectionString)
+            Dim query = "SELECT * FROM Ordenes_De_Reparacion WHERE ID_OrdenReparacion = @ID_Orden; " &
+                "SELECT * FROM Servicios_De_Terceros WHERE ID_OrdenReparacion = @ID_Orden; " &
+                "SELECT * FROM Repuestos_Por_Ordenes WHERE ID_OrdenReparacion = @ID_Orden;"
+            Dim adapter As New SqlDataAdapter(query, conn)
+            adapter.SelectCommand.Parameters.AddWithValue("@ID_Orden", ID_Orden)
+
+            Dim ds As New DataSet()
+            adapter.Fill(ds)
+
+            If ds.Tables.Count > 0 Then
+
+                Dim ordenTable As DataTable = ds.Tables(0)
+                If ordenTable.Rows.Count > 0 Then
+                    Dim row As DataRow = ordenTable.Rows(0)
+                    cboPersonas.SelectedValue = row("ID_Persona")
+                    Cargar_Combo_Vehiculos(Convert.ToInt32(row("ID_Persona")))
+                    cboVehiculo.SelectedValue = row("ID_Vehiculo")
+
+
+                    txtSeñasParticulares.Text = row("Señas_Particulares").ToString()
+                    txtMotivoReparacion.Text = row("Motivo_Reparacion").ToString()
+                    dtpTurno.Value = Convert.ToDateTime(row("Fecha_Turno"))
+                    dtpEntrada.Value = Convert.ToDateTime(row("Fecha_Entrada"))
+                    dtpSalida.Value = Convert.ToDateTime(row("Fecha_Salida"))
+                    txtMontoRepuestos.Text = If(IsDBNull(row("MontoRepuestos")), "0,00", Convert.ToDecimal(row("MontoRepuestos")).ToString("N2"))
+                    txtMontoServ3.Text = If(IsDBNull(row("MontoServicioTerceros")), "0,00", Convert.ToDecimal(row("MontoServicioTerceros")).ToString("N2"))
+                    txtMontoManoObra.Text = If(IsDBNull(row("Precio_Mano_De_Obra")), "0,00", Convert.ToDecimal(row("Precio_Mano_De_Obra")).ToString("N2"))
+                    txtMontoTotalOR.Text = If(IsDBNull(row("MontoTotalOrden")), "0,00", Convert.ToDecimal(row("MontoTotalOrden")).ToString("N2"))
+                    chkActivo.Checked = Convert.ToBoolean(row("Estado"))
+                End If
+
+
+                Dim serviciosTable As DataTable = ds.Tables(1)
+                grdServiciosTerceros.Rows.Clear()
+                For Each serviceRow As DataRow In serviciosTable.Rows
+                    Dim Prestador As String = String.Empty
+                    For Each item As DataRowView In CboPersonaServ3.Items
+                        If Convert.ToInt32(item(CboPersonaServ3.ValueMember)) = Convert.ToInt32(serviceRow("ID_Persona")) Then
+                            Prestador = item(CboPersonaServ3.DisplayMember).ToString()
+                            Exit For
+                        End If
+                    Next
+                    grdServiciosTerceros.Rows.Add(serviceRow("ID_ServicioTercero"), serviceRow("ID_Persona"), Prestador, serviceRow("Detalle_Prestacion"),
+                                            serviceRow("Costo_Estimado"), serviceRow("Costo_Real"),
+                                            serviceRow("Estado_Trabajo"), serviceRow("Estado"))
+                Next
+                txtID_Serv3.Text = ""
+                CboPersonaServ3.SelectedIndex = -1
+                txtServicioSolicitado.Text = ""
+                txtCostoEstimadoS3.Text = Convert.ToDecimal(0).ToString("N2")
+                txtCostoRealS3.Text = Convert.ToDecimal(0).ToString("N2")
+
+
+
+
+                Dim repuestosTable As DataTable = ds.Tables(2)
+                grdRepuestos.Rows.Clear()
+                For Each repuestoRow As DataRow In repuestosTable.Rows
+                    Dim NombreRepuesto As String = String.Empty
+                    Dim NombreDiarioRepuesto As String = String.Empty
+
+
+                    Dim repuestoQuery = "SELECT Descripcion, NombreDiario FROM Repuestos WHERE ID_Repuestos = @ID_Repuesto"
+                    Dim repuestoAdapter As New SqlDataAdapter(repuestoQuery, conn)
+                    repuestoAdapter.SelectCommand.Parameters.AddWithValue("@ID_Repuesto", repuestoRow("ID_Repuesto"))
+
+                    Dim repuestoDs As New DataSet()
+                    repuestoAdapter.Fill(repuestoDs)
+                    If repuestoDs.Tables.Count > 0 AndAlso repuestoDs.Tables(0).Rows.Count > 0 Then
+                        Dim repuestoData As DataRow = repuestoDs.Tables(0).Rows(0)
+                        NombreRepuesto = repuestoData("Descripcion").ToString()
+                        NombreDiarioRepuesto = repuestoData("NombreDiario").ToString()
+                    End If
+
+                    Dim totalRep = Convert.ToDecimal(repuestoRow("Cantidad")) * Convert.ToDecimal(repuestoRow("Precio"))
+                    grdRepuestos.Rows.Add(repuestoRow("ID_Repuesto"), NombreRepuesto, NombreDiarioRepuesto, repuestoRow("Cantidad"), repuestoRow("Precio"), totalRep)
+                Next
+                cboProductoOR.SelectedIndex = -1
+            End If
+        End Using
+        chkActivo.Visible = True
+        combopersonacargado = True
+    End Sub
+
+
+    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
+        Dim ID_Orden As Integer = GetSelectedIDOrden()
+
+        If ID_Orden > 0 Then
+            ModificarOrden(ID_Orden)
+        Else
+            MessageBox.Show("Seleccione una orden para modificar.")
+        End If
+    End Sub
+
+    Private Function GetSelectedIDOrden() As Integer
+        If grdOrdenReparacion.SelectedRows.Count > 0 Then
+            Dim selectedRow As DataGridViewRow = grdOrdenReparacion.SelectedRows(0)
+            Return Convert.ToInt32(selectedRow.Cells("ID").Value)
+        End If
+
+        Return -1
+    End Function
+
+    Private Sub ModificarOrden(ID_Orden As Integer)
+        Dim connectionString = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123"
+
+        Using conn As New SqlConnection(connectionString)
+            conn.Open()
+            Dim transaction As SqlTransaction = conn.BeginTransaction()
+
+            Try
+
+                Dim updateOrdenQuery = "UPDATE OrdenReparacion SET ID_Vehiculo = @ID_Vehiculo, " &
+                                   "SeñasParticulares = @SeñasParticulares, MotivoReparacion = @MotivoReparacion, " &
+                                   "Turno = @Turno, Entrada = @Entrada, Salida = @Salida, " &
+                                   "ID_Persona = @ID_Persona, MontoRepuestos = @MontoRepuestos, " &
+                                   "MontoServicios = @MontoServicios, MontoManoObra = @MontoManoObra, " &
+                                   "MontoTotal = @MontoTotal, Activo = @Activo WHERE ID_Orden = @ID_Orden"
+                Dim cmd As New SqlCommand(updateOrdenQuery, conn, transaction)
+                cmd.Parameters.AddWithValue("@ID_Vehiculo", cboVehiculo.SelectedValue)
+                cmd.Parameters.AddWithValue("@SeñasParticulares", txtSeñasParticulares.Text)
+                cmd.Parameters.AddWithValue("@MotivoReparacion", txtMotivoReparacion.Text)
+                cmd.Parameters.AddWithValue("@Turno", dtpTurno.Value)
+                cmd.Parameters.AddWithValue("@Entrada", dtpEntrada.Value)
+                cmd.Parameters.AddWithValue("@Salida", dtpSalida.Value)
+                cmd.Parameters.AddWithValue("@ID_Persona", cboPersonas.SelectedValue)
+                cmd.Parameters.AddWithValue("@MontoRepuestos", Convert.ToDecimal(txtMontoRepuestos.Text))
+                cmd.Parameters.AddWithValue("@MontoServicios", Convert.ToDecimal(txtMontoServ3.Text))
+                cmd.Parameters.AddWithValue("@MontoManoObra", Convert.ToDecimal(txtMontoManoObra.Text))
+                cmd.Parameters.AddWithValue("@MontoTotal", Convert.ToDecimal(txtMontoTotalOR.Text))
+                cmd.Parameters.AddWithValue("@Activo", Convert.ToBoolean(chkActivo.Checked))
+                cmd.Parameters.AddWithValue("@ID_Orden", ID_Orden)
+                cmd.ExecuteNonQuery()
+
+
+                Dim deleteServiciosQuery = "DELETE FROM ServiciosTerceros WHERE ID_Orden = @ID_Orden"
+                cmd = New SqlCommand(deleteServiciosQuery, conn, transaction)
+                cmd.Parameters.AddWithValue("@ID_Orden", ID_Orden)
+                cmd.ExecuteNonQuery()
+
+
+                If grdServiciosTerceros.Rows.Count > 0 Then
+                    For Each row As DataGridViewRow In grdServiciosTerceros.Rows
+                        Dim ID_Prestador As Integer = Convert.ToInt32(row.Cells("ID_Prestador").Value)
+                        Dim ServSolicitado As String = row.Cells("ServSolicitado").Value
+                        Dim CostoEstimado As Decimal = Convert.ToDecimal(row.Cells("CostoEstimado").Value)
+                        Dim CostoReal As Decimal = Convert.ToDecimal(row.Cells("CostoReal").Value)
+                        Dim Finalizado As Boolean = Convert.ToBoolean(row.Cells("Finalizado").Value)
+                        Dim Estado As Boolean = Convert.ToBoolean(row.Cells("Estado").Value)
+
+                        Dim insertServiciosQuery = "INSERT INTO ServiciosTerceros (ID_Orden, Turno, ID_Prestador, ServSolicitado, " &
+                                               "CostoEstimado, CostoReal, Finalizado, Estado) VALUES " &
+                                               "(@ID_Orden, @Turno, @ID_Prestador, @ServSolicitado, " &
+                                               "@CostoEstimado, @CostoReal, @Finalizado, @Estado)"
+                        cmd = New SqlCommand(insertServiciosQuery, conn, transaction)
+                        cmd.Parameters.AddWithValue("@ID_Orden", ID_Orden)
+                        cmd.Parameters.AddWithValue("@Turno", dtpEntrada.Value)
+                        cmd.Parameters.AddWithValue("@ID_Prestador", ID_Prestador)
+                        cmd.Parameters.AddWithValue("@ServSolicitado", ServSolicitado)
+                        cmd.Parameters.AddWithValue("@CostoEstimado", CostoEstimado)
+                        cmd.Parameters.AddWithValue("@CostoReal", CostoReal)
+                        cmd.Parameters.AddWithValue("@Finalizado", Finalizado)
+                        cmd.Parameters.AddWithValue("@Estado", Estado)
+                        cmd.ExecuteNonQuery()
+                    Next
+                End If
+
+
+                Dim deleteRepuestosQuery = "DELETE FROM RepuestosOrdenes WHERE ID_Orden = @ID_Orden"
+                cmd = New SqlCommand(deleteRepuestosQuery, conn, transaction)
+                cmd.Parameters.AddWithValue("@ID_Orden", ID_Orden)
+                cmd.ExecuteNonQuery()
+
+
+                If grdRepuestos.Rows.Count > 0 Then
+                    For Each row As DataGridViewRow In grdRepuestos.Rows
+                        Dim ID_Repuestos As Integer = Convert.ToInt32(row.Cells("ID").Value)
+                        Dim Cantidad As Decimal = Convert.ToDecimal(row.Cells("Cantidad").Value)
+                        Dim Precio_Rep As Decimal = Convert.ToDecimal(row.Cells("Precio").Value)
+
+                        Dim insertRepuestosQuery = "INSERT INTO RepuestosOrdenes (ID_Repuestos, ID_Orden, Cantidad, Precio, Activo) " &
+                                               "VALUES (@ID_Repuestos, @ID_Orden, @Cantidad, @Precio, @Activo)"
+                        cmd = New SqlCommand(insertRepuestosQuery, conn, transaction)
+                        cmd.Parameters.AddWithValue("@ID_Repuestos", ID_Repuestos)
+                        cmd.Parameters.AddWithValue("@ID_Orden", ID_Orden)
+                        cmd.Parameters.AddWithValue("@Cantidad", Cantidad)
+                        cmd.Parameters.AddWithValue("@Precio", Precio_Rep)
+                        cmd.Parameters.AddWithValue("@Activo", True)
+                        cmd.ExecuteNonQuery()
+
+                        Dim repuestosData As New AD_Productos
+
+                        Dim stockDisponible As Integer = repuestosData.Consultar_StockDisponiblePorID(ID_Repuestos, transaction)
+                        stockDisponible -= Cantidad
+                        repuestosData.Modificar_StockDisponiblePorID(ID_Repuestos, stockDisponible, transaction)
+                    Next
+                End If
+
+
+                transaction.Commit()
+                MessageBox.Show("Orden modificada exitosamente.")
+            Catch ex As Exception
+                transaction.Rollback()
+                MessageBox.Show("Error al modificar la orden: " & ex.Message)
+            End Try
+        End Using
+    End Sub
+#End Region
+
 
 
 

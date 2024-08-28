@@ -69,5 +69,27 @@ Public Class AD_FormasDePago
             End Using
         End Using
     End Function
+
+    Public Function Modificar_DetalleFormaPago(ByVal ID_Detalle As Integer, ByVal Nombre As String, ByVal Recargo As Decimal, ByVal Descuento As Decimal, ByVal Porcentaje As Decimal, ByVal Estado As Boolean) As Boolean
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Modificar_Detalle_FormaPago", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@ID_DetalleFormaPago", ID_Detalle)
+                comando.Parameters.AddWithValue("@Nombre", Nombre)
+                comando.Parameters.AddWithValue("@Recargo", Recargo)
+                comando.Parameters.AddWithValue("@Descuento", Descuento)
+                comando.Parameters.AddWithValue("@Porcentaje", Porcentaje)
+                comando.Parameters.AddWithValue("@Estado", Estado)
+
+                Try
+                    conexion.Open()
+                    comando.ExecuteNonQuery()
+                    Return True
+                Catch ex As Exception
+                    Throw New Exception("Error al modificar el detalle de forma de pago: " & ex.Message, ex)
+                End Try
+            End Using
+        End Using
+    End Function
 End Class
 

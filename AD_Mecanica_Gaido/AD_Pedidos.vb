@@ -5,7 +5,7 @@ Imports System.IO
 Imports System.Configuration
 Imports System.Data.Common
 
-Public Class AD_MenuPrincipal
+Public Class AD_Pedidos
     Private connectionstring As String
 
     Public Sub New()
@@ -23,6 +23,4 @@ Public Class AD_MenuPrincipal
         End Using
         Return tabla
     End Function
-
-
 End Class
