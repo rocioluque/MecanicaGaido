@@ -2,8 +2,6 @@
 'Imports LiveCharts.Wpf
 Imports System.Data
 Imports System.Runtime.InteropServices
-Imports Comun_Soporte
-Imports Mecanica_Gaido_frm.User32
 Imports System.Windows.Forms.DataVisualization.Charting
 Imports System.Data.SqlClient
 Imports System.Configuration

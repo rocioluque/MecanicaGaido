@@ -12,7 +12,6 @@ Imports iTextSharp.text
 Imports iTextSharp.text.pdf
 
 Public Class frmMenuPrincipal
-    Dim o_MenuPrincipal As New AD_MenuPrincipal()
 
     Private Sub MenuPrincipal_Load(sender As Object, e As EventArgs) Handles Me.Load
         lblUsuario.Text = UsuarioActivo.usuario
