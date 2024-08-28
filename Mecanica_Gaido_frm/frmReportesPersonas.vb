@@ -7,7 +7,7 @@ Imports System.Data.SqlClient
 Imports System.Configuration
 Imports System.Globalization
 
-Public Class frmReportes
+Public Class frmReportesPersonas
     ' Private Sub grafico()
     'Dim cartesianChart As New LiveCharts.WinForms.CartesianChart()
     '  cartesianChart.Series = New SeriesCollection From {

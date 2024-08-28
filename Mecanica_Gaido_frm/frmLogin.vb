@@ -7,6 +7,7 @@ Imports Mecanica_Gaido_frm.User32
 Public Class frmLogin
     Dim o_Login As New AD_Login
 
+
 #Region "Aceptar"
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAcceder.Click
         o_Login = New AD_Login
@@ -28,6 +29,20 @@ Public Class frmLogin
                 End If
             End If
         End If
+    End Sub
+#End Region
+
+#Region "Contraseña"
+    Public Sub TogglePasswordVisibility(chkVerContraseña As CheckBox, txtContraseña As TextBox)
+        If chkVerContraseña.Checked Then
+            txtContraseña.UseSystemPasswordChar = False
+        Else
+            txtContraseña.UseSystemPasswordChar = True
+        End If
+    End Sub
+
+    Private Sub chkVerContraseña_CheckedChanged(sender As Object, e As EventArgs) Handles chkVerContraseña.CheckedChanged
+        TogglePasswordVisibility(chkVerContraseña, txtContraseña)
     End Sub
 #End Region
 
