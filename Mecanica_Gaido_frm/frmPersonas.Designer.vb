@@ -22,7 +22,7 @@ Partial Class frmPersonas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPersonas))
         Me.txtID = New System.Windows.Forms.TextBox()
         Me.lblId = New System.Windows.Forms.Label()
@@ -81,6 +81,8 @@ Partial Class frmPersonas
         Me.lblNota = New System.Windows.Forms.Label()
         Me.PanelNotas = New System.Windows.Forms.Panel()
         Me.txtNota = New System.Windows.Forms.RichTextBox()
+        Me.txtBuscar = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
         CType(Me.grdPersonas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDatosPersonales.SuspendLayout()
         Me.PanelDirecciones.SuspendLayout()
@@ -91,7 +93,7 @@ Partial Class frmPersonas
         'txtID
         '
         Me.txtID.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtID.Location = New System.Drawing.Point(257, 40)
+        Me.txtID.Location = New System.Drawing.Point(255, 74)
         Me.txtID.Margin = New System.Windows.Forms.Padding(2)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(60, 23)
@@ -103,7 +105,7 @@ Partial Class frmPersonas
         Me.lblId.AutoSize = True
         Me.lblId.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblId.ForeColor = System.Drawing.Color.White
-        Me.lblId.Location = New System.Drawing.Point(135, 43)
+        Me.lblId.Location = New System.Drawing.Point(133, 77)
         Me.lblId.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblId.Name = "lblId"
         Me.lblId.Size = New System.Drawing.Size(72, 17)
@@ -119,7 +121,7 @@ Partial Class frmPersonas
         Me.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBuscar.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnBuscar.ForeColor = System.Drawing.Color.White
-        Me.btnBuscar.Location = New System.Drawing.Point(340, 36)
+        Me.btnBuscar.Location = New System.Drawing.Point(338, 70)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(56, 28)
         Me.btnBuscar.TabIndex = 2
@@ -136,7 +138,7 @@ Partial Class frmPersonas
         Me.btnEmpleados.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEmpleados.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEmpleados.ForeColor = System.Drawing.Color.White
-        Me.btnEmpleados.Location = New System.Drawing.Point(342, 426)
+        Me.btnEmpleados.Location = New System.Drawing.Point(340, 460)
         Me.btnEmpleados.Name = "btnEmpleados"
         Me.btnEmpleados.Size = New System.Drawing.Size(100, 37)
         Me.btnEmpleados.TabIndex = 22
@@ -152,7 +154,7 @@ Partial Class frmPersonas
         Me.btnDatoFiscal.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDatoFiscal.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDatoFiscal.ForeColor = System.Drawing.Color.White
-        Me.btnDatoFiscal.Location = New System.Drawing.Point(138, 426)
+        Me.btnDatoFiscal.Location = New System.Drawing.Point(136, 460)
         Me.btnDatoFiscal.Name = "btnDatoFiscal"
         Me.btnDatoFiscal.Size = New System.Drawing.Size(121, 37)
         Me.btnDatoFiscal.TabIndex = 21
@@ -169,7 +171,7 @@ Partial Class frmPersonas
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
-        Me.btnCancelar.Location = New System.Drawing.Point(891, 426)
+        Me.btnCancelar.Location = New System.Drawing.Point(889, 460)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(100, 37)
         Me.btnCancelar.TabIndex = 25
@@ -185,7 +187,7 @@ Partial Class frmPersonas
         Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAceptar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAceptar.ForeColor = System.Drawing.Color.White
-        Me.btnAceptar.Location = New System.Drawing.Point(525, 426)
+        Me.btnAceptar.Location = New System.Drawing.Point(523, 460)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(100, 37)
         Me.btnAceptar.TabIndex = 23
@@ -201,16 +203,16 @@ Partial Class frmPersonas
         Me.grdPersonas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         Me.grdPersonas.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdPersonas.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdPersonas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdPersonas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.grdPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdPersonas.Location = New System.Drawing.Point(138, 498)
+        Me.grdPersonas.Location = New System.Drawing.Point(136, 532)
         Me.grdPersonas.Name = "grdPersonas"
         Me.grdPersonas.ReadOnly = True
         Me.grdPersonas.RowHeadersVisible = False
@@ -228,7 +230,7 @@ Partial Class frmPersonas
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
-        Me.btnModificar.Location = New System.Drawing.Point(708, 426)
+        Me.btnModificar.Location = New System.Drawing.Point(706, 460)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(100, 37)
         Me.btnModificar.TabIndex = 24
@@ -240,7 +242,7 @@ Partial Class frmPersonas
         Me.lblTipoPersona.AutoSize = True
         Me.lblTipoPersona.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblTipoPersona.ForeColor = System.Drawing.Color.White
-        Me.lblTipoPersona.Location = New System.Drawing.Point(135, 87)
+        Me.lblTipoPersona.Location = New System.Drawing.Point(133, 121)
         Me.lblTipoPersona.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblTipoPersona.Name = "lblTipoPersona"
         Me.lblTipoPersona.Size = New System.Drawing.Size(101, 17)
@@ -253,7 +255,7 @@ Partial Class frmPersonas
         Me.cboTipoPersona.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboTipoPersona.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboTipoPersona.FormattingEnabled = True
-        Me.cboTipoPersona.Location = New System.Drawing.Point(257, 79)
+        Me.cboTipoPersona.Location = New System.Drawing.Point(255, 113)
         Me.cboTipoPersona.Margin = New System.Windows.Forms.Padding(2)
         Me.cboTipoPersona.Name = "cboTipoPersona"
         Me.cboTipoPersona.Size = New System.Drawing.Size(139, 25)
@@ -275,7 +277,7 @@ Partial Class frmPersonas
         Me.PanelDatosPersonales.Controls.Add(Me.lblNombre)
         Me.PanelDatosPersonales.Controls.Add(Me.lblApellido)
         Me.PanelDatosPersonales.Controls.Add(Me.txtApellido)
-        Me.PanelDatosPersonales.Location = New System.Drawing.Point(138, 124)
+        Me.PanelDatosPersonales.Location = New System.Drawing.Point(136, 158)
         Me.PanelDatosPersonales.Name = "PanelDatosPersonales"
         Me.PanelDatosPersonales.Size = New System.Drawing.Size(258, 283)
         Me.PanelDatosPersonales.TabIndex = 53
@@ -459,7 +461,7 @@ Partial Class frmPersonas
         Me.PanelDirecciones.Controls.Add(Me.lblNumero)
         Me.PanelDirecciones.Controls.Add(Me.txtTelefonoMovil)
         Me.PanelDirecciones.Controls.Add(Me.lblTelefonoMovil)
-        Me.PanelDirecciones.Location = New System.Drawing.Point(421, 39)
+        Me.PanelDirecciones.Location = New System.Drawing.Point(419, 73)
         Me.PanelDirecciones.Name = "PanelDirecciones"
         Me.PanelDirecciones.Size = New System.Drawing.Size(571, 267)
         Me.PanelDirecciones.TabIndex = 77
@@ -759,7 +761,7 @@ Partial Class frmPersonas
         Me.lblDirecciones.AutoSize = True
         Me.lblDirecciones.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblDirecciones.ForeColor = System.Drawing.Color.White
-        Me.lblDirecciones.Location = New System.Drawing.Point(433, 31)
+        Me.lblDirecciones.Location = New System.Drawing.Point(431, 65)
         Me.lblDirecciones.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblDirecciones.Name = "lblDirecciones"
         Me.lblDirecciones.Size = New System.Drawing.Size(79, 17)
@@ -771,7 +773,7 @@ Partial Class frmPersonas
         Me.lblDatosPersonales.AutoSize = True
         Me.lblDatosPersonales.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblDatosPersonales.ForeColor = System.Drawing.Color.White
-        Me.lblDatosPersonales.Location = New System.Drawing.Point(150, 116)
+        Me.lblDatosPersonales.Location = New System.Drawing.Point(148, 150)
         Me.lblDatosPersonales.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblDatosPersonales.Name = "lblDatosPersonales"
         Me.lblDatosPersonales.Size = New System.Drawing.Size(109, 17)
@@ -783,7 +785,7 @@ Partial Class frmPersonas
         Me.lblNota.AutoSize = True
         Me.lblNota.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblNota.ForeColor = System.Drawing.Color.White
-        Me.lblNota.Location = New System.Drawing.Point(433, 314)
+        Me.lblNota.Location = New System.Drawing.Point(431, 348)
         Me.lblNota.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblNota.Name = "lblNota"
         Me.lblNota.Size = New System.Drawing.Size(146, 17)
@@ -793,7 +795,7 @@ Partial Class frmPersonas
         'PanelNotas
         '
         Me.PanelNotas.Controls.Add(Me.txtNota)
-        Me.PanelNotas.Location = New System.Drawing.Point(421, 322)
+        Me.PanelNotas.Location = New System.Drawing.Point(419, 356)
         Me.PanelNotas.Name = "PanelNotas"
         Me.PanelNotas.Size = New System.Drawing.Size(571, 84)
         Me.PanelNotas.TabIndex = 79
@@ -807,6 +809,28 @@ Partial Class frmPersonas
         Me.txtNota.TabIndex = 20
         Me.txtNota.Text = ""
         '
+        'txtBuscar
+        '
+        Me.txtBuscar.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtBuscar.Location = New System.Drawing.Point(255, 30)
+        Me.txtBuscar.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtBuscar.Name = "txtBuscar"
+        Me.txtBuscar.Size = New System.Drawing.Size(735, 23)
+        Me.txtBuscar.TabIndex = 80
+        Me.txtBuscar.Tag = ""
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.Label11.ForeColor = System.Drawing.Color.White
+        Me.Label11.Location = New System.Drawing.Point(133, 37)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(49, 17)
+        Me.Label11.TabIndex = 81
+        Me.Label11.Text = "Buscar"
+        '
         'frmPersonas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -814,7 +838,9 @@ Partial Class frmPersonas
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(1118, 598)
+        Me.ClientSize = New System.Drawing.Size(1135, 598)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.txtBuscar)
         Me.Controls.Add(Me.lblNota)
         Me.Controls.Add(Me.PanelNotas)
         Me.Controls.Add(Me.lblDatosPersonales)
@@ -905,4 +931,6 @@ Partial Class frmPersonas
     Friend WithEvents Label6 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents msktxtNumeroDocumento As MaskedTextBox
+    Friend WithEvents txtBuscar As TextBox
+    Friend WithEvents Label11 As Label
 End Class
