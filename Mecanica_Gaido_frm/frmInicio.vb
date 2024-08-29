@@ -7,9 +7,7 @@ Imports System.Globalization
 Imports AD_Mecanica_Gaido
 
 Public Class frmInicio
-    Dim o_MenuPrincipal As New AD_MenuPrincipal()
-    Private accesoDatos As New AccesoDatos()
-
+    Dim o_reportes As New AD_Reportes()
     Private Sub frmInicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblHora.Visible = True
         lblFecha.Visible = True
@@ -26,7 +24,6 @@ Public Class frmInicio
 
 #Region "Grafico"
     Public Sub cargar_grafico_Repuestos()
-        ' Limpiar el gráfico existente
         chtRepuestos.Series.Clear()
         chtRepuestos.ChartAreas.Clear()
 
@@ -34,7 +31,6 @@ Public Class frmInicio
         Dim chartArea As New ChartArea()
         chtRepuestos.ChartAreas.Add(chartArea)
 
-        ' Establecer el fondo del área del gráfico como transparente
         chtRepuestos.ChartAreas(0).BackColor = Color.Transparent
 
         ' Crear y configurar la serie para el gráfico tipo Pie
@@ -42,37 +38,10 @@ Public Class frmInicio
         series.ChartType = SeriesChartType.Pie
         chtRepuestos.Series.Add(series)
 
-        ' Variables para almacenar los resultados de la base de datos
-        Dim muchos As Integer = 0
-        Dim cero As Integer = 0
-        Dim pocos As Integer = 0
-
-        ' Conectar a la base de datos y ejecutar el procedimiento almacenado
-        Using conn As New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
-            conn.Open()
-
-            ' Crear el comando para ejecutar el procedimiento almacenado
-            Using cmd As New SqlCommand("Contar_Repuestos_BD", conn)
-                cmd.CommandType = CommandType.StoredProcedure
-
-                ' Ejecutar el comando y leer los resultados
-                Using reader As SqlDataReader = cmd.ExecuteReader()
-                    If reader.Read() Then
-                        muchos = Convert.ToInt32(reader("TotalMuchos"))
-                    End If
-
-                    ' Mover al siguiente resultado y leer los inactivos
-                    If reader.NextResult() AndAlso reader.Read() Then
-                        cero = Convert.ToInt32(reader("TotalCero"))
-                    End If
-
-                    ' Mover al siguiente resultado y leer los Repuestos que quedan pocos.
-                    If reader.NextResult() AndAlso reader.Read() Then
-                        pocos = Convert.ToInt32(reader("TotalPocos"))
-                    End If
-                End Using
-            End Using
-        End Using
+        Dim datos As Tuple(Of Integer, Integer, Integer) = o_reportes.ObtenerDatosRepuestos()
+        Dim muchos As Integer = datos.Item1
+        Dim cero As Integer = datos.Item2
+        Dim pocos As Integer = datos.Item3
 
         ' Agregar datos al gráfico
         chtRepuestos.Series(0).Points.AddXY("En Stock.", muchos)

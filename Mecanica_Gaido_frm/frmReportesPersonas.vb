@@ -2,14 +2,12 @@
 'Imports LiveCharts.Wpf
 Imports System.Data
 Imports System.Runtime.InteropServices
-Imports Comun_Soporte
-Imports Mecanica_Gaido_frm.User32
 Imports System.Windows.Forms.DataVisualization.Charting
 Imports System.Data.SqlClient
 Imports System.Configuration
 Imports System.Globalization
 
-Public Class frmReportes
+Public Class frmReportesPersonas
     ' Private Sub grafico()
     'Dim cartesianChart As New LiveCharts.WinForms.CartesianChart()
     '  cartesianChart.Series = New SeriesCollection From {

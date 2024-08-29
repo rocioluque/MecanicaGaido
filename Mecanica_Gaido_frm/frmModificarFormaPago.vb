@@ -125,9 +125,10 @@ Public Class frmModificarFormaPago
             If txtIdFP.Text <> Nothing Then
                 o_FormasDePago.Modificar_FormasDePago(txtIdFP.Text, txtFormaDePago.Text, chkEstadoFP.Checked)
 
-                o_FormasDePago.Modificar_DetalleFormaPago(txtIdDetalleFP.Text, txtNombreDetalle.Text,
+                If txtIdDetalleFP.Text <> Nothing And txtNombreDetalle.Text <> Nothing Then
+                    o_FormasDePago.Modificar_DetalleFormaPago(txtIdDetalleFP.Text, txtNombreDetalle.Text,
                                                           rbtRecargo.Checked, rbtDescuento.Checked, txtPorcentaje.Text, chkEstadoDetalleFP.Checked)
-
+                End If
 
                 MsgBox("Forma de pago y detalles modificados correctamente.", vbInformation, "Éxito")
                 Cargar_Grilla()

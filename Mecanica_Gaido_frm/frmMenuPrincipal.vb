@@ -12,7 +12,6 @@ Imports iTextSharp.text
 Imports iTextSharp.text.pdf
 
 Public Class frmMenuPrincipal
-    Dim o_MenuPrincipal As New AD_MenuPrincipal()
 
     Private Sub MenuPrincipal_Load(sender As Object, e As EventArgs) Handles Me.Load
         lblUsuario.Text = UsuarioActivo.usuario
@@ -20,7 +19,6 @@ Public Class frmMenuPrincipal
         PintarBotonInicio()
         MostrarInicio()
     End Sub
-
 
     Public Sub MostrarInicio()
         AbrirFormHijo(New frmInicio(), Nothing)
@@ -33,9 +31,9 @@ Public Class frmMenuPrincipal
     End Sub
 #End Region
 
-#Region "Productos"
-    Private Sub btnProductos_Click(sender As Object, e As EventArgs) Handles btnProductos.Click
-        AbrirFormHijo(New frmProductos(), DirectCast(sender, Button))
+#Region "Personas"
+    Private Sub btnPersonas_Click(sender As Object, e As EventArgs) Handles btnPersonas.Click
+        AbrirFormHijo(New frmPersonas(), DirectCast(sender, Button))
         OcultarPaneles()
     End Sub
 #End Region
@@ -47,23 +45,16 @@ Public Class frmMenuPrincipal
     End Sub
 #End Region
 
-#Region "Personas"
-    Private Sub btnPersonas_Click(sender As Object, e As EventArgs) Handles btnPersonas.Click
-        AbrirFormHijo(New frmPersonas(), DirectCast(sender, Button))
-        OcultarPaneles()
-    End Sub
-#End Region
-
 #Region "Orden Reparacion"
-    Private Sub btnOrdenReparacón_Click(sender As Object, e As EventArgs) Handles btnOrdenReparacón.Click
+    Private Sub btnOrdenReparacón_Click(sender As Object, e As EventArgs) Handles btnOrdenReparacion.Click
         AbrirFormHijo(New frmOrdenesReparacion(), DirectCast(sender, Button))
         OcultarPaneles()
     End Sub
 #End Region
 
-#Region "Ventas"
-    Private Sub btnVentas_Click(sender As Object, e As EventArgs) Handles btnVentas.Click
-        AbrirFormHijo(New frmVentas(), DirectCast(sender, Button))
+#Region "Productos"
+    Private Sub btnProducto_Click(sender As Object, e As EventArgs) Handles btnProducto.Click
+        AbrirFormHijo(New frmProductos(), DirectCast(sender, Button))
         OcultarPaneles()
     End Sub
 #End Region
@@ -75,9 +66,52 @@ Public Class frmMenuPrincipal
     End Sub
 #End Region
 
-#Region "Reportes"
-    Private Sub btnReportes_Click(sender As Object, e As EventArgs) Handles btnReportes.Click
-        AbrirFormHijo(New frmReportes(), DirectCast(sender, Button))
+#Region "Ventas"
+    Private Sub btnVentas_Click(sender As Object, e As EventArgs) Handles btnVentas.Click
+        AbrirFormHijo(New frmVentas(), DirectCast(sender, Button))
+        OcultarPaneles()
+    End Sub
+#End Region
+
+#Region "Tablero de Control"
+    Private Sub btnReportes_Click(sender As Object, e As EventArgs) Handles btnTableroControl.Click
+        MostrarPaneles(PanelCboTableroControl)
+    End Sub
+#End Region
+
+#Region "Cbo Tablero de Control"
+    Private Sub btnRepPersona_Click(sender As Object, e As EventArgs) Handles btnRepPersona.Click
+        AbrirFormCbo(New frmReportesPersonas(), DirectCast(sender, Button))
+        OcultarPaneles()
+    End Sub
+
+    Private Sub btnRepVehiculos_Click(sender As Object, e As EventArgs) Handles btnRepVehiculos.Click
+        AbrirFormCbo(New frmReportesVehiculos(), DirectCast(sender, Button))
+        OcultarPaneles()
+    End Sub
+
+    Private Sub btnRepReparaciones_Click(sender As Object, e As EventArgs) Handles btnRepReparaciones.Click
+        AbrirFormCbo(New frmReportesReparaciones(), DirectCast(sender, Button))
+        OcultarPaneles()
+    End Sub
+
+    Private Sub btnRepProductos_Click(sender As Object, e As EventArgs) Handles btnRepProductos.Click
+        AbrirFormCbo(New frmReportesProductos(), DirectCast(sender, Button))
+        OcultarPaneles()
+    End Sub
+
+    Private Sub btnRepCompras_Click(sender As Object, e As EventArgs) Handles btnRepCompras.Click
+        AbrirFormCbo(New frmReportesCompras(), DirectCast(sender, Button))
+        OcultarPaneles()
+    End Sub
+
+    Private Sub btnRepVentas_Click(sender As Object, e As EventArgs) Handles btnRepVentas.Click
+        AbrirFormCbo(New frmReportesVentas(), DirectCast(sender, Button))
+        OcultarPaneles()
+    End Sub
+
+    Private Sub btnMiscelaneas_Click(sender As Object, e As EventArgs) Handles btnMiscelaneas.Click
+        AbrirFormCbo(New frmReportesMiscelaneas(), DirectCast(sender, Button))
         OcultarPaneles()
     End Sub
 #End Region
@@ -88,8 +122,9 @@ Public Class frmMenuPrincipal
     End Sub
 
     Private Sub OcultarPaneles()
-        If PanelCboGestion.Visible = True Then
+        If PanelCboGestion.Visible = True Or PanelCboTableroControl.Visible = True Then
             PanelCboGestion.Visible = False
+            PanelCboTableroControl.Visible = False
         End If
     End Sub
 
@@ -160,7 +195,8 @@ Public Class frmMenuPrincipal
             SendMessage(Me.Handle, &HA1, 2, 0)
         End If
     End Sub
-    Private Sub panelContenedor_MouseDown(sender As Object, e As MouseEventArgs) Handles panelContenedor.MouseDown
+
+    Private Sub panelContenedor_MouseDown(sender As Object, e As MouseEventArgs) Handles PanelContenedor.MouseDown
         If e.Button = MouseButtons.Left Then
             ReleaseCapture()
             SendMessage(Me.Handle, &HA1, 2, 0)
@@ -209,8 +245,8 @@ Public Class frmMenuPrincipal
         End If
 
         'Si el contenedor panelContenedor ya tiene controles hijos, elimina el primer control
-        If Me.panelContenedor.Controls.Count > 0 Then
-            Me.panelContenedor.Controls.RemoveAt(0)
+        If Me.PanelContenedor.Controls.Count > 0 Then
+            Me.PanelContenedor.Controls.RemoveAt(0)
         End If
 
         'Convierte el objeto formHijo a un tipo Form
@@ -222,16 +258,16 @@ Public Class frmMenuPrincipal
             ' El formulario se ajustará al tamaño completo del contenedor
             fh.Dock = DockStyle.Fill
             'Agrega el formulario al contenedor
-            Me.panelContenedor.Controls.Add(fh)
+            Me.PanelContenedor.Controls.Add(fh)
             'Almacena una referencia al formulario hijo en la propiedad Tag del contenedor.
-            Me.panelContenedor.Tag = fh
+            Me.PanelContenedor.Tag = fh
             fh.Show()
             'Trae el formulario al frente de cualquier otro control
             fh.BringToFront()
         End If
 
         ' Si no se agregó ningún formulario hijo, pinta el botón "Inicio"
-        If Me.panelContenedor.Controls.Count = 0 Then
+        If Me.PanelContenedor.Controls.Count = 0 Then
             PintarBotonInicio()
         End If
     End Sub
@@ -247,8 +283,8 @@ Public Class frmMenuPrincipal
         sender.BackColor = Color.SeaGreen
 
         'Si el contenedor panelContenedor ya tiene controles hijos, elimina el primer control
-        If Me.panelContenedor.Controls.Count > 0 Then
-            Me.panelContenedor.Controls.RemoveAt(0)
+        If Me.PanelContenedor.Controls.Count > 0 Then
+            Me.PanelContenedor.Controls.RemoveAt(0)
         End If
 
         'Convierte el objeto formHijo a un tipo Form
@@ -260,16 +296,16 @@ Public Class frmMenuPrincipal
             ' El formulario se ajustará al tamaño completo del contenedor
             fh.Dock = DockStyle.Fill
             'Agrega el formulario al contenedor
-            Me.panelContenedor.Controls.Add(fh)
+            Me.PanelContenedor.Controls.Add(fh)
             'Almacena una referencia al formulario hijo en la propiedad Tag del contenedor.
-            Me.panelContenedor.Tag = fh
+            Me.PanelContenedor.Tag = fh
             fh.Show()
             'Trae el formulario al frente de cualquier otro control
             fh.BringToFront()
         End If
 
         ' Si no se agregó ningún formulario hijo, pinta el botón "Inicio"
-        If Me.panelContenedor.Controls.Count = 0 Then
+        If Me.PanelContenedor.Controls.Count = 0 Then
             PintarBotonInicio()
         End If
     End Sub
@@ -297,8 +333,8 @@ Public Class frmMenuPrincipal
         Dim panelContenedorLocation As New Point(panelMenuWidth, 0)
 
         ' Establecer el nuevo tamaño y posición del panel contenedor
-        panelContenedor.Size = New Size(panelContenedorWidth, panelContenedorHeight)
-        panelContenedor.Location = panelContenedorLocation
+        PanelContenedor.Size = New Size(panelContenedorWidth, panelContenedorHeight)
+        PanelContenedor.Location = panelContenedorLocation
     End Sub
 #End Region
 

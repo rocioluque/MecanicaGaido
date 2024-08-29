@@ -201,6 +201,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos.vb" />
+    <Compile Include="frmAgregarDetalleFormaPago.Designer.vb">
+      <DependentUpon>frmAgregarDetalleFormaPago.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAgregarDetalleFormaPago.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmAgregarFormaEntrega.Designer.vb">
       <DependentUpon>frmAgregarFormaEntrega.vb</DependentUpon>
     </Compile>
@@ -375,10 +381,46 @@
     <Compile Include="frmAgregarTipoVenta.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmReportes.Designer.vb">
-      <DependentUpon>frmReportes.vb</DependentUpon>
+    <Compile Include="frmReportesCompras.Designer.vb">
+      <DependentUpon>frmReportesCompras.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmReportes.vb">
+    <Compile Include="frmReportesCompras.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportesMiscelaneas.Designer.vb">
+      <DependentUpon>frmReportesMiscelaneas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportesMiscelaneas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportesPersonas.Designer.vb">
+      <DependentUpon>frmReportesPersonas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportesPersonas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportesProductos.Designer.vb">
+      <DependentUpon>frmReportesProductos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportesProductos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportesReparaciones.Designer.vb">
+      <DependentUpon>frmReportesReparaciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportesReparaciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportesVehiculos.Designer.vb">
+      <DependentUpon>frmReportesVehiculos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportesVehiculos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportesVentas.Designer.vb">
+      <DependentUpon>frmReportesVentas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportesVentas.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmVehiculos.Designer.vb">
@@ -421,6 +463,9 @@
   <ItemGroup>
     <EmbeddedResource Include="frmAgregarCiudad.resx">
       <DependentUpon>frmAgregarCiudad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAgregarDetalleFormaPago.resx">
+      <DependentUpon>frmAgregarDetalleFormaPago.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarFormaEntrega.resx">
       <DependentUpon>frmAgregarFormaEntrega.vb</DependentUpon>
@@ -506,8 +551,26 @@
     <EmbeddedResource Include="frmAgregarTipoVehiculo.resx">
       <DependentUpon>frmAgregarTipoVehiculo.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmReportes.resx">
-      <DependentUpon>frmReportes.vb</DependentUpon>
+    <EmbeddedResource Include="frmReportesCompras.resx">
+      <DependentUpon>frmReportesCompras.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportesMiscelaneas.resx">
+      <DependentUpon>frmReportesMiscelaneas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportesPersonas.resx">
+      <DependentUpon>frmReportesPersonas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportesProductos.resx">
+      <DependentUpon>frmReportesProductos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportesReparaciones.resx">
+      <DependentUpon>frmReportesReparaciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportesVehiculos.resx">
+      <DependentUpon>frmReportesVehiculos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportesVentas.resx">
+      <DependentUpon>frmReportesVentas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVehiculos.resx">
       <DependentUpon>frmVehiculos.vb</DependentUpon>
