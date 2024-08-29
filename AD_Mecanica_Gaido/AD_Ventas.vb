@@ -129,6 +129,7 @@ Public Class AD_Ventas
 
 #End Region
 
+#Region "Consultas"
     Public Function Consultar_DetalleFPPorID(ByVal idDetalleFP As Integer) As SqlDataReader
         Dim conexion As New SqlConnection(connectionString)
         Dim comando As New SqlCommand("Consultar_DetalleFPPorID", conexion)
@@ -156,5 +157,6 @@ Public Class AD_Ventas
             Throw ex
         End Try
     End Function
+#End Region
 
 End Class

@@ -216,7 +216,9 @@ Public Class frmVentas
             txtProcentaje.Clear()
         End If
     End Sub
+#End Region
 
+#Region "Detalle Forma Pago"
     Private Sub btnAgregarDetalleFormaPago_Click(sender As Object, e As EventArgs) Handles btnAgregarDetalleFormaPago.Click
         If cboFormaPago.SelectedValue <> Nothing Then
             Dim frm As New frmAgregarDetalleFormaPago()
@@ -314,6 +316,9 @@ Public Class frmVentas
             Dim idPersona As Integer = Convert.ToInt32(drv("ID_Persona"))
 
             CargarDatosPersona(idPersona)
+        Else
+            txtResultadoTelefono.Clear()
+            txtResultadoDocumento.Clear()
         End If
     End Sub
 
