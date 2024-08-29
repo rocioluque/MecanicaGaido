@@ -143,4 +143,18 @@ Public Class AD_Ventas
         End Try
     End Function
 
+    Public Function Consultar_PersonaPorID(ByVal idPersona As Integer) As SqlDataReader
+        Dim conexion As New SqlConnection(connectionString)
+        Dim comando As New SqlCommand("Consultar_PersonaPorID", conexion)
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.AddWithValue("@idPersona", idPersona)
+
+        Try
+            conexion.Open()
+            Return comando.ExecuteReader(CommandBehavior.CloseConnection)
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+
 End Class

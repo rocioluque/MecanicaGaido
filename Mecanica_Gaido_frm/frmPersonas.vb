@@ -5,6 +5,7 @@ Imports System.Configuration
 Public Class frmPersonas
     Dim o_Personas As New AD_Personas
     Public Property IdPersona As Integer
+    Public Property NuevaPersonaNombre As String
 
 #Region "Carga de Cbos"
     Private Sub Cargar_Provincias()
@@ -304,6 +305,8 @@ Nombre"
                        txtTelefonoFijo.Text, dtpFechaNacimiento.Value, CInt(cboTipoDocumento.SelectedValue), msktxtNumeroDocumento.Text,
                        txtCorreo.Text, txtDireccion.Text, txtNumero.Text, txtPiso.Text, txtLetraPuerta.Text, txtCodigoPostal.Text,
                        Convert.ToInt32(cboCiudad.SelectedValue), txtNota.Text, chkEstado.Checked)
+
+                NuevaPersonaNombre = txtApellido.Text & " " & txtNombre.Text
 
                 MsgBox("Persona agregada correctamente.", vbInformation, "Información")
                 Limpiar()

@@ -36,7 +36,6 @@ Partial Class frmVentas
         Me.btnBuscar = New System.Windows.Forms.Button()
         Me.cboPersona = New System.Windows.Forms.ComboBox()
         Me.btnAgregarPersona = New System.Windows.Forms.PictureBox()
-        Me.btnAgregarEmpleado = New System.Windows.Forms.PictureBox()
         Me.btnAgregarFormaPago = New System.Windows.Forms.PictureBox()
         Me.btnTipoVenta = New System.Windows.Forms.PictureBox()
         Me.btnFormaEntrega = New System.Windows.Forms.PictureBox()
@@ -58,7 +57,6 @@ Partial Class frmVentas
         Me.lblInformacionGeneral = New System.Windows.Forms.Label()
         Me.PanelInformacionGeneral = New System.Windows.Forms.Panel()
         Me.dtpFechaVenta = New System.Windows.Forms.DateTimePicker()
-        Me.cboEmpleado = New System.Windows.Forms.ComboBox()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
@@ -91,9 +89,9 @@ Partial Class frmVentas
         Me.txtIvaMonto = New System.Windows.Forms.RichTextBox()
         Me.txtSubtotal = New System.Windows.Forms.RichTextBox()
         Me.lblMontoDtoRecargo = New System.Windows.Forms.Label()
+        Me.txtVendedor = New System.Windows.Forms.TextBox()
         CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarPersona, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.btnAgregarEmpleado, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarFormaPago, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnTipoVenta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnFormaEntrega, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -266,16 +264,6 @@ Partial Class frmVentas
         Me.btnAgregarPersona.Size = New System.Drawing.Size(26, 25)
         Me.btnAgregarPersona.TabIndex = 107
         Me.btnAgregarPersona.TabStop = False
-        '
-        'btnAgregarEmpleado
-        '
-        Me.btnAgregarEmpleado.BackgroundImage = CType(resources.GetObject("btnAgregarEmpleado.BackgroundImage"), System.Drawing.Image)
-        Me.btnAgregarEmpleado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnAgregarEmpleado.Location = New System.Drawing.Point(225, 87)
-        Me.btnAgregarEmpleado.Name = "btnAgregarEmpleado"
-        Me.btnAgregarEmpleado.Size = New System.Drawing.Size(26, 25)
-        Me.btnAgregarEmpleado.TabIndex = 108
-        Me.btnAgregarEmpleado.TabStop = False
         '
         'btnAgregarFormaPago
         '
@@ -498,15 +486,14 @@ Partial Class frmVentas
         '
         'PanelInformacionGeneral
         '
+        Me.PanelInformacionGeneral.Controls.Add(Me.txtVendedor)
         Me.PanelInformacionGeneral.Controls.Add(Me.dtpFechaVenta)
-        Me.PanelInformacionGeneral.Controls.Add(Me.cboEmpleado)
         Me.PanelInformacionGeneral.Controls.Add(Me.Label19)
         Me.PanelInformacionGeneral.Controls.Add(Me.Label20)
         Me.PanelInformacionGeneral.Controls.Add(Me.Label21)
         Me.PanelInformacionGeneral.Controls.Add(Me.btnTipoVenta)
         Me.PanelInformacionGeneral.Controls.Add(Me.btnFormaEntrega)
         Me.PanelInformacionGeneral.Controls.Add(Me.txtNumComprobante)
-        Me.PanelInformacionGeneral.Controls.Add(Me.btnAgregarEmpleado)
         Me.PanelInformacionGeneral.Controls.Add(Me.chkEstado)
         Me.PanelInformacionGeneral.Controls.Add(Me.cboTipoVenta)
         Me.PanelInformacionGeneral.Controls.Add(Me.Label13)
@@ -527,16 +514,6 @@ Partial Class frmVentas
         Me.dtpFechaVenta.Name = "dtpFechaVenta"
         Me.dtpFechaVenta.Size = New System.Drawing.Size(236, 23)
         Me.dtpFechaVenta.TabIndex = 89
-        '
-        'cboEmpleado
-        '
-        Me.cboEmpleado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cboEmpleado.FormattingEnabled = True
-        Me.cboEmpleado.Location = New System.Drawing.Point(15, 87)
-        Me.cboEmpleado.Margin = New System.Windows.Forms.Padding(2)
-        Me.cboEmpleado.Name = "cboEmpleado"
-        Me.cboEmpleado.Size = New System.Drawing.Size(205, 25)
-        Me.cboEmpleado.TabIndex = 5
         '
         'Label19
         '
@@ -911,6 +888,16 @@ Partial Class frmVentas
         Me.lblMontoDtoRecargo.TabIndex = 143
         Me.lblMontoDtoRecargo.Text = "Monto "
         '
+        'txtVendedor
+        '
+        Me.txtVendedor.Enabled = False
+        Me.txtVendedor.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtVendedor.Location = New System.Drawing.Point(15, 87)
+        Me.txtVendedor.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtVendedor.Name = "txtVendedor"
+        Me.txtVendedor.Size = New System.Drawing.Size(236, 23)
+        Me.txtVendedor.TabIndex = 112
+        '
         'frmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -948,7 +935,6 @@ Partial Class frmVentas
         Me.Text = "Ventas"
         CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnAgregarPersona, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.btnAgregarEmpleado, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnAgregarFormaPago, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnTipoVenta, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnFormaEntrega, System.ComponentModel.ISupportInitialize).EndInit()
@@ -981,7 +967,6 @@ Partial Class frmVentas
     Friend WithEvents btnBuscar As Button
     Friend WithEvents cboPersona As ComboBox
     Friend WithEvents btnAgregarPersona As PictureBox
-    Friend WithEvents btnAgregarEmpleado As PictureBox
     Friend WithEvents btnAgregarFormaPago As PictureBox
     Friend WithEvents btnTipoVenta As PictureBox
     Friend WithEvents btnFormaEntrega As PictureBox
@@ -1003,7 +988,6 @@ Partial Class frmVentas
     Friend WithEvents lblInformacionGeneral As Label
     Friend WithEvents PanelInformacionGeneral As Panel
     Friend WithEvents dtpFechaVenta As DateTimePicker
-    Friend WithEvents cboEmpleado As ComboBox
     Friend WithEvents Label19 As Label
     Friend WithEvents Label20 As Label
     Friend WithEvents Label21 As Label
@@ -1036,4 +1020,5 @@ Partial Class frmVentas
     Friend WithEvents txtIvaMonto As RichTextBox
     Friend WithEvents txtSubtotal As RichTextBox
     Friend WithEvents lblMontoDtoRecargo As Label
+    Friend WithEvents txtVendedor As TextBox
 End Class

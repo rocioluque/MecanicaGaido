@@ -2,6 +2,8 @@
 Imports AD_Mecanica_Gaido
 Imports System.Data.SqlClient
 Imports System.Configuration
+Imports Comun_Soporte
+Imports Mecanica_Gaido_frm.User32
 
 Public Class frmVentas
     Dim o_ventas As New AD_Ventas
@@ -9,10 +11,12 @@ Public Class frmVentas
 #Region "Procedimientos"
     Private Sub frmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Combo_Persona()
-        Cargar_Combo_Empleados()
+        'Cargar_Combo_Empleados()
         Cargar_Combo_FormaPago()
         Cargar_Combo_TipoVenta()
         Cargar_Combo_FormaEntrega()
+
+        txtVendedor.Text = UsuarioActivo.nombre_empleado
     End Sub
 
     Public Sub limpiar()
@@ -27,7 +31,7 @@ Public Class frmVentas
         cboFormaEntrega.SelectedIndex = -1
         cboDetalleFormaPago.SelectedIndex = -1
         cboPersona.SelectedIndex = -1
-        cboEmpleado.SelectedIndex = -1
+        'cboEmpleado.SelectedIndex = -1
         cboFormaPago.SelectedIndex = -1
         chkEstado.Checked = False
     End Sub
@@ -56,23 +60,23 @@ Public Class frmVentas
         End Try
     End Sub
 
-    Private Sub Cargar_Combo_Empleados()
-        Try
-            Dim tabla As DataTable = o_ventas.Cargar_Combo_Empleados()
+    'Private Sub Cargar_Combo_Empleados()
+    '    Try
+    '        Dim tabla As DataTable = o_ventas.Cargar_Combo_Empleados()
 
-            If tabla.Rows.Count > 0 Then
-                cboEmpleado.DataSource = tabla
-                cboEmpleado.DisplayMember = "Nombre/RazonSocial"
-                cboEmpleado.ValueMember = "ID_Persona"
-                cboEmpleado.SelectedValue = -1
-            Else
-                MsgBox("No se encontraron Empleados.", vbInformation, "Información")
-            End If
+    '        If tabla.Rows.Count > 0 Then
+    '            cboEmpleado.DataSource = tabla
+    '            cboEmpleado.DisplayMember = "Nombre/RazonSocial"
+    '            cboEmpleado.ValueMember = "ID_Persona"
+    '            cboEmpleado.SelectedValue = -1
+    '        Else
+    '            MsgBox("No se encontraron Empleados.", vbInformation, "Información")
+    '        End If
 
-        Catch ex As Exception
-            MsgBox("Error al cargar los Empleados: " & ex.Message, vbCritical, "Error")
-        End Try
-    End Sub
+    '    Catch ex As Exception
+    '        MsgBox("Error al cargar los Empleados: " & ex.Message, vbCritical, "Error")
+    '    End Try
+    'End Sub
 
     Private Sub Cargar_Combo_FormaPago()
         Try
@@ -287,20 +291,48 @@ Public Class frmVentas
 #End Region
 
 #Region "Persona"
-    Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarPersona.Click
+    Private Sub btnAgregarPersona_Click(sender As Object, e As EventArgs) Handles btnAgregarPersona.Click
         Dim frm As New frmPersonas()
 
         If frm.ShowDialog() = DialogResult.OK Then
             Cargar_Combo_Persona()
 
-            ' Dim NuevaPersonaNombre As String = frm.NuevaPersonaNombre
-            'For Each item As DataRowView In cboPersona.Items
-            'If item("Nombre").ToString() = NuevaPersonaNombre Then
-            'cboPersona.SelectedItem = item
-            'Exit For
-            'End If
-            ' Next
+            Dim NuevaPersonaNombre As String = frm.NuevaPersonaNombre
+            For Each item As DataRowView In cboPersona.Items
+                If item("Nombre").ToString() = NuevaPersonaNombre Then
+                    cboPersona.SelectedItem = item
+                    Exit For
+                End If
+            Next
         End If
+    End Sub
+
+    Private Sub cboPersona_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPersona.SelectedIndexChanged
+        If cboPersona.SelectedIndex <> -1 Then
+            Dim drv As DataRowView = CType(cboPersona.SelectedItem, DataRowView)
+
+            Dim idPersona As Integer = Convert.ToInt32(drv("ID_Persona"))
+
+            CargarDatosPersona(idPersona)
+        End If
+    End Sub
+
+    Public Sub CargarDatosPersona(ByVal idPersona As Integer)
+        Try
+            Dim datoleido As SqlDataReader = o_ventas.Consultar_PersonaPorID(idPersona)
+
+            If datoleido.Read() Then
+                txtResultadoTelefono.Text = datoleido("Teléfono Móvil").ToString()
+                txtResultadoDocumento.Text = datoleido("Documento").ToString()
+
+            Else
+                MsgBox("No se encontraron resultados", vbInformation, "Error")
+            End If
+
+            datoleido.Close()
+        Catch ex As Exception
+            MessageBox.Show("Ocurrió un error al consultar la persona " & ex.Message, "Error")
+        End Try
     End Sub
 #End Region
 
