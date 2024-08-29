@@ -51,6 +51,7 @@ Public Class AD_Ventas
 
         Return tabla
     End Function
+
     Public Function Cargar_Combo_FormaPago() As DataTable
         Dim tabla As New DataTable
 
@@ -70,6 +71,22 @@ Public Class AD_Ventas
 
         Return tabla
     End Function
+
+    Public Function Cargar_Detalles_Por_FP(idFormaPago As Integer) As DataTable
+        Dim tabla As New DataTable
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_CboDetalleFP", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@ID_FormaPago", idFormaPago)
+                Dim datadapter As New SqlDataAdapter(comando)
+                datadapter.Fill(tabla)
+            End Using
+        End Using
+
+        Return tabla
+    End Function
+
     Public Function Cargar_Combo_TipoVenta() As DataTable
         Dim tabla As New DataTable
 
@@ -89,6 +106,7 @@ Public Class AD_Ventas
 
         Return tabla
     End Function
+
     Public Function Cargar_Combo_FormaEntrega() As DataTable
         Dim tabla As New DataTable
 
@@ -108,6 +126,7 @@ Public Class AD_Ventas
 
         Return tabla
     End Function
+
 #End Region
 
 End Class

@@ -4,8 +4,8 @@ Imports System.Data.SqlClient
 Imports System.Configuration
 
 Public Class frmVentas
-
     Dim o_ventas As New AD_Ventas
+
     Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarPersona.Click
         frmAgregarDatosFiscales.ShowDialog()
     End Sub
@@ -29,6 +29,7 @@ Public Class frmVentas
         txtTotal.Clear()
         cboTipoVenta.SelectedIndex = -1
         cboFormaEntrega.SelectedIndex = -1
+        cboDetalleFormaPago.SelectedIndex = -1
         cboPersona.SelectedIndex = -1
         cboEmpleado.SelectedIndex = -1
         cboFormaPago.SelectedIndex = -1
@@ -93,6 +94,44 @@ Public Class frmVentas
         Catch ex As Exception
             MsgBox("Error al cargar las Formas de Pago: " & ex.Message, vbCritical, "Error")
         End Try
+    End Sub
+
+    Private Sub Cargar_Combo_DetalleFP(ID_FormaPago As String)
+        Try
+            Dim tabla As DataTable = o_ventas.Cargar_Detalles_Por_FP(ID_FormaPago)
+
+            If tabla.Rows.Count > 0 Then
+                cboDetalleFormaPago.DataSource = tabla
+                cboDetalleFormaPago.DisplayMember = "Nombre"
+                cboDetalleFormaPago.ValueMember = "ID_DetalleFormaPago"
+                cboDetalleFormaPago.SelectedIndex = -1
+            Else
+                MsgBox("No se encontraron detalles para la forma de pago seleccionada.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar los detalles de forma de pago: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub cboFormaPago_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboFormaPago.SelectedIndexChanged
+        Try
+            If cboFormaPago.SelectedValue IsNot Nothing AndAlso IsNumeric(cboFormaPago.SelectedValue) Then
+                Dim idFormaPago As Integer = Convert.ToInt32(cboFormaPago.SelectedValue)
+                Cargar_Combo_DetalleFP(idFormaPago)
+            End If
+        Catch ex As Exception
+            MsgBox("Error al cargar detalles de forma de pago: " & ex.Message, vbCritical, "Error")
+        End Try
+
+        If cboFormaPago.SelectedIndex <> -1 Then
+            cboDetalleFormaPago.Enabled = True
+            btnAgregarDetalleFormaPago.Enabled = True
+
+        Else
+            cboDetalleFormaPago.Enabled = False
+            btnAgregarDetalleFormaPago.Enabled = False
+        End If
     End Sub
 
     Private Sub Cargar_Combo_TipoVenta()
@@ -170,6 +209,30 @@ Public Class frmVentas
             Next
         End If
     End Sub
+
+    Private Sub btnAgregarDetalleFormaPago_Click(sender As Object, e As EventArgs) Handles btnAgregarDetalleFormaPago.Click
+        If cboFormaPago.SelectedValue <> Nothing Then
+            Dim frm As New frmAgregarDetalleFormaPago()
+
+            frm.FormaPagoSeleccionada = Convert.ToInt32(cboFormaPago.SelectedValue)
+
+            'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
+            If frm.ShowDialog() = DialogResult.OK Then
+                Dim idFormaPago As Integer = Convert.ToInt32(cboFormaPago.SelectedValue)
+                Cargar_Combo_DetalleFP(idFormaPago)
+
+                Dim nuevoDetalleNombre As String = frm.NuevoDetalleFPNombre
+                For Each item As DataRowView In cboDetalleFormaPago.Items
+                    If item("Nombre").ToString() = nuevoDetalleNombre Then
+                        cboDetalleFormaPago.SelectedItem = item
+                        Exit For
+                    End If
+                Next
+            End If
+        Else
+            MsgBox("Seleccione una forma de pago para modificar los detalles.", vbInformation, "Información")
+        End If
+    End Sub
 #End Region
 
 #Region "Tipo de Venta"
@@ -189,6 +252,13 @@ Public Class frmVentas
                 End If
             Next
         End If
+    End Sub
+#End Region
+
+#Region "Mascaras"
+    Private Sub txtResultadoTelefono_TextChanged(sender As Object, e As EventArgs) Handles txtResultadoTelefono.TextChanged
+        Dim mskTxtTelefono As New MaskedTextBox
+        mskTxtTelefono.Mask = "C000-0000-0000"
     End Sub
 #End Region
 
@@ -319,11 +389,6 @@ Public Class frmVentas
             Dim rect As New Rectangle(0, 0, PanelTotales.Width - 1, PanelTotales.Height - 1)
             e.Graphics.DrawRectangle(pen, rect)
         End Using
-    End Sub
-
-    Private Sub txtResultadoTelefono_TextChanged(sender As Object, e As EventArgs) Handles txtResultadoTelefono.TextChanged
-        Dim mskTxtTelefono As New MaskedTextBox
-        mskTxtTelefono.Mask = "C000-0000-0000"
     End Sub
 #End Region
 End Class

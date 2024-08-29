@@ -201,6 +201,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos.vb" />
+    <Compile Include="frmAgregarDetalleFormaPago.Designer.vb">
+      <DependentUpon>frmAgregarDetalleFormaPago.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAgregarDetalleFormaPago.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmAgregarFormaEntrega.Designer.vb">
       <DependentUpon>frmAgregarFormaEntrega.vb</DependentUpon>
     </Compile>
@@ -457,6 +463,9 @@
   <ItemGroup>
     <EmbeddedResource Include="frmAgregarCiudad.resx">
       <DependentUpon>frmAgregarCiudad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAgregarDetalleFormaPago.resx">
+      <DependentUpon>frmAgregarDetalleFormaPago.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarFormaEntrega.resx">
       <DependentUpon>frmAgregarFormaEntrega.vb</DependentUpon>
