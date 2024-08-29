@@ -6,13 +6,9 @@ Imports System.Configuration
 Public Class frmVentas
     Dim o_ventas As New AD_Ventas
 
-    Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarPersona.Click
-        frmAgregarDatosFiscales.ShowDialog()
-    End Sub
-
 #Region "Procedimientos"
     Private Sub frmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Cargar_Combo_Cuenta()
+        Cargar_Combo_Persona()
         Cargar_Combo_Empleados()
         Cargar_Combo_FormaPago()
         Cargar_Combo_TipoVenta()
@@ -42,21 +38,21 @@ Public Class frmVentas
 #End Region
 
 #Region "Carga de cbo"
-    Private Sub Cargar_Combo_Cuenta()
+    Private Sub Cargar_Combo_Persona()
         Try
-            Dim tabla As DataTable = o_ventas.Cargar_Combo_Cuentas()
+            Dim tabla As DataTable = o_ventas.Cargar_Combo_Persona()
 
             If tabla.Rows.Count > 0 Then
                 cboPersona.DataSource = tabla
-                cboPersona.DisplayMember = "Cuenta"
-                cboPersona.ValueMember = "ID_DatoFiscal"
+                cboPersona.DisplayMember = "Persona"
+                cboPersona.ValueMember = "ID_Persona"
                 cboPersona.SelectedValue = -1
             Else
-                MsgBox("No se encontraron Cuentas.", vbInformation, "Información")
+                MsgBox("No se encontraron Personas.", vbInformation, "Información")
             End If
 
         Catch ex As Exception
-            MsgBox("Error al cargar las Cuentas: " & ex.Message, vbCritical, "Error")
+            MsgBox("Error al cargar las Personas: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
 
@@ -112,26 +108,6 @@ Public Class frmVentas
         Catch ex As Exception
             MsgBox("Error al cargar los detalles de forma de pago: " & ex.Message, vbCritical, "Error")
         End Try
-    End Sub
-
-    Private Sub cboFormaPago_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboFormaPago.SelectedIndexChanged
-        Try
-            If cboFormaPago.SelectedValue IsNot Nothing AndAlso IsNumeric(cboFormaPago.SelectedValue) Then
-                Dim idFormaPago As Integer = Convert.ToInt32(cboFormaPago.SelectedValue)
-                Cargar_Combo_DetalleFP(idFormaPago)
-            End If
-        Catch ex As Exception
-            MsgBox("Error al cargar detalles de forma de pago: " & ex.Message, vbCritical, "Error")
-        End Try
-
-        If cboFormaPago.SelectedIndex <> -1 Then
-            cboDetalleFormaPago.Enabled = True
-            btnAgregarDetalleFormaPago.Enabled = True
-
-        Else
-            cboDetalleFormaPago.Enabled = False
-            btnAgregarDetalleFormaPago.Enabled = False
-        End If
     End Sub
 
     Private Sub Cargar_Combo_TipoVenta()
@@ -210,13 +186,39 @@ Public Class frmVentas
         End If
     End Sub
 
+    Private Sub cboFormaPago_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboFormaPago.SelectedIndexChanged
+        Try
+            If cboFormaPago.SelectedValue IsNot Nothing AndAlso IsNumeric(cboFormaPago.SelectedValue) Then
+                Dim idFormaPago As Integer = Convert.ToInt32(cboFormaPago.SelectedValue)
+                Cargar_Combo_DetalleFP(idFormaPago)
+            End If
+        Catch ex As Exception
+            MsgBox("Error al cargar detalles de forma de pago: " & ex.Message, vbCritical, "Error")
+        End Try
+
+        If cboFormaPago.SelectedIndex <> -1 Then
+            cboDetalleFormaPago.Enabled = True
+            btnAgregarDetalleFormaPago.Enabled = True
+
+            rbtRecargo.Checked = False
+            rbtDescuento.Checked = False
+            txtProcentaje.Clear()
+        Else
+            cboDetalleFormaPago.Enabled = False
+            btnAgregarDetalleFormaPago.Enabled = False
+
+            rbtRecargo.Checked = False
+            rbtDescuento.Checked = False
+            txtProcentaje.Clear()
+        End If
+    End Sub
+
     Private Sub btnAgregarDetalleFormaPago_Click(sender As Object, e As EventArgs) Handles btnAgregarDetalleFormaPago.Click
         If cboFormaPago.SelectedValue <> Nothing Then
             Dim frm As New frmAgregarDetalleFormaPago()
 
             frm.FormaPagoSeleccionada = Convert.ToInt32(cboFormaPago.SelectedValue)
 
-            'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
             If frm.ShowDialog() = DialogResult.OK Then
                 Dim idFormaPago As Integer = Convert.ToInt32(cboFormaPago.SelectedValue)
                 Cargar_Combo_DetalleFP(idFormaPago)
@@ -232,6 +234,35 @@ Public Class frmVentas
         Else
             MsgBox("Seleccione una forma de pago para modificar los detalles.", vbInformation, "Información")
         End If
+    End Sub
+
+    Private Sub cboDetalleFormaPago_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboDetalleFormaPago.SelectedIndexChanged
+        If cboDetalleFormaPago.SelectedIndex <> -1 Then
+            Dim drv As DataRowView = CType(cboDetalleFormaPago.SelectedItem, DataRowView)
+
+            Dim idDetalleFP As Integer = Convert.ToInt32(drv("ID_DetalleFormaPago"))
+
+            CargarDatosDettallesFP(idDetalleFP)
+        End If
+    End Sub
+
+    Public Sub CargarDatosDettallesFP(ByVal idDetalleFP As Integer)
+        Try
+            Dim datoleido As SqlDataReader = o_ventas.Consultar_DetalleFPPorID(idDetalleFP)
+
+            If datoleido.Read() Then
+                rbtRecargo.Checked = datoleido("Recargo").ToString()
+                rbtDescuento.Checked = datoleido("Descuento").ToString()
+                txtProcentaje.Text = datoleido("Porcentaje").ToString()
+
+            Else
+                MsgBox("No se encontraron resultados", vbInformation, "Error")
+            End If
+
+            datoleido.Close()
+        Catch ex As Exception
+            MessageBox.Show("Ocurrió un error al consultar el detalle de forma de pago " & ex.Message, "Error")
+        End Try
     End Sub
 #End Region
 
@@ -251,6 +282,24 @@ Public Class frmVentas
                     Exit For
                 End If
             Next
+        End If
+    End Sub
+#End Region
+
+#Region "Persona"
+    Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarPersona.Click
+        Dim frm As New frmPersonas()
+
+        If frm.ShowDialog() = DialogResult.OK Then
+            Cargar_Combo_Persona()
+
+            ' Dim NuevaPersonaNombre As String = frm.NuevaPersonaNombre
+            'For Each item As DataRowView In cboPersona.Items
+            'If item("Nombre").ToString() = NuevaPersonaNombre Then
+            'cboPersona.SelectedItem = item
+            'Exit For
+            'End If
+            ' Next
         End If
     End Sub
 #End Region

@@ -12,19 +12,19 @@ Public Class AD_Ventas
         connectionString = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123"
     End Sub
 
-#Region "carga de cbo"
-    Public Function Cargar_Combo_Cuentas() As DataTable
+#Region "Carga de Cbo"
+    Public Function Cargar_Combo_Persona() As DataTable
         Dim tabla As New DataTable
 
         Using conexion As New SqlConnection(connectionString)
-            Using comando As New SqlCommand("Cargar_Combo_Cuentas", conexion)
+            Using comando As New SqlCommand("Cargar_Combo_Personas", conexion)
                 comando.CommandType = CommandType.StoredProcedure
                 Try
                     conexion.Open()
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar las cuentas desde la base de datos: " & ex.Message, ex)
+                    Throw New Exception("Error al cargar las personas desde la base de datos: " & ex.Message, ex)
                 End Try
 
             End Using
@@ -128,5 +128,19 @@ Public Class AD_Ventas
     End Function
 
 #End Region
+
+    Public Function Consultar_DetalleFPPorID(ByVal idDetalleFP As Integer) As SqlDataReader
+        Dim conexion As New SqlConnection(connectionString)
+        Dim comando As New SqlCommand("Consultar_DetalleFPPorID", conexion)
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.AddWithValue("@idDetalleFP", idDetalleFP)
+
+        Try
+            conexion.Open()
+            Return comando.ExecuteReader(CommandBehavior.CloseConnection)
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
 
 End Class

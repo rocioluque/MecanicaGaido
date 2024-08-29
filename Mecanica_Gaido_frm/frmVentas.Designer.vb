@@ -76,7 +76,7 @@ Partial Class frmVentas
         Me.Label6 = New System.Windows.Forms.Label()
         Me.PanelFormaPago = New System.Windows.Forms.Panel()
         Me.Label23 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtProcentaje = New System.Windows.Forms.TextBox()
         Me.rbtDescuento = New System.Windows.Forms.RadioButton()
         Me.rbtRecargo = New System.Windows.Forms.RadioButton()
         Me.cboDetalleFormaPago = New System.Windows.Forms.ComboBox()
@@ -466,7 +466,7 @@ Partial Class frmVentas
         '
         Me.txtIVA.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtIVA.Location = New System.Drawing.Point(125, 25)
-        Me.txtIVA.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtIVA.Margin = New System.Windows.Forms.Padding(2)
         Me.txtIVA.Name = "txtIVA"
         Me.txtIVA.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtIVA.Size = New System.Drawing.Size(123, 23)
@@ -477,7 +477,7 @@ Partial Class frmVentas
         '
         Me.txtOtrosImpuestos.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtOtrosImpuestos.Location = New System.Drawing.Point(125, 61)
-        Me.txtOtrosImpuestos.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtOtrosImpuestos.Margin = New System.Windows.Forms.Padding(2)
         Me.txtOtrosImpuestos.Name = "txtOtrosImpuestos"
         Me.txtOtrosImpuestos.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtOtrosImpuestos.Size = New System.Drawing.Size(123, 23)
@@ -533,7 +533,7 @@ Partial Class frmVentas
         Me.cboEmpleado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboEmpleado.FormattingEnabled = True
         Me.cboEmpleado.Location = New System.Drawing.Point(15, 87)
-        Me.cboEmpleado.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboEmpleado.Margin = New System.Windows.Forms.Padding(2)
         Me.cboEmpleado.Name = "cboEmpleado"
         Me.cboEmpleado.Size = New System.Drawing.Size(205, 25)
         Me.cboEmpleado.TabIndex = 5
@@ -578,7 +578,7 @@ Partial Class frmVentas
         '
         Me.txtNumComprobante.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNumComprobante.Location = New System.Drawing.Point(313, 39)
-        Me.txtNumComprobante.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtNumComprobante.Margin = New System.Windows.Forms.Padding(2)
         Me.txtNumComprobante.Name = "txtNumComprobante"
         Me.txtNumComprobante.Size = New System.Drawing.Size(236, 23)
         Me.txtNumComprobante.TabIndex = 4
@@ -589,7 +589,7 @@ Partial Class frmVentas
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
         Me.chkEstado.Location = New System.Drawing.Point(314, 129)
-        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
         Me.chkEstado.TabIndex = 12
@@ -614,7 +614,7 @@ Partial Class frmVentas
         Me.cboFormaPago.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboFormaPago.FormattingEnabled = True
         Me.cboFormaPago.Location = New System.Drawing.Point(14, 40)
-        Me.cboFormaPago.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboFormaPago.Margin = New System.Windows.Forms.Padding(2)
         Me.cboFormaPago.Name = "cboFormaPago"
         Me.cboFormaPago.Size = New System.Drawing.Size(189, 25)
         Me.cboFormaPago.TabIndex = 6
@@ -716,7 +716,7 @@ Partial Class frmVentas
         'PanelFormaPago
         '
         Me.PanelFormaPago.Controls.Add(Me.Label23)
-        Me.PanelFormaPago.Controls.Add(Me.TextBox1)
+        Me.PanelFormaPago.Controls.Add(Me.txtProcentaje)
         Me.PanelFormaPago.Controls.Add(Me.rbtDescuento)
         Me.PanelFormaPago.Controls.Add(Me.rbtRecargo)
         Me.PanelFormaPago.Controls.Add(Me.cboDetalleFormaPago)
@@ -742,16 +742,16 @@ Partial Class frmVentas
         Me.Label23.TabIndex = 115
         Me.Label23.Text = "Monto %"
         '
-        'TextBox1
+        'txtProcentaje
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(313, 101)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.TextBox1.Size = New System.Drawing.Size(220, 23)
-        Me.TextBox1.TabIndex = 33
-        Me.TextBox1.Text = "0"
+        Me.txtProcentaje.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtProcentaje.Location = New System.Drawing.Point(313, 101)
+        Me.txtProcentaje.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtProcentaje.Name = "txtProcentaje"
+        Me.txtProcentaje.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtProcentaje.Size = New System.Drawing.Size(220, 23)
+        Me.txtProcentaje.TabIndex = 33
+        Me.txtProcentaje.Text = "0"
         '
         'rbtDescuento
         '
@@ -785,7 +785,7 @@ Partial Class frmVentas
         Me.cboDetalleFormaPago.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboDetalleFormaPago.FormattingEnabled = True
         Me.cboDetalleFormaPago.Location = New System.Drawing.Point(313, 40)
-        Me.cboDetalleFormaPago.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboDetalleFormaPago.Margin = New System.Windows.Forms.Padding(2)
         Me.cboDetalleFormaPago.Name = "cboDetalleFormaPago"
         Me.cboDetalleFormaPago.Size = New System.Drawing.Size(189, 25)
         Me.cboDetalleFormaPago.TabIndex = 110
@@ -1024,7 +1024,7 @@ Partial Class frmVentas
     Friend WithEvents Label7 As Label
     Friend WithEvents btnAgregarDetalleFormaPago As PictureBox
     Friend WithEvents Label23 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtProcentaje As TextBox
     Friend WithEvents rbtDescuento As RadioButton
     Friend WithEvents rbtRecargo As RadioButton
     Friend WithEvents Label11 As Label
