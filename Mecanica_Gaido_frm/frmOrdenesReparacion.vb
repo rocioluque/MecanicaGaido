@@ -32,6 +32,7 @@ Public Class frmOrdenesReparacion
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiarServ3()
+        grdServiciosTerceros.Rows.Clear()
         limpiar()
         grdRepuestos.Rows.Clear()
         ActualizarMontoTotalRep()
@@ -119,7 +120,9 @@ Public Class frmOrdenesReparacion
             MsgBox("Error al quitar el repuesto: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
-
+    Private Sub grdRepuestos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdRepuestos.CellClick
+        btnQuitarRepOR.Enabled = True
+    End Sub
 
 #End Region
 
@@ -785,6 +788,9 @@ Public Class frmOrdenesReparacion
             Dim ID_Orden As Integer = Convert.ToInt32(selectedRow.Cells("ID").Value)
 
             CargarDatosOrden(ID_Orden)
+
+            btnAceptar.Enabled = False
+            btnModificar.Enabled = True
         End If
     End Sub
     Private Sub CargarDatosOrden(ID_Orden As Integer)
@@ -895,6 +901,9 @@ Public Class frmOrdenesReparacion
 
         If ID_Orden > 0 Then
             ModificarOrden(ID_Orden)
+            btnModificar.Enabled = False
+            btnAceptar.Enabled = True
+            Cargar_Grilla_Ordenes()
         Else
             MessageBox.Show("Seleccione una orden para modificar.")
         End If
@@ -957,7 +966,7 @@ Public Class frmOrdenesReparacion
                         Dim finalizado As Boolean = Convert.ToBoolean(row.Cells("Finalizado").Value)
                         Dim estado As Boolean = Convert.ToBoolean(row.Cells("Estado").Value)
 
-                        Dim insertserviciosquery = "INSERT INTO Servicios_De_Terceros (ID_OrdenReparacion, Fecha_Solicitud, ID_Persona, " &
+                        Dim insertserviciosquery = "INSERT INTO Servicios_De_Terceros (ID_OrdenReparacion, Fecha_Solicitud_Trabajo, ID_Persona, " &
                                    "Detalle_Prestacion, Costo_Estimado, Costo_Real, Estado_Trabajo, Estado) " &
                                    "VALUES (@ID_Orden, @FechaSolicitud, @ID_Prestador, @ServSolicitado, " &
                                    "@CostoEstimado, @CostoReal, @Finalizado, @Estado)"
@@ -976,7 +985,7 @@ Public Class frmOrdenesReparacion
 
 
 
-                Dim deleterepuestosquery = "delete from Repuestos_Por_Ordenes where id_orden = @id_orden"
+                Dim deleterepuestosquery = "delete from Repuestos_Por_Ordenes where ID_OrdenReparacion = @id_orden"
                 cmd = New SqlCommand(deleterepuestosquery, conn, transaction)
                 cmd.Parameters.AddWithValue("@id_orden", id_orden)
                 cmd.ExecuteNonQuery()
@@ -989,7 +998,7 @@ Public Class frmOrdenesReparacion
                             Dim cantidad As Decimal = Convert.ToDecimal(row.Cells("cantidad").Value)
                             Dim precio_rep As Decimal = Convert.ToDecimal(row.Cells("precio").Value)
 
-                            Dim insertrepuestosquery = "insert into Repuestos_Por_Ordenes (id_repuestos, id_orden, cantidad, precio, activo) " &
+                            Dim insertrepuestosquery = "insert into Repuestos_Por_Ordenes (id_repuesto, ID_OrdenReparacion, cantidad, precio, Estado) " &
                                                        "values (@id_repuestos, @id_orden, @cantidad, @precio, @activo)"
                             cmd = New SqlCommand(insertrepuestosquery, conn, transaction)
                             cmd.Parameters.AddWithValue("@id_repuestos", id_repuestos)
@@ -1022,6 +1031,8 @@ Public Class frmOrdenesReparacion
 
         End Using
     End Sub
+
+
 
 #End Region
 
