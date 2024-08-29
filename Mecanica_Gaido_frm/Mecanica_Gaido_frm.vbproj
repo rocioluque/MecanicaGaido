@@ -458,6 +458,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="probandoArbol.Designer.vb">
+      <DependentUpon>probandoArbol.vb</DependentUpon>
+    </Compile>
+    <Compile Include="probandoArbol.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="User32.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -586,6 +592,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="probandoArbol.resx">
+      <DependentUpon>probandoArbol.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

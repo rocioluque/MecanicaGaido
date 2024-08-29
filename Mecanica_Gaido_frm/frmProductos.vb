@@ -8,6 +8,8 @@ Public Class frmProductos
     Dim o_productos As New AD_Productos
     Private txtsConDecimales As New List(Of TextBox)
 
+    Public ubicacionrep As String
+
 #Region "Procedimientos"
     Private Sub frmProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Combo_Marcas()
@@ -472,6 +474,15 @@ Public Class frmProductos
         If Asc(e.KeyChar) = 13 Then
             txtNombreDiario.Focus()
         End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Using frmProbandoArbol As New ProbandoArbol(Me)
+            If frmProbandoArbol.ShowDialog() = DialogResult.OK Then
+                ' El valor ya se ha establecido en txtUbicacion
+                ' Puedes realizar aquí cualquier otra acción necesaria después de cerrar el diálogo
+            End If
+        End Using
     End Sub
 #End Region
 
