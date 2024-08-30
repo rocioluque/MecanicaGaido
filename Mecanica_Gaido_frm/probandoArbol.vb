@@ -94,6 +94,7 @@ Public Class ProbandoArbol
 
     Private Sub ProbandoArbol_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PopulateTreeView()
+
     End Sub
 
     Private Sub PopulateTreeView()
@@ -158,6 +159,10 @@ Public Class ProbandoArbol
                 New DatoDeposito("Taller", "Estantería C", "Columna 2", "Fila 1", "TA.C.2.1")
         }
     End Function
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Me.Close()
+    End Sub
 End Class
 
 Public Class DatoDeposito
