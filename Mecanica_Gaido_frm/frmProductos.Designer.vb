@@ -65,7 +65,6 @@ Partial Class frmProductos
         Me.cboOrigen = New System.Windows.Forms.ComboBox()
         Me.lblExistencia = New System.Windows.Forms.Label()
         Me.PanelExistencia = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.txtStockMinimo = New System.Windows.Forms.TextBox()
         Me.lblStockMinimo = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -84,12 +83,14 @@ Partial Class frmProductos
         Me.txtPrecioCompra = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.txtBuscar = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.PictureBox()
         CType(Me.grdProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarMarca, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarRubro, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDatosEspecificos.SuspendLayout()
         Me.PanelExistencia.SuspendLayout()
         Me.PanelMovimientos.SuspendLayout()
+        CType(Me.Button1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'grdProductos
@@ -600,25 +601,11 @@ Partial Class frmProductos
         Me.PanelExistencia.Size = New System.Drawing.Size(316, 157)
         Me.PanelExistencia.TabIndex = 111
         '
-        'Button1
-        '
-        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(249, 112)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(24, 22)
-        Me.Button1.TabIndex = 117
-        Me.Button1.Text = "+"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'txtStockMinimo
         '
         Me.txtStockMinimo.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtStockMinimo.Location = New System.Drawing.Point(152, 82)
-        Me.txtStockMinimo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtStockMinimo.Margin = New System.Windows.Forms.Padding(2)
         Me.txtStockMinimo.Name = "txtStockMinimo"
         Me.txtStockMinimo.Size = New System.Drawing.Size(121, 23)
         Me.txtStockMinimo.TabIndex = 115
@@ -824,6 +811,16 @@ Partial Class frmProductos
         Me.txtBuscar.TabIndex = 115
         Me.txtBuscar.Tag = ""
         '
+        'Button1
+        '
+        Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button1.Location = New System.Drawing.Point(247, 109)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(26, 25)
+        Me.Button1.TabIndex = 117
+        Me.Button1.TabStop = False
+        '
         'frmProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -859,6 +856,7 @@ Partial Class frmProductos
         Me.PanelExistencia.PerformLayout()
         Me.PanelMovimientos.ResumeLayout(False)
         Me.PanelMovimientos.PerformLayout()
+        CType(Me.Button1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -921,7 +919,7 @@ Partial Class frmProductos
     Friend WithEvents Label5 As Label
     Friend WithEvents txtStockMinimo As TextBox
     Friend WithEvents lblStockMinimo As Label
-    Friend WithEvents Button1 As Button
     Friend WithEvents Label11 As Label
     Friend WithEvents txtBuscar As TextBox
+    Friend WithEvents Button1 As PictureBox
 End Class
