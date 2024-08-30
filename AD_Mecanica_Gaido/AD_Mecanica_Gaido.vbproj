@@ -207,6 +207,13 @@
     <Compile Include="AD_TiposDeVenta.vb" />
     <Compile Include="AD_Vehiculos.vb" />
     <Compile Include="AD_Ventas.vb" />
+    <Compile Include="Clima\Clima.vb" />
+    <Compile Include="Clima\ClimaForecast.vb" />
+    <Compile Include="Clima\Coordenadas.vb" />
+    <Compile Include="Clima\Forecast.vb" />
+    <Compile Include="Clima\Main.vb" />
+    <Compile Include="Clima\Ubicacion.vb" />
+    <Compile Include="Clima\Weather.vb" />
     <Compile Include="ConnectionToSql.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
