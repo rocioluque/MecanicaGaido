@@ -25,40 +25,73 @@ Partial Class ProbandoArbol
         Me.treeViewCodDep = New System.Windows.Forms.TreeView()
         Me.txtCodDep = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'treeViewCodDep
         '
-        Me.treeViewCodDep.Location = New System.Drawing.Point(0, -6)
+        Me.treeViewCodDep.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.treeViewCodDep.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.treeViewCodDep.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.treeViewCodDep.ForeColor = System.Drawing.Color.White
+        Me.treeViewCodDep.LineColor = System.Drawing.Color.SeaGreen
+        Me.treeViewCodDep.Location = New System.Drawing.Point(11, 11)
+        Me.treeViewCodDep.Margin = New System.Windows.Forms.Padding(2)
         Me.treeViewCodDep.Name = "treeViewCodDep"
-        Me.treeViewCodDep.Size = New System.Drawing.Size(798, 381)
+        Me.treeViewCodDep.Size = New System.Drawing.Size(511, 234)
         Me.treeViewCodDep.TabIndex = 0
         '
         'txtCodDep
         '
-        Me.txtCodDep.Location = New System.Drawing.Point(463, 403)
+        Me.txtCodDep.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCodDep.Location = New System.Drawing.Point(182, 256)
+        Me.txtCodDep.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCodDep.Name = "txtCodDep"
-        Me.txtCodDep.Size = New System.Drawing.Size(180, 26)
+        Me.txtCodDep.Size = New System.Drawing.Size(127, 23)
         Me.txtCodDep.TabIndex = 1
+        Me.txtCodDep.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(650, 403)
+        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.White
+        Me.Button1.Location = New System.Drawing.Point(331, 250)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(138, 35)
+        Me.Button1.Size = New System.Drawing.Size(92, 30)
         Me.Button1.TabIndex = 2
         Me.Button1.Text = "Seleccionar"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'probandoArbol
+        'Button2
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.ForeColor = System.Drawing.Color.White
+        Me.Button2.Location = New System.Drawing.Point(429, 250)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(92, 30)
+        Me.Button2.TabIndex = 3
+        Me.Button2.Text = "Cancelar"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'ProbandoArbol
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(533, 292)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.txtCodDep)
         Me.Controls.Add(Me.treeViewCodDep)
-        Me.Name = "probandoArbol"
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Margin = New System.Windows.Forms.Padding(2)
+        Me.Name = "ProbandoArbol"
         Me.Text = "probandoArbol"
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -68,4 +101,5 @@ Partial Class ProbandoArbol
     Friend WithEvents treeViewCodDep As TreeView
     Friend WithEvents txtCodDep As TextBox
     Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
 End Class
