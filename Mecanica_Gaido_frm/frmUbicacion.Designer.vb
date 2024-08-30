@@ -22,6 +22,7 @@ Partial Class frmUbicacion
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUbicacion))
         Me.treeViewCodDep = New System.Windows.Forms.TreeView()
         Me.txtCodDep = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -31,7 +32,7 @@ Partial Class frmUbicacion
         '
         'treeViewCodDep
         '
-        Me.treeViewCodDep.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.treeViewCodDep.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
         Me.treeViewCodDep.Cursor = System.Windows.Forms.Cursors.Hand
         Me.treeViewCodDep.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.treeViewCodDep.ForeColor = System.Drawing.Color.White
@@ -95,7 +96,7 @@ Partial Class frmUbicacion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(533, 292)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button2)
@@ -103,9 +104,11 @@ Partial Class frmUbicacion
         Me.Controls.Add(Me.txtCodDep)
         Me.Controls.Add(Me.treeViewCodDep)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "frmUbicacion"
-        Me.Text = "probandoArbol"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "frmUbicacion"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

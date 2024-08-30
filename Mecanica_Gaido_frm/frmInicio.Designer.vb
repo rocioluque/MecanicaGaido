@@ -149,7 +149,7 @@ Partial Class frmInicio
         Me.PanelClima.Controls.Add(Me.lblUbicacion)
         Me.PanelClima.Location = New System.Drawing.Point(16, 92)
         Me.PanelClima.Name = "PanelClima"
-        Me.PanelClima.Size = New System.Drawing.Size(200, 126)
+        Me.PanelClima.Size = New System.Drawing.Size(215, 126)
         Me.PanelClima.TabIndex = 118
         '
         'lblMaxMin

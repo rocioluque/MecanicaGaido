@@ -65,6 +65,7 @@ Partial Class frmProductos
         Me.cboOrigen = New System.Windows.Forms.ComboBox()
         Me.lblExistencia = New System.Windows.Forms.Label()
         Me.PanelExistencia = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.PictureBox()
         Me.txtStockMinimo = New System.Windows.Forms.TextBox()
         Me.lblStockMinimo = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -83,14 +84,13 @@ Partial Class frmProductos
         Me.txtPrecioCompra = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.txtBuscar = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.PictureBox()
         CType(Me.grdProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarMarca, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarRubro, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDatosEspecificos.SuspendLayout()
         Me.PanelExistencia.SuspendLayout()
-        Me.PanelMovimientos.SuspendLayout()
         CType(Me.Button1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelMovimientos.SuspendLayout()
         Me.SuspendLayout()
         '
         'grdProductos
@@ -601,6 +601,16 @@ Partial Class frmProductos
         Me.PanelExistencia.Size = New System.Drawing.Size(316, 157)
         Me.PanelExistencia.TabIndex = 111
         '
+        'Button1
+        '
+        Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button1.Location = New System.Drawing.Point(247, 109)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(26, 25)
+        Me.Button1.TabIndex = 117
+        Me.Button1.TabStop = False
+        '
         'txtStockMinimo
         '
         Me.txtStockMinimo.Font = New System.Drawing.Font("Century Gothic", 9.75!)
@@ -794,7 +804,7 @@ Partial Class frmProductos
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(123, 53)
+        Me.Label11.Location = New System.Drawing.Point(134, 49)
         Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(49, 17)
@@ -810,16 +820,6 @@ Partial Class frmProductos
         Me.txtBuscar.Size = New System.Drawing.Size(735, 23)
         Me.txtBuscar.TabIndex = 115
         Me.txtBuscar.Tag = ""
-        '
-        'Button1
-        '
-        Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button1.Location = New System.Drawing.Point(247, 109)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(26, 25)
-        Me.Button1.TabIndex = 117
-        Me.Button1.TabStop = False
         '
         'frmProductos
         '
@@ -854,9 +854,9 @@ Partial Class frmProductos
         Me.PanelDatosEspecificos.PerformLayout()
         Me.PanelExistencia.ResumeLayout(False)
         Me.PanelExistencia.PerformLayout()
+        CType(Me.Button1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelMovimientos.ResumeLayout(False)
         Me.PanelMovimientos.PerformLayout()
-        CType(Me.Button1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

@@ -34,20 +34,18 @@ Partial Class frmAgregarRoles
         '
         Me.btnCerrar.BackgroundImage = CType(resources.GetObject("btnCerrar.BackgroundImage"), System.Drawing.Image)
         Me.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnCerrar.Location = New System.Drawing.Point(497, 1)
-        Me.btnCerrar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnCerrar.Location = New System.Drawing.Point(373, 1)
         Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(25, 22)
+        Me.btnCerrar.Size = New System.Drawing.Size(19, 18)
         Me.btnCerrar.TabIndex = 30
         Me.btnCerrar.TabStop = False
         '
         'txtRol
         '
         Me.txtRol.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtRol.Location = New System.Drawing.Point(60, 101)
-        Me.txtRol.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtRol.Location = New System.Drawing.Point(45, 82)
         Me.txtRol.Name = "txtRol"
-        Me.txtRol.Size = New System.Drawing.Size(303, 24)
+        Me.txtRol.Size = New System.Drawing.Size(228, 21)
         Me.txtRol.TabIndex = 1
         '
         'lblRol
@@ -55,42 +53,38 @@ Partial Class frmAgregarRoles
         Me.lblRol.AutoSize = True
         Me.lblRol.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRol.ForeColor = System.Drawing.Color.White
-        Me.lblRol.Location = New System.Drawing.Point(55, 58)
-        Me.lblRol.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblRol.Location = New System.Drawing.Point(41, 47)
         Me.lblRol.Name = "lblRol"
-        Me.lblRol.Size = New System.Drawing.Size(149, 22)
+        Me.lblRol.Size = New System.Drawing.Size(121, 20)
         Me.lblRol.TabIndex = 29
         Me.lblRol.Text = "Nombre del Rol"
         '
         'btnAgregar
         '
         Me.btnAgregar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.btnAgregar.FlatAppearance.BorderSize = 2
         Me.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAgregar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregar.ForeColor = System.Drawing.Color.White
-        Me.btnAgregar.Location = New System.Drawing.Point(399, 215)
-        Me.btnAgregar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnAgregar.Location = New System.Drawing.Point(299, 175)
         Me.btnAgregar.Name = "btnAgregar"
-        Me.btnAgregar.Size = New System.Drawing.Size(109, 36)
+        Me.btnAgregar.Size = New System.Drawing.Size(82, 29)
         Me.btnAgregar.TabIndex = 2
         Me.btnAgregar.Text = "Agregar"
         Me.btnAgregar.UseVisualStyleBackColor = True
         '
         'frmAgregarRoles
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(524, 266)
+        Me.ClientSize = New System.Drawing.Size(393, 216)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.txtRol)
         Me.Controls.Add(Me.lblRol)
         Me.Controls.Add(Me.btnAgregar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmAgregarRoles"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmAgregarRoles"

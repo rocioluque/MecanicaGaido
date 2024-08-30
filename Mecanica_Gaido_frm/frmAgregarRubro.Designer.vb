@@ -62,7 +62,6 @@ Partial Class frmAgregarRubro
         'btnAgregar
         '
         Me.btnAgregar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.btnAgregar.FlatAppearance.BorderSize = 2
         Me.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAgregar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
