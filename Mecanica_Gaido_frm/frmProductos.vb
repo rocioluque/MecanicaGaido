@@ -477,7 +477,7 @@ Public Class frmProductos
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Using frmProbandoArbol As New ProbandoArbol(Me)
+        Using frmProbandoArbol As New frmUbicacion(Me)
             If frmProbandoArbol.ShowDialog() = DialogResult.OK Then
                 ' El valor ya se ha establecido en txtUbicacion
                 ' Puedes realizar aquí cualquier otra acción necesaria después de cerrar el diálogo
