@@ -56,6 +56,7 @@ Partial Class frmVentas
         Me.txtOtrosImpuestos = New System.Windows.Forms.TextBox()
         Me.lblInformacionGeneral = New System.Windows.Forms.Label()
         Me.PanelInformacionGeneral = New System.Windows.Forms.Panel()
+        Me.txtVendedor = New System.Windows.Forms.TextBox()
         Me.dtpFechaVenta = New System.Windows.Forms.DateTimePicker()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
@@ -89,7 +90,6 @@ Partial Class frmVentas
         Me.txtIvaMonto = New System.Windows.Forms.RichTextBox()
         Me.txtSubtotal = New System.Windows.Forms.RichTextBox()
         Me.lblMontoDtoRecargo = New System.Windows.Forms.Label()
-        Me.txtVendedor = New System.Windows.Forms.TextBox()
         CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarPersona, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarFormaPago, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -504,6 +504,16 @@ Partial Class frmVentas
         Me.PanelInformacionGeneral.Size = New System.Drawing.Size(597, 185)
         Me.PanelInformacionGeneral.TabIndex = 128
         '
+        'txtVendedor
+        '
+        Me.txtVendedor.Enabled = False
+        Me.txtVendedor.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtVendedor.Location = New System.Drawing.Point(15, 87)
+        Me.txtVendedor.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtVendedor.Name = "txtVendedor"
+        Me.txtVendedor.Size = New System.Drawing.Size(236, 23)
+        Me.txtVendedor.TabIndex = 112
+        '
         'dtpFechaVenta
         '
         Me.dtpFechaVenta.CalendarFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -881,22 +891,12 @@ Partial Class frmVentas
         Me.lblMontoDtoRecargo.AutoSize = True
         Me.lblMontoDtoRecargo.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblMontoDtoRecargo.ForeColor = System.Drawing.Color.White
-        Me.lblMontoDtoRecargo.Location = New System.Drawing.Point(613, 413)
+        Me.lblMontoDtoRecargo.Location = New System.Drawing.Point(607, 413)
         Me.lblMontoDtoRecargo.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblMontoDtoRecargo.Name = "lblMontoDtoRecargo"
         Me.lblMontoDtoRecargo.Size = New System.Drawing.Size(50, 17)
         Me.lblMontoDtoRecargo.TabIndex = 143
         Me.lblMontoDtoRecargo.Text = "Monto "
-        '
-        'txtVendedor
-        '
-        Me.txtVendedor.Enabled = False
-        Me.txtVendedor.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtVendedor.Location = New System.Drawing.Point(15, 87)
-        Me.txtVendedor.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtVendedor.Name = "txtVendedor"
-        Me.txtVendedor.Size = New System.Drawing.Size(236, 23)
-        Me.txtVendedor.TabIndex = 112
         '
         'frmVentas
         '

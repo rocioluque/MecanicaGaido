@@ -266,3 +266,4 @@ C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecani
 C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.frmReportesVehiculos.resources
 C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.frmReportesVentas.resources
 C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.ProbandoArbol.resources
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.frmUbicacion.resources

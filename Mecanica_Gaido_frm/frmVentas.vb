@@ -270,6 +270,22 @@ Public Class frmVentas
             MessageBox.Show("Ocurrió un error al consultar el detalle de forma de pago " & ex.Message, "Error")
         End Try
     End Sub
+
+    Public Sub Calculo_DtoRecargo()
+        If rbtRecargo.Checked Then
+            lblMontoDtoRecargo.Text = "Recargo"
+        ElseIf rbtDescuento.Checked Then
+            lblMontoDtoRecargo.Text = "Descuento"
+        End If
+    End Sub
+
+    Private Sub rbtRecargo_CheckedChanged(sender As Object, e As EventArgs) Handles rbtRecargo.CheckedChanged
+        Calculo_DtoRecargo()
+    End Sub
+
+    Private Sub rbtDescuento_CheckedChanged(sender As Object, e As EventArgs) Handles rbtDescuento.CheckedChanged
+        Calculo_DtoRecargo()
+    End Sub
 #End Region
 
 #Region "Tipo de Venta"
@@ -477,4 +493,5 @@ Public Class frmVentas
         End Using
     End Sub
 #End Region
+
 End Class
