@@ -35,9 +35,15 @@ Partial Class frmInicio
         Me.grdGrilla2 = New System.Windows.Forms.DataGridView()
         Me.grdGrilla1 = New System.Windows.Forms.DataGridView()
         Me.btnExportarPDF = New System.Windows.Forms.Button()
+        Me.PanelClima = New System.Windows.Forms.Panel()
+        Me.lblMaxMin = New System.Windows.Forms.Label()
+        Me.lblDescripcion = New System.Windows.Forms.Label()
+        Me.lblTemperatura = New System.Windows.Forms.Label()
+        Me.lblUbicacion = New System.Windows.Forms.Label()
         CType(Me.chtRepuestos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdGrilla2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdGrilla1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelClima.SuspendLayout()
         Me.SuspendLayout()
         '
         'lblFecha
@@ -135,12 +141,68 @@ Partial Class frmInicio
         Me.btnExportarPDF.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnExportarPDF.UseVisualStyleBackColor = False
         '
+        'PanelClima
+        '
+        Me.PanelClima.Controls.Add(Me.lblMaxMin)
+        Me.PanelClima.Controls.Add(Me.lblDescripcion)
+        Me.PanelClima.Controls.Add(Me.lblTemperatura)
+        Me.PanelClima.Controls.Add(Me.lblUbicacion)
+        Me.PanelClima.Location = New System.Drawing.Point(16, 92)
+        Me.PanelClima.Name = "PanelClima"
+        Me.PanelClima.Size = New System.Drawing.Size(200, 126)
+        Me.PanelClima.TabIndex = 118
+        '
+        'lblMaxMin
+        '
+        Me.lblMaxMin.AutoSize = True
+        Me.lblMaxMin.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMaxMin.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.lblMaxMin.Location = New System.Drawing.Point(13, 66)
+        Me.lblMaxMin.Name = "lblMaxMin"
+        Me.lblMaxMin.Size = New System.Drawing.Size(50, 17)
+        Me.lblMaxMin.TabIndex = 3
+        Me.lblMaxMin.Text = "Label1"
+        '
+        'lblDescripcion
+        '
+        Me.lblDescripcion.AutoSize = True
+        Me.lblDescripcion.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDescripcion.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.lblDescripcion.Location = New System.Drawing.Point(112, 66)
+        Me.lblDescripcion.Name = "lblDescripcion"
+        Me.lblDescripcion.Size = New System.Drawing.Size(50, 17)
+        Me.lblDescripcion.TabIndex = 2
+        Me.lblDescripcion.Text = "Label1"
+        '
+        'lblTemperatura
+        '
+        Me.lblTemperatura.AutoSize = True
+        Me.lblTemperatura.Font = New System.Drawing.Font("Century Gothic", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTemperatura.ForeColor = System.Drawing.Color.SeaGreen
+        Me.lblTemperatura.Location = New System.Drawing.Point(121, 10)
+        Me.lblTemperatura.Name = "lblTemperatura"
+        Me.lblTemperatura.Size = New System.Drawing.Size(91, 30)
+        Me.lblTemperatura.TabIndex = 1
+        Me.lblTemperatura.Text = "Label1"
+        '
+        'lblUbicacion
+        '
+        Me.lblUbicacion.AutoSize = True
+        Me.lblUbicacion.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUbicacion.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.lblUbicacion.Location = New System.Drawing.Point(12, 18)
+        Me.lblUbicacion.Name = "lblUbicacion"
+        Me.lblUbicacion.Size = New System.Drawing.Size(61, 19)
+        Me.lblUbicacion.TabIndex = 0
+        Me.lblUbicacion.Text = "Label1"
+        '
         'frmInicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1147, 606)
+        Me.Controls.Add(Me.PanelClima)
         Me.Controls.Add(Me.btnExportarPDF)
         Me.Controls.Add(Me.grdGrilla2)
         Me.Controls.Add(Me.grdGrilla1)
@@ -155,6 +217,8 @@ Partial Class frmInicio
         CType(Me.chtRepuestos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdGrilla2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdGrilla1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelClima.ResumeLayout(False)
+        Me.PanelClima.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -166,4 +230,9 @@ Partial Class frmInicio
     Friend WithEvents grdGrilla2 As DataGridView
     Friend WithEvents grdGrilla1 As DataGridView
     Friend WithEvents btnExportarPDF As Button
+    Friend WithEvents PanelClima As Panel
+    Friend WithEvents lblMaxMin As Label
+    Friend WithEvents lblDescripcion As Label
+    Friend WithEvents lblTemperatura As Label
+    Friend WithEvents lblUbicacion As Label
 End Class

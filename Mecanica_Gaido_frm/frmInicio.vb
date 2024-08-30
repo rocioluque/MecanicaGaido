@@ -6,6 +6,9 @@ Imports System.Configuration
 Imports System.Globalization
 Imports AD_Mecanica_Gaido
 
+Imports System.Net.Http
+Imports Newtonsoft.Json
+
 Public Class frmInicio
     Dim o_reportes As New AD_Reportes()
     Private Sub frmInicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -14,6 +17,40 @@ Public Class frmInicio
 
         cargar_grafico_Repuestos()
     End Sub
+
+    Private Async Sub Inicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim climaData As Clima = Await ObtenerClimaAsync()
+        If climaData IsNot Nothing Then
+            lblUbicacion.Text = climaData.name
+            lblTemperatura.Text = $"{climaData.main.temp}°C"
+            lblMaxMin.Text = "Previsión"
+            lblDescripcion.Text = climaData.weather(0).description
+        End If
+    End Sub
+
+#Region "Clima"
+
+    Private Async Function ObtenerClimaAsync() As Task(Of Clima)
+        Dim apiKey As String = "89cff514fec4a4da7077ca6b99f9a8d2"
+        Dim ciudad As String = "Las Varillas" ' Cambia esto a tu ciudad
+        Dim url As String = $"http://api.openweathermap.org/data/2.5/weather?q={ciudad}&units=metric&appid={apiKey}&lang=es"
+
+        Using client As New HttpClient()
+            Dim response As HttpResponseMessage = Await client.GetAsync(url)
+            If response.IsSuccessStatusCode Then
+                Dim json As String = Await response.Content.ReadAsStringAsync()
+                Dim climaData As Clima = JsonConvert.DeserializeObject(Of Clima)(json)
+                Return climaData
+            Else
+                MessageBox.Show("No se pudo obtener los datos del clima.")
+                Return Nothing
+            End If
+        End Using
+    End Function
+
+
+#End Region
+
 
 #Region "Fecha y Hora"
     Private Sub horaFecha_Tick(sender As Object, e As EventArgs) Handles horaFecha.Tick
