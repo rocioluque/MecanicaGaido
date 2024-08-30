@@ -11,28 +11,34 @@ Public Class frmVentas
 #Region "Procedimientos"
     Private Sub frmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Combo_Persona()
-        'Cargar_Combo_Empleados()
         Cargar_Combo_FormaPago()
         Cargar_Combo_TipoVenta()
         Cargar_Combo_FormaEntrega()
+        Cargar_Combo_Repuestos()
+        Cargar_Combo_Lote()
+        limpiar()
+        PonerDecimales()
 
         txtVendedor.Text = UsuarioActivo.nombre_empleado
     End Sub
 
     Public Sub limpiar()
         txtID.Clear()
-        dtpFechaVenta.Value = Today
+        dtpFechaVenta.Value = Date.Today
         txtNumComprobante.Clear()
-        txtSubtotal.Clear()
-        txtIVA.Clear()
-        txtOtrosImpuestos.Clear()
-        txtTotal.Clear()
+        txtSubtotal.Text = Convert.ToDecimal(0)
+        txtIVA.Text = Convert.ToDecimal(21)
+        txtIvaMonto.Text = Convert.ToDecimal(0)
+        txtOtrosImpuestos.Text = Convert.ToDecimal(0)
+        txtTotal.Text = Convert.ToDecimal(0)
+        txtMontoDtoRecargo.Text = Convert.ToDecimal(0)
+        txtPorcentaje.Text = Convert.ToDecimal(0)
         cboTipoVenta.SelectedIndex = -1
         cboFormaEntrega.SelectedIndex = -1
         cboDetalleFormaPago.SelectedIndex = -1
         cboPersona.SelectedIndex = -1
-        'cboEmpleado.SelectedIndex = -1
         cboFormaPago.SelectedIndex = -1
+        CboLote.SelectedIndex = -1
         chkEstado.Checked = False
     End Sub
 
@@ -42,6 +48,24 @@ Public Class frmVentas
 #End Region
 
 #Region "Carga de cbo"
+    Private Sub Cargar_Combo_Repuestos()
+        Try
+            Dim tablaRep As DataTable = o_ventas.Cargar_Combo_Repuestos()
+
+            If tablaRep.Rows.Count > 0 Then
+                cboProductoVenta.DataSource = tablaRep
+                cboProductoVenta.DisplayMember = "Descripcion"
+                cboProductoVenta.ValueMember = "ID_Repuestos"
+                cboProductoVenta.SelectedValue = -1
+            Else
+                MsgBox("No se encontraron Repuestos.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar los Repuestos: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
     Private Sub Cargar_Combo_Persona()
         Try
             Dim tabla As DataTable = o_ventas.Cargar_Combo_Persona()
@@ -59,24 +83,6 @@ Public Class frmVentas
             MsgBox("Error al cargar las Personas: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
-
-    'Private Sub Cargar_Combo_Empleados()
-    '    Try
-    '        Dim tabla As DataTable = o_ventas.Cargar_Combo_Empleados()
-
-    '        If tabla.Rows.Count > 0 Then
-    '            cboEmpleado.DataSource = tabla
-    '            cboEmpleado.DisplayMember = "Nombre/RazonSocial"
-    '            cboEmpleado.ValueMember = "ID_Persona"
-    '            cboEmpleado.SelectedValue = -1
-    '        Else
-    '            MsgBox("No se encontraron Empleados.", vbInformation, "Información")
-    '        End If
-
-    '    Catch ex As Exception
-    '        MsgBox("Error al cargar los Empleados: " & ex.Message, vbCritical, "Error")
-    '    End Try
-    'End Sub
 
     Private Sub Cargar_Combo_FormaPago()
         Try
@@ -149,6 +155,191 @@ Public Class frmVentas
             MsgBox("Error al cargar las Formas de Entrega: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+
+    Private Sub Cargar_Combo_Lote()
+        Try
+            Dim tabla As DataTable = o_ventas.Cargar_Combo_Lote()
+
+            If tabla.Rows.Count > 0 Then
+                CboLote.DataSource = tabla
+                CboLote.DisplayMember = "Denominacion"
+                CboLote.ValueMember = "ID_Lote"
+                CboLote.SelectedValue = -1
+            Else
+                MsgBox("No se encontraron Lotes.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar los Lotes: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+#End Region
+
+#Region "Cargar grilla y datos en txt"
+    Public Sub Cargar_Grilla_DetalleVenta()
+        Try
+            Dim conexion As SqlConnection
+            Dim comando As New SqlCommand
+
+            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
+
+            conexion.Open()
+            comando.Connection = conexion
+            comando.CommandType = CommandType.StoredProcedure
+            comando.CommandText = ("Cargar_Grilla_DetalleVenta")
+
+            Dim datadapter As New SqlDataAdapter(comando)
+            Dim oDs As New DataSet
+            datadapter.Fill(oDs)
+
+            If oDs.Tables(0).Rows.Count > 0 Then
+                grdVentas.AutoGenerateColumns = True
+                grdVentas.DataSource = oDs.Tables(0)
+                grdVentas.Refresh()
+            Else
+                MsgBox("No hay repuestos asociados a esta venta.", vbInformation, "Información")
+            End If
+
+            oDs = Nothing
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox("Error al cargar la grilla: " & ex.Message, vbCritical, "Error")
+        Finally
+        End Try
+    End Sub
+
+#End Region
+
+#Region "Agregar / Quitar Productos"
+    Private Sub btnAgregarCompra_Click(sender As Object, e As EventArgs) Handles btnAgregarVenta.Click
+        Try
+            If cboProductoVenta.SelectedValue <> Nothing AndAlso Not String.IsNullOrEmpty(txtCantidadVentas.Text) Then
+
+                Dim rowView As DataRowView = CType(cboProductoVenta.SelectedItem, DataRowView)
+                Dim idRepuesto As Integer = Convert.ToInt32(rowView("ID_Repuestos"))
+                Dim descripcionRepuesto As String = rowView("Descripcion").ToString()
+                Dim nombreDiario As String = rowView("nombreDiario").ToString()
+                Dim precio As Decimal = Convert.ToDecimal(rowView("PrecioCompra"))
+                Dim cantidad As Integer = Convert.ToDecimal(txtCantidadVentas.Text)
+                Dim lote As String = CboLote.Text.ToString
+                Dim total As Decimal = precio * cantidad
+
+                grdVentas.Rows.Add(idRepuesto, descripcionRepuesto, nombreDiario, cantidad, lote, precio, total)
+                Cargar_Combo_Repuestos()
+                txtCantidadVentas.Text = Convert.ToDecimal(0).ToString("N2")
+                ActualizarMontoTotal()
+
+            Else
+                MsgBox("Por favor, seleccione un repuesto y especifique la cantidad.", vbExclamation, "Advertencia")
+            End If
+        Catch ex As Exception
+            MsgBox("Error al agregar el repuesto: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub btnQuitarVenta_Click(sender As Object, e As EventArgs) Handles btnQuitarVenta.Click
+        Try
+            If grdVentas.SelectedRows.Count > 0 Then
+                grdVentas.Rows.Remove(grdVentas.SelectedRows(0))
+
+                ActualizarMontoTotal()
+            Else
+                MsgBox("Por favor, seleccione una fila para quitar.", vbExclamation, "Advertencia")
+            End If
+        Catch ex As Exception
+            MsgBox("Error al quitar el repuesto: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+#End Region
+
+#Region "Formato numero y calculo montos"
+    Private Sub PonerDecimales()
+        txtIVA.Text = Convert.ToDecimal(txtIVA.Text).ToString("N2")
+        txtIvaMonto.Text = Convert.ToDecimal(txtIvaMonto.Text).ToString("N2")
+        txtOtrosImpuestos.Text = Convert.ToDecimal(txtOtrosImpuestos.Text).ToString("N2")
+        txtSubtotal.Text = Convert.ToDecimal(txtSubtotal.Text).ToString("N2")
+        txtTotal.Text = Convert.ToDecimal(txtTotal.Text).ToString("N2")
+        txtPorcentaje.Text = Convert.ToDecimal(txtPorcentaje.Text).ToString("N2")
+        txtMontoDtoRecargo.Text = Convert.ToDecimal(txtMontoDtoRecargo.Text).ToString("N2")
+    End Sub
+
+    Private Sub CalcularTotalCompra()
+        txtTotal.Text = Convert.ToDecimal(CDec(txtOtrosImpuestos.Text) + CDec(txtSubtotal.Text) + CDec(txtIvaMonto.Text) + CDec(txtMontoDtoRecargo.Text)).ToString("N2")
+    End Sub
+
+    Private Sub rbtRecargo_CheckedChanged(sender As Object, e As EventArgs) Handles rbtRecargo.CheckedChanged
+        PonerDecimales()
+        CalcularTotalCompra()
+    End Sub
+
+    Private Sub rbtDescuento_CheckedChanged(sender As Object, e As EventArgs) Handles rbtDescuento.CheckedChanged
+        PonerDecimales()
+        CalcularTotalCompra()
+    End Sub
+
+    Private Sub txtSubtotal_TextChanged(sender As Object, e As EventArgs) Handles txtSubtotal.TextChanged
+        PonerDecimales()
+        CalcularTotalCompra()
+    End Sub
+
+    Private Sub txtOtrosImpuestos_Leave(sender As Object, e As EventArgs) Handles txtOtrosImpuestos.Leave
+        PonerDecimales()
+        CalcularTotalCompra()
+    End Sub
+
+    Private Sub txtIvaMonto_TextChanged(sender As Object, e As EventArgs) Handles txtIvaMonto.TextChanged
+        PonerDecimales()
+        CalcularTotalCompra()
+    End Sub
+
+    Private Sub txtPorcentaje_Leave(sender As Object, e As EventArgs) Handles txtPorcentaje.Leave
+        PonerDecimales()
+        CalcularTotalCompra()
+    End Sub
+
+    Private Sub txtMontoDtoRecargo_Leave(sender As Object, e As EventArgs) Handles txtMontoDtoRecargo.Leave
+        PonerDecimales()
+        CalcularTotalCompra()
+    End Sub
+
+    Public Sub Calculo_DtoRecargo()
+        Dim montoTotal As Decimal = 0
+        Dim porcentajeMonto As Decimal = 0
+        Dim porcentaje = txtPorcentaje.Text
+
+        For Each row As DataGridViewRow In grdVentas.Rows
+            montoTotal += Convert.ToDecimal(row.Cells("Total").Value)
+        Next
+
+        If rbtRecargo.Checked Then
+            lblMontoDtoRecargo.Text = "Recargo"
+
+            porcentajeMonto = ((montoTotal * porcentaje) / 100)
+            txtMontoDtoRecargo.Text = porcentajeMonto.ToString("N2")
+        ElseIf rbtDescuento.Checked Then
+            lblMontoDtoRecargo.Text = "Descuento"
+
+            porcentajeMonto = ((montoTotal * porcentaje * -1) / 100)
+            txtMontoDtoRecargo.Text = porcentajeMonto.ToString("N2")
+        End If
+    End Sub
+
+    Public Sub ActualizarMontoTotal()
+        Dim montoTotal As Decimal = 0
+        Dim IvaMonto As Decimal = 0
+        Dim iva = txtIVA.Text
+
+        ' Recorre todas las filas de la grilla y suma los valores de la columna Total
+        For Each row As DataGridViewRow In grdVentas.Rows
+            montoTotal += Convert.ToDecimal(row.Cells("Total").Value)
+        Next
+
+        txtSubtotal.Text = montoTotal.ToString("F2")
+
+        IvaMonto = ((montoTotal * iva) / 100)
+
+        txtIvaMonto.Text = IvaMonto.ToString("N2")
+    End Sub
 #End Region
 
 #Region "Forma de Entrega"
@@ -206,14 +397,14 @@ Public Class frmVentas
 
             rbtRecargo.Checked = False
             rbtDescuento.Checked = False
-            txtProcentaje.Clear()
+            txtPorcentaje.Clear()
         Else
             cboDetalleFormaPago.Enabled = False
             btnAgregarDetalleFormaPago.Enabled = False
 
             rbtRecargo.Checked = False
             rbtDescuento.Checked = False
-            txtProcentaje.Clear()
+            txtPorcentaje.Clear()
         End If
     End Sub
 #End Region
@@ -259,7 +450,7 @@ Public Class frmVentas
             If datoleido.Read() Then
                 rbtRecargo.Checked = datoleido("Recargo").ToString()
                 rbtDescuento.Checked = datoleido("Descuento").ToString()
-                txtProcentaje.Text = datoleido("Porcentaje").ToString()
+                txtPorcentaje.Text = datoleido("Porcentaje").ToString()
 
             Else
                 MsgBox("No se encontraron resultados", vbInformation, "Error")
@@ -269,22 +460,6 @@ Public Class frmVentas
         Catch ex As Exception
             MessageBox.Show("Ocurrió un error al consultar el detalle de forma de pago " & ex.Message, "Error")
         End Try
-    End Sub
-
-    Public Sub Calculo_DtoRecargo()
-        If rbtRecargo.Checked Then
-            lblMontoDtoRecargo.Text = "Recargo"
-        ElseIf rbtDescuento.Checked Then
-            lblMontoDtoRecargo.Text = "Descuento"
-        End If
-    End Sub
-
-    Private Sub rbtRecargo_CheckedChanged(sender As Object, e As EventArgs) Handles rbtRecargo.CheckedChanged
-        Calculo_DtoRecargo()
-    End Sub
-
-    Private Sub rbtDescuento_CheckedChanged(sender As Object, e As EventArgs) Handles rbtDescuento.CheckedChanged
-        Calculo_DtoRecargo()
     End Sub
 #End Region
 

@@ -144,9 +144,9 @@ Partial Class frmInicio
         'PanelClima
         '
         Me.PanelClima.Controls.Add(Me.lblMaxMin)
+        Me.PanelClima.Controls.Add(Me.lblUbicacion)
         Me.PanelClima.Controls.Add(Me.lblDescripcion)
         Me.PanelClima.Controls.Add(Me.lblTemperatura)
-        Me.PanelClima.Controls.Add(Me.lblUbicacion)
         Me.PanelClima.Location = New System.Drawing.Point(16, 92)
         Me.PanelClima.Name = "PanelClima"
         Me.PanelClima.Size = New System.Drawing.Size(215, 126)
@@ -157,10 +157,10 @@ Partial Class frmInicio
         Me.lblMaxMin.AutoSize = True
         Me.lblMaxMin.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMaxMin.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.lblMaxMin.Location = New System.Drawing.Point(13, 66)
+        Me.lblMaxMin.Location = New System.Drawing.Point(8, 72)
         Me.lblMaxMin.Name = "lblMaxMin"
         Me.lblMaxMin.Size = New System.Drawing.Size(50, 17)
-        Me.lblMaxMin.TabIndex = 3
+        Me.lblMaxMin.TabIndex = 122
         Me.lblMaxMin.Text = "Label1"
         '
         'lblDescripcion
@@ -168,10 +168,10 @@ Partial Class frmInicio
         Me.lblDescripcion.AutoSize = True
         Me.lblDescripcion.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDescripcion.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.lblDescripcion.Location = New System.Drawing.Point(112, 66)
+        Me.lblDescripcion.Location = New System.Drawing.Point(107, 72)
         Me.lblDescripcion.Name = "lblDescripcion"
         Me.lblDescripcion.Size = New System.Drawing.Size(50, 17)
-        Me.lblDescripcion.TabIndex = 2
+        Me.lblDescripcion.TabIndex = 121
         Me.lblDescripcion.Text = "Label1"
         '
         'lblTemperatura
@@ -179,10 +179,10 @@ Partial Class frmInicio
         Me.lblTemperatura.AutoSize = True
         Me.lblTemperatura.Font = New System.Drawing.Font("Century Gothic", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTemperatura.ForeColor = System.Drawing.Color.SeaGreen
-        Me.lblTemperatura.Location = New System.Drawing.Point(121, 10)
+        Me.lblTemperatura.Location = New System.Drawing.Point(116, 16)
         Me.lblTemperatura.Name = "lblTemperatura"
         Me.lblTemperatura.Size = New System.Drawing.Size(91, 30)
-        Me.lblTemperatura.TabIndex = 1
+        Me.lblTemperatura.TabIndex = 120
         Me.lblTemperatura.Text = "Label1"
         '
         'lblUbicacion
@@ -190,10 +190,10 @@ Partial Class frmInicio
         Me.lblUbicacion.AutoSize = True
         Me.lblUbicacion.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUbicacion.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.lblUbicacion.Location = New System.Drawing.Point(12, 18)
+        Me.lblUbicacion.Location = New System.Drawing.Point(7, 24)
         Me.lblUbicacion.Name = "lblUbicacion"
         Me.lblUbicacion.Size = New System.Drawing.Size(61, 19)
-        Me.lblUbicacion.TabIndex = 0
+        Me.lblUbicacion.TabIndex = 119
         Me.lblUbicacion.Text = "Label1"
         '
         'frmInicio

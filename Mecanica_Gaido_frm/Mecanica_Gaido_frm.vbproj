@@ -266,12 +266,6 @@
     <Compile Include="frmAgregarEmpleados.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGestionDatos.Designer.vb">
-      <DependentUpon>frmGestionDatos.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmGestionDatos.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmInicio.Designer.vb">
       <DependentUpon>frmInicio.vb</DependentUpon>
     </Compile>
@@ -504,9 +498,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarEmpleados.resx">
       <DependentUpon>frmAgregarEmpleados.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmGestionDatos.resx">
-      <DependentUpon>frmGestionDatos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInicio.resx">
       <DependentUpon>frmInicio.vb</DependentUpon>

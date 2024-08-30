@@ -11,6 +11,7 @@ Public Class AD_Reportes
         connectionString = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123"
     End Sub
 
+#Region "Reporte inicio"
     Public Function ObtenerDatosRepuestos() As Tuple(Of Integer, Integer, Integer)
         Dim muchos As Integer = 0
         Dim cero As Integer = 0
@@ -38,4 +39,47 @@ Public Class AD_Reportes
         End Using
         Return New Tuple(Of Integer, Integer, Integer)(muchos, cero, pocos)
     End Function
+#End Region
+
+#Region "Reporte personas"
+
+#End Region
+
+#Region "Reporte vehiculos"
+
+#End Region
+
+#Region "Reporte reparaciones"
+    Public Function Contar_Reparaciones_Mes(ByVal año As Integer) As DataTable
+        Dim dt As New DataTable()
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Contar_Reparaciones_Mes", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@Año", año)
+
+                Dim adapter As New SqlDataAdapter(comando)
+                adapter.Fill(dt)
+            End Using
+        End Using
+        Return dt
+    End Function
+
+#End Region
+
+#Region "Reporte productos"
+
+#End Region
+
+#Region "Reporte compras"
+
+#End Region
+
+#Region "Reporte ventas"
+
+#End Region
+
+#Region "Reporte miscelaneas"
+
+#End Region
 End Class

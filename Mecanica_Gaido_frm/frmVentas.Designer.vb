@@ -23,7 +23,12 @@ Partial Class frmVentas
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVentas))
-        Me.grdVentas = New System.Windows.Forms.DataGridView()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -40,6 +45,14 @@ Partial Class frmVentas
         Me.btnTipoVenta = New System.Windows.Forms.PictureBox()
         Me.btnFormaEntrega = New System.Windows.Forms.PictureBox()
         Me.PanelDetalleDeVentas = New System.Windows.Forms.Panel()
+        Me.grdVentas = New System.Windows.Forms.DataGridView()
+        Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Diario = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Lote = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnQuitarVenta = New System.Windows.Forms.Button()
         Me.btnAgregarVenta = New System.Windows.Forms.Button()
         Me.CboLote = New System.Windows.Forms.ComboBox()
@@ -74,8 +87,8 @@ Partial Class frmVentas
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.PanelFormaPago = New System.Windows.Forms.Panel()
+        Me.txtPorcentaje = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
-        Me.txtProcentaje = New System.Windows.Forms.TextBox()
         Me.rbtDescuento = New System.Windows.Forms.RadioButton()
         Me.rbtRecargo = New System.Windows.Forms.RadioButton()
         Me.cboDetalleFormaPago = New System.Windows.Forms.ComboBox()
@@ -90,12 +103,12 @@ Partial Class frmVentas
         Me.txtIvaMonto = New System.Windows.Forms.RichTextBox()
         Me.txtSubtotal = New System.Windows.Forms.RichTextBox()
         Me.lblMontoDtoRecargo = New System.Windows.Forms.Label()
-        CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarPersona, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarFormaPago, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnTipoVenta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnFormaEntrega, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDetalleDeVentas.SuspendLayout()
+        CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelImpuestos.SuspendLayout()
         Me.PanelInformacionGeneral.SuspendLayout()
         Me.PanelCliente.SuspendLayout()
@@ -103,24 +116,6 @@ Partial Class frmVentas
         CType(Me.btnAgregarDetalleFormaPago, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelTotales.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'grdVentas
-        '
-        Me.grdVentas.AllowUserToAddRows = False
-        Me.grdVentas.AllowUserToDeleteRows = False
-        Me.grdVentas.AllowUserToOrderColumns = True
-        Me.grdVentas.AllowUserToResizeRows = False
-        Me.grdVentas.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
-        Me.grdVentas.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.grdVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdVentas.Location = New System.Drawing.Point(91, 557)
-        Me.grdVentas.Name = "grdVentas"
-        Me.grdVentas.ReadOnly = True
-        Me.grdVentas.RowHeadersVisible = False
-        Me.grdVentas.RowHeadersWidth = 51
-        Me.grdVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdVentas.Size = New System.Drawing.Size(992, 206)
-        Me.grdVentas.TabIndex = 95
         '
         'Label14
         '
@@ -297,6 +292,7 @@ Partial Class frmVentas
         '
         'PanelDetalleDeVentas
         '
+        Me.PanelDetalleDeVentas.Controls.Add(Me.grdVentas)
         Me.PanelDetalleDeVentas.Controls.Add(Me.btnQuitarVenta)
         Me.PanelDetalleDeVentas.Controls.Add(Me.btnAgregarVenta)
         Me.PanelDetalleDeVentas.Controls.Add(Me.CboLote)
@@ -309,6 +305,108 @@ Partial Class frmVentas
         Me.PanelDetalleDeVentas.Name = "PanelDetalleDeVentas"
         Me.PanelDetalleDeVentas.Size = New System.Drawing.Size(1017, 269)
         Me.PanelDetalleDeVentas.TabIndex = 112
+        '
+        'grdVentas
+        '
+        Me.grdVentas.AllowUserToAddRows = False
+        Me.grdVentas.AllowUserToDeleteRows = False
+        Me.grdVentas.AllowUserToResizeRows = False
+        Me.grdVentas.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.grdVentas.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.grdVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdVentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.Descripcion, Me.Diario, Me.Cantidad, Me.Lote, Me.Precio, Me.Total})
+        Me.grdVentas.Location = New System.Drawing.Point(18, 64)
+        Me.grdVentas.Name = "grdVentas"
+        Me.grdVentas.ReadOnly = True
+        Me.grdVentas.RowHeadersVisible = False
+        Me.grdVentas.RowHeadersWidth = 51
+        Me.grdVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.grdVentas.Size = New System.Drawing.Size(986, 189)
+        Me.grdVentas.TabIndex = 144
+        '
+        'ID
+        '
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        Me.ID.DefaultCellStyle = DataGridViewCellStyle1
+        Me.ID.HeaderText = "ID"
+        Me.ID.MinimumWidth = 6
+        Me.ID.Name = "ID"
+        Me.ID.ReadOnly = True
+        Me.ID.Width = 50
+        '
+        'Descripcion
+        '
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        Me.Descripcion.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Descripcion.HeaderText = "Repuesto"
+        Me.Descripcion.MinimumWidth = 6
+        Me.Descripcion.Name = "Descripcion"
+        Me.Descripcion.ReadOnly = True
+        Me.Descripcion.Width = 200
+        '
+        'Diario
+        '
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        Me.Diario.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Diario.HeaderText = "Nombre común"
+        Me.Diario.MinimumWidth = 6
+        Me.Diario.Name = "Diario"
+        Me.Diario.ReadOnly = True
+        Me.Diario.Width = 200
+        '
+        'Cantidad
+        '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.Format = "N2"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Cantidad.HeaderText = "Cantidad"
+        Me.Cantidad.MinimumWidth = 6
+        Me.Cantidad.Name = "Cantidad"
+        Me.Cantidad.ReadOnly = True
+        Me.Cantidad.Width = 130
+        '
+        'Lote
+        '
+        Me.Lote.HeaderText = "Lote"
+        Me.Lote.Name = "Lote"
+        Me.Lote.ReadOnly = True
+        Me.Lote.Width = 170
+        '
+        'Precio
+        '
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.Format = "N2"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.Precio.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Precio.HeaderText = "Precio"
+        Me.Precio.MinimumWidth = 6
+        Me.Precio.Name = "Precio"
+        Me.Precio.ReadOnly = True
+        Me.Precio.Width = 116
+        '
+        'Total
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.Format = "N2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.Total.DefaultCellStyle = DataGridViewCellStyle6
+        Me.Total.HeaderText = "Total"
+        Me.Total.MinimumWidth = 6
+        Me.Total.Name = "Total"
+        Me.Total.ReadOnly = True
+        Me.Total.Width = 116
         '
         'btnQuitarVenta
         '
@@ -702,8 +800,8 @@ Partial Class frmVentas
         '
         'PanelFormaPago
         '
+        Me.PanelFormaPago.Controls.Add(Me.txtPorcentaje)
         Me.PanelFormaPago.Controls.Add(Me.Label23)
-        Me.PanelFormaPago.Controls.Add(Me.txtProcentaje)
         Me.PanelFormaPago.Controls.Add(Me.rbtDescuento)
         Me.PanelFormaPago.Controls.Add(Me.rbtRecargo)
         Me.PanelFormaPago.Controls.Add(Me.cboDetalleFormaPago)
@@ -717,6 +815,17 @@ Partial Class frmVentas
         Me.PanelFormaPago.Size = New System.Drawing.Size(597, 152)
         Me.PanelFormaPago.TabIndex = 134
         '
+        'txtPorcentaje
+        '
+        Me.txtPorcentaje.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPorcentaje.Location = New System.Drawing.Point(313, 100)
+        Me.txtPorcentaje.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtPorcentaje.Name = "txtPorcentaje"
+        Me.txtPorcentaje.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtPorcentaje.Size = New System.Drawing.Size(220, 23)
+        Me.txtPorcentaje.TabIndex = 116
+        Me.txtPorcentaje.Text = "0"
+        '
         'Label23
         '
         Me.Label23.AutoSize = True
@@ -728,17 +837,6 @@ Partial Class frmVentas
         Me.Label23.Size = New System.Drawing.Size(64, 17)
         Me.Label23.TabIndex = 115
         Me.Label23.Text = "Monto %"
-        '
-        'txtProcentaje
-        '
-        Me.txtProcentaje.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtProcentaje.Location = New System.Drawing.Point(313, 101)
-        Me.txtProcentaje.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtProcentaje.Name = "txtProcentaje"
-        Me.txtProcentaje.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtProcentaje.Size = New System.Drawing.Size(220, 23)
-        Me.txtProcentaje.TabIndex = 33
-        Me.txtProcentaje.Text = "0"
         '
         'rbtDescuento
         '
@@ -924,7 +1022,6 @@ Partial Class frmVentas
         Me.Controls.Add(Me.btnModificar)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnAceptar)
-        Me.Controls.Add(Me.grdVentas)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PanelDetalleDeVentas)
         Me.DoubleBuffered = True
@@ -933,13 +1030,13 @@ Partial Class frmVentas
         Me.Name = "frmVentas"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Ventas"
-        CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnAgregarPersona, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnAgregarFormaPago, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnTipoVenta, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnFormaEntrega, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelDetalleDeVentas.ResumeLayout(False)
         Me.PanelDetalleDeVentas.PerformLayout()
+        CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelImpuestos.ResumeLayout(False)
         Me.PanelImpuestos.PerformLayout()
         Me.PanelInformacionGeneral.ResumeLayout(False)
@@ -954,7 +1051,6 @@ Partial Class frmVentas
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents grdVentas As DataGridView
     Friend WithEvents Label14 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents Label1 As Label
@@ -1008,7 +1104,6 @@ Partial Class frmVentas
     Friend WithEvents Label7 As Label
     Friend WithEvents btnAgregarDetalleFormaPago As PictureBox
     Friend WithEvents Label23 As Label
-    Friend WithEvents txtProcentaje As TextBox
     Friend WithEvents rbtDescuento As RadioButton
     Friend WithEvents rbtRecargo As RadioButton
     Friend WithEvents Label11 As Label
@@ -1021,4 +1116,13 @@ Partial Class frmVentas
     Friend WithEvents txtSubtotal As RichTextBox
     Friend WithEvents lblMontoDtoRecargo As Label
     Friend WithEvents txtVendedor As TextBox
+    Friend WithEvents grdVentas As DataGridView
+    Friend WithEvents ID As DataGridViewTextBoxColumn
+    Friend WithEvents Descripcion As DataGridViewTextBoxColumn
+    Friend WithEvents Diario As DataGridViewTextBoxColumn
+    Friend WithEvents Cantidad As DataGridViewTextBoxColumn
+    Friend WithEvents Lote As DataGridViewTextBoxColumn
+    Friend WithEvents Precio As DataGridViewTextBoxColumn
+    Friend WithEvents Total As DataGridViewTextBoxColumn
+    Friend WithEvents txtPorcentaje As TextBox
 End Class
