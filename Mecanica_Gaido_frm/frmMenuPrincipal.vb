@@ -81,37 +81,37 @@ Public Class frmMenuPrincipal
 
 #Region "Cbo Tablero de Control"
     Private Sub btnRepPersona_Click(sender As Object, e As EventArgs) Handles btnRepPersona.Click
-        AbrirFormCbo(New frmModificarCiudades(), DirectCast(sender, Button))
+        AbrirFormCbo(New frmReportesPersonas(), DirectCast(sender, Button))
         OcultarPaneles()
     End Sub
 
     Private Sub btnRepVehiculos_Click(sender As Object, e As EventArgs) Handles btnRepVehiculos.Click
-        AbrirFormCbo(New frmModificarCiudades(), DirectCast(sender, Button))
+        AbrirFormCbo(New frmReportesVehiculos(), DirectCast(sender, Button))
         OcultarPaneles()
     End Sub
 
     Private Sub btnRepReparaciones_Click(sender As Object, e As EventArgs) Handles btnRepReparaciones.Click
-        AbrirFormCbo(New frmModificarCiudades(), DirectCast(sender, Button))
+        AbrirFormCbo(New frmReportesReparaciones(), DirectCast(sender, Button))
         OcultarPaneles()
     End Sub
 
     Private Sub btnRepProductos_Click(sender As Object, e As EventArgs) Handles btnRepProductos.Click
-        AbrirFormCbo(New frmModificarCiudades(), DirectCast(sender, Button))
+        AbrirFormCbo(New frmReportesProductos(), DirectCast(sender, Button))
         OcultarPaneles()
     End Sub
 
     Private Sub btnRepCompras_Click(sender As Object, e As EventArgs) Handles btnRepCompras.Click
-        AbrirFormCbo(New frmModificarCiudades(), DirectCast(sender, Button))
+        AbrirFormCbo(New frmReportesCompras(), DirectCast(sender, Button))
         OcultarPaneles()
     End Sub
 
     Private Sub btnRepVentas_Click(sender As Object, e As EventArgs) Handles btnRepVentas.Click
-        AbrirFormCbo(New frmModificarCiudades(), DirectCast(sender, Button))
+        AbrirFormCbo(New frmReportesVentas(), DirectCast(sender, Button))
         OcultarPaneles()
     End Sub
 
     Private Sub btnMiscelaneas_Click(sender As Object, e As EventArgs) Handles btnMiscelaneas.Click
-        AbrirFormCbo(New frmModificarCiudades(), DirectCast(sender, Button))
+        AbrirFormCbo(New frmReportesMiscelaneas(), DirectCast(sender, Button))
         OcultarPaneles()
     End Sub
 #End Region

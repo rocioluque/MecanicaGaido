@@ -5,6 +5,7 @@ Imports System.Configuration
 Public Class frmPersonas
     Dim o_Personas As New AD_Personas
     Public Property IdPersona As Integer
+    Public Property NuevaPersonaNombre As String
 
 #Region "Carga de Cbos"
     Private Sub Cargar_Provincias()
@@ -305,6 +306,8 @@ Nombre"
                        txtCorreo.Text, txtDireccion.Text, txtNumero.Text, txtPiso.Text, txtLetraPuerta.Text, txtCodigoPostal.Text,
                        Convert.ToInt32(cboCiudad.SelectedValue), txtNota.Text, chkEstado.Checked)
 
+                NuevaPersonaNombre = txtApellido.Text & " " & txtNombre.Text
+
                 MsgBox("Persona agregada correctamente.", vbInformation, "Información")
                 Limpiar()
                 Cargar_Grilla()
@@ -337,6 +340,57 @@ Nombre"
             MsgBox("Complete Datos", vbInformation, "Error")
         End If
     End Sub
+#End Region
+
+#Region "Buscar"
+    Private Sub Filtrar_Grilla()
+        Try
+            Dim conexion As SqlConnection
+            Dim comando As New SqlCommand
+
+            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
+            conexion.Open()
+
+            comando.Connection = conexion
+            comando.CommandType = CommandType.StoredProcedure
+            comando.CommandText = "Cargar_Grilla_Persona"
+
+            Dim datadapter As New SqlDataAdapter(comando)
+            Dim oDs As New DataSet
+            datadapter.Fill(oDs)
+
+            ' Filtrar por nombre o apellido
+            If oDs.Tables(0).Rows.Count > 0 Then
+                Dim dt As DataTable = oDs.Tables(0)
+                Dim filtro As String = txtBuscar.Text.Trim()
+
+                If Not String.IsNullOrEmpty(filtro) Then
+                    Dim dv As New DataView(dt)
+                    dv.RowFilter = String.Format(
+                    "[Nombre / Razon Social] LIKE '%{0}%' OR Apellido LIKE '%{0}%' OR Documento LIKE '%{0}%' OR [Teléfono Móvil] LIKE '%{0}%' OR [Teléfono Fijo] LIKE '%{0}%' OR Correo LIKE '%{0}%'",
+                    filtro
+                )
+                    grdPersonas.DataSource = dv
+                Else
+                    grdPersonas.DataSource = dt
+                End If
+
+                grdPersonas.Refresh()
+            Else
+                MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
+            End If
+
+            oDs = Nothing
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox("Error al filtrar la grilla: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub txtBuscar_TextChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
+        Filtrar_Grilla()
+    End Sub
+
 #End Region
 
 #Region "Keypress"

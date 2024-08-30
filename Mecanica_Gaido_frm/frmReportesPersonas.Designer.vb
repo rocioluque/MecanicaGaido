@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class frmReportes
+Partial Class frmReportesPersonas
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -25,6 +25,7 @@ Partial Class frmReportes
         Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
         Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmReportesPersonas))
         Me.chtRepuestos = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.grdGrilla1 = New System.Windows.Forms.DataGridView()
@@ -89,7 +90,7 @@ Partial Class frmReportes
         Me.grdGrilla2.Size = New System.Drawing.Size(268, 150)
         Me.grdGrilla2.TabIndex = 4
         '
-        'frmReportes
+        'frmReportesPersonas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -101,7 +102,8 @@ Partial Class frmReportes
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.chtRepuestos)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "frmReportes"
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Name = "frmReportesPersonas"
         Me.Text = "frmReportes"
         CType(Me.chtRepuestos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdGrilla1, System.ComponentModel.ISupportInitialize).EndInit()

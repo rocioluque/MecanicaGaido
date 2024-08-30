@@ -65,6 +65,7 @@ Partial Class frmProductos
         Me.cboOrigen = New System.Windows.Forms.ComboBox()
         Me.lblExistencia = New System.Windows.Forms.Label()
         Me.PanelExistencia = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.txtStockMinimo = New System.Windows.Forms.TextBox()
         Me.lblStockMinimo = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -81,6 +82,8 @@ Partial Class frmProductos
         Me.txtUtilidad = New System.Windows.Forms.TextBox()
         Me.lblUtilidad = New System.Windows.Forms.Label()
         Me.txtPrecioCompra = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtBuscar = New System.Windows.Forms.TextBox()
         CType(Me.grdProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarMarca, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarRubro, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -100,7 +103,7 @@ Partial Class frmProductos
         Me.grdProductos.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdProductos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdProductos.Location = New System.Drawing.Point(123, 429)
+        Me.grdProductos.Location = New System.Drawing.Point(122, 498)
         Me.grdProductos.Name = "grdProductos"
         Me.grdProductos.ReadOnly = True
         Me.grdProductos.RowHeadersVisible = False
@@ -410,7 +413,7 @@ Partial Class frmProductos
         Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAceptar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAceptar.ForeColor = System.Drawing.Color.White
-        Me.btnAceptar.Location = New System.Drawing.Point(899, 247)
+        Me.btnAceptar.Location = New System.Drawing.Point(898, 316)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(82, 28)
         Me.btnAceptar.TabIndex = 22
@@ -426,7 +429,7 @@ Partial Class frmProductos
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
-        Me.btnCancelar.Location = New System.Drawing.Point(899, 375)
+        Me.btnCancelar.Location = New System.Drawing.Point(898, 444)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(82, 28)
         Me.btnCancelar.TabIndex = 24
@@ -443,7 +446,7 @@ Partial Class frmProductos
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
-        Me.btnModificar.Location = New System.Drawing.Point(899, 311)
+        Me.btnModificar.Location = New System.Drawing.Point(898, 380)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(82, 28)
         Me.btnModificar.TabIndex = 23
@@ -475,7 +478,7 @@ Partial Class frmProductos
         Me.lblDatosEspecificos.AutoSize = True
         Me.lblDatosEspecificos.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblDatosEspecificos.ForeColor = System.Drawing.Color.White
-        Me.lblDatosEspecificos.Location = New System.Drawing.Point(135, 15)
+        Me.lblDatosEspecificos.Location = New System.Drawing.Point(134, 84)
         Me.lblDatosEspecificos.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblDatosEspecificos.Name = "lblDatosEspecificos"
         Me.lblDatosEspecificos.Size = New System.Drawing.Size(112, 17)
@@ -512,7 +515,7 @@ Partial Class frmProductos
         Me.PanelDatosEspecificos.Controls.Add(Me.lblCodFabricante)
         Me.PanelDatosEspecificos.Controls.Add(Me.lblCantBulto)
         Me.PanelDatosEspecificos.Controls.Add(Me.txtCantidadBulto)
-        Me.PanelDatosEspecificos.Location = New System.Drawing.Point(123, 24)
+        Me.PanelDatosEspecificos.Location = New System.Drawing.Point(122, 93)
         Me.PanelDatosEspecificos.Name = "PanelDatosEspecificos"
         Me.PanelDatosEspecificos.Size = New System.Drawing.Size(858, 201)
         Me.PanelDatosEspecificos.TabIndex = 109
@@ -573,7 +576,7 @@ Partial Class frmProductos
         Me.lblExistencia.AutoSize = True
         Me.lblExistencia.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblExistencia.ForeColor = System.Drawing.Color.White
-        Me.lblExistencia.Location = New System.Drawing.Point(138, 239)
+        Me.lblExistencia.Location = New System.Drawing.Point(137, 308)
         Me.lblExistencia.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblExistencia.Name = "lblExistencia"
         Me.lblExistencia.Size = New System.Drawing.Size(67, 17)
@@ -582,6 +585,7 @@ Partial Class frmProductos
         '
         'PanelExistencia
         '
+        Me.PanelExistencia.Controls.Add(Me.Button1)
         Me.PanelExistencia.Controls.Add(Me.txtStockMinimo)
         Me.PanelExistencia.Controls.Add(Me.lblStockMinimo)
         Me.PanelExistencia.Controls.Add(Me.Label5)
@@ -591,10 +595,20 @@ Partial Class frmProductos
         Me.PanelExistencia.Controls.Add(Me.lblStockDisponible)
         Me.PanelExistencia.Controls.Add(Me.txtUbicacion)
         Me.PanelExistencia.Controls.Add(Me.lblUbicacion)
-        Me.PanelExistencia.Location = New System.Drawing.Point(123, 247)
+        Me.PanelExistencia.Location = New System.Drawing.Point(122, 316)
         Me.PanelExistencia.Name = "PanelExistencia"
         Me.PanelExistencia.Size = New System.Drawing.Size(316, 157)
         Me.PanelExistencia.TabIndex = 111
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(277, 112)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(24, 19)
+        Me.Button1.TabIndex = 117
+        Me.Button1.Text = "+"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'txtStockMinimo
         '
@@ -636,7 +650,7 @@ Partial Class frmProductos
         Me.lblMovimientos.AutoSize = True
         Me.lblMovimientos.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblMovimientos.ForeColor = System.Drawing.Color.White
-        Me.lblMovimientos.Location = New System.Drawing.Point(525, 239)
+        Me.lblMovimientos.Location = New System.Drawing.Point(524, 308)
         Me.lblMovimientos.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblMovimientos.Name = "lblMovimientos"
         Me.lblMovimientos.Size = New System.Drawing.Size(85, 17)
@@ -656,7 +670,7 @@ Partial Class frmProductos
         Me.PanelMovimientos.Controls.Add(Me.txtUtilidad)
         Me.PanelMovimientos.Controls.Add(Me.lblUtilidad)
         Me.PanelMovimientos.Controls.Add(Me.txtPrecioCompra)
-        Me.PanelMovimientos.Location = New System.Drawing.Point(510, 247)
+        Me.PanelMovimientos.Location = New System.Drawing.Point(509, 316)
         Me.PanelMovimientos.Name = "PanelMovimientos"
         Me.PanelMovimientos.Size = New System.Drawing.Size(316, 157)
         Me.PanelMovimientos.TabIndex = 113
@@ -784,6 +798,28 @@ Partial Class frmProductos
         Me.txtPrecioCompra.Text = "0"
         Me.txtPrecioCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.Label11.ForeColor = System.Drawing.Color.White
+        Me.Label11.Location = New System.Drawing.Point(123, 53)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(49, 17)
+        Me.Label11.TabIndex = 116
+        Me.Label11.Text = "Buscar"
+        '
+        'txtBuscar
+        '
+        Me.txtBuscar.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtBuscar.Location = New System.Drawing.Point(245, 46)
+        Me.txtBuscar.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtBuscar.Name = "txtBuscar"
+        Me.txtBuscar.Size = New System.Drawing.Size(735, 23)
+        Me.txtBuscar.TabIndex = 115
+        Me.txtBuscar.Tag = ""
+        '
         'frmProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -791,7 +827,9 @@ Partial Class frmProductos
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(1169, 673)
+        Me.ClientSize = New System.Drawing.Size(1187, 673)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.txtBuscar)
         Me.Controls.Add(Me.lblMovimientos)
         Me.Controls.Add(Me.PanelMovimientos)
         Me.Controls.Add(Me.lblExistencia)
@@ -879,4 +917,7 @@ Partial Class frmProductos
     Friend WithEvents Label5 As Label
     Friend WithEvents txtStockMinimo As TextBox
     Friend WithEvents lblStockMinimo As Label
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Label11 As Label
+    Friend WithEvents txtBuscar As TextBox
 End Class

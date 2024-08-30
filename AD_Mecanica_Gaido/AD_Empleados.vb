@@ -148,7 +148,6 @@ Public Class AD_Empleados
         Dim comando As New SqlCommand("Agregar_Empleado_Usuario", conexion)
         comando.CommandType = CommandType.StoredProcedure
 
-        ' Agregar parámetros
         comando.Parameters.AddWithValue("@ID_Persona", idPersona)
         comando.Parameters.AddWithValue("@Usuario", usuario)
         comando.Parameters.AddWithValue("@Contraseña", contraseña)
