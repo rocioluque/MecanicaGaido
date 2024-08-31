@@ -486,7 +486,6 @@ Public Class frmProductos
     End Sub
 #End Region
 
-
 #Region "Buscar"
     Private Sub Filtrar_Grilla()
         Try
@@ -536,6 +535,5 @@ Public Class frmProductos
     End Sub
 
 #End Region
-
 
 End Class
