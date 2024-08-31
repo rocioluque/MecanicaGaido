@@ -45,6 +45,7 @@ Partial Class frmUbicacion
         '
         'txtCodDep
         '
+        Me.txtCodDep.Enabled = False
         Me.txtCodDep.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCodDep.Location = New System.Drawing.Point(182, 256)
         Me.txtCodDep.Margin = New System.Windows.Forms.Padding(2)
