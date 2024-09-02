@@ -24,15 +24,10 @@ Public Class frmCompras
 
     Private Sub frmCompras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Combo_Persona()
-        Cargar_Combo_FormaPago()
+        Cargar_Combo_FormaPago_Compra()
         Cargar_Combo_Repuestos()
         limpiar()
         PonerDecimales()
-
-        ' Manejar eventos para concatenar datos
-        AddHandler txtNumComprobante.TextChanged, AddressOf ActualizarNombre
-        AddHandler cboPersona.SelectedIndexChanged, AddressOf ActualizarNombre
-        AddHandler dtpFechaCompra.ValueChanged, AddressOf ActualizarNombre
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -94,9 +89,9 @@ Public Class frmCompras
         End Try
     End Sub
 
-    Private Sub Cargar_Combo_FormaPago()
+    Private Sub Cargar_Combo_FormaPago_Compra()
         Try
-            Dim tabla As DataTable = o_Compras.Cargar_Combo_FormaPago()
+            Dim tabla As DataTable = o_Compras.Cargar_Combo_FormaPago_Compra()
 
             If tabla.Rows.Count > 0 Then
                 cboFormaPago.DataSource = tabla
@@ -134,10 +129,8 @@ Public Class frmCompras
 #Region "Agregar / Quitar Productos"
     Private Sub btnAgregarCompra_Click(sender As Object, e As EventArgs) Handles btnAgregarCompra.Click
         Try
-            ' Verifica que se haya seleccionado un repuesto y que la cantidad no esté vacía
             If cboProductoCompra.SelectedValue <> Nothing AndAlso Not String.IsNullOrEmpty(txtCantidadCompra.Text) Then
 
-                ' Obtiene los valores necesarios desde el DataRowView del combo box
                 Dim rowView As DataRowView = CType(cboProductoCompra.SelectedItem, DataRowView)
                 Dim idRepuesto As Integer = Convert.ToInt32(rowView("ID_Repuestos"))
                 Dim descripcionRepuesto As String = rowView("Descripcion").ToString()
@@ -146,7 +139,6 @@ Public Class frmCompras
                 Dim cantidad As Integer = Convert.ToDecimal(txtCantidadCompra.Text)
                 Dim total As Decimal = precio * cantidad
 
-                ' Agrega una nueva fila a la grilla
                 grdRepuestos.Rows.Add(idRepuesto, descripcionRepuesto, nombreDiario, cantidad, precio, total)
                 Cargar_Combo_Repuestos()
                 txtCantidadCompra.Text = Convert.ToDecimal(0).ToString("N2")
@@ -162,12 +154,9 @@ Public Class frmCompras
 
     Private Sub btnQuitarCompra_Click(sender As Object, e As EventArgs) Handles btnQuitarCompra.Click
         Try
-            ' Verifica si hay una fila seleccionada
             If grdRepuestos.SelectedRows.Count > 0 Then
-                ' Elimina la fila seleccionada
                 grdRepuestos.Rows.Remove(grdRepuestos.SelectedRows(0))
 
-                ' Actualiza el monto total de los repuestos
                 ActualizarMontoTotal()
             Else
                 MsgBox("Por favor, seleccione una fila para quitar.", vbExclamation, "Advertencia")
@@ -225,25 +214,52 @@ Public Class frmCompras
 
 #End Region
 
-#Region "Concatenar N° Comprobante"
-    Private Sub ActualizarNombre(sender As Object, e As EventArgs)
-        Dim numComprobante As String = txtNumComprobante.Text
-        Dim vendedor As String = If(cboPersona.SelectedItem IsNot Nothing, cboPersona.Text, String.Empty)
-        Dim fecha As String = dtpFechaCompra.Value.ToString("ddMMyy")
+#Region "Concatenar nombre Lote"
+    Dim isComprobanteComplete As Boolean = False
+    Dim isProveedorSelected As Boolean = False
 
-        denominacionLote = $"{fecha}.{numComprobante}.{vendedor}".Trim()
+    Private Sub txtNumComprobante_TextChanged(sender As Object, e As EventArgs) Handles txtNumComprobante.TextChanged
+        If txtNumComprobante.Text.Length >= 16 Then
+            isComprobanteComplete = True
+        Else
+            isComprobanteComplete = False
+        End If
+
+        If isComprobanteComplete AndAlso isProveedorSelected Then
+            ActualizarNombre()
+        End If
+    End Sub
+
+    Private Sub cboPersona_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPersona.SelectedIndexChanged
+        If cboPersona.SelectedIndex <> -1 Then
+            isProveedorSelected = True
+        Else
+            isProveedorSelected = False
+        End If
+
+        If isComprobanteComplete AndAlso isProveedorSelected Then
+            ActualizarNombre()
+        End If
+    End Sub
+
+    Private Sub ActualizarNombre()
+        Dim fecha As String = dtpFechaCompra.Value.ToString("yyyyMM")
+
+        Dim proveedor As String = cboPersona.Text.Substring(0, 2).ToUpper()
+
+        Dim numeroComprobante As String = txtNumComprobante.Text.Substring(txtNumComprobante.Text.Length - 4)
+
+        denominacionLote = $"{fecha}.{proveedor}.{numeroComprobante}"
     End Sub
 #End Region
 
 #Region "Forma de Pago"
-    Private Sub btnAgregarFormaPago_Click(sender As Object, e As EventArgs) Handles btnAgregarFormaPago.Click
+    Private Sub btnAgregarFormaPago_Click(sender As Object, e As EventArgs)
         Dim frm As New frmAgregarFormaPago()
 
-        'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
         If frm.ShowDialog() = DialogResult.OK Then
-            Cargar_Combo_FormaPago()
+            Cargar_Combo_FormaPago_Compra()
 
-            ' Buscar y seleccionar la nueva forma de pago en el ComboBox
             Dim nuevaFormaPagoCompras As String = frm.NuevaFormaPagoComprasNombre
             For Each item As DataRowView In cboFormaPago.Items
                 If item("Nombre").ToString() = nuevaFormaPagoCompras Then
@@ -255,8 +271,56 @@ Public Class frmCompras
     End Sub
 #End Region
 
+#Region "Persona"
+    Private Sub btnAgregarPersona_Click(sender As Object, e As EventArgs) Handles btnAgregarPersona.Click
+        Dim frm As New frmPersonas()
+
+        If frm.ShowDialog() = DialogResult.OK Then
+            Cargar_Combo_Persona()
+
+            Dim NuevaPersonaNombreCompra As String = frm.NuevaPersonaNombreCompra
+            For Each item As DataRowView In cboPersona.Items
+                If item("Nombre").ToString() = NuevaPersonaNombreCompra Then
+                    cboPersona.SelectedItem = item
+                    Exit For
+                End If
+            Next
+        End If
+    End Sub
+#End Region
+
+#Region "Cargar"
+    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
+        Try
+            Dim dtDetalles As New DataTable()
+            dtDetalles.Columns.Add("ID_Repuesto", GetType(Integer))
+            dtDetalles.Columns.Add("Cantidad", GetType(Integer))
+            dtDetalles.Columns.Add("Descripcion", GetType(String))
+            dtDetalles.Columns.Add("PrecioCompra", GetType(Decimal))
+
+            For Each row As DataGridViewRow In grdRepuestos.Rows
+                If Not row.IsNewRow Then
+                    dtDetalles.Rows.Add(row.Cells("ID_Repuesto").Value, row.Cells("Cantidad").Value,
+                                        row.Cells("Descripcion").Value, row.Cells("PrecioCompra").Value)
+                End If
+            Next
+
+            o_Compras.AgregarCompra(dtpFechaCompra.Value, txtNumComprobante.Text, cboPersona.SelectedValue, cboFormaPago.SelectedValue,
+                Convert.ToDecimal(txtSubtotal.Text), Convert.ToDecimal(txtIVA.Text), Convert.ToDecimal(txtIvaMonto.Text),
+                Convert.ToDecimal(txtOtrosImpuestos.Text), Convert.ToDecimal(txtTotal.Text), chkEstado.Checked,
+                dtDetalles, denominacionLote)
+
+            MessageBox.Show("Compra cargada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            limpiar()
+        Catch ex As Exception
+            MessageBox.Show("Error al cargar la compra: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+#End Region
+
 #Region "Keypress"
-    Private Sub txtNumComprobante_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNumComprobante.KeyPress
+    Private Sub txtNumComprobante_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
         Else
@@ -382,13 +446,5 @@ Public Class frmCompras
         End Using
     End Sub
 #End Region
-
-    Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
-        frmAgregarDatosFiscales.ShowDialog()
-    End Sub
-
-    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
-
-    End Sub
 
 End Class

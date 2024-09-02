@@ -6,6 +6,7 @@ Public Class frmPersonas
     Dim o_Personas As New AD_Personas
     Public Property IdPersona As Integer
     Public Property NuevaPersonaNombre As String
+    Public Property NuevaPersonaNombreCompra As String
 
 #Region "Carga de Cbos"
     Private Sub Cargar_Provincias()
@@ -307,6 +308,7 @@ Nombre"
                        Convert.ToInt32(cboCiudad.SelectedValue), txtNota.Text, chkEstado.Checked)
 
                 NuevaPersonaNombre = txtApellido.Text & " " & txtNombre.Text
+                NuevaPersonaNombreCompra = txtApellido.Text & " " & txtNombre.Text
 
                 MsgBox("Persona agregada correctamente.", vbInformation, "Información")
                 Limpiar()
@@ -452,7 +454,7 @@ Nombre"
         End If
     End Sub
 
-    Private Sub txtTelefonoMovil_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTelefonoMovil.KeyPress
+    Private Sub txtTelefonoMovil_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Asc(e.KeyChar) = 13 Then
             txtTelefonoFijo.Focus()
         End If
@@ -531,9 +533,7 @@ Nombre"
         End If
     End Sub
 
-
-
-    Private Sub txtCodigoPostal_TextChanged(sender As Object, e As EventArgs) Handles txtCodigoPostal.TextChanged
+    Private Sub txtCodigoPostal_TextChanged(sender As Object, e As EventArgs) 
         ActualizarEstadoControles()
     End Sub
 
@@ -553,7 +553,7 @@ Nombre"
         ActualizarEstadoControles()
     End Sub
 
-    Private Sub txtTelefonoMovil_TextChanged(sender As Object, e As EventArgs) Handles txtTelefonoMovil.TextChanged
+    Private Sub txtTelefonoMovil_TextChanged(sender As Object, e As EventArgs)
         ActualizarEstadoControles()
     End Sub
 

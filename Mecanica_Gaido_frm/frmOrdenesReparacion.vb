@@ -669,7 +669,6 @@ Public Class frmOrdenesReparacion
 
 #Region "Botones Principales"
 
-
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
 
         Dim ordenReparacionData As New AD_OrdenReparacion
@@ -1035,10 +1034,5 @@ Public Class frmOrdenesReparacion
 
 
 #End Region
-
-
-
-
-
 
 End Class

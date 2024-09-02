@@ -50,12 +50,13 @@ Partial Class frmPersonas
         Me.lblApellido = New System.Windows.Forms.Label()
         Me.txtApellido = New System.Windows.Forms.TextBox()
         Me.PanelDirecciones = New System.Windows.Forms.Panel()
+        Me.txtCodigoPostal = New System.Windows.Forms.MaskedTextBox()
+        Me.txtTelefonoMovil = New System.Windows.Forms.MaskedTextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.lblCodigoPostal = New System.Windows.Forms.Label()
-        Me.txtCodigoPostal = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.cboCiudad = New System.Windows.Forms.ComboBox()
         Me.lblTelefonoFijo = New System.Windows.Forms.Label()
@@ -74,7 +75,6 @@ Partial Class frmPersonas
         Me.txtPiso = New System.Windows.Forms.TextBox()
         Me.txtNumero = New System.Windows.Forms.TextBox()
         Me.lblNumero = New System.Windows.Forms.Label()
-        Me.txtTelefonoMovil = New System.Windows.Forms.TextBox()
         Me.lblTelefonoMovil = New System.Windows.Forms.Label()
         Me.lblDirecciones = New System.Windows.Forms.Label()
         Me.lblDatosPersonales = New System.Windows.Forms.Label()
@@ -290,7 +290,6 @@ Partial Class frmPersonas
         Me.msktxtNumeroDocumento.Name = "msktxtNumeroDocumento"
         Me.msktxtNumeroDocumento.Size = New System.Drawing.Size(220, 23)
         Me.msktxtNumeroDocumento.TabIndex = 114
-        Me.msktxtNumeroDocumento.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals
         '
         'Label3
         '
@@ -435,12 +434,13 @@ Partial Class frmPersonas
         '
         'PanelDirecciones
         '
+        Me.PanelDirecciones.Controls.Add(Me.txtCodigoPostal)
+        Me.PanelDirecciones.Controls.Add(Me.txtTelefonoMovil)
         Me.PanelDirecciones.Controls.Add(Me.Label10)
         Me.PanelDirecciones.Controls.Add(Me.Label8)
         Me.PanelDirecciones.Controls.Add(Me.Label6)
         Me.PanelDirecciones.Controls.Add(Me.Label4)
         Me.PanelDirecciones.Controls.Add(Me.lblCodigoPostal)
-        Me.PanelDirecciones.Controls.Add(Me.txtCodigoPostal)
         Me.PanelDirecciones.Controls.Add(Me.Label7)
         Me.PanelDirecciones.Controls.Add(Me.cboCiudad)
         Me.PanelDirecciones.Controls.Add(Me.lblTelefonoFijo)
@@ -459,12 +459,31 @@ Partial Class frmPersonas
         Me.PanelDirecciones.Controls.Add(Me.txtPiso)
         Me.PanelDirecciones.Controls.Add(Me.txtNumero)
         Me.PanelDirecciones.Controls.Add(Me.lblNumero)
-        Me.PanelDirecciones.Controls.Add(Me.txtTelefonoMovil)
         Me.PanelDirecciones.Controls.Add(Me.lblTelefonoMovil)
         Me.PanelDirecciones.Location = New System.Drawing.Point(419, 73)
         Me.PanelDirecciones.Name = "PanelDirecciones"
         Me.PanelDirecciones.Size = New System.Drawing.Size(571, 267)
         Me.PanelDirecciones.TabIndex = 77
+        '
+        'txtCodigoPostal
+        '
+        Me.txtCodigoPostal.BeepOnError = True
+        Me.txtCodigoPostal.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCodigoPostal.Location = New System.Drawing.Point(374, 59)
+        Me.txtCodigoPostal.Mask = "0000"
+        Me.txtCodigoPostal.Name = "txtCodigoPostal"
+        Me.txtCodigoPostal.Size = New System.Drawing.Size(163, 23)
+        Me.txtCodigoPostal.TabIndex = 115
+        '
+        'txtTelefonoMovil
+        '
+        Me.txtTelefonoMovil.BeepOnError = True
+        Me.txtTelefonoMovil.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTelefonoMovil.Location = New System.Drawing.Point(24, 189)
+        Me.txtTelefonoMovil.Mask = "+54 \9 0000000000"
+        Me.txtTelefonoMovil.Name = "txtTelefonoMovil"
+        Me.txtTelefonoMovil.Size = New System.Drawing.Size(163, 23)
+        Me.txtTelefonoMovil.TabIndex = 115
         '
         'Label10
         '
@@ -529,15 +548,6 @@ Partial Class frmPersonas
         Me.lblCodigoPostal.Size = New System.Drawing.Size(91, 17)
         Me.lblCodigoPostal.TabIndex = 76
         Me.lblCodigoPostal.Text = "Código Postal"
-        '
-        'txtCodigoPostal
-        '
-        Me.txtCodigoPostal.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCodigoPostal.Location = New System.Drawing.Point(374, 59)
-        Me.txtCodigoPostal.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtCodigoPostal.Name = "txtCodigoPostal"
-        Me.txtCodigoPostal.Size = New System.Drawing.Size(163, 23)
-        Me.txtCodigoPostal.TabIndex = 11
         '
         'Label7
         '
@@ -735,15 +745,6 @@ Partial Class frmPersonas
         Me.lblNumero.TabIndex = 68
         Me.lblNumero.Text = "Número"
         '
-        'txtTelefonoMovil
-        '
-        Me.txtTelefonoMovil.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTelefonoMovil.Location = New System.Drawing.Point(24, 189)
-        Me.txtTelefonoMovil.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtTelefonoMovil.Name = "txtTelefonoMovil"
-        Me.txtTelefonoMovil.Size = New System.Drawing.Size(163, 23)
-        Me.txtTelefonoMovil.TabIndex = 16
-        '
         'lblTelefonoMovil
         '
         Me.lblTelefonoMovil.AutoSize = True
@@ -897,7 +898,6 @@ Partial Class frmPersonas
     Friend WithEvents txtApellido As TextBox
     Friend WithEvents PanelDirecciones As Panel
     Friend WithEvents lblCodigoPostal As Label
-    Friend WithEvents txtCodigoPostal As TextBox
     Friend WithEvents lblTelefonoFijo As Label
     Friend WithEvents txtTelefonoFijo As TextBox
     Friend WithEvents lblLetra As Label
@@ -917,7 +917,6 @@ Partial Class frmPersonas
     Friend WithEvents btnAgregarCiudad As PictureBox
     Friend WithEvents lblTelefonoMovil As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents txtTelefonoMovil As TextBox
     Friend WithEvents lblDirecciones As Label
     Friend WithEvents lblDatosPersonales As Label
     Friend WithEvents lblNota As Label
@@ -933,4 +932,6 @@ Partial Class frmPersonas
     Friend WithEvents msktxtNumeroDocumento As MaskedTextBox
     Friend WithEvents txtBuscar As TextBox
     Friend WithEvents Label11 As Label
+    Friend WithEvents txtTelefonoMovil As MaskedTextBox
+    Friend WithEvents txtCodigoPostal As MaskedTextBox
 End Class
