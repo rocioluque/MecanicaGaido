@@ -15,6 +15,31 @@ Public Class frmAgregarPedidoRepuesto
 #Region "Procedimientos"
     Private Sub frmAgregarPedidoRepuesto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Grilla_Productos_BajoStock()
+        Cargar_Combo_Persona()
+    End Sub
+
+    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        Me.Close()
+    End Sub
+#End Region
+
+#Region "Cbo"
+    Private Sub Cargar_Combo_Persona()
+        Try
+            Dim tabla As DataTable = o_pedidos.Cargar_Combo_Personas()
+
+            If tabla.Rows.Count > 0 Then
+                cboPersona.DataSource = tabla
+                cboPersona.DisplayMember = "Persona"
+                cboPersona.ValueMember = "ID_Persona"
+                cboPersona.SelectedValue = -1
+            Else
+                MsgBox("No se encontraron Personas.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar las personas: " & ex.Message, vbCritical, "Error")
+        End Try
     End Sub
 #End Region
 
@@ -30,39 +55,19 @@ Public Class frmAgregarPedidoRepuesto
             fila.Cells("Descripcion").Value = row("Descripcion")
             fila.Cells("StockDisponible").Value = row("Stock Disponible")
         Next
-
-        AltoFila()
     End Sub
-#End Region
-
-#Region "Acomodar Grilla"
-    Private Sub AltoFila()
-        For Each row As DataGridViewRow In grdProductosBajoStock.Rows
-            row.Height = 120
-        Next
-    End Sub
-
-    Public Function GetColumnasSize(dg As DataGridView) As Single()
-        Dim values As Single() = New Single(dg.ColumnCount - 1) {}
-        For i As Integer = 0 To dg.ColumnCount - 1
-            values(i) = CSng(dg.Columns(i).Width)
-        Next
-        Return values
-    End Function
 #End Region
 
 #Region "PDF"
     Public Sub ExportarDatosPDF(ByVal document As Document)
         Dim datatable As New PdfPTable(grdProductosBajoStock.ColumnCount)
         datatable.DefaultCell.Padding = 3
-        Dim headerwidths As Single() = GetColumnasSize(grdProductosBajoStock)
-        datatable.SetWidths(headerwidths)
         datatable.WidthPercentage = 100
         datatable.DefaultCell.BorderWidth = 2
         datatable.DefaultCell.VerticalAlignment = Element.ALIGN_CENTER
 
-        Dim encabezado As New Paragraph("PRODUCTOS BAJO STOCK")
-        Dim texto As New Phrase("Reporte productos: " + Now.Date.ToString("d"))
+        Dim encabezado As New Paragraph("PEDIDO PARA COMPRA DE REPUESTOS")
+        Dim texto As New Phrase("Pedido del día: " + Now.ToString("dd-MM-yyyy") + " al proveedor " + cboPersona.Text)
 
         For i As Integer = 0 To grdProductosBajoStock.ColumnCount - 1
             datatable.AddCell(grdProductosBajoStock.Columns(i).HeaderText)
@@ -86,8 +91,9 @@ Public Class frmAgregarPedidoRepuesto
 
     Private Sub btnExportarPDF_Click(sender As Object, e As EventArgs) Handles btnExportarPDF.Click
         Try
-            Dim doc As New Document(PageSize.A4.Rotate(), 10, 10, 10, 10)
-            Dim filename As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "Reporteproductos.pdf")
+            Dim doc As New Document(PageSize.A4, 10, 10, 10, 10)
+            Dim safeDate As String = Now.ToString("dd-MM-yyyy")
+            Dim filename As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "Pedidos productos " + safeDate + ".pdf")
 
             Using file As New FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.ReadWrite)
                 PdfWriter.GetInstance(doc, file)
@@ -99,12 +105,8 @@ Public Class frmAgregarPedidoRepuesto
             Process.Start(filename)
             MessageBox.Show("Documento PDF generado con exito.")
         Catch ex As Exception
-            MessageBox.Show("No se puede generar el documento PDF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("No se puede generar el documento PDF: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-    End Sub
-
-    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
-        Me.Close()
     End Sub
 #End Region
 
