@@ -209,11 +209,17 @@
     <Compile Include="AD_Vehiculos.vb" />
     <Compile Include="AD_Ventas.vb" />
     <Compile Include="Clima\Clima.vb" />
+    <Compile Include="Clima\ClimaDetalle.vb" />
     <Compile Include="Clima\ClimaForecast.vb" />
     <Compile Include="Clima\Coordenadas.vb" />
+    <Compile Include="Clima\DiaPronostico.vb" />
     <Compile Include="Clima\Forecast.vb" />
     <Compile Include="Clima\Main.vb" />
+    <Compile Include="Clima\MainClima.vb" />
+    <Compile Include="Clima\Pronostico.vb" />
+    <Compile Include="Clima\SistemaInfo.vb" />
     <Compile Include="Clima\Ubicacion.vb" />
+    <Compile Include="Clima\Viento.vb" />
     <Compile Include="Clima\Weather.vb" />
     <Compile Include="ConnectionToSql.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
