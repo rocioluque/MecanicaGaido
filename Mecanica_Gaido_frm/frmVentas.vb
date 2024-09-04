@@ -397,14 +397,16 @@ Public Class frmVentas
 
             rbtRecargo.Checked = False
             rbtDescuento.Checked = False
-            txtPorcentaje.Clear()
+            'txtPorcentaje.Clear()
+            txtPorcentaje.Text = Convert.ToDecimal(0)
         Else
             cboDetalleFormaPago.Enabled = False
             btnAgregarDetalleFormaPago.Enabled = False
 
             rbtRecargo.Checked = False
             rbtDescuento.Checked = False
-            txtPorcentaje.Clear()
+            'txtPorcentaje.Clear()
+            txtPorcentaje.Text = Convert.ToDecimal(0)
         End If
     End Sub
 #End Region
