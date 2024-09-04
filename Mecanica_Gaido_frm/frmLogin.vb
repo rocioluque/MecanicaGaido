@@ -15,9 +15,12 @@ Public Class frmLogin
         Dim ValidLogin = o_Login.ValidarUsuario(txtUsuario.Text, txtContraseña.Text)
 
         If ValidLogin = True Then
+            Me.Hide()
+            Dim frmBienvenida As New frmBienvenida
+            frmBienvenida.ShowDialog()
+
             frmMenuPrincipal.Show()
             AddHandler frmMenuPrincipal.FormClosed, AddressOf Me.Cerrar_Sesion
-            Me.Hide()
         Else
             If txtContraseña.Text = "CONTRASEÑA" And txtUsuario.Text = "USUARIO" Then
                 MsgBox("Complete datos", vbInformation, "Login")
