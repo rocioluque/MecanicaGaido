@@ -43,6 +43,8 @@ Partial Class frmInicio
         Me.lblUbicacion = New System.Windows.Forms.Label()
         Me.lblDescripcion = New System.Windows.Forms.Label()
         Me.lblTemperatura = New System.Windows.Forms.Label()
+        Me.btnDolar = New System.Windows.Forms.Button()
+        Me.txtCotizacionDolar = New System.Windows.Forms.TextBox()
         CType(Me.chtRepuestos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdGrilla2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdGrilla1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -235,12 +237,30 @@ Partial Class frmInicio
         Me.lblTemperatura.TabIndex = 120
         Me.lblTemperatura.Text = "temperatura"
         '
+        'btnDolar
+        '
+        Me.btnDolar.Location = New System.Drawing.Point(12, 326)
+        Me.btnDolar.Name = "btnDolar"
+        Me.btnDolar.Size = New System.Drawing.Size(116, 23)
+        Me.btnDolar.TabIndex = 119
+        Me.btnDolar.Text = "Cotizacion del Dolar:"
+        Me.btnDolar.UseVisualStyleBackColor = True
+        '
+        'txtCotizacionDolar
+        '
+        Me.txtCotizacionDolar.Location = New System.Drawing.Point(134, 328)
+        Me.txtCotizacionDolar.Name = "txtCotizacionDolar"
+        Me.txtCotizacionDolar.Size = New System.Drawing.Size(116, 20)
+        Me.txtCotizacionDolar.TabIndex = 120
+        '
         'frmInicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1147, 606)
+        Me.Controls.Add(Me.txtCotizacionDolar)
+        Me.Controls.Add(Me.btnDolar)
         Me.Controls.Add(Me.PanelClima)
         Me.Controls.Add(Me.btnExportarPDF)
         Me.Controls.Add(Me.grdGrilla2)
@@ -277,4 +297,6 @@ Partial Class frmInicio
     Friend WithEvents lblHumedad As Label
     Friend WithEvents lblViento As Label
     Friend WithEvents lblVisibilidad As Label
+    Friend WithEvents btnDolar As Button
+    Friend WithEvents txtCotizacionDolar As TextBox
 End Class

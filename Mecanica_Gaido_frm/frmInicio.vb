@@ -10,6 +10,7 @@ Imports System.Net.Http
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 Imports System.IO
+Imports System.Net
 
 Public Class frmInicio
     Dim o_reportes As New AD_Reportes()
@@ -236,6 +237,41 @@ Public Class frmInicio
         frmAgregarPedidoRepuesto.ShowDialog()
     End Sub
 
+#Region "Dolar"
 
+
+    Private Sub btnDolar_Click(sender As Object, e As EventArgs) Handles btnDolar.Click
+        ' Token de autenticación (reemplaza con tu propio token)
+        Dim token As String = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTcwMzc4NDAsInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJmYWJyaWNpb3J1aXo2NjhAZ21haWwuY29tIn0.UqXVuir-Uv7QeTwB0AZwT1M3MhLmp_PKuPo2VYxq5flrafZQ7SililKIV9QVS48QRr1q3IGgaYYEVa5gjWmHHg"
+
+        ' URL de la API para consultar la cotización del dólar
+        Dim url As String = "https://api.estadisticasbcra.com/usd"
+
+        ' Realizar la solicitud HTTP
+        Dim request As HttpWebRequest = DirectCast(WebRequest.Create(url), HttpWebRequest)
+        request.Method = "GET"
+        request.Headers.Add("Authorization", "BEARER " & token)
+
+        Try
+            ' Obtener la respuesta
+            Dim response As HttpWebResponse = DirectCast(request.GetResponse(), HttpWebResponse)
+            Dim reader As New StreamReader(response.GetResponseStream())
+            Dim jsonResponse As String = reader.ReadToEnd()
+
+            ' Parsear la respuesta JSON
+            Dim jsonData As JArray = JArray.Parse(jsonResponse)
+
+            ' Extraer la cotización más reciente (último valor)
+            Dim cotizacionDolar As Decimal = jsonData.Last("v").Value(Of Decimal)()
+
+            ' Mostrar la cotización en un TextBox
+            txtCotizacionDolar.Text = cotizacionDolar.ToString("0.00")
+
+        Catch ex As Exception
+            MessageBox.Show("Error al obtener la cotización: " & ex.Message)
+        End Try
+    End Sub
+
+#End Region
 
 End Class
