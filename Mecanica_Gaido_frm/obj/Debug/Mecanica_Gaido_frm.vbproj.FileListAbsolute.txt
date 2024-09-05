@@ -1,4 +1,7 @@
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.vbproj.AssemblyReference.cache
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Mecanica_Gaido_frm.exe.config
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Mecanica_Gaido_frm.exe.manifest
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Mecanica_Gaido_frm.application
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Mecanica_Gaido_frm.exe
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Mecanica_Gaido_frm.pdb
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Mecanica_Gaido_frm.xml
@@ -82,7 +85,6 @@ C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\System.Nu
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\System.ValueTuple.xml
-C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.vbproj.AssemblyReference.cache
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.frmAgregarCiudad.resources
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.frmAgregarDetalleFormaPago.resources
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.frmAgregarFormaEntrega.resources
@@ -126,10 +128,13 @@ C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.frmUbicacion.resources
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.vbproj.GenerateResource.cache
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.vbproj.CoreCompileInputs.cache
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.exe.manifest
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.application
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.vbproj.CopyComplete
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.exe
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.xml
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.pdb
+<<<<<<< HEAD
 C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Mecanica_Gaido_frm.exe.config
 C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Mecanica_Gaido_frm.exe
 C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Mecanica_Gaido_frm.pdb
@@ -262,3 +267,17 @@ C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecani
 C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.exe
 C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.xml
 C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.pdb
+=======
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\CircularProgressBar.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\WinFormAnimation.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\CircularProgressBar.xml
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.frmBienvenida.resources
+>>>>>>> d9d7abd882252043d2a926bca5ce5c977fc84632
+C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Mecanica_Gaido_frm.exe.manifest
+C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Mecanica_Gaido_frm.application
+C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\CircularProgressBar.dll
+C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\WinFormAnimation.dll
+C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\CircularProgressBar.xml
+C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.frmBienvenida.resources
+C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.exe.manifest
+C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.application

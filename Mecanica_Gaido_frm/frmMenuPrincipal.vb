@@ -14,6 +14,7 @@ Imports iTextSharp.text.pdf
 Public Class frmMenuPrincipal
 
     Private Sub MenuPrincipal_Load(sender As Object, e As EventArgs) Handles Me.Load
+
         lblUsuario.Text = UsuarioActivo.usuario
         lblRol.Text = UsuarioActivo.nombre_rol
         PintarBotonInicio()

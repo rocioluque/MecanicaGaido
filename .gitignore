@@ -54,3 +54,4 @@ $Windows.~WS/
 # Windows shortcuts
 *.lnk
 
+/AFIP

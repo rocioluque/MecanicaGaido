@@ -31,6 +31,8 @@ Partial Class frmAgregarPedidoRepuesto
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnExportarPDF = New System.Windows.Forms.Button()
         Me.btnCerrar = New System.Windows.Forms.PictureBox()
+        Me.cboPersona = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.grdProductosBajoStock, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnCerrar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -54,13 +56,13 @@ Partial Class frmAgregarPedidoRepuesto
         Me.grdProductosBajoStock.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.grdProductosBajoStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdProductosBajoStock.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_Repuesto, Me.Descripcion, Me.StockDisponible})
-        Me.grdProductosBajoStock.Location = New System.Drawing.Point(66, 88)
+        Me.grdProductosBajoStock.Location = New System.Drawing.Point(71, 183)
         Me.grdProductosBajoStock.Name = "grdProductosBajoStock"
         Me.grdProductosBajoStock.ReadOnly = True
         Me.grdProductosBajoStock.RowHeadersVisible = False
         Me.grdProductosBajoStock.RowHeadersWidth = 51
         Me.grdProductosBajoStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdProductosBajoStock.Size = New System.Drawing.Size(562, 297)
+        Me.grdProductosBajoStock.Size = New System.Drawing.Size(562, 173)
         Me.grdProductosBajoStock.TabIndex = 116
         '
         'id_Repuesto
@@ -90,7 +92,7 @@ Partial Class frmAgregarPedidoRepuesto
         Me.Label3.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Label3.Font = New System.Drawing.Font("Century Gothic", 11.0!)
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(62, 38)
+        Me.Label3.Location = New System.Drawing.Point(67, 160)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(192, 20)
         Me.Label3.TabIndex = 115
@@ -126,12 +128,36 @@ Partial Class frmAgregarPedidoRepuesto
         Me.btnCerrar.TabIndex = 117
         Me.btnCerrar.TabStop = False
         '
+        'cboPersona
+        '
+        Me.cboPersona.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboPersona.FormattingEnabled = True
+        Me.cboPersona.Location = New System.Drawing.Point(170, 43)
+        Me.cboPersona.Margin = New System.Windows.Forms.Padding(2)
+        Me.cboPersona.Name = "cboPersona"
+        Me.cboPersona.Size = New System.Drawing.Size(169, 25)
+        Me.cboPersona.TabIndex = 118
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 11.0!)
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(67, 43)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(88, 20)
+        Me.Label1.TabIndex = 119
+        Me.Label1.Text = "Proovedor"
+        '
         'frmAgregarPedidoRepuesto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(706, 411)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.cboPersona)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.grdProductosBajoStock)
         Me.Controls.Add(Me.Label3)
@@ -155,4 +181,6 @@ Partial Class frmAgregarPedidoRepuesto
     Friend WithEvents Label3 As Label
     Friend WithEvents btnExportarPDF As Button
     Friend WithEvents btnCerrar As PictureBox
+    Friend WithEvents cboPersona As ComboBox
+    Friend WithEvents Label1 As Label
 End Class

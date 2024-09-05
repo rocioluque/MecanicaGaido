@@ -23,12 +23,12 @@ Partial Class frmVentas
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVentas))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -326,11 +326,11 @@ Partial Class frmVentas
         '
         'ID
         '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        Me.ID.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black
+        Me.ID.DefaultCellStyle = DataGridViewCellStyle13
         Me.ID.HeaderText = "ID"
         Me.ID.MinimumWidth = 6
         Me.ID.Name = "ID"
@@ -339,9 +339,9 @@ Partial Class frmVentas
         '
         'Descripcion
         '
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        Me.Descripcion.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black
+        Me.Descripcion.DefaultCellStyle = DataGridViewCellStyle14
         Me.Descripcion.HeaderText = "Repuesto"
         Me.Descripcion.MinimumWidth = 6
         Me.Descripcion.Name = "Descripcion"
@@ -350,9 +350,9 @@ Partial Class frmVentas
         '
         'Diario
         '
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        Me.Diario.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black
+        Me.Diario.DefaultCellStyle = DataGridViewCellStyle15
         Me.Diario.HeaderText = "Nombre común"
         Me.Diario.MinimumWidth = 6
         Me.Diario.Name = "Diario"
@@ -361,12 +361,12 @@ Partial Class frmVentas
         '
         'Cantidad
         '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.Format = "N2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle16.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle16.Format = "N2"
+        DataGridViewCellStyle16.NullValue = Nothing
+        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle16
         Me.Cantidad.HeaderText = "Cantidad"
         Me.Cantidad.MinimumWidth = 6
         Me.Cantidad.Name = "Cantidad"
@@ -382,12 +382,12 @@ Partial Class frmVentas
         '
         'Precio
         '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.Format = "N2"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.Precio.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle17.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle17.Format = "N2"
+        DataGridViewCellStyle17.NullValue = Nothing
+        Me.Precio.DefaultCellStyle = DataGridViewCellStyle17
         Me.Precio.HeaderText = "Precio"
         Me.Precio.MinimumWidth = 6
         Me.Precio.Name = "Precio"
@@ -396,12 +396,12 @@ Partial Class frmVentas
         '
         'Total
         '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.Format = "N2"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.Total.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle18.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle18.Format = "N2"
+        DataGridViewCellStyle18.NullValue = Nothing
+        Me.Total.DefaultCellStyle = DataGridViewCellStyle18
         Me.Total.HeaderText = "Total"
         Me.Total.MinimumWidth = 6
         Me.Total.Name = "Total"
@@ -557,7 +557,7 @@ Partial Class frmVentas
         Me.txtIVA.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtIVA.Size = New System.Drawing.Size(123, 23)
         Me.txtIVA.TabIndex = 8
-        Me.txtIVA.Text = "21"
+        Me.txtIVA.Text = "21,00"
         '
         'txtOtrosImpuestos
         '
@@ -824,7 +824,7 @@ Partial Class frmVentas
         Me.txtPorcentaje.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtPorcentaje.Size = New System.Drawing.Size(220, 23)
         Me.txtPorcentaje.TabIndex = 116
-        Me.txtPorcentaje.Text = "0"
+        Me.txtPorcentaje.Text = "0,00"
         '
         'Label23
         '
