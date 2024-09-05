@@ -23,10 +23,10 @@ Partial Class frmInicio
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Title1 As System.Windows.Forms.DataVisualization.Charting.Title = New System.Windows.Forms.DataVisualization.Charting.Title()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Title2 As System.Windows.Forms.DataVisualization.Charting.Title = New System.Windows.Forms.DataVisualization.Charting.Title()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmInicio))
         Me.lblFecha = New System.Windows.Forms.Label()
         Me.lblHora = New System.Windows.Forms.Label()
@@ -35,20 +35,23 @@ Partial Class frmInicio
         Me.grdGrilla2 = New System.Windows.Forms.DataGridView()
         Me.grdGrilla1 = New System.Windows.Forms.DataGridView()
         Me.btnExportarPDF = New System.Windows.Forms.Button()
-        Me.PanelClima = New System.Windows.Forms.Panel()
         Me.lblViento = New System.Windows.Forms.Label()
         Me.lblVisibilidad = New System.Windows.Forms.Label()
         Me.lblHumedad = New System.Windows.Forms.Label()
         Me.lblSensacionTermica = New System.Windows.Forms.Label()
         Me.lblUbicacion = New System.Windows.Forms.Label()
-        Me.lblDescripcion = New System.Windows.Forms.Label()
         Me.lblTemperatura = New System.Windows.Forms.Label()
-        Me.btnDolar = New System.Windows.Forms.Button()
-        Me.txtCotizacionDolar = New System.Windows.Forms.TextBox()
+        Me.PictureBoxHumedad = New System.Windows.Forms.PictureBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.lblDescripcion = New System.Windows.Forms.Label()
+        Me.lblDolar = New System.Windows.Forms.Label()
         CType(Me.chtRepuestos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdGrilla2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdGrilla1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelClima.SuspendLayout()
+        CType(Me.PictureBoxHumedad, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblFecha
@@ -56,7 +59,7 @@ Partial Class frmInicio
         Me.lblFecha.AutoSize = True
         Me.lblFecha.Font = New System.Drawing.Font("Century Gothic", 15.0!)
         Me.lblFecha.ForeColor = System.Drawing.Color.MediumSeaGreen
-        Me.lblFecha.Location = New System.Drawing.Point(12, 58)
+        Me.lblFecha.Location = New System.Drawing.Point(25, 73)
         Me.lblFecha.Name = "lblFecha"
         Me.lblFecha.Size = New System.Drawing.Size(72, 23)
         Me.lblFecha.TabIndex = 110
@@ -68,7 +71,7 @@ Partial Class frmInicio
         Me.lblHora.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.lblHora.Font = New System.Drawing.Font("Century Gothic", 30.0!)
         Me.lblHora.ForeColor = System.Drawing.Color.White
-        Me.lblHora.Location = New System.Drawing.Point(7, 9)
+        Me.lblHora.Location = New System.Drawing.Point(20, 9)
         Me.lblHora.Name = "lblHora"
         Me.lblHora.Size = New System.Drawing.Size(114, 49)
         Me.lblHora.TabIndex = 109
@@ -81,28 +84,28 @@ Partial Class frmInicio
         'chtRepuestos
         '
         Me.chtRepuestos.BackColor = System.Drawing.Color.Transparent
-        ChartArea1.Name = "ChartArea1"
-        Me.chtRepuestos.ChartAreas.Add(ChartArea1)
+        ChartArea2.Name = "ChartArea1"
+        Me.chtRepuestos.ChartAreas.Add(ChartArea2)
         Me.chtRepuestos.Cursor = System.Windows.Forms.Cursors.Hand
-        Legend1.Name = "Legend1"
-        Me.chtRepuestos.Legends.Add(Legend1)
+        Legend2.Name = "Legend1"
+        Me.chtRepuestos.Legends.Add(Legend2)
         Me.chtRepuestos.Location = New System.Drawing.Point(677, 32)
         Me.chtRepuestos.Name = "chtRepuestos"
         Me.chtRepuestos.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.chtRepuestos.Series.Add(Series1)
+        Series2.ChartArea = "ChartArea1"
+        Series2.Legend = "Legend1"
+        Series2.Name = "Series1"
+        Me.chtRepuestos.Series.Add(Series2)
         Me.chtRepuestos.Size = New System.Drawing.Size(427, 327)
         Me.chtRepuestos.TabIndex = 114
-        Title1.BackColor = System.Drawing.Color.Transparent
-        Title1.DockedToChartArea = "ChartArea1"
-        Title1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Title1.ForeColor = System.Drawing.Color.White
-        Title1.Name = "TittleEstadoRepuestos"
-        Title1.ShadowColor = System.Drawing.Color.Transparent
-        Title1.Text = "Estado de Repuestos"
-        Me.chtRepuestos.Titles.Add(Title1)
+        Title2.BackColor = System.Drawing.Color.Transparent
+        Title2.DockedToChartArea = "ChartArea1"
+        Title2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Title2.ForeColor = System.Drawing.Color.White
+        Title2.Name = "TittleEstadoRepuestos"
+        Title2.ShadowColor = System.Drawing.Color.Transparent
+        Title2.Text = "Estado de Repuestos"
+        Me.chtRepuestos.Titles.Add(Title2)
         '
         'grdGrilla2
         '
@@ -114,6 +117,7 @@ Partial Class frmInicio
         Me.grdGrilla2.Name = "grdGrilla2"
         Me.grdGrilla2.Size = New System.Drawing.Size(268, 150)
         Me.grdGrilla2.TabIndex = 116
+        Me.grdGrilla2.Visible = False
         '
         'grdGrilla1
         '
@@ -125,6 +129,7 @@ Partial Class frmInicio
         Me.grdGrilla1.Name = "grdGrilla1"
         Me.grdGrilla1.Size = New System.Drawing.Size(268, 150)
         Me.grdGrilla1.TabIndex = 115
+        Me.grdGrilla1.Visible = False
         '
         'btnExportarPDF
         '
@@ -146,112 +151,121 @@ Partial Class frmInicio
         Me.btnExportarPDF.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnExportarPDF.UseVisualStyleBackColor = False
         '
-        'PanelClima
-        '
-        Me.PanelClima.Controls.Add(Me.lblViento)
-        Me.PanelClima.Controls.Add(Me.lblVisibilidad)
-        Me.PanelClima.Controls.Add(Me.lblHumedad)
-        Me.PanelClima.Controls.Add(Me.lblSensacionTermica)
-        Me.PanelClima.Controls.Add(Me.lblUbicacion)
-        Me.PanelClima.Controls.Add(Me.lblDescripcion)
-        Me.PanelClima.Controls.Add(Me.lblTemperatura)
-        Me.PanelClima.Location = New System.Drawing.Point(12, 84)
-        Me.PanelClima.Name = "PanelClima"
-        Me.PanelClima.Size = New System.Drawing.Size(238, 236)
-        Me.PanelClima.TabIndex = 118
-        '
         'lblViento
         '
         Me.lblViento.AutoSize = True
         Me.lblViento.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblViento.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.lblViento.Location = New System.Drawing.Point(8, 206)
+        Me.lblViento.Location = New System.Drawing.Point(245, 223)
         Me.lblViento.Name = "lblViento"
-        Me.lblViento.Size = New System.Drawing.Size(49, 17)
-        Me.lblViento.TabIndex = 127
-        Me.lblViento.Text = "viento"
+        Me.lblViento.Size = New System.Drawing.Size(19, 17)
+        Me.lblViento.TabIndex = 134
+        Me.lblViento.Text = "vi"
         '
         'lblVisibilidad
         '
         Me.lblVisibilidad.AutoSize = True
         Me.lblVisibilidad.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblVisibilidad.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.lblVisibilidad.Location = New System.Drawing.Point(8, 171)
+        Me.lblVisibilidad.Location = New System.Drawing.Point(150, 223)
         Me.lblVisibilidad.Name = "lblVisibilidad"
-        Me.lblVisibilidad.Size = New System.Drawing.Size(72, 17)
-        Me.lblVisibilidad.TabIndex = 126
-        Me.lblVisibilidad.Text = "visibilidad"
+        Me.lblVisibilidad.Size = New System.Drawing.Size(16, 17)
+        Me.lblVisibilidad.TabIndex = 133
+        Me.lblVisibilidad.Text = "v"
         '
         'lblHumedad
         '
         Me.lblHumedad.AutoSize = True
         Me.lblHumedad.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblHumedad.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.lblHumedad.Location = New System.Drawing.Point(8, 140)
+        Me.lblHumedad.Location = New System.Drawing.Point(58, 223)
         Me.lblHumedad.Name = "lblHumedad"
-        Me.lblHumedad.Size = New System.Drawing.Size(72, 17)
-        Me.lblHumedad.TabIndex = 125
-        Me.lblHumedad.Text = "humedad"
+        Me.lblHumedad.Size = New System.Drawing.Size(24, 17)
+        Me.lblHumedad.TabIndex = 132
+        Me.lblHumedad.Text = "hu"
         '
         'lblSensacionTermica
         '
         Me.lblSensacionTermica.AutoSize = True
         Me.lblSensacionTermica.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSensacionTermica.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.lblSensacionTermica.Location = New System.Drawing.Point(8, 81)
+        Me.lblSensacionTermica.Location = New System.Drawing.Point(118, 184)
         Me.lblSensacionTermica.Name = "lblSensacionTermica"
-        Me.lblSensacionTermica.Size = New System.Drawing.Size(88, 17)
-        Me.lblSensacionTermica.TabIndex = 122
-        Me.lblSensacionTermica.Text = "sens termica"
+        Me.lblSensacionTermica.Size = New System.Drawing.Size(19, 17)
+        Me.lblSensacionTermica.TabIndex = 131
+        Me.lblSensacionTermica.Text = "ST"
         '
         'lblUbicacion
         '
         Me.lblUbicacion.AutoSize = True
         Me.lblUbicacion.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUbicacion.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.lblUbicacion.Location = New System.Drawing.Point(7, 17)
+        Me.lblUbicacion.Location = New System.Drawing.Point(25, 111)
         Me.lblUbicacion.Name = "lblUbicacion"
         Me.lblUbicacion.Size = New System.Drawing.Size(89, 19)
-        Me.lblUbicacion.TabIndex = 119
+        Me.lblUbicacion.TabIndex = 128
         Me.lblUbicacion.Text = "ubicacion"
-        '
-        'lblDescripcion
-        '
-        Me.lblDescripcion.AutoSize = True
-        Me.lblDescripcion.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescripcion.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.lblDescripcion.Location = New System.Drawing.Point(8, 109)
-        Me.lblDescripcion.Name = "lblDescripcion"
-        Me.lblDescripcion.Size = New System.Drawing.Size(82, 17)
-        Me.lblDescripcion.TabIndex = 121
-        Me.lblDescripcion.Text = "descripcion"
         '
         'lblTemperatura
         '
         Me.lblTemperatura.AutoSize = True
         Me.lblTemperatura.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTemperatura.ForeColor = System.Drawing.Color.SeaGreen
-        Me.lblTemperatura.Location = New System.Drawing.Point(6, 45)
+        Me.lblTemperatura.Location = New System.Drawing.Point(25, 177)
         Me.lblTemperatura.Name = "lblTemperatura"
-        Me.lblTemperatura.Size = New System.Drawing.Size(140, 24)
-        Me.lblTemperatura.TabIndex = 120
-        Me.lblTemperatura.Text = "temperatura"
+        Me.lblTemperatura.Size = New System.Drawing.Size(18, 24)
+        Me.lblTemperatura.TabIndex = 129
+        Me.lblTemperatura.Text = "T"
         '
-        'btnDolar
+        'PictureBoxHumedad
         '
-        Me.btnDolar.Location = New System.Drawing.Point(12, 326)
-        Me.btnDolar.Name = "btnDolar"
-        Me.btnDolar.Size = New System.Drawing.Size(116, 23)
-        Me.btnDolar.TabIndex = 119
-        Me.btnDolar.Text = "Cotizacion del Dolar:"
-        Me.btnDolar.UseVisualStyleBackColor = True
+        Me.PictureBoxHumedad.Image = CType(resources.GetObject("PictureBoxHumedad.Image"), System.Drawing.Image)
+        Me.PictureBoxHumedad.InitialImage = Nothing
+        Me.PictureBoxHumedad.Location = New System.Drawing.Point(29, 216)
+        Me.PictureBoxHumedad.Name = "PictureBoxHumedad"
+        Me.PictureBoxHumedad.Size = New System.Drawing.Size(26, 25)
+        Me.PictureBoxHumedad.TabIndex = 135
+        Me.PictureBoxHumedad.TabStop = False
         '
-        'txtCotizacionDolar
+        'PictureBox2
         '
-        Me.txtCotizacionDolar.Location = New System.Drawing.Point(134, 328)
-        Me.txtCotizacionDolar.Name = "txtCotizacionDolar"
-        Me.txtCotizacionDolar.Size = New System.Drawing.Size(116, 20)
-        Me.txtCotizacionDolar.TabIndex = 120
+        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
+        Me.PictureBox2.Location = New System.Drawing.Point(121, 217)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(26, 25)
+        Me.PictureBox2.TabIndex = 136
+        Me.PictureBox2.TabStop = False
+        '
+        'PictureBox3
+        '
+        Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
+        Me.PictureBox3.Location = New System.Drawing.Point(216, 217)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(26, 25)
+        Me.PictureBox3.TabIndex = 137
+        Me.PictureBox3.TabStop = False
+        '
+        'lblDescripcion
+        '
+        Me.lblDescripcion.AutoSize = True
+        Me.lblDescripcion.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDescripcion.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.lblDescripcion.Location = New System.Drawing.Point(26, 145)
+        Me.lblDescripcion.Name = "lblDescripcion"
+        Me.lblDescripcion.Size = New System.Drawing.Size(82, 17)
+        Me.lblDescripcion.TabIndex = 138
+        Me.lblDescripcion.Text = "descripcion"
+        '
+        'lblDolar
+        '
+        Me.lblDolar.AutoSize = True
+        Me.lblDolar.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDolar.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.lblDolar.Location = New System.Drawing.Point(25, 255)
+        Me.lblDolar.Name = "lblDolar"
+        Me.lblDolar.Size = New System.Drawing.Size(50, 19)
+        Me.lblDolar.TabIndex = 139
+        Me.lblDolar.Text = "dolar"
         '
         'frmInicio
         '
@@ -259,9 +273,17 @@ Partial Class frmInicio
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1147, 606)
-        Me.Controls.Add(Me.txtCotizacionDolar)
-        Me.Controls.Add(Me.btnDolar)
-        Me.Controls.Add(Me.PanelClima)
+        Me.Controls.Add(Me.lblDolar)
+        Me.Controls.Add(Me.lblDescripcion)
+        Me.Controls.Add(Me.PictureBox3)
+        Me.Controls.Add(Me.PictureBox2)
+        Me.Controls.Add(Me.PictureBoxHumedad)
+        Me.Controls.Add(Me.lblViento)
+        Me.Controls.Add(Me.lblVisibilidad)
+        Me.Controls.Add(Me.lblHumedad)
+        Me.Controls.Add(Me.lblSensacionTermica)
+        Me.Controls.Add(Me.lblUbicacion)
+        Me.Controls.Add(Me.lblTemperatura)
         Me.Controls.Add(Me.btnExportarPDF)
         Me.Controls.Add(Me.grdGrilla2)
         Me.Controls.Add(Me.grdGrilla1)
@@ -276,8 +298,9 @@ Partial Class frmInicio
         CType(Me.chtRepuestos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdGrilla2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdGrilla1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelClima.ResumeLayout(False)
-        Me.PanelClima.PerformLayout()
+        CType(Me.PictureBoxHumedad, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -289,14 +312,15 @@ Partial Class frmInicio
     Friend WithEvents grdGrilla2 As DataGridView
     Friend WithEvents grdGrilla1 As DataGridView
     Friend WithEvents btnExportarPDF As Button
-    Friend WithEvents PanelClima As Panel
-    Friend WithEvents lblSensacionTermica As Label
-    Friend WithEvents lblDescripcion As Label
-    Friend WithEvents lblTemperatura As Label
-    Friend WithEvents lblUbicacion As Label
-    Friend WithEvents lblHumedad As Label
     Friend WithEvents lblViento As Label
     Friend WithEvents lblVisibilidad As Label
-    Friend WithEvents btnDolar As Button
-    Friend WithEvents txtCotizacionDolar As TextBox
+    Friend WithEvents lblHumedad As Label
+    Friend WithEvents lblSensacionTermica As Label
+    Friend WithEvents lblUbicacion As Label
+    Friend WithEvents lblTemperatura As Label
+    Friend WithEvents PictureBoxHumedad As PictureBox
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents PictureBox3 As PictureBox
+    Friend WithEvents lblDescripcion As Label
+    Friend WithEvents lblDolar As Label
 End Class
