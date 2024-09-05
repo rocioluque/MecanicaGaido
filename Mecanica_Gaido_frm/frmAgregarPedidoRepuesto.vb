@@ -43,7 +43,7 @@ Public Class frmAgregarPedidoRepuesto
     End Sub
 #End Region
 
-#Region "Grilla"
+#Region "Grilla Stock"
     Private Sub Cargar_Grilla_Productos_BajoStock()
         Dim dtProductos As DataTable = o_pedidos.ObtenerProductosBajoStock()
 
@@ -58,9 +58,49 @@ Public Class frmAgregarPedidoRepuesto
     End Sub
 #End Region
 
+#Region "Agregar / Quitar"
+    Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
+        Try
+            If grdProductosBajoStock.SelectedRows.Count > 0 AndAlso Not String.IsNullOrEmpty(txtCantidad.Text) Then
+
+                Dim selectedRow As DataGridViewRow = grdProductosBajoStock.SelectedRows(0)
+
+                Dim idRepuesto As Integer = Convert.ToInt32(selectedRow.Cells("id_Repuesto").Value)
+                Dim descripcionRepuesto As String = selectedRow.Cells("Descripcion").Value.ToString()
+                Dim cantidad As Integer = Convert.ToDecimal(txtCantidad.Text)
+
+                Dim filaNueva As DataGridViewRow = CType(grdRepuestos.Rows(grdRepuestos.Rows.Add()), DataGridViewRow)
+                filaNueva.Cells("id_Repuestos").Value = idRepuesto
+                filaNueva.Cells("nombre").Value = descripcionRepuesto
+                filaNueva.Cells("cantidad").Value = cantidad ' Ajustar al Name de la columna cantidad
+
+                txtCantidad.Text = String.Empty
+            Else
+                MsgBox("Por favor, seleccione un repuesto de la grilla y especifique la cantidad.", vbExclamation, "Advertencia")
+            End If
+        Catch ex As Exception
+            MsgBox("Error al agregar el repuesto: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub btnQuitar_Click(sender As Object, e As EventArgs) Handles btnQuitar.Click
+        Try
+            If grdRepuestos.SelectedRows.Count > 0 Then
+                grdRepuestos.Rows.Remove(grdRepuestos.SelectedRows(0))
+
+            Else
+                MsgBox("Por favor, seleccione una fila para quitar.", vbExclamation, "Advertencia")
+            End If
+        Catch ex As Exception
+            MsgBox("Error al quitar el repuesto: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+#End Region
+
 #Region "PDF"
     Public Sub ExportarDatosPDF(ByVal document As Document)
-        Dim datatable As New PdfPTable(grdProductosBajoStock.ColumnCount)
+        Dim datatable As New PdfPTable(grdRepuestos.ColumnCount)
         datatable.DefaultCell.Padding = 3
         datatable.WidthPercentage = 100
         datatable.DefaultCell.BorderWidth = 2
@@ -69,16 +109,16 @@ Public Class frmAgregarPedidoRepuesto
         Dim encabezado As New Paragraph("PEDIDO PARA COMPRA DE REPUESTOS")
         Dim texto As New Phrase("Pedido del día: " + Now.ToString("dd-MM-yyyy") + " al proveedor " + cboPersona.Text)
 
-        For i As Integer = 0 To grdProductosBajoStock.ColumnCount - 1
-            datatable.AddCell(grdProductosBajoStock.Columns(i).HeaderText)
+        For i As Integer = 0 To grdRepuestos.ColumnCount - 1
+            datatable.AddCell(grdRepuestos.Columns(i).HeaderText)
         Next
 
         datatable.HeaderRows = 1
         datatable.DefaultCell.BorderWidth = 1
 
-        For i As Integer = 0 To grdProductosBajoStock.RowCount - 1 'Recorre la filas del datagridview
-            For j As Integer = 0 To grdProductosBajoStock.ColumnCount - 1 'Recorre las columnas del datagridview
-                datatable.AddCell(grdProductosBajoStock(j, i).Value.ToString())
+        For i As Integer = 0 To grdRepuestos.RowCount - 1 'Recorre la filas del datagridview
+            For j As Integer = 0 To grdRepuestos.ColumnCount - 1 'Recorre las columnas del datagridview
+                datatable.AddCell(grdRepuestos(j, i).Value.ToString())
 
             Next
             datatable.CompleteRow()
