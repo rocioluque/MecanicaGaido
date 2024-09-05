@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\ReportGenerator.5.3.8\build\netstandard2.0\ReportGenerator.props" Condition="Exists('..\packages\ReportGenerator.5.3.8\build\netstandard2.0\ReportGenerator.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,6 +15,8 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -63,6 +66,9 @@
     </Reference>
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>..\packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Telerik.Report, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aac48e1b38941c11, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonTelerikReport.1.0.0\lib\net471\Common.Telerik.Report.dll</HintPath>
     </Reference>
     <Reference Include="itext.barcodes, Version=8.0.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\itext.8.0.5\lib\net461\itext.barcodes.dll</HintPath>
@@ -260,12 +266,6 @@
     <Compile Include="frmAgregarEmpleados.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGestionDatos.Designer.vb">
-      <DependentUpon>frmGestionDatos.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmGestionDatos.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmInicio.Designer.vb">
       <DependentUpon>frmInicio.vb</DependentUpon>
     </Compile>
@@ -457,10 +457,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="probandoArbol.Designer.vb">
-      <DependentUpon>probandoArbol.vb</DependentUpon>
+    <Compile Include="frmUbicacion.Designer.vb">
+      <DependentUpon>frmUbicacion.vb</DependentUpon>
     </Compile>
-    <Compile Include="probandoArbol.vb">
+    <Compile Include="frmUbicacion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="User32.vb" />
@@ -498,9 +498,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarEmpleados.resx">
       <DependentUpon>frmAgregarEmpleados.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmGestionDatos.resx">
-      <DependentUpon>frmGestionDatos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInicio.resx">
       <DependentUpon>frmInicio.vb</DependentUpon>
@@ -592,8 +589,8 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="probandoArbol.resx">
-      <DependentUpon>probandoArbol.vb</DependentUpon>
+    <EmbeddedResource Include="frmUbicacion.resx">
+      <DependentUpon>frmUbicacion.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -621,4 +618,10 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\ReportGenerator.5.3.8\build\netstandard2.0\ReportGenerator.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ReportGenerator.5.3.8\build\netstandard2.0\ReportGenerator.props'))" />
+  </Target>
 </Project>

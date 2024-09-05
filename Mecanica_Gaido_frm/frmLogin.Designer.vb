@@ -67,7 +67,7 @@ Partial Class frmLogin
         Me.linkContraseña.Cursor = System.Windows.Forms.Cursors.Hand
         Me.linkContraseña.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.linkContraseña.LinkColor = System.Drawing.Color.DimGray
-        Me.linkContraseña.Location = New System.Drawing.Point(70, 283)
+        Me.linkContraseña.Location = New System.Drawing.Point(69, 283)
         Me.linkContraseña.Name = "linkContraseña"
         Me.linkContraseña.Size = New System.Drawing.Size(178, 17)
         Me.linkContraseña.TabIndex = 0
@@ -122,7 +122,7 @@ Partial Class frmLogin
         Me.chkVerContraseña.AutoSize = True
         Me.chkVerContraseña.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkVerContraseña.ForeColor = System.Drawing.Color.DimGray
-        Me.chkVerContraseña.Location = New System.Drawing.Point(116, 180)
+        Me.chkVerContraseña.Location = New System.Drawing.Point(102, 180)
         Me.chkVerContraseña.Name = "chkVerContraseña"
         Me.chkVerContraseña.Size = New System.Drawing.Size(111, 20)
         Me.chkVerContraseña.TabIndex = 3

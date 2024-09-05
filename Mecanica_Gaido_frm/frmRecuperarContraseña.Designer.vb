@@ -34,15 +34,13 @@ Partial Class frmRecuperarContraseña
         'btnEnviar
         '
         Me.btnEnviar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.btnEnviar.FlatAppearance.BorderSize = 2
         Me.btnEnviar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnEnviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEnviar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEnviar.ForeColor = System.Drawing.Color.White
-        Me.btnEnviar.Location = New System.Drawing.Point(461, 74)
-        Me.btnEnviar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnEnviar.Location = New System.Drawing.Point(346, 60)
         Me.btnEnviar.Name = "btnEnviar"
-        Me.btnEnviar.Size = New System.Drawing.Size(109, 36)
+        Me.btnEnviar.Size = New System.Drawing.Size(82, 29)
         Me.btnEnviar.TabIndex = 2
         Me.btnEnviar.Text = "Enviar"
         Me.btnEnviar.UseVisualStyleBackColor = True
@@ -52,20 +50,18 @@ Partial Class frmRecuperarContraseña
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(32, 39)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Location = New System.Drawing.Point(24, 32)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(361, 22)
+        Me.Label1.Size = New System.Drawing.Size(296, 20)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Ingrese su usuario o correo electrónico"
         '
         'txtIngreseUserCorreo
         '
-        Me.txtIngreseUserCorreo.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIngreseUserCorreo.Location = New System.Drawing.Point(37, 80)
-        Me.txtIngreseUserCorreo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtIngreseUserCorreo.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtIngreseUserCorreo.Location = New System.Drawing.Point(28, 63)
         Me.txtIngreseUserCorreo.Name = "txtIngreseUserCorreo"
-        Me.txtIngreseUserCorreo.Size = New System.Drawing.Size(388, 24)
+        Me.txtIngreseUserCorreo.Size = New System.Drawing.Size(292, 23)
         Me.txtIngreseUserCorreo.TabIndex = 1
         '
         'lblResultado
@@ -73,10 +69,9 @@ Partial Class frmRecuperarContraseña
         Me.lblResultado.AutoSize = True
         Me.lblResultado.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblResultado.ForeColor = System.Drawing.Color.White
-        Me.lblResultado.Location = New System.Drawing.Point(32, 144)
-        Me.lblResultado.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblResultado.Location = New System.Drawing.Point(24, 117)
         Me.lblResultado.Name = "lblResultado"
-        Me.lblResultado.Size = New System.Drawing.Size(101, 22)
+        Me.lblResultado.Size = New System.Drawing.Size(81, 20)
         Me.lblResultado.TabIndex = 3
         Me.lblResultado.Text = "Resultado"
         Me.lblResultado.Visible = False
@@ -85,19 +80,18 @@ Partial Class frmRecuperarContraseña
         '
         Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox1.Location = New System.Drawing.Point(556, 6)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PictureBox1.Location = New System.Drawing.Point(417, 5)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(25, 22)
+        Me.PictureBox1.Size = New System.Drawing.Size(19, 18)
         Me.PictureBox1.TabIndex = 4
         Me.PictureBox1.TabStop = False
         '
         'frmRecuperarContraseña
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(587, 273)
+        Me.ClientSize = New System.Drawing.Size(440, 222)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.lblResultado)
         Me.Controls.Add(Me.txtIngreseUserCorreo)
@@ -105,7 +99,6 @@ Partial Class frmRecuperarContraseña
         Me.Controls.Add(Me.btnEnviar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmRecuperarContraseña"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Recuperar Contraseña"

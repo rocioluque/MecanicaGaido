@@ -13,6 +13,24 @@ Public Class AD_Ventas
     End Sub
 
 #Region "Carga de Cbo"
+    Public Function Cargar_Combo_Repuestos() As DataTable
+        Dim tabla As New DataTable
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Combo_Repuestos", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                Try
+                    conexion.Open()
+                    Dim datadapter As New SqlDataAdapter(comando)
+                    datadapter.Fill(tabla)
+                Catch ex As Exception
+                    Throw New Exception("Error al cargar los Repuestos desde la base de datos: " & ex.Message, ex)
+                End Try
+            End Using
+        End Using
+        Return tabla
+    End Function
+
     Public Function Cargar_Combo_Persona() As DataTable
         Dim tabla As New DataTable
 
@@ -127,6 +145,25 @@ Public Class AD_Ventas
         Return tabla
     End Function
 
+    Public Function Cargar_Combo_Lote() As DataTable
+        Dim tabla As New DataTable
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Combo_Lote", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                Try
+                    conexion.Open()
+                    Dim datadapter As New SqlDataAdapter(comando)
+                    datadapter.Fill(tabla)
+                Catch ex As Exception
+                    Throw New Exception("Error al cargar el lote desde la base de datos: " & ex.Message, ex)
+                End Try
+
+            End Using
+        End Using
+
+        Return tabla
+    End Function
 #End Region
 
 #Region "Consultas"
@@ -158,5 +195,18 @@ Public Class AD_Ventas
         End Try
     End Function
 #End Region
+
+    Public Function Cargar_Grilla_DetalleVenta() As DataTable
+        Dim tabla As New DataTable
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Grilla_DetalleVenta", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                Dim datadapter As New SqlDataAdapter(comando)
+                datadapter.Fill(tabla)
+            End Using
+        End Using
+        Return tabla
+    End Function
 
 End Class

@@ -475,15 +475,15 @@ Public Class frmProductos
             txtNombreDiario.Focus()
         End If
     End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Using frmProbandoArbol As New ProbandoArbol(Me)
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+        Using frmProbandoArbol As New frmUbicacion(Me)
             If frmProbandoArbol.ShowDialog() = DialogResult.OK Then
                 ' El valor ya se ha establecido en txtUbicacion
                 ' Puedes realizar aquí cualquier otra acción necesaria después de cerrar el diálogo
             End If
         End Using
     End Sub
+
 #End Region
 
 #Region "Buscar"
@@ -533,6 +533,8 @@ Public Class frmProductos
     Private Sub txtBuscar_TextChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
         Filtrar_Grilla()
     End Sub
+
+
 
 #End Region
 
