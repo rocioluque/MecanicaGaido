@@ -7,6 +7,12 @@ Imports Mecanica_Gaido_frm.User32
 Public Class frmLogin
     Dim o_Login As New AD_Login
 
+    Private Sub Cerrar_Sesion(sender As Object, e As FormClosedEventArgs)
+        txtUsuario.Clear()
+        txtContraseña.Clear()
+        Me.Show()
+        txtUsuario.Focus()
+    End Sub
 
 #Region "Aceptar"
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAcceder.Click
@@ -114,13 +120,6 @@ Public Class frmLogin
         frmRecuperarContraseña.ShowDialog()
     End Sub
 #End Region
-
-    Private Sub Cerrar_Sesion(sender As Object, e As FormClosedEventArgs)
-        txtUsuario.Clear()
-        txtContraseña.Clear()
-        Me.Show()
-        txtUsuario.Focus()
-    End Sub
 
 #Region "Css trucho"
     Protected Overrides Sub OnLoad(e As EventArgs)
