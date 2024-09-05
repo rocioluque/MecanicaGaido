@@ -5,6 +5,8 @@ Imports System.Configuration
 Public Class frmPersonas
     Dim o_Personas As New AD_Personas
     Public Property IdPersona As Integer
+    Public Property NuevaPersonaNombre As String
+    Public Property NuevaPersonaNombreCompra As String
 
 #Region "Carga de Cbos"
     Private Sub Cargar_Provincias()
@@ -106,7 +108,7 @@ Public Class frmPersonas
         txtApellido.Clear()
         txtTelefonoMovil.Clear()
         txtTelefonoFijo.Clear()
-        txtNumeroDocumento.Clear()
+        msktxtNumeroDocumento.Clear()
         txtCorreo.Clear()
         txtDireccion.Clear()
         txtNumero.Clear()
@@ -179,7 +181,7 @@ Public Class frmPersonas
                 txtNombre.Text = datoleido("Nombre / Razon Social").ToString()
                 txtApellido.Text = datoleido("Apellido").ToString()
                 dtpFechaNacimiento.Value = Convert.ToDateTime(datoleido("Fecha_Nacimiento"))
-                txtNumeroDocumento.Text = datoleido("Documento").ToString()
+                msktxtNumeroDocumento.Text = datoleido("Documento").ToString()
                 txtTelefonoMovil.Text = datoleido("Teléfono Móvil").ToString()
                 txtTelefonoFijo.Text = datoleido("Teléfono Fijo").ToString()
                 txtCorreo.Text = datoleido("Correo").ToString()
@@ -225,11 +227,11 @@ Public Class frmPersonas
 #Region "Abrir frm para agregar datos"
     Private Sub btnEmpleados_Click(sender As Object, e As EventArgs) Handles btnEmpleados.Click
         If cboTipoPersona.Text = "Personas Físicas" Then
-            If txtID.Text <> Nothing And txtNombre.Text <> Nothing And txtApellido.Text <> Nothing And txtNumeroDocumento.Text <> Nothing Then
+            If txtID.Text <> Nothing And txtNombre.Text <> Nothing And txtApellido.Text <> Nothing And msktxtNumeroDocumento.Text <> Nothing Then
                 frmAgregarEmpleados.IdPersona = Convert.ToInt32(txtID.Text)
 
                 frmAgregarEmpleados.lblCargaEmpleado.Text = txtApellido.Text & " " & txtNombre.Text
-                frmAgregarEmpleados.lblCargaCuil.Text = txtNumeroDocumento.Text
+                frmAgregarEmpleados.lblCargaCuil.Text = msktxtNumeroDocumento.Text
                 frmAgregarEmpleados.lblCargaFechaNacimiento.Text = dtpFechaNacimiento.Value.ToString("dd/MM/yyyy")
 
                 frmAgregarEmpleados.ShowDialog()
@@ -242,11 +244,11 @@ Public Class frmPersonas
     End Sub
 
     Private Sub btnDatoFiscal_Click(sender As Object, e As EventArgs) Handles btnDatoFiscal.Click
-        If txtID.Text <> Nothing And txtNombre.Text <> Nothing And txtNumeroDocumento.Text <> Nothing Then
+        If txtID.Text <> Nothing And txtNombre.Text <> Nothing And msktxtNumeroDocumento.Text <> Nothing Then
             frmAgregarDatosFiscales.IdPersona = Convert.ToInt32(txtID.Text)
 
             frmAgregarDatosFiscales.lblNombreResultado.Text = txtApellido.Text & " " & txtNombre.Text
-            frmAgregarDatosFiscales.lblDocumentoResultado.Text = txtNumeroDocumento.Text
+            frmAgregarDatosFiscales.lblDocumentoResultado.Text = msktxtNumeroDocumento.Text
 
             If cboTipoPersona.Text = "Personas Físicas" Then
 
@@ -295,15 +297,18 @@ Nombre"
 
 #Region "Cargar"
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
-        If txtNombre.Text <> Nothing And txtNumeroDocumento.Text <> Nothing And
+        If txtNombre.Text <> Nothing And msktxtNumeroDocumento.Text <> Nothing And
             txtCorreo.Text <> Nothing And txtDireccion.Text <> Nothing And txtNumero.Text <> Nothing And
             txtCodigoPostal.Text <> Nothing Then
 
             Try
                 o_Personas.Agregar_Persona(CInt(cboTipoPersona.SelectedValue), txtNombre.Text, txtApellido.Text, txtTelefonoMovil.Text,
-                       txtTelefonoFijo.Text, dtpFechaNacimiento.Value, CInt(cboTipoDocumento.SelectedValue), txtNumeroDocumento.Text,
+                       txtTelefonoFijo.Text, dtpFechaNacimiento.Value, CInt(cboTipoDocumento.SelectedValue), msktxtNumeroDocumento.Text,
                        txtCorreo.Text, txtDireccion.Text, txtNumero.Text, txtPiso.Text, txtLetraPuerta.Text, txtCodigoPostal.Text,
                        Convert.ToInt32(cboCiudad.SelectedValue), txtNota.Text, chkEstado.Checked)
+
+                NuevaPersonaNombre = txtApellido.Text & " " & txtNombre.Text
+                NuevaPersonaNombreCompra = txtApellido.Text & " " & txtNombre.Text
 
                 MsgBox("Persona agregada correctamente.", vbInformation, "Información")
                 Limpiar()
@@ -323,7 +328,7 @@ Nombre"
         If txtID.Text <> Nothing And txtNombre.Text <> Nothing And txtCorreo.Text <> Nothing And txtDireccion.Text <> Nothing Then
             Try
                 o_Personas.Modificar_Persona(txtID.Text, CInt(cboTipoPersona.SelectedValue), txtNombre.Text, txtApellido.Text, txtTelefonoMovil.Text,
-                       txtTelefonoFijo.Text, dtpFechaNacimiento.Value, CInt(cboTipoDocumento.SelectedValue), txtNumeroDocumento.Text,
+                       txtTelefonoFijo.Text, dtpFechaNacimiento.Value, CInt(cboTipoDocumento.SelectedValue), msktxtNumeroDocumento.Text,
                        txtCorreo.Text, txtDireccion.Text, txtNumero.Text, txtPiso.Text, txtLetraPuerta.Text, txtCodigoPostal.Text,
                        Convert.ToInt32(cboCiudad.SelectedValue), txtNota.Text, chkEstado.Checked)
                 MsgBox("Persona modificada correctamente.", vbInformation, "Información")
@@ -339,23 +344,74 @@ Nombre"
     End Sub
 #End Region
 
+#Region "Buscar"
+    Private Sub Filtrar_Grilla()
+        Try
+            Dim conexion As SqlConnection
+            Dim comando As New SqlCommand
+
+            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
+            conexion.Open()
+
+            comando.Connection = conexion
+            comando.CommandType = CommandType.StoredProcedure
+            comando.CommandText = "Cargar_Grilla_Persona"
+
+            Dim datadapter As New SqlDataAdapter(comando)
+            Dim oDs As New DataSet
+            datadapter.Fill(oDs)
+
+            ' Filtrar por nombre o apellido
+            If oDs.Tables(0).Rows.Count > 0 Then
+                Dim dt As DataTable = oDs.Tables(0)
+                Dim filtro As String = txtBuscar.Text.Trim()
+
+                If Not String.IsNullOrEmpty(filtro) Then
+                    Dim dv As New DataView(dt)
+                    dv.RowFilter = String.Format(
+                    "[Nombre / Razon Social] LIKE '%{0}%' OR Apellido LIKE '%{0}%' OR Documento LIKE '%{0}%' OR [Teléfono Móvil] LIKE '%{0}%' OR [Teléfono Fijo] LIKE '%{0}%' OR Correo LIKE '%{0}%'",
+                    filtro
+                )
+                    grdPersonas.DataSource = dv
+                Else
+                    grdPersonas.DataSource = dt
+                End If
+
+                grdPersonas.Refresh()
+            Else
+                MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
+            End If
+
+            oDs = Nothing
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox("Error al filtrar la grilla: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub txtBuscar_TextChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
+        Filtrar_Grilla()
+    End Sub
+
+#End Region
+
 #Region "Keypress"
-    Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Not Char.IsLetter(e.KeyChar) _
-           AndAlso Not Char.IsControl(e.KeyChar) _
-           AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
-            e.Handled = True
-        End If
-    End Sub
+    'Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs)
+    '    If Not Char.IsLetter(e.KeyChar) _
+    '       AndAlso Not Char.IsControl(e.KeyChar) _
+    '       AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
+    '        e.Handled = True
+    '    End If
+    'End Sub
 
-    Private Sub txtApellido_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Not Char.IsLetter(e.KeyChar) _
-         AndAlso Not Char.IsControl(e.KeyChar) _
-         AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
-            e.Handled = True
-        End If
+    'Private Sub txtApellido_KeyPress(sender As Object, e As KeyPressEventArgs)
+    '    If Not Char.IsLetter(e.KeyChar) _
+    '     AndAlso Not Char.IsControl(e.KeyChar) _
+    '     AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
+    '        e.Handled = True
+    '    End If
 
-    End Sub
+    'End Sub
 
     Private Sub txtTelefono_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
@@ -369,6 +425,101 @@ Nombre"
         End If
     End Sub
 
+    Private Sub txtDireccion_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDireccion.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtNumero.Focus()
+        End If
+    End Sub
+
+    Private Sub txtNumero_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNumero.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtPiso.Focus()
+        End If
+
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
+
+    End Sub
+
+    Private Sub txtLetraPuerta_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtLetraPuerta.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtTelefonoMovil.Focus()
+        End If
+    End Sub
+
+    Private Sub txtTelefonoMovil_KeyPress(sender As Object, e As KeyPressEventArgs)
+        If Asc(e.KeyChar) = 13 Then
+            txtTelefonoFijo.Focus()
+        End If
+    End Sub
+
+    Private Sub txtPiso_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPiso.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtLetraPuerta.Focus()
+        End If
+    End Sub
+
+    Private Sub txtTelefonoFijo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTelefonoFijo.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtCorreo.Focus()
+        End If
+    End Sub
+
+    Private Sub txtCorreo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCorreo.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtNota.Focus()
+        End If
+    End Sub
+
+    Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombre.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtApellido.Focus()
+        End If
+    End Sub
+
+    Private Sub txtApellido_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtApellido.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            msktxtNumeroDocumento.Focus()
+        End If
+    End Sub
+
+    Private Sub txtNumeroDocumento_KeyPress(sender As Object, e As KeyPressEventArgs)
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
+    End Sub
+#End Region
+
+#Region "Mascaras"
+    Public Sub Mascaras()
+        If cboTipoDocumento.Text IsNot Nothing Then
+            Select Case cboTipoDocumento.Text.ToString()
+                Case "CUIL", "CUIT"
+                    msktxtNumeroDocumento.Mask = "00-00000000-0"
+                Case "DNI"
+                    msktxtNumeroDocumento.Mask = "00.000.000"
+                Case Else
+                    msktxtNumeroDocumento.Mask = ""
+            End Select
+        End If
+    End Sub
+
+    Private Sub cboTipoDocumento_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTipoDocumento.SelectedIndexChanged
+        Mascaras()
+    End Sub
 #End Region
 
 #Region "Habilitar y deshabilitar botones"
@@ -382,7 +533,7 @@ Nombre"
         End If
     End Sub
 
-    Private Sub txtCodigoPostal_TextChanged(sender As Object, e As EventArgs) Handles txtCodigoPostal.TextChanged
+    Private Sub txtCodigoPostal_TextChanged(sender As Object, e As EventArgs) 
         ActualizarEstadoControles()
     End Sub
 
@@ -402,10 +553,9 @@ Nombre"
         ActualizarEstadoControles()
     End Sub
 
-    Private Sub txtTelefonoMovil_TextChanged(sender As Object, e As EventArgs) Handles txtTelefonoMovil.TextChanged
+    Private Sub txtTelefonoMovil_TextChanged(sender As Object, e As EventArgs)
         ActualizarEstadoControles()
     End Sub
-
 
     Private Sub txtTelefonoFijo_TextChanged(sender As Object, e As EventArgs) Handles txtTelefonoFijo.TextChanged
         ActualizarEstadoControles()
@@ -421,7 +571,6 @@ Nombre"
 
     Private Sub ActualizarEstadoControles()
         Dim habilitar As Boolean = Not String.IsNullOrEmpty(txtCodigoPostal.Text)
-
         txtDireccion.Enabled = habilitar
         txtNumero.Enabled = habilitar
         txtPiso.Enabled = habilitar
@@ -430,7 +579,6 @@ Nombre"
         txtTelefonoMovil.Enabled = habilitar
         txtCorreo.Enabled = habilitar
         chkEstado.Enabled = habilitar
-
     End Sub
 #End Region
 
@@ -475,90 +623,6 @@ Nombre"
         End Using
     End Sub
 
-    Private Sub txtDireccion_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDireccion.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtNumero.Focus()
-        End If
-    End Sub
 
-    Private Sub txtNumero_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNumero.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtPiso.Focus()
-        End If
-
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
-
-    End Sub
-
-    Private Sub txtLetraPuerta_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtLetraPuerta.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtTelefonoMovil.Focus()
-        End If
-    End Sub
-
-    Private Sub txtTelefonoMovil_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTelefonoMovil.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtTelefonoFijo.Focus()
-        End If
-    End Sub
-
-    Private Sub txtPiso_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPiso.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtLetraPuerta.Focus()
-        End If
-    End Sub
-
-    Private Sub txtTelefonoFijo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTelefonoFijo.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtCorreo.Focus()
-        End If
-    End Sub
-
-    Private Sub txtCorreo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCorreo.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtNota.Focus()
-        End If
-    End Sub
-
-    Private Sub txtNombre_TextChanged(sender As Object, e As EventArgs) Handles txtNombre.TextChanged
-
-    End Sub
-
-    Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombre.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtApellido.Focus()
-        End If
-    End Sub
-
-    Private Sub txtApellido_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtApellido.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtNumeroDocumento.Focus()
-        End If
-    End Sub
-
-    Private Sub txtNumeroDocumento_TextChanged(sender As Object, e As EventArgs) Handles txtNumeroDocumento.TextChanged
-
-
-    End Sub
-
-    Private Sub txtNumeroDocumento_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNumeroDocumento.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
-    End Sub
 #End Region
 End Class

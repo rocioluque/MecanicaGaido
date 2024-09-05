@@ -12,11 +12,11 @@ Public Class AD_Compras
     End Sub
 
 #Region "Carga cbo"
-    Public Function Cargar_Combo_FormaPago() As DataTable
+    Public Function Cargar_Combo_FormaPago_Compra() As DataTable
         Dim tabla As New DataTable
 
         Using conexion As New SqlConnection(connectionString)
-            Using comando As New SqlCommand("Cargar_Combo_FormaPago", conexion)
+            Using comando As New SqlCommand("Cargar_Combo_FormaPago_Compra", conexion)
                 comando.CommandType = CommandType.StoredProcedure
                 Try
                     conexion.Open()
@@ -81,4 +81,35 @@ Public Class AD_Compras
         End Using
         Return tabla
     End Function
+
+    Public Sub AgregarCompra(fechaCompra As DateTime, nroComprobante As String, idPersona As Integer, idFormaPago As Integer,
+                             subtotal As Decimal, iva As Decimal, ivaMonto As Decimal, otrosImpuestos As Decimal,
+                             total As Decimal, estado As Boolean, detallesCompra As DataTable, denominacionLote As String)
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Agregar_Compra", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+
+                comando.Parameters.AddWithValue("@FechaCompra", fechaCompra)
+                comando.Parameters.AddWithValue("@NroComprobante", nroComprobante)
+                comando.Parameters.AddWithValue("@ID_Persona", idPersona)
+                comando.Parameters.AddWithValue("@ID_FormaPago", idFormaPago)
+                comando.Parameters.AddWithValue("@Subtotal", subtotal)
+                comando.Parameters.AddWithValue("@IVA", iva)
+                comando.Parameters.AddWithValue("@IVA_Monto", ivaMonto)
+                comando.Parameters.AddWithValue("@OtrosImpuestos", otrosImpuestos)
+                comando.Parameters.AddWithValue("@Total", total)
+                comando.Parameters.AddWithValue("@Estado", estado)
+
+                Dim paramDetalles As New SqlParameter("@DetallesCompra", SqlDbType.Structured)
+                paramDetalles.TypeName = "Type_DetalleCompra"
+                paramDetalles.Value = detallesCompra
+                comando.Parameters.Add(paramDetalles)
+
+                comando.Parameters.AddWithValue("@DenominacionLote", denominacionLote)
+
+                conexion.Open()
+                comando.ExecuteNonQuery()
+            End Using
+        End Using
+    End Sub
 End Class

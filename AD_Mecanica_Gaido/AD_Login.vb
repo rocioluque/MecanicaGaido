@@ -73,6 +73,9 @@ Public Class AD_Login
                         While reader.Read()
                             UsuarioActivo.usuario = reader.GetString(0)
                             UsuarioActivo.nombre_rol = reader.GetString(1)
+                            UsuarioActivo.nombre_empleado = reader.GetString(2)
+                            UsuarioActivo.id_empleado = reader.GetInt32(3)
+
                         End While
                     End If
                 End Using
