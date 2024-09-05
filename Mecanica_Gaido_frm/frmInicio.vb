@@ -238,12 +238,11 @@ Public Class frmInicio
     End Sub
 
 #Region "Dolar"
-    Private Sub btnDolar_Click(sender As Object, e As EventArgs) Handles btnDolar.Click
 
+
+    Private Sub btnDolar_Click(sender As Object, e As EventArgs) Handles btnDolar.Click
         ' Token de autenticación (reemplaza con tu propio token)
-        Dim token As String = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTcwMzc4NDAsInR5cGUiOiJleHRlcm5hbCIsInVzZ
-                                XIiOiJmYWJyaWNpb3J1aXo2NjhAZ21haWwuY29tIn0.UqXVuir-Uv7QeTwB0AZwT1M3MhLmp_PKuPo2VYxq5flraf
-                                ZQ7SililKIV9QVS48QRr1q3IGgaYYEVa5gjWmHHg"
+        Dim token As String = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTcwMzc4NDAsInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJmYWJyaWNpb3J1aXo2NjhAZ21haWwuY29tIn0.UqXVuir-Uv7QeTwB0AZwT1M3MhLmp_PKuPo2VYxq5flrafZQ7SililKIV9QVS48QRr1q3IGgaYYEVa5gjWmHHg"
 
         ' URL de la API para consultar la cotización del dólar
         Dim url As String = "https://api.estadisticasbcra.com/usd"
@@ -263,7 +262,7 @@ Public Class frmInicio
             Dim jsonData As JArray = JArray.Parse(jsonResponse)
 
             ' Extraer la cotización más reciente (último valor)
-            Dim cotizacionDolar As Decimal = jsonData.Last("v")
+            Dim cotizacionDolar As Decimal = jsonData.Last("v").Value(Of Decimal)()
 
             ' Mostrar la cotización en un TextBox
             txtCotizacionDolar.Text = cotizacionDolar.ToString("0.00")
@@ -272,6 +271,7 @@ Public Class frmInicio
             MessageBox.Show("Error al obtener la cotización: " & ex.Message)
         End Try
     End Sub
+
 #End Region
 
 End Class
