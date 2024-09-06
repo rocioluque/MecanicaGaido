@@ -143,7 +143,8 @@ Public Class frmAgregarPedidoRepuesto
             End Using
 
             Process.Start(filename)
-            MessageBox.Show("Documento PDF generado con exito.")
+            MessageBox.Show("Documento PDF generado con éxito.", "Error")
+
         Catch ex As Exception
             MessageBox.Show("No se puede generar el documento PDF: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
