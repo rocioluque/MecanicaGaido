@@ -5,9 +5,14 @@ Imports System.Data.SqlClient
 Imports System.Configuration
 Imports System.Globalization
 Imports AD_Mecanica_Gaido
+
 Imports System.IO
 Imports iTextSharp.text
 Imports iTextSharp.text.pdf
+
+Imports ModernMessageBoxLib
+Imports System.Windows.Input
+Imports System.Windows
 
 Public Class frmAgregarPedidoRepuesto
     Dim o_pedidos As New AD_Pedidos()
@@ -143,8 +148,10 @@ Public Class frmAgregarPedidoRepuesto
             End Using
 
             Process.Start(filename)
-            MessageBox.Show("Documento PDF generado con éxito.", "Error")
 
+            Dim msg As New ModernMessageBox("Documento PDF generado con éxito.", "Error", ModernMessageboxIcons.Info, "Aceptar")
+            msg.Button1Key = Key.Enter
+            msg.ShowDialog()
         Catch ex As Exception
             MessageBox.Show("No se puede generar el documento PDF: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
