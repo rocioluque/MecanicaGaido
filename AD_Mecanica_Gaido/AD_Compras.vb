@@ -68,7 +68,47 @@ Public Class AD_Compras
         Return tabla
     End Function
 #End Region
+    Public Function Cargar_Grilla_Compras()
+        Dim tabla As New DataSet
 
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("CargarGrilla_Compras", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                Dim datadapter As New SqlDataAdapter(comando)
+                datadapter.Fill(tabla)
+            End Using
+        End Using
+        Return tabla
+    End Function
+    Public Function Consultar_Compras_ID(ID_Compras As Integer) As SqlDataReader
+
+        Dim conexion As New SqlConnection(connectionString)
+        Dim comando As New SqlCommand("Consultar_Compras_ID", conexion)
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.AddWithValue("@ID_Compra", ID_Compras)
+
+        Try
+            conexion.Open()
+            Return comando.ExecuteReader(CommandBehavior.CloseConnection)
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Function
+
+    Public Function Cargar_DetalleCompra(ID_Compra As Integer) As DataTable
+        Dim tabla As New DataTable
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_DetalleCompra", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@ID_Compra", ID_Compra)
+                Dim datadapter As New SqlDataAdapter(comando)
+                datadapter.Fill(tabla)
+            End Using
+        End Using
+        Return tabla
+    End Function
     Public Function Cargar_Grilla_DetalleCompra() As DataTable
         Dim tabla As New DataTable
 

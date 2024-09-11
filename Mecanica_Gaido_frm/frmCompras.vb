@@ -26,6 +26,7 @@ Public Class frmCompras
         Cargar_Combo_Persona()
         Cargar_Combo_FormaPago_Compra()
         Cargar_Combo_Repuestos()
+        Cargar_Grilla_Compras()
         limpiar()
         PonerDecimales()
     End Sub
@@ -35,7 +36,102 @@ Public Class frmCompras
     End Sub
 #End Region
 
+
+
+
 #Region "Cargar grilla y datos en txt"
+    Private Sub Cargar_Grilla_Compras()
+        Try
+            Dim oDs As DataSet = o_Compras.Cargar_Grilla_Compras
+
+            If oDs.Tables(0).Rows.Count > 0 Then
+                grdCompras.AutoGenerateColumns = True
+                grdCompras.DataSource = oDs.Tables(0)
+                grdCompras.Columns("Fecha Compra").DefaultCellStyle.Format = "dd/MM/yyyy"
+                grdCompras.Columns("Total").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                grdCompras.Columns("Total").DefaultCellStyle.Format = "N2"
+                grdCompras.Refresh()
+            Else
+                MsgBox("No se encontraron Compras.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar las compras: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub CargarDatosEnTxt(ID_Compra As Integer)
+        Dim o_Compras As New AD_Compras
+        Try
+            Dim datoleido As SqlDataReader = o_Compras.Consultar_Compras_ID(ID_Compra)
+            If datoleido.Read() Then
+                txtID.Text = datoleido("ID_Compra").ToString()
+                dtpFechaCompra.Value = Convert.ToDateTime(datoleido("FechaCompra"))
+                txtNumComprobante.Text = datoleido("NroComprobante").ToString()
+                cboPersona.SelectedValue = datoleido("ID_Persona").ToString()
+                cboFormaPago.SelectedValue = datoleido("ID_FormaPago").ToString()
+                txtSubtotal.Text = Convert.ToDecimal(datoleido("Subtotal")).ToString("N2")
+                txtIVA.Text = Convert.ToDecimal(datoleido("IVA")).ToString("N2")
+                txtIvaMonto.Text = Convert.ToDecimal(datoleido("IVA_Monto")).ToString("N2")
+                txtOtrosImpuestos.Text = Convert.ToDecimal(datoleido("OtrosImpuestos")).ToString("N2")
+                txtTotal.Text = Convert.ToDecimal(datoleido("Total")).ToString("N2")
+                chkEstado.Checked = Convert.ToBoolean(datoleido("Estado"))
+
+            Else
+                MsgBox("No se encontraron resultados", vbInformation, "Error")
+            End If
+
+            Dim o_Compras1 As New AD_Compras
+            Dim repuestosTable = o_Compras1.Cargar_DetalleCompra(txtID.Text)
+
+
+            If repuestosTable.Rows.Count > 0 Then
+
+                grdRepuestos.Rows.Clear()
+                For Each repuestoRow As DataRow In repuestosTable.Rows
+
+
+                    Dim totalRep = Convert.ToDecimal(repuestoRow("Cantidad")) * Convert.ToDecimal(repuestoRow("PrecioCompra"))
+                    grdRepuestos.Rows.Add(repuestoRow("ID_Repuesto"),
+                                      repuestoRow("Nombre"),
+                                      repuestoRow("Descripcion"),
+                                      repuestoRow("Cantidad"),
+                                      repuestoRow("PrecioCompra"),
+                                      totalRep)
+                Next
+
+
+
+            Else
+                MsgBox("No hay repuestos cargados")
+            End If
+
+
+
+
+        Catch ex As Exception
+            MsgBox("Error al cargar las compras: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+    Private Sub grdCompras_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdCompras.CellClick
+        If e.RowIndex >= 0 Then
+
+            ' Obtiene el ID del producto de la celda correspondiente
+            Dim selectedRow As DataGridViewRow = grdCompras.Rows(e.RowIndex)
+            Dim ID_Compra As Integer
+
+            If selectedRow.Cells("Codigo").Value IsNot Nothing Then
+                ID_Compra = Convert.ToInt32(selectedRow.Cells("Codigo").Value)
+                CargarDatosEnTxt(ID_Compra)
+
+            Else
+                MsgBox("El ID de la Compra no puede ser nulo.", vbCritical, "Error")
+            End If
+        End If
+    End Sub
+
+
+    'No lo toco por las dudas, pero Cargar_Grilla_DetalleCompra() no está referenciado por ningún SUB
     Public Sub Cargar_Grilla_DetalleCompra()
         Try
             Dim conexion As SqlConnection
@@ -445,6 +541,8 @@ Public Class frmCompras
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
+
+
 #End Region
 
 End Class
