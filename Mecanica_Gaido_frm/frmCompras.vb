@@ -20,6 +20,7 @@ Public Class frmCompras
         cboPersona.SelectedIndex = -1
         cboFormaPago.SelectedIndex = -1
         chkEstado.Checked = False
+        grdRepuestos.Rows.Clear()
     End Sub
 
     Private Sub frmCompras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -33,7 +34,7 @@ Public Class frmCompras
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
-        grdRepuestos.Rows.Clear()
+
     End Sub
 #End Region
 
@@ -130,7 +131,9 @@ Public Class frmCompras
             End If
         End If
         lblBusqueda.Visible = False
+        txtBusqueda.Text = ""
         txtBusqueda.Visible = False
+
     End Sub
 
 
@@ -273,6 +276,7 @@ Public Class frmCompras
                 Dim descripcionRepuesto As String = rowView("Descripcion").ToString()
                 Dim nombreDiario As String = rowView("nombreDiario").ToString()
                 Dim precio As Decimal = Convert.ToDecimal(rowView("PrecioCompra"))
+                precio = InputBox("Confirme el Precio", "Precio Sugerido", Convert.ToDecimal(precio).ToString("N2"))
                 Dim cantidad As Integer = Convert.ToDecimal(txtCantidadCompra.Text)
                 Dim total As Decimal = precio * cantidad
 
@@ -448,11 +452,42 @@ Public Class frmCompras
                 dtDetalles, denominacionLote)
 
             MessageBox.Show("Compra cargada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Cargar_Grilla_Compras()
             limpiar()
         Catch ex As Exception
             MessageBox.Show("Error al cargar la compra: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
+        Try
+            Dim dtDetalles As New DataTable()
+            dtDetalles.Columns.Add("ID_Repuesto", GetType(Integer))
+            dtDetalles.Columns.Add("Cantidad", GetType(Integer))
+            dtDetalles.Columns.Add("Descripcion", GetType(String))
+            dtDetalles.Columns.Add("PrecioCompra", GetType(Decimal))
+
+            For Each row As DataGridViewRow In grdRepuestos.Rows
+                If Not row.IsNewRow Then
+                    dtDetalles.Rows.Add(row.Cells("ID_Repuesto").Value, row.Cells("Cantidad").Value,
+                                    row.Cells("Descripcion").Value, row.Cells("PrecioCompra").Value)
+                End If
+            Next
+
+            Dim idCompra As Integer = Convert.ToInt32(txtID.Text)
+
+            o_Compras.ModificarCompra(idCompra, dtpFechaCompra.Value, txtNumComprobante.Text, cboPersona.SelectedValue, cboFormaPago.SelectedValue,
+            Convert.ToDecimal(txtSubtotal.Text), Convert.ToDecimal(txtIVA.Text), Convert.ToDecimal(txtIvaMonto.Text),
+            Convert.ToDecimal(txtOtrosImpuestos.Text), Convert.ToDecimal(txtTotal.Text), chkEstado.Checked,
+            dtDetalles, denominacionLote)
+
+            MessageBox.Show("Compra modificada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Cargar_Grilla_Compras()
+            limpiar()
+        Catch ex As Exception
+            MessageBox.Show("Error al modificar la compra: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
 
 #End Region
 
