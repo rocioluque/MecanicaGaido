@@ -80,6 +80,21 @@ Public Class AD_Compras
         End Using
         Return tabla
     End Function
+
+    Public Function Filtrar_Grilla_Compras(cadena As String)
+        Dim tabla As New DataSet
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Grilla_Compras_Busq", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@cadena", cadena)
+                Dim datadapter As New SqlDataAdapter(comando)
+                datadapter.Fill(tabla)
+            End Using
+        End Using
+        Return tabla
+    End Function
+
     Public Function Consultar_Compras_ID(ID_Compras As Integer) As SqlDataReader
 
         Dim conexion As New SqlConnection(connectionString)

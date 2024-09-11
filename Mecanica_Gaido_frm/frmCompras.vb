@@ -33,6 +33,7 @@ Public Class frmCompras
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
+        grdRepuestos.Rows.Clear()
     End Sub
 #End Region
 
@@ -128,6 +129,8 @@ Public Class frmCompras
                 MsgBox("El ID de la Compra no puede ser nulo.", vbCritical, "Error")
             End If
         End If
+        lblBusqueda.Visible = False
+        txtBusqueda.Visible = False
     End Sub
 
 
@@ -163,6 +166,44 @@ Public Class frmCompras
         Finally
         End Try
     End Sub
+
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        lblBusqueda.Visible = True
+        txtBusqueda.Visible = True
+        txtBusqueda.Text = ""
+        txtBusqueda.Focus()
+    End Sub
+
+    Private Sub txtBusqueda_TextChanged(sender As Object, e As EventArgs) Handles txtBusqueda.TextChanged
+        Dim cadenas As String = If(String.IsNullOrWhiteSpace(txtBusqueda.Text), "", txtBusqueda.Text)
+        FIltrarGrilla(cadenas)
+        txtBusqueda.Focus()
+        txtBusqueda.Text = cadenas
+    End Sub
+    Private Sub FIltrarGrilla(cadena As String)
+
+        Try
+            Dim oDs As DataSet = o_Compras.Filtrar_Grilla_Compras(cadena)
+
+            If oDs.Tables(0).Rows.Count > 0 Then
+                grdCompras.AutoGenerateColumns = True
+                grdCompras.DataSource = oDs.Tables(0)
+                grdCompras.Columns("Fecha Compra").DefaultCellStyle.Format = "dd/MM/yyyy"
+                grdCompras.Columns("Total").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                grdCompras.Columns("Total").DefaultCellStyle.Format = "N2"
+                grdCompras.Refresh()
+            Else
+                MsgBox("No se encontraron Compras con ese criterio de búsqueda.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar las compras: " & ex.Message, vbCritical, "Error")
+        End Try
+
+
+
+    End Sub
+
 
 #End Region
 
@@ -541,6 +582,9 @@ Public Class frmCompras
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
+
+
+
 
 
 #End Region
