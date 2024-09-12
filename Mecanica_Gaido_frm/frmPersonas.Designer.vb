@@ -22,7 +22,7 @@ Partial Class frmPersonas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPersonas))
         Me.txtID = New System.Windows.Forms.TextBox()
         Me.lblId = New System.Windows.Forms.Label()
@@ -83,6 +83,7 @@ Partial Class frmPersonas
         Me.txtNota = New System.Windows.Forms.RichTextBox()
         Me.txtBuscar = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.grdPersonas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDatosPersonales.SuspendLayout()
         Me.PanelDirecciones.SuspendLayout()
@@ -203,14 +204,14 @@ Partial Class frmPersonas
         Me.grdPersonas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         Me.grdPersonas.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdPersonas.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdPersonas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdPersonas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.grdPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdPersonas.Location = New System.Drawing.Point(136, 532)
         Me.grdPersonas.Name = "grdPersonas"
@@ -832,6 +833,15 @@ Partial Class frmPersonas
         Me.Label11.TabIndex = 81
         Me.Label11.Text = "Buscar"
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(1023, 460)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 37)
+        Me.Button1.TabIndex = 82
+        Me.Button1.Text = "Ver AFIP"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'frmPersonas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -839,7 +849,8 @@ Partial Class frmPersonas
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(1135, 598)
+        Me.ClientSize = New System.Drawing.Size(1152, 598)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.txtBuscar)
         Me.Controls.Add(Me.lblNota)
@@ -934,4 +945,5 @@ Partial Class frmPersonas
     Friend WithEvents Label11 As Label
     Friend WithEvents txtTelefonoMovil As MaskedTextBox
     Friend WithEvents txtCodigoPostal As MaskedTextBox
+    Friend WithEvents Button1 As Button
 End Class
