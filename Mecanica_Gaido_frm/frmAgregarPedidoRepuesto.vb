@@ -135,26 +135,30 @@ Public Class frmAgregarPedidoRepuesto
     End Sub
 
     Private Sub btnExportarPDF_Click(sender As Object, e As EventArgs) Handles btnExportarPDF.Click
-        Try
-            Dim doc As New Document(PageSize.A4, 10, 10, 10, 10)
-            Dim safeDate As String = Now.ToString("dd-MM-yyyy")
-            Dim filename As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "Pedidos productos " + safeDate + ".pdf")
+        If cboPersona.SelectedValue <> Nothing Then
+            Try
+                Dim doc As New Document(PageSize.A4, 10, 10, 10, 10)
+                Dim safeDate As String = Now.ToString("dd-MM-yyyy")
+                Dim filename As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "Pedidos productos " + safeDate + ".pdf")
 
-            Using file As New FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.ReadWrite)
-                PdfWriter.GetInstance(doc, file)
-                doc.Open()
-                ExportarDatosPDF(doc)
-                doc.Close()
-            End Using
+                Using file As New FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.ReadWrite)
+                    PdfWriter.GetInstance(doc, file)
+                    doc.Open()
+                    ExportarDatosPDF(doc)
+                    doc.Close()
+                End Using
 
-            Process.Start(filename)
+                Process.Start(filename)
 
-            Dim msg As New ModernMessageBox("Documento PDF generado con éxito.", "Error", ModernMessageboxIcons.Info, "Aceptar")
-            msg.Button1Key = Key.Enter
-            msg.ShowDialog()
-        Catch ex As Exception
-            MessageBox.Show("No se puede generar el documento PDF: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+                Dim msg As New ModernMessageBox("Documento PDF generado con éxito.", "Error", ModernMessageboxIcons.Info, "Aceptar")
+                msg.Button1Key = Key.Enter
+                msg.ShowDialog()
+            Catch ex As Exception
+                MessageBox.Show("No se puede generar el documento PDF: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        Else
+            MsgBox("Seleccione un proveedor para descargar el pedido", vbInformation, "Error")
+        End If
     End Sub
 #End Region
 
