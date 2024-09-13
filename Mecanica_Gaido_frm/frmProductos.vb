@@ -51,7 +51,7 @@ Public Class frmProductos
         chkEstado.Checked = False
     End Sub
 
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs)
         limpiar()
     End Sub
 #End Region
@@ -205,7 +205,7 @@ Public Class frmProductos
 #End Region
 
 #Region "Cargar"
-    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
+    Private Sub btnAceptar_Click(sender As Object, e As EventArgs)
         If txtDescripcion.Text <> Nothing And cboMarca.SelectedValue <> Nothing And txtCodFabricante.Text <> Nothing And
             txtUbicacion.Text <> Nothing And txtUtilidad.Text <> Nothing Then
 
@@ -217,7 +217,7 @@ Public Class frmProductos
 
                 o_productos.Agregar_Producto(txtDescripcion.Text, txtNombreDiario.Text, CInt(cboRubro.SelectedValue),
                        CInt(cboMarca.SelectedValue), txtCodigoBarra.Text, txtCodFabricante.Text, txtCantidadBulto.Text,
-                       origen, chkAlterntivo.Checked, CInt(cboOriginal.SelectedValue), chkEstado.Checked, txtStockReal.Text,
+                       origen, chkAlterntivo.Checked, CInt(cboOriginal.SelectedValue), chkEstado.Checked, txtNota.Text, txtStockReal.Text,
                        txtStockDisponible.Text, txtStockMinimo.Text, txtUbicacion.Text, precioCompra, utilidad, precioLista,
                        dtpFechaCompra.Value, dtpFechaVenta.Value)
 
@@ -237,7 +237,7 @@ Public Class frmProductos
 #End Region
 
 #Region "Modificar"
-    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
+    Private Sub btnModificar_Click(sender As Object, e As EventArgs)
         If txtId.Text <> Nothing And txtDescripcion.Text <> Nothing And cboMarca.SelectedValue <> Nothing And txtCodFabricante.Text <> Nothing And
       txtUbicacion.Text <> Nothing And txtUtilidad.Text <> Nothing Then
 
@@ -249,7 +249,7 @@ Public Class frmProductos
 
                 o_productos.Modificar_Producto(CInt(txtId.Text), txtDescripcion.Text, txtNombreDiario.Text, CInt(cboRubro.SelectedValue),
                    CInt(cboMarca.SelectedValue), txtCodigoBarra.Text, txtCodFabricante.Text, txtCantidadBulto.Text,
-                   origen, chkAlterntivo.Checked, CInt(cboOriginal.SelectedValue), chkEstado.Checked,
+                   origen, chkAlterntivo.Checked, CInt(cboOriginal.SelectedValue), chkEstado.Checked, txtNota.Text,
                    txtStockReal.Text, txtStockDisponible.Text, txtStockMinimo.Text, txtUbicacion.Text,
                    precioCompra, utilidad, precioLista, dtpFechaCompra.Value, dtpFechaVenta.Value)
 
@@ -268,7 +268,6 @@ Public Class frmProductos
 #End Region
 
 #Region "Calculo precio lista"
-
     Private Sub txtPrecioCompra_LostFocus(sender As Object, e As EventArgs) Handles txtPrecioCompra.LostFocus
         Try
             Dim precioCompra As Decimal
@@ -432,6 +431,19 @@ Public Class frmProductos
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
+
+    Private Sub PanelNota_Paint(sender As Object, e As PaintEventArgs) Handles PanelNota.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelNota.Width - 1, PanelNota.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
 #End Region
 
 #Region "KeyPress"
@@ -533,9 +545,6 @@ Public Class frmProductos
     Private Sub txtBuscar_TextChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
         Filtrar_Grilla()
     End Sub
-
-
-
 #End Region
 
 End Class

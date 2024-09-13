@@ -75,7 +75,7 @@ Public Class AD_Login
                             UsuarioActivo.nombre_rol = reader.GetString(1)
                             UsuarioActivo.nombre_empleado = reader.GetString(2)
                             UsuarioActivo.id_empleado = reader.GetInt32(3)
-
+                            UsuarioActivo.correo = reader.GetString(4)
                         End While
                     End If
                 End Using

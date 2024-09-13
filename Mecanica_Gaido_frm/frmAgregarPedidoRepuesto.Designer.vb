@@ -159,9 +159,9 @@ Partial Class frmAgregarPedidoRepuesto
         Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(68, 37)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(76, 17)
+        Me.Label1.Size = New System.Drawing.Size(75, 17)
         Me.Label1.TabIndex = 119
-        Me.Label1.Text = "Proovedor"
+        Me.Label1.Text = "Proveedor"
         '
         'btnQuitar
         '

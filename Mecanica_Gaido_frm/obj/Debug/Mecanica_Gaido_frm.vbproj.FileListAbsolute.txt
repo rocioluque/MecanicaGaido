@@ -279,4 +279,3 @@ C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.exe
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.xml
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.pdb
-C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.frmAFIP.resources

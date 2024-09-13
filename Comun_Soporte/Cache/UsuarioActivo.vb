@@ -3,4 +3,5 @@
     Public nombre_rol As String
     Public nombre_empleado As String
     Public id_empleado As Integer
+    Public correo As String
 End Module

@@ -279,18 +279,7 @@ Public Class frmVehiculos
     End Sub
 
     Private Sub cboTipoVehiculo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTipoVehiculo.SelectedIndexChanged
-        ' Ocultar lblMatricula y txtMatricula si se selecciona Tractor o Maquinaria Agrícola
-        Dim tipoSeleccionado As String = cboTipoVehiculo.Text
-
-        If tipoSeleccionado = "Tractor" OrElse tipoSeleccionado = "Maquinaria Agrícola" Then
-            lblMatricula.Visible = False
-            txtMatricula.Visible = False
-        Else
-            lblMatricula.Visible = True
-            txtMatricula.Visible = True
-        End If
-
-        ' Actualizar el nombre concatenado también
+        ' Actualizar el nombre concatenado
         ActualizarNombre(sender, e)
     End Sub
 
