@@ -23,21 +23,45 @@ Partial Class frmReportesReparaciones
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim CustomLabel1 As System.Windows.Forms.DataVisualization.Charting.CustomLabel = New System.Windows.Forms.DataVisualization.Charting.CustomLabel()
+        Dim CustomLabel2 As System.Windows.Forms.DataVisualization.Charting.CustomLabel = New System.Windows.Forms.DataVisualization.Charting.CustomLabel()
+        Dim CustomLabel3 As System.Windows.Forms.DataVisualization.Charting.CustomLabel = New System.Windows.Forms.DataVisualization.Charting.CustomLabel()
+        Dim CustomLabel4 As System.Windows.Forms.DataVisualization.Charting.CustomLabel = New System.Windows.Forms.DataVisualization.Charting.CustomLabel()
+        Dim CustomLabel5 As System.Windows.Forms.DataVisualization.Charting.CustomLabel = New System.Windows.Forms.DataVisualization.Charting.CustomLabel()
+        Dim CustomLabel6 As System.Windows.Forms.DataVisualization.Charting.CustomLabel = New System.Windows.Forms.DataVisualization.Charting.CustomLabel()
+        Dim CustomLabel7 As System.Windows.Forms.DataVisualization.Charting.CustomLabel = New System.Windows.Forms.DataVisualization.Charting.CustomLabel()
+        Dim CustomLabel8 As System.Windows.Forms.DataVisualization.Charting.CustomLabel = New System.Windows.Forms.DataVisualization.Charting.CustomLabel()
         Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmReportesReparaciones))
         Me.chartReparacionesMes = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.txtAño = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblNoInformacion = New System.Windows.Forms.Label()
         CType(Me.chartReparacionesMes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'chartReparacionesMes
         '
         Me.chartReparacionesMes.BackColor = System.Drawing.Color.Transparent
+        CustomLabel1.ForeColor = System.Drawing.Color.White
+        CustomLabel1.Text = "Enero"
+        CustomLabel2.Text = "Febrero"
+        CustomLabel3.Text = "Marzo"
+        CustomLabel4.Text = "Abril"
+        CustomLabel5.Text = "Mayo"
+        CustomLabel6.Text = "Junio"
+        CustomLabel7.Text = "Julio"
+        ChartArea1.AxisX.CustomLabels.Add(CustomLabel1)
+        ChartArea1.AxisX.CustomLabels.Add(CustomLabel2)
+        ChartArea1.AxisX.CustomLabels.Add(CustomLabel3)
+        ChartArea1.AxisX.CustomLabels.Add(CustomLabel4)
+        ChartArea1.AxisX.CustomLabels.Add(CustomLabel5)
+        ChartArea1.AxisX.CustomLabels.Add(CustomLabel6)
+        ChartArea1.AxisX.CustomLabels.Add(CustomLabel7)
+        ChartArea1.AxisX.CustomLabels.Add(CustomLabel8)
         ChartArea1.AxisX.InterlacedColor = System.Drawing.Color.LightGray
         ChartArea1.AxisX.Interval = 1.0R
-        ChartArea1.AxisX.IsLabelAutoFit = False
         ChartArea1.AxisX.LabelStyle.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         ChartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
         ChartArea1.AxisX.LineColor = System.Drawing.Color.LightGray
@@ -101,12 +125,24 @@ Partial Class frmReportesReparaciones
         Me.Label1.TabIndex = 78
         Me.Label1.Text = "Año"
         '
+        'lblNoInformacion
+        '
+        Me.lblNoInformacion.AutoSize = True
+        Me.lblNoInformacion.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNoInformacion.ForeColor = System.Drawing.Color.White
+        Me.lblNoInformacion.Location = New System.Drawing.Point(63, 96)
+        Me.lblNoInformacion.Name = "lblNoInformacion"
+        Me.lblNoInformacion.Size = New System.Drawing.Size(0, 21)
+        Me.lblNoInformacion.TabIndex = 79
+        Me.lblNoInformacion.Visible = False
+        '
         'frmReportesReparaciones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(977, 539)
+        Me.Controls.Add(Me.lblNoInformacion)
         Me.Controls.Add(Me.txtAño)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.chartReparacionesMes)
@@ -123,4 +159,5 @@ Partial Class frmReportesReparaciones
     Friend WithEvents chartReparacionesMes As DataVisualization.Charting.Chart
     Friend WithEvents txtAño As TextBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents lblNoInformacion As Label
 End Class
