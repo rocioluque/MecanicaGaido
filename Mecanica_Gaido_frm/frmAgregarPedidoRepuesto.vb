@@ -150,9 +150,15 @@ Public Class frmAgregarPedidoRepuesto
 
                 Process.Start(filename)
 
-                Dim msg As New ModernMessageBox("Documento PDF generado con éxito.", "Excelente", ModernMessageboxIcons.Info, "Aceptar")
-                msg.Button1Key = Key.Enter
-                msg.ShowDialog()
+                If File.Exists(filename) Then
+                    Process.Start(filename)
+
+                    Dim msg As New ModernMessageBox("Documento PDF generado con éxito.", "Excelente", ModernMessageboxIcons.Info, "Aceptar")
+                    msg.Button1Key = Key.Enter
+                    msg.ShowDialog()
+                Else
+                    MessageBox.Show("El archivo PDF no se ha creado correctamente porque: ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
             Catch ex As Exception
                 MessageBox.Show("No se puede generar el documento PDF: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
@@ -162,4 +168,25 @@ Public Class frmAgregarPedidoRepuesto
     End Sub
 #End Region
 
+#Region "Whatsapp"
+    Private Sub btnEnviarWhatsapp_Click(sender As Object, e As EventArgs) Handles btnEnviarWhatsapp.Click
+        ' Ruta del archivo PDF en el escritorio
+        Dim pdfPath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "Pedidos productos " & Now.ToString("dd-MM-yyyy") & ".pdf")
+
+        ' Crear instancia del uploader y subir el archivo
+        Dim uploader As New GoogleDriveUploader()
+        Dim enlacePDF As String = uploader.SubirArchivoDrive(pdfPath)
+
+        ' Ahora puedes usar ese enlace en tu mensaje de WhatsApp
+        Dim mensaje As String = "Aquí tienes el pedido de repuestos. Puedes descargar el PDF aquí: " & enlacePDF
+
+        ' Codificar el mensaje para la URL de WhatsApp
+        Dim mensajeCodificado As String = Uri.EscapeDataString(mensaje)
+        Dim receptorNumero As String = "5493573412691"
+        Dim enlaceWhatsApp As String = "https://wa.me/" & receptorNumero & "?text=" & mensajeCodificado
+
+        ' Abrir WhatsApp Web en el navegador
+        Process.Start(enlaceWhatsApp)
+    End Sub
+#End Region
 End Class

@@ -233,6 +233,27 @@
   <metadata name="Cantidad.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="btnEnviarWhatsapp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAANWSURBVEhLzZddaI5hGMe3sS+U+WhLKfPRnEiUE2lss6P5
+        GqUUKQfKiS3kxNGkln1QygGiMUbZZJmvhoYmcuSAfEVJyIFv8m1+/8ffO6/n3dv7tCn/+tWu/3Vfz/M+
+        93Pf13Mv7b9XT09PLiyARmiBS0Z/N8B8yPHw/ouLTYBmeA8v4Chsg3VGf7fCS9CY/TDe5dFFcTZsh89w
+        AkphsNMhKQdlcBJUo5nJdjo1UVAAV+AOFNtOWdTMgXvQDfm2k4uBuulDOAt5tiOL2hHQCQ8g+c0ZoOnV
+        k+qmfU5rqtI1QDfXk2fZDouk3qmmN+5JicfANMi1lbKo0ZPfhQZb8SKh1atFMdtWIOI18BWkGxB5Jqgp
+        gU8QXu2Y2jIdDgMRT3fBQhgGr6HS6Uii7hQccPhLGGoO2oOltgIR74Jmh4p3QKfDSKJuLryD3iZDoI6k
+        5hA3jcTqTNUOFU+G7zDOVsqiJhPUZObZCky1vFaHMeEdh1qHipfARyiwFUnUHYN6h4FxGBodxoS3AbQi
+        MyAP3sJapyOLWrXXFoeB0QXrHcaENwo0PVrZWfAItjgdWdTqQbocBoY2eJXDOOGvgjcwCdSLtcpXOB1J
+        1IVu3AE1DkMidwRug5rBctB+3wSDnNcHRD/uGiyFjKDwL+GHproe2hyGRE7b7SrowqNhEegVXAfNiHZE
+        rXkF6n7lLo8JT4urzmFgLIankPCXSuS0uLS9dNGJkA9qsc9hL6R73HA4BN1BoUWs7aQfVWErMIeAGkiJ
+        rYQinwM6CGh1V0PC7y3+PjjoMBBxOcQ3EAljD7Q7TCrGrYTHoFlSD5gBWvWFoNf2BWZ5eCDi09DksFeY
+        RfADCm0lFeP09PoB5+Ab/NZNKPOwQIpBuyF8bcyZTg61lbKo0eKbAmNtxYQ3Eu5D76L6UyQ2wwWHAyKu
+        pwV1Hi5D4oMACW2VjQ77La6lJ9VN+z76kFBr1HuaaismvEz/mbKo0TvV9OpJ+z5vkVwGTyAddNhT99kJ
+        Wij6DLaDThHJ9rmmVVvmDGit1EHf5yyJATqEP4NbIGmb6Iulj0Mx7IYPoDFtUANVoAO9mog6kpqD9mkT
+        pPa9ZqAO3+o2q6HIdpzw1WQqYSvogK8Py0VQnfZuBQzcvzD/RmlpPwFdAmmsPyHHMwAAAABJRU5ErkJg
+        gg==
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAMDAAAAEAIACoJQAAFgAAACgAAAAwAAAAYAAAAAEAIAAAAAAAACQAABMLAAATCwAAAAAAAAAA

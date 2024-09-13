@@ -279,3 +279,17 @@ C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.exe
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.xml
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.pdb
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Google.Apis.Auth.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Google.Apis.Core.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Google.Apis.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Google.Apis.Drive.v3.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\System.CodeDom.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Google.Apis.pdb
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Google.Apis.xml
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Google.Apis.Auth.pdb
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Google.Apis.Auth.xml
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Google.Apis.Core.pdb
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Google.Apis.Core.xml
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Google.Apis.Drive.v3.pdb
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Google.Apis.Drive.v3.xml
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\System.CodeDom.xml

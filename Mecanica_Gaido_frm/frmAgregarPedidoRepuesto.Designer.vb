@@ -45,6 +45,7 @@ Partial Class frmAgregarPedidoRepuesto
         Me.ID_Repuestos = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnEnviarWhatsapp = New System.Windows.Forms.Button()
         CType(Me.grdProductosBajoStock, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnCerrar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdRepuestos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -123,11 +124,11 @@ Partial Class frmAgregarPedidoRepuesto
         Me.btnExportarPDF.ForeColor = System.Drawing.Color.White
         Me.btnExportarPDF.Image = CType(resources.GetObject("btnExportarPDF.Image"), System.Drawing.Image)
         Me.btnExportarPDF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnExportarPDF.Location = New System.Drawing.Point(539, 27)
+        Me.btnExportarPDF.Location = New System.Drawing.Point(503, 27)
         Me.btnExportarPDF.Name = "btnExportarPDF"
-        Me.btnExportarPDF.Size = New System.Drawing.Size(94, 35)
+        Me.btnExportarPDF.Size = New System.Drawing.Size(130, 35)
         Me.btnExportarPDF.TabIndex = 114
-        Me.btnExportarPDF.Text = "        PDF"
+        Me.btnExportarPDF.Text = "        Descargar"
         Me.btnExportarPDF.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnExportarPDF.UseVisualStyleBackColor = False
         '
@@ -280,12 +281,33 @@ Partial Class frmAgregarPedidoRepuesto
         Me.Cantidad.ReadOnly = True
         Me.Cantidad.Width = 160
         '
+        'btnEnviarWhatsapp
+        '
+        Me.btnEnviarWhatsapp.BackColor = System.Drawing.Color.Transparent
+        Me.btnEnviarWhatsapp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnEnviarWhatsapp.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnEnviarWhatsapp.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.btnEnviarWhatsapp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
+        Me.btnEnviarWhatsapp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnEnviarWhatsapp.Font = New System.Drawing.Font("Century Gothic", 11.25!)
+        Me.btnEnviarWhatsapp.ForeColor = System.Drawing.Color.White
+        Me.btnEnviarWhatsapp.Image = CType(resources.GetObject("btnEnviarWhatsapp.Image"), System.Drawing.Image)
+        Me.btnEnviarWhatsapp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnEnviarWhatsapp.Location = New System.Drawing.Point(381, 27)
+        Me.btnEnviarWhatsapp.Name = "btnEnviarWhatsapp"
+        Me.btnEnviarWhatsapp.Size = New System.Drawing.Size(97, 35)
+        Me.btnEnviarWhatsapp.TabIndex = 125
+        Me.btnEnviarWhatsapp.Text = "        Enviar"
+        Me.btnEnviarWhatsapp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnEnviarWhatsapp.UseVisualStyleBackColor = False
+        '
         'frmAgregarPedidoRepuesto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(706, 488)
+        Me.Controls.Add(Me.btnEnviarWhatsapp)
         Me.Controls.Add(Me.grdRepuestos)
         Me.Controls.Add(Me.btnQuitar)
         Me.Controls.Add(Me.btnAgregar)
@@ -327,4 +349,5 @@ Partial Class frmAgregarPedidoRepuesto
     Friend WithEvents ID_Repuestos As DataGridViewTextBoxColumn
     Friend WithEvents Nombre As DataGridViewTextBoxColumn
     Friend WithEvents Cantidad As DataGridViewTextBoxColumn
+    Friend WithEvents btnEnviarWhatsapp As Button
 End Class
