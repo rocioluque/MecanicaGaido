@@ -138,36 +138,46 @@ Public Class frmAgregarPedidoRepuesto
 #Region "Whatsapp"
     Private Sub btnEnviarWhatsapp_Click(sender As Object, e As EventArgs) Handles btnEnviarWhatsapp.Click
         If cboPersona.SelectedValue <> Nothing Then
-            Try
-                Dim doc As New Document(PageSize.A4, 10, 10, 10, 10)
-                Dim tempFilePath As String = Path.Combine(Path.GetTempPath(), "Pedidos_productos_" & Now.ToString("dd-MM-yyyy") & ".pdf")
+            If grdRepuestos.Rows.Count > 0 Then
+                Try
+                    Dim doc As New Document(PageSize.A4, 10, 10, 10, 10)
+                    Dim tempFilePath As String = Path.Combine(Path.GetTempPath(), "Pedidos_productos_" & Now.ToString("dd-MM-yyyy") & ".pdf")
 
 
-                Using file As New FileStream(tempFilePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite)
-                    PdfWriter.GetInstance(doc, file)
-                    doc.Open()
-                    ExportarDatosPDF(doc)
-                    doc.Close()
-                End Using
+                    Using file As New FileStream(tempFilePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite)
+                        PdfWriter.GetInstance(doc, file)
+                        doc.Open()
+                        ExportarDatosPDF(doc)
+                        doc.Close()
+                    End Using
 
 
-                If File.Exists(tempFilePath) Then
-                    MessageBox.Show("Documento PDF generado con éxito.", "Excelente", MessageBoxButtons.OK)
+                    If File.Exists(tempFilePath) Then
+                        EnviarWhatsapp(tempFilePath)
 
-                    ' Llamar al método para subir el archivo a Google Drive y enviar el enlace por WhatsApp
-                    EnviarWhatsapp(tempFilePath)
-                Else
-                    MessageBox.Show("El archivo PDF no se ha creado correctamente porque: ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End If
-            Catch ex As Exception
-                MessageBox.Show("No se puede generar el documento PDF: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
+                        MessageBox.Show("Documento PDF generado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Else
+                        MessageBox.Show("El archivo PDF no se ha creado correctamente porque: ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show("No se puede generar el documento PDF: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            Else
+                MessageBox.Show("Agregue al menos un repuesto antes de enviar el pedido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
         Else
-            MsgBox("Seleccione un proveedor para descargar el pedido", vbInformation, "Error")
+                MsgBox("Seleccione un proveedor para descargar el pedido", vbInformation, "Error")
         End If
     End Sub
 
     Private Sub EnviarWhatsapp(tempFilePath As String)
+        Dim numeroTelefono As String = Consultar_TelefonoPersona(cboPersona.SelectedValue)
+
+        If String.IsNullOrEmpty(numeroTelefono) Then
+            MessageBox.Show("No se ha encontrado un número de teléfono para el proveedor seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+
         ' Crear instancia del uploader y subir el archivo
         Dim uploader As New GoogleDriveUploader()
         Dim enlacePDF As String = uploader.SubirArchivoDrive(tempFilePath)
@@ -177,11 +187,25 @@ Public Class frmAgregarPedidoRepuesto
 
         ' Codificar el mensaje para la URL de WhatsApp
         Dim mensajeCodificado As String = Uri.EscapeDataString(mensaje)
-        Dim receptorNumero As String = "5493573412691"
-        Dim enlaceWhatsApp As String = "https://wa.me/" & receptorNumero & "?text=" & mensajeCodificado
+        Dim enlaceWhatsApp As String = "https://wa.me/" & numeroTelefono & "?text=" & mensajeCodificado
 
         ' Abrir WhatsApp Web en el navegador
         Process.Start(enlaceWhatsApp)
     End Sub
+
+    Private Function Consultar_TelefonoPersona(idPersona As Object) As String
+        Dim numeroTelefonoMovil As String = String.Empty
+
+        Try
+            Dim dt As DataTable = o_pedidos.Consultar_TelefonoPersona(idPersona)
+            If dt.Rows.Count > 0 Then
+                numeroTelefonoMovil = dt.Rows(0)("Telefono_Movil").ToString()
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error al obtener el número de teléfono del proveedor: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+        Return numeroTelefonoMovil
+    End Function
 #End Region
 End Class

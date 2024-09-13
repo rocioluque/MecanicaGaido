@@ -267,7 +267,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DropboxUploader.vb" />
     <Compile Include="frmAgregarDetalleFormaPago.Designer.vb">
       <DependentUpon>frmAgregarDetalleFormaPago.vb</DependentUpon>
     </Compile>
