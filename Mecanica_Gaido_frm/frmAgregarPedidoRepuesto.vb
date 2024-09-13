@@ -133,29 +133,29 @@ Public Class frmAgregarPedidoRepuesto
         document.Add(texto)
         document.Add(datatable)
     End Sub
+#End Region
 
-    Private Sub btnExportarPDF_Click(sender As Object, e As EventArgs) Handles btnExportarPDF.Click
+#Region "Whatsapp"
+    Private Sub btnEnviarWhatsapp_Click(sender As Object, e As EventArgs) Handles btnEnviarWhatsapp.Click
         If cboPersona.SelectedValue <> Nothing Then
             Try
                 Dim doc As New Document(PageSize.A4, 10, 10, 10, 10)
-                Dim safeDate As String = Now.ToString("dd-MM-yyyy")
-                Dim filename As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "Pedidos productos " + safeDate + ".pdf")
+                Dim tempFilePath As String = Path.Combine(Path.GetTempPath(), "Pedidos_productos_" & Now.ToString("dd-MM-yyyy") & ".pdf")
 
-                Using file As New FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.ReadWrite)
+
+                Using file As New FileStream(tempFilePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite)
                     PdfWriter.GetInstance(doc, file)
                     doc.Open()
                     ExportarDatosPDF(doc)
                     doc.Close()
                 End Using
 
-                Process.Start(filename)
 
-                If File.Exists(filename) Then
-                    Process.Start(filename)
+                If File.Exists(tempFilePath) Then
+                    MessageBox.Show("Documento PDF generado con éxito.", "Excelente", MessageBoxButtons.OK)
 
-                    Dim msg As New ModernMessageBox("Documento PDF generado con éxito.", "Excelente", ModernMessageboxIcons.Info, "Aceptar")
-                    msg.Button1Key = Key.Enter
-                    msg.ShowDialog()
+                    ' Llamar al método para subir el archivo a Google Drive y enviar el enlace por WhatsApp
+                    EnviarWhatsapp(tempFilePath)
                 Else
                     MessageBox.Show("El archivo PDF no se ha creado correctamente porque: ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
@@ -166,16 +166,11 @@ Public Class frmAgregarPedidoRepuesto
             MsgBox("Seleccione un proveedor para descargar el pedido", vbInformation, "Error")
         End If
     End Sub
-#End Region
 
-#Region "Whatsapp"
-    Private Sub btnEnviarWhatsapp_Click(sender As Object, e As EventArgs) Handles btnEnviarWhatsapp.Click
-        ' Ruta del archivo PDF en el escritorio
-        Dim pdfPath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "Pedidos productos " & Now.ToString("dd-MM-yyyy") & ".pdf")
-
+    Private Sub EnviarWhatsapp(tempFilePath As String)
         ' Crear instancia del uploader y subir el archivo
         Dim uploader As New GoogleDriveUploader()
-        Dim enlacePDF As String = uploader.SubirArchivoDrive(pdfPath)
+        Dim enlacePDF As String = uploader.SubirArchivoDrive(tempFilePath)
 
         ' Ahora puedes usar ese enlace en tu mensaje de WhatsApp
         Dim mensaje As String = "Aquí tienes el pedido de repuestos. Puedes descargar el PDF aquí: " & enlacePDF

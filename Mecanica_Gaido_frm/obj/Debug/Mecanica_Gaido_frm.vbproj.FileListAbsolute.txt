@@ -293,3 +293,5 @@ C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Google.Ap
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Google.Apis.Drive.v3.pdb
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Google.Apis.Drive.v3.xml
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\System.CodeDom.xml
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Dropbox.Api.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Dropbox.Api.xml

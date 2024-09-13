@@ -102,6 +102,9 @@
     <Reference Include="Common.Telerik.Report, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aac48e1b38941c11, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonTelerikReport.1.0.0\lib\net471\Common.Telerik.Report.dll</HintPath>
     </Reference>
+    <Reference Include="Dropbox.Api, Version=7.0.0.0, Culture=neutral, PublicKeyToken=310f0e82fbb45d01, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dropbox.Api.7.0.0\lib\netstandard2.0\Dropbox.Api.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Apis, Version=1.68.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Apis.1.68.0\lib\net462\Google.Apis.dll</HintPath>
     </Reference>
@@ -264,6 +267,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DropboxUploader.vb" />
     <Compile Include="frmAgregarDetalleFormaPago.Designer.vb">
       <DependentUpon>frmAgregarDetalleFormaPago.vb</DependentUpon>
     </Compile>

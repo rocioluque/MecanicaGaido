@@ -33,7 +33,6 @@ Partial Class frmAgregarPedidoRepuesto
         Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StockDisponible = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.btnExportarPDF = New System.Windows.Forms.Button()
         Me.btnCerrar = New System.Windows.Forms.PictureBox()
         Me.cboPersona = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -111,26 +110,6 @@ Partial Class frmAgregarPedidoRepuesto
         Me.Label3.Size = New System.Drawing.Size(171, 17)
         Me.Label3.TabIndex = 115
         Me.Label3.Text = "Productos de bajo Stock:"
-        '
-        'btnExportarPDF
-        '
-        Me.btnExportarPDF.BackColor = System.Drawing.Color.Transparent
-        Me.btnExportarPDF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnExportarPDF.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnExportarPDF.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.btnExportarPDF.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
-        Me.btnExportarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnExportarPDF.Font = New System.Drawing.Font("Century Gothic", 11.25!)
-        Me.btnExportarPDF.ForeColor = System.Drawing.Color.White
-        Me.btnExportarPDF.Image = CType(resources.GetObject("btnExportarPDF.Image"), System.Drawing.Image)
-        Me.btnExportarPDF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnExportarPDF.Location = New System.Drawing.Point(503, 27)
-        Me.btnExportarPDF.Name = "btnExportarPDF"
-        Me.btnExportarPDF.Size = New System.Drawing.Size(130, 35)
-        Me.btnExportarPDF.TabIndex = 114
-        Me.btnExportarPDF.Text = "        Descargar"
-        Me.btnExportarPDF.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnExportarPDF.UseVisualStyleBackColor = False
         '
         'btnCerrar
         '
@@ -293,11 +272,11 @@ Partial Class frmAgregarPedidoRepuesto
         Me.btnEnviarWhatsapp.ForeColor = System.Drawing.Color.White
         Me.btnEnviarWhatsapp.Image = CType(resources.GetObject("btnEnviarWhatsapp.Image"), System.Drawing.Image)
         Me.btnEnviarWhatsapp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEnviarWhatsapp.Location = New System.Drawing.Point(381, 27)
+        Me.btnEnviarWhatsapp.Location = New System.Drawing.Point(503, 27)
         Me.btnEnviarWhatsapp.Name = "btnEnviarWhatsapp"
-        Me.btnEnviarWhatsapp.Size = New System.Drawing.Size(97, 35)
+        Me.btnEnviarWhatsapp.Size = New System.Drawing.Size(130, 35)
         Me.btnEnviarWhatsapp.TabIndex = 125
-        Me.btnEnviarWhatsapp.Text = "        Enviar"
+        Me.btnEnviarWhatsapp.Text = "        Enviar PDF"
         Me.btnEnviarWhatsapp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnEnviarWhatsapp.UseVisualStyleBackColor = False
         '
@@ -318,7 +297,6 @@ Partial Class frmAgregarPedidoRepuesto
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.grdProductosBajoStock)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.btnExportarPDF)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmAgregarPedidoRepuesto"
@@ -334,7 +312,6 @@ Partial Class frmAgregarPedidoRepuesto
 
     Friend WithEvents grdProductosBajoStock As DataGridView
     Friend WithEvents Label3 As Label
-    Friend WithEvents btnExportarPDF As Button
     Friend WithEvents btnCerrar As PictureBox
     Friend WithEvents cboPersona As ComboBox
     Friend WithEvents Label1 As Label
