@@ -27,11 +27,12 @@ Public Class frmVehiculos
         txtID.Clear()
         txtNombre.Clear()
         txtModelo.Clear()
-        txtColor.Clear()
+        txtHorasTrabajadas.Clear()
         txtNumChasis.Clear()
         txtNumMotor.Clear()
         txtMatricula.Clear()
         txtNota.Clear()
+        txtAñoFabricación.Clear()
         cboTipoVehiculo.SelectedIndex = -1
         cboMarca.SelectedIndex = -1
         cboPersona.SelectedIndex = -1
@@ -89,8 +90,9 @@ Public Class frmVehiculos
                 cboTipoVehiculo.SelectedValue = datoleido("Tipo de Vehículo").ToString()
                 cboMarca.SelectedValue = datoleido("Marca").ToString()
                 txtModelo.Text = datoleido("Modelo").ToString()
-                txtColor.Text = datoleido("Color").ToString()
+                txtHorasTrabajadas.Text = datoleido("Horas Trabajadas").ToString()
                 txtMatricula.Text = datoleido("Matricula").ToString()
+                txtAñoFabricación.Text = datoleido("Año de Fabricación").ToString()
                 txtNota.Text = datoleido("Nota").ToString()
                 chkEstado.Checked = Convert.ToBoolean(datoleido("Estado"))
 
@@ -129,8 +131,9 @@ Public Class frmVehiculos
             txtModelo.Text <> Nothing And txtNumMotor.Text <> Nothing Then
 
             Try
-                Dim idVehiculo As Integer = o_vehiculo.Agregar_Vehiculo(CInt(cboTipoVehiculo.SelectedValue), CInt(cboMarca.SelectedValue), txtNombre.Text,
-                       txtModelo.Text, txtColor.Text, txtNumChasis.Text, txtNumMotor.Text, txtMatricula.Text, txtNota.Text, chkEstado.Checked)
+                Dim idVehiculo As Integer = o_vehiculo.Agregar_Vehiculo(CInt(cboTipoVehiculo.SelectedValue), CInt(cboMarca.SelectedValue),
+                              txtNombre.Text, txtModelo.Text, txtHorasTrabajadas.Text, txtNumChasis.Text, txtNumMotor.Text,
+                              txtMatricula.Text, txtAñoFabricación.Text, txtNota.Text, chkEstado.Checked)
 
                 o_vehiculo.Agregar_VehiculoXPersona(CInt(cboPersona.SelectedValue), idVehiculo, chkEstado.Checked)
 
@@ -153,8 +156,8 @@ Public Class frmVehiculos
             cboMarca.SelectedValue <> Nothing And cboTipoVehiculo.SelectedValue <> Nothing Then
             Try
                 o_vehiculo.Modificar_Vehiculo(CInt(txtID.Text), CInt(cboTipoVehiculo.SelectedValue), CInt(cboMarca.SelectedValue),
-                txtNombre.Text, txtModelo.Text, txtColor.Text, txtNumChasis.Text, txtNumMotor.Text, txtMatricula.Text,
-                txtNota.Text, chkEstado.Checked)
+                txtNombre.Text, txtModelo.Text, txtHorasTrabajadas.Text, txtNumChasis.Text, txtNumMotor.Text, txtMatricula.Text,
+                txtAñoFabricación.Text, txtNota.Text, chkEstado.Checked)
 
                 o_vehiculo.Modificar_VehiculoXPersona(VehiculoPersona, CInt(cboPersona.SelectedValue), CInt(txtID.Text), chkEstado.Checked)
 
