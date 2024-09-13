@@ -248,12 +248,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmAFIP.Designer.vb">
-      <DependentUpon>frmAFIP.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmAFIP.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmAgregarDetalleFormaPago.Designer.vb">
       <DependentUpon>frmAgregarDetalleFormaPago.vb</DependentUpon>
     </Compile>
@@ -520,9 +514,6 @@
     <Compile Include="User32.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmAFIP.resx">
-      <DependentUpon>frmAFIP.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarCiudad.resx">
       <DependentUpon>frmAgregarCiudad.vb</DependentUpon>
     </EmbeddedResource>

@@ -150,7 +150,7 @@ Public Class frmAgregarPedidoRepuesto
 
                 Process.Start(filename)
 
-                Dim msg As New ModernMessageBox("Documento PDF generado con éxito.", "Error", ModernMessageboxIcons.Info, "Aceptar")
+                Dim msg As New ModernMessageBox("Documento PDF generado con éxito.", "Excelente", ModernMessageboxIcons.Info, "Aceptar")
                 msg.Button1Key = Key.Enter
                 msg.ShowDialog()
             Catch ex As Exception
