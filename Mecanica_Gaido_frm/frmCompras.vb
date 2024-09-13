@@ -38,9 +38,6 @@ Public Class frmCompras
     End Sub
 #End Region
 
-
-
-
 #Region "Cargar grilla y datos en txt"
     Private Sub Cargar_Grilla_Compras()
         Try
