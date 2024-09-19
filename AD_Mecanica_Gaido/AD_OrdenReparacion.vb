@@ -16,49 +16,6 @@ Public Class AD_OrdenReparacion
     End Sub
 
 
-    'Public Sub Modificar_Orden_Reparacion(
-    '                                             ID_Orden As Integer,
-    '                                            ID_Vehiculo As Integer,
-    '                                            Senas As String,
-    '                                            Motivo As String,
-    '                                            Turno As Date,
-    '                                            Entrada As Date,
-    '                                            Salida As Date,
-    '                                            ID_Persona As Integer,
-    '                                            Repuestos As Decimal,
-    '                                            Serv3 As Decimal,
-    '                                            MObra As Decimal,
-    '                                            Total As Decimal,
-    '                                            Estado As Boolean)
-    '    Using conn As New SqlConnection(connectionString)
-    '        Using command As New SqlCommand("Modificar_Orden_Reparacion", conn)
-    '            command.CommandType = CommandType.StoredProcedure
-    '            command.Parameters.AddWithValue("@ID_Orden", ID_Orden)
-
-    '            command.Parameters.AddWithValue("@ID_Vehiculo", ID_Vehiculo)
-    '            command.Parameters.AddWithValue("@Senas", Senas)
-    '            command.Parameters.AddWithValue("@Motivo", Motivo)
-    '            command.Parameters.AddWithValue("@Turno", Turno)
-    '            command.Parameters.AddWithValue("@Entrada", Entrada)
-    '            command.Parameters.AddWithValue("@Salida", Salida)
-    '            command.Parameters.AddWithValue("@ID_Persona", ID_Persona)
-    '            command.Parameters.AddWithValue("@Repuestos", Repuestos)
-    '            command.Parameters.AddWithValue("@Serv3", Serv3)
-    '            command.Parameters.AddWithValue("@MObra", MObra)
-    '            command.Parameters.AddWithValue("@Total", Total)
-    '            command.Parameters.AddWithValue("@Estado", Estado)
-
-    '            Try
-    '                conn.Open()
-    '                command.ExecuteNonQuery()
-    '            Catch ex As System.Exception
-    '                Throw ex
-    '            End Try
-    '        End Using
-    '        conn.Close()
-    '    End Using
-    'End Sub
-
     Public Function Agregar_Orden_Reparacion(
                                          ID_Vehiculo As Integer,
                                          Senas As String,
@@ -201,6 +158,24 @@ Public Class AD_OrdenReparacion
                     datadapter.Fill(tabla)
                 Catch ex As Exception
                     Throw New Exception("Error al cargar los Repuestos desde la base de datos: " & ex.Message, ex)
+                End Try
+            End Using
+        End Using
+        Return tabla
+    End Function
+
+    Public Function Cargar_Combo_TipoReparacion() As DataTable
+        Dim tabla As New DataTable
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Combo_TipoReparacion", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                Try
+                    conexion.Open()
+                    Dim datadapter As New SqlDataAdapter(comando)
+                    datadapter.Fill(tabla)
+                Catch ex As Exception
+                    Throw New Exception("Error al cargar los Tipos de Reparación desde la base de datos: " & ex.Message, ex)
                 End Try
             End Using
         End Using

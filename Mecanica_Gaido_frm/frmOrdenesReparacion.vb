@@ -26,6 +26,8 @@ Public Class frmOrdenesReparacion
         cboPersonas.SelectedIndex = -1
         CboPersonaServ3.SelectedIndex = -1
         cboVehiculo.SelectedIndex = -1
+        CboProgreso.SelectedIndex = -1
+        CboTipoReparacion = -1
         chkActivo.Checked = True
         chkActivo.Visible = False
     End Sub
@@ -47,6 +49,7 @@ Public Class frmOrdenesReparacion
         Cargar_Combo_Prestador()
         Cargar_Combo_Repuestos()
         Cargar_Grilla_Ordenes()
+        Cargar_Combo_TiposReparacion()
         limpiar()
         ponerDecimales()
 
@@ -206,6 +209,25 @@ Public Class frmOrdenesReparacion
 
         Catch ex As Exception
             MsgBox("Error al cargar los Repuestos: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub Cargar_Combo_TiposReparacion()
+        Try
+            Dim tablaTipoRep As DataTable = o_Orden.Cargar_Combo_TipoReparacion()
+
+            If tablaTipoRep.Rows.Count > 0 Then
+                CboTipoReparacion.DataSource = tablaTipoRep
+                CboTipoReparacion.DisplayMember = "TipoDeReparacion"
+                CboTipoReparacion.ValueMember = "ID_TipoReparacion"
+
+                CboTipoReparacion.SelectedValue = -1
+            Else
+                MsgBox("No se encontraron Tipos de Reparación.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar los Tipos de Reparación: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
 
