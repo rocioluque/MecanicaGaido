@@ -27,7 +27,7 @@ Public Class frmOrdenesReparacion
         CboPersonaServ3.SelectedIndex = -1
         cboVehiculo.SelectedIndex = -1
         CboProgreso.SelectedIndex = -1
-        CboTipoReparacion = -1
+        CboTipoReparacion.SelectedIndex = -1
         chkActivo.Checked = True
         chkActivo.Visible = False
     End Sub
@@ -723,6 +723,8 @@ Public Class frmOrdenesReparacion
                                                                                         Convert.ToDecimal(txtMontoManoObra.Text),
                                                                                         Convert.ToDecimal(txtMontoTotalOR.Text),
                                                                                         Convert.ToBoolean(chkActivo.Checked),
+                                                                                        CboTipoReparacion.SelectedValue,
+                                                                                        CboProgreso.SelectedItem,
                                                                                         transaction)
 
 
@@ -851,6 +853,8 @@ Public Class frmOrdenesReparacion
                     txtMontoManoObra.Text = If(IsDBNull(row("Precio_Mano_De_Obra")), "0,00", Convert.ToDecimal(row("Precio_Mano_De_Obra")).ToString("N2"))
                     txtMontoTotalOR.Text = If(IsDBNull(row("MontoTotalOrden")), "0,00", Convert.ToDecimal(row("MontoTotalOrden")).ToString("N2"))
                     chkActivo.Checked = Convert.ToBoolean(row("Estado"))
+                    CboTipoReparacion.SelectedValue = row("ID_TipoReparacion")
+                    CboProgreso.SelectedItem = row("ProgresoOrden")
                 End If
 
 
@@ -953,7 +957,8 @@ Public Class frmOrdenesReparacion
                                    "fecha_turno = @turno, fecha_entrada = @entrada, fecha_salida = @salida, " &
                                    "id_persona = @id_persona, montorepuestos = @montorepuestos, " &
                                    "montoservicioterceros = @montoservicios, precio_mano_de_obra = @montomanoobra, " &
-                                   "montototalorden = @montototal, estado = @activo where id_ordenreparacion = @id_orden"
+                                   "montototalorden = @montototal, estado = @activo, ID_TipoReparacion = @ID_TipoReparacion, " &
+                                   "ProgresoOrden = @ProgresoOrden where id_ordenreparacion = @id_orden"
                 Dim cmd As New SqlCommand(updateordenquery, conn, transaction)
                 cmd.Parameters.AddWithValue("@id_vehiculo", cboVehiculo.SelectedValue)
                 cmd.Parameters.AddWithValue("@señasparticulares", txtSeñasParticulares.Text)
@@ -967,6 +972,8 @@ Public Class frmOrdenesReparacion
                 cmd.Parameters.AddWithValue("@montomanoobra", Convert.ToDecimal(txtMontoManoObra.Text))
                 cmd.Parameters.AddWithValue("@montototal", Convert.ToDecimal(txtMontoTotalOR.Text))
                 cmd.Parameters.AddWithValue("@activo", Convert.ToBoolean(chkActivo.Checked))
+                cmd.Parameters.AddWithValue("@ID_TipoReparacion", CboTipoReparacion.SelectedValue)
+                cmd.Parameters.AddWithValue("@ProgresoOrden", CboProgreso.SelectedItem)
                 cmd.Parameters.AddWithValue("@id_orden", id_orden)
                 cmd.ExecuteNonQuery()
 
@@ -1040,8 +1047,34 @@ Public Class frmOrdenesReparacion
                     Next
                 End If
 
-                transaction.Commit()
-                MessageBox.Show("Orden modificada exitosamente.")
+
+
+                If CboProgreso.SelectedItem = "Finalizada" Or CboProgreso.SelectedItem = "Facturada" Then
+                    If grdServiciosTerceros.Rows.Count > 0 Then
+
+                        Dim noFinalizados As Integer = 0
+                        For Each fila As DataGridViewRow In grdServiciosTerceros.Rows
+
+                            Dim estadoTrabajo As Boolean = CBool(fila.Cells("Finalizado").Value)
+                            If Not estadoTrabajo Then
+                                noFinalizados += 1
+                            End If
+
+                        Next
+                        If noFinalizados = 0 Then
+                            transaction.Commit()
+                            MessageBox.Show("Orden modificada exitosamente.")
+                        Else
+                            transaction.Rollback()
+                            MessageBox.Show("No se puede Finalizar o Facturar Orden de Reparación con Servicios de Terceros No Finalizados")
+                        End If
+
+                    End If
+                Else
+                    transaction.Commit()
+                    MessageBox.Show("Orden modificada exitosamente.")
+                End If
+
             Catch ex As Exception
                 transaction.Rollback()
                 MessageBox.Show("Error al modificar la orden: " & ex.Message)
@@ -1051,6 +1084,7 @@ Public Class frmOrdenesReparacion
 
 
         End Using
+        btnCancelar.PerformClick()
     End Sub
 
 
