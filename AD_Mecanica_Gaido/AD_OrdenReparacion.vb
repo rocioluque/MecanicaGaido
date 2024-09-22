@@ -183,6 +183,26 @@ Public Class AD_OrdenReparacion
 
 #Region "Procedimientos"
 
+
+
+    Public Function Buscar_DatosOrdenReparacion_ID(ID_Orden As Integer) As DataSet
+        Using conn As New SqlConnection(connectionString)
+            Dim cmd As New SqlCommand("Buscar_DatosOrdenReparacion_ID", conn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@ID_Orden", ID_Orden)
+
+            Dim adapter As New SqlDataAdapter(cmd)
+            Dim ds As New DataSet()
+
+            conn.Open()
+            adapter.Fill(ds)
+            conn.Close()
+
+            Return ds
+        End Using
+    End Function
+
+
     Public Function Agregar_Orden_Reparacion(
                                          ID_Vehiculo As Integer,
                                          Senas As String,

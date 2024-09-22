@@ -824,14 +824,10 @@ Public Class frmOrdenesReparacion
         Dim connectionString = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123"
 
         Using conn As New SqlConnection(connectionString)
-            Dim query = "SELECT * FROM Ordenes_De_Reparacion WHERE ID_OrdenReparacion = @ID_Orden; " &
-                "SELECT * FROM Servicios_De_Terceros WHERE ID_OrdenReparacion = @ID_Orden; " &
-                "SELECT * FROM Repuestos_Por_Ordenes WHERE ID_OrdenReparacion = @ID_Orden;"
-            Dim adapter As New SqlDataAdapter(query, conn)
-            adapter.SelectCommand.Parameters.AddWithValue("@ID_Orden", ID_Orden)
 
-            Dim ds As New DataSet()
-            adapter.Fill(ds)
+            Dim adOrdenReparacion As New AD_OrdenReparacion()
+
+            Dim ds As DataSet = adOrdenReparacion.Buscar_DatosOrdenReparacion_ID(ID_Orden)
 
             If ds.Tables.Count > 0 Then
 
@@ -841,8 +837,6 @@ Public Class frmOrdenesReparacion
                     cboPersonas.SelectedValue = row("ID_Persona")
                     Cargar_Combo_Vehiculos(Convert.ToInt32(row("ID_Persona")))
                     cboVehiculo.SelectedValue = row("ID_Vehiculo")
-
-
                     txtSeñasParticulares.Text = row("Señas_Particulares").ToString()
                     txtMotivoReparacion.Text = row("Motivo_Reparacion").ToString()
                     dtpTurno.Value = Convert.ToDateTime(row("Fecha_Turno"))
@@ -857,7 +851,6 @@ Public Class frmOrdenesReparacion
                     CboProgreso.SelectedItem = row("ProgresoOrden")
                 End If
 
-
                 Dim serviciosTable As DataTable = ds.Tables(1)
                 grdServiciosTerceros.Rows.Clear()
                 For Each serviceRow As DataRow In serviciosTable.Rows
@@ -868,6 +861,7 @@ Public Class frmOrdenesReparacion
                             Exit For
                         End If
                     Next
+
                     grdServiciosTerceros.Rows.Add(serviceRow("ID_ServicioTercero"),
                                                   serviceRow("ID_Persona"),
                                                   Prestador,
@@ -883,15 +877,11 @@ Public Class frmOrdenesReparacion
                 txtCostoEstimadoS3.Text = Convert.ToDecimal(0).ToString("N2")
                 txtCostoRealS3.Text = Convert.ToDecimal(0).ToString("N2")
 
-
-
-
                 Dim repuestosTable As DataTable = ds.Tables(2)
                 grdRepuestos.Rows.Clear()
                 For Each repuestoRow As DataRow In repuestosTable.Rows
                     Dim NombreRepuesto As String = String.Empty
                     Dim NombreDiarioRepuesto As String = String.Empty
-
 
                     Dim repuestoQuery = "SELECT Descripcion, NombreDiario FROM Repuestos WHERE ID_Repuestos = @ID_Repuesto"
                     Dim repuestoAdapter As New SqlDataAdapter(repuestoQuery, conn)
