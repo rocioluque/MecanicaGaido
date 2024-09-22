@@ -23,17 +23,15 @@ Partial Class frmInicio
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Title2 As System.Windows.Forms.DataVisualization.Charting.Title = New System.Windows.Forms.DataVisualization.Charting.Title()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Title1 As System.Windows.Forms.DataVisualization.Charting.Title = New System.Windows.Forms.DataVisualization.Charting.Title()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmInicio))
         Me.lblFecha = New System.Windows.Forms.Label()
         Me.lblHora = New System.Windows.Forms.Label()
         Me.horaFecha = New System.Windows.Forms.Timer(Me.components)
         Me.chtRepuestos = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.grdGrilla2 = New System.Windows.Forms.DataGridView()
-        Me.grdGrilla1 = New System.Windows.Forms.DataGridView()
         Me.btnExportarPDF = New System.Windows.Forms.Button()
         Me.lblViento = New System.Windows.Forms.Label()
         Me.lblVisibilidad = New System.Windows.Forms.Label()
@@ -47,8 +45,6 @@ Partial Class frmInicio
         Me.lblDescripcion = New System.Windows.Forms.Label()
         Me.lblDolar = New System.Windows.Forms.Label()
         CType(Me.chtRepuestos, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdGrilla2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdGrilla1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBoxHumedad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -84,52 +80,28 @@ Partial Class frmInicio
         'chtRepuestos
         '
         Me.chtRepuestos.BackColor = System.Drawing.Color.Transparent
-        ChartArea2.Name = "ChartArea1"
-        Me.chtRepuestos.ChartAreas.Add(ChartArea2)
+        ChartArea1.Name = "ChartArea1"
+        Me.chtRepuestos.ChartAreas.Add(ChartArea1)
         Me.chtRepuestos.Cursor = System.Windows.Forms.Cursors.Hand
-        Legend2.Name = "Legend1"
-        Me.chtRepuestos.Legends.Add(Legend2)
+        Legend1.Name = "Legend1"
+        Me.chtRepuestos.Legends.Add(Legend1)
         Me.chtRepuestos.Location = New System.Drawing.Point(677, 32)
         Me.chtRepuestos.Name = "chtRepuestos"
         Me.chtRepuestos.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen
-        Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.chtRepuestos.Series.Add(Series2)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.chtRepuestos.Series.Add(Series1)
         Me.chtRepuestos.Size = New System.Drawing.Size(427, 327)
         Me.chtRepuestos.TabIndex = 114
-        Title2.BackColor = System.Drawing.Color.Transparent
-        Title2.DockedToChartArea = "ChartArea1"
-        Title2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Title2.ForeColor = System.Drawing.Color.White
-        Title2.Name = "TittleEstadoRepuestos"
-        Title2.ShadowColor = System.Drawing.Color.Transparent
-        Title2.Text = "Estado de Repuestos"
-        Me.chtRepuestos.Titles.Add(Title2)
-        '
-        'grdGrilla2
-        '
-        Me.grdGrilla2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.grdGrilla2.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
-        Me.grdGrilla2.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.grdGrilla2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdGrilla2.Location = New System.Drawing.Point(834, 444)
-        Me.grdGrilla2.Name = "grdGrilla2"
-        Me.grdGrilla2.Size = New System.Drawing.Size(268, 150)
-        Me.grdGrilla2.TabIndex = 116
-        Me.grdGrilla2.Visible = False
-        '
-        'grdGrilla1
-        '
-        Me.grdGrilla1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.grdGrilla1.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
-        Me.grdGrilla1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.grdGrilla1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdGrilla1.Location = New System.Drawing.Point(540, 444)
-        Me.grdGrilla1.Name = "grdGrilla1"
-        Me.grdGrilla1.Size = New System.Drawing.Size(268, 150)
-        Me.grdGrilla1.TabIndex = 115
-        Me.grdGrilla1.Visible = False
+        Title1.BackColor = System.Drawing.Color.Transparent
+        Title1.DockedToChartArea = "ChartArea1"
+        Title1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Title1.ForeColor = System.Drawing.Color.White
+        Title1.Name = "TittleEstadoRepuestos"
+        Title1.ShadowColor = System.Drawing.Color.Transparent
+        Title1.Text = "Estado de Repuestos"
+        Me.chtRepuestos.Titles.Add(Title1)
         '
         'btnExportarPDF
         '
@@ -285,8 +257,6 @@ Partial Class frmInicio
         Me.Controls.Add(Me.lblUbicacion)
         Me.Controls.Add(Me.lblTemperatura)
         Me.Controls.Add(Me.btnExportarPDF)
-        Me.Controls.Add(Me.grdGrilla2)
-        Me.Controls.Add(Me.grdGrilla1)
         Me.Controls.Add(Me.chtRepuestos)
         Me.Controls.Add(Me.lblFecha)
         Me.Controls.Add(Me.lblHora)
@@ -296,8 +266,6 @@ Partial Class frmInicio
         Me.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds
         Me.Text = "frmInicio"
         CType(Me.chtRepuestos, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdGrilla2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdGrilla1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBoxHumedad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -309,8 +277,6 @@ Partial Class frmInicio
     Friend WithEvents lblHora As Label
     Friend WithEvents horaFecha As Timer
     Friend WithEvents chtRepuestos As DataVisualization.Charting.Chart
-    Friend WithEvents grdGrilla2 As DataGridView
-    Friend WithEvents grdGrilla1 As DataGridView
     Friend WithEvents btnExportarPDF As Button
     Friend WithEvents lblViento As Label
     Friend WithEvents lblVisibilidad As Label

@@ -55,8 +55,6 @@ Partial Class frmVentas
         Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnQuitarVenta = New System.Windows.Forms.Button()
         Me.btnAgregarVenta = New System.Windows.Forms.Button()
-        Me.CboLote = New System.Windows.Forms.ComboBox()
-        Me.Label15 = New System.Windows.Forms.Label()
         Me.txtCantidadVentas = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.cboProductoVenta = New System.Windows.Forms.ComboBox()
@@ -295,8 +293,6 @@ Partial Class frmVentas
         Me.PanelDetalleDeVentas.Controls.Add(Me.grdVentas)
         Me.PanelDetalleDeVentas.Controls.Add(Me.btnQuitarVenta)
         Me.PanelDetalleDeVentas.Controls.Add(Me.btnAgregarVenta)
-        Me.PanelDetalleDeVentas.Controls.Add(Me.CboLote)
-        Me.PanelDetalleDeVentas.Controls.Add(Me.Label15)
         Me.PanelDetalleDeVentas.Controls.Add(Me.txtCantidadVentas)
         Me.PanelDetalleDeVentas.Controls.Add(Me.Label12)
         Me.PanelDetalleDeVentas.Controls.Add(Me.cboProductoVenta)
@@ -417,7 +413,7 @@ Partial Class frmVentas
         Me.btnQuitarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnQuitarVenta.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnQuitarVenta.ForeColor = System.Drawing.Color.White
-        Me.btnQuitarVenta.Location = New System.Drawing.Point(887, 10)
+        Me.btnQuitarVenta.Location = New System.Drawing.Point(883, 10)
         Me.btnQuitarVenta.Name = "btnQuitarVenta"
         Me.btnQuitarVenta.Size = New System.Drawing.Size(117, 37)
         Me.btnQuitarVenta.TabIndex = 22
@@ -433,37 +429,17 @@ Partial Class frmVentas
         Me.btnAgregarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAgregarVenta.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregarVenta.ForeColor = System.Drawing.Color.White
-        Me.btnAgregarVenta.Location = New System.Drawing.Point(759, 10)
+        Me.btnAgregarVenta.Location = New System.Drawing.Point(714, 10)
         Me.btnAgregarVenta.Name = "btnAgregarVenta"
         Me.btnAgregarVenta.Size = New System.Drawing.Size(117, 37)
         Me.btnAgregarVenta.TabIndex = 21
         Me.btnAgregarVenta.Text = "Agregar"
         Me.btnAgregarVenta.UseVisualStyleBackColor = False
         '
-        'CboLote
-        '
-        Me.CboLote.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CboLote.FormattingEnabled = True
-        Me.CboLote.Location = New System.Drawing.Point(573, 16)
-        Me.CboLote.Name = "CboLote"
-        Me.CboLote.Size = New System.Drawing.Size(180, 25)
-        Me.CboLote.TabIndex = 20
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.ForeColor = System.Drawing.Color.White
-        Me.Label15.Location = New System.Drawing.Point(530, 20)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(40, 17)
-        Me.Label15.TabIndex = 116
-        Me.Label15.Text = "Lote:"
-        '
         'txtCantidadVentas
         '
         Me.txtCantidadVentas.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCantidadVentas.Location = New System.Drawing.Point(458, 16)
+        Me.txtCantidadVentas.Location = New System.Drawing.Point(596, 16)
         Me.txtCantidadVentas.Name = "txtCantidadVentas"
         Me.txtCantidadVentas.Size = New System.Drawing.Size(66, 23)
         Me.txtCantidadVentas.TabIndex = 19
@@ -475,7 +451,7 @@ Partial Class frmVentas
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.Color.White
-        Me.Label12.Location = New System.Drawing.Point(377, 20)
+        Me.Label12.Location = New System.Drawing.Point(469, 20)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(75, 17)
         Me.Label12.TabIndex = 115
@@ -485,7 +461,7 @@ Partial Class frmVentas
         '
         Me.cboProductoVenta.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboProductoVenta.FormattingEnabled = True
-        Me.cboProductoVenta.Location = New System.Drawing.Point(93, 16)
+        Me.cboProductoVenta.Location = New System.Drawing.Point(139, 16)
         Me.cboProductoVenta.Name = "cboProductoVenta"
         Me.cboProductoVenta.Size = New System.Drawing.Size(278, 25)
         Me.cboProductoVenta.TabIndex = 18
@@ -989,12 +965,12 @@ Partial Class frmVentas
         Me.lblMontoDtoRecargo.AutoSize = True
         Me.lblMontoDtoRecargo.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblMontoDtoRecargo.ForeColor = System.Drawing.Color.White
-        Me.lblMontoDtoRecargo.Location = New System.Drawing.Point(607, 413)
+        Me.lblMontoDtoRecargo.Location = New System.Drawing.Point(589, 413)
         Me.lblMontoDtoRecargo.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblMontoDtoRecargo.Name = "lblMontoDtoRecargo"
-        Me.lblMontoDtoRecargo.Size = New System.Drawing.Size(50, 17)
+        Me.lblMontoDtoRecargo.Size = New System.Drawing.Size(98, 17)
         Me.lblMontoDtoRecargo.TabIndex = 143
-        Me.lblMontoDtoRecargo.Text = "Monto "
+        Me.lblMontoDtoRecargo.Text = "Forma de Pago"
         '
         'frmVentas
         '
@@ -1069,8 +1045,6 @@ Partial Class frmVentas
     Friend WithEvents PanelDetalleDeVentas As Panel
     Friend WithEvents btnQuitarVenta As Button
     Friend WithEvents btnAgregarVenta As Button
-    Friend WithEvents CboLote As ComboBox
-    Friend WithEvents Label15 As Label
     Friend WithEvents txtCantidadVentas As TextBox
     Friend WithEvents Label12 As Label
     Friend WithEvents cboProductoVenta As ComboBox

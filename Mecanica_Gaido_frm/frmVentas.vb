@@ -15,7 +15,6 @@ Public Class frmVentas
         Cargar_Combo_TipoVenta()
         Cargar_Combo_FormaEntrega()
         Cargar_Combo_Repuestos()
-        Cargar_Combo_Lote()
         limpiar()
         PonerDecimales()
 
@@ -38,7 +37,8 @@ Public Class frmVentas
         cboDetalleFormaPago.SelectedIndex = -1
         cboPersona.SelectedIndex = -1
         cboFormaPago.SelectedIndex = -1
-        CboLote.SelectedIndex = -1
+        rbtRecargo.Checked = False
+        rbtDescuento.Checked = False
         chkEstado.Checked = False
     End Sub
 
@@ -155,24 +155,6 @@ Public Class frmVentas
             MsgBox("Error al cargar las Formas de Entrega: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
-
-    Private Sub Cargar_Combo_Lote()
-        Try
-            Dim tabla As DataTable = o_ventas.Cargar_Combo_Lote()
-
-            If tabla.Rows.Count > 0 Then
-                CboLote.DataSource = tabla
-                CboLote.DisplayMember = "Denominacion"
-                CboLote.ValueMember = "ID_Lote"
-                CboLote.SelectedValue = -1
-            Else
-                MsgBox("No se encontraron Lotes.", vbInformation, "Información")
-            End If
-
-        Catch ex As Exception
-            MsgBox("Error al cargar los Lotes: " & ex.Message, vbCritical, "Error")
-        End Try
-    End Sub
 #End Region
 
 #Region "Cargar grilla y datos en txt"
@@ -221,10 +203,9 @@ Public Class frmVentas
                 Dim nombreDiario As String = rowView("nombreDiario").ToString()
                 Dim precio As Decimal = Convert.ToDecimal(rowView("PrecioCompra"))
                 Dim cantidad As Integer = Convert.ToDecimal(txtCantidadVentas.Text)
-                Dim lote As String = CboLote.Text.ToString
                 Dim total As Decimal = precio * cantidad
 
-                grdVentas.Rows.Add(idRepuesto, descripcionRepuesto, nombreDiario, cantidad, lote, precio, total)
+                grdVentas.Rows.Add(idRepuesto, descripcionRepuesto, nombreDiario, cantidad, precio, total)
                 Cargar_Combo_Repuestos()
                 txtCantidadVentas.Text = Convert.ToDecimal(0).ToString("N2")
                 ActualizarMontoTotal()
@@ -269,11 +250,13 @@ Public Class frmVentas
 
     Private Sub rbtRecargo_CheckedChanged(sender As Object, e As EventArgs) Handles rbtRecargo.CheckedChanged
         PonerDecimales()
+        Calculo_DtoRecargo()
         CalcularTotalCompra()
     End Sub
 
     Private Sub rbtDescuento_CheckedChanged(sender As Object, e As EventArgs) Handles rbtDescuento.CheckedChanged
         PonerDecimales()
+        Calculo_DtoRecargo()
         CalcularTotalCompra()
     End Sub
 
@@ -321,6 +304,8 @@ Public Class frmVentas
 
             porcentajeMonto = ((montoTotal * porcentaje * -1) / 100)
             txtMontoDtoRecargo.Text = porcentajeMonto.ToString("N2")
+        Else
+            lblMontoDtoRecargo.Text = "Forma de Pago"
         End If
     End Sub
 
@@ -397,7 +382,6 @@ Public Class frmVentas
 
             rbtRecargo.Checked = False
             rbtDescuento.Checked = False
-            'txtPorcentaje.Clear()
             txtPorcentaje.Text = Convert.ToDecimal(0)
         Else
             cboDetalleFormaPago.Enabled = False
@@ -405,7 +389,6 @@ Public Class frmVentas
 
             rbtRecargo.Checked = False
             rbtDescuento.Checked = False
-            'txtPorcentaje.Clear()
             txtPorcentaje.Text = Convert.ToDecimal(0)
         End If
     End Sub

@@ -26,12 +26,12 @@ Partial Class frmBienvenida
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBienvenida))
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblSaludo = New System.Windows.Forms.Label()
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.ProgressBar1 = New CircularProgressBar.CircularProgressBar()
-        Me.PanelLogo = New System.Windows.Forms.Panel()
         Me.lblHola = New System.Windows.Forms.Label()
+        Me.PanelLogo = New System.Windows.Forms.Panel()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PanelLogo.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -42,15 +42,6 @@ Partial Class frmBienvenida
         'BackgroundWorker1
         '
         Me.BackgroundWorker1.WorkerReportsProgress = True
-        '
-        'Panel1
-        '
-        Me.Panel1.BackgroundImage = CType(resources.GetObject("Panel1.BackgroundImage"), System.Drawing.Image)
-        Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Panel1.Location = New System.Drawing.Point(175, 12)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(303, 131)
-        Me.Panel1.TabIndex = 0
         '
         'lblSaludo
         '
@@ -101,16 +92,6 @@ Partial Class frmBienvenida
         Me.ProgressBar1.TextMargin = New System.Windows.Forms.Padding(5, 5, 0, 0)
         Me.ProgressBar1.Value = 68
         '
-        'PanelLogo
-        '
-        Me.PanelLogo.BackColor = System.Drawing.Color.FromArgb(CType(CType(190, Byte), Integer), CType(CType(222, Byte), Integer), CType(CType(187, Byte), Integer))
-        Me.PanelLogo.Controls.Add(Me.Panel1)
-        Me.PanelLogo.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelLogo.Location = New System.Drawing.Point(0, 0)
-        Me.PanelLogo.Name = "PanelLogo"
-        Me.PanelLogo.Size = New System.Drawing.Size(654, 161)
-        Me.PanelLogo.TabIndex = 28
-        '
         'lblHola
         '
         Me.lblHola.AutoSize = True
@@ -122,6 +103,26 @@ Partial Class frmBienvenida
         Me.lblHola.Size = New System.Drawing.Size(51, 22)
         Me.lblHola.TabIndex = 29
         Me.lblHola.Text = "Hola"
+        '
+        'PanelLogo
+        '
+        Me.PanelLogo.BackColor = System.Drawing.Color.SeaGreen
+        Me.PanelLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.PanelLogo.Controls.Add(Me.Panel1)
+        Me.PanelLogo.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PanelLogo.Location = New System.Drawing.Point(0, 0)
+        Me.PanelLogo.Name = "PanelLogo"
+        Me.PanelLogo.Size = New System.Drawing.Size(654, 161)
+        Me.PanelLogo.TabIndex = 28
+        '
+        'Panel1
+        '
+        Me.Panel1.BackgroundImage = CType(resources.GetObject("Panel1.BackgroundImage"), System.Drawing.Image)
+        Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Panel1.Location = New System.Drawing.Point(127, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(400, 163)
+        Me.Panel1.TabIndex = 1
         '
         'frmBienvenida
         '
@@ -148,10 +149,10 @@ Partial Class frmBienvenida
     End Sub
     Friend WithEvents Timer1 As Timer
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
-    Friend WithEvents Panel1 As Panel
     Friend WithEvents lblSaludo As Label
     Friend WithEvents Timer2 As Timer
     Friend WithEvents ProgressBar1 As CircularProgressBar.CircularProgressBar
-    Friend WithEvents PanelLogo As Panel
     Friend WithEvents lblHola As Label
+    Friend WithEvents PanelLogo As Panel
+    Friend WithEvents Panel1 As Panel
 End Class
