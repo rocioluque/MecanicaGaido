@@ -22,10 +22,10 @@ Partial Class frmReportesProductos
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmReportesProductos))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cboMarca = New System.Windows.Forms.ComboBox()
@@ -37,7 +37,7 @@ Partial Class frmReportesProductos
         Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtTotal = New System.Windows.Forms.TextBox()
-        Me.btnEnviarWhatsapp = New System.Windows.Forms.Button()
+        Me.btnDescargarPDF = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
         CType(Me.grdRepuestos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -73,14 +73,14 @@ Partial Class frmReportesProductos
         Me.grdRepuestos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         Me.grdRepuestos.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdRepuestos.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdRepuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdRepuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.grdRepuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdRepuestos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodFabricante, Me.Descripcion, Me.StockReal, Me.PrecioLista, Me.Total})
         Me.grdRepuestos.Location = New System.Drawing.Point(23, 71)
@@ -108,8 +108,8 @@ Partial Class frmReportesProductos
         '
         'StockReal
         '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.StockReal.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.StockReal.DefaultCellStyle = DataGridViewCellStyle2
         Me.StockReal.FillWeight = 45.0!
         Me.StockReal.HeaderText = "Cantidad"
         Me.StockReal.Name = "StockReal"
@@ -117,10 +117,10 @@ Partial Class frmReportesProductos
         '
         'PrecioLista
         '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle7.Format = "N2"
-        DataGridViewCellStyle7.NullValue = Nothing
-        Me.PrecioLista.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "N2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.PrecioLista.DefaultCellStyle = DataGridViewCellStyle3
         Me.PrecioLista.FillWeight = 60.0!
         Me.PrecioLista.HeaderText = "Precio Unitario"
         Me.PrecioLista.Name = "PrecioLista"
@@ -128,9 +128,9 @@ Partial Class frmReportesProductos
         '
         'Total
         '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle8.Format = "N2"
-        Me.Total.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "N2"
+        Me.Total.DefaultCellStyle = DataGridViewCellStyle4
         Me.Total.FillWeight = 50.0!
         Me.Total.HeaderText = "Total"
         Me.Total.Name = "Total"
@@ -158,25 +158,25 @@ Partial Class frmReportesProductos
         Me.txtTotal.TabIndex = 124
         Me.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'btnEnviarWhatsapp
+        'btnDescargarPDF
         '
-        Me.btnEnviarWhatsapp.BackColor = System.Drawing.Color.Transparent
-        Me.btnEnviarWhatsapp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnEnviarWhatsapp.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnEnviarWhatsapp.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.btnEnviarWhatsapp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
-        Me.btnEnviarWhatsapp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnEnviarWhatsapp.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.btnEnviarWhatsapp.ForeColor = System.Drawing.Color.White
-        Me.btnEnviarWhatsapp.Image = CType(resources.GetObject("btnEnviarWhatsapp.Image"), System.Drawing.Image)
-        Me.btnEnviarWhatsapp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEnviarWhatsapp.Location = New System.Drawing.Point(406, 268)
-        Me.btnEnviarWhatsapp.Name = "btnEnviarWhatsapp"
-        Me.btnEnviarWhatsapp.Size = New System.Drawing.Size(130, 35)
-        Me.btnEnviarWhatsapp.TabIndex = 127
-        Me.btnEnviarWhatsapp.Text = "             Enviar PDF"
-        Me.btnEnviarWhatsapp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEnviarWhatsapp.UseVisualStyleBackColor = False
+        Me.btnDescargarPDF.BackColor = System.Drawing.Color.Transparent
+        Me.btnDescargarPDF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnDescargarPDF.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnDescargarPDF.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.btnDescargarPDF.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
+        Me.btnDescargarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDescargarPDF.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.btnDescargarPDF.ForeColor = System.Drawing.Color.White
+        Me.btnDescargarPDF.Image = CType(resources.GetObject("btnDescargarPDF.Image"), System.Drawing.Image)
+        Me.btnDescargarPDF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnDescargarPDF.Location = New System.Drawing.Point(406, 268)
+        Me.btnDescargarPDF.Name = "btnDescargarPDF"
+        Me.btnDescargarPDF.Size = New System.Drawing.Size(143, 35)
+        Me.btnDescargarPDF.TabIndex = 127
+        Me.btnDescargarPDF.Text = "          Descargar PDF"
+        Me.btnDescargarPDF.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnDescargarPDF.UseVisualStyleBackColor = False
         '
         'btnCancelar
         '
@@ -200,7 +200,7 @@ Partial Class frmReportesProductos
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(990, 572)
-        Me.Controls.Add(Me.btnEnviarWhatsapp)
+        Me.Controls.Add(Me.btnDescargarPDF)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.txtTotal)
         Me.Controls.Add(Me.Label2)
@@ -227,6 +227,6 @@ Partial Class frmReportesProductos
     Friend WithEvents Total As DataGridViewTextBoxColumn
     Friend WithEvents Label2 As Label
     Friend WithEvents txtTotal As TextBox
-    Friend WithEvents btnEnviarWhatsapp As Button
+    Friend WithEvents btnDescargarPDF As Button
     Friend WithEvents btnCancelar As Button
 End Class
