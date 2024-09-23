@@ -177,6 +177,20 @@ Public Class AD_OrdenReparacion
         Return tabla
     End Function
 
+    Public Function Cargar_Grilla_OrdenesP(progreso As String) As DataTable
+        Dim tabla As New DataTable
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Grilla_Ordenes_Progreso", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@Progreso", progreso)
+                Dim datadapter As New SqlDataAdapter(comando)
+                datadapter.Fill(tabla)
+            End Using
+        End Using
+        Return tabla
+    End Function
+
 #End Region
 
 

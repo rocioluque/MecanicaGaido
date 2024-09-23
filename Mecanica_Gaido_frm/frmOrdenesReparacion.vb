@@ -48,13 +48,22 @@ Public Class frmOrdenesReparacion
         Cargar_Combo_Personas()
         Cargar_Combo_Prestador()
         Cargar_Combo_Repuestos()
-        Cargar_Grilla_Ordenes()
+        If esFiltradoPorGrafico AndAlso Not String.IsNullOrEmpty(estadoParaFiltrar) Then
+            Cargar_Grilla_OrdenesP(estadoParaFiltrar)
+        Else
+            Cargar_Grilla_Ordenes()
+        End If
         Cargar_Combo_TiposReparacion()
         limpiar()
         ponerDecimales()
 
     End Sub
 
+    Public Sub New(Optional ByVal estadoParaFiltrar As String = "", Optional ByVal esFiltradoPorGrafico As Boolean = False)
+        InitializeComponent()
+        Me.estadoParaFiltrar = estadoParaFiltrar
+        Me.esFiltradoPorGrafico = esFiltradoPorGrafico
+    End Sub
 
 
 
@@ -347,6 +356,64 @@ Public Class frmOrdenesReparacion
         Finally
         End Try
     End Sub
+
+    Public Sub Cargar_Grilla_OrdenesP(estado As String)
+        Try
+            Dim conexion As SqlConnection
+            Dim comando As New SqlCommand
+
+            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
+
+            conexion.Open()
+            comando.Connection = conexion
+            comando.CommandType = CommandType.StoredProcedure
+            comando.CommandText = ("Cargar_Grilla_Ordenes_Progreso")
+            comando.Parameters.AddWithValue("@Progreso", estado)
+
+            Dim datadapter As New SqlDataAdapter(comando)
+            Dim oDs As New DataSet
+            datadapter.Fill(oDs)
+
+            If oDs.Tables(0).Rows.Count > 0 Then
+                grdOrdenReparacion.AutoGenerateColumns = True
+                grdOrdenReparacion.DataSource = oDs.Tables(0)
+
+
+                grdOrdenReparacion.Refresh()
+            Else
+                MsgBox("No se encontraron Ordenes para mostrar.", vbInformation, "Información")
+            End If
+
+            oDs = Nothing
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox("Error al cargar la grilla: " & ex.Message, vbCritical, "Error")
+
+        End Try
+    End Sub
+    Public Property esFiltradoPorGrafico As Boolean = False
+    Public Property estadoParaFiltrar As String
+
+    Public WithEvents formTimer As New Timer()
+
+
+    Public Sub New()
+        InitializeComponent()
+
+        ' Configurar el timer para que se ejecute una vez, después de 200ms
+        formTimer.Interval = 400
+        AddHandler formTimer.Tick, AddressOf OnFormTimerTick
+    End Sub
+
+    Private Sub OnFormTimerTick(sender As Object, e As EventArgs)
+        formTimer.Stop() ' Detener el timer después de que se ejecute
+
+        If Not String.IsNullOrEmpty(estadoParaFiltrar) Then
+            Cargar_Grilla_OrdenesP(estadoParaFiltrar)
+        End If
+    End Sub
+
+
 #End Region
 
 #Region "Keypress"
@@ -1085,7 +1152,6 @@ Public Class frmOrdenesReparacion
     'End Sub
 
 
-
     Private Sub ModificarOrden(id_orden As Integer)
         Dim connectionstring = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123"
 
@@ -1096,28 +1162,46 @@ Public Class frmOrdenesReparacion
             Try
                 Dim Orden As New AD_OrdenReparacion()
 
+                ' Validar si el progreso es Finalizada o Facturada y hay servicios de terceros no finalizados
+                If (CboProgreso.SelectedItem = "Finalizada" Or CboProgreso.SelectedItem = "Facturada") Then
+                    Dim noFinalizados As Integer = 0
+                    For Each fila As DataGridViewRow In grdServiciosTerceros.Rows
+                        Dim estadoTrabajo As Boolean = CBool(fila.Cells("Finalizado").Value)
+                        If Not estadoTrabajo Then
+                            noFinalizados += 1
+                        End If
+                    Next
+
+                    ' Si hay servicios de terceros no finalizados, hacer Rollback y mostrar mensaje
+                    If noFinalizados > 0 Then
+                        MessageBox.Show("No se puede Finalizar o Facturar la Orden de Reparación con Servicios de Terceros No Finalizados.")
+                        transaction.Rollback()
+                        Exit Sub
+                    End If
+                End If
+
+                ' Si no hay problemas con los servicios, continuar con la modificación de la orden
                 Orden.Modificar_OrdenReparacion(id_orden,
-                                                CInt(cboVehiculo.SelectedValue),
-                                                txtSeñasParticulares.Text,
-                                                txtMotivoReparacion.Text,
-                                                dtpTurno.Value,
-                                                dtpEntrada.Value,
-                                                dtpSalida.Value,
-                                                CInt(cboPersonas.SelectedValue),
-                                                Convert.ToDecimal(txtMontoRepuestos.Text),
-                                                Convert.ToDecimal(txtMontoServ3.Text),
-                                                Convert.ToDecimal(txtMontoManoObra.Text),
-                                                Convert.ToDecimal(txtMontoTotalOR.Text),
-                                                Convert.ToBoolean(chkActivo.Checked),
-                                                CInt(CboTipoReparacion.SelectedValue),
-                                                CboProgreso.SelectedItem,
+                                            CInt(cboVehiculo.SelectedValue),
+                                            txtSeñasParticulares.Text,
+                                            txtMotivoReparacion.Text,
+                                            dtpTurno.Value,
+                                            dtpEntrada.Value,
+                                            dtpSalida.Value,
+                                            CInt(cboPersonas.SelectedValue),
+                                            Convert.ToDecimal(txtMontoRepuestos.Text),
+                                            Convert.ToDecimal(txtMontoServ3.Text),
+                                            Convert.ToDecimal(txtMontoManoObra.Text),
+                                            Convert.ToDecimal(txtMontoTotalOR.Text),
+                                            Convert.ToBoolean(chkActivo.Checked),
+                                            CInt(CboTipoReparacion.SelectedValue),
+                                            CboProgreso.SelectedItem,
                                             transaction)
 
-                Orden.DarDeBaja_ServiciosTerceros(id_orden,
-                                            transaction)
+                ' Dar de baja servicios de terceros
+                Orden.DarDeBaja_ServiciosTerceros(id_orden, transaction)
 
-
-
+                ' Agregar servicios de terceros
                 If grdServiciosTerceros.Rows.Count > 0 Then
                     For Each row As DataGridViewRow In grdServiciosTerceros.Rows
                         Dim id_prestador As Integer = Convert.ToInt32(row.Cells("ID_Prestador").Value)
@@ -1128,94 +1212,52 @@ Public Class frmOrdenesReparacion
                         Dim estado As Boolean = Convert.ToBoolean(row.Cells("Estado").Value)
 
                         Orden.Agregar_Servicio_Terceros(id_orden,
-                                                        dtpEntrada.Value,
-                                                        id_prestador,
-                                                        servsolicitado,
-                                                        costoestimado,
-                                                        costoreal,
-                                                        finalizado,
-                                                        estado,
-                                                        transaction)
-
+                                                    dtpEntrada.Value,
+                                                    id_prestador,
+                                                    servsolicitado,
+                                                    costoestimado,
+                                                    costoreal,
+                                                    finalizado,
+                                                    estado,
+                                                    transaction)
                     Next
                 End If
 
+                ' Dar de baja repuestos de la orden
+                Orden.DarDeBajaRepuestos_Ordenes(id_orden, transaction)
 
-                Orden.DarDeBajaRepuestos_Ordenes(id_orden,
-                                                 transaction)
-
-
-
+                ' Agregar repuestos
                 If grdRepuestos.Rows.Count > 0 Then
                     For Each row As DataGridViewRow In grdRepuestos.Rows
-
                         If Not row.IsNewRow AndAlso row.Cells("id").Value IsNot Nothing Then
                             Dim id_repuestos As Integer = Convert.ToInt32(row.Cells("id").Value)
                             Dim cantidad As Decimal = Convert.ToDecimal(row.Cells("cantidad").Value)
                             Dim precio_rep As Decimal = Convert.ToDecimal(row.Cells("precio").Value)
 
-                            Orden.Agregar_Repuestos_Ordenes(id_repuestos,
-                                                            id_orden,
-                                                            cantidad,
-                                                            precio_rep,
-                                                            1,
-                                                            transaction)
+                            Orden.Agregar_Repuestos_Ordenes(id_repuestos, id_orden, cantidad, precio_rep, 1, transaction)
 
                             Dim repuestosdata As New AD_Productos
-
-                            Dim stockdisponible As Integer = repuestosdata.Consultar_StockDisponiblePorID(id_repuestos,
-                                                                                                          transaction)
+                            Dim stockdisponible As Integer = repuestosdata.Consultar_StockDisponiblePorID(id_repuestos, transaction)
                             stockdisponible -= cantidad
 
                             ' Actualiza el stock disponible en la base de datos
-                            repuestosdata.Modificar_StockDisponiblePorID(id_repuestos,
-                                                                         stockdisponible,
-                                                                         transaction)
+                            repuestosdata.Modificar_StockDisponiblePorID(id_repuestos, stockdisponible, transaction)
                         End If
                     Next
                 End If
 
-
-
-                If CboProgreso.SelectedItem = "Finalizada" Or CboProgreso.SelectedItem = "Facturada" Then
-                    If grdServiciosTerceros.Rows.Count > 0 Then
-
-                        Dim noFinalizados As Integer = 0
-                        For Each fila As DataGridViewRow In grdServiciosTerceros.Rows
-
-                            Dim estadoTrabajo As Boolean = CBool(fila.Cells("Finalizado").Value)
-                            If Not estadoTrabajo Then
-                                noFinalizados += 1
-                            End If
-
-                        Next
-                        If noFinalizados = 0 Then
-                            transaction.Commit()
-                            MessageBox.Show("Orden modificada exitosamente.")
-                        Else
-                            transaction.Rollback()
-                            MessageBox.Show("No se puede Finalizar o Facturar Orden de Reparación con Servicios de Terceros No Finalizados")
-                        End If
-
-                    End If
-                Else
-                    transaction.Commit()
-                    MessageBox.Show("Orden modificada exitosamente.")
-                End If
+                ' Si todo está bien, hacer commit
+                transaction.Commit()
+                MessageBox.Show("Orden modificada exitosamente.")
 
             Catch ex As Exception
                 transaction.Rollback()
                 MessageBox.Show("Error al modificar la orden: " & ex.Message)
             End Try
-
-
-
-
         End Using
+
         btnCancelar.PerformClick()
     End Sub
-
-
 
 #End Region
 
