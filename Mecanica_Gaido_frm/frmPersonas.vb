@@ -644,10 +644,7 @@ Nombre"
 
 #End Region
 
-
 #Region "AFIP"
-
-    ' Evento del botón para validar el CUIT
     Private Async Sub BtnValidarCUIT(sender As Object, e As EventArgs) Handles msktxtNumeroDocumento.Leave
 
         If cboTipoDocumento.SelectedValue = 3 Then
@@ -705,8 +702,6 @@ Nombre"
                             ' Si no se encontró un espacio, usa la dirección completa como parte izquierda
                             calle = direccionCompleta
                         End If
-
-
                     End If
                     ' Actualizar los campos en el formulario con los datos obtenidos
                     If contribuyenteData IsNot Nothing AndAlso Not contribuyenteData.errorGetData Then
@@ -729,8 +724,6 @@ Nombre"
                             Apellido = RazonSocial
                         End If
 
-
-
                         If cboTipoPersona.SelectedValue = 1 Then
                             txtApellido.Text = Apellido
                             txtNombre.Text = Nombre
@@ -740,15 +733,12 @@ Nombre"
 
                         End If
 
-
                         cboProvincia.SelectedValue = contribuyenteData.Contribuyente.domicilioFiscal.idProvincia
                         cboCiudad.Text = contribuyenteData.Contribuyente.domicilioFiscal.localidad
                         txtDireccion.Text = calle
                         txtNumero.Text = numero
 
-
                         ' Configurar la categoría IVA
-
 
                         If contribuyenteData.Contribuyente.EsRI Then
                             EsRI = True
@@ -764,12 +754,10 @@ Nombre"
             Catch ex As Exception
                 MessageBox.Show("Error al conectar con la API: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
-
         End If
     End Sub
-
-
 #End Region
+
 End Class
 
 ' Clases para deserializar el JSON

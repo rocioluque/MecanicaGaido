@@ -11,31 +11,30 @@ Public Class frmReportesProductos
 
 #Region "Procedimientos"
     Private Sub frmReportesProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Cargar_Combo_Persona()
+        Cargar_Combo_Marcas()
         CargarGrilla()
-        Limpiar()
-    End Sub
-
-    Public Sub Limpiar()
-        cboPersona.SelectedIndex = 0
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        Limpiar()
+        cboMarca.SelectedIndex = -1
+        CargarGrilla()
     End Sub
 #End Region
 
 #Region "Grilla"
-    Private Sub CargarGrilla()
-        Dim dsRepuestos As DataSet = o_reportes.ObtenerRepuestos()
+    Private Sub CargarGrilla(Optional marcaID As Integer? = Nothing)
+        Dim dsRepuestos As DataSet = o_reportes.ObtenerRepuestos(marcaID)
 
-        ' Obtener el DataTable con los repuestos (primer resultado)
+        If marcaID.HasValue Then
+            dsRepuestos = o_reportes.ObtenerRepuestos(marcaID.Value)
+        Else
+            dsRepuestos = o_reportes.ObtenerRepuestos()
+        End If
+
         Dim dtRepuestos As DataTable = dsRepuestos.Tables(0)
 
-        ' Limpiar la grilla antes de cargar nuevos datos
         grdRepuestos.Rows.Clear()
 
-        ' Cargar los repuestos en la grilla
         For Each row As DataRow In dtRepuestos.Rows
             Dim fila As DataGridViewRow = CType(grdRepuestos.Rows(grdRepuestos.Rows.Add()), DataGridViewRow)
             fila.Cells("CodFabricante").Value = row("N° Repuesto")
@@ -45,34 +44,45 @@ Public Class frmReportesProductos
             fila.Cells("Total").Value = row("Total")
         Next
 
-        ' Obtener el segundo resultado: el valor total (segunda tabla)
         Dim dtSumaTotal As DataTable = dsRepuestos.Tables(1)
         If dtSumaTotal.Rows.Count > 0 Then
-            Dim sumaTotal As Decimal = Convert.ToDecimal(dtSumaTotal.Rows(0)("SumaTotal"))
-            ' Asignar el valor de la suma total a un TextBox o Label
-            txtTotal.Text = sumaTotal.ToString("N2")
+            If Not IsDBNull(dtSumaTotal.Rows(0)("SumaTotal")) Then
+                Dim sumaTotal As Decimal = Convert.ToDecimal(dtSumaTotal.Rows(0)("SumaTotal"))
+                txtTotal.Text = sumaTotal.ToString("N2")
+            Else
+                txtTotal.Text = "0.00"
+            End If
         End If
     End Sub
 #End Region
 
 #Region "Carga cbo"
-    Private Sub Cargar_Combo_Persona()
+    Private Sub Cargar_Combo_Marcas()
         Try
-            Dim tabla As DataTable = o_reportes.Cargar_Combo_Personas()
+            Dim tabla As DataTable = o_reportes.Cargar_Combo_Marcas
 
             If tabla.Rows.Count > 0 Then
-                cboPersona.DataSource = tabla
-                cboPersona.DisplayMember = "Persona"
-                cboPersona.ValueMember = "ID_Persona"
-                cboPersona.SelectedValue = -1
+                cboMarca.DataSource = tabla
+                cboMarca.DisplayMember = "Nombre"
+                cboMarca.ValueMember = "ID_Marca"
+                cboMarca.SelectedIndex = -1
             Else
-                MsgBox("No se encontraron Personas.", vbInformation, "Información")
+                MsgBox("No se encontraron marcas.", vbInformation, "Información")
             End If
-
         Catch ex As Exception
-            MsgBox("Error al cargar las personas: " & ex.Message, vbCritical, "Error")
+            MsgBox("Error al cargar las marcas: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+
+    Private Sub cboMarca_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboMarca.SelectedIndexChanged
+        If cboMarca.SelectedValue IsNot Nothing AndAlso IsNumeric(cboMarca.SelectedValue) Then
+            Dim marcaID As Integer = CInt(cboMarca.SelectedValue)
+            CargarGrilla(marcaID)
+        Else
+            CargarGrilla()
+        End If
+    End Sub
 #End Region
+
 
 End Class

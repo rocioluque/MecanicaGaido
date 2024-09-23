@@ -68,30 +68,37 @@ Public Class AD_Reportes
 #End Region
 
 #Region "Reporte productos"
-    Public Function Cargar_Combo_Personas() As DataTable
+    Public Function Cargar_Combo_Marcas() As DataTable
         Dim tabla As New DataTable
 
         Using conexion As New SqlConnection(connectionString)
-            Using comando As New SqlCommand("Cargar_Combo_Personas", conexion)
+            Using comando As New SqlCommand("Cargar_Combo_Marcas", conexion)
                 comando.CommandType = CommandType.StoredProcedure
                 Try
                     conexion.Open()
                     Dim datadapter As New SqlDataAdapter(comando)
                     datadapter.Fill(tabla)
                 Catch ex As Exception
-                    Throw New Exception("Error al cargar las personas desde la base de datos: " & ex.Message, ex)
+                    Throw New Exception("Error al cargar las marcas desde la base de datos: " & ex.Message, ex)
                 End Try
+
             End Using
         End Using
         Return tabla
     End Function
 
-    Public Function ObtenerRepuestos() As DataSet
+    Public Function ObtenerRepuestos(Optional marcaID As Integer? = Nothing) As DataSet
         Dim ds As New DataSet()
 
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Cargar_Grilla_ListaRepuestos", conexion)
                 comando.CommandType = CommandType.StoredProcedure
+
+                If marcaID.HasValue Then
+                    comando.Parameters.AddWithValue("@MarcaID", marcaID.Value)
+                Else
+                    comando.Parameters.AddWithValue("@MarcaID", DBNull.Value)
+                End If
 
                 conexion.Open()
                 Dim adapter As New SqlDataAdapter(comando)

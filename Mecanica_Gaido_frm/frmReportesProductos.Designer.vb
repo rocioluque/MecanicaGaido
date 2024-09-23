@@ -28,7 +28,7 @@ Partial Class frmReportesProductos
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmReportesProductos))
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.cboPersona = New System.Windows.Forms.ComboBox()
+        Me.cboMarca = New System.Windows.Forms.ComboBox()
         Me.grdRepuestos = New System.Windows.Forms.DataGridView()
         Me.CodFabricante = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -48,21 +48,21 @@ Partial Class frmReportesProductos
         Me.Label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(21, 27)
+        Me.Label1.Location = New System.Drawing.Point(35, 27)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(75, 17)
+        Me.Label1.Size = New System.Drawing.Size(49, 17)
         Me.Label1.TabIndex = 121
-        Me.Label1.Text = "Proveedor"
+        Me.Label1.Text = "Marca"
         '
-        'cboPersona
+        'cboMarca
         '
-        Me.cboPersona.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cboPersona.FormattingEnabled = True
-        Me.cboPersona.Location = New System.Drawing.Point(165, 24)
-        Me.cboPersona.Margin = New System.Windows.Forms.Padding(2)
-        Me.cboPersona.Name = "cboPersona"
-        Me.cboPersona.Size = New System.Drawing.Size(169, 25)
-        Me.cboPersona.TabIndex = 120
+        Me.cboMarca.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboMarca.FormattingEnabled = True
+        Me.cboMarca.Location = New System.Drawing.Point(128, 24)
+        Me.cboMarca.Margin = New System.Windows.Forms.Padding(2)
+        Me.cboMarca.Name = "cboMarca"
+        Me.cboMarca.Size = New System.Drawing.Size(169, 25)
+        Me.cboMarca.TabIndex = 120
         '
         'grdRepuestos
         '
@@ -152,7 +152,7 @@ Partial Class frmReportesProductos
         '
         Me.txtTotal.Enabled = False
         Me.txtTotal.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTotal.Location = New System.Drawing.Point(566, 24)
+        Me.txtTotal.Location = New System.Drawing.Point(544, 24)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.Size = New System.Drawing.Size(90, 23)
         Me.txtTotal.TabIndex = 124
@@ -206,7 +206,7 @@ Partial Class frmReportesProductos
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.grdRepuestos)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.cboPersona)
+        Me.Controls.Add(Me.cboMarca)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmReportesProductos"
@@ -218,7 +218,7 @@ Partial Class frmReportesProductos
     End Sub
 
     Friend WithEvents Label1 As Label
-    Friend WithEvents cboPersona As ComboBox
+    Friend WithEvents cboMarca As ComboBox
     Friend WithEvents grdRepuestos As DataGridView
     Friend WithEvents CodFabricante As DataGridViewTextBoxColumn
     Friend WithEvents Descripcion As DataGridViewTextBoxColumn
