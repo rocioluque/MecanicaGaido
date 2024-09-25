@@ -26,13 +26,13 @@ Partial Class frmOrdenesReparacion
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmOrdenesReparacion))
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -76,6 +76,7 @@ Partial Class frmOrdenesReparacion
         Me.txtMotivoReparacion = New System.Windows.Forms.RichTextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.PanelCostos = New System.Windows.Forms.Panel()
+        Me.btnFacturar = New System.Windows.Forms.Button()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.txtMontoTotalOR = New System.Windows.Forms.RichTextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -95,6 +96,14 @@ Partial Class frmOrdenesReparacion
         Me.Label16 = New System.Windows.Forms.Label()
         Me.txtCostoEstimadoS3 = New System.Windows.Forms.RichTextBox()
         Me.grdServiciosTerceros = New System.Windows.Forms.DataGridView()
+        Me.NroServicio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ID_Prestador = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Prestador = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServSolicitado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CostoEstimado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CostoReal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Finalizado = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Estado = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.CboPersonaServ3 = New System.Windows.Forms.ComboBox()
@@ -109,6 +118,12 @@ Partial Class frmOrdenesReparacion
         Me.grdRepuestosOR = New System.Windows.Forms.DataGridView()
         Me.PanelDetalleDeRepuestos = New System.Windows.Forms.Panel()
         Me.grdRepuestos = New System.Windows.Forms.DataGridView()
+        Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Diario = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnQuitarRepOR = New System.Windows.Forms.Button()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.btnAgregarRepOR = New System.Windows.Forms.Button()
@@ -117,20 +132,6 @@ Partial Class frmOrdenesReparacion
         Me.cboProductoOR = New System.Windows.Forms.ComboBox()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.NroServicio = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ID_Prestador = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Prestador = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServSolicitado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CostoEstimado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CostoReal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Finalizado = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.Estado = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Diario = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.grdOrdenReparacion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarVehiculo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDetallesOrden.SuspendLayout()
@@ -168,7 +169,7 @@ Partial Class frmOrdenesReparacion
         Me.grdOrdenReparacion.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.grdOrdenReparacion.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black
         Me.grdOrdenReparacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdOrdenReparacion.Size = New System.Drawing.Size(1174, 217)
+        Me.grdOrdenReparacion.Size = New System.Drawing.Size(1055, 217)
         Me.grdOrdenReparacion.TabIndex = 89
         '
         'chkActivo
@@ -178,7 +179,7 @@ Partial Class frmOrdenesReparacion
         Me.chkActivo.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkActivo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkActivo.ForeColor = System.Drawing.Color.White
-        Me.chkActivo.Location = New System.Drawing.Point(625, 36)
+        Me.chkActivo.Location = New System.Drawing.Point(538, 36)
         Me.chkActivo.Name = "chkActivo"
         Me.chkActivo.Size = New System.Drawing.Size(85, 21)
         Me.chkActivo.TabIndex = 11
@@ -214,7 +215,7 @@ Partial Class frmOrdenesReparacion
         Me.cboVehiculo.FormattingEnabled = True
         Me.cboVehiculo.Location = New System.Drawing.Point(15, 36)
         Me.cboVehiculo.Name = "cboVehiculo"
-        Me.cboVehiculo.Size = New System.Drawing.Size(555, 25)
+        Me.cboVehiculo.Size = New System.Drawing.Size(471, 25)
         Me.cboVehiculo.TabIndex = 10
         '
         'Label10
@@ -282,7 +283,7 @@ Partial Class frmOrdenesReparacion
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
-        Me.btnModificar.Location = New System.Drawing.Point(1082, 120)
+        Me.btnModificar.Location = New System.Drawing.Point(966, 120)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(117, 37)
         Me.btnModificar.TabIndex = 25
@@ -299,7 +300,7 @@ Partial Class frmOrdenesReparacion
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
-        Me.btnCancelar.Location = New System.Drawing.Point(1082, 187)
+        Me.btnCancelar.Location = New System.Drawing.Point(966, 187)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(117, 37)
         Me.btnCancelar.TabIndex = 26
@@ -315,7 +316,7 @@ Partial Class frmOrdenesReparacion
         Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAceptar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAceptar.ForeColor = System.Drawing.Color.White
-        Me.btnAceptar.Location = New System.Drawing.Point(1082, 53)
+        Me.btnAceptar.Location = New System.Drawing.Point(966, 53)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(117, 37)
         Me.btnAceptar.TabIndex = 24
@@ -351,7 +352,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.btnAgregarVehiculo.BackgroundImage = CType(resources.GetObject("btnAgregarVehiculo.BackgroundImage"), System.Drawing.Image)
         Me.btnAgregarVehiculo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnAgregarVehiculo.Location = New System.Drawing.Point(584, 36)
+        Me.btnAgregarVehiculo.Location = New System.Drawing.Point(497, 36)
         Me.btnAgregarVehiculo.Name = "btnAgregarVehiculo"
         Me.btnAgregarVehiculo.Size = New System.Drawing.Size(26, 25)
         Me.btnAgregarVehiculo.TabIndex = 97
@@ -512,7 +513,7 @@ Partial Class frmOrdenesReparacion
         Me.PanelInfoVehiculo.Controls.Add(Me.chkActivo)
         Me.PanelInfoVehiculo.Location = New System.Drawing.Point(297, 24)
         Me.PanelInfoVehiculo.Name = "PanelInfoVehiculo"
-        Me.PanelInfoVehiculo.Size = New System.Drawing.Size(741, 248)
+        Me.PanelInfoVehiculo.Size = New System.Drawing.Size(644, 248)
         Me.PanelInfoVehiculo.TabIndex = 101
         '
         'Label25
@@ -520,7 +521,7 @@ Partial Class frmOrdenesReparacion
         Me.Label25.AutoSize = True
         Me.Label25.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label25.ForeColor = System.Drawing.Color.White
-        Me.Label25.Location = New System.Drawing.Point(385, 130)
+        Me.Label25.Location = New System.Drawing.Point(325, 130)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(145, 17)
         Me.Label25.TabIndex = 99
@@ -531,9 +532,9 @@ Partial Class frmOrdenesReparacion
         Me.CboProgreso.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.CboProgreso.FormattingEnabled = True
         Me.CboProgreso.Items.AddRange(New Object() {"Iniciada", "Esperando Servicios de Terceros", "Finalizada", "Facturada", "Cancelada"})
-        Me.CboProgreso.Location = New System.Drawing.Point(388, 149)
+        Me.CboProgreso.Location = New System.Drawing.Point(328, 149)
         Me.CboProgreso.Name = "CboProgreso"
-        Me.CboProgreso.Size = New System.Drawing.Size(333, 25)
+        Me.CboProgreso.Size = New System.Drawing.Size(295, 25)
         Me.CboProgreso.TabIndex = 98
         '
         'Label24
@@ -552,7 +553,7 @@ Partial Class frmOrdenesReparacion
         Me.txtSeñasParticulares.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtSeñasParticulares.Location = New System.Drawing.Point(15, 84)
         Me.txtSeñasParticulares.Name = "txtSeñasParticulares"
-        Me.txtSeñasParticulares.Size = New System.Drawing.Size(706, 29)
+        Me.txtSeñasParticulares.Size = New System.Drawing.Size(608, 29)
         Me.txtSeñasParticulares.TabIndex = 12
         Me.txtSeñasParticulares.Text = ""
         '
@@ -562,7 +563,7 @@ Partial Class frmOrdenesReparacion
         Me.CboTipoReparacion.FormattingEnabled = True
         Me.CboTipoReparacion.Location = New System.Drawing.Point(15, 149)
         Me.CboTipoReparacion.Name = "CboTipoReparacion"
-        Me.CboTipoReparacion.Size = New System.Drawing.Size(333, 25)
+        Me.CboTipoReparacion.Size = New System.Drawing.Size(299, 25)
         Me.CboTipoReparacion.TabIndex = 96
         '
         'txtMotivoReparacion
@@ -570,7 +571,7 @@ Partial Class frmOrdenesReparacion
         Me.txtMotivoReparacion.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtMotivoReparacion.Location = New System.Drawing.Point(15, 207)
         Me.txtMotivoReparacion.Name = "txtMotivoReparacion"
-        Me.txtMotivoReparacion.Size = New System.Drawing.Size(706, 29)
+        Me.txtMotivoReparacion.Size = New System.Drawing.Size(608, 29)
         Me.txtMotivoReparacion.TabIndex = 13
         Me.txtMotivoReparacion.Text = ""
         '
@@ -579,7 +580,7 @@ Partial Class frmOrdenesReparacion
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(21, 18)
+        Me.Label6.Location = New System.Drawing.Point(9, 18)
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(133, 17)
@@ -588,6 +589,7 @@ Partial Class frmOrdenesReparacion
         '
         'PanelCostos
         '
+        Me.PanelCostos.Controls.Add(Me.btnFacturar)
         Me.PanelCostos.Controls.Add(Me.Label21)
         Me.PanelCostos.Controls.Add(Me.txtMontoTotalOR)
         Me.PanelCostos.Controls.Add(Me.Label5)
@@ -596,17 +598,34 @@ Partial Class frmOrdenesReparacion
         Me.PanelCostos.Controls.Add(Me.txtMontoServ3)
         Me.PanelCostos.Controls.Add(Me.Label6)
         Me.PanelCostos.Controls.Add(Me.txtMontoManoObra)
-        Me.PanelCostos.Location = New System.Drawing.Point(1044, 284)
+        Me.PanelCostos.Location = New System.Drawing.Point(947, 285)
         Me.PanelCostos.Name = "PanelCostos"
-        Me.PanelCostos.Size = New System.Drawing.Size(179, 319)
+        Me.PanelCostos.Size = New System.Drawing.Size(153, 319)
         Me.PanelCostos.TabIndex = 103
+        '
+        'btnFacturar
+        '
+        Me.btnFacturar.BackColor = System.Drawing.Color.Transparent
+        Me.btnFacturar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnFacturar.Enabled = False
+        Me.btnFacturar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.btnFacturar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.btnFacturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnFacturar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFacturar.ForeColor = System.Drawing.Color.White
+        Me.btnFacturar.Location = New System.Drawing.Point(19, 268)
+        Me.btnFacturar.Name = "btnFacturar"
+        Me.btnFacturar.Size = New System.Drawing.Size(117, 37)
+        Me.btnFacturar.TabIndex = 116
+        Me.btnFacturar.Text = "Facturar"
+        Me.btnFacturar.UseVisualStyleBackColor = False
         '
         'Label21
         '
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label21.ForeColor = System.Drawing.Color.White
-        Me.Label21.Location = New System.Drawing.Point(22, 208)
+        Me.Label21.Location = New System.Drawing.Point(10, 208)
         Me.Label21.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(119, 17)
@@ -617,7 +636,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.txtMontoTotalOR.Enabled = False
         Me.txtMontoTotalOR.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtMontoTotalOR.Location = New System.Drawing.Point(25, 228)
+        Me.txtMontoTotalOR.Location = New System.Drawing.Point(13, 228)
         Me.txtMontoTotalOR.Multiline = False
         Me.txtMontoTotalOR.Name = "txtMontoTotalOR"
         Me.txtMontoTotalOR.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -630,7 +649,7 @@ Partial Class frmOrdenesReparacion
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(21, 79)
+        Me.Label5.Location = New System.Drawing.Point(9, 79)
         Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(134, 17)
@@ -642,7 +661,7 @@ Partial Class frmOrdenesReparacion
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label15.ForeColor = System.Drawing.Color.White
-        Me.Label15.Location = New System.Drawing.Point(21, 144)
+        Me.Label15.Location = New System.Drawing.Point(9, 144)
         Me.Label15.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(69, 17)
@@ -654,7 +673,7 @@ Partial Class frmOrdenesReparacion
         Me.txtMontoRepuestos.AutoWordSelection = True
         Me.txtMontoRepuestos.Enabled = False
         Me.txtMontoRepuestos.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtMontoRepuestos.Location = New System.Drawing.Point(24, 164)
+        Me.txtMontoRepuestos.Location = New System.Drawing.Point(12, 164)
         Me.txtMontoRepuestos.Multiline = False
         Me.txtMontoRepuestos.Name = "txtMontoRepuestos"
         Me.txtMontoRepuestos.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -667,7 +686,7 @@ Partial Class frmOrdenesReparacion
         Me.txtMontoServ3.AutoWordSelection = True
         Me.txtMontoServ3.Enabled = False
         Me.txtMontoServ3.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtMontoServ3.Location = New System.Drawing.Point(25, 99)
+        Me.txtMontoServ3.Location = New System.Drawing.Point(13, 99)
         Me.txtMontoServ3.Multiline = False
         Me.txtMontoServ3.Name = "txtMontoServ3"
         Me.txtMontoServ3.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -679,7 +698,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.txtMontoManoObra.AutoWordSelection = True
         Me.txtMontoManoObra.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtMontoManoObra.Location = New System.Drawing.Point(24, 38)
+        Me.txtMontoManoObra.Location = New System.Drawing.Point(12, 38)
         Me.txtMontoManoObra.Multiline = False
         Me.txtMontoManoObra.Name = "txtMontoManoObra"
         Me.txtMontoManoObra.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -723,7 +742,7 @@ Partial Class frmOrdenesReparacion
         Me.PanelServiciosTerceros.Controls.Add(Me.btnAceptarS3)
         Me.PanelServiciosTerceros.Location = New System.Drawing.Point(18, 610)
         Me.PanelServiciosTerceros.Name = "PanelServiciosTerceros"
-        Me.PanelServiciosTerceros.Size = New System.Drawing.Size(1205, 257)
+        Me.PanelServiciosTerceros.Size = New System.Drawing.Size(1082, 257)
         Me.PanelServiciosTerceros.TabIndex = 105
         '
         'btnQuitarS3
@@ -736,7 +755,7 @@ Partial Class frmOrdenesReparacion
         Me.btnQuitarS3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnQuitarS3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnQuitarS3.ForeColor = System.Drawing.Color.White
-        Me.btnQuitarS3.Location = New System.Drawing.Point(1050, 83)
+        Me.btnQuitarS3.Location = New System.Drawing.Point(948, 75)
         Me.btnQuitarS3.Name = "btnQuitarS3"
         Me.btnQuitarS3.Size = New System.Drawing.Size(117, 37)
         Me.btnQuitarS3.TabIndex = 112
@@ -760,7 +779,7 @@ Partial Class frmOrdenesReparacion
         Me.chkActivoS3.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkActivoS3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkActivoS3.ForeColor = System.Drawing.Color.White
-        Me.chkActivoS3.Location = New System.Drawing.Point(895, 95)
+        Me.chkActivoS3.Location = New System.Drawing.Point(830, 95)
         Me.chkActivoS3.Name = "chkActivoS3"
         Me.chkActivoS3.Size = New System.Drawing.Size(85, 21)
         Me.chkActivoS3.TabIndex = 20
@@ -773,7 +792,7 @@ Partial Class frmOrdenesReparacion
         Me.chkAvanceServ3.AutoSize = True
         Me.chkAvanceServ3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkAvanceServ3.ForeColor = System.Drawing.Color.White
-        Me.chkAvanceServ3.Location = New System.Drawing.Point(771, 95)
+        Me.chkAvanceServ3.Location = New System.Drawing.Point(706, 95)
         Me.chkAvanceServ3.Name = "chkAvanceServ3"
         Me.chkAvanceServ3.Size = New System.Drawing.Size(108, 21)
         Me.chkAvanceServ3.TabIndex = 19
@@ -785,7 +804,7 @@ Partial Class frmOrdenesReparacion
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label18.ForeColor = System.Drawing.Color.White
-        Me.Label18.Location = New System.Drawing.Point(892, 18)
+        Me.Label18.Location = New System.Drawing.Point(795, 18)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(79, 17)
         Me.Label18.TabIndex = 109
@@ -795,7 +814,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.txtCostoRealS3.AutoWordSelection = True
         Me.txtCostoRealS3.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtCostoRealS3.Location = New System.Drawing.Point(895, 40)
+        Me.txtCostoRealS3.Location = New System.Drawing.Point(798, 40)
         Me.txtCostoRealS3.Multiline = False
         Me.txtCostoRealS3.Name = "txtCostoRealS3"
         Me.txtCostoRealS3.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -808,7 +827,7 @@ Partial Class frmOrdenesReparacion
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label17.ForeColor = System.Drawing.Color.White
-        Me.Label17.Location = New System.Drawing.Point(762, 17)
+        Me.Label17.Location = New System.Drawing.Point(665, 17)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(111, 17)
         Me.Label17.TabIndex = 107
@@ -828,7 +847,7 @@ Partial Class frmOrdenesReparacion
         'txtCostoEstimadoS3
         '
         Me.txtCostoEstimadoS3.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtCostoEstimadoS3.Location = New System.Drawing.Point(765, 40)
+        Me.txtCostoEstimadoS3.Location = New System.Drawing.Point(668, 40)
         Me.txtCostoEstimadoS3.Multiline = False
         Me.txtCostoEstimadoS3.Name = "txtCostoEstimadoS3"
         Me.txtCostoEstimadoS3.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -859,308 +878,8 @@ Partial Class frmOrdenesReparacion
         Me.grdServiciosTerceros.RowHeadersVisible = False
         Me.grdServiciosTerceros.RowHeadersWidth = 51
         Me.grdServiciosTerceros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdServiciosTerceros.Size = New System.Drawing.Size(1005, 101)
+        Me.grdServiciosTerceros.Size = New System.Drawing.Size(908, 101)
         Me.grdServiciosTerceros.TabIndex = 104
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.ForeColor = System.Drawing.Color.White
-        Me.Label14.Location = New System.Drawing.Point(12, 70)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(142, 17)
-        Me.Label14.TabIndex = 100
-        Me.Label14.Text = "Servicio Solicitado a:"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(111, 18)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(69, 17)
-        Me.Label11.TabIndex = 102
-        Me.Label11.Text = "Prestador"
-        '
-        'CboPersonaServ3
-        '
-        Me.CboPersonaServ3.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.CboPersonaServ3.FormattingEnabled = True
-        Me.CboPersonaServ3.Location = New System.Drawing.Point(114, 37)
-        Me.CboPersonaServ3.Name = "CboPersonaServ3"
-        Me.CboPersonaServ3.Size = New System.Drawing.Size(576, 25)
-        Me.CboPersonaServ3.TabIndex = 14
-        '
-        'btnAgregarServiciosTerceros
-        '
-        Me.btnAgregarServiciosTerceros.BackgroundImage = CType(resources.GetObject("btnAgregarServiciosTerceros.BackgroundImage"), System.Drawing.Image)
-        Me.btnAgregarServiciosTerceros.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnAgregarServiciosTerceros.Location = New System.Drawing.Point(696, 37)
-        Me.btnAgregarServiciosTerceros.Name = "btnAgregarServiciosTerceros"
-        Me.btnAgregarServiciosTerceros.Size = New System.Drawing.Size(26, 25)
-        Me.btnAgregarServiciosTerceros.TabIndex = 96
-        Me.btnAgregarServiciosTerceros.TabStop = False
-        Me.btnAgregarServiciosTerceros.Tag = "Revisar"
-        '
-        'BtnModificarS3
-        '
-        Me.BtnModificarS3.BackColor = System.Drawing.Color.Transparent
-        Me.BtnModificarS3.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnModificarS3.Enabled = False
-        Me.BtnModificarS3.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.BtnModificarS3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
-        Me.BtnModificarS3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnModificarS3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnModificarS3.ForeColor = System.Drawing.Color.White
-        Me.BtnModificarS3.Location = New System.Drawing.Point(1050, 134)
-        Me.BtnModificarS3.Name = "BtnModificarS3"
-        Me.BtnModificarS3.Size = New System.Drawing.Size(117, 37)
-        Me.BtnModificarS3.TabIndex = 22
-        Me.BtnModificarS3.Text = "Modificar"
-        Me.BtnModificarS3.UseVisualStyleBackColor = False
-        '
-        'txtServicioSolicitado
-        '
-        Me.txtServicioSolicitado.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtServicioSolicitado.Location = New System.Drawing.Point(15, 95)
-        Me.txtServicioSolicitado.Name = "txtServicioSolicitado"
-        Me.txtServicioSolicitado.Size = New System.Drawing.Size(714, 23)
-        Me.txtServicioSolicitado.TabIndex = 16
-        '
-        'txtID_Serv3
-        '
-        Me.txtID_Serv3.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtID_Serv3.Location = New System.Drawing.Point(15, 37)
-        Me.txtID_Serv3.Name = "txtID_Serv3"
-        Me.txtID_Serv3.Size = New System.Drawing.Size(86, 23)
-        Me.txtID_Serv3.TabIndex = 15
-        Me.txtID_Serv3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'BtnCancelarS3
-        '
-        Me.BtnCancelarS3.BackColor = System.Drawing.Color.Transparent
-        Me.BtnCancelarS3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.BtnCancelarS3.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnCancelarS3.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.BtnCancelarS3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
-        Me.BtnCancelarS3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnCancelarS3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnCancelarS3.ForeColor = System.Drawing.Color.White
-        Me.BtnCancelarS3.Location = New System.Drawing.Point(1050, 185)
-        Me.BtnCancelarS3.Name = "BtnCancelarS3"
-        Me.BtnCancelarS3.Size = New System.Drawing.Size(117, 37)
-        Me.BtnCancelarS3.TabIndex = 23
-        Me.BtnCancelarS3.Text = "Cancelar"
-        Me.BtnCancelarS3.UseVisualStyleBackColor = False
-        '
-        'btnAceptarS3
-        '
-        Me.btnAceptarS3.BackColor = System.Drawing.Color.Transparent
-        Me.btnAceptarS3.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnAceptarS3.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.btnAceptarS3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
-        Me.btnAceptarS3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAceptarS3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAceptarS3.ForeColor = System.Drawing.Color.White
-        Me.btnAceptarS3.Location = New System.Drawing.Point(1050, 32)
-        Me.btnAceptarS3.Name = "btnAceptarS3"
-        Me.btnAceptarS3.Size = New System.Drawing.Size(117, 37)
-        Me.btnAceptarS3.TabIndex = 21
-        Me.btnAceptarS3.Text = "Aceptar"
-        Me.btnAceptarS3.UseVisualStyleBackColor = False
-        '
-        'PanelReparaciones
-        '
-        Me.PanelReparaciones.Controls.Add(Me.grdOrdenReparacion)
-        Me.PanelReparaciones.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PanelReparaciones.Location = New System.Drawing.Point(18, 873)
-        Me.PanelReparaciones.Name = "PanelReparaciones"
-        Me.PanelReparaciones.Size = New System.Drawing.Size(1205, 250)
-        Me.PanelReparaciones.TabIndex = 106
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label13.ForeColor = System.Drawing.Color.White
-        Me.Label13.Location = New System.Drawing.Point(32, 867)
-        Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(164, 17)
-        Me.Label13.TabIndex = 107
-        Me.Label13.Text = "Consulta de Reparaciones"
-        '
-        'grdRepuestosOR
-        '
-        Me.grdRepuestosOR.AllowUserToAddRows = False
-        Me.grdRepuestosOR.AllowUserToDeleteRows = False
-        Me.grdRepuestosOR.AllowUserToOrderColumns = True
-        Me.grdRepuestosOR.AllowUserToResizeRows = False
-        Me.grdRepuestosOR.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
-        Me.grdRepuestosOR.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.grdRepuestosOR.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdRepuestosOR.Location = New System.Drawing.Point(28, 415)
-        Me.grdRepuestosOR.Name = "grdRepuestosOR"
-        Me.grdRepuestosOR.ReadOnly = True
-        Me.grdRepuestosOR.RowHeadersVisible = False
-        Me.grdRepuestosOR.RowHeadersWidth = 51
-        Me.grdRepuestosOR.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdRepuestosOR.Size = New System.Drawing.Size(790, 261)
-        Me.grdRepuestosOR.TabIndex = 113
-        '
-        'PanelDetalleDeRepuestos
-        '
-        Me.PanelDetalleDeRepuestos.Controls.Add(Me.grdRepuestos)
-        Me.PanelDetalleDeRepuestos.Controls.Add(Me.btnQuitarRepOR)
-        Me.PanelDetalleDeRepuestos.Controls.Add(Me.Label20)
-        Me.PanelDetalleDeRepuestos.Controls.Add(Me.btnAgregarRepOR)
-        Me.PanelDetalleDeRepuestos.Controls.Add(Me.txtCantidadRepOR)
-        Me.PanelDetalleDeRepuestos.Controls.Add(Me.Label22)
-        Me.PanelDetalleDeRepuestos.Controls.Add(Me.cboProductoOR)
-        Me.PanelDetalleDeRepuestos.Controls.Add(Me.Label23)
-        Me.PanelDetalleDeRepuestos.Location = New System.Drawing.Point(17, 284)
-        Me.PanelDetalleDeRepuestos.Name = "PanelDetalleDeRepuestos"
-        Me.PanelDetalleDeRepuestos.Size = New System.Drawing.Size(1021, 319)
-        Me.PanelDetalleDeRepuestos.TabIndex = 114
-        '
-        'grdRepuestos
-        '
-        Me.grdRepuestos.AllowUserToAddRows = False
-        Me.grdRepuestos.AllowUserToDeleteRows = False
-        Me.grdRepuestos.AllowUserToResizeRows = False
-        Me.grdRepuestos.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
-        Me.grdRepuestos.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdRepuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
-        Me.grdRepuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdRepuestos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.Descripcion, Me.Diario, Me.Cantidad, Me.Precio, Me.Total})
-        Me.grdRepuestos.Location = New System.Drawing.Point(18, 79)
-        Me.grdRepuestos.Name = "grdRepuestos"
-        Me.grdRepuestos.ReadOnly = True
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdRepuestos.RowHeadersDefaultCellStyle = DataGridViewCellStyle15
-        Me.grdRepuestos.RowHeadersVisible = False
-        Me.grdRepuestos.RowHeadersWidth = 51
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black
-        Me.grdRepuestos.RowsDefaultCellStyle = DataGridViewCellStyle16
-        Me.grdRepuestos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdRepuestos.Size = New System.Drawing.Size(982, 227)
-        Me.grdRepuestos.TabIndex = 116
-        '
-        'btnQuitarRepOR
-        '
-        Me.btnQuitarRepOR.BackColor = System.Drawing.Color.Transparent
-        Me.btnQuitarRepOR.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnQuitarRepOR.Enabled = False
-        Me.btnQuitarRepOR.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.btnQuitarRepOR.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
-        Me.btnQuitarRepOR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnQuitarRepOR.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnQuitarRepOR.ForeColor = System.Drawing.Color.White
-        Me.btnQuitarRepOR.Location = New System.Drawing.Point(883, 23)
-        Me.btnQuitarRepOR.Name = "btnQuitarRepOR"
-        Me.btnQuitarRepOR.Size = New System.Drawing.Size(117, 37)
-        Me.btnQuitarRepOR.TabIndex = 30
-        Me.btnQuitarRepOR.Text = "Quitar"
-        Me.btnQuitarRepOR.UseVisualStyleBackColor = False
-        '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label20.ForeColor = System.Drawing.Color.White
-        Me.Label20.Location = New System.Drawing.Point(8, -4)
-        Me.Label20.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(136, 17)
-        Me.Label20.TabIndex = 107
-        Me.Label20.Text = "Repuestos necesarios"
-        '
-        'btnAgregarRepOR
-        '
-        Me.btnAgregarRepOR.BackColor = System.Drawing.Color.Transparent
-        Me.btnAgregarRepOR.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnAgregarRepOR.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.btnAgregarRepOR.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
-        Me.btnAgregarRepOR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAgregarRepOR.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAgregarRepOR.ForeColor = System.Drawing.Color.White
-        Me.btnAgregarRepOR.Location = New System.Drawing.Point(752, 24)
-        Me.btnAgregarRepOR.Name = "btnAgregarRepOR"
-        Me.btnAgregarRepOR.Size = New System.Drawing.Size(117, 37)
-        Me.btnAgregarRepOR.TabIndex = 29
-        Me.btnAgregarRepOR.Text = "Agregar"
-        Me.btnAgregarRepOR.UseVisualStyleBackColor = False
-        '
-        'txtCantidadRepOR
-        '
-        Me.txtCantidadRepOR.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCantidadRepOR.Location = New System.Drawing.Point(664, 29)
-        Me.txtCantidadRepOR.Name = "txtCantidadRepOR"
-        Me.txtCantidadRepOR.Size = New System.Drawing.Size(66, 23)
-        Me.txtCantidadRepOR.TabIndex = 28
-        Me.txtCantidadRepOR.Text = "1"
-        Me.txtCantidadRepOR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.ForeColor = System.Drawing.Color.White
-        Me.Label22.Location = New System.Drawing.Point(583, 33)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(75, 17)
-        Me.Label22.TabIndex = 115
-        Me.Label22.Text = "Cantidad:"
-        '
-        'cboProductoOR
-        '
-        Me.cboProductoOR.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cboProductoOR.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cboProductoOR.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cboProductoOR.FormattingEnabled = True
-        Me.cboProductoOR.Location = New System.Drawing.Point(93, 29)
-        Me.cboProductoOR.Name = "cboProductoOR"
-        Me.cboProductoOR.Size = New System.Drawing.Size(485, 25)
-        Me.cboProductoOR.TabIndex = 27
-        '
-        'Label23
-        '
-        Me.Label23.AutoSize = True
-        Me.Label23.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label23.ForeColor = System.Drawing.Color.White
-        Me.Label23.Location = New System.Drawing.Point(15, 33)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(72, 17)
-        Me.Label23.TabIndex = 113
-        Me.Label23.Text = "Producto:"
-        '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label19.ForeColor = System.Drawing.Color.White
-        Me.Label19.Location = New System.Drawing.Point(1065, 277)
-        Me.Label19.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(137, 17)
-        Me.Label19.TabIndex = 115
-        Me.Label19.Text = "Totales por Concepto"
         '
         'NroServicio
         '
@@ -1244,6 +963,206 @@ Partial Class frmOrdenesReparacion
         Me.Estado.Visible = False
         Me.Estado.Width = 49
         '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.ForeColor = System.Drawing.Color.White
+        Me.Label14.Location = New System.Drawing.Point(12, 70)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(142, 17)
+        Me.Label14.TabIndex = 100
+        Me.Label14.Text = "Servicio Solicitado a:"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.ForeColor = System.Drawing.Color.White
+        Me.Label11.Location = New System.Drawing.Point(111, 18)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(69, 17)
+        Me.Label11.TabIndex = 102
+        Me.Label11.Text = "Prestador"
+        '
+        'CboPersonaServ3
+        '
+        Me.CboPersonaServ3.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.CboPersonaServ3.FormattingEnabled = True
+        Me.CboPersonaServ3.Location = New System.Drawing.Point(114, 37)
+        Me.CboPersonaServ3.Name = "CboPersonaServ3"
+        Me.CboPersonaServ3.Size = New System.Drawing.Size(479, 25)
+        Me.CboPersonaServ3.TabIndex = 14
+        '
+        'btnAgregarServiciosTerceros
+        '
+        Me.btnAgregarServiciosTerceros.BackgroundImage = CType(resources.GetObject("btnAgregarServiciosTerceros.BackgroundImage"), System.Drawing.Image)
+        Me.btnAgregarServiciosTerceros.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnAgregarServiciosTerceros.Location = New System.Drawing.Point(607, 37)
+        Me.btnAgregarServiciosTerceros.Name = "btnAgregarServiciosTerceros"
+        Me.btnAgregarServiciosTerceros.Size = New System.Drawing.Size(26, 25)
+        Me.btnAgregarServiciosTerceros.TabIndex = 96
+        Me.btnAgregarServiciosTerceros.TabStop = False
+        Me.btnAgregarServiciosTerceros.Tag = "Revisar"
+        '
+        'BtnModificarS3
+        '
+        Me.BtnModificarS3.BackColor = System.Drawing.Color.Transparent
+        Me.BtnModificarS3.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnModificarS3.Enabled = False
+        Me.BtnModificarS3.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.BtnModificarS3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.BtnModificarS3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnModificarS3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnModificarS3.ForeColor = System.Drawing.Color.White
+        Me.BtnModificarS3.Location = New System.Drawing.Point(948, 126)
+        Me.BtnModificarS3.Name = "BtnModificarS3"
+        Me.BtnModificarS3.Size = New System.Drawing.Size(117, 37)
+        Me.BtnModificarS3.TabIndex = 22
+        Me.BtnModificarS3.Text = "Modificar"
+        Me.BtnModificarS3.UseVisualStyleBackColor = False
+        '
+        'txtServicioSolicitado
+        '
+        Me.txtServicioSolicitado.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtServicioSolicitado.Location = New System.Drawing.Point(15, 95)
+        Me.txtServicioSolicitado.Name = "txtServicioSolicitado"
+        Me.txtServicioSolicitado.Size = New System.Drawing.Size(653, 23)
+        Me.txtServicioSolicitado.TabIndex = 16
+        '
+        'txtID_Serv3
+        '
+        Me.txtID_Serv3.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtID_Serv3.Location = New System.Drawing.Point(15, 37)
+        Me.txtID_Serv3.Name = "txtID_Serv3"
+        Me.txtID_Serv3.Size = New System.Drawing.Size(86, 23)
+        Me.txtID_Serv3.TabIndex = 15
+        Me.txtID_Serv3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'BtnCancelarS3
+        '
+        Me.BtnCancelarS3.BackColor = System.Drawing.Color.Transparent
+        Me.BtnCancelarS3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.BtnCancelarS3.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnCancelarS3.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.BtnCancelarS3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.BtnCancelarS3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnCancelarS3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnCancelarS3.ForeColor = System.Drawing.Color.White
+        Me.BtnCancelarS3.Location = New System.Drawing.Point(948, 177)
+        Me.BtnCancelarS3.Name = "BtnCancelarS3"
+        Me.BtnCancelarS3.Size = New System.Drawing.Size(117, 37)
+        Me.BtnCancelarS3.TabIndex = 23
+        Me.BtnCancelarS3.Text = "Cancelar"
+        Me.BtnCancelarS3.UseVisualStyleBackColor = False
+        '
+        'btnAceptarS3
+        '
+        Me.btnAceptarS3.BackColor = System.Drawing.Color.Transparent
+        Me.btnAceptarS3.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnAceptarS3.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.btnAceptarS3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.btnAceptarS3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAceptarS3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAceptarS3.ForeColor = System.Drawing.Color.White
+        Me.btnAceptarS3.Location = New System.Drawing.Point(948, 24)
+        Me.btnAceptarS3.Name = "btnAceptarS3"
+        Me.btnAceptarS3.Size = New System.Drawing.Size(117, 37)
+        Me.btnAceptarS3.TabIndex = 21
+        Me.btnAceptarS3.Text = "Aceptar"
+        Me.btnAceptarS3.UseVisualStyleBackColor = False
+        '
+        'PanelReparaciones
+        '
+        Me.PanelReparaciones.Controls.Add(Me.grdOrdenReparacion)
+        Me.PanelReparaciones.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PanelReparaciones.Location = New System.Drawing.Point(18, 873)
+        Me.PanelReparaciones.Name = "PanelReparaciones"
+        Me.PanelReparaciones.Size = New System.Drawing.Size(1082, 250)
+        Me.PanelReparaciones.TabIndex = 106
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.Label13.ForeColor = System.Drawing.Color.White
+        Me.Label13.Location = New System.Drawing.Point(32, 867)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(164, 17)
+        Me.Label13.TabIndex = 107
+        Me.Label13.Text = "Consulta de Reparaciones"
+        '
+        'grdRepuestosOR
+        '
+        Me.grdRepuestosOR.AllowUserToAddRows = False
+        Me.grdRepuestosOR.AllowUserToDeleteRows = False
+        Me.grdRepuestosOR.AllowUserToOrderColumns = True
+        Me.grdRepuestosOR.AllowUserToResizeRows = False
+        Me.grdRepuestosOR.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.grdRepuestosOR.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.grdRepuestosOR.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdRepuestosOR.Location = New System.Drawing.Point(28, 415)
+        Me.grdRepuestosOR.Name = "grdRepuestosOR"
+        Me.grdRepuestosOR.ReadOnly = True
+        Me.grdRepuestosOR.RowHeadersVisible = False
+        Me.grdRepuestosOR.RowHeadersWidth = 51
+        Me.grdRepuestosOR.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.grdRepuestosOR.Size = New System.Drawing.Size(790, 261)
+        Me.grdRepuestosOR.TabIndex = 113
+        '
+        'PanelDetalleDeRepuestos
+        '
+        Me.PanelDetalleDeRepuestos.Controls.Add(Me.grdRepuestos)
+        Me.PanelDetalleDeRepuestos.Controls.Add(Me.btnQuitarRepOR)
+        Me.PanelDetalleDeRepuestos.Controls.Add(Me.Label20)
+        Me.PanelDetalleDeRepuestos.Controls.Add(Me.btnAgregarRepOR)
+        Me.PanelDetalleDeRepuestos.Controls.Add(Me.txtCantidadRepOR)
+        Me.PanelDetalleDeRepuestos.Controls.Add(Me.Label22)
+        Me.PanelDetalleDeRepuestos.Controls.Add(Me.cboProductoOR)
+        Me.PanelDetalleDeRepuestos.Controls.Add(Me.Label23)
+        Me.PanelDetalleDeRepuestos.Location = New System.Drawing.Point(17, 284)
+        Me.PanelDetalleDeRepuestos.Name = "PanelDetalleDeRepuestos"
+        Me.PanelDetalleDeRepuestos.Size = New System.Drawing.Size(924, 319)
+        Me.PanelDetalleDeRepuestos.TabIndex = 114
+        '
+        'grdRepuestos
+        '
+        Me.grdRepuestos.AllowUserToAddRows = False
+        Me.grdRepuestos.AllowUserToDeleteRows = False
+        Me.grdRepuestos.AllowUserToResizeRows = False
+        Me.grdRepuestos.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.grdRepuestos.BorderStyle = System.Windows.Forms.BorderStyle.None
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdRepuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        Me.grdRepuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdRepuestos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.Descripcion, Me.Diario, Me.Cantidad, Me.Precio, Me.Total})
+        Me.grdRepuestos.Location = New System.Drawing.Point(18, 79)
+        Me.grdRepuestos.Name = "grdRepuestos"
+        Me.grdRepuestos.ReadOnly = True
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdRepuestos.RowHeadersDefaultCellStyle = DataGridViewCellStyle15
+        Me.grdRepuestos.RowHeadersVisible = False
+        Me.grdRepuestos.RowHeadersWidth = 51
+        DataGridViewCellStyle16.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black
+        Me.grdRepuestos.RowsDefaultCellStyle = DataGridViewCellStyle16
+        Me.grdRepuestos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.grdRepuestos.Size = New System.Drawing.Size(896, 227)
+        Me.grdRepuestos.TabIndex = 116
+        '
         'ID
         '
         DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
@@ -1267,7 +1186,7 @@ Partial Class frmOrdenesReparacion
         Me.Descripcion.MinimumWidth = 6
         Me.Descripcion.Name = "Descripcion"
         Me.Descripcion.ReadOnly = True
-        Me.Descripcion.Width = 300
+        Me.Descripcion.Width = 270
         '
         'Diario
         '
@@ -1278,7 +1197,7 @@ Partial Class frmOrdenesReparacion
         Me.Diario.MinimumWidth = 6
         Me.Diario.Name = "Diario"
         Me.Diario.ReadOnly = True
-        Me.Diario.Width = 240
+        Me.Diario.Width = 220
         '
         'Cantidad
         '
@@ -1292,7 +1211,7 @@ Partial Class frmOrdenesReparacion
         Me.Cantidad.MinimumWidth = 6
         Me.Cantidad.Name = "Cantidad"
         Me.Cantidad.ReadOnly = True
-        Me.Cantidad.Width = 140
+        Me.Cantidad.Width = 120
         '
         'Precio
         '
@@ -1322,6 +1241,106 @@ Partial Class frmOrdenesReparacion
         Me.Total.ReadOnly = True
         Me.Total.Width = 150
         '
+        'btnQuitarRepOR
+        '
+        Me.btnQuitarRepOR.BackColor = System.Drawing.Color.Transparent
+        Me.btnQuitarRepOR.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnQuitarRepOR.Enabled = False
+        Me.btnQuitarRepOR.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.btnQuitarRepOR.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.btnQuitarRepOR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnQuitarRepOR.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnQuitarRepOR.ForeColor = System.Drawing.Color.White
+        Me.btnQuitarRepOR.Location = New System.Drawing.Point(786, 23)
+        Me.btnQuitarRepOR.Name = "btnQuitarRepOR"
+        Me.btnQuitarRepOR.Size = New System.Drawing.Size(117, 37)
+        Me.btnQuitarRepOR.TabIndex = 30
+        Me.btnQuitarRepOR.Text = "Quitar"
+        Me.btnQuitarRepOR.UseVisualStyleBackColor = False
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.Label20.ForeColor = System.Drawing.Color.White
+        Me.Label20.Location = New System.Drawing.Point(8, -4)
+        Me.Label20.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(136, 17)
+        Me.Label20.TabIndex = 107
+        Me.Label20.Text = "Repuestos necesarios"
+        '
+        'btnAgregarRepOR
+        '
+        Me.btnAgregarRepOR.BackColor = System.Drawing.Color.Transparent
+        Me.btnAgregarRepOR.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnAgregarRepOR.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.btnAgregarRepOR.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.btnAgregarRepOR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAgregarRepOR.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAgregarRepOR.ForeColor = System.Drawing.Color.White
+        Me.btnAgregarRepOR.Location = New System.Drawing.Point(655, 24)
+        Me.btnAgregarRepOR.Name = "btnAgregarRepOR"
+        Me.btnAgregarRepOR.Size = New System.Drawing.Size(117, 37)
+        Me.btnAgregarRepOR.TabIndex = 29
+        Me.btnAgregarRepOR.Text = "Agregar"
+        Me.btnAgregarRepOR.UseVisualStyleBackColor = False
+        '
+        'txtCantidadRepOR
+        '
+        Me.txtCantidadRepOR.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCantidadRepOR.Location = New System.Drawing.Point(574, 29)
+        Me.txtCantidadRepOR.Name = "txtCantidadRepOR"
+        Me.txtCantidadRepOR.Size = New System.Drawing.Size(66, 23)
+        Me.txtCantidadRepOR.TabIndex = 28
+        Me.txtCantidadRepOR.Text = "1"
+        Me.txtCantidadRepOR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label22.ForeColor = System.Drawing.Color.White
+        Me.Label22.Location = New System.Drawing.Point(493, 33)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(75, 17)
+        Me.Label22.TabIndex = 115
+        Me.Label22.Text = "Cantidad:"
+        '
+        'cboProductoOR
+        '
+        Me.cboProductoOR.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboProductoOR.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboProductoOR.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboProductoOR.FormattingEnabled = True
+        Me.cboProductoOR.Location = New System.Drawing.Point(93, 29)
+        Me.cboProductoOR.Name = "cboProductoOR"
+        Me.cboProductoOR.Size = New System.Drawing.Size(391, 25)
+        Me.cboProductoOR.TabIndex = 27
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label23.ForeColor = System.Drawing.Color.White
+        Me.Label23.Location = New System.Drawing.Point(15, 33)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(72, 17)
+        Me.Label23.TabIndex = 113
+        Me.Label23.Text = "Producto:"
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.Label19.ForeColor = System.Drawing.Color.White
+        Me.Label19.Location = New System.Drawing.Point(946, 265)
+        Me.Label19.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(137, 17)
+        Me.Label19.TabIndex = 115
+        Me.Label19.Text = "Totales por Concepto"
+        '
         'frmOrdenesReparacion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1329,7 +1348,7 @@ Partial Class frmOrdenesReparacion
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(1280, 1050)
+        Me.ClientSize = New System.Drawing.Size(1265, 1070)
         Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.PanelDetalleDeRepuestos)
         Me.Controls.Add(Me.Label13)
@@ -1461,6 +1480,7 @@ Partial Class frmOrdenesReparacion
     Friend WithEvents CostoReal As DataGridViewTextBoxColumn
     Friend WithEvents Finalizado As DataGridViewCheckBoxColumn
     Friend WithEvents Estado As DataGridViewCheckBoxColumn
+    Friend WithEvents btnFacturar As Button
     Friend WithEvents ID As DataGridViewTextBoxColumn
     Friend WithEvents Descripcion As DataGridViewTextBoxColumn
     Friend WithEvents Diario As DataGridViewTextBoxColumn
