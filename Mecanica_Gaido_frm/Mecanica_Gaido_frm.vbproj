@@ -531,6 +531,11 @@
     <Compile Include="frmBienvenida.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="PIN_GRUPO31DataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PIN_GRUPO31DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="User32.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -678,6 +683,17 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="PIN_GRUPO31DataSet.xsc">
+      <DependentUpon>PIN_GRUPO31DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PIN_GRUPO31DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PIN_GRUPO31DataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PIN_GRUPO31DataSet.xss">
+      <DependentUpon>PIN_GRUPO31DataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AD_Mecanica_Gaido\AD_Mecanica_Gaido.vbproj">

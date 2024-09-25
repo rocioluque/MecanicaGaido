@@ -316,6 +316,8 @@ Public Class frmInicio
             fechaHoy = fechaHoy.AddDays(-2) ' Retroceder dos días
         ElseIf fechaHoy.DayOfWeek = DayOfWeek.Monday AndAlso fechaHoy.Hour < 10 Then
             fechaHoy = fechaHoy.AddDays(-3) ' Retroceder tres días (viernes anterior)
+        ElseIf fechaHoy.Hour < 10 Then
+            fechaHoy = fechaHoy.AddDays(-1) ' Retroceder un día
         End If
 
         Dim fechaFormateada As String = fechaHoy.ToString("yyyy-MM-dd")

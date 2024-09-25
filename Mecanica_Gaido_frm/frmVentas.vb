@@ -17,8 +17,13 @@ Public Class frmVentas
         Cargar_Combo_Repuestos()
         limpiar()
         PonerDecimales()
+        Cargar_Grilla_Ventas()
 
         txtVendedor.Text = UsuarioActivo.nombre_empleado
+
+        Dim oVenta As New AD_Ventas
+        txtNumComprobante.Text = oVenta.ObtenerNroComprobante
+        txtNumComprobante.Enabled = False
     End Sub
 
     Public Sub limpiar()
@@ -189,6 +194,28 @@ Public Class frmVentas
         Finally
         End Try
     End Sub
+
+    Private Sub Cargar_Grilla_Ventas()
+        Dim o_Ventas As New AD_Ventas
+        Try
+            Dim oDs As DataTable = o_Ventas.Cargar_Grilla_Ventas
+
+            If oDs.Rows.Count > 0 Then
+                grdVentas1.AutoGenerateColumns = True
+                grdVentas1.DataSource = oDs
+                'grdVentas1.Columns("Fecha Compra").DefaultCellStyle.Format = "dd/MM/yyyy"
+                'grdVentas1.Columns("Total").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                'grdVentas1.Columns("Total").DefaultCellStyle.Format = "N2"
+                grdVentas1.Refresh()
+            Else
+                MsgBox("No se encontraron Compras.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar las compras: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
 
 #End Region
 
@@ -652,6 +679,61 @@ Public Class frmVentas
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
+
+
+
+
+#End Region
+
+#Region "Botones Principales"
+    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
+        Try
+            Dim ventaDataAccess As New AD_Ventas()
+
+            ' Crear un DataTable para los detalles de la venta
+            Dim detalles As New DataTable()
+            detalles.Columns.Add("ID_Repuesto", GetType(Integer))
+            detalles.Columns.Add("ID_Lote", GetType(Integer))
+            detalles.Columns.Add("Cantidad", GetType(Decimal))
+            detalles.Columns.Add("Descripcion", GetType(String))
+            detalles.Columns.Add("PrecioVenta", GetType(Decimal))
+            detalles.Columns.Add("Estado", GetType(Boolean))
+
+            ' Llenar el DataTable con los detalles de la venta (ejemplo)
+            ' Aquí deberías agregar la lógica para obtener los detalles de los controles de tu formulario
+            ' Por ejemplo:
+            For Each row As DataGridViewRow In grdVentas.Rows
+                detalles.Rows.Add(row.Cells("ID").Value,
+                                    1, 'por no trabajar con lote
+                                    row.Cells("Cantidad").Value,
+                                    row.Cells("Descripcion").Value,
+                                    row.Cells("Precio").Value,
+                                    1)
+            Next
+
+            ' Llamar al método para agregar la venta con detalle
+            ventaDataAccess.AgregarVentaConDetalle(Convert.ToDateTime(dtpFechaVenta.Value),
+                                                    txtNumComprobante.Text,
+                                                    CInt(cboPersona.SelectedValue),
+                                                    2, 'CInt(txtVendedor.text), 
+                                                    CInt(cboFormaPago.SelectedValue),
+                                                 Decimal.Parse(txtSubtotal.Text),
+                                                 Decimal.Parse(txtMontoDtoRecargo.Text),
+                                                 Decimal.Parse(txtIVA.Text),
+                                                 Decimal.Parse(txtIvaMonto.Text),
+                                                 Decimal.Parse(txtOtrosImpuestos.Text),
+                                                 Decimal.Parse(txtTotal.Text),
+                                                 CInt(cboTipoVenta.SelectedValue),
+                                                 CInt(cboFormaEntrega.SelectedValue),
+                                                 1,
+                                                 detalles)
+
+            MessageBox.Show("Venta registrada con éxito.")
+        Catch ex As Exception
+            MessageBox.Show("Error al registrar la venta: " & ex.Message)
+        End Try
+    End Sub
+
 #End Region
 
 End Class
