@@ -94,7 +94,7 @@ Public Class frmProductos
         End Try
     End Sub
 
-    Public Sub CargarDatosEnTxt(ByVal idProducto As Integer)
+    Public Sub CargarDatosEnTxt(ByVal idProducto As String)
         Dim o_Productos As New AD_Productos
 
         Try
@@ -138,10 +138,10 @@ Public Class frmProductos
 
             ' Obtiene el ID del producto de la celda correspondiente
             Dim selectedRow As DataGridViewRow = grdProductos.Rows(e.RowIndex)
-            Dim idProducto As Integer
+            Dim idProducto As String
 
-            If selectedRow.Cells("N° Producto").Value IsNot Nothing Then
-                idProducto = Convert.ToInt32(selectedRow.Cells("N° Producto").Value)
+            If selectedRow.Cells("Cod. Fabricante").Value IsNot Nothing Then
+                idProducto = Convert.ToString(selectedRow.Cells("Cod. Fabricante").Value)
                 CargarDatosEnTxt(idProducto)
 
             Else
