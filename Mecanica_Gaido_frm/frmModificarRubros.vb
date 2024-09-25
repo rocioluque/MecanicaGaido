@@ -70,5 +70,9 @@ Public Class frmModificarRubros
             MsgBox("Error al modificar el rubro: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+
+    Private Sub grdModificarRubros_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdModificarRubros.CellContentClick
+
+    End Sub
 #End Region
 End Class

@@ -84,6 +84,7 @@ Partial Class frmReportesProductos
         Me.grdRepuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdRepuestos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodFabricante, Me.Descripcion, Me.StockReal, Me.PrecioLista, Me.Total})
         Me.grdRepuestos.Location = New System.Drawing.Point(23, 71)
+        Me.grdRepuestos.MultiSelect = False
         Me.grdRepuestos.Name = "grdRepuestos"
         Me.grdRepuestos.ReadOnly = True
         Me.grdRepuestos.RowHeadersVisible = False

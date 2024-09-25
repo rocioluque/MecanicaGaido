@@ -325,6 +325,7 @@ Partial Class frmVentas
         Me.grdVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdVentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.Descripcion, Me.Diario, Me.Cantidad, Me.Precio, Me.Total})
         Me.grdVentas.Location = New System.Drawing.Point(18, 64)
+        Me.grdVentas.MultiSelect = False
         Me.grdVentas.Name = "grdVentas"
         Me.grdVentas.ReadOnly = True
         Me.grdVentas.RowHeadersVisible = False
@@ -995,6 +996,7 @@ Partial Class frmVentas
         Me.grdVentas1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.grdVentas1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdVentas1.Location = New System.Drawing.Point(80, 790)
+        Me.grdVentas1.MultiSelect = False
         Me.grdVentas1.Name = "grdVentas1"
         Me.grdVentas1.ReadOnly = True
         Me.grdVentas1.RowHeadersVisible = False

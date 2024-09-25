@@ -55,6 +55,8 @@ Partial Class frmVehiculos
         Me.txtNota = New System.Windows.Forms.RichTextBox()
         Me.lblIdentificacionVehiculo = New System.Windows.Forms.Label()
         Me.PanelIdentificacionVehiculo = New System.Windows.Forms.Panel()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtAñoFabricación = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.txtNumChasis = New System.Windows.Forms.TextBox()
         Me.lblNumChasis = New System.Windows.Forms.Label()
@@ -66,8 +68,6 @@ Partial Class frmVehiculos
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtBuscar = New System.Windows.Forms.TextBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.txtAñoFabricación = New System.Windows.Forms.TextBox()
         CType(Me.grdVehiculo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarTipoVehiculo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDatoVehiculo.SuspendLayout()
@@ -89,6 +89,7 @@ Partial Class frmVehiculos
         Me.grdVehiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdVehiculo.Location = New System.Drawing.Point(178, 482)
         Me.grdVehiculo.Margin = New System.Windows.Forms.Padding(2)
+        Me.grdVehiculo.MultiSelect = False
         Me.grdVehiculo.Name = "grdVehiculo"
         Me.grdVehiculo.ReadOnly = True
         Me.grdVehiculo.RowHeadersVisible = False
@@ -478,6 +479,27 @@ Partial Class frmVehiculos
         Me.PanelIdentificacionVehiculo.Size = New System.Drawing.Size(454, 179)
         Me.PanelIdentificacionVehiculo.TabIndex = 120
         '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ForeColor = System.Drawing.Color.White
+        Me.Label9.Location = New System.Drawing.Point(13, 114)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(133, 17)
+        Me.Label9.TabIndex = 113
+        Me.Label9.Text = "Año de fabricación"
+        '
+        'txtAñoFabricación
+        '
+        Me.txtAñoFabricación.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtAñoFabricación.Location = New System.Drawing.Point(174, 111)
+        Me.txtAñoFabricación.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtAñoFabricación.Name = "txtAñoFabricación"
+        Me.txtAñoFabricación.Size = New System.Drawing.Size(253, 23)
+        Me.txtAñoFabricación.TabIndex = 112
+        '
         'Label12
         '
         Me.Label12.Anchor = System.Windows.Forms.AnchorStyles.Left
@@ -599,27 +621,6 @@ Partial Class frmVehiculos
         Me.txtBuscar.Size = New System.Drawing.Size(691, 23)
         Me.txtBuscar.TabIndex = 123
         Me.txtBuscar.Tag = ""
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(13, 114)
-        Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(133, 17)
-        Me.Label9.TabIndex = 113
-        Me.Label9.Text = "Año de fabricación"
-        '
-        'txtAñoFabricación
-        '
-        Me.txtAñoFabricación.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtAñoFabricación.Location = New System.Drawing.Point(174, 111)
-        Me.txtAñoFabricación.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtAñoFabricación.Name = "txtAñoFabricación"
-        Me.txtAñoFabricación.Size = New System.Drawing.Size(253, 23)
-        Me.txtAñoFabricación.TabIndex = 112
         '
         'frmVehiculos
         '
