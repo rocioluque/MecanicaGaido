@@ -94,7 +94,7 @@ Public Class frmInicio
     End Sub
 #End Region
 
-#Region "Grafico"
+#Region "Grafico Repuestos"
     Public Sub cargar_grafico_Repuestos()
         chtRepuestos.Series.Clear()
         chtRepuestos.ChartAreas.Clear()
@@ -126,8 +126,9 @@ Public Class frmInicio
         chtRepuestos.Series(0).Points(2).Label = String.Format("Poca Cantidad: {0}", pocos)
 
     End Sub
+#End Region
 
-
+#Region "Grafico Reparaciones"
     Private Sub CargarGraficoEstados()
         Dim connectionString As String = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31;UID=PIN_GRUPO31;PWD=PIN_GRUPO31123"
 
@@ -224,7 +225,6 @@ Public Class frmInicio
             legend.Alignment = StringAlignment.Center
             ChtOrdenReparacion.Legends.Add(legend)
 
-
             ' Asignar valores a la leyenda
             For i As Integer = 0 To series.Points.Count - 1
                 ' Verificamos que el nombre no sea "Cantidad por Estado"
@@ -236,15 +236,9 @@ Public Class frmInicio
                     legend.CustomItems.Add(legendItem) ' Añade el ítem a la leyenda
                 End If
             Next
-
             reader.Close()
         End Using
-
     End Sub
-
-
-
-
 
     Private Sub ChtOrdenReparacion_MouseClick(sender As Object, e As MouseEventArgs) Handles ChtOrdenReparacion.MouseClick
         Dim result As HitTestResult = ChtOrdenReparacion.HitTest(e.X, e.Y)
@@ -263,13 +257,6 @@ Public Class frmInicio
             frmMenuPrincipal.AbrirFormHijo(frm, frmMenuPrincipal.btnOrdenReparacion)
         End If
     End Sub
-
-
-
-
-
-
-
 #End Region
 
 #Region "Dolar"

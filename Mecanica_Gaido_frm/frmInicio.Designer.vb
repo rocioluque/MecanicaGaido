@@ -23,13 +23,13 @@ Partial Class frmInicio
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Title2 As System.Windows.Forms.DataVisualization.Charting.Title = New System.Windows.Forms.DataVisualization.Charting.Title()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Title1 As System.Windows.Forms.DataVisualization.Charting.Title = New System.Windows.Forms.DataVisualization.Charting.Title()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmInicio))
-        Dim ChartArea4 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.lblFecha = New System.Windows.Forms.Label()
         Me.lblHora = New System.Windows.Forms.Label()
         Me.horaFecha = New System.Windows.Forms.Timer(Me.components)
@@ -84,28 +84,28 @@ Partial Class frmInicio
         'chtRepuestos
         '
         Me.chtRepuestos.BackColor = System.Drawing.Color.Transparent
-        ChartArea3.Name = "ChartArea1"
-        Me.chtRepuestos.ChartAreas.Add(ChartArea3)
+        ChartArea1.Name = "ChartArea1"
+        Me.chtRepuestos.ChartAreas.Add(ChartArea1)
         Me.chtRepuestos.Cursor = System.Windows.Forms.Cursors.Hand
-        Legend2.Name = "Legend1"
-        Me.chtRepuestos.Legends.Add(Legend2)
+        Legend1.Name = "Legend1"
+        Me.chtRepuestos.Legends.Add(Legend1)
         Me.chtRepuestos.Location = New System.Drawing.Point(677, 32)
         Me.chtRepuestos.Name = "chtRepuestos"
         Me.chtRepuestos.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen
-        Series3.ChartArea = "ChartArea1"
-        Series3.Legend = "Legend1"
-        Series3.Name = "Series1"
-        Me.chtRepuestos.Series.Add(Series3)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.chtRepuestos.Series.Add(Series1)
         Me.chtRepuestos.Size = New System.Drawing.Size(427, 327)
         Me.chtRepuestos.TabIndex = 114
-        Title2.BackColor = System.Drawing.Color.Transparent
-        Title2.DockedToChartArea = "ChartArea1"
-        Title2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Title2.ForeColor = System.Drawing.Color.White
-        Title2.Name = "TittleEstadoRepuestos"
-        Title2.ShadowColor = System.Drawing.Color.Transparent
-        Title2.Text = "Estado de Repuestos"
-        Me.chtRepuestos.Titles.Add(Title2)
+        Title1.BackColor = System.Drawing.Color.Transparent
+        Title1.DockedToChartArea = "ChartArea1"
+        Title1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Title1.ForeColor = System.Drawing.Color.White
+        Title1.Name = "TittleEstadoRepuestos"
+        Title1.ShadowColor = System.Drawing.Color.Transparent
+        Title1.Text = "Estado de Repuestos"
+        Me.chtRepuestos.Titles.Add(Title1)
         '
         'btnExportarPDF
         '
@@ -247,29 +247,29 @@ Partial Class frmInicio
         '
         Me.ChtOrdenReparacion.BackColor = System.Drawing.Color.Transparent
         Me.ChtOrdenReparacion.BackSecondaryColor = System.Drawing.Color.White
-        ChartArea4.Area3DStyle.Inclination = 10
-        ChartArea4.AxisX.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ChartArea4.AxisX.TitleForeColor = System.Drawing.Color.White
-        ChartArea4.AxisX2.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ChartArea4.AxisX2.TitleForeColor = System.Drawing.Color.White
-        ChartArea4.AxisY.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ChartArea4.AxisY.TitleForeColor = System.Drawing.Color.White
-        ChartArea4.AxisY2.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ChartArea4.AxisY2.TitleForeColor = System.Drawing.Color.White
-        ChartArea4.BackColor = System.Drawing.Color.Transparent
-        ChartArea4.BorderColor = System.Drawing.Color.SeaGreen
-        ChartArea4.CursorX.LineColor = System.Drawing.Color.White
-        ChartArea4.CursorX.SelectionColor = System.Drawing.Color.WhiteSmoke
-        ChartArea4.CursorY.LineColor = System.Drawing.Color.White
-        ChartArea4.CursorY.SelectionColor = System.Drawing.Color.WhiteSmoke
-        ChartArea4.Name = "ChartArea1"
-        Me.ChtOrdenReparacion.ChartAreas.Add(ChartArea4)
-        Me.ChtOrdenReparacion.Location = New System.Drawing.Point(361, 32)
+        ChartArea2.Area3DStyle.Inclination = 10
+        ChartArea2.AxisX.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea2.AxisX.TitleForeColor = System.Drawing.Color.White
+        ChartArea2.AxisX2.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea2.AxisX2.TitleForeColor = System.Drawing.Color.White
+        ChartArea2.AxisY.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea2.AxisY.TitleForeColor = System.Drawing.Color.White
+        ChartArea2.AxisY2.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea2.AxisY2.TitleForeColor = System.Drawing.Color.White
+        ChartArea2.BackColor = System.Drawing.Color.Transparent
+        ChartArea2.BorderColor = System.Drawing.Color.SeaGreen
+        ChartArea2.CursorX.LineColor = System.Drawing.Color.White
+        ChartArea2.CursorX.SelectionColor = System.Drawing.Color.WhiteSmoke
+        ChartArea2.CursorY.LineColor = System.Drawing.Color.White
+        ChartArea2.CursorY.SelectionColor = System.Drawing.Color.WhiteSmoke
+        ChartArea2.Name = "ChartArea1"
+        Me.ChtOrdenReparacion.ChartAreas.Add(ChartArea2)
+        Me.ChtOrdenReparacion.Location = New System.Drawing.Point(29, 336)
         Me.ChtOrdenReparacion.Name = "ChtOrdenReparacion"
         Me.ChtOrdenReparacion.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen
-        Series4.ChartArea = "ChartArea1"
-        Series4.Name = "Series1"
-        Me.ChtOrdenReparacion.Series.Add(Series4)
+        Series2.ChartArea = "ChartArea1"
+        Series2.Name = "Series1"
+        Me.ChtOrdenReparacion.Series.Add(Series2)
         Me.ChtOrdenReparacion.Size = New System.Drawing.Size(300, 392)
         Me.ChtOrdenReparacion.TabIndex = 140
         '

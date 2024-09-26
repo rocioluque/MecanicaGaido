@@ -295,3 +295,7 @@ C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Google.Ap
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\System.CodeDom.xml
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Dropbox.Api.dll
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Dropbox.Api.xml
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml

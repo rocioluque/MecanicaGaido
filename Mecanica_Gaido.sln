@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.34729.46
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Mecanica_Gaido_Web", "Mecanica_Gaido_Web\Mecanica_Gaido_Web.vbproj", "{CD8E53D2-B177-494B-AE08-1CEEF98E43D7}"
-EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AD_Mecanica_Gaido", "AD_Mecanica_Gaido\AD_Mecanica_Gaido.vbproj", "{653D95E6-C213-451F-83C1-EED875107767}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Mecanica_Gaido_frm", "Mecanica_Gaido_frm\Mecanica_Gaido_frm.vbproj", "{D67D4DCA-078E-4B30-9B03-B5E2C4D0D048}"
@@ -17,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CD8E53D2-B177-494B-AE08-1CEEF98E43D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CD8E53D2-B177-494B-AE08-1CEEF98E43D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CD8E53D2-B177-494B-AE08-1CEEF98E43D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CD8E53D2-B177-494B-AE08-1CEEF98E43D7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{653D95E6-C213-451F-83C1-EED875107767}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{653D95E6-C213-451F-83C1-EED875107767}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{653D95E6-C213-451F-83C1-EED875107767}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -38,7 +32,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45
 		SolutionGuid = {7DA2187D-34E4-4F62-8BF6-8BCEC40D26DB}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal
