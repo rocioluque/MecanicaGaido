@@ -45,6 +45,7 @@ Public Class frmVentas
         rbtRecargo.Checked = False
         rbtDescuento.Checked = False
         chkEstado.Checked = False
+        grdVentas.Rows.Clear()
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -203,16 +204,13 @@ Public Class frmVentas
             If oDs.Rows.Count > 0 Then
                 grdVentas1.AutoGenerateColumns = True
                 grdVentas1.DataSource = oDs
-                'grdVentas1.Columns("Fecha Compra").DefaultCellStyle.Format = "dd/MM/yyyy"
-                'grdVentas1.Columns("Total").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-                'grdVentas1.Columns("Total").DefaultCellStyle.Format = "N2"
                 grdVentas1.Refresh()
             Else
-                MsgBox("No se encontraron Compras.", vbInformation, "Información")
+                MsgBox("No se encontraron Ventas.", vbInformation, "Información")
             End If
 
         Catch ex As Exception
-            MsgBox("Error al cargar las compras: " & ex.Message, vbCritical, "Error")
+            MsgBox("Error al cargar las Ventas: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
 
@@ -715,8 +713,9 @@ Public Class frmVentas
             ventaDataAccess.AgregarVentaConDetalle(Convert.ToDateTime(dtpFechaVenta.Value),
                                                     txtNumComprobante.Text,
                                                     CInt(cboPersona.SelectedValue),
-                                                    2, 'CInt(txtVendedor.text), 
+                                                    txtVendedor.Text,
                                                     CInt(cboFormaPago.SelectedValue),
+                                                    CInt(cboDetalleFormaPago.SelectedValue),
                                                  Decimal.Parse(txtSubtotal.Text),
                                                  Decimal.Parse(txtMontoDtoRecargo.Text),
                                                  Decimal.Parse(txtIVA.Text),
@@ -731,6 +730,124 @@ Public Class frmVentas
             MessageBox.Show("Venta registrada con éxito.")
         Catch ex As Exception
             MessageBox.Show("Error al registrar la venta: " & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub CargarDatosVenta(ID_Venta As Integer)
+
+        Dim oDS As New DataSet
+        Dim o_Venta As New AD_Ventas
+
+        oDS = o_Venta.Consultar_Venta_ID(ID_Venta)
+
+        If oDS.Tables(0).Rows.Count > 0 Then
+
+            Dim rowVenta As DataRow = oDS.Tables(0).Rows(0)
+
+            txtID.Text = CInt(rowVenta("ID_Venta"))
+            dtpFechaVenta.Value = Convert.ToDateTime(rowVenta("FechaVenta"))
+            txtNumComprobante.Text = rowVenta("NroComprobante").ToString()
+            cboPersona.SelectedValue = CInt(rowVenta("ID_Persona"))
+            txtVendedor.Text = rowVenta("Vendedor").ToString()
+            cboFormaPago.SelectedValue = CInt(rowVenta("ID_FormaPago"))
+            cboDetalleFormaPago.SelectedValue = CInt(rowVenta("ID_DetalleFormaPago"))
+            txtSubtotal.Text = Convert.ToDecimal(rowVenta("Subtotal")).ToString("N2")
+            txtMontoDtoRecargo.Text = Convert.ToDecimal(rowVenta("MontoDtoRecargo")).ToString("N2")
+            txtIVA.Text = Convert.ToDecimal(rowVenta("IVA")).ToString("N2")
+            txtOtrosImpuestos.Text = Convert.ToDecimal(rowVenta("OtrosImpuestos")).ToString("N2")
+            txtTotal.Text = Convert.ToDecimal(rowVenta("Total")).ToString("N2")
+            cboFormaPago.SelectedValue = rowVenta("ID_FormaPago")
+            txtIvaMonto.Text = Convert.ToDecimal(rowVenta("IVAMonto")).ToString("N2")
+            txtMontoDtoRecargo.Text = Convert.ToDecimal(rowVenta("MontoDtoRecargo")).ToString("N2")
+            chkEstado.Checked = Convert.ToBoolean(rowVenta("Estado"))
+            cboTipoVenta.SelectedValue = CInt(rowVenta("ID_TipoVenta"))
+            cboFormaEntrega.SelectedValue = CInt(rowVenta("ID_FormaEntrega"))
+
+            ' Verificar si la tabla de detalles (segundo DataTable) tiene filas
+            If oDS.Tables(1).Rows.Count > 0 Then
+                ' Limpiar el DataGridView de detalles antes de cargar los nuevos datos
+                grdVentas.Rows.Clear()
+
+                ' Recorrer los detalles de la venta y agregar cada uno a la grilla
+                For Each rowDetalle As DataRow In oDS.Tables(1).Rows
+                    grdVentas.Rows.Add(rowDetalle("ID_Repuesto"),
+                                       rowDetalle("Descripcion"),
+                                                           "-",'HARDCODE
+                                       rowDetalle("Cantidad"),
+                                       rowDetalle("PrecioVenta"),
+                                       rowDetalle("Total"))
+                Next
+            Else
+                ' Si no hay detalles de venta, puedes mostrar un mensaje o manejarlo de otra forma
+                MessageBox.Show("No se encontraron detalles para esta venta.")
+            End If
+        Else
+            ' Si no se encontró la venta, mostrar un mensaje de error
+            MessageBox.Show("No se encuentran datos para esta venta")
+        End If
+    End Sub
+
+
+
+
+    Private Sub grdVentas1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdVentas1.CellContentClick
+        If e.RowIndex >= 0 AndAlso e.RowIndex < grdVentas1.Rows.Count Then
+            Dim selectedRow As DataGridViewRow = grdVentas1.Rows(e.RowIndex)
+            Dim ID_Venta As Integer = Convert.ToInt32(selectedRow.Cells("ID_Venta").Value)
+
+            CargarDatosVenta(ID_Venta)
+        End If
+    End Sub
+
+    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
+        Try
+            Dim ventaDataAccess As New AD_Ventas()
+
+            ' Crear un DataTable para los detalles de la venta
+            Dim detalles As New DataTable()
+            detalles.Columns.Add("ID_Repuesto", GetType(Integer))
+            detalles.Columns.Add("ID_Lote", GetType(Integer))
+            detalles.Columns.Add("Cantidad", GetType(Decimal))
+            detalles.Columns.Add("Descripcion", GetType(String))
+            detalles.Columns.Add("PrecioVenta", GetType(Decimal))
+            detalles.Columns.Add("Estado", GetType(Boolean))
+
+            ' Llenar el DataTable con los detalles de la venta (ejemplo)
+            ' Aquí deberías agregar la lógica para obtener los detalles de los controles de tu formulario
+            ' Por ejemplo:
+            For Each row As DataGridViewRow In grdVentas.Rows
+                detalles.Rows.Add(row.Cells("ID").Value,
+                                    1, 'por no trabajar con lote
+                                    row.Cells("Cantidad").Value,
+                                    row.Cells("Descripcion").Value,
+                                    row.Cells("Precio").Value,
+                                    1)
+            Next
+
+            ' Llamar al método para agregar la venta con detalle
+            ventaDataAccess.ModificarVentaConDetalle(txtID.Text,
+                                                    Convert.ToDateTime(dtpFechaVenta.Value),
+                                                    txtNumComprobante.Text,
+                                                    CInt(cboPersona.SelectedValue),
+                                                    txtVendedor.Text,
+                                                    CInt(cboFormaPago.SelectedValue),
+                                                    CInt(cboDetalleFormaPago.SelectedValue),
+                                                 Decimal.Parse(txtSubtotal.Text),
+                                                 Decimal.Parse(txtMontoDtoRecargo.Text),
+                                                 Decimal.Parse(txtIVA.Text),
+                                                 Decimal.Parse(txtIvaMonto.Text),
+                                                 Decimal.Parse(txtOtrosImpuestos.Text),
+                                                 Decimal.Parse(txtTotal.Text),
+                                                 CInt(cboTipoVenta.SelectedValue),
+                                                 CInt(cboFormaEntrega.SelectedValue),
+                                                 1,
+                                                 detalles)
+
+            MessageBox.Show("Venta modificada con éxito.")
+            Cargar_Grilla_Ventas()
+            limpiar()
+        Catch ex As Exception
+            MessageBox.Show("Error al modificar la venta: " & ex.Message)
         End Try
     End Sub
 
