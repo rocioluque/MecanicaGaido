@@ -156,6 +156,21 @@ Public Class AD_Ventas
 #End Region
 
 #Region "Consultas"
+
+    Public Function Filtrar_Grilla_Ventas(cadena As String)
+        Dim tabla As New DataSet
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Grilla_Ventas_Busq", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@cadena", cadena)
+                Dim datadapter As New SqlDataAdapter(comando)
+                datadapter.Fill(tabla)
+            End Using
+        End Using
+        Return tabla
+    End Function
+
     Public Function Consultar_DetalleFPPorID(ByVal idDetalleFP As Integer) As SqlDataReader
         Dim conexion As New SqlConnection(connectionString)
         Dim comando As New SqlCommand("Consultar_DetalleFPPorID", conexion)
@@ -184,6 +199,7 @@ Public Class AD_Ventas
         End Try
     End Function
 #End Region
+
 
     Public Function Cargar_Grilla_DetalleVenta() As DataTable
         Dim tabla As New DataTable

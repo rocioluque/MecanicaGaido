@@ -291,7 +291,58 @@ Public Class frmInicio
     '    End Try
     'End Sub
 
+    'Private Async Function ConsultarDolar1() As Task
+    '    Dim fechaHoy As DateTime = DateTime.Now
 
+    '    ' Verificar si hoy es sábado o domingo
+    '    If fechaHoy.DayOfWeek = DayOfWeek.Saturday Then
+    '        fechaHoy = fechaHoy.AddDays(-1) ' Retroceder un día
+    '    ElseIf fechaHoy.DayOfWeek = DayOfWeek.Sunday Then
+    '        fechaHoy = fechaHoy.AddDays(-2) ' Retroceder dos días
+    '    ElseIf fechaHoy.DayOfWeek = DayOfWeek.Monday AndAlso fechaHoy.Hour < 10 Then
+    '        fechaHoy = fechaHoy.AddDays(-3) ' Retroceder tres días (viernes anterior)
+    '    ElseIf fechaHoy.Hour < 10 Then
+    '        fechaHoy = fechaHoy.AddDays(-1) ' Retroceder un día
+    '    End If
+
+    '    Dim fechaFormateada As String = fechaHoy.ToString("yyyy-MM-dd")
+
+    '    Dim url As String = $"https://api.bcra.gob.ar/estadisticascambiarias/v1.0/Cotizaciones?fecha={fechaFormateada}"
+
+    '    Using client As New HttpClient()
+    '        Try
+    '            Dim response As HttpResponseMessage = Await client.GetAsync(url)
+    '            If response.IsSuccessStatusCode Then
+    '                Dim content As String = Await response.Content.ReadAsStringAsync()
+
+    '                ' Parsear la respuesta JSON
+    '                Dim jsonData As JObject = JObject.Parse(content)
+
+    '                ' Extraer el detalle
+    '                Dim detalle As JArray = jsonData("results")("detalle")
+
+    '                ' Buscar la cotización para USD
+    '                Dim tipoCotizacionUSD As Decimal = 0
+    '                For Each item As JObject In detalle
+    '                    If item("codigoMoneda").ToString() = "USD" Then
+    '                        tipoCotizacionUSD = item("tipoCotizacion").Value(Of Decimal)()
+    '                        Exit For
+    '                    End If
+    '                Next
+
+    '                ' Mostrar la cotización en un TextBox
+    '                lblDolar.Text = $"Dólar divisa: {tipoCotizacionUSD.ToString("0.00")}"
+
+    '            Else
+    '                ' Manejar el error aquí
+    '                MessageBox.Show("Error al obtener la cotización: " & response.StatusCode.ToString())
+    '            End If
+
+    '        Catch ex As Exception
+    '            MessageBox.Show("Error al obtener la cotización: " & ex.Message)
+    '        End Try
+    '    End Using
+    'End Function
 
     Private Async Function ConsultarDolar1() As Task
         Dim fechaHoy As DateTime = DateTime.Now
@@ -307,44 +358,56 @@ Public Class frmInicio
             fechaHoy = fechaHoy.AddDays(-1) ' Retroceder un día
         End If
 
-        Dim fechaFormateada As String = fechaHoy.ToString("yyyy-MM-dd")
+        Dim tipoCotizacionUSD As Decimal = 0
 
-        Dim url As String = $"https://api.bcra.gob.ar/estadisticascambiarias/v1.0/Cotizaciones?fecha={fechaFormateada}"
+        Do
+            Dim fechaFormateada As String = fechaHoy.ToString("yyyy-MM-dd")
+            Dim url As String = $"https://api.bcra.gob.ar/estadisticascambiarias/v1.0/Cotizaciones?fecha={fechaFormateada}"
 
-        Using client As New HttpClient()
-            Try
-                Dim response As HttpResponseMessage = Await client.GetAsync(url)
-                If response.IsSuccessStatusCode Then
-                    Dim content As String = Await response.Content.ReadAsStringAsync()
+            Using client As New HttpClient()
+                Try
+                    Dim response As HttpResponseMessage = Await client.GetAsync(url)
+                    If response.IsSuccessStatusCode Then
+                        Dim content As String = Await response.Content.ReadAsStringAsync()
 
-                    ' Parsear la respuesta JSON
-                    Dim jsonData As JObject = JObject.Parse(content)
+                        ' Parsear la respuesta JSON
+                        Dim jsonData As JObject = JObject.Parse(content)
 
-                    ' Extraer el detalle
-                    Dim detalle As JArray = jsonData("results")("detalle")
+                        ' Extraer el detalle
+                        Dim detalle As JArray = jsonData("results")("detalle")
 
-                    ' Buscar la cotización para USD
-                    Dim tipoCotizacionUSD As Decimal = 0
-                    For Each item As JObject In detalle
-                        If item("codigoMoneda").ToString() = "USD" Then
-                            tipoCotizacionUSD = item("tipoCotizacion").Value(Of Decimal)()
-                            Exit For
+                        ' Buscar la cotización para USD
+                        For Each item As JObject In detalle
+                            If item("codigoMoneda").ToString() = "USD" Then
+                                tipoCotizacionUSD = item("tipoCotizacion").Value(Of Decimal)()
+                                Exit For
+                            End If
+                        Next
+
+                        ' Verificar si se encontró una cotización válida (distinta de cero)
+                        If tipoCotizacionUSD > 0 Then
+                            lblDolar.Text = $"Dólar divisa: {tipoCotizacionUSD.ToString("0.00")}"
+                            Exit Do ' Salir del bucle si se encontró un valor válido
                         End If
-                    Next
 
-                    ' Mostrar la cotización en un TextBox
-                    lblDolar.Text = $"Dólar divisa: {tipoCotizacionUSD.ToString("0.00")}"
+                    Else
+                        ' Manejar el error aquí
+                        MessageBox.Show("Error al obtener la cotización: " & response.StatusCode.ToString())
+                    End If
 
-                Else
-                    ' Manejar el error aquí
-                    MessageBox.Show("Error al obtener la cotización: " & response.StatusCode.ToString())
-                End If
+                Catch ex As Exception
+                    MessageBox.Show("Error al obtener la cotización: " & ex.Message)
+                End Try
+            End Using
 
-            Catch ex As Exception
-                MessageBox.Show("Error al obtener la cotización: " & ex.Message)
-            End Try
-        End Using
+            ' Si no se encontró una cotización válida, retroceder un día
+            fechaHoy = fechaHoy.AddDays(-1)
+
+        Loop While tipoCotizacionUSD = 0 ' Repetir hasta encontrar una cotización válida
+
     End Function
+
+
 #End Region
 
 #Region "Pedido"

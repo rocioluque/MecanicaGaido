@@ -125,6 +125,7 @@ Partial Class frmCompras
         '
         'txtID
         '
+        Me.txtID.Enabled = False
         Me.txtID.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtID.Location = New System.Drawing.Point(214, 75)
         Me.txtID.Margin = New System.Windows.Forms.Padding(2)

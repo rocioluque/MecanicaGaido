@@ -851,6 +851,44 @@ Public Class frmVentas
         End Try
     End Sub
 
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        lblBusqueda.Visible = True
+        txtBusqueda.Visible = True
+        txtBusqueda.Text = ""
+        txtBusqueda.Focus()
+    End Sub
+
+    Private Sub txtBusqueda_TextChanged(sender As Object, e As EventArgs) Handles txtBusqueda.TextChanged
+        Dim cadenas As String = If(String.IsNullOrWhiteSpace(txtBusqueda.Text), "", txtBusqueda.Text)
+        FIltrarGrilla(cadenas)
+        txtBusqueda.Focus()
+        txtBusqueda.Text = cadenas
+    End Sub
+    Private Sub FIltrarGrilla(cadena As String)
+
+        Try
+            Dim oDs As DataSet = o_ventas.Filtrar_Grilla_Ventas(cadena)
+
+            If oDs.Tables(0).Rows.Count > 0 Then
+                grdVentas1.AutoGenerateColumns = True
+                grdVentas1.DataSource = oDs.Tables(0)
+                'grdVentas1.Columns("Fecha Compra").DefaultCellStyle.Format = "dd/MM/yyyy"
+                'grdVentas1.Columns("Total").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                'grdVentas1.Columns("Total").DefaultCellStyle.Format = "N2"
+                grdVentas1.Refresh()
+            Else
+                MsgBox("No se encontraron Ventas con ese criterio de búsqueda.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar las Ventas: " & ex.Message, vbCritical, "Error")
+        End Try
+
+
+
+    End Sub
+
+
 #End Region
 
 End Class
