@@ -18,7 +18,7 @@ Public Class AD_Reportes
         Dim pocos As Integer = 0
 
         Using conexion As New SqlConnection(connectionString)
-            Using comando As New SqlCommand("Contar_Repuestos_BD", conexion)
+            Using comando As New SqlCommand("Contar_Repuestos", conexion)
                 conexion.Open()
                 comando.CommandType = CommandType.StoredProcedure
 
