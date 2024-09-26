@@ -127,6 +127,7 @@ Public Class frmCompras
                 MsgBox("El ID de la Compra no puede ser nulo.", vbCritical, "Error")
             End If
         End If
+
         lblBusqueda.Visible = False
         txtBusqueda.Text = ""
         txtBusqueda.Visible = False

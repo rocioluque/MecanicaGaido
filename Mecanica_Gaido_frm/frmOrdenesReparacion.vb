@@ -1259,6 +1259,10 @@ Public Class frmOrdenesReparacion
         btnCancelar.PerformClick()
     End Sub
 
+    Private Sub btnFacturar_Click(sender As Object, e As EventArgs) Handles btnFacturar.Click
+
+    End Sub
+
 
 
 

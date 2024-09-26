@@ -204,6 +204,16 @@ Public Class frmVentas
             If oDs.Rows.Count > 0 Then
                 grdVentas1.AutoGenerateColumns = True
                 grdVentas1.DataSource = oDs
+                grdVentas1.Columns("Vendedor").Visible = False
+                grdVentas1.Columns("Detalle FP").Visible = False
+                grdVentas1.Columns("Subtotal").Visible = False
+                grdVentas1.Columns("MontoDtoRecargo").Visible = False
+                grdVentas1.Columns("IVA").Visible = False
+                grdVentas1.Columns("IVAMonto").Visible = False
+                grdVentas1.Columns("OtrosImpuestos").Visible = False
+                grdVentas1.Columns("Tipo De Venta").Visible = False
+                grdVentas1.Columns("Forma de Entrega").Visible = False
+                grdVentas1.Columns("Estado").Visible = False
                 grdVentas1.Refresh()
             Else
                 MsgBox("No se encontraron Ventas.", vbInformation, "Información")
@@ -796,6 +806,11 @@ Public Class frmVentas
             Dim ID_Venta As Integer = Convert.ToInt32(selectedRow.Cells("ID_Venta").Value)
 
             CargarDatosVenta(ID_Venta)
+
+            lblBusqueda.Visible = False
+            txtBusqueda.Text = ""
+            txtBusqueda.Visible = False
+
         End If
     End Sub
 
@@ -872,9 +887,6 @@ Public Class frmVentas
             If oDs.Tables(0).Rows.Count > 0 Then
                 grdVentas1.AutoGenerateColumns = True
                 grdVentas1.DataSource = oDs.Tables(0)
-                'grdVentas1.Columns("Fecha Compra").DefaultCellStyle.Format = "dd/MM/yyyy"
-                'grdVentas1.Columns("Total").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-                'grdVentas1.Columns("Total").DefaultCellStyle.Format = "N2"
                 grdVentas1.Refresh()
             Else
                 MsgBox("No se encontraron Ventas con ese criterio de búsqueda.", vbInformation, "Información")
