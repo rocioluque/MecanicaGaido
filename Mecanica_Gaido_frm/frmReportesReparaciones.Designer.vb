@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmReportesReparaciones
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmReportesReparaciones
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
         Dim CustomLabel1 As System.Windows.Forms.DataVisualization.Charting.CustomLabel = New System.Windows.Forms.DataVisualization.Charting.CustomLabel()
@@ -34,7 +34,6 @@ Partial Class frmReportesReparaciones
         Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
         Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmReportesReparaciones))
         Me.chartReparacionesMes = New System.Windows.Forms.DataVisualization.Charting.Chart()
@@ -82,7 +81,7 @@ Partial Class frmReportesReparaciones
         ChartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
         ChartArea1.AxisY.LineColor = System.Drawing.Color.LightGray
         ChartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray
-        ChartArea1.AxisY.Title = "Cantidad de Reparaciones"
+        ChartArea1.AxisY.Title = "Cant. de Reparaciones"
         ChartArea1.AxisY.TitleFont = New System.Drawing.Font("Century Gothic", 9.0!)
         ChartArea1.AxisY.TitleForeColor = System.Drawing.Color.White
         ChartArea1.BorderColor = System.Drawing.Color.White
@@ -90,7 +89,7 @@ Partial Class frmReportesReparaciones
         Me.chartReparacionesMes.ChartAreas.Add(ChartArea1)
         Legend1.Name = "Legend1"
         Me.chartReparacionesMes.Legends.Add(Legend1)
-        Me.chartReparacionesMes.Location = New System.Drawing.Point(39, 96)
+        Me.chartReparacionesMes.Location = New System.Drawing.Point(39, 40)
         Me.chartReparacionesMes.Name = "chartReparacionesMes"
         Me.chartReparacionesMes.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen
         Series1.BorderWidth = 3
@@ -105,16 +104,19 @@ Partial Class frmReportesReparaciones
         Series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle
         Series1.Name = "Reparaciones por Mes"
         Me.chartReparacionesMes.Series.Add(Series1)
-        Me.chartReparacionesMes.Size = New System.Drawing.Size(584, 246)
+        Me.chartReparacionesMes.Size = New System.Drawing.Size(584, 327)
         Me.chartReparacionesMes.TabIndex = 0
         Me.chartReparacionesMes.Text = "Chart1"
         '
         'txtAño
         '
+        Me.txtAño.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.txtAño.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtAño.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAño.Location = New System.Drawing.Point(129, 41)
+        Me.txtAño.ForeColor = System.Drawing.Color.White
+        Me.txtAño.Location = New System.Drawing.Point(129, 25)
         Me.txtAño.Name = "txtAño"
-        Me.txtAño.Size = New System.Drawing.Size(73, 23)
+        Me.txtAño.Size = New System.Drawing.Size(73, 16)
         Me.txtAño.TabIndex = 76
         Me.txtAño.Text = "2024"
         Me.txtAño.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -124,7 +126,7 @@ Partial Class frmReportesReparaciones
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(64, 44)
+        Me.Label1.Location = New System.Drawing.Point(64, 24)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(34, 17)
         Me.Label1.TabIndex = 78
@@ -135,7 +137,7 @@ Partial Class frmReportesReparaciones
         Me.lblNoInformacion.AutoSize = True
         Me.lblNoInformacion.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNoInformacion.ForeColor = System.Drawing.Color.White
-        Me.lblNoInformacion.Location = New System.Drawing.Point(63, 96)
+        Me.lblNoInformacion.Location = New System.Drawing.Point(63, 57)
         Me.lblNoInformacion.Name = "lblNoInformacion"
         Me.lblNoInformacion.Size = New System.Drawing.Size(0, 21)
         Me.lblNoInformacion.TabIndex = 79
@@ -144,27 +146,39 @@ Partial Class frmReportesReparaciones
         'ChtOrdenReparacion
         '
         Me.ChtOrdenReparacion.BackColor = System.Drawing.Color.Transparent
+        Me.ChtOrdenReparacion.BackSecondaryColor = System.Drawing.Color.White
+        ChartArea2.Area3DStyle.Inclination = 10
+        ChartArea2.AxisX.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea2.AxisX.TitleForeColor = System.Drawing.Color.White
+        ChartArea2.AxisX2.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea2.AxisX2.TitleForeColor = System.Drawing.Color.White
+        ChartArea2.AxisY.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea2.AxisY.TitleForeColor = System.Drawing.Color.White
+        ChartArea2.AxisY2.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea2.AxisY2.TitleForeColor = System.Drawing.Color.White
+        ChartArea2.BackColor = System.Drawing.Color.Transparent
+        ChartArea2.BorderColor = System.Drawing.Color.SeaGreen
+        ChartArea2.CursorX.LineColor = System.Drawing.Color.White
+        ChartArea2.CursorX.SelectionColor = System.Drawing.Color.WhiteSmoke
+        ChartArea2.CursorY.LineColor = System.Drawing.Color.White
+        ChartArea2.CursorY.SelectionColor = System.Drawing.Color.WhiteSmoke
         ChartArea2.Name = "ChartArea1"
         Me.ChtOrdenReparacion.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Leyenda"
-        Me.ChtOrdenReparacion.Legends.Add(Legend2)
-        Me.ChtOrdenReparacion.Location = New System.Drawing.Point(519, 191)
+        Me.ChtOrdenReparacion.Location = New System.Drawing.Point(39, 373)
         Me.ChtOrdenReparacion.Name = "ChtOrdenReparacion"
         Me.ChtOrdenReparacion.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen
         Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Leyenda"
-        Series2.Name = "Cantidad por Tipo de Reparación"
+        Series2.Name = "Series1"
         Me.ChtOrdenReparacion.Series.Add(Series2)
-        Me.ChtOrdenReparacion.Size = New System.Drawing.Size(596, 402)
-        Me.ChtOrdenReparacion.TabIndex = 80
-        Me.ChtOrdenReparacion.Text = "Chart1"
+        Me.ChtOrdenReparacion.Size = New System.Drawing.Size(584, 323)
+        Me.ChtOrdenReparacion.TabIndex = 141
         '
         'frmReportesReparaciones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1184, 622)
+        Me.ClientSize = New System.Drawing.Size(1184, 721)
         Me.Controls.Add(Me.ChtOrdenReparacion)
         Me.Controls.Add(Me.lblNoInformacion)
         Me.Controls.Add(Me.txtAño)
