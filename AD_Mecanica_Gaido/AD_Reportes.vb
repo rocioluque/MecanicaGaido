@@ -39,6 +39,21 @@ Public Class AD_Reportes
         End Using
         Return New Tuple(Of Integer, Integer, Integer)(muchos, cero, pocos)
     End Function
+
+    Public Function ObtenerOrdenesProgreso() As DataTable
+        Dim tabla As New DataTable()
+        Using conexion As New SqlConnection(connectionString)
+            conexion.Open()
+            Using comando As New SqlCommand("Consultar_Ordenes_Progreso", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+
+                Using reader As SqlDataReader = comando.ExecuteReader()
+                    tabla.Load(reader)
+                End Using
+            End Using
+        End Using
+        Return tabla
+    End Function
 #End Region
 
 #Region "Reporte personas"
@@ -57,6 +72,20 @@ Public Class AD_Reportes
             Using comando As New SqlCommand("Contar_Reparaciones_Mes", conexion)
                 comando.CommandType = CommandType.StoredProcedure
                 comando.Parameters.AddWithValue("@Año", año)
+
+                Dim adapter As New SqlDataAdapter(comando)
+                adapter.Fill(dt)
+            End Using
+        End Using
+        Return dt
+    End Function
+
+    Public Function ObtenerOrdenesPorTipoReparacion() As DataTable
+        Dim dt As New DataTable()
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Contar_Reparaciones_Tipo", conexion)
+                comando.CommandType = CommandType.StoredProcedure
 
                 Dim adapter As New SqlDataAdapter(comando)
                 adapter.Fill(dt)

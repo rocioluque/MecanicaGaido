@@ -33,12 +33,17 @@ Partial Class frmReportesReparaciones
         Dim CustomLabel8 As System.Windows.Forms.DataVisualization.Charting.CustomLabel = New System.Windows.Forms.DataVisualization.Charting.CustomLabel()
         Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmReportesReparaciones))
         Me.chartReparacionesMes = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.txtAño = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblNoInformacion = New System.Windows.Forms.Label()
+        Me.ChtOrdenReparacion = New System.Windows.Forms.DataVisualization.Charting.Chart()
         CType(Me.chartReparacionesMes, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ChtOrdenReparacion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'chartReparacionesMes
@@ -136,12 +141,31 @@ Partial Class frmReportesReparaciones
         Me.lblNoInformacion.TabIndex = 79
         Me.lblNoInformacion.Visible = False
         '
+        'ChtOrdenReparacion
+        '
+        Me.ChtOrdenReparacion.BackColor = System.Drawing.Color.Transparent
+        ChartArea2.Name = "ChartArea1"
+        Me.ChtOrdenReparacion.ChartAreas.Add(ChartArea2)
+        Legend2.Name = "Leyenda"
+        Me.ChtOrdenReparacion.Legends.Add(Legend2)
+        Me.ChtOrdenReparacion.Location = New System.Drawing.Point(519, 191)
+        Me.ChtOrdenReparacion.Name = "ChtOrdenReparacion"
+        Me.ChtOrdenReparacion.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen
+        Series2.ChartArea = "ChartArea1"
+        Series2.Legend = "Leyenda"
+        Series2.Name = "Cantidad por Tipo de Reparación"
+        Me.ChtOrdenReparacion.Series.Add(Series2)
+        Me.ChtOrdenReparacion.Size = New System.Drawing.Size(596, 402)
+        Me.ChtOrdenReparacion.TabIndex = 80
+        Me.ChtOrdenReparacion.Text = "Chart1"
+        '
         'frmReportesReparaciones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(977, 539)
+        Me.ClientSize = New System.Drawing.Size(1184, 622)
+        Me.Controls.Add(Me.ChtOrdenReparacion)
         Me.Controls.Add(Me.lblNoInformacion)
         Me.Controls.Add(Me.txtAño)
         Me.Controls.Add(Me.Label1)
@@ -151,6 +175,7 @@ Partial Class frmReportesReparaciones
         Me.Name = "frmReportesReparaciones"
         Me.Text = "frmReportesReparaciones"
         CType(Me.chartReparacionesMes, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ChtOrdenReparacion, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -160,4 +185,5 @@ Partial Class frmReportesReparaciones
     Friend WithEvents txtAño As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents lblNoInformacion As Label
+    Friend WithEvents ChtOrdenReparacion As DataVisualization.Charting.Chart
 End Class

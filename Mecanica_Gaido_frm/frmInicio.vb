@@ -99,15 +99,17 @@ Public Class frmInicio
         chtRepuestos.Series.Clear()
         chtRepuestos.ChartAreas.Clear()
 
-        ' Crear una nueva área de gráfico
         Dim chartArea As New ChartArea()
         chtRepuestos.ChartAreas.Add(chartArea)
 
         chtRepuestos.ChartAreas(0).BackColor = Color.Transparent
+        chtRepuestos.ChartAreas(0).AxisY.LabelStyle.Font = New Font("Century Gothic", 9.75F)
 
-        ' Crear y configurar la serie para el gráfico tipo Pie
-        Dim series As New Series()
+        Dim series As New Series("Stock de Repuestos")
         series.ChartType = SeriesChartType.Pie
+        series.IsValueShownAsLabel = True
+        series.LabelForeColor = Color.White
+        series.Font = New Font("Century Gothic", 11, FontStyle.Bold)
         chtRepuestos.Series.Add(series)
 
         Dim datos As Tuple(Of Integer, Integer, Integer) = o_reportes.ObtenerDatosRepuestos()
@@ -120,124 +122,139 @@ Public Class frmInicio
         chtRepuestos.Series(0).Points.AddXY("Sin Stock.", cero)
         chtRepuestos.Series(0).Points.AddXY("Pocos.", pocos)
 
-        ' Personalizar etiquetas
-        chtRepuestos.Series(0).Points(0).Label = String.Format("En Stock: {0}", muchos)
-        chtRepuestos.Series(0).Points(1).Label = String.Format("Sin Stock: {0}", cero)
-        chtRepuestos.Series(0).Points(2).Label = String.Format("Poca Cantidad: {0}", pocos)
+        'Muestra solo la cantidad en el gráfico
+        chtRepuestos.Series(0).Points(0).Label = muchos.ToString()
+        chtRepuestos.Series(0).Points(1).Label = cero.ToString()
+        chtRepuestos.Series(0).Points(2).Label = pocos.ToString()
 
+        ' Personalizar el texto de la leyenda
+        chtRepuestos.Series(0).Points(0).LegendText = "En Stock"
+        chtRepuestos.Series(0).Points(1).LegendText = "Sin Stock"
+        chtRepuestos.Series(0).Points(2).LegendText = "Poca Cantidad"
+
+        Dim colors As Color() = {
+        Color.FromArgb(28, 164, 89), 'Verde
+        Color.FromArgb(240, 38, 2),  'Rojo 
+        Color.FromArgb(218, 182, 3)  'Amarillo
+        }
+
+        For i As Integer = 0 To chtRepuestos.Series(0).Points.Count - 1
+            chtRepuestos.Series(0).Points(i).Color = colors(i Mod colors.Length)
+        Next
+
+        chtRepuestos.BackColor = Color.Transparent
+        chtRepuestos.ChartAreas(0).BackColor = Color.Transparent
+
+        chtRepuestos.Legends.Clear()
+        Dim legend As New Legend("Leyenda")
+        legend.Docking = Docking.Top
+        legend.BackColor = Color.Transparent
+        legend.ForeColor = Color.White
+        legend.Title = "Stock de Repuestos"
+        legend.TitleFont = New Font("Century Gothic", 12, FontStyle.Regular)
+        legend.TitleForeColor = Color.White
+        chtRepuestos.Legends.Add(legend)
     End Sub
 #End Region
 
 #Region "Grafico Reparaciones"
     Private Sub CargarGraficoEstados()
-        Dim connectionString As String = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31;UID=PIN_GRUPO31;PWD=PIN_GRUPO31123"
+        Dim o_reportes As New AD_Reportes()
+        Dim dtOrdenes As DataTable = o_reportes.ObtenerOrdenesProgreso()
 
-        Using conn As New SqlConnection(connectionString)
-            conn.Open()
+        ' Limpia las series anteriores del gráfico
+        ChtOrdenReparacion.Series.Clear()
 
-            ' Llama al procedimiento almacenado
-            Dim cmd As New SqlCommand("Consultar_Ordenes_Progreso", conn)
-            cmd.CommandType = CommandType.StoredProcedure
+        ' Crear una nueva serie para el gráfico
+        Dim series As New Series("Cantidad por Estado")
+        series.IsVisibleInLegend = False
+        series.ChartType = SeriesChartType.Column
 
-            Dim reader As SqlDataReader = cmd.ExecuteReader()
+        ' Configuración de etiquetas de la serie
+        series.IsValueShownAsLabel = True
+        series.LabelForeColor = Color.White
+        series.Font = New Font("Century Gothic", 9.75F)
 
-            ' Limpia las series anteriores del gráfico
-            ChtOrdenReparacion.Series.Clear()
+        ' Colores de la paleta SeaGreen
+        Dim colors As Color() = {
+        Color.FromArgb(146, 139, 87),
+        Color.FromArgb(60, 179, 113),
+        Color.FromArgb(32, 178, 170),
+        Color.FromArgb(0, 139, 69),
+        Color.FromArgb(0, 255, 127)
+    }
+        Dim colorIndex As Integer = 0
 
-            ' Crear una nueva serie para el gráfico
-            Dim series As New Series("Cantidad por Estado")
-            series.IsVisibleInLegend = False
-            series.ChartType = SeriesChartType.Column ' Cambia a Pie, Bar, etc. según lo que prefieras
+        ' Leer los datos del procedimiento almacenado y agregarlos al gráfico
+        For Each row As DataRow In dtOrdenes.Rows
+            Dim estado As String = row("Estado").ToString()
+            Dim cantidad As Integer = Convert.ToInt32(row("Cantidad"))
 
-            ' Configuración de etiquetas de la serie
-            series.IsValueShownAsLabel = True ' Muestra los valores sobre cada barra
-            series.LabelForeColor = Color.White ' Color de las etiquetas
-            series.Font = New Font("Century Gothic", 9.75F) ' Tipografía de las etiquetas
+            ' Cambia el nombre de la serie específica
+            If estado = "Esperando Servicios de Terceros" Then
+                estado = "Esperando S3"
+            End If
 
-            ' Colores de la paleta SeaGreen
-            Dim colors As Color() = {
-            Color.FromArgb(146, 139, 87),
-            Color.FromArgb(60, 179, 113),
-            Color.FromArgb(32, 178, 170),
-            Color.FromArgb(0, 139, 69),
-            Color.FromArgb(0, 255, 127)
-        }
-            Dim colorIndex As Integer = 0
+            Dim pointIndex As Integer = series.Points.AddXY(estado, cantidad)
 
-            ' Leer los datos del procedimiento almacenado y agregarlos al gráfico
-            While reader.Read()
-                Dim estado As String = reader("Estado").ToString()
-                Dim cantidad As Integer = Convert.ToInt32(reader("Cantidad"))
+            ' Establecer el color de la serie para esta categoría
+            series.Points(pointIndex).Color = colors(colorIndex Mod colors.Length)
+            colorIndex += 1
+        Next
 
-                ' Cambia el nombre de la serie específica
-                If estado = "Esperando Servicios de Terceros" Then
-                    estado = "Esperando S3"
-                End If
+        ' Agregar la serie al gráfico
+        ChtOrdenReparacion.Series.Add(series)
 
-                Dim pointIndex As Integer = series.Points.AddXY(estado, cantidad)
+        ' Personalización del gráfico
+        ChtOrdenReparacion.ChartAreas(0).AxisX.Title = ""
+        ChtOrdenReparacion.ChartAreas(0).AxisY.Title = "Cantidad de Órdenes"
 
-                ' Establecer el color de la serie para esta categoría
-                series.Points(pointIndex).Color = colors(colorIndex Mod colors.Length)
-                colorIndex += 1
-            End While
+        ' Configurar eje Y para mostrar solo valores enteros
+        ChtOrdenReparacion.ChartAreas(0).AxisY.IsStartedFromZero = True
+        ChtOrdenReparacion.ChartAreas(0).AxisY.LabelStyle.Interval = 1
+        ChtOrdenReparacion.ChartAreas(0).AxisY.MajorGrid.Interval = 1
 
-            ' Agregar la serie al gráfico
-            ChtOrdenReparacion.Series.Add(series)
+        ' Desactivar las líneas verticales
+        ChtOrdenReparacion.ChartAreas(0).AxisX.MajorGrid.Enabled = False
 
-            ' Personalización del gráfico
-            ChtOrdenReparacion.ChartAreas(0).AxisX.Title = "" ' Sin título en el eje X
-            ChtOrdenReparacion.ChartAreas(0).AxisY.Title = "Cantidad de Órdenes"
+        ' Activar solo las líneas horizontales
+        ChtOrdenReparacion.ChartAreas(0).AxisY.MajorGrid.Enabled = True
 
-            ' Configurar eje Y para mostrar solo valores enteros
-            ChtOrdenReparacion.ChartAreas(0).AxisY.IsStartedFromZero = True
-            ChtOrdenReparacion.ChartAreas(0).AxisY.LabelStyle.Interval = 1 ' Muestra solo enteros
-            ChtOrdenReparacion.ChartAreas(0).AxisY.MajorGrid.Interval = 1 ' Líneas de cuadrícula
+        ' Configurar colores y tipografía para fondo oscuro
+        ChtOrdenReparacion.BackColor = Color.Transparent
+        ChtOrdenReparacion.ChartAreas(0).BackColor = Color.Transparent
+        ChtOrdenReparacion.ChartAreas(0).AxisX.LabelStyle.ForeColor = Color.Transparent
+        ChtOrdenReparacion.ChartAreas(0).AxisY.LabelStyle.ForeColor = Color.White
+        ChtOrdenReparacion.ChartAreas(0).AxisX.LineColor = Color.White
+        ChtOrdenReparacion.ChartAreas(0).AxisY.LineColor = Color.White
+        ChtOrdenReparacion.ChartAreas(0).AxisX.MajorGrid.LineColor = Color.Gray
+        ChtOrdenReparacion.ChartAreas(0).AxisY.MajorGrid.LineColor = Color.Gray
+        ChtOrdenReparacion.ChartAreas(0).AxisX.TitleForeColor = Color.White
+        ChtOrdenReparacion.ChartAreas(0).AxisY.TitleForeColor = Color.White
+        ChtOrdenReparacion.ChartAreas(0).AxisX.LabelStyle.Font = New Font("Century Gothic", 9.75F)
+        ChtOrdenReparacion.ChartAreas(0).AxisY.LabelStyle.Font = New Font("Century Gothic", 9.75F)
 
-            ' Desactivar las líneas verticales
-            ChtOrdenReparacion.ChartAreas(0).AxisX.MajorGrid.Enabled = False
+        ' Configurar leyenda
+        ChtOrdenReparacion.Legends.Clear()
+        Dim legend As New Legend("Leyenda")
+        legend.Docking = Docking.Top
+        legend.BackColor = Color.Transparent
+        legend.ForeColor = Color.White
+        legend.Title = "Órdenes de Reparación"
+        legend.TitleFont = New Font("Century Gothic", 12, FontStyle.Regular)
+        legend.TitleForeColor = Color.White
+        legend.Alignment = StringAlignment.Center
+        ChtOrdenReparacion.Legends.Add(legend)
 
-            ' Activar solo las líneas horizontales
-            ChtOrdenReparacion.ChartAreas(0).AxisY.MajorGrid.Enabled = True
+        For i As Integer = 0 To series.Points.Count - 1
+            If series.Points(i).AxisLabel <> "Cantidad por Estado" Then
+                Dim legendItem As New LegendItem()
+                legendItem.Name = series.Points(i).AxisLabel
+                legendItem.Color = series.Points(i).Color
 
-            ' Configurar colores y tipografía para fondo oscuro
-            ChtOrdenReparacion.BackColor = Color.Transparent ' Fondo del gráfico
-            ChtOrdenReparacion.ChartAreas(0).BackColor = Color.Transparent ' Fondo del área de gráfico
-            ChtOrdenReparacion.ChartAreas(0).AxisX.LabelStyle.ForeColor = Color.Transparent ' Sin etiquetas del eje X
-            ChtOrdenReparacion.ChartAreas(0).AxisY.LabelStyle.ForeColor = Color.White ' Color de las etiquetas del eje Y
-            ChtOrdenReparacion.ChartAreas(0).AxisX.LineColor = Color.White ' Color de las líneas del eje X
-            ChtOrdenReparacion.ChartAreas(0).AxisY.LineColor = Color.White ' Color de las líneas del eje Y
-            ChtOrdenReparacion.ChartAreas(0).AxisX.MajorGrid.LineColor = Color.Gray ' Color de las líneas de la cuadrícula
-            ChtOrdenReparacion.ChartAreas(0).AxisY.MajorGrid.LineColor = Color.Gray ' Color de las líneas de la cuadrícula
-            ChtOrdenReparacion.ChartAreas(0).AxisX.TitleForeColor = Color.White ' Color del título del eje X
-            ChtOrdenReparacion.ChartAreas(0).AxisY.TitleForeColor = Color.White ' Color del título del eje Y
-            ChtOrdenReparacion.ChartAreas(0).AxisX.LabelStyle.Font = New Font("Century Gothic", 9.75F) ' Tipografía del eje X
-            ChtOrdenReparacion.ChartAreas(0).AxisY.LabelStyle.Font = New Font("Century Gothic", 9.75F) ' Tipografía del eje Y
-
-            ' Configurar leyenda
-            ChtOrdenReparacion.Legends.Clear()
-            Dim legend As New Legend("Leyenda")
-            legend.Docking = Docking.Top ' Ubicación de la leyenda
-            legend.BackColor = Color.Transparent
-            legend.ForeColor = Color.White
-            legend.Title = "Órdenes de Reparación" ' Título de la leyenda
-            legend.TitleFont = New Font("Century Gothic", 12, FontStyle.Regular) ' Fuente y tamaño del título
-            legend.TitleForeColor = Color.White
-            legend.Alignment = StringAlignment.Center
-            ChtOrdenReparacion.Legends.Add(legend)
-
-            ' Asignar valores a la leyenda
-            For i As Integer = 0 To series.Points.Count - 1
-                ' Verificamos que el nombre no sea "Cantidad por Estado"
-                If series.Points(i).AxisLabel <> "Cantidad por Estado" Then
-                    Dim legendItem As New LegendItem()
-                    legendItem.Name = series.Points(i).AxisLabel ' Nombre de la categoría
-                    legendItem.Color = series.Points(i).Color ' Color de la categoría
-
-                    legend.CustomItems.Add(legendItem) ' Añade el ítem a la leyenda
-                End If
-            Next
-            reader.Close()
-        End Using
+                legend.CustomItems.Add(legendItem)
+            End If
+        Next
     End Sub
 
     Private Sub ChtOrdenReparacion_MouseClick(sender As Object, e As MouseEventArgs) Handles ChtOrdenReparacion.MouseClick
@@ -247,12 +264,10 @@ Public Class frmInicio
             Dim punto As DataPoint = result.Series.Points(result.PointIndex)
             Dim estado As String = punto.AxisLabel
 
-            ' Convertir "Esperando S3" a "Esperando Servicios de Terceros"
             If estado = "Esperando S3" Then
                 estado = "Esperando Servicios de Terceros"
             End If
 
-            ' Abre el formulario de órdenes de reparación desde el menú principal
             Dim frm As New frmOrdenesReparacion(estado, True)
             frmMenuPrincipal.AbrirFormHijo(frm, frmMenuPrincipal.btnOrdenReparacion)
         End If
@@ -413,10 +428,6 @@ Public Class frmInicio
 #Region "Pedido"
     Private Sub btnExportarPDF_Click(sender As Object, e As EventArgs) Handles btnExportarPDF.Click
         frmAgregarPedidoRepuesto.ShowDialog()
-    End Sub
-
-    Private Sub chtRepuestos_Click(sender As Object, e As EventArgs) Handles chtRepuestos.Click
-
     End Sub
 #End Region
 
