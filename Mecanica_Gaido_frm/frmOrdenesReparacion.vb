@@ -983,79 +983,120 @@ Public Class frmOrdenesReparacion
             Dim writer As PdfWriter = PdfWriter.GetInstance(document, fs)
             document.Open()
 
-            ' Membrete
             Dim logoPath As String = System.IO.Path.Combine("Imagenes", "mecanicaGaidoLogo-SinFondo.png")
-            MessageBox.Show("Ruta de la imagen: " & logoPath) ' Muestra la ruta para verificación
-
             If File.Exists(logoPath) Then
                 Dim logo As Image = Image.GetInstance(logoPath)
-                logo.ScaleToFit(140, 120) ' Escalar el logo si es necesario
+                logo.ScaleToFit(140, 120)
                 document.Add(logo)
             Else
                 MessageBox.Show("La imagen no se encontró en la ruta especificada.")
             End If
 
-            ' Agregar direcciones
-            document.Add(New Paragraph("Dirección de la empresa", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-            document.Add(New Paragraph("Ciudad, País", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-            document.Add(New Paragraph("Teléfono: XXX-XXXX", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-            document.Add(New Paragraph("Email: ejemplo@empresa.com", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            ' Información del taller
+            document.Add(New Paragraph("de Roberto C. Gaido", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)))
+            document.Add(New Paragraph("Corrientes 136 - (5940) LAS VARILLAS (Cba.)", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Tel. 03533 420505 / 03533 15419566", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("rgaido@lasvarinet.com.ar", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
             document.Add(New Paragraph("Fecha: " & DateTime.Now.ToShortDateString(), FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph(" ", FontFactory.GetFont(FontFactory.HELVETICA, 12))) ' Espacio en blanco
 
-            ' Información del cliente
-            document.Add(New Paragraph("Información del Cliente", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14)))
-            document.Add(New Paragraph("Nombre: Juan Pérez", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-            document.Add(New Paragraph("Teléfono: 123-4567", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-            document.Add(New Paragraph("Email: juanperez@ejemplo.com", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            ' Información del cliente y vehículo
+            document.Add(New Paragraph("ORDEN DE REPARACIÓN N°", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14)))
+            document.Add(New Paragraph("Señor/es: Juan Pérez", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Domicilio: Calle Falsa 123", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Localidad: Las Varillas", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Tel.: 123-4567", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Fecha Entrega: 25/09/2024", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
 
             ' Información del vehículo
-            document.Add(New Paragraph("Información del Vehículo", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14)))
             document.Add(New Paragraph("Marca: Toyota", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
             document.Add(New Paragraph("Modelo: Corolla", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
             document.Add(New Paragraph("Año: 2020", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Chasis: ABC123", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Motor: XYZ987", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
 
             ' Tabla de trabajos a realizar
-            document.Add(New Paragraph("Trabajos a Realizar", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14)))
-            Dim trabajos As PdfPTable = New PdfPTable(2)
-            trabajos.AddCell("Descripción")
-            trabajos.AddCell("Precio")
+            document.Add(New Paragraph("TRABAJOS A REALIZAR", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14)))
+            Dim trabajos As PdfPTable = New PdfPTable(3)
+            trabajos.AddCell("CANT.")
+            trabajos.AddCell("DESCRIPCIÓN")
+            trabajos.AddCell("IMPORTE")
+            trabajos.AddCell("1")
             trabajos.AddCell("Cambio de aceite")
             trabajos.AddCell("$50")
+            trabajos.AddCell("1")
             trabajos.AddCell("Revisión de frenos")
             trabajos.AddCell("$30")
             document.Add(trabajos)
 
-            ' Tabla de mano de obra de terceros
-            document.Add(New Paragraph("Mano de Obra de Terceros", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14)))
-            Dim manoObra As PdfPTable = New PdfPTable(2)
-            manoObra.AddCell("Descripción")
-            manoObra.AddCell("Costo")
-            manoObra.AddCell("Reparación de motor")
-            manoObra.AddCell("$100")
-            document.Add(manoObra)
+            document.NewPage()
 
             ' Tabla de repuestos
-            document.Add(New Paragraph("Repuestos", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14)))
-            Dim repuestos As PdfPTable = New PdfPTable(2)
-            repuestos.AddCell("Repuesto")
-            repuestos.AddCell("Precio")
-            repuestos.AddCell("Filtro de aceite")
-            repuestos.AddCell("$20")
-            repuestos.AddCell("Pastillas de freno")
-            repuestos.AddCell("$40")
-            document.Add(repuestos)
+            Dim tabla As New PdfPTable(6)
+            tabla.WidthPercentage = 100 ' Ocupar el 100% del ancho de la página
 
+            ' Definir las proporciones de ancho de las columnas
+            Dim widths As Single() = New Single() {0.8F, 2.5F, 0.5F, 2.5F, 1.5F, 1.2F}
+            tabla.SetWidths(widths)
+
+            ' Fila 1 - "Repuestos Utilizados" (colspan 4) y "Total" (colspan 2)
+            Dim cellRepuestos As PdfPCell = New PdfPCell(New Phrase("REPUESTOS UTILIZADOS", FontFactory.GetFont(FontFactory.HELVETICA, 12, Font.Bold, BaseColor.WHITE)))
+            cellRepuestos.Colspan = 4 ' Ocupa las primeras 4 columnas
+            cellRepuestos.HorizontalAlignment = Element.ALIGN_CENTER
+            cellRepuestos.BackgroundColor = New BaseColor(46, 139, 87)
+            tabla.AddCell(cellRepuestos)
+
+            Dim cellTotal As PdfPCell = New PdfPCell(New Phrase("TOTAL", FontFactory.GetFont(FontFactory.HELVETICA, 12, Font.Bold, BaseColor.WHITE)))
+            cellTotal.Colspan = 2 ' Ocupa las últimas 2 columnas
+            cellTotal.HorizontalAlignment = Element.ALIGN_CENTER
+            cellTotal.BackgroundColor = New BaseColor(46, 139, 87)
+            tabla.AddCell(cellTotal)
+
+            ' Fila 2 - Títulos
+            Dim titles() As String = {"CANT.", "PIEZA N°", "C", "DESCRIPCIÓN", "P. UNITARIO", "IMPORTE"}
+            For Each title In titles
+                Dim cell As New PdfPCell(New Phrase(title, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 10)))
+                cell.HorizontalAlignment = Element.ALIGN_CENTER
+                tabla.AddCell(cell)
+            Next
+
+            ' Definir la altura de la fila
+            Dim rowHeight As Single = 15.0F
+
+            ' Agregar 48 filas vacías
+            For i As Integer = 1 To 48
+                For j As Integer = 1 To 6
+                    Dim cell As New PdfPCell(New Phrase(" ", FontFactory.GetFont(FontFactory.HELVETICA, 10)))
+                    cell.FixedHeight = rowHeight ' Establecer la altura fija de la celda
+                    tabla.AddCell(cell)
+                Next
+            Next
+
+            ' Última fila - "Total de Repuestos" (colspan 5)
+            Dim cellTotalRepuestos As PdfPCell = New PdfPCell(New Phrase("TOTAL DE REPUESTOS Y LUBRICANTES", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)))
+            cellTotalRepuestos.Colspan = 5 ' Ocupa las primeras 5 columnas
+            cellTotalRepuestos.HorizontalAlignment = Element.ALIGN_CENTER
+            tabla.AddCell(cellTotalRepuestos)
+
+            ' Celda vacía en la última columna
+            Dim lastCell As New PdfPCell(New Phrase(" ", FontFactory.GetFont(FontFactory.HELVETICA, 10)))
+            lastCell.FixedHeight = rowHeight
+            tabla.AddCell(lastCell)
+
+            ' Añadir la tabla al documento
+            document.Add(tabla)
+
+            ' Cerrar el documento
             document.Close()
         End Using
 
         MessageBox.Show("PDF creado exitosamente en: " & pdfPath)
     End Sub
 
-
-
     Private Sub btnDescargarPDF_Click(sender As Object, e As EventArgs) Handles btnDescargarPDF.Click
         CrearPDF()
     End Sub
+
 
 #End Region
 
