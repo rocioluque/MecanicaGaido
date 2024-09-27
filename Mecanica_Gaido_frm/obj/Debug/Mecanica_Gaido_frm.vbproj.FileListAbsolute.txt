@@ -299,3 +299,4 @@ C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Microsoft
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
 C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\bin\Debug\Imagenes\mecanicaGaidoLogo-SinFondo.png

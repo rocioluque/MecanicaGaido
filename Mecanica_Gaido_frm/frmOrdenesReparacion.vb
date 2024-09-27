@@ -3,6 +3,10 @@ Imports AD_Mecanica_Gaido
 Imports System.Data.SqlClient
 Imports System.Configuration
 
+Imports System.IO
+Imports iTextSharp.text
+Imports iTextSharp.text.pdf
+
 Public Class frmOrdenesReparacion
 
     Dim o_Orden As New AD_OrdenReparacion
@@ -971,6 +975,90 @@ Public Class frmOrdenesReparacion
 
 #End Region
 
+#Region "Crear PDF"
+    Public Sub CrearPDF()
+        Dim pdfPath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), $"OrdenesReparaciones.pdf")
+        Using fs As New FileStream(pdfPath, FileMode.Create, FileAccess.Write, FileShare.None)
+            Dim document As New Document()
+            Dim writer As PdfWriter = PdfWriter.GetInstance(document, fs)
+            document.Open()
+
+            ' Membrete
+            Dim logoPath As String = System.IO.Path.Combine("Imagenes", "mecanicaGaidoLogo-SinFondo.png")
+            MessageBox.Show("Ruta de la imagen: " & logoPath) ' Muestra la ruta para verificación
+
+            If File.Exists(logoPath) Then
+                Dim logo As Image = Image.GetInstance(logoPath)
+                logo.ScaleToFit(140, 120) ' Escalar el logo si es necesario
+                document.Add(logo)
+            Else
+                MessageBox.Show("La imagen no se encontró en la ruta especificada.")
+            End If
+
+            ' Agregar direcciones
+            document.Add(New Paragraph("Dirección de la empresa", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Ciudad, País", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Teléfono: XXX-XXXX", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Email: ejemplo@empresa.com", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Fecha: " & DateTime.Now.ToShortDateString(), FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+
+            ' Información del cliente
+            document.Add(New Paragraph("Información del Cliente", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14)))
+            document.Add(New Paragraph("Nombre: Juan Pérez", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Teléfono: 123-4567", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Email: juanperez@ejemplo.com", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+
+            ' Información del vehículo
+            document.Add(New Paragraph("Información del Vehículo", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14)))
+            document.Add(New Paragraph("Marca: Toyota", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Modelo: Corolla", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Año: 2020", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+
+            ' Tabla de trabajos a realizar
+            document.Add(New Paragraph("Trabajos a Realizar", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14)))
+            Dim trabajos As PdfPTable = New PdfPTable(2)
+            trabajos.AddCell("Descripción")
+            trabajos.AddCell("Precio")
+            trabajos.AddCell("Cambio de aceite")
+            trabajos.AddCell("$50")
+            trabajos.AddCell("Revisión de frenos")
+            trabajos.AddCell("$30")
+            document.Add(trabajos)
+
+            ' Tabla de mano de obra de terceros
+            document.Add(New Paragraph("Mano de Obra de Terceros", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14)))
+            Dim manoObra As PdfPTable = New PdfPTable(2)
+            manoObra.AddCell("Descripción")
+            manoObra.AddCell("Costo")
+            manoObra.AddCell("Reparación de motor")
+            manoObra.AddCell("$100")
+            document.Add(manoObra)
+
+            ' Tabla de repuestos
+            document.Add(New Paragraph("Repuestos", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14)))
+            Dim repuestos As PdfPTable = New PdfPTable(2)
+            repuestos.AddCell("Repuesto")
+            repuestos.AddCell("Precio")
+            repuestos.AddCell("Filtro de aceite")
+            repuestos.AddCell("$20")
+            repuestos.AddCell("Pastillas de freno")
+            repuestos.AddCell("$40")
+            document.Add(repuestos)
+
+            document.Close()
+        End Using
+
+        MessageBox.Show("PDF creado exitosamente en: " & pdfPath)
+    End Sub
+
+
+
+    Private Sub btnDescargarPDF_Click(sender As Object, e As EventArgs) Handles btnDescargarPDF.Click
+        CrearPDF()
+    End Sub
+
+#End Region
+
 #Region "Focus txt"
 
 
@@ -1037,7 +1125,8 @@ Public Class frmOrdenesReparacion
         ' Crear un objeto Pen para dibujar el borde
         Using pen As New Pen(borderColor, borderWidth)
             ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelDetallesOrden.Width - 1, PanelDetallesOrden.Height - 1)
+            Dim rect As New System.Drawing.Rectangle(0, 0, PanelDetallesOrden.Width - 1, PanelDetallesOrden.Height - 1)
+
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
@@ -1050,7 +1139,7 @@ Public Class frmOrdenesReparacion
         ' Crear un objeto Pen para dibujar el borde
         Using pen As New Pen(borderColor, borderWidth)
             ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelInfoVehiculo.Width - 1, PanelInfoVehiculo.Height - 1)
+            Dim rect As New System.Drawing.Rectangle(0, 0, PanelInfoVehiculo.Width - 1, PanelInfoVehiculo.Height - 1)
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
@@ -1063,7 +1152,7 @@ Public Class frmOrdenesReparacion
         ' Crear un objeto Pen para dibujar el borde
         Using pen As New Pen(borderColor, borderWidth)
             ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelCostos.Width - 1, PanelCostos.Height - 1)
+            Dim rect As New System.Drawing.Rectangle(0, 0, PanelCostos.Width - 1, PanelCostos.Height - 1)
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
@@ -1076,7 +1165,7 @@ Public Class frmOrdenesReparacion
         ' Crear un objeto Pen para dibujar el borde
         Using pen As New Pen(borderColor, borderWidth)
             ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelDetalleDeRepuestos.Width - 1, PanelDetalleDeRepuestos.Height - 1)
+            Dim rect As New System.Drawing.Rectangle(0, 0, PanelDetalleDeRepuestos.Width - 1, PanelDetalleDeRepuestos.Height - 1)
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
@@ -1089,7 +1178,7 @@ Public Class frmOrdenesReparacion
         ' Crear un objeto Pen para dibujar el borde
         Using pen As New Pen(borderColor, borderWidth)
             ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelServiciosTerceros.Width - 1, PanelServiciosTerceros.Height - 1)
+            Dim rect As New System.Drawing.Rectangle(0, 0, PanelServiciosTerceros.Width - 1, PanelServiciosTerceros.Height - 1)
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
@@ -1102,7 +1191,7 @@ Public Class frmOrdenesReparacion
         ' Crear un objeto Pen para dibujar el borde
         Using pen As New Pen(borderColor, borderWidth)
             ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelReparaciones.Width - 1, PanelReparaciones.Height - 1)
+            Dim rect As New System.Drawing.Rectangle(0, 0, PanelReparaciones.Width - 1, PanelReparaciones.Height - 1)
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
