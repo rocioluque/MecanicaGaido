@@ -797,7 +797,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.lblResultadoPrestador.AutoSize = True
         Me.lblResultadoPrestador.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblResultadoPrestador.Location = New System.Drawing.Point(160, 69)
+        Me.lblResultadoPrestador.Location = New System.Drawing.Point(160, 70)
         Me.lblResultadoPrestador.Name = "lblResultadoPrestador"
         Me.lblResultadoPrestador.Size = New System.Drawing.Size(69, 17)
         Me.lblResultadoPrestador.TabIndex = 111
