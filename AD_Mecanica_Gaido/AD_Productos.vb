@@ -83,7 +83,7 @@ Public Class AD_Productos
         Return tabla
     End Function
 
-    Public Function Consultar_ProductoPorID(ByVal idProducto As Integer) As SqlDataReader
+    Public Function Consultar_ProductoPorID(ByVal idProducto As String) As SqlDataReader
         Dim conexion As New SqlConnection(connectionString)
         Dim comando As New SqlCommand("Consultar_ProductoPorID", conexion)
         comando.CommandType = CommandType.StoredProcedure
@@ -100,7 +100,7 @@ Public Class AD_Productos
 
     Public Sub Agregar_Producto(Descripcion As String, NombreDiario As String, ID_Rubro As Integer, ID_Marca As Integer,
                             CodigoBarra As String, CodFabricante As String, CantidadBulto As Decimal, origen As String,
-                            Alternativo As Boolean, ID_Original As Integer, Estado As Boolean, StockReal As Decimal,
+                            Alternativo As Boolean, ID_Original As Integer, Estado As Boolean, Nota As String, StockReal As Decimal,
                             StockDisponible As Decimal, StockMinimo As Decimal, Ubicacion As String, PrecioCompra As Decimal,
                             Utilidad As Decimal, PrecioLista As Decimal, FechaCompra As Date, FechaVenta As Date)
         Using conexion As New SqlConnection(connectionString)
@@ -117,6 +117,7 @@ Public Class AD_Productos
                 comando.Parameters.AddWithValue("@Alternativo", Alternativo)
                 comando.Parameters.AddWithValue("@ID_Original", ID_Original)
                 comando.Parameters.AddWithValue("@Estado", Estado)
+                comando.Parameters.AddWithValue("@Nota", Nota)
                 comando.Parameters.AddWithValue("@StockReal", StockReal)
                 comando.Parameters.AddWithValue("@StockDisponible", StockDisponible)
                 comando.Parameters.AddWithValue("@StockMinimo", StockMinimo)
@@ -135,7 +136,7 @@ Public Class AD_Productos
 
     Public Sub Modificar_Producto(ID As Integer, Descripcion As String, NombreDiario As String, ID_Rubro As Integer, ID_Marca As Integer,
                           CodigoBarra As String, CodFabricante As String, CantidadBulto As Decimal, origen As String,
-                          Alternativo As Boolean, ID_Original As Integer, Estado As Boolean, StockReal As Decimal,
+                          Alternativo As Boolean, ID_Original As Integer, Estado As Boolean, Nota As String, StockReal As Decimal,
                           StockDisponible As Decimal, StockMinimo As Integer, Ubicacion As String, PrecioCompra As Decimal,
                           Utilidad As Decimal, PrecioLista As Decimal, FechaCompra As Date, FechaVenta As Date)
         Using conexion As New SqlConnection(connectionString)
@@ -153,6 +154,7 @@ Public Class AD_Productos
                 comando.Parameters.AddWithValue("@Alternativo", Alternativo)
                 comando.Parameters.AddWithValue("@ID_Original", ID_Original)
                 comando.Parameters.AddWithValue("@Estado", Estado)
+                comando.Parameters.AddWithValue("@Nota", Nota)
                 comando.Parameters.AddWithValue("@StockReal", StockReal)
                 comando.Parameters.AddWithValue("@StockDisponible", StockDisponible)
                 comando.Parameters.AddWithValue("@StockMinimo", StockMinimo)
@@ -235,6 +237,4 @@ Public Class AD_Productos
             End Try
         End Using
     End Sub
-
-
 End Class

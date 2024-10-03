@@ -149,12 +149,15 @@ Public Class frmAgregarEmpleados
         If txtUsuario.Text <> Nothing And txtContraseña.Text <> Nothing And cboSeccion.SelectedValue <> Nothing Then
 
             Try
-                o_empleados.Agregar_Empleado_Usuario(IdPersona, txtUsuario.Text, txtContraseña.Text, CInt(cboRol.SelectedValue),
-                                                     dtpFechaContratacion.Value, txtCargo.Text, txtNota.Text, chkEstado.Checked, CInt(cboSeccion.SelectedValue))
-                MsgBox("Empleado y usuario agregado correctamente.", vbInformation, "Información")
-                limpiar()
+                If o_empleados.Agregar_Empleado_Usuario(IdPersona, txtUsuario.Text, txtContraseña.Text, CInt(cboRol.SelectedValue),
+                                      dtpFechaContratacion.Value, txtCargo.Text, txtNota.Text, chkEstado.Checked, CInt(cboSeccion.SelectedValue)) Then
+                    MsgBox("Empleado y usuario agregado correctamente.", vbInformation, "Información")
+                    limpiar()
 
-                Cargar_Grilla_Empleados()
+                    Cargar_Grilla_Empleados()
+                Else
+                    MsgBox("Esta persona ya está cargada como empleado, puede seleccionarla en la grilla y modificar sus datos.", vbExclamation, "Marca Duplicada")
+                End If
             Catch ex As Exception
                 MsgBox("Error al agregar el empleado: " & ex.Message, vbCritical, "Error")
             End Try
@@ -292,7 +295,10 @@ Public Class frmAgregarEmpleados
                 chkEstado.Checked = Convert.ToBoolean(datoleido("Estado"))
 
                 btnAceptar.Enabled = False
-
+            Else
+                txtID.Text = datoleido("N° Empleado").ToString()
+                lblCargaEmpleado.Text = datoleido("Empleado").ToString()
+                lblCargaCuil.Text = datoleido("Documento").ToString()
             End If
 
             datoleido.Close()

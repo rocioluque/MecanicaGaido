@@ -59,7 +59,7 @@ Partial Class frmModificarFormaEntrega
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
         Me.chkEstado.Location = New System.Drawing.Point(77, 84)
-        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
         Me.chkEstado.TabIndex = 3
@@ -77,6 +77,7 @@ Partial Class frmModificarFormaEntrega
         Me.grdModificarFormaEntrega.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarFormaEntrega.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdModificarFormaEntrega.Location = New System.Drawing.Point(44, 144)
+        Me.grdModificarFormaEntrega.MultiSelect = False
         Me.grdModificarFormaEntrega.Name = "grdModificarFormaEntrega"
         Me.grdModificarFormaEntrega.ReadOnly = True
         Me.grdModificarFormaEntrega.RowHeadersVisible = False

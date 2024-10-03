@@ -59,7 +59,7 @@ Partial Class frmModificarSecciones
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
         Me.chkEstado.Location = New System.Drawing.Point(77, 86)
-        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
         Me.chkEstado.TabIndex = 3
@@ -77,6 +77,7 @@ Partial Class frmModificarSecciones
         Me.grdModificarSeccion.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarSeccion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdModificarSeccion.Location = New System.Drawing.Point(44, 146)
+        Me.grdModificarSeccion.MultiSelect = False
         Me.grdModificarSeccion.Name = "grdModificarSeccion"
         Me.grdModificarSeccion.ReadOnly = True
         Me.grdModificarSeccion.RowHeadersVisible = False

@@ -18,7 +18,7 @@ Public Class AD_Reportes
         Dim pocos As Integer = 0
 
         Using conexion As New SqlConnection(connectionString)
-            Using comando As New SqlCommand("Contar_Repuestos_BD", conexion)
+            Using comando As New SqlCommand("Contar_Repuestos", conexion)
                 conexion.Open()
                 comando.CommandType = CommandType.StoredProcedure
 
@@ -38,6 +38,21 @@ Public Class AD_Reportes
             End Using
         End Using
         Return New Tuple(Of Integer, Integer, Integer)(muchos, cero, pocos)
+    End Function
+
+    Public Function ObtenerOrdenesProgreso() As DataTable
+        Dim tabla As New DataTable()
+        Using conexion As New SqlConnection(connectionString)
+            conexion.Open()
+            Using comando As New SqlCommand("Consultar_Ordenes_Progreso", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+
+                Using reader As SqlDataReader = comando.ExecuteReader()
+                    tabla.Load(reader)
+                End Using
+            End Using
+        End Using
+        Return tabla
     End Function
 #End Region
 
@@ -65,10 +80,63 @@ Public Class AD_Reportes
         Return dt
     End Function
 
+    Public Function ObtenerOrdenesPorTipoReparacion() As DataTable
+        Dim dt As New DataTable()
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Contar_Reparaciones_Tipo", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+
+                Dim adapter As New SqlDataAdapter(comando)
+                adapter.Fill(dt)
+            End Using
+        End Using
+        Return dt
+    End Function
+
 #End Region
 
 #Region "Reporte productos"
+    Public Function Cargar_Combo_Marcas() As DataTable
+        Dim tabla As New DataTable
 
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Combo_Marcas", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                Try
+                    conexion.Open()
+                    Dim datadapter As New SqlDataAdapter(comando)
+                    datadapter.Fill(tabla)
+                Catch ex As Exception
+                    Throw New Exception("Error al cargar las marcas desde la base de datos: " & ex.Message, ex)
+                End Try
+
+            End Using
+        End Using
+        Return tabla
+    End Function
+
+    Public Function ObtenerRepuestos(Optional marcaID As Integer? = Nothing) As DataSet
+        Dim ds As New DataSet()
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Grilla_ListaRepuestos", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+
+                If marcaID.HasValue Then
+                    comando.Parameters.AddWithValue("@MarcaID", marcaID.Value)
+                Else
+                    comando.Parameters.AddWithValue("@MarcaID", DBNull.Value)
+                End If
+
+                conexion.Open()
+                Dim adapter As New SqlDataAdapter(comando)
+                adapter.Fill(ds)
+            End Using
+        End Using
+
+        Return ds
+    End Function
 #End Region
 
 #Region "Reporte compras"

@@ -48,5 +48,19 @@ Public Class AD_ServicioTerceros
         End Using
     End Sub
 
+    Public Sub Consultar_Serv3Incompletos_Orden(ID_Orden As Integer)
+        Using conn As New SqlConnection(connectionString)
+            Using command As New SqlCommand("Consultar_Serv3Incompletos_Orden", conn)
+                command.CommandType = CommandType.StoredProcedure
+                command.Parameters.AddWithValue("@ID_Orden", ID_Orden)
+                Try
+                    command.ExecuteNonQuery()
+
+                Catch ex As System.Exception
+                    Throw ex
+                End Try
+            End Using
+        End Using
+    End Sub
 
 End Class

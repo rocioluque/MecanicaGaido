@@ -52,9 +52,6 @@ Partial Class frmProductos
         Me.txtId = New System.Windows.Forms.TextBox()
         Me.chkAlterntivo = New System.Windows.Forms.CheckBox()
         Me.btnBuscar = New System.Windows.Forms.Button()
-        Me.btnAceptar = New System.Windows.Forms.Button()
-        Me.btnCancelar = New System.Windows.Forms.Button()
-        Me.btnModificar = New System.Windows.Forms.Button()
         Me.btnAgregarMarca = New System.Windows.Forms.PictureBox()
         Me.btnAgregarRubro = New System.Windows.Forms.PictureBox()
         Me.lblDatosEspecificos = New System.Windows.Forms.Label()
@@ -84,6 +81,12 @@ Partial Class frmProductos
         Me.txtPrecioCompra = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.txtBuscar = New System.Windows.Forms.TextBox()
+        Me.btnModificar = New System.Windows.Forms.Button()
+        Me.btnCancelar = New System.Windows.Forms.Button()
+        Me.btnAceptar = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.PanelNota = New System.Windows.Forms.Panel()
+        Me.txtNota = New System.Windows.Forms.RichTextBox()
         CType(Me.grdProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarMarca, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarRubro, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -91,6 +94,7 @@ Partial Class frmProductos
         Me.PanelExistencia.SuspendLayout()
         CType(Me.Button1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelMovimientos.SuspendLayout()
+        Me.PanelNota.SuspendLayout()
         Me.SuspendLayout()
         '
         'grdProductos
@@ -104,7 +108,8 @@ Partial Class frmProductos
         Me.grdProductos.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdProductos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdProductos.Location = New System.Drawing.Point(122, 497)
+        Me.grdProductos.Location = New System.Drawing.Point(122, 541)
+        Me.grdProductos.MultiSelect = False
         Me.grdProductos.Name = "grdProductos"
         Me.grdProductos.ReadOnly = True
         Me.grdProductos.RowHeadersVisible = False
@@ -405,55 +410,6 @@ Partial Class frmProductos
         Me.btnBuscar.Text = "..."
         Me.btnBuscar.UseVisualStyleBackColor = False
         '
-        'btnAceptar
-        '
-        Me.btnAceptar.BackColor = System.Drawing.Color.Transparent
-        Me.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnAceptar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
-        Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAceptar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAceptar.ForeColor = System.Drawing.Color.White
-        Me.btnAceptar.Location = New System.Drawing.Point(898, 316)
-        Me.btnAceptar.Name = "btnAceptar"
-        Me.btnAceptar.Size = New System.Drawing.Size(82, 28)
-        Me.btnAceptar.TabIndex = 22
-        Me.btnAceptar.Text = "Aceptar"
-        Me.btnAceptar.UseVisualStyleBackColor = False
-        '
-        'btnCancelar
-        '
-        Me.btnCancelar.BackColor = System.Drawing.Color.Transparent
-        Me.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
-        Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancelar.ForeColor = System.Drawing.Color.White
-        Me.btnCancelar.Location = New System.Drawing.Point(898, 444)
-        Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(82, 28)
-        Me.btnCancelar.TabIndex = 24
-        Me.btnCancelar.Text = "Cancelar"
-        Me.btnCancelar.UseVisualStyleBackColor = False
-        '
-        'btnModificar
-        '
-        Me.btnModificar.BackColor = System.Drawing.Color.Transparent
-        Me.btnModificar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnModificar.Enabled = False
-        Me.btnModificar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
-        Me.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
-        Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnModificar.ForeColor = System.Drawing.Color.White
-        Me.btnModificar.Location = New System.Drawing.Point(898, 380)
-        Me.btnModificar.Name = "btnModificar"
-        Me.btnModificar.Size = New System.Drawing.Size(82, 28)
-        Me.btnModificar.TabIndex = 23
-        Me.btnModificar.Text = "Modificar"
-        Me.btnModificar.UseVisualStyleBackColor = False
-        '
         'btnAgregarMarca
         '
         Me.btnAgregarMarca.BackgroundImage = CType(resources.GetObject("btnAgregarMarca.BackgroundImage"), System.Drawing.Image)
@@ -479,7 +435,7 @@ Partial Class frmProductos
         Me.lblDatosEspecificos.AutoSize = True
         Me.lblDatosEspecificos.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblDatosEspecificos.ForeColor = System.Drawing.Color.White
-        Me.lblDatosEspecificos.Location = New System.Drawing.Point(134, 84)
+        Me.lblDatosEspecificos.Location = New System.Drawing.Point(134, 65)
         Me.lblDatosEspecificos.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblDatosEspecificos.Name = "lblDatosEspecificos"
         Me.lblDatosEspecificos.Size = New System.Drawing.Size(112, 17)
@@ -516,7 +472,7 @@ Partial Class frmProductos
         Me.PanelDatosEspecificos.Controls.Add(Me.lblCodFabricante)
         Me.PanelDatosEspecificos.Controls.Add(Me.lblCantBulto)
         Me.PanelDatosEspecificos.Controls.Add(Me.txtCantidadBulto)
-        Me.PanelDatosEspecificos.Location = New System.Drawing.Point(122, 93)
+        Me.PanelDatosEspecificos.Location = New System.Drawing.Point(122, 74)
         Me.PanelDatosEspecificos.Name = "PanelDatosEspecificos"
         Me.PanelDatosEspecificos.Size = New System.Drawing.Size(858, 201)
         Me.PanelDatosEspecificos.TabIndex = 109
@@ -577,7 +533,7 @@ Partial Class frmProductos
         Me.lblExistencia.AutoSize = True
         Me.lblExistencia.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblExistencia.ForeColor = System.Drawing.Color.White
-        Me.lblExistencia.Location = New System.Drawing.Point(137, 308)
+        Me.lblExistencia.Location = New System.Drawing.Point(137, 357)
         Me.lblExistencia.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblExistencia.Name = "lblExistencia"
         Me.lblExistencia.Size = New System.Drawing.Size(67, 17)
@@ -596,7 +552,7 @@ Partial Class frmProductos
         Me.PanelExistencia.Controls.Add(Me.lblStockDisponible)
         Me.PanelExistencia.Controls.Add(Me.txtUbicacion)
         Me.PanelExistencia.Controls.Add(Me.lblUbicacion)
-        Me.PanelExistencia.Location = New System.Drawing.Point(122, 316)
+        Me.PanelExistencia.Location = New System.Drawing.Point(122, 365)
         Me.PanelExistencia.Name = "PanelExistencia"
         Me.PanelExistencia.Size = New System.Drawing.Size(316, 157)
         Me.PanelExistencia.TabIndex = 111
@@ -651,7 +607,7 @@ Partial Class frmProductos
         Me.lblMovimientos.AutoSize = True
         Me.lblMovimientos.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblMovimientos.ForeColor = System.Drawing.Color.White
-        Me.lblMovimientos.Location = New System.Drawing.Point(524, 308)
+        Me.lblMovimientos.Location = New System.Drawing.Point(512, 357)
         Me.lblMovimientos.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblMovimientos.Name = "lblMovimientos"
         Me.lblMovimientos.Size = New System.Drawing.Size(85, 17)
@@ -671,7 +627,7 @@ Partial Class frmProductos
         Me.PanelMovimientos.Controls.Add(Me.txtUtilidad)
         Me.PanelMovimientos.Controls.Add(Me.lblUtilidad)
         Me.PanelMovimientos.Controls.Add(Me.txtPrecioCompra)
-        Me.PanelMovimientos.Location = New System.Drawing.Point(509, 316)
+        Me.PanelMovimientos.Location = New System.Drawing.Point(499, 365)
         Me.PanelMovimientos.Name = "PanelMovimientos"
         Me.PanelMovimientos.Size = New System.Drawing.Size(316, 157)
         Me.PanelMovimientos.TabIndex = 113
@@ -804,7 +760,7 @@ Partial Class frmProductos
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(134, 49)
+        Me.Label11.Location = New System.Drawing.Point(134, 30)
         Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(49, 17)
@@ -814,12 +770,90 @@ Partial Class frmProductos
         'txtBuscar
         '
         Me.txtBuscar.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtBuscar.Location = New System.Drawing.Point(245, 46)
+        Me.txtBuscar.Location = New System.Drawing.Point(245, 27)
         Me.txtBuscar.Margin = New System.Windows.Forms.Padding(2)
         Me.txtBuscar.Name = "txtBuscar"
         Me.txtBuscar.Size = New System.Drawing.Size(735, 23)
         Me.txtBuscar.TabIndex = 115
         Me.txtBuscar.Tag = ""
+        '
+        'btnModificar
+        '
+        Me.btnModificar.BackColor = System.Drawing.Color.Transparent
+        Me.btnModificar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnModificar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnModificar.ForeColor = System.Drawing.Color.White
+        Me.btnModificar.Location = New System.Drawing.Point(880, 425)
+        Me.btnModificar.Name = "btnModificar"
+        Me.btnModificar.Size = New System.Drawing.Size(100, 37)
+        Me.btnModificar.TabIndex = 118
+        Me.btnModificar.Text = "Modificar"
+        Me.btnModificar.UseVisualStyleBackColor = False
+        '
+        'btnCancelar
+        '
+        Me.btnCancelar.BackColor = System.Drawing.Color.Transparent
+        Me.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancelar.ForeColor = System.Drawing.Color.White
+        Me.btnCancelar.Location = New System.Drawing.Point(880, 485)
+        Me.btnCancelar.Name = "btnCancelar"
+        Me.btnCancelar.Size = New System.Drawing.Size(100, 37)
+        Me.btnCancelar.TabIndex = 119
+        Me.btnCancelar.Text = "Cancelar"
+        Me.btnCancelar.UseVisualStyleBackColor = False
+        '
+        'btnAceptar
+        '
+        Me.btnAceptar.BackColor = System.Drawing.Color.Transparent
+        Me.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnAceptar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen
+        Me.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAceptar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAceptar.ForeColor = System.Drawing.Color.White
+        Me.btnAceptar.Location = New System.Drawing.Point(880, 365)
+        Me.btnAceptar.Name = "btnAceptar"
+        Me.btnAceptar.Size = New System.Drawing.Size(100, 37)
+        Me.btnAceptar.TabIndex = 117
+        Me.btnAceptar.Text = "Aceptar"
+        Me.btnAceptar.UseVisualStyleBackColor = False
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.Label6.ForeColor = System.Drawing.Color.White
+        Me.Label6.Location = New System.Drawing.Point(134, 282)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(43, 17)
+        Me.Label6.TabIndex = 121
+        Me.Label6.Text = "Notas"
+        '
+        'PanelNota
+        '
+        Me.PanelNota.Controls.Add(Me.txtNota)
+        Me.PanelNota.Location = New System.Drawing.Point(122, 290)
+        Me.PanelNota.Name = "PanelNota"
+        Me.PanelNota.Size = New System.Drawing.Size(858, 55)
+        Me.PanelNota.TabIndex = 120
+        '
+        'txtNota
+        '
+        Me.txtNota.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtNota.Location = New System.Drawing.Point(17, 14)
+        Me.txtNota.Name = "txtNota"
+        Me.txtNota.Size = New System.Drawing.Size(827, 27)
+        Me.txtNota.TabIndex = 21
+        Me.txtNota.Text = ""
         '
         'frmProductos
         '
@@ -829,6 +863,11 @@ Partial Class frmProductos
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(1187, 673)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.PanelNota)
+        Me.Controls.Add(Me.btnModificar)
+        Me.Controls.Add(Me.btnCancelar)
+        Me.Controls.Add(Me.btnAceptar)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.txtBuscar)
         Me.Controls.Add(Me.lblMovimientos)
@@ -837,9 +876,6 @@ Partial Class frmProductos
         Me.Controls.Add(Me.PanelExistencia)
         Me.Controls.Add(Me.lblDatosEspecificos)
         Me.Controls.Add(Me.PanelDatosEspecificos)
-        Me.Controls.Add(Me.btnModificar)
-        Me.Controls.Add(Me.btnCancelar)
-        Me.Controls.Add(Me.btnAceptar)
         Me.Controls.Add(Me.grdProductos)
         Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -857,6 +893,7 @@ Partial Class frmProductos
         CType(Me.Button1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelMovimientos.ResumeLayout(False)
         Me.PanelMovimientos.PerformLayout()
+        Me.PanelNota.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -890,9 +927,6 @@ Partial Class frmProductos
     Friend WithEvents txtId As TextBox
     Friend WithEvents chkAlterntivo As CheckBox
     Friend WithEvents btnBuscar As Button
-    Friend WithEvents btnAceptar As Button
-    Friend WithEvents btnCancelar As Button
-    Friend WithEvents btnModificar As Button
     Friend WithEvents btnAgregarMarca As PictureBox
     Friend WithEvents btnAgregarRubro As PictureBox
     Friend WithEvents lblDatosEspecificos As Label
@@ -922,4 +956,10 @@ Partial Class frmProductos
     Friend WithEvents Label11 As Label
     Friend WithEvents txtBuscar As TextBox
     Friend WithEvents Button1 As PictureBox
+    Friend WithEvents btnModificar As Button
+    Friend WithEvents btnCancelar As Button
+    Friend WithEvents btnAceptar As Button
+    Friend WithEvents Label6 As Label
+    Friend WithEvents PanelNota As Panel
+    Friend WithEvents txtNota As RichTextBox
 End Class

@@ -77,6 +77,7 @@ Partial Class frmModificarTipoVenta
         Me.grdModificarTipoDeVenta.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarTipoDeVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdModificarTipoDeVenta.Location = New System.Drawing.Point(44, 146)
+        Me.grdModificarTipoDeVenta.MultiSelect = False
         Me.grdModificarTipoDeVenta.Name = "grdModificarTipoDeVenta"
         Me.grdModificarTipoDeVenta.ReadOnly = True
         Me.grdModificarTipoDeVenta.RowHeadersVisible = False

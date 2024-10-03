@@ -2,8 +2,24 @@
 Imports AD_Mecanica_Gaido
 Imports System.Data.SqlClient
 Imports System.Configuration
+Imports System.Net.Http
+Imports System.Threading.Tasks
+Imports Newtonsoft.Json
+Imports Microsoft.VisualBasic
+Imports System.IO
+Imports System.Data.Common
+Imports Newtonsoft.Json.Linq
+Imports System.Text
+
 Public Class frmPersonas
     Dim o_Personas As New AD_Personas
+
+    Dim EsRI As Boolean
+    Dim EsMonotributo As Boolean
+    Dim EsExento As Boolean
+    Dim EsConsFinal As Boolean
+
+
     Public Property IdPersona As Integer
     Public Property NuevaPersonaNombre As String
     Public Property NuevaPersonaNombreCompra As String
@@ -533,7 +549,7 @@ Nombre"
         End If
     End Sub
 
-    Private Sub txtCodigoPostal_TextChanged(sender As Object, e As EventArgs) 
+    Private Sub txtCodigoPostal_TextChanged(sender As Object, e As EventArgs)
         ActualizarEstadoControles()
     End Sub
 
@@ -624,5 +640,142 @@ Nombre"
     End Sub
 
 
+
+
 #End Region
+
+#Region "AFIP"
+    Private Async Sub BtnValidarCUIT(sender As Object, e As EventArgs) Handles msktxtNumeroDocumento.Leave
+
+        If cboTipoDocumento.SelectedValue = 3 Then
+
+            Dim cuit As String = msktxtNumeroDocumento.Text.Replace("-", "")
+
+            ' Validar que el CUIT tenga 11 dígitos
+            If cuit.Length <> 11 Then
+                MessageBox.Show("El CUIT debe tener 11 dígitos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+
+            ' URL de la API
+            Dim apiUrl As String = $"https://recetas.instantagro.goodapps.com.ar/GetContribuyente.ashx?CUIT={cuit}"
+
+            Try
+                ' Realizar la solicitud HTTP
+                Using client As New HttpClient()
+                    Dim response As HttpResponseMessage = Await client.GetAsync(apiUrl)
+                    response.EnsureSuccessStatusCode()
+
+                    ' Asegurarse de leer el contenido como UTF-8
+                    Dim byteArray As Byte() = Await response.Content.ReadAsByteArrayAsync()
+                    Dim responseBody As String = Encoding.UTF8.GetString(byteArray) ' Aquí usas Encoding.UTF8
+
+                    ' Verificar si la respuesta contiene errorGetData
+                    Dim jsonResponse = JsonConvert.DeserializeObject(Of JObject)(responseBody)
+
+                    ' Verificar si contiene "errorGetData":true
+                    If jsonResponse("errorGetData") IsNot Nothing AndAlso jsonResponse("errorGetData").Value(Of Boolean)() Then
+                        MessageBox.Show(jsonResponse("errorMessage").ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        Return
+                    End If
+                    ' Deserializar la respuesta JSON
+                    Dim contribuyenteData As ContribuyenteResponse = JsonConvert.DeserializeObject(Of ContribuyenteResponse)(responseBody)
+                    ' Variable que contiene la dirección completa
+                    Dim direccionCompleta As String = contribuyenteData.Contribuyente.domicilioFiscal.direccion
+                    Dim calle As String = ""
+                    Dim numero As String = ""
+
+                    If direccionCompleta <> Nothing Then
+                        ' Encuentra el índice del último espacio
+                        Dim indiceUltimoEspacio As Integer = direccionCompleta.LastIndexOf(" "c)
+
+                        ' Variables para almacenar la dirección y lo que hay a la derecha del espacio
+
+                        ' Verifica si se encontró un espacio
+                        If indiceUltimoEspacio <> -1 Then
+                            ' Extrae la parte izquierda (todo antes del último espacio)
+                            calle = direccionCompleta.Substring(0, indiceUltimoEspacio)
+
+                            ' Extrae la parte derecha (todo después del último espacio)
+                            numero = direccionCompleta.Substring(indiceUltimoEspacio + 1)
+                        Else
+                            ' Si no se encontró un espacio, usa la dirección completa como parte izquierda
+                            calle = direccionCompleta
+                        End If
+                    End If
+                    ' Actualizar los campos en el formulario con los datos obtenidos
+                    If contribuyenteData IsNot Nothing AndAlso Not contribuyenteData.errorGetData Then
+                        Dim RazonSocial As String = contribuyenteData.Contribuyente.nombre
+                        Dim Apellido As String = ""
+                        Dim Nombre As String = ""
+
+                        ' Buscar la posición del primer espacio
+                        Dim espacioPos As Integer = RazonSocial.IndexOf(" "c)
+
+                        ' Si se encuentra un espacio
+                        If espacioPos > -1 Then
+                            ' Apellido será todo lo que está antes del primer espacio
+                            Apellido = RazonSocial.Substring(0, espacioPos).Trim()
+
+                            ' Nombre será todo lo que está después del primer espacio
+                            Nombre = RazonSocial.Substring(espacioPos + 1).Trim()
+                        Else
+                            ' Si no se encuentra un espacio, se asume que todo es Apellido
+                            Apellido = RazonSocial
+                        End If
+
+                        If cboTipoPersona.SelectedValue = 1 Then
+                            txtApellido.Text = Apellido
+                            txtNombre.Text = Nombre
+                        Else
+                            txtApellido.Text = ""
+                            txtNombre.Text = RazonSocial
+
+                        End If
+
+                        cboProvincia.SelectedValue = contribuyenteData.Contribuyente.domicilioFiscal.idProvincia
+                        cboCiudad.Text = contribuyenteData.Contribuyente.domicilioFiscal.localidad
+                        txtDireccion.Text = calle
+                        txtNumero.Text = numero
+
+                        ' Configurar la categoría IVA
+
+                        If contribuyenteData.Contribuyente.EsRI Then
+                            EsRI = True
+                        ElseIf contribuyenteData.Contribuyente.EsMonotributo Then
+                            EsMonotributo = True
+                        ElseIf contribuyenteData.Contribuyente.EsExento Then
+                            EsExento = True
+                        Else
+                            EsConsFinal = True
+                        End If
+                    End If
+                End Using
+            Catch ex As Exception
+                MessageBox.Show("Error al conectar con la API: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
+#End Region
+
+End Class
+
+' Clases para deserializar el JSON
+Public Class ContribuyenteResponse
+    Public Property Contribuyente As Contribuyente
+    Public Property errorGetData As Boolean
+End Class
+
+Public Class Contribuyente
+    Public Property nombre As String
+    Public Property domicilioFiscal As DomicilioFiscal
+    Public Property EsRI As Boolean
+    Public Property EsMonotributo As Boolean
+    Public Property EsExento As Boolean
+End Class
+
+Public Class DomicilioFiscal
+    Public Property direccion As String
+    Public Property localidad As String
+    Public Property idProvincia As Integer
 End Class

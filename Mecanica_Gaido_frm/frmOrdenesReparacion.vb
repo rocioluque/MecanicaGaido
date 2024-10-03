@@ -3,6 +3,10 @@ Imports AD_Mecanica_Gaido
 Imports System.Data.SqlClient
 Imports System.Configuration
 
+Imports System.IO
+Imports iTextSharp.text
+Imports iTextSharp.text.pdf
+
 Public Class frmOrdenesReparacion
 
     Dim o_Orden As New AD_OrdenReparacion
@@ -26,6 +30,8 @@ Public Class frmOrdenesReparacion
         cboPersonas.SelectedIndex = -1
         CboPersonaServ3.SelectedIndex = -1
         cboVehiculo.SelectedIndex = -1
+        CboProgreso.SelectedIndex = -1
+        CboTipoReparacion.SelectedIndex = -1
         chkActivo.Checked = True
         chkActivo.Visible = False
     End Sub
@@ -46,12 +52,22 @@ Public Class frmOrdenesReparacion
         Cargar_Combo_Personas()
         Cargar_Combo_Prestador()
         Cargar_Combo_Repuestos()
-        Cargar_Grilla_Ordenes()
+        If esFiltradoPorGrafico AndAlso Not String.IsNullOrEmpty(estadoParaFiltrar) Then
+            Cargar_Grilla_OrdenesP(estadoParaFiltrar)
+        Else
+            Cargar_Grilla_Ordenes()
+        End If
+        Cargar_Combo_TiposReparacion()
         limpiar()
         ponerDecimales()
 
     End Sub
 
+    Public Sub New(Optional ByVal estadoParaFiltrar As String = "", Optional ByVal esFiltradoPorGrafico As Boolean = False)
+        InitializeComponent()
+        Me.estadoParaFiltrar = estadoParaFiltrar
+        Me.esFiltradoPorGrafico = esFiltradoPorGrafico
+    End Sub
 
 
 
@@ -129,7 +145,6 @@ Public Class frmOrdenesReparacion
 #Region "Cargar cbo"
     Private combopersonacargado = False
 
-
     Private Sub Cargar_Combo_Personas()
         Try
             Dim tabla As DataTable = o_Orden.Cargar_Combo_Personas()
@@ -150,7 +165,6 @@ Public Class frmOrdenesReparacion
         combopersonacargado = True
     End Sub
 
-
     Private Sub Cargar_Combo_Vehiculos(ID_Persona As Integer)
         Try
             Dim tabla As DataTable = o_Orden.Cargar_Combo_Vehiculos(ID_Persona)
@@ -170,8 +184,6 @@ Public Class frmOrdenesReparacion
         End Try
     End Sub
 
-
-
     Private Sub Cargar_Combo_Prestador()
         Try
             Dim tabla As DataTable = o_Orden.Cargar_Combo_Prestador()
@@ -190,6 +202,7 @@ Public Class frmOrdenesReparacion
             MsgBox("Error al cargar los Servicios: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+
     Private Sub Cargar_Combo_Repuestos()
         Try
             Dim tablaRep As DataTable = o_Orden.Cargar_Combo_Repuestos()
@@ -206,6 +219,25 @@ Public Class frmOrdenesReparacion
 
         Catch ex As Exception
             MsgBox("Error al cargar los Repuestos: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub Cargar_Combo_TiposReparacion()
+        Try
+            Dim tablaTipoRep As DataTable = o_Orden.Cargar_Combo_TipoReparacion()
+
+            If tablaTipoRep.Rows.Count > 0 Then
+                CboTipoReparacion.DataSource = tablaTipoRep
+                CboTipoReparacion.DisplayMember = "TipoDeReparacion"
+                CboTipoReparacion.ValueMember = "ID_TipoReparacion"
+
+                CboTipoReparacion.SelectedValue = -1
+            Else
+                MsgBox("No se encontraron Tipos de Reparación.", vbInformation, "Información")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al cargar los Tipos de Reparación: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
 
@@ -325,350 +357,63 @@ Public Class frmOrdenesReparacion
         Finally
         End Try
     End Sub
-#End Region
 
-#Region "Keypress"
-
-    Private Sub txtSeñasParticulares_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
-    End Sub
-#End Region
-
-#Region "Css trucho"
-    Private Sub PanelDetallesOrden_Paint(sender As Object, e As PaintEventArgs) Handles PanelDetallesOrden.Paint
-        ' Configurar los colores y el grosor del borde
-        Dim borderColor As Color = Color.SeaGreen
-        Dim borderWidth As Integer = 1
-
-        ' Crear un objeto Pen para dibujar el borde
-        Using pen As New Pen(borderColor, borderWidth)
-            ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelDetallesOrden.Width - 1, PanelDetallesOrden.Height - 1)
-            e.Graphics.DrawRectangle(pen, rect)
-        End Using
-    End Sub
-
-    Private Sub PanelInfoVehiculo_Paint(sender As Object, e As PaintEventArgs) Handles PanelInfoVehiculo.Paint
-        ' Configurar los colores y el grosor del borde
-        Dim borderColor As Color = Color.SeaGreen
-        Dim borderWidth As Integer = 1
-
-        ' Crear un objeto Pen para dibujar el borde
-        Using pen As New Pen(borderColor, borderWidth)
-            ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelInfoVehiculo.Width - 1, PanelInfoVehiculo.Height - 1)
-            e.Graphics.DrawRectangle(pen, rect)
-        End Using
-    End Sub
-
-    Private Sub PanelCostos_Paint(sender As Object, e As PaintEventArgs) Handles PanelCostos.Paint
-        ' Configurar los colores y el grosor del borde
-        Dim borderColor As Color = Color.SeaGreen
-        Dim borderWidth As Integer = 1
-
-        ' Crear un objeto Pen para dibujar el borde
-        Using pen As New Pen(borderColor, borderWidth)
-            ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelCostos.Width - 1, PanelCostos.Height - 1)
-            e.Graphics.DrawRectangle(pen, rect)
-        End Using
-    End Sub
-
-    Private Sub PanelDetalleDeRepuestos_Paint(sender As Object, e As PaintEventArgs) Handles PanelDetalleDeRepuestos.Paint
-        ' Configurar los colores y el grosor del borde
-        Dim borderColor As Color = Color.SeaGreen
-        Dim borderWidth As Integer = 1
-
-        ' Crear un objeto Pen para dibujar el borde
-        Using pen As New Pen(borderColor, borderWidth)
-            ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelDetalleDeRepuestos.Width - 1, PanelDetalleDeRepuestos.Height - 1)
-            e.Graphics.DrawRectangle(pen, rect)
-        End Using
-    End Sub
-
-    Private Sub PanelServiciosTerceros_Paint(sender As Object, e As PaintEventArgs) Handles PanelServiciosTerceros.Paint
-        ' Configurar los colores y el grosor del borde
-        Dim borderColor As Color = Color.SeaGreen
-        Dim borderWidth As Integer = 1
-
-        ' Crear un objeto Pen para dibujar el borde
-        Using pen As New Pen(borderColor, borderWidth)
-            ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelServiciosTerceros.Width - 1, PanelServiciosTerceros.Height - 1)
-            e.Graphics.DrawRectangle(pen, rect)
-        End Using
-    End Sub
-
-    Private Sub PanelReparaciones_Paint(sender As Object, e As PaintEventArgs) Handles PanelReparaciones.Paint
-        ' Configurar los colores y el grosor del borde
-        Dim borderColor As Color = Color.SeaGreen
-        Dim borderWidth As Integer = 1
-
-        ' Crear un objeto Pen para dibujar el borde
-        Using pen As New Pen(borderColor, borderWidth)
-            ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelReparaciones.Width - 1, PanelReparaciones.Height - 1)
-            e.Graphics.DrawRectangle(pen, rect)
-        End Using
-    End Sub
-
-#End Region
-
-#Region "Servicios de terceros"
-
-
-
-    Private Sub CboPersonaServ3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboPersonaServ3.SelectedIndexChanged
-        If CboPersonaServ3.SelectedItem IsNot Nothing Then
-
-            Dim selectedRow As DataRowView = CType(CboPersonaServ3.SelectedItem, DataRowView)
-
-            lblResultadoPrestador.Text = selectedRow("Persona").ToString()
-        Else
-            lblResultadoPrestador.Text = ""
-        End If
-    End Sub
-
-    Private Sub btnAceptarS3_Click(sender As Object, e As EventArgs) Handles btnAceptarS3.Click
-        'Cargar_Grilla_Terceros()
+    Public Sub Cargar_Grilla_OrdenesP(estado As String)
         Try
+            Dim conexion As SqlConnection
+            Dim comando As New SqlCommand
 
-            If CboPersonaServ3.SelectedValue IsNot Nothing AndAlso Not String.IsNullOrEmpty(txtServicioSolicitado.Text) Then
+            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
 
-                Dim rowView As DataRowView = CType(CboPersonaServ3.SelectedItem, DataRowView)
-                Dim Nro_Servicio As Integer
-                If txtID_Serv3.Text <> Nothing Then
-                    Nro_Servicio = Convert.ToInt32(txtID_Serv3.Text)
-                Else
-                    Nro_Servicio = 0
-                End If
-                Dim ID_Prestador As Integer = rowView("ID_Persona").ToString()
-                Dim Prestador As String = rowView("Persona").ToString()
-                Dim ServSolicitado As String = txtServicioSolicitado.Text
-                Dim estimado As Decimal = Convert.ToDecimal(txtCostoEstimadoS3.Text).ToString("N2")
-                Dim real As Decimal = Convert.ToDecimal(txtCostoRealS3.Text).ToString("N2")
-                Dim Fin As Boolean = chkAvanceServ3.Checked
-                Dim activo As Boolean = chkActivoS3.Checked
+            conexion.Open()
+            comando.Connection = conexion
+            comando.CommandType = CommandType.StoredProcedure
+            comando.CommandText = ("Cargar_Grilla_Ordenes_Progreso")
+            comando.Parameters.AddWithValue("@Progreso", estado)
+
+            Dim datadapter As New SqlDataAdapter(comando)
+            Dim oDs As New DataSet
+            datadapter.Fill(oDs)
+
+            If oDs.Tables(0).Rows.Count > 0 Then
+                grdOrdenReparacion.AutoGenerateColumns = True
+                grdOrdenReparacion.DataSource = oDs.Tables(0)
 
 
-                grdServiciosTerceros.Rows.Add(Nro_Servicio, ID_Prestador, Prestador, ServSolicitado, estimado, real, Fin, activo)
-                Cargar_Combo_Prestador()
-
-                ActualizarMontoTotalS3()
-                limpiarServ3()
-                btnQuitarS3.Enabled = True
-                BtnModificarS3.Enabled = False
-
+                grdOrdenReparacion.Refresh()
             Else
-                MsgBox("Por favor, seleccione un repuesto y especifique la cantidad.", vbExclamation, "Advertencia")
+                MsgBox("No se encontraron Ordenes para mostrar.", vbInformation, "Información")
             End If
+
+            oDs = Nothing
+            conexion.Close()
         Catch ex As Exception
-            MsgBox("Error al agregar el repuesto: " & ex.Message, vbCritical, "Error")
-        End Try
+            MsgBox("Error al cargar la grilla: " & ex.Message, vbCritical, "Error")
 
-    End Sub
-    Private filaElegida As Integer = -1
-
-    Private Sub grdServiciosTerceros_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdServiciosTerceros.CellClick
-        If e.RowIndex >= 0 Then
-            filaElegida = e.RowIndex
-            Dim selectedRow As DataGridViewRow = grdServiciosTerceros.Rows(filaElegida)
-            txtID_Serv3.Text = selectedRow.Cells("NroServicio").Value.ToString()
-            CboPersonaServ3.SelectedValue = selectedRow.Cells("ID_Prestador").Value
-            txtServicioSolicitado.Text = selectedRow.Cells("servSolicitado").Value.ToString()
-            txtCostoEstimadoS3.Text = Convert.ToDecimal(selectedRow.Cells("CostoEstimado").Value).ToString("N2")
-            txtCostoRealS3.Text = Convert.ToDecimal(selectedRow.Cells("CostoReal").Value).ToString("N2")
-            chkAvanceServ3.Checked = Convert.ToBoolean(selectedRow.Cells("Finalizado").Value)
-            chkActivo.Checked = Convert.ToBoolean(selectedRow.Cells("Estado").Value)
-        End If
-        btnAceptarS3.Enabled = False
-        BtnModificarS3.Enabled = True
-        chkActivoS3.Visible = True
-    End Sub
-    Private Sub btnModificarS3_Click(sender As Object, e As EventArgs) Handles BtnModificarS3.Click
-        Try
-            If filaElegida >= 0 Then
-                Dim selectedRow As DataGridViewRow = grdServiciosTerceros.Rows(filaElegida)
-
-                selectedRow.Cells("NroServicio").Value = Convert.ToInt32(txtID_Serv3.Text)
-                selectedRow.Cells("ID_Prestador").Value = CboPersonaServ3.SelectedValue
-                selectedRow.Cells("Prestador").Value = CboPersonaServ3.Text
-                selectedRow.Cells("servSolicitado").Value = txtServicioSolicitado.Text
-                selectedRow.Cells("CostoEstimado").Value = Convert.ToDecimal(txtCostoEstimadoS3.Text)
-                selectedRow.Cells("CostoReal").Value = Convert.ToDecimal(txtCostoRealS3.Text)
-                selectedRow.Cells("Finalizado").Value = chkAvanceServ3.Checked
-                selectedRow.Cells("Estado").Value = chkActivo.Checked
-
-                grdServiciosTerceros.ClearSelection()
-                ActualizarMontoTotalS3()
-                limpiarServ3()
-                chkActivoS3.Visible = False
-                btnAceptarS3.Enabled = True
-                BtnModificarS3.Enabled = False
-            Else
-                MsgBox("Por favor, selecciona un registro para modificar.", vbExclamation, "Advertencia")
-            End If
-        Catch ex As Exception
-            MsgBox("Error al modificar el servicio de terceros: " & ex.Message, vbCritical, "Error")
-        End Try
-    End Sub
-    Private Sub BtnCancelarS3_Click(sender As Object, e As EventArgs) Handles BtnCancelarS3.Click
-        limpiarServ3()
-
-        grdServiciosTerceros.Rows.Clear()
-        ActualizarMontoTotalS3()
-        btnAceptarS3.Enabled = True
-        BtnModificarS3.Enabled = False
-        btnQuitarS3.Enabled = False
-    End Sub
-    Private Sub limpiarServ3()
-        CboPersonaServ3.SelectedIndex = -1
-        txtID_Serv3.Text = ""
-        txtServicioSolicitado.Text = ""
-        txtCostoEstimadoS3.Text = Convert.ToDecimal(0).ToString("N2")
-        txtCostoRealS3.Text = Convert.ToDecimal(0).ToString("N2")
-        chkAvanceServ3.Checked = False
-        chkActivo.Checked = False
-
-
-    End Sub
-    Private Sub btnQuitarS3_Click(sender As Object, e As EventArgs) Handles btnQuitarS3.Click
-        Try
-
-            If grdServiciosTerceros.SelectedRows.Count > 0 Then
-
-                grdServiciosTerceros.Rows.Remove(grdServiciosTerceros.SelectedRows(0))
-
-                ActualizarMontoTotalS3()
-                If grdServiciosTerceros.Rows.Count = 0 Then
-                    btnQuitarS3.Enabled = False
-                    BtnModificarS3.Enabled = False
-                    chkActivoS3.Visible = False
-                End If
-                limpiarServ3()
-                btnAceptarS3.Enabled = True
-            Else
-                MsgBox("Por favor, seleccione una fila para quitar.", vbExclamation, "Advertencia")
-            End If
-        Catch ex As Exception
-            MsgBox("Error al quitar el registro: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
 
-#End Region
+    Public Property esFiltradoPorGrafico As Boolean = False
+    Public Property estadoParaFiltrar As String
+    Public WithEvents formTimer As New Timer()
 
-#Region "Calcular Totales"
-
-    Private Sub ponerDecimales()
-
-        txtCostoEstimadoS3.Text = Convert.ToDecimal(txtCostoEstimadoS3.Text).ToString("N2")
-        txtCostoRealS3.Text = Convert.ToDecimal(txtCostoRealS3.Text).ToString("N2")
-        txtMontoManoObra.Text = Convert.ToDecimal(txtMontoManoObra.Text).ToString("N2")
-        txtMontoRepuestos.Text = Convert.ToDecimal(txtMontoRepuestos.Text).ToString("N2")
-        txtMontoServ3.Text = Convert.ToDecimal(txtMontoServ3.Text).ToString("N2")
-        txtMontoTotalOR.Text = Convert.ToDecimal(txtMontoTotalOR.Text).ToString("N2")
-        txtCantidadRepOR.Text = Convert.ToDecimal(txtCantidadRepOR.Text).ToString("N2")
-
+    Public Sub New()
+        InitializeComponent()
+        ' Configurar el timer para que se ejecute una vez, después de 200ms
+        formTimer.Interval = 400
+        AddHandler formTimer.Tick, AddressOf OnFormTimerTick
     End Sub
 
-    Private Sub CalcularTotalOR()
-        txtMontoTotalOR.Text = Convert.ToDecimal(CDec(txtMontoManoObra.Text) + CDec(txtMontoRepuestos.Text) + CDec(txtMontoServ3.Text)).ToString("N2")
-    End Sub
+    Private Sub OnFormTimerTick(sender As Object, e As EventArgs)
+        formTimer.Stop() ' Detener el timer después de que se ejecute
 
-
-
-
-
-    Private Sub txtMontoManoObra_Leave(sender As Object, e As EventArgs) Handles txtMontoManoObra.Leave
-        ponerDecimales()
-        CalcularTotalOR()
-    End Sub
-
-    Private Sub txtMontoServ3_TextChanged(sender As Object, e As EventArgs) Handles txtMontoServ3.TextChanged
-        ponerDecimales()
-        CalcularTotalOR()
-    End Sub
-
-    Private Sub txtMontoRepuestos_TextChanged(sender As Object, e As EventArgs) Handles txtMontoRepuestos.TextChanged
-        ponerDecimales()
-        CalcularTotalOR()
-    End Sub
-
-    Private Sub ActualizarMontoTotalRep()
-        Dim montoTotal As Decimal = 0
-
-        For Each row As DataGridViewRow In grdRepuestos.Rows
-            montoTotal += Convert.ToDecimal(row.Cells("Total").Value)
-        Next
-
-        txtMontoRepuestos.Text = montoTotal.ToString("F2")
-    End Sub
-    Private Sub ActualizarMontoTotalS3()
-        Dim montoTotal As Decimal = 0
-
-        For Each row As DataGridViewRow In grdServiciosTerceros.Rows
-            montoTotal += Convert.ToDecimal(row.Cells("CostoReal").Value)
-        Next
-
-        txtMontoServ3.Text = montoTotal.ToString("F2")
-    End Sub
-
-#End Region
-
-#Region "Focus txt"
-
-
-    Private Sub txtCostoEstimadoS3_GotFocus(sender As Object, e As EventArgs) Handles txtCostoEstimadoS3.GotFocus
-        txtCostoEstimadoS3.SelectAll()
-    End Sub
-    Private Sub txtCostoEstimado_LostFocus(sender As Object, e As EventArgs) Handles txtCostoEstimadoS3.LostFocus
-        txtCostoEstimadoS3.Text = Convert.ToDecimal(txtCostoEstimadoS3.Text).ToString("N2")
-        txtCostoRealS3.Text = Convert.ToDecimal(txtCostoEstimadoS3.Text).ToString("N2")
-    End Sub
-    Private Sub txtCostoRealS3_GotFocus(sender As Object, e As EventArgs) Handles txtCostoRealS3.GotFocus
-        txtCostoRealS3.SelectAll()
-    End Sub
-
-
-    Private Sub txtMontoManoObra_LostFocus(sender As Object, e As EventArgs) Handles txtMontoManoObra.LostFocus
-        Dim mmo As Decimal
-        If String.IsNullOrWhiteSpace(txtMontoManoObra.Text) Then
-            ' Si está vacío, asigna un valor predeterminado (opcional) o simplemente regresa
-            txtMontoManoObra.Text = "0.00"
-            Return
-        End If
-
-        If Decimal.TryParse(txtMontoManoObra.Text, mmo) Then
-            txtMontoManoObra.Text = mmo.ToString("N2")
-        Else
-            txtMontoManoObra.Text = Convert.ToDecimal(0).ToString("N2")
+        If Not String.IsNullOrEmpty(estadoParaFiltrar) Then
+            Cargar_Grilla_OrdenesP(estadoParaFiltrar)
         End If
     End Sub
-    Private Sub txtMontoManoObra_GotFocus(sender As Object, e As EventArgs) Handles txtMontoManoObra.GotFocus
-        txtMontoManoObra.SelectAll()
-    End Sub
-
-    Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
-
-    End Sub
-
-    Private Sub btnAgregarVehiculo_Click(sender As Object, e As EventArgs) Handles btnAgregarVehiculo.Click
-
-    End Sub
-
 #End Region
 
 #Region "Botones Principales"
-
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
 
         Dim ordenReparacionData As New AD_OrdenReparacion
@@ -701,6 +446,8 @@ Public Class frmOrdenesReparacion
                                                                                         Convert.ToDecimal(txtMontoManoObra.Text),
                                                                                         Convert.ToDecimal(txtMontoTotalOR.Text),
                                                                                         Convert.ToBoolean(chkActivo.Checked),
+                                                                                        CboTipoReparacion.SelectedValue,
+                                                                                        CboProgreso.SelectedItem,
                                                                                         transaction)
 
 
@@ -800,14 +547,10 @@ Public Class frmOrdenesReparacion
         Dim connectionString = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123"
 
         Using conn As New SqlConnection(connectionString)
-            Dim query = "SELECT * FROM Ordenes_De_Reparacion WHERE ID_OrdenReparacion = @ID_Orden; " &
-                "SELECT * FROM Servicios_De_Terceros WHERE ID_OrdenReparacion = @ID_Orden; " &
-                "SELECT * FROM Repuestos_Por_Ordenes WHERE ID_OrdenReparacion = @ID_Orden;"
-            Dim adapter As New SqlDataAdapter(query, conn)
-            adapter.SelectCommand.Parameters.AddWithValue("@ID_Orden", ID_Orden)
 
-            Dim ds As New DataSet()
-            adapter.Fill(ds)
+            Dim adOrdenReparacion As New AD_OrdenReparacion()
+
+            Dim ds As DataSet = adOrdenReparacion.Buscar_DatosOrdenReparacion_ID(ID_Orden)
 
             If ds.Tables.Count > 0 Then
 
@@ -817,8 +560,6 @@ Public Class frmOrdenesReparacion
                     cboPersonas.SelectedValue = row("ID_Persona")
                     Cargar_Combo_Vehiculos(Convert.ToInt32(row("ID_Persona")))
                     cboVehiculo.SelectedValue = row("ID_Vehiculo")
-
-
                     txtSeñasParticulares.Text = row("Señas_Particulares").ToString()
                     txtMotivoReparacion.Text = row("Motivo_Reparacion").ToString()
                     dtpTurno.Value = Convert.ToDateTime(row("Fecha_Turno"))
@@ -829,8 +570,9 @@ Public Class frmOrdenesReparacion
                     txtMontoManoObra.Text = If(IsDBNull(row("Precio_Mano_De_Obra")), "0,00", Convert.ToDecimal(row("Precio_Mano_De_Obra")).ToString("N2"))
                     txtMontoTotalOR.Text = If(IsDBNull(row("MontoTotalOrden")), "0,00", Convert.ToDecimal(row("MontoTotalOrden")).ToString("N2"))
                     chkActivo.Checked = Convert.ToBoolean(row("Estado"))
+                    CboTipoReparacion.SelectedValue = row("ID_TipoReparacion")
+                    CboProgreso.SelectedItem = row("ProgresoOrden")
                 End If
-
 
                 Dim serviciosTable As DataTable = ds.Tables(1)
                 grdServiciosTerceros.Rows.Clear()
@@ -842,6 +584,7 @@ Public Class frmOrdenesReparacion
                             Exit For
                         End If
                     Next
+
                     grdServiciosTerceros.Rows.Add(serviceRow("ID_ServicioTercero"),
                                                   serviceRow("ID_Persona"),
                                                   Prestador,
@@ -857,35 +600,23 @@ Public Class frmOrdenesReparacion
                 txtCostoEstimadoS3.Text = Convert.ToDecimal(0).ToString("N2")
                 txtCostoRealS3.Text = Convert.ToDecimal(0).ToString("N2")
 
-
-
-
                 Dim repuestosTable As DataTable = ds.Tables(2)
                 grdRepuestos.Rows.Clear()
                 For Each repuestoRow As DataRow In repuestosTable.Rows
-                    Dim NombreRepuesto As String = String.Empty
-                    Dim NombreDiarioRepuesto As String = String.Empty
 
+                    Dim repuestoData As DataRow = adOrdenReparacion.BuscarRepuestoPorID(Convert.ToInt32(repuestoRow("ID_Repuesto")))
+                    If repuestoData IsNot Nothing Then
+                        Dim NombreRepuesto As String = repuestoData("Descripcion").ToString()
+                        Dim NombreDiarioRepuesto As String = repuestoData("NombreDiario").ToString()
+                        Dim totalRep = Convert.ToDecimal(repuestoRow("Cantidad")) * Convert.ToDecimal(repuestoRow("Precio"))
 
-                    Dim repuestoQuery = "SELECT Descripcion, NombreDiario FROM Repuestos WHERE ID_Repuestos = @ID_Repuesto"
-                    Dim repuestoAdapter As New SqlDataAdapter(repuestoQuery, conn)
-                    repuestoAdapter.SelectCommand.Parameters.AddWithValue("@ID_Repuesto", repuestoRow("ID_Repuesto"))
-
-                    Dim repuestoDs As New DataSet()
-                    repuestoAdapter.Fill(repuestoDs)
-                    If repuestoDs.Tables.Count > 0 AndAlso repuestoDs.Tables(0).Rows.Count > 0 Then
-                        Dim repuestoData As DataRow = repuestoDs.Tables(0).Rows(0)
-                        NombreRepuesto = repuestoData("Descripcion").ToString()
-                        NombreDiarioRepuesto = repuestoData("NombreDiario").ToString()
+                        grdRepuestos.Rows.Add(repuestoRow("ID_Repuesto"),
+                                              NombreRepuesto,
+                                              NombreDiarioRepuesto,
+                                              repuestoRow("Cantidad"),
+                                              repuestoRow("Precio"),
+                                              totalRep)
                     End If
-
-                    Dim totalRep = Convert.ToDecimal(repuestoRow("Cantidad")) * Convert.ToDecimal(repuestoRow("Precio"))
-                    grdRepuestos.Rows.Add(repuestoRow("ID_Repuesto"),
-                                          NombreRepuesto,
-                                          NombreDiarioRepuesto,
-                                          repuestoRow("Cantidad"),
-                                          repuestoRow("Precio"),
-                                          totalRep)
                 Next
                 cboProductoOR.SelectedIndex = -1
             End If
@@ -903,6 +634,11 @@ Public Class frmOrdenesReparacion
             btnModificar.Enabled = False
             btnAceptar.Enabled = True
             Cargar_Grilla_Ordenes()
+            If grdServiciosTerceros.Rows.Count > 1 Then
+                btnQuitarS3.Enabled = True
+            Else
+                btnQuitarS3.Enabled = False
+            End If
         Else
             MessageBox.Show("Seleccione una orden para modificar.")
         End If
@@ -925,37 +661,48 @@ Public Class frmOrdenesReparacion
             Dim transaction As SqlTransaction = conn.BeginTransaction()
 
             Try
+                Dim Orden As New AD_OrdenReparacion()
 
-                Dim updateordenquery = "update ordenes_de_reparacion set id_vehiculo = @id_vehiculo, " &
-                                   "señas_particulares = @señasparticulares, motivo_reparacion = @motivoreparacion, " &
-                                   "fecha_turno = @turno, fecha_entrada = @entrada, fecha_salida = @salida, " &
-                                   "id_persona = @id_persona, montorepuestos = @montorepuestos, " &
-                                   "montoservicioterceros = @montoservicios, precio_mano_de_obra = @montomanoobra, " &
-                                   "montototalorden = @montototal, estado = @activo where id_ordenreparacion = @id_orden"
-                Dim cmd As New SqlCommand(updateordenquery, conn, transaction)
-                cmd.Parameters.AddWithValue("@id_vehiculo", cboVehiculo.SelectedValue)
-                cmd.Parameters.AddWithValue("@señasparticulares", txtSeñasParticulares.Text)
-                cmd.Parameters.AddWithValue("@motivoreparacion", txtMotivoReparacion.Text)
-                cmd.Parameters.AddWithValue("@turno", dtpTurno.Value)
-                cmd.Parameters.AddWithValue("@entrada", dtpEntrada.Value)
-                cmd.Parameters.AddWithValue("@salida", dtpSalida.Value)
-                cmd.Parameters.AddWithValue("@id_persona", cboPersonas.SelectedValue)
-                cmd.Parameters.AddWithValue("@montorepuestos", Convert.ToDecimal(txtMontoRepuestos.Text))
-                cmd.Parameters.AddWithValue("@montoservicios", Convert.ToDecimal(txtMontoServ3.Text))
-                cmd.Parameters.AddWithValue("@montomanoobra", Convert.ToDecimal(txtMontoManoObra.Text))
-                cmd.Parameters.AddWithValue("@montototal", Convert.ToDecimal(txtMontoTotalOR.Text))
-                cmd.Parameters.AddWithValue("@activo", Convert.ToBoolean(chkActivo.Checked))
-                cmd.Parameters.AddWithValue("@id_orden", id_orden)
-                cmd.ExecuteNonQuery()
+                ' Validar si el progreso es Finalizada o Facturada y hay servicios de terceros no finalizados
+                If (CboProgreso.SelectedItem = "Finalizada" Or CboProgreso.SelectedItem = "Facturada") Then
+                    Dim noFinalizados As Integer = 0
+                    For Each fila As DataGridViewRow In grdServiciosTerceros.Rows
+                        Dim estadoTrabajo As Boolean = CBool(fila.Cells("Finalizado").Value)
+                        If Not estadoTrabajo Then
+                            noFinalizados += 1
+                        End If
+                    Next
 
+                    ' Si hay servicios de terceros no finalizados, hacer Rollback y mostrar mensaje
+                    If noFinalizados > 0 Then
+                        MessageBox.Show("No se puede Finalizar o Facturar la Orden de Reparación con Servicios de Terceros No Finalizados.")
+                        transaction.Rollback()
+                        Exit Sub
+                    End If
+                End If
 
-                Dim deleteserviciosquery = "delete from servicios_de_terceros where id_ordenreparacion = @id_orden"
-                cmd = New SqlCommand(deleteserviciosquery, conn, transaction)
-                cmd.Parameters.AddWithValue("@id_orden", id_orden)
-                cmd.ExecuteNonQuery()
+                ' Si no hay problemas con los servicios, continuar con la modificación de la orden
+                Orden.Modificar_OrdenReparacion(id_orden,
+                                            CInt(cboVehiculo.SelectedValue),
+                                            txtSeñasParticulares.Text,
+                                            txtMotivoReparacion.Text,
+                                            dtpTurno.Value,
+                                            dtpEntrada.Value,
+                                            dtpSalida.Value,
+                                            CInt(cboPersonas.SelectedValue),
+                                            Convert.ToDecimal(txtMontoRepuestos.Text),
+                                            Convert.ToDecimal(txtMontoServ3.Text),
+                                            Convert.ToDecimal(txtMontoManoObra.Text),
+                                            Convert.ToDecimal(txtMontoTotalOR.Text),
+                                            Convert.ToBoolean(chkActivo.Checked),
+                                            CInt(CboTipoReparacion.SelectedValue),
+                                            CboProgreso.SelectedItem,
+                                            transaction)
 
+                ' Dar de baja servicios de terceros
+                Orden.DarDeBaja_ServiciosTerceros(id_orden, transaction)
 
-                ' Después de eliminar los servicios anteriores, ahora los vuelves a insertar
+                ' Agregar servicios de terceros
                 If grdServiciosTerceros.Rows.Count > 0 Then
                     For Each row As DataGridViewRow In grdServiciosTerceros.Rows
                         Dim id_prestador As Integer = Convert.ToInt32(row.Cells("ID_Prestador").Value)
@@ -965,50 +712,32 @@ Public Class frmOrdenesReparacion
                         Dim finalizado As Boolean = Convert.ToBoolean(row.Cells("Finalizado").Value)
                         Dim estado As Boolean = Convert.ToBoolean(row.Cells("Estado").Value)
 
-                        Dim insertserviciosquery = "INSERT INTO Servicios_De_Terceros (ID_OrdenReparacion, Fecha_Solicitud_Trabajo, ID_Persona, " &
-                                   "Detalle_Prestacion, Costo_Estimado, Costo_Real, Estado_Trabajo, Estado) " &
-                                   "VALUES (@ID_Orden, @FechaSolicitud, @ID_Prestador, @ServSolicitado, " &
-                                   "@CostoEstimado, @CostoReal, @Finalizado, @Estado)"
-                        Dim cmdInsert As New SqlCommand(insertserviciosquery, conn, transaction)
-                        cmdInsert.Parameters.AddWithValue("@ID_Orden", id_orden)
-                        cmdInsert.Parameters.AddWithValue("@FechaSolicitud", dtpEntrada.Value)
-                        cmdInsert.Parameters.AddWithValue("@ID_Prestador", id_prestador)
-                        cmdInsert.Parameters.AddWithValue("@ServSolicitado", servsolicitado)
-                        cmdInsert.Parameters.AddWithValue("@CostoEstimado", costoestimado)
-                        cmdInsert.Parameters.AddWithValue("@CostoReal", costoreal)
-                        cmdInsert.Parameters.AddWithValue("@Finalizado", finalizado)
-                        cmdInsert.Parameters.AddWithValue("@Estado", estado)
-                        cmdInsert.ExecuteNonQuery()
+                        Orden.Agregar_Servicio_Terceros(id_orden,
+                                                    dtpEntrada.Value,
+                                                    id_prestador,
+                                                    servsolicitado,
+                                                    costoestimado,
+                                                    costoreal,
+                                                    finalizado,
+                                                    estado,
+                                                    transaction)
                     Next
                 End If
 
+                ' Dar de baja repuestos de la orden
+                Orden.DarDeBajaRepuestos_Ordenes(id_orden, transaction)
 
-
-                Dim deleterepuestosquery = "delete from Repuestos_Por_Ordenes where ID_OrdenReparacion = @id_orden"
-                cmd = New SqlCommand(deleterepuestosquery, conn, transaction)
-                cmd.Parameters.AddWithValue("@id_orden", id_orden)
-                cmd.ExecuteNonQuery()
-
+                ' Agregar repuestos
                 If grdRepuestos.Rows.Count > 0 Then
                     For Each row As DataGridViewRow In grdRepuestos.Rows
-                        ' Verifica si la fila no es nueva ni está eliminada
                         If Not row.IsNewRow AndAlso row.Cells("id").Value IsNot Nothing Then
                             Dim id_repuestos As Integer = Convert.ToInt32(row.Cells("id").Value)
                             Dim cantidad As Decimal = Convert.ToDecimal(row.Cells("cantidad").Value)
                             Dim precio_rep As Decimal = Convert.ToDecimal(row.Cells("precio").Value)
 
-                            Dim insertrepuestosquery = "insert into Repuestos_Por_Ordenes (id_repuesto, ID_OrdenReparacion, cantidad, precio, Estado) " &
-                                                       "values (@id_repuestos, @id_orden, @cantidad, @precio, @activo)"
-                            cmd = New SqlCommand(insertrepuestosquery, conn, transaction)
-                            cmd.Parameters.AddWithValue("@id_repuestos", id_repuestos)
-                            cmd.Parameters.AddWithValue("@id_orden", id_orden)
-                            cmd.Parameters.AddWithValue("@cantidad", cantidad)
-                            cmd.Parameters.AddWithValue("@precio", precio_rep)
-                            cmd.Parameters.AddWithValue("@activo", True)
-                            cmd.ExecuteNonQuery()
+                            Orden.Agregar_Repuestos_Ordenes(id_repuestos, id_orden, cantidad, precio_rep, 1, transaction)
 
                             Dim repuestosdata As New AD_Productos
-
                             Dim stockdisponible As Integer = repuestosdata.Consultar_StockDisponiblePorID(id_repuestos, transaction)
                             stockdisponible -= cantidad
 
@@ -1018,21 +747,453 @@ Public Class frmOrdenesReparacion
                     Next
                 End If
 
+                ' Si todo está bien, hacer commit
                 transaction.Commit()
                 MessageBox.Show("Orden modificada exitosamente.")
+
             Catch ex As Exception
                 transaction.Rollback()
                 MessageBox.Show("Error al modificar la orden: " & ex.Message)
             End Try
-
-
-
-
         End Using
+
+        btnCancelar.PerformClick()
+    End Sub
+
+    Private Sub btnFacturar_Click(sender As Object, e As EventArgs) Handles btnFacturar.Click
+
+    End Sub
+#End Region
+
+#Region "Servicios de terceros"
+
+
+
+    Private Sub CboPersonaServ3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboPersonaServ3.SelectedIndexChanged
+        If CboPersonaServ3.SelectedItem IsNot Nothing Then
+
+            Dim selectedRow As DataRowView = CType(CboPersonaServ3.SelectedItem, DataRowView)
+
+            lblResultadoPrestador.Text = selectedRow("Persona").ToString()
+        Else
+            lblResultadoPrestador.Text = ""
+        End If
+    End Sub
+
+    Private Sub btnAceptarS3_Click(sender As Object, e As EventArgs) Handles btnAceptarS3.Click
+        'Cargar_Grilla_Terceros()
+        Try
+
+            If CboPersonaServ3.SelectedValue IsNot Nothing AndAlso Not String.IsNullOrEmpty(txtServicioSolicitado.Text) Then
+
+                Dim rowView As DataRowView = CType(CboPersonaServ3.SelectedItem, DataRowView)
+                Dim Nro_Servicio As Integer
+                If txtID_Serv3.Text <> Nothing Then
+                    Nro_Servicio = Convert.ToInt32(txtID_Serv3.Text)
+                Else
+                    Nro_Servicio = 0
+                End If
+                Dim ID_Prestador As Integer = rowView("ID_Persona").ToString()
+                Dim Prestador As String = rowView("Persona").ToString()
+                Dim ServSolicitado As String = txtServicioSolicitado.Text
+                Dim estimado As Decimal = Convert.ToDecimal(txtCostoEstimadoS3.Text).ToString("N2")
+                Dim real As Decimal = Convert.ToDecimal(txtCostoRealS3.Text).ToString("N2")
+                Dim Fin As Boolean = chkAvanceServ3.Checked
+                Dim activo As Boolean = chkActivoS3.Checked
+
+
+                grdServiciosTerceros.Rows.Add(Nro_Servicio, ID_Prestador, Prestador, ServSolicitado, estimado, real, Fin, activo)
+                Cargar_Combo_Prestador()
+
+                ActualizarMontoTotalS3()
+                limpiarServ3()
+                btnQuitarS3.Enabled = True
+                BtnModificarS3.Enabled = False
+
+            Else
+                MsgBox("Por favor, seleccione un repuesto y especifique la cantidad.", vbExclamation, "Advertencia")
+            End If
+        Catch ex As Exception
+            MsgBox("Error al agregar el repuesto: " & ex.Message, vbCritical, "Error")
+        End Try
+
+    End Sub
+    Private filaElegida As Integer = -1
+
+    Private Sub grdServiciosTerceros_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdServiciosTerceros.CellClick
+        If e.RowIndex >= 0 Then
+            filaElegida = e.RowIndex
+            Dim selectedRow As DataGridViewRow = grdServiciosTerceros.Rows(filaElegida)
+            txtID_Serv3.Text = selectedRow.Cells("NroServicio").Value.ToString()
+            CboPersonaServ3.SelectedValue = selectedRow.Cells("ID_Prestador").Value
+            txtServicioSolicitado.Text = selectedRow.Cells("servSolicitado").Value.ToString()
+            txtCostoEstimadoS3.Text = Convert.ToDecimal(selectedRow.Cells("CostoEstimado").Value).ToString("N2")
+            txtCostoRealS3.Text = Convert.ToDecimal(selectedRow.Cells("CostoReal").Value).ToString("N2")
+            chkAvanceServ3.Checked = Convert.ToBoolean(selectedRow.Cells("Finalizado").Value)
+            chkActivo.Checked = Convert.ToBoolean(selectedRow.Cells("Estado").Value)
+        End If
+        If grdServiciosTerceros.Rows.Count > 0 Then
+            btnQuitarS3.Enabled = True
+        Else
+            btnQuitarS3.Enabled = False
+        End If
+        btnAceptarS3.Enabled = False
+        BtnModificarS3.Enabled = True
+        chkActivoS3.Visible = True
+    End Sub
+    Private Sub btnModificarS3_Click(sender As Object, e As EventArgs) Handles BtnModificarS3.Click
+        Try
+            If filaElegida >= 0 Then
+                Dim selectedRow As DataGridViewRow = grdServiciosTerceros.Rows(filaElegida)
+
+                selectedRow.Cells("NroServicio").Value = Convert.ToInt32(txtID_Serv3.Text)
+                selectedRow.Cells("ID_Prestador").Value = CboPersonaServ3.SelectedValue
+                selectedRow.Cells("Prestador").Value = CboPersonaServ3.Text
+                selectedRow.Cells("servSolicitado").Value = txtServicioSolicitado.Text
+                selectedRow.Cells("CostoEstimado").Value = Convert.ToDecimal(txtCostoEstimadoS3.Text)
+                selectedRow.Cells("CostoReal").Value = Convert.ToDecimal(txtCostoRealS3.Text)
+                selectedRow.Cells("Finalizado").Value = chkAvanceServ3.Checked
+                selectedRow.Cells("Estado").Value = chkActivo.Checked
+
+                grdServiciosTerceros.ClearSelection()
+                ActualizarMontoTotalS3()
+                limpiarServ3()
+                chkActivoS3.Visible = False
+                btnAceptarS3.Enabled = True
+                BtnModificarS3.Enabled = False
+            Else
+                MsgBox("Por favor, selecciona un registro para modificar.", vbExclamation, "Advertencia")
+            End If
+        Catch ex As Exception
+            MsgBox("Error al modificar el servicio de terceros: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+    Private Sub BtnCancelarS3_Click(sender As Object, e As EventArgs) Handles BtnCancelarS3.Click
+        limpiarServ3()
+
+        grdServiciosTerceros.Rows.Clear()
+        ActualizarMontoTotalS3()
+        btnAceptarS3.Enabled = True
+        BtnModificarS3.Enabled = False
+        btnQuitarS3.Enabled = False
+    End Sub
+    Private Sub limpiarServ3()
+        CboPersonaServ3.SelectedIndex = -1
+        txtID_Serv3.Text = ""
+        txtServicioSolicitado.Text = ""
+        txtCostoEstimadoS3.Text = Convert.ToDecimal(0).ToString("N2")
+        txtCostoRealS3.Text = Convert.ToDecimal(0).ToString("N2")
+        chkAvanceServ3.Checked = False
+        chkActivo.Checked = False
+
+
+    End Sub
+    Private Sub btnQuitarS3_Click(sender As Object, e As EventArgs) Handles btnQuitarS3.Click
+        Try
+
+            If grdServiciosTerceros.SelectedRows.Count > 0 Then
+
+                grdServiciosTerceros.Rows.Remove(grdServiciosTerceros.SelectedRows(0))
+
+                ActualizarMontoTotalS3()
+                If grdServiciosTerceros.Rows.Count = 0 Then
+                    btnQuitarS3.Enabled = False
+                    BtnModificarS3.Enabled = False
+                    chkActivoS3.Visible = False
+                Else
+                    btnQuitarS3.Enabled = True
+                    BtnModificarS3.Enabled = True
+                    chkActivoS3.Visible = True
+                End If
+                limpiarServ3()
+                btnAceptarS3.Enabled = True
+            Else
+                MsgBox("Por favor, seleccione una fila para quitar.", vbExclamation, "Advertencia")
+            End If
+        Catch ex As Exception
+            MsgBox("Error al quitar el registro: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+#End Region
+
+#Region "Calcular Totales"
+
+    Private Sub ponerDecimales()
+
+        txtCostoEstimadoS3.Text = Convert.ToDecimal(txtCostoEstimadoS3.Text).ToString("N2")
+        txtCostoRealS3.Text = Convert.ToDecimal(txtCostoRealS3.Text).ToString("N2")
+        txtMontoManoObra.Text = Convert.ToDecimal(txtMontoManoObra.Text).ToString("N2")
+        txtMontoRepuestos.Text = Convert.ToDecimal(txtMontoRepuestos.Text).ToString("N2")
+        txtMontoServ3.Text = Convert.ToDecimal(txtMontoServ3.Text).ToString("N2")
+        txtMontoTotalOR.Text = Convert.ToDecimal(txtMontoTotalOR.Text).ToString("N2")
+        txtCantidadRepOR.Text = Convert.ToDecimal(txtCantidadRepOR.Text).ToString("N2")
+
+    End Sub
+
+    Private Sub CalcularTotalOR()
+        txtMontoTotalOR.Text = Convert.ToDecimal(CDec(txtMontoManoObra.Text) + CDec(txtMontoRepuestos.Text) + CDec(txtMontoServ3.Text)).ToString("N2")
     End Sub
 
 
 
+
+
+    Private Sub txtMontoManoObra_Leave(sender As Object, e As EventArgs) Handles txtMontoManoObra.Leave
+        ponerDecimales()
+        CalcularTotalOR()
+    End Sub
+
+    Private Sub txtMontoServ3_TextChanged(sender As Object, e As EventArgs) Handles txtMontoServ3.TextChanged
+        ponerDecimales()
+        CalcularTotalOR()
+    End Sub
+
+    Private Sub txtMontoRepuestos_TextChanged(sender As Object, e As EventArgs) Handles txtMontoRepuestos.TextChanged
+        ponerDecimales()
+        CalcularTotalOR()
+    End Sub
+
+    Private Sub ActualizarMontoTotalRep()
+        Dim montoTotal As Decimal = 0
+
+        For Each row As DataGridViewRow In grdRepuestos.Rows
+            montoTotal += Convert.ToDecimal(row.Cells("Total").Value)
+        Next
+
+        txtMontoRepuestos.Text = montoTotal.ToString("F2")
+    End Sub
+    Private Sub ActualizarMontoTotalS3()
+        Dim montoTotal As Decimal = 0
+
+        For Each row As DataGridViewRow In grdServiciosTerceros.Rows
+            montoTotal += Convert.ToDecimal(row.Cells("CostoReal").Value)
+        Next
+
+        txtMontoServ3.Text = montoTotal.ToString("F2")
+    End Sub
+
 #End Region
 
+#Region "Crear PDF"
+    Public Sub CrearPDF()
+        Dim pdfPath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), $"OrdenesReparaciones.pdf")
+        Using fs As New FileStream(pdfPath, FileMode.Create, FileAccess.Write, FileShare.None)
+            Dim document As New Document()
+            Dim writer As PdfWriter = PdfWriter.GetInstance(document, fs)
+            document.Open()
+
+            ' Membrete
+            Dim logoPath As String = System.IO.Path.Combine("Imagenes", "mecanicaGaidoLogo-SinFondo.png")
+            MessageBox.Show("Ruta de la imagen: " & logoPath) ' Muestra la ruta para verificación
+
+            If File.Exists(logoPath) Then
+                Dim logo As Image = Image.GetInstance(logoPath)
+                logo.ScaleToFit(140, 120) ' Escalar el logo si es necesario
+                document.Add(logo)
+            Else
+                MessageBox.Show("La imagen no se encontró en la ruta especificada.")
+            End If
+
+            ' Agregar direcciones
+            document.Add(New Paragraph("Dirección de la empresa", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Ciudad, País", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Teléfono: XXX-XXXX", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Email: ejemplo@empresa.com", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Fecha: " & DateTime.Now.ToShortDateString(), FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+
+            ' Información del cliente
+            document.Add(New Paragraph("Información del Cliente", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14)))
+            document.Add(New Paragraph("Nombre: Juan Pérez", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Teléfono: 123-4567", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Email: juanperez@ejemplo.com", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+
+            ' Información del vehículo
+            document.Add(New Paragraph("Información del Vehículo", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14)))
+            document.Add(New Paragraph("Marca: Toyota", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Modelo: Corolla", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+            document.Add(New Paragraph("Año: 2020", FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+
+            ' Tabla de trabajos a realizar
+            document.Add(New Paragraph("Trabajos a Realizar", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14)))
+            Dim trabajos As PdfPTable = New PdfPTable(2)
+            trabajos.AddCell("Descripción")
+            trabajos.AddCell("Precio")
+            trabajos.AddCell("Cambio de aceite")
+            trabajos.AddCell("$50")
+            trabajos.AddCell("Revisión de frenos")
+            trabajos.AddCell("$30")
+            document.Add(trabajos)
+
+            ' Tabla de mano de obra de terceros
+            document.Add(New Paragraph("Mano de Obra de Terceros", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14)))
+            Dim manoObra As PdfPTable = New PdfPTable(2)
+            manoObra.AddCell("Descripción")
+            manoObra.AddCell("Costo")
+            manoObra.AddCell("Reparación de motor")
+            manoObra.AddCell("$100")
+            document.Add(manoObra)
+
+            ' Tabla de repuestos
+            document.Add(New Paragraph("Repuestos", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14)))
+            Dim repuestos As PdfPTable = New PdfPTable(2)
+            repuestos.AddCell("Repuesto")
+            repuestos.AddCell("Precio")
+            repuestos.AddCell("Filtro de aceite")
+            repuestos.AddCell("$20")
+            repuestos.AddCell("Pastillas de freno")
+            repuestos.AddCell("$40")
+            document.Add(repuestos)
+
+            document.Close()
+        End Using
+
+        MessageBox.Show("PDF creado exitosamente en: " & pdfPath)
+    End Sub
+
+
+
+    Private Sub btnDescargarPDF_Click(sender As Object, e As EventArgs) Handles btnDescargarPDF.Click
+        CrearPDF()
+    End Sub
+
+#End Region
+
+#Region "Focus txt"
+
+
+    Private Sub txtCostoEstimadoS3_GotFocus(sender As Object, e As EventArgs) Handles txtCostoEstimadoS3.GotFocus
+        txtCostoEstimadoS3.SelectAll()
+    End Sub
+    Private Sub txtCostoEstimado_LostFocus(sender As Object, e As EventArgs) Handles txtCostoEstimadoS3.LostFocus
+        txtCostoEstimadoS3.Text = Convert.ToDecimal(txtCostoEstimadoS3.Text).ToString("N2")
+        txtCostoRealS3.Text = Convert.ToDecimal(txtCostoEstimadoS3.Text).ToString("N2")
+    End Sub
+    Private Sub txtCostoRealS3_GotFocus(sender As Object, e As EventArgs) Handles txtCostoRealS3.GotFocus
+        txtCostoRealS3.SelectAll()
+    End Sub
+
+
+    Private Sub txtMontoManoObra_LostFocus(sender As Object, e As EventArgs) Handles txtMontoManoObra.LostFocus
+        Dim mmo As Decimal
+        If String.IsNullOrWhiteSpace(txtMontoManoObra.Text) Then
+            ' Si está vacío, asigna un valor predeterminado (opcional) o simplemente regresa
+            txtMontoManoObra.Text = "0.00"
+            Return
+        End If
+
+        If Decimal.TryParse(txtMontoManoObra.Text, mmo) Then
+            txtMontoManoObra.Text = mmo.ToString("N2")
+        Else
+            txtMontoManoObra.Text = Convert.ToDecimal(0).ToString("N2")
+        End If
+    End Sub
+    Private Sub txtMontoManoObra_GotFocus(sender As Object, e As EventArgs) Handles txtMontoManoObra.GotFocus
+        txtMontoManoObra.SelectAll()
+    End Sub
+
+    Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
+
+    End Sub
+
+    Private Sub btnAgregarVehiculo_Click(sender As Object, e As EventArgs) Handles btnAgregarVehiculo.Click
+
+    End Sub
+
+#End Region
+
+#Region "Keypress"
+    Private Sub txtSeñasParticulares_KeyPress(sender As Object, e As KeyPressEventArgs)
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
+    End Sub
+#End Region
+
+#Region "Css trucho"
+    Private Sub PanelDetallesOrden_Paint(sender As Object, e As PaintEventArgs) Handles PanelDetallesOrden.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New System.Drawing.Rectangle(0, 0, PanelDetallesOrden.Width - 1, PanelDetallesOrden.Height - 1)
+
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub PanelInfoVehiculo_Paint(sender As Object, e As PaintEventArgs) Handles PanelInfoVehiculo.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New System.Drawing.Rectangle(0, 0, PanelInfoVehiculo.Width - 1, PanelInfoVehiculo.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub PanelCostos_Paint(sender As Object, e As PaintEventArgs) Handles PanelCostos.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New System.Drawing.Rectangle(0, 0, PanelCostos.Width - 1, PanelCostos.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub PanelDetalleDeRepuestos_Paint(sender As Object, e As PaintEventArgs) Handles PanelDetalleDeRepuestos.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New System.Drawing.Rectangle(0, 0, PanelDetalleDeRepuestos.Width - 1, PanelDetalleDeRepuestos.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub PanelServiciosTerceros_Paint(sender As Object, e As PaintEventArgs) Handles PanelServiciosTerceros.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New System.Drawing.Rectangle(0, 0, PanelServiciosTerceros.Width - 1, PanelServiciosTerceros.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub PanelReparaciones_Paint(sender As Object, e As PaintEventArgs) Handles PanelReparaciones.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New System.Drawing.Rectangle(0, 0, PanelReparaciones.Width - 1, PanelReparaciones.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+#End Region
 End Class

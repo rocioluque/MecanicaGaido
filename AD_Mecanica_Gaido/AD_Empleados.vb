@@ -141,32 +141,57 @@ Public Class AD_Empleados
         Return tabla
     End Function
 
-    Public Sub Agregar_Empleado_Usuario(ByVal idPersona As Integer, ByVal usuario As String, ByVal contraseña As String, ByVal idRol As Integer,
+    Public Function PersonaEnEmpleadoExiste(idPersona As Integer) As Boolean
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("ControlarIdPersonaEnEmpleadoExistente", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@id_Persona", idPersona)
+                comando.Parameters.Add("@Existe", SqlDbType.Bit).Direction = ParameterDirection.Output
+
+                Try
+                    conexion.Open()
+                    comando.ExecuteNonQuery()
+                    Dim existe As Boolean = Convert.ToBoolean(comando.Parameters("@Existe").Value)
+                    Return existe
+                Catch ex As Exception
+                    Throw New Exception("Error al verificar la existencia de la persona en la base de datos: " & ex.Message, ex)
+                End Try
+            End Using
+        End Using
+    End Function
+
+    Public Function Agregar_Empleado_Usuario(ByVal idPersona As Integer, ByVal usuario As String, ByVal contraseña As String, ByVal idRol As Integer,
                                         ByVal fechaContratacion As Date, ByVal cargo As String, ByVal nota As String, ByVal estado As Boolean,
                                         ByVal idSeccion As Integer)
-        Dim conexion As New SqlConnection(connectionString)
-        Dim comando As New SqlCommand("Agregar_Empleado_Usuario", conexion)
-        comando.CommandType = CommandType.StoredProcedure
+        If Not PersonaEnEmpleadoExiste(idPersona) Then
+            Using conexion As New SqlConnection(connectionString)
+                Using comando As New SqlCommand("Agregar_Empleado_Usuario", conexion)
+                    comando.CommandType = CommandType.StoredProcedure
 
-        comando.Parameters.AddWithValue("@ID_Persona", idPersona)
-        comando.Parameters.AddWithValue("@Usuario", usuario)
-        comando.Parameters.AddWithValue("@Contraseña", contraseña)
-        comando.Parameters.AddWithValue("@ID_Rol", idRol)
-        comando.Parameters.AddWithValue("@FechaDeContratacion", fechaContratacion)
-        comando.Parameters.AddWithValue("@Cargo", cargo)
-        comando.Parameters.AddWithValue("@Nota", nota)
-        comando.Parameters.AddWithValue("@Estado", estado)
-        comando.Parameters.AddWithValue("@ID_Seccion", idSeccion)
+                    comando.Parameters.AddWithValue("@ID_Persona", idPersona)
+                    comando.Parameters.AddWithValue("@Usuario", usuario)
+                    comando.Parameters.AddWithValue("@Contraseña", contraseña)
+                    comando.Parameters.AddWithValue("@ID_Rol", idRol)
+                    comando.Parameters.AddWithValue("@FechaDeContratacion", fechaContratacion)
+                    comando.Parameters.AddWithValue("@Cargo", cargo)
+                    comando.Parameters.AddWithValue("@Nota", nota)
+                    comando.Parameters.AddWithValue("@Estado", estado)
+                    comando.Parameters.AddWithValue("@ID_Seccion", idSeccion)
 
-        Try
-            conexion.Open()
-            comando.ExecuteNonQuery()
-        Catch ex As Exception
-            Throw New Exception("Ocurrió un error al insertar los datos: " & ex.Message)
-        Finally
-            conexion.Close()
-        End Try
-    End Sub
+                    Try
+                        conexion.Open()
+                        comando.ExecuteNonQuery()
+                    Catch ex As Exception
+                        Throw New Exception("Ocurrió un error al insertar los datos: " & ex.Message)
+                    Finally
+                        conexion.Close()
+                    End Try
+                End Using
+            End Using
+        Else
+            Return False
+        End If
+    End Function
 
     Public Sub Modificar_Empleado_Usuario(ByVal idEmpleado As Integer, ByVal usuario As String, ByVal contraseña As String,
                                            ByVal idRol As Integer, ByVal fechaContratacion As Date, ByVal cargo As String,

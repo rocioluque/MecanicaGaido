@@ -41,4 +41,21 @@ Public Class AD_Pedidos
         End Using
         Return tabla
     End Function
+
+    Public Function Consultar_TelefonoPersona(idPersona As Object) As DataTable
+        Dim dt As New DataTable()
+
+        Using connection As New SqlConnection(connectionstring)
+            Using command As New SqlCommand("Consultar_TelefonoPersona", connection)
+                command.CommandType = CommandType.StoredProcedure
+                command.Parameters.AddWithValue("@idPersona", idPersona)
+
+                Using adapter As New SqlDataAdapter(command)
+                    adapter.Fill(dt)
+                End Using
+            End Using
+        End Using
+
+        Return dt
+    End Function
 End Class

@@ -161,7 +161,7 @@ Partial Class frmLogin
         '
         Me.PanelLogo.BackColor = System.Drawing.Color.FromArgb(CType(CType(190, Byte), Integer), CType(CType(222, Byte), Integer), CType(CType(187, Byte), Integer))
         Me.PanelLogo.BackgroundImage = CType(resources.GetObject("PanelLogo.BackgroundImage"), System.Drawing.Image)
-        Me.PanelLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PanelLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PanelLogo.Controls.Add(Me.btnMinimizar)
         Me.PanelLogo.Controls.Add(Me.btnCerrar)
         Me.PanelLogo.Dock = System.Windows.Forms.DockStyle.Right

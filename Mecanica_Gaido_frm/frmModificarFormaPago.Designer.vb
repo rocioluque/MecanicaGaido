@@ -88,6 +88,7 @@ Partial Class frmModificarFormaPago
         Me.grdModificarFP.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarFP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdModificarFP.Location = New System.Drawing.Point(77, 110)
+        Me.grdModificarFP.MultiSelect = False
         Me.grdModificarFP.Name = "grdModificarFP"
         Me.grdModificarFP.ReadOnly = True
         Me.grdModificarFP.RowHeadersVisible = False
@@ -252,6 +253,7 @@ Partial Class frmModificarFormaPago
         Me.grdDetalleFP.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdDetalleFP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdDetalleFP.Location = New System.Drawing.Point(77, 381)
+        Me.grdDetalleFP.MultiSelect = False
         Me.grdDetalleFP.Name = "grdDetalleFP"
         Me.grdDetalleFP.ReadOnly = True
         Me.grdDetalleFP.RowHeadersVisible = False

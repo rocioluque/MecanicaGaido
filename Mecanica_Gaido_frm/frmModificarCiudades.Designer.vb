@@ -61,7 +61,7 @@ Partial Class frmModificarCiudades
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
         Me.chkEstado.Location = New System.Drawing.Point(487, 94)
-        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
         Me.chkEstado.TabIndex = 4
@@ -79,6 +79,7 @@ Partial Class frmModificarCiudades
         Me.grdModificarCiudad.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarCiudad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdModificarCiudad.Location = New System.Drawing.Point(44, 146)
+        Me.grdModificarCiudad.MultiSelect = False
         Me.grdModificarCiudad.Name = "grdModificarCiudad"
         Me.grdModificarCiudad.ReadOnly = True
         Me.grdModificarCiudad.RowHeadersVisible = False

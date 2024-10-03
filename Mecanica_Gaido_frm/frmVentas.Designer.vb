@@ -23,12 +23,14 @@ Partial Class frmVentas
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVentas))
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -50,13 +52,10 @@ Partial Class frmVentas
         Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Diario = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Lote = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnQuitarVenta = New System.Windows.Forms.Button()
         Me.btnAgregarVenta = New System.Windows.Forms.Button()
-        Me.CboLote = New System.Windows.Forms.ComboBox()
-        Me.Label15 = New System.Windows.Forms.Label()
         Me.txtCantidadVentas = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.cboProductoVenta = New System.Windows.Forms.ComboBox()
@@ -103,6 +102,9 @@ Partial Class frmVentas
         Me.txtIvaMonto = New System.Windows.Forms.RichTextBox()
         Me.txtSubtotal = New System.Windows.Forms.RichTextBox()
         Me.lblMontoDtoRecargo = New System.Windows.Forms.Label()
+        Me.grdVentas1 = New System.Windows.Forms.DataGridView()
+        Me.lblBusqueda = New System.Windows.Forms.Label()
+        Me.txtBusqueda = New System.Windows.Forms.TextBox()
         CType(Me.btnAgregarPersona, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarFormaPago, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnTipoVenta, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -115,6 +117,7 @@ Partial Class frmVentas
         Me.PanelFormaPago.SuspendLayout()
         CType(Me.btnAgregarDetalleFormaPago, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelTotales.SuspendLayout()
+        CType(Me.grdVentas1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label14
@@ -144,7 +147,7 @@ Partial Class frmVentas
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(77, 54)
+        Me.Label1.Location = New System.Drawing.Point(77, 73)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(66, 17)
         Me.Label1.TabIndex = 75
@@ -177,7 +180,7 @@ Partial Class frmVentas
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
-        Me.btnModificar.Location = New System.Drawing.Point(980, 202)
+        Me.btnModificar.Location = New System.Drawing.Point(967, 210)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(117, 37)
         Me.btnModificar.TabIndex = 16
@@ -194,7 +197,7 @@ Partial Class frmVentas
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
-        Me.btnCancelar.Location = New System.Drawing.Point(980, 361)
+        Me.btnCancelar.Location = New System.Drawing.Point(967, 380)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(117, 37)
         Me.btnCancelar.TabIndex = 17
@@ -210,7 +213,7 @@ Partial Class frmVentas
         Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAceptar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAceptar.ForeColor = System.Drawing.Color.White
-        Me.btnAceptar.Location = New System.Drawing.Point(980, 43)
+        Me.btnAceptar.Location = New System.Drawing.Point(967, 62)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(117, 37)
         Me.btnAceptar.TabIndex = 15
@@ -220,7 +223,7 @@ Partial Class frmVentas
         'txtID
         '
         Me.txtID.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtID.Location = New System.Drawing.Point(205, 51)
+        Me.txtID.Location = New System.Drawing.Point(205, 70)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(59, 23)
         Me.txtID.TabIndex = 1
@@ -234,7 +237,7 @@ Partial Class frmVentas
         Me.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBuscar.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnBuscar.ForeColor = System.Drawing.Color.White
-        Me.btnBuscar.Location = New System.Drawing.Point(288, 47)
+        Me.btnBuscar.Location = New System.Drawing.Point(288, 66)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(50, 28)
         Me.btnBuscar.TabIndex = 2
@@ -295,8 +298,6 @@ Partial Class frmVentas
         Me.PanelDetalleDeVentas.Controls.Add(Me.grdVentas)
         Me.PanelDetalleDeVentas.Controls.Add(Me.btnQuitarVenta)
         Me.PanelDetalleDeVentas.Controls.Add(Me.btnAgregarVenta)
-        Me.PanelDetalleDeVentas.Controls.Add(Me.CboLote)
-        Me.PanelDetalleDeVentas.Controls.Add(Me.Label15)
         Me.PanelDetalleDeVentas.Controls.Add(Me.txtCantidadVentas)
         Me.PanelDetalleDeVentas.Controls.Add(Me.Label12)
         Me.PanelDetalleDeVentas.Controls.Add(Me.cboProductoVenta)
@@ -313,9 +314,18 @@ Partial Class frmVentas
         Me.grdVentas.AllowUserToResizeRows = False
         Me.grdVentas.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdVentas.BorderStyle = System.Windows.Forms.BorderStyle.None
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdVentas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.grdVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdVentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.Descripcion, Me.Diario, Me.Cantidad, Me.Lote, Me.Precio, Me.Total})
+        Me.grdVentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.Descripcion, Me.Diario, Me.Cantidad, Me.Precio, Me.Total})
         Me.grdVentas.Location = New System.Drawing.Point(18, 64)
+        Me.grdVentas.MultiSelect = False
         Me.grdVentas.Name = "grdVentas"
         Me.grdVentas.ReadOnly = True
         Me.grdVentas.RowHeadersVisible = False
@@ -326,87 +336,81 @@ Partial Class frmVentas
         '
         'ID
         '
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black
-        Me.ID.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        Me.ID.DefaultCellStyle = DataGridViewCellStyle2
         Me.ID.HeaderText = "ID"
         Me.ID.MinimumWidth = 6
         Me.ID.Name = "ID"
         Me.ID.ReadOnly = True
+        Me.ID.Visible = False
         Me.ID.Width = 50
         '
         'Descripcion
         '
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black
-        Me.Descripcion.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        Me.Descripcion.DefaultCellStyle = DataGridViewCellStyle3
         Me.Descripcion.HeaderText = "Repuesto"
         Me.Descripcion.MinimumWidth = 6
         Me.Descripcion.Name = "Descripcion"
         Me.Descripcion.ReadOnly = True
-        Me.Descripcion.Width = 200
+        Me.Descripcion.Width = 250
         '
         'Diario
         '
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black
-        Me.Diario.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        Me.Diario.DefaultCellStyle = DataGridViewCellStyle4
         Me.Diario.HeaderText = "Nombre común"
         Me.Diario.MinimumWidth = 6
         Me.Diario.Name = "Diario"
         Me.Diario.ReadOnly = True
-        Me.Diario.Width = 200
+        Me.Diario.Width = 250
         '
         'Cantidad
         '
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle16.Format = "N2"
-        DataGridViewCellStyle16.NullValue = Nothing
-        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.Format = "N2"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle5
         Me.Cantidad.HeaderText = "Cantidad"
         Me.Cantidad.MinimumWidth = 6
         Me.Cantidad.Name = "Cantidad"
         Me.Cantidad.ReadOnly = True
         Me.Cantidad.Width = 130
         '
-        'Lote
-        '
-        Me.Lote.HeaderText = "Lote"
-        Me.Lote.Name = "Lote"
-        Me.Lote.ReadOnly = True
-        Me.Lote.Width = 170
-        '
         'Precio
         '
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle17.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle17.Format = "N2"
-        DataGridViewCellStyle17.NullValue = Nothing
-        Me.Precio.DefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.Format = "N2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.Precio.DefaultCellStyle = DataGridViewCellStyle6
         Me.Precio.HeaderText = "Precio"
         Me.Precio.MinimumWidth = 6
         Me.Precio.Name = "Precio"
         Me.Precio.ReadOnly = True
-        Me.Precio.Width = 116
+        Me.Precio.Width = 150
         '
         'Total
         '
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle18.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle18.Format = "N2"
-        DataGridViewCellStyle18.NullValue = Nothing
-        Me.Total.DefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle7.Format = "N2"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.Total.DefaultCellStyle = DataGridViewCellStyle7
         Me.Total.HeaderText = "Total"
         Me.Total.MinimumWidth = 6
         Me.Total.Name = "Total"
         Me.Total.ReadOnly = True
-        Me.Total.Width = 116
+        Me.Total.Width = 170
         '
         'btnQuitarVenta
         '
@@ -417,7 +421,7 @@ Partial Class frmVentas
         Me.btnQuitarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnQuitarVenta.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnQuitarVenta.ForeColor = System.Drawing.Color.White
-        Me.btnQuitarVenta.Location = New System.Drawing.Point(887, 10)
+        Me.btnQuitarVenta.Location = New System.Drawing.Point(883, 10)
         Me.btnQuitarVenta.Name = "btnQuitarVenta"
         Me.btnQuitarVenta.Size = New System.Drawing.Size(117, 37)
         Me.btnQuitarVenta.TabIndex = 22
@@ -433,37 +437,17 @@ Partial Class frmVentas
         Me.btnAgregarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAgregarVenta.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregarVenta.ForeColor = System.Drawing.Color.White
-        Me.btnAgregarVenta.Location = New System.Drawing.Point(759, 10)
+        Me.btnAgregarVenta.Location = New System.Drawing.Point(714, 10)
         Me.btnAgregarVenta.Name = "btnAgregarVenta"
         Me.btnAgregarVenta.Size = New System.Drawing.Size(117, 37)
         Me.btnAgregarVenta.TabIndex = 21
         Me.btnAgregarVenta.Text = "Agregar"
         Me.btnAgregarVenta.UseVisualStyleBackColor = False
         '
-        'CboLote
-        '
-        Me.CboLote.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CboLote.FormattingEnabled = True
-        Me.CboLote.Location = New System.Drawing.Point(573, 16)
-        Me.CboLote.Name = "CboLote"
-        Me.CboLote.Size = New System.Drawing.Size(180, 25)
-        Me.CboLote.TabIndex = 20
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.ForeColor = System.Drawing.Color.White
-        Me.Label15.Location = New System.Drawing.Point(530, 20)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(40, 17)
-        Me.Label15.TabIndex = 116
-        Me.Label15.Text = "Lote:"
-        '
         'txtCantidadVentas
         '
         Me.txtCantidadVentas.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCantidadVentas.Location = New System.Drawing.Point(458, 16)
+        Me.txtCantidadVentas.Location = New System.Drawing.Point(596, 16)
         Me.txtCantidadVentas.Name = "txtCantidadVentas"
         Me.txtCantidadVentas.Size = New System.Drawing.Size(66, 23)
         Me.txtCantidadVentas.TabIndex = 19
@@ -475,7 +459,7 @@ Partial Class frmVentas
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.Color.White
-        Me.Label12.Location = New System.Drawing.Point(377, 20)
+        Me.Label12.Location = New System.Drawing.Point(469, 20)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(75, 17)
         Me.Label12.TabIndex = 115
@@ -485,7 +469,7 @@ Partial Class frmVentas
         '
         Me.cboProductoVenta.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboProductoVenta.FormattingEnabled = True
-        Me.cboProductoVenta.Location = New System.Drawing.Point(93, 16)
+        Me.cboProductoVenta.Location = New System.Drawing.Point(139, 16)
         Me.cboProductoVenta.Name = "cboProductoVenta"
         Me.cboProductoVenta.Size = New System.Drawing.Size(278, 25)
         Me.cboProductoVenta.TabIndex = 18
@@ -506,7 +490,7 @@ Partial Class frmVentas
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label16.ForeColor = System.Drawing.Color.White
-        Me.Label16.Location = New System.Drawing.Point(92, 280)
+        Me.Label16.Location = New System.Drawing.Point(92, 299)
         Me.Label16.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(68, 17)
@@ -519,7 +503,7 @@ Partial Class frmVentas
         Me.PanelImpuestos.Controls.Add(Me.Label18)
         Me.PanelImpuestos.Controls.Add(Me.txtIVA)
         Me.PanelImpuestos.Controls.Add(Me.txtOtrosImpuestos)
-        Me.PanelImpuestos.Location = New System.Drawing.Point(80, 288)
+        Me.PanelImpuestos.Location = New System.Drawing.Point(80, 307)
         Me.PanelImpuestos.Name = "PanelImpuestos"
         Me.PanelImpuestos.Size = New System.Drawing.Size(258, 110)
         Me.PanelImpuestos.TabIndex = 130
@@ -575,7 +559,7 @@ Partial Class frmVentas
         Me.lblInformacionGeneral.AutoSize = True
         Me.lblInformacionGeneral.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblInformacionGeneral.ForeColor = System.Drawing.Color.White
-        Me.lblInformacionGeneral.Location = New System.Drawing.Point(371, 35)
+        Me.lblInformacionGeneral.Location = New System.Drawing.Point(371, 54)
         Me.lblInformacionGeneral.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblInformacionGeneral.Name = "lblInformacionGeneral"
         Me.lblInformacionGeneral.Size = New System.Drawing.Size(130, 17)
@@ -597,7 +581,7 @@ Partial Class frmVentas
         Me.PanelInformacionGeneral.Controls.Add(Me.Label13)
         Me.PanelInformacionGeneral.Controls.Add(Me.Label14)
         Me.PanelInformacionGeneral.Controls.Add(Me.cboFormaEntrega)
-        Me.PanelInformacionGeneral.Location = New System.Drawing.Point(359, 43)
+        Me.PanelInformacionGeneral.Location = New System.Drawing.Point(359, 62)
         Me.PanelInformacionGeneral.Name = "PanelInformacionGeneral"
         Me.PanelInformacionGeneral.Size = New System.Drawing.Size(597, 185)
         Me.PanelInformacionGeneral.TabIndex = 128
@@ -709,7 +693,7 @@ Partial Class frmVentas
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(92, 87)
+        Me.Label2.Location = New System.Drawing.Point(92, 106)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(51, 17)
@@ -725,7 +709,7 @@ Partial Class frmVentas
         Me.PanelCliente.Controls.Add(Me.Label3)
         Me.PanelCliente.Controls.Add(Me.cboPersona)
         Me.PanelCliente.Controls.Add(Me.btnAgregarPersona)
-        Me.PanelCliente.Location = New System.Drawing.Point(80, 95)
+        Me.PanelCliente.Location = New System.Drawing.Point(80, 114)
         Me.PanelCliente.Name = "PanelCliente"
         Me.PanelCliente.Size = New System.Drawing.Size(258, 176)
         Me.PanelCliente.TabIndex = 132
@@ -791,7 +775,7 @@ Partial Class frmVentas
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(371, 238)
+        Me.Label6.Location = New System.Drawing.Point(371, 257)
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(99, 17)
@@ -810,7 +794,7 @@ Partial Class frmVentas
         Me.PanelFormaPago.Controls.Add(Me.cboFormaPago)
         Me.PanelFormaPago.Controls.Add(Me.Label22)
         Me.PanelFormaPago.Controls.Add(Me.btnAgregarFormaPago)
-        Me.PanelFormaPago.Location = New System.Drawing.Point(359, 246)
+        Me.PanelFormaPago.Location = New System.Drawing.Point(359, 265)
         Me.PanelFormaPago.Name = "PanelFormaPago"
         Me.PanelFormaPago.Size = New System.Drawing.Size(597, 152)
         Me.PanelFormaPago.TabIndex = 134
@@ -902,7 +886,7 @@ Partial Class frmVentas
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(843, 413)
+        Me.Label11.Location = New System.Drawing.Point(843, 422)
         Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(37, 17)
@@ -914,7 +898,7 @@ Partial Class frmVentas
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(378, 413)
+        Me.Label8.Location = New System.Drawing.Point(378, 422)
         Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(71, 17)
@@ -926,7 +910,7 @@ Partial Class frmVentas
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(155, 413)
+        Me.Label9.Location = New System.Drawing.Point(155, 422)
         Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(59, 17)
@@ -939,7 +923,7 @@ Partial Class frmVentas
         Me.PanelTotales.Controls.Add(Me.txtTotal)
         Me.PanelTotales.Controls.Add(Me.txtIvaMonto)
         Me.PanelTotales.Controls.Add(Me.txtSubtotal)
-        Me.PanelTotales.Location = New System.Drawing.Point(80, 421)
+        Me.PanelTotales.Location = New System.Drawing.Point(80, 430)
         Me.PanelTotales.Name = "PanelTotales"
         Me.PanelTotales.Size = New System.Drawing.Size(876, 64)
         Me.PanelTotales.TabIndex = 140
@@ -989,12 +973,60 @@ Partial Class frmVentas
         Me.lblMontoDtoRecargo.AutoSize = True
         Me.lblMontoDtoRecargo.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblMontoDtoRecargo.ForeColor = System.Drawing.Color.White
-        Me.lblMontoDtoRecargo.Location = New System.Drawing.Point(607, 413)
+        Me.lblMontoDtoRecargo.Location = New System.Drawing.Point(589, 422)
         Me.lblMontoDtoRecargo.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblMontoDtoRecargo.Name = "lblMontoDtoRecargo"
-        Me.lblMontoDtoRecargo.Size = New System.Drawing.Size(50, 17)
+        Me.lblMontoDtoRecargo.Size = New System.Drawing.Size(98, 17)
         Me.lblMontoDtoRecargo.TabIndex = 143
-        Me.lblMontoDtoRecargo.Text = "Monto "
+        Me.lblMontoDtoRecargo.Text = "Forma de Pago"
+        '
+        'grdVentas1
+        '
+        Me.grdVentas1.AllowUserToAddRows = False
+        Me.grdVentas1.AllowUserToDeleteRows = False
+        Me.grdVentas1.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.grdVentas1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdVentas1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        Me.grdVentas1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdVentas1.Location = New System.Drawing.Point(80, 790)
+        Me.grdVentas1.MultiSelect = False
+        Me.grdVentas1.Name = "grdVentas1"
+        Me.grdVentas1.ReadOnly = True
+        Me.grdVentas1.RowHeadersVisible = False
+        Me.grdVentas1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.grdVentas1.Size = New System.Drawing.Size(1017, 251)
+        Me.grdVentas1.TabIndex = 144
+        '
+        'lblBusqueda
+        '
+        Me.lblBusqueda.AutoSize = True
+        Me.lblBusqueda.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblBusqueda.ForeColor = System.Drawing.Color.White
+        Me.lblBusqueda.Location = New System.Drawing.Point(92, 23)
+        Me.lblBusqueda.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblBusqueda.Name = "lblBusqueda"
+        Me.lblBusqueda.Size = New System.Drawing.Size(262, 17)
+        Me.lblBusqueda.TabIndex = 146
+        Me.lblBusqueda.Text = "Utilice el cuadro para hacer búsquedas"
+        Me.lblBusqueda.Visible = False
+        '
+        'txtBusqueda
+        '
+        Me.txtBusqueda.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBusqueda.Location = New System.Drawing.Point(359, 20)
+        Me.txtBusqueda.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtBusqueda.Name = "txtBusqueda"
+        Me.txtBusqueda.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.txtBusqueda.Size = New System.Drawing.Size(597, 23)
+        Me.txtBusqueda.TabIndex = 145
+        Me.txtBusqueda.Visible = False
         '
         'frmVentas
         '
@@ -1003,7 +1035,10 @@ Partial Class frmVentas
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(1147, 794)
+        Me.ClientSize = New System.Drawing.Size(1147, 1070)
+        Me.Controls.Add(Me.lblBusqueda)
+        Me.Controls.Add(Me.txtBusqueda)
+        Me.Controls.Add(Me.grdVentas1)
         Me.Controls.Add(Me.lblMontoDtoRecargo)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Label8)
@@ -1047,6 +1082,7 @@ Partial Class frmVentas
         Me.PanelFormaPago.PerformLayout()
         CType(Me.btnAgregarDetalleFormaPago, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelTotales.ResumeLayout(False)
+        CType(Me.grdVentas1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1069,8 +1105,6 @@ Partial Class frmVentas
     Friend WithEvents PanelDetalleDeVentas As Panel
     Friend WithEvents btnQuitarVenta As Button
     Friend WithEvents btnAgregarVenta As Button
-    Friend WithEvents CboLote As ComboBox
-    Friend WithEvents Label15 As Label
     Friend WithEvents txtCantidadVentas As TextBox
     Friend WithEvents Label12 As Label
     Friend WithEvents cboProductoVenta As ComboBox
@@ -1117,12 +1151,14 @@ Partial Class frmVentas
     Friend WithEvents lblMontoDtoRecargo As Label
     Friend WithEvents txtVendedor As TextBox
     Friend WithEvents grdVentas As DataGridView
+    Friend WithEvents txtPorcentaje As TextBox
     Friend WithEvents ID As DataGridViewTextBoxColumn
     Friend WithEvents Descripcion As DataGridViewTextBoxColumn
     Friend WithEvents Diario As DataGridViewTextBoxColumn
     Friend WithEvents Cantidad As DataGridViewTextBoxColumn
-    Friend WithEvents Lote As DataGridViewTextBoxColumn
     Friend WithEvents Precio As DataGridViewTextBoxColumn
     Friend WithEvents Total As DataGridViewTextBoxColumn
-    Friend WithEvents txtPorcentaje As TextBox
+    Friend WithEvents grdVentas1 As DataGridView
+    Friend WithEvents lblBusqueda As Label
+    Friend WithEvents txtBusqueda As TextBox
 End Class

@@ -156,8 +156,8 @@ Public Class AD_Vehiculos
     End Function
 
     Public Function Agregar_Vehiculo(ID_TipoVehiculo As Integer, ID_Marca As Integer, Nombre As String,
-                            Modelo As String, Color As String, NumChasis As String, NumMotor As String,
-                            Matricula As String, Nota As String, Estado As Boolean)
+                            Modelo As String, Horas_Trabajadas As String, NumChasis As String, NumMotor As String,
+                            Matricula As String, Año_Fabricacion As String, Nota As String, Estado As Boolean)
 
         Dim idVehiculo As Integer
 
@@ -168,10 +168,11 @@ Public Class AD_Vehiculos
                 comando.Parameters.AddWithValue("@ID_Marca", ID_Marca)
                 comando.Parameters.AddWithValue("@Nombre", Nombre)
                 comando.Parameters.AddWithValue("@Modelo", Modelo)
-                comando.Parameters.AddWithValue("@Color", Color)
+                comando.Parameters.AddWithValue("@Horas_Trabajadas", Horas_Trabajadas)
                 comando.Parameters.AddWithValue("@NumChasis", NumChasis)
                 comando.Parameters.AddWithValue("@NumMotor", NumMotor)
                 comando.Parameters.AddWithValue("@Matricula", Matricula)
+                comando.Parameters.AddWithValue("@Año_Fabricacion", Año_Fabricacion)
                 comando.Parameters.AddWithValue("@Nota", Nota)
                 comando.Parameters.AddWithValue("@Estado", Estado)
 
@@ -203,8 +204,8 @@ Public Class AD_Vehiculos
     End Sub
 
     Public Sub Modificar_Vehiculo(ID_Vehiculo As Integer, ID_TipoVehiculo As Integer, ID_Marca As Integer, Nombre As String,
-                              Modelo As String, Color As String, NumChasis As String, NumMotor As String,
-                              Matricula As String, Nota As String, Estado As Boolean)
+                              Modelo As String, Horas_Trabajadas As String, NumChasis As String, NumMotor As String,
+                              Matricula As String, Año_Fabricacion As String, Nota As String, Estado As Boolean)
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Modificar_Vehiculo", conexion)
                 comando.CommandType = CommandType.StoredProcedure
@@ -213,10 +214,11 @@ Public Class AD_Vehiculos
                 comando.Parameters.AddWithValue("@ID_Marca", ID_Marca)
                 comando.Parameters.AddWithValue("@Nombre", Nombre)
                 comando.Parameters.AddWithValue("@Modelo", Modelo)
-                comando.Parameters.AddWithValue("@Color", Color)
+                comando.Parameters.AddWithValue("@Horas_Trabajadas", Horas_Trabajadas)
                 comando.Parameters.AddWithValue("@NumChasis", NumChasis)
                 comando.Parameters.AddWithValue("@NumMotor", NumMotor)
                 comando.Parameters.AddWithValue("@Matricula", Matricula)
+                comando.Parameters.AddWithValue("@Año_Fabricacion", Año_Fabricacion)
                 comando.Parameters.AddWithValue("@Nota", Nota)
                 comando.Parameters.AddWithValue("@Estado", Estado)
 

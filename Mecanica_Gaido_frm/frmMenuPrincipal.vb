@@ -47,10 +47,12 @@ Public Class frmMenuPrincipal
 #End Region
 
 #Region "Orden Reparacion"
-    Private Sub btnOrdenReparacón_Click(sender As Object, e As EventArgs) Handles btnOrdenReparacion.Click
+    Private Sub btnOrdenReparacion_Click(sender As Object, e As EventArgs) Handles btnOrdenReparacion.Click
+        ' Si no se ha creado una instancia con parámetros desde el gráfico, crea una por defecto
         AbrirFormHijo(New frmOrdenesReparacion(), DirectCast(sender, Button))
         OcultarPaneles()
     End Sub
+
 #End Region
 
 #Region "Productos"
@@ -234,7 +236,7 @@ Public Class frmMenuPrincipal
 #Region "Formulario Padre y resize"
     Private btnAnterior As Button = Nothing
 
-    Private Sub AbrirFormHijo(formHijo As Object, sender As Button)
+    Public Sub AbrirFormHijo(formHijo As Object, sender As Button)
         ' Restablecer el color del botón anterior
         If btnAnterior IsNot Nothing AndAlso sender IsNot Nothing Then
             btnAnterior.BackColor = Color.FromArgb(65, 65, 65)
