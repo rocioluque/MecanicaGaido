@@ -24,6 +24,8 @@ Public Class frmVentas
         Dim oVenta As New AD_Ventas
         txtNumComprobante.Text = oVenta.ObtenerNroComprobante
         txtNumComprobante.Enabled = False
+        btnModificar.Enabled = False
+
     End Sub
 
     Public Sub limpiar()
@@ -806,7 +808,7 @@ Public Class frmVentas
             Dim ID_Venta As Integer = Convert.ToInt32(selectedRow.Cells("ID_Venta").Value)
 
             CargarDatosVenta(ID_Venta)
-
+            btnModificar.Enabled = True
             lblBusqueda.Visible = False
             txtBusqueda.Text = ""
             txtBusqueda.Visible = False

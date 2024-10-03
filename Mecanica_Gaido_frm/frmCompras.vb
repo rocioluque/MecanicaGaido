@@ -30,6 +30,7 @@ Public Class frmCompras
         Cargar_Grilla_Compras()
         limpiar()
         PonerDecimales()
+        btnModificar.Enabled = False
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -118,6 +119,7 @@ Public Class frmCompras
             ' Obtiene el ID del producto de la celda correspondiente
             Dim selectedRow As DataGridViewRow = grdCompras.Rows(e.RowIndex)
             Dim ID_Compra As Integer
+            btnModificar.Enabled = True
 
             If selectedRow.Cells("Codigo").Value IsNot Nothing Then
                 ID_Compra = Convert.ToInt32(selectedRow.Cells("Codigo").Value)

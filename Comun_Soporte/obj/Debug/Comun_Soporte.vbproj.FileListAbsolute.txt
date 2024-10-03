@@ -239,3 +239,6 @@ C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.
 C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.pdb
 C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\System.CodeDom.dll
 C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\System.CodeDom.xml
+C:\Users\Carabante\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\System.CodeDom.dll
+C:\Users\Carabante\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\System.CodeDom.xml
+C:\Users\Carabante\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.vbproj.AssemblyReference.cache
