@@ -148,10 +148,17 @@ Public Class frmPersonas
         Cargar_Grilla()
         btnModificar.Enabled = False
         txtNombre.Enabled = True
+
+        If txtNombre.Text = Nothing Then
+            chkEstado.Visible = False
+        Else
+            chkEstado.Visible = True
+        End If
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         Limpiar()
+        btnModificar.Enabled = False
     End Sub
 #End Region
 
@@ -542,65 +549,65 @@ Nombre"
     End Sub
 #End Region
 
-#Region "Habilitar y deshabilitar botones"
-    Private Sub cboCiudad_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCiudad.SelectedIndexChanged
-        If cboCiudad.SelectedIndex <> -1 Then
+    '#Region "Habilitar y deshabilitar botones"
+    '    Private Sub cboCiudad_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCiudad.SelectedIndexChanged
+    '        If cboCiudad.SelectedIndex <> -1 Then
 
-            txtCodigoPostal.Enabled = True
-        Else
+    '            txtCodigoPostal.Enabled = True
+    '        Else
 
-            txtCodigoPostal.Enabled = False
-        End If
-    End Sub
+    '            txtCodigoPostal.Enabled = False
+    '        End If
+    '    End Sub
 
-    Private Sub txtCodigoPostal_TextChanged(sender As Object, e As EventArgs)
-        ActualizarEstadoControles()
-    End Sub
+    '    Private Sub txtCodigoPostal_TextChanged(sender As Object, e As EventArgs)
+    '        ActualizarEstadoControles()
+    '    End Sub
 
-    Private Sub txtDireccion_TextChanged(sender As Object, e As EventArgs) Handles txtDireccion.TextChanged
-        ActualizarEstadoControles()
-    End Sub
+    '    Private Sub txtDireccion_TextChanged(sender As Object, e As EventArgs) Handles txtDireccion.TextChanged
+    '        ActualizarEstadoControles()
+    '    End Sub
 
-    Private Sub txtNumero_TextChanged(sender As Object, e As EventArgs) Handles txtNumero.TextChanged
-        ActualizarEstadoControles()
-    End Sub
+    '    Private Sub txtNumero_TextChanged(sender As Object, e As EventArgs) Handles txtNumero.TextChanged
+    '        ActualizarEstadoControles()
+    '    End Sub
 
-    Private Sub txtPiso_TextChanged(sender As Object, e As EventArgs) Handles txtPiso.TextChanged
-        ActualizarEstadoControles()
-    End Sub
+    '    Private Sub txtPiso_TextChanged(sender As Object, e As EventArgs) Handles txtPiso.TextChanged
+    '        ActualizarEstadoControles()
+    '    End Sub
 
-    Private Sub txtLetraPuerta_TextChanged(sender As Object, e As EventArgs) Handles txtLetraPuerta.TextChanged
-        ActualizarEstadoControles()
-    End Sub
+    '    Private Sub txtLetraPuerta_TextChanged(sender As Object, e As EventArgs) Handles txtLetraPuerta.TextChanged
+    '        ActualizarEstadoControles()
+    '    End Sub
 
-    Private Sub txtTelefonoMovil_TextChanged(sender As Object, e As EventArgs)
-        ActualizarEstadoControles()
-    End Sub
+    '    Private Sub txtTelefonoMovil_TextChanged(sender As Object, e As EventArgs)
+    '        ActualizarEstadoControles()
+    '    End Sub
 
-    Private Sub txtTelefonoFijo_TextChanged(sender As Object, e As EventArgs) Handles txtTelefonoFijo.TextChanged
-        ActualizarEstadoControles()
-    End Sub
+    '    Private Sub txtTelefonoFijo_TextChanged(sender As Object, e As EventArgs) Handles txtTelefonoFijo.TextChanged
+    '        ActualizarEstadoControles()
+    '    End Sub
 
-    Private Sub txtCorreo_TextChanged(sender As Object, e As EventArgs) Handles txtCorreo.TextChanged
-        ActualizarEstadoControles()
-    End Sub
+    '    Private Sub txtCorreo_TextChanged(sender As Object, e As EventArgs) Handles txtCorreo.TextChanged
+    '        ActualizarEstadoControles()
+    '    End Sub
 
-    Private Sub chkEstado_CheckedChanged(sender As Object, e As EventArgs) Handles chkEstado.CheckedChanged
-        ActualizarEstadoControles()
-    End Sub
+    '    Private Sub chkEstado_CheckedChanged(sender As Object, e As EventArgs) Handles chkEstado.CheckedChanged
+    '        ActualizarEstadoControles()
+    '    End Sub
 
-    Private Sub ActualizarEstadoControles()
-        Dim habilitar As Boolean = Not String.IsNullOrEmpty(txtCodigoPostal.Text)
-        txtDireccion.Enabled = habilitar
-        txtNumero.Enabled = habilitar
-        txtPiso.Enabled = habilitar
-        txtLetraPuerta.Enabled = habilitar
-        txtTelefonoFijo.Enabled = habilitar
-        txtTelefonoMovil.Enabled = habilitar
-        txtCorreo.Enabled = habilitar
-        chkEstado.Enabled = habilitar
-    End Sub
-#End Region
+    '    Private Sub ActualizarEstadoControles()
+    '        Dim habilitar As Boolean = Not String.IsNullOrEmpty(txtCodigoPostal.Text)
+    '        txtDireccion.Enabled = habilitar
+    '        txtNumero.Enabled = habilitar
+    '        txtPiso.Enabled = habilitar
+    '        txtLetraPuerta.Enabled = habilitar
+    '        txtTelefonoFijo.Enabled = habilitar
+    '        txtTelefonoMovil.Enabled = habilitar
+    '        txtCorreo.Enabled = habilitar
+    '        chkEstado.Enabled = habilitar
+    '    End Sub
+    '#End Region
 
 #Region "Css trucho"
     Private Sub PanelDatosPersonales_Paint(sender As Object, e As PaintEventArgs) Handles PanelDatosPersonales.Paint
@@ -763,6 +770,14 @@ Nombre"
 
     Private Sub grdPersonas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdPersonas.CellContentClick
 
+    End Sub
+
+    Private Sub chkEstado_CheckedChanged(sender As Object, e As EventArgs) Handles chkEstado.CheckedChanged
+        If txtNombre.Text = Nothing Then
+            chkEstado.Visible = False
+        Else
+            chkEstado.Visible = True
+        End If
     End Sub
 #End Region
 

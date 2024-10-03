@@ -97,7 +97,7 @@ Partial Class frmAgregarEmpleados
         '
         Me.txtContraseña.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtContraseña.Location = New System.Drawing.Point(15, 81)
-        Me.txtContraseña.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtContraseña.Margin = New System.Windows.Forms.Padding(2)
         Me.txtContraseña.Name = "txtContraseña"
         Me.txtContraseña.Size = New System.Drawing.Size(206, 23)
         Me.txtContraseña.TabIndex = 4
@@ -106,7 +106,7 @@ Partial Class frmAgregarEmpleados
         '
         Me.txtID.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtID.Location = New System.Drawing.Point(156, 29)
-        Me.txtID.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtID.Margin = New System.Windows.Forms.Padding(2)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(61, 23)
         Me.txtID.TabIndex = 1
@@ -117,7 +117,7 @@ Partial Class frmAgregarEmpleados
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
         Me.chkEstado.Location = New System.Drawing.Point(15, 146)
-        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
         Me.chkEstado.TabIndex = 9
@@ -238,7 +238,7 @@ Partial Class frmAgregarEmpleados
         Me.cboSeccion.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboSeccion.FormattingEnabled = True
         Me.cboSeccion.Location = New System.Drawing.Point(15, 119)
-        Me.cboSeccion.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboSeccion.Margin = New System.Windows.Forms.Padding(2)
         Me.cboSeccion.Name = "cboSeccion"
         Me.cboSeccion.Size = New System.Drawing.Size(175, 25)
         Me.cboSeccion.TabIndex = 8
@@ -340,7 +340,7 @@ Partial Class frmAgregarEmpleados
         Me.cboRol.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboRol.FormattingEnabled = True
         Me.cboRol.Location = New System.Drawing.Point(15, 125)
-        Me.cboRol.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboRol.Margin = New System.Windows.Forms.Padding(2)
         Me.cboRol.Name = "cboRol"
         Me.cboRol.Size = New System.Drawing.Size(175, 25)
         Me.cboRol.TabIndex = 5
@@ -373,7 +373,7 @@ Partial Class frmAgregarEmpleados
         '
         Me.txtCargo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCargo.Location = New System.Drawing.Point(15, 77)
-        Me.txtCargo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtCargo.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCargo.Name = "txtCargo"
         Me.txtCargo.Size = New System.Drawing.Size(206, 23)
         Me.txtCargo.TabIndex = 7
@@ -545,7 +545,7 @@ Partial Class frmAgregarEmpleados
         '
         Me.txtUsuario.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtUsuario.Location = New System.Drawing.Point(15, 35)
-        Me.txtUsuario.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtUsuario.Margin = New System.Windows.Forms.Padding(2)
         Me.txtUsuario.Name = "txtUsuario"
         Me.txtUsuario.Size = New System.Drawing.Size(206, 23)
         Me.txtUsuario.TabIndex = 3

@@ -31,6 +31,8 @@ Public Class frmCompras
         limpiar()
         PonerDecimales()
         btnModificar.Enabled = False
+
+
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -617,6 +619,12 @@ Public Class frmCompras
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
+
+
+
+
+
+
 
 
 

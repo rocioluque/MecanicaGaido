@@ -26,6 +26,12 @@ Public Class frmAgregarEmpleados
             btnAceptar.Enabled = True
             btnModificar.Enabled = False
         End If
+
+        If txtUsuario.Text = Nothing Then
+            chkEstado.Visible = False
+        Else
+            chkEstado.Visible = True
+        End If
     End Sub
 
     Public Sub limpiar()
@@ -360,6 +366,14 @@ Public Class frmAgregarEmpleados
             Dim rect As New Rectangle(0, 0, PanelNotas.Width - 1, PanelNotas.Height - 1)
             e.Graphics.DrawRectangle(pen, rect)
         End Using
+    End Sub
+
+    Private Sub chkEstado_CheckedChanged(sender As Object, e As EventArgs) Handles chkEstado.CheckedChanged
+        If txtUsuario.Text = Nothing Then
+            chkEstado.Visible = False
+        Else
+            chkEstado.Visible = True
+        End If
     End Sub
 #End Region
 End Class
