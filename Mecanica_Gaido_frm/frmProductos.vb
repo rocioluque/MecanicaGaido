@@ -17,6 +17,7 @@ Public Class frmProductos
         Cargar_Combo_Original()
         limpiar()
         Cargar_Grilla()
+        btnModificar.Enabled = False
 
         'AGREGAR LOS TEXTBOXS QUE NECESITEN QUE SE VALIDEN COMO NUMERO DECIMAL
         AgregarValidacionATextBox(txtPrecioLista)
@@ -139,6 +140,7 @@ Public Class frmProductos
             ' Obtiene el ID del producto de la celda correspondiente
             Dim selectedRow As DataGridViewRow = grdProductos.Rows(e.RowIndex)
             Dim idProducto As String
+            btnModificar.Enabled = True
 
             If selectedRow.Cells("Cod. Fabricante").Value IsNot Nothing Then
                 idProducto = Convert.ToString(selectedRow.Cells("Cod. Fabricante").Value)

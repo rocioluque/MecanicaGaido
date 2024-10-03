@@ -14,6 +14,7 @@ Public Class frmVehiculos
         Cargar_Combo_Personas()
         Cargar_Grilla()
         Limpiar()
+        btnModificar.Enabled = False
 
         ' Manejar eventos para concatenar datos
         AddHandler cboTipoVehiculo.SelectedIndexChanged, AddressOf ActualizarNombre
@@ -114,7 +115,7 @@ Public Class frmVehiculos
             ' Obtiene el ID del vehiculo de la celda correspondiente
             Dim selectedRow As DataGridViewRow = grdVehiculo.Rows(e.RowIndex)
             Dim idVehiculo As Integer
-
+            btnModificar.Enabled = True
             If selectedRow.Cells("N° Vehículo").Value IsNot Nothing Then
                 idVehiculo = Convert.ToInt32(selectedRow.Cells("N° Vehículo").Value)
                 CargarDatosEnTxt(idVehiculo)

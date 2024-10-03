@@ -13,8 +13,8 @@ Imports iTextSharp.text.pdf
 
 Public Class frmMenuPrincipal
 
+#Region "Procedimientos"
     Private Sub MenuPrincipal_Load(sender As Object, e As EventArgs) Handles Me.Load
-
         lblUsuario.Text = UsuarioActivo.usuario
         lblRol.Text = UsuarioActivo.nombre_rol
         PintarBotonInicio()
@@ -24,6 +24,7 @@ Public Class frmMenuPrincipal
     Public Sub MostrarInicio()
         AbrirFormHijo(New frmInicio(), Nothing)
     End Sub
+#End Region
 
 #Region "Inicio"
     Private Sub btnInicio_Click(sender As Object, e As EventArgs) Handles btnInicio.Click
@@ -221,10 +222,10 @@ Public Class frmMenuPrincipal
     End Sub
 #End Region
 
-#Region "Control botones"
+#Region "Botón cerrar"
     Private Sub frmMenuPrincipal_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         'Mostrar un mensaje de confirmación
-        Dim resultado As DialogResult = MessageBox.Show("¿Estás seguro de que quieres cerrar la aplicación?", "Confirmar cierre", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        Dim resultado As DialogResult = MessageBox.Show("¿Estás seguro de que quieres cerrar sesión?", "Confirmar cierre", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         ' Si el usuario elige 'No', cancelar el cierre
         If resultado = DialogResult.No Then
