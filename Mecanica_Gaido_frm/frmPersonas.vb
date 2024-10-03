@@ -146,7 +146,7 @@ Public Class frmPersonas
         Cargar_Combo_TipoDocumento()
         Cargar_Combo_TipoPersona()
         Cargar_Grilla()
-
+        btnModificar.Enabled = False
         txtNombre.Enabled = True
     End Sub
 
@@ -229,14 +229,18 @@ Public Class frmPersonas
             ' Obtiene el ID de persona de la celda correspondiente
             Dim selectedRow As DataGridViewRow = grdPersonas.Rows(e.RowIndex)
             Dim IdPersona As Integer
+            btnModificar.Enabled = True
 
             If selectedRow.Cells("N° Persona").Value IsNot Nothing Then
                 IdPersona = Convert.ToInt32(selectedRow.Cells("N° Persona").Value)
                 CargarDatosEnTxt(IdPersona)
             Else
                 MsgBox("El ID de Persona no puede ser nulo.", vbCritical, "Error")
+
             End If
         End If
+
+
     End Sub
 #End Region
 
@@ -755,6 +759,10 @@ Nombre"
                 MessageBox.Show("Error al conectar con la API: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End If
+    End Sub
+
+    Private Sub grdPersonas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdPersonas.CellContentClick
+
     End Sub
 #End Region
 

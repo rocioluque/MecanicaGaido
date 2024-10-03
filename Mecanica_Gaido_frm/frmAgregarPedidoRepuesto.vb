@@ -105,14 +105,105 @@ Public Class frmAgregarPedidoRepuesto
 
 #Region "PDF"
     Public Sub ExportarDatosPDF(ByVal document As Document)
+        ' ENCABEZADO
+        Dim encabezado As New PdfPTable(8)
+        encabezado.WidthPercentage = 100
+
+        ' Fila 1 a 4 Columnas 1 a 4
+        Dim logoPath As String = System.IO.Path.Combine("Imagenes", "mecanicaGaidoLogo-SinFondo.png")
+        If File.Exists(logoPath) Then
+            Dim logo As Image = Image.GetInstance(logoPath)
+            logo.ScaleToFit(140, 120)
+
+            Dim logoCell As New PdfPCell(logo)
+            logoCell.Colspan = 4
+            logoCell.Rowspan = 4
+            logoCell.HorizontalAlignment = Element.ALIGN_CENTER
+            logoCell.VerticalAlignment = Element.ALIGN_MIDDLE
+            logoCell.Border = PdfPCell.NO_BORDER
+            logoCell.BorderWidthTop = 1
+            logoCell.BorderWidthLeft = 1
+            logoCell.BorderColor = BaseColor.BLACK
+
+            encabezado.AddCell(logoCell)
+        Else
+            MessageBox.Show("La imagen no se encontró en la ruta especificada.")
+        End If
+
+        ' Fila 1 Columnas 5 a 8
+        Dim NumOrdenCell As New PdfPCell(New Paragraph("PEDIDO PARA COMPRA DE REPUESTOS", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11)))
+        NumOrdenCell.Colspan = 4
+        NumOrdenCell.Border = PdfPCell.NO_BORDER
+        NumOrdenCell.BorderWidthTop = 1
+        NumOrdenCell.BorderWidthRight = 1
+        NumOrdenCell.BorderColor = BaseColor.BLACK
+        NumOrdenCell.HorizontalAlignment = Element.ALIGN_LEFT
+        encabezado.AddCell(NumOrdenCell)
+
+        ' Fila 2 Columnas 5 a 8 VACIAS
+        For col As Integer = 5 To 8
+            Dim emptyCell As New PdfPCell(New Phrase(" "))
+
+            If col = 8 Then
+                emptyCell.Border = PdfPCell.NO_BORDER
+                emptyCell.BorderWidthRight = 1
+                emptyCell.BorderColor = BaseColor.BLACK
+            Else
+                emptyCell.Border = PdfPCell.NO_BORDER
+            End If
+            encabezado.AddCell(emptyCell)
+        Next
+
+        ' Fila 3 Columnas 5 a 8
+        Dim direccionCell As New PdfPCell(New Paragraph("Corrientes 136 - (5940) LAS VARILLAS (Cba.)", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
+        direccionCell.Colspan = 4
+        direccionCell.Border = PdfPCell.NO_BORDER
+        direccionCell.BorderWidthRight = 1
+        direccionCell.HorizontalAlignment = Element.ALIGN_CENTER
+        direccionCell.VerticalAlignment = Element.ALIGN_TOP
+        encabezado.AddCell(direccionCell)
+
+        ' Fila 4 Columnas 4-5-6
+        Dim telefonoCell As New PdfPCell(New Paragraph("Tel. 03533 420505 / 03533 15419566", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
+        telefonoCell.Colspan = 4
+        telefonoCell.Border = PdfPCell.NO_BORDER
+        telefonoCell.BorderWidthRight = 1
+        telefonoCell.HorizontalAlignment = Element.ALIGN_CENTER
+        telefonoCell.VerticalAlignment = Element.ALIGN_TOP
+        encabezado.AddCell(telefonoCell)
+
+        ' Fila 5 Columnas 1-2-3
+        Dim Dueñocell As New PdfPCell(New Phrase("de Roberto C. Gaido", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11)))
+        Dueñocell.Colspan = 4
+        Dueñocell.Border = PdfPCell.NO_BORDER
+        Dueñocell.BorderWidthLeft = 1
+        Dueñocell.BorderWidthBottom = 1
+        Dueñocell.BorderColor = BaseColor.BLACK
+        Dueñocell.HorizontalAlignment = Element.ALIGN_CENTER
+        Dueñocell.VerticalAlignment = Element.ALIGN_TOP
+        encabezado.AddCell(Dueñocell)
+
+        ' Fila 5 Columnas 4-5-6
+        Dim emailCell As New PdfPCell(New Paragraph("rgaido@lasvarinet.com.ar", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
+        emailCell.Colspan = 4
+        emailCell.Border = PdfPCell.NO_BORDER
+        emailCell.BorderWidthRight = 1
+        emailCell.BorderWidthBottom = 1
+        emailCell.HorizontalAlignment = Element.ALIGN_CENTER
+        emailCell.VerticalAlignment = Element.ALIGN_TOP
+        encabezado.AddCell(emailCell)
+
+        document.Add(encabezado)
+
+        Dim texto As New Phrase("Pedido de presupuesto del día: " + Now.ToString("dd-MM-yyyy") + " al proveedor " + cboPersona.Text)
+        document.Add(texto)
+
+        ' TABLA DE REPUESTOS
         Dim datatable As New PdfPTable(grdRepuestos.ColumnCount)
         datatable.DefaultCell.Padding = 3
         datatable.WidthPercentage = 100
         datatable.DefaultCell.BorderWidth = 2
         datatable.DefaultCell.VerticalAlignment = Element.ALIGN_CENTER
-
-        Dim encabezado As New Paragraph("PEDIDO PARA COMPRA DE REPUESTOS")
-        Dim texto As New Phrase("Pedido del día: " + Now.ToString("dd-MM-yyyy") + " al proveedor " + cboPersona.Text)
 
         For i As Integer = 0 To grdRepuestos.ColumnCount - 1
             datatable.AddCell(grdRepuestos.Columns(i).HeaderText)
@@ -129,8 +220,6 @@ Public Class frmAgregarPedidoRepuesto
             datatable.CompleteRow()
         Next
 
-        document.Add(encabezado)
-        document.Add(texto)
         document.Add(datatable)
     End Sub
 #End Region
@@ -195,7 +284,6 @@ Public Class frmAgregarPedidoRepuesto
 
     Private Function Consultar_TelefonoPersona(idPersona As Object) As String
         Dim numeroTelefonoMovil As String = String.Empty
-
         Try
             Dim dt As DataTable = o_pedidos.Consultar_TelefonoPersona(idPersona)
             If dt.Rows.Count > 0 Then

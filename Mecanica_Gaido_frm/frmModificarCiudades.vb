@@ -42,7 +42,6 @@ Public Class frmModificarCiudades
 
         ' Cargar provincias al inicializar el formulario
         Cargar_Provincias()
-
         ' Cargar la grilla con un valor por defecto (opcional)
         If cboProvincia.SelectedIndex <> -1 Then
             Dim idProvincia As Integer = CInt(cboProvincia.SelectedValue)
