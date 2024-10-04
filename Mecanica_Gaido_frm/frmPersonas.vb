@@ -151,12 +151,13 @@ Public Class frmPersonas
         Cargar_Grilla()
         btnModificar.Enabled = False
         txtNombre.Enabled = True
+        txtBuscar.Visible = False
+        txtID.Enabled = False
 
-        If txtNombre.Text = Nothing Then
-            chkEstado.Visible = False
-        Else
-            chkEstado.Visible = True
-        End If
+
+
+
+
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -421,6 +422,8 @@ Nombre"
 
     Private Sub txtBuscar_TextChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
         Filtrar_Grilla()
+
+
     End Sub
 
 #End Region
@@ -762,6 +765,18 @@ Nombre"
 
     Private Sub txtNumero_TextChanged(sender As Object, e As EventArgs) Handles txtNumero.TextChanged
         validacion()
+    End Sub
+
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        ' Mostrar el TextBox cuando se presiona el botón
+        txtBuscar.Visible = True
+        txtBuscar.Focus() ' Para que el cursor esté en el TextBox
+    End Sub
+
+    Private Sub grdPersonas_SelectionChanged(sender As Object, e As EventArgs) Handles grdPersonas.SelectionChanged
+        If String.IsNullOrWhiteSpace(txtBuscar.Text) Then
+            txtBuscar.Visible = False
+        End If
     End Sub
 
 #End Region
