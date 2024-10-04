@@ -95,7 +95,7 @@ Partial Class frmAgregarDatosFiscales
         '
         Me.txtIngresosBrutos.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtIngresosBrutos.Location = New System.Drawing.Point(118, 20)
-        Me.txtIngresosBrutos.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtIngresosBrutos.Margin = New System.Windows.Forms.Padding(2)
         Me.txtIngresosBrutos.Name = "txtIngresosBrutos"
         Me.txtIngresosBrutos.Size = New System.Drawing.Size(133, 23)
         Me.txtIngresosBrutos.TabIndex = 3
@@ -104,7 +104,7 @@ Partial Class frmAgregarDatosFiscales
         '
         Me.txtID.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtID.Location = New System.Drawing.Point(184, 34)
-        Me.txtID.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtID.Margin = New System.Windows.Forms.Padding(2)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(72, 23)
         Me.txtID.TabIndex = 1
@@ -115,7 +115,7 @@ Partial Class frmAgregarDatosFiscales
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
         Me.chkEstado.Location = New System.Drawing.Point(13, 111)
-        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
         Me.chkEstado.TabIndex = 6
@@ -174,7 +174,7 @@ Partial Class frmAgregarDatosFiscales
         '
         Me.txtSaldo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSaldo.Location = New System.Drawing.Point(118, 79)
-        Me.txtSaldo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtSaldo.Margin = New System.Windows.Forms.Padding(2)
         Me.txtSaldo.Name = "txtSaldo"
         Me.txtSaldo.Size = New System.Drawing.Size(133, 23)
         Me.txtSaldo.TabIndex = 5

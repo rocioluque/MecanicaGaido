@@ -80,6 +80,8 @@ Public Class frmPersonas
             btnAgregarCiudad.Enabled = False
 
         End If
+
+        validacion()
     End Sub
 
     Private Sub Cargar_Combo_TipoDocumento()
@@ -142,16 +144,25 @@ Public Class frmPersonas
 
     Private Sub frmPersonas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Limpiar()
+        validacion()
         Cargar_Provincias()
         Cargar_Combo_TipoDocumento()
         Cargar_Combo_TipoPersona()
         Cargar_Grilla()
         btnModificar.Enabled = False
         txtNombre.Enabled = True
+        txtBuscar.Visible = False
+        txtID.Enabled = False
+
+
+
+
+
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         Limpiar()
+        btnModificar.Enabled = False
     End Sub
 #End Region
 
@@ -411,6 +422,8 @@ Nombre"
 
     Private Sub txtBuscar_TextChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
         Filtrar_Grilla()
+
+
     End Sub
 
 #End Region
@@ -539,68 +552,10 @@ Nombre"
 
     Private Sub cboTipoDocumento_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTipoDocumento.SelectedIndexChanged
         Mascaras()
+        validacion()
     End Sub
 #End Region
 
-#Region "Habilitar y deshabilitar botones"
-    Private Sub cboCiudad_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCiudad.SelectedIndexChanged
-        If cboCiudad.SelectedIndex <> -1 Then
-
-            txtCodigoPostal.Enabled = True
-        Else
-
-            txtCodigoPostal.Enabled = False
-        End If
-    End Sub
-
-    Private Sub txtCodigoPostal_TextChanged(sender As Object, e As EventArgs)
-        ActualizarEstadoControles()
-    End Sub
-
-    Private Sub txtDireccion_TextChanged(sender As Object, e As EventArgs) Handles txtDireccion.TextChanged
-        ActualizarEstadoControles()
-    End Sub
-
-    Private Sub txtNumero_TextChanged(sender As Object, e As EventArgs) Handles txtNumero.TextChanged
-        ActualizarEstadoControles()
-    End Sub
-
-    Private Sub txtPiso_TextChanged(sender As Object, e As EventArgs) Handles txtPiso.TextChanged
-        ActualizarEstadoControles()
-    End Sub
-
-    Private Sub txtLetraPuerta_TextChanged(sender As Object, e As EventArgs) Handles txtLetraPuerta.TextChanged
-        ActualizarEstadoControles()
-    End Sub
-
-    Private Sub txtTelefonoMovil_TextChanged(sender As Object, e As EventArgs)
-        ActualizarEstadoControles()
-    End Sub
-
-    Private Sub txtTelefonoFijo_TextChanged(sender As Object, e As EventArgs) Handles txtTelefonoFijo.TextChanged
-        ActualizarEstadoControles()
-    End Sub
-
-    Private Sub txtCorreo_TextChanged(sender As Object, e As EventArgs) Handles txtCorreo.TextChanged
-        ActualizarEstadoControles()
-    End Sub
-
-    Private Sub chkEstado_CheckedChanged(sender As Object, e As EventArgs) Handles chkEstado.CheckedChanged
-        ActualizarEstadoControles()
-    End Sub
-
-    Private Sub ActualizarEstadoControles()
-        Dim habilitar As Boolean = Not String.IsNullOrEmpty(txtCodigoPostal.Text)
-        txtDireccion.Enabled = habilitar
-        txtNumero.Enabled = habilitar
-        txtPiso.Enabled = habilitar
-        txtLetraPuerta.Enabled = habilitar
-        txtTelefonoFijo.Enabled = habilitar
-        txtTelefonoMovil.Enabled = habilitar
-        txtCorreo.Enabled = habilitar
-        chkEstado.Enabled = habilitar
-    End Sub
-#End Region
 
 #Region "Css trucho"
     Private Sub PanelDatosPersonales_Paint(sender As Object, e As PaintEventArgs) Handles PanelDatosPersonales.Paint
@@ -761,11 +716,70 @@ Nombre"
         End If
     End Sub
 
-    Private Sub grdPersonas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdPersonas.CellContentClick
 
-    End Sub
 #End Region
 
+#Region "validaciones"
+    Public Sub validacion()
+        If cboTipoPersona.SelectedValue IsNot Nothing AndAlso
+   cboTipoDocumento.SelectedValue IsNot Nothing AndAlso
+   cboProvincia.SelectedValue IsNot Nothing AndAlso
+   cboCiudad.SelectedValue IsNot Nothing AndAlso
+   Not String.IsNullOrWhiteSpace(txtNombre.Text) AndAlso
+   Not String.IsNullOrWhiteSpace(txtDireccion.Text) AndAlso
+   Not String.IsNullOrWhiteSpace(txtNumero.Text) AndAlso
+   Not String.IsNullOrWhiteSpace(txtApellido.Text) Then
+
+
+            chkEstado.Visible = True
+        Else
+            chkEstado.Visible = False
+        End If
+
+
+    End Sub
+
+    Private Sub cboTipoPersona_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTipoPersona.SelectedIndexChanged
+        validacion()
+    End Sub
+
+    Private Sub msktxtNumeroDocumento_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles msktxtNumeroDocumento.MaskInputRejected
+        validacion()
+    End Sub
+
+    Private Sub txtNombre_TextChanged(sender As Object, e As EventArgs) Handles txtNombre.TextChanged
+        validacion()
+    End Sub
+
+    Private Sub txtApellido_TextChanged(sender As Object, e As EventArgs) Handles txtApellido.TextChanged
+        validacion()
+    End Sub
+
+    Private Sub cboCiudad_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCiudad.SelectedIndexChanged
+        validacion()
+    End Sub
+
+    Private Sub txtDireccion_TextChanged(sender As Object, e As EventArgs) Handles txtDireccion.TextChanged
+        validacion()
+    End Sub
+
+    Private Sub txtNumero_TextChanged(sender As Object, e As EventArgs) Handles txtNumero.TextChanged
+        validacion()
+    End Sub
+
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        ' Mostrar el TextBox cuando se presiona el botón
+        txtBuscar.Visible = True
+        txtBuscar.Focus() ' Para que el cursor esté en el TextBox
+    End Sub
+
+    Private Sub grdPersonas_SelectionChanged(sender As Object, e As EventArgs) Handles grdPersonas.SelectionChanged
+        If String.IsNullOrWhiteSpace(txtBuscar.Text) Then
+            txtBuscar.Visible = False
+        End If
+    End Sub
+
+#End Region
 End Class
 
 ' Clases para deserializar el JSON

@@ -47,6 +47,12 @@ Public Class frmModificarCiudades
             Dim idProvincia As Integer = CInt(cboProvincia.SelectedValue)
             Cargar_Grilla(idProvincia)
         End If
+
+        If txtCiudad.Text = Nothing Then
+            chkEstado.Visible = False
+        Else
+            chkEstado.Visible = True
+        End If
     End Sub
 
     Public Sub limpiar()
@@ -118,6 +124,22 @@ Public Class frmModificarCiudades
         Catch ex As Exception
             MsgBox("Error al modificar la ciudad: " & ex.Message, vbCritical, "Error")
         End Try
+    End Sub
+
+    Private Sub chkEstado_CheckedChanged(sender As Object, e As EventArgs) Handles chkEstado.CheckedChanged
+        If txtCiudad.Text = Nothing Then
+            chkEstado.Visible = False
+        Else
+            chkEstado.Visible = True
+        End If
+    End Sub
+
+    Private Sub txtCiudad_TextChanged(sender As Object, e As EventArgs) Handles txtCiudad.TextChanged
+        If txtCiudad.Text = Nothing Then
+            chkEstado.Visible = False
+        Else
+            chkEstado.Visible = True
+        End If
     End Sub
 #End Region
 End Class

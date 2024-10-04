@@ -242,3 +242,5 @@ C:\Users\alumn\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\System.CodeDom
 C:\Users\Carabante\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\System.CodeDom.dll
 C:\Users\Carabante\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\System.CodeDom.xml
 C:\Users\Carabante\source\repos\MecanicaGaido\Comun_Soporte\obj\Debug\Comun_Soporte.vbproj.AssemblyReference.cache
+C:\Users\Fabricio\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\System.CodeDom.dll
+C:\Users\Fabricio\source\repos\MecanicaGaido\Comun_Soporte\bin\Debug\System.CodeDom.xml
