@@ -22,7 +22,7 @@ Partial Class frmPersonas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPersonas))
         Me.txtID = New System.Windows.Forms.TextBox()
         Me.lblId = New System.Windows.Forms.Label()
@@ -94,7 +94,7 @@ Partial Class frmPersonas
         '
         Me.txtID.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtID.Location = New System.Drawing.Point(255, 74)
-        Me.txtID.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtID.Margin = New System.Windows.Forms.Padding(2)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(60, 23)
         Me.txtID.TabIndex = 1
@@ -203,14 +203,14 @@ Partial Class frmPersonas
         Me.grdPersonas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         Me.grdPersonas.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdPersonas.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdPersonas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdPersonas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.grdPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdPersonas.Location = New System.Drawing.Point(136, 532)
         Me.grdPersonas.MultiSelect = False
@@ -257,7 +257,7 @@ Partial Class frmPersonas
         Me.cboTipoPersona.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboTipoPersona.FormattingEnabled = True
         Me.cboTipoPersona.Location = New System.Drawing.Point(255, 113)
-        Me.cboTipoPersona.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboTipoPersona.Margin = New System.Windows.Forms.Padding(2)
         Me.cboTipoPersona.Name = "cboTipoPersona"
         Me.cboTipoPersona.Size = New System.Drawing.Size(139, 25)
         Me.cboTipoPersona.TabIndex = 3
@@ -338,7 +338,7 @@ Partial Class frmPersonas
         Me.cboTipoDocumento.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboTipoDocumento.FormattingEnabled = True
         Me.cboTipoDocumento.Location = New System.Drawing.Point(17, 34)
-        Me.cboTipoDocumento.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboTipoDocumento.Margin = New System.Windows.Forms.Padding(2)
         Me.cboTipoDocumento.Name = "cboTipoDocumento"
         Me.cboTipoDocumento.Size = New System.Drawing.Size(220, 25)
         Me.cboTipoDocumento.TabIndex = 7
@@ -395,7 +395,7 @@ Partial Class frmPersonas
         '
         Me.txtApellido.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApellido.Location = New System.Drawing.Point(15, 184)
-        Me.txtApellido.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtApellido.Margin = New System.Windows.Forms.Padding(2)
         Me.txtApellido.Name = "txtApellido"
         Me.txtApellido.Size = New System.Drawing.Size(220, 23)
         Me.txtApellido.TabIndex = 5
@@ -416,7 +416,7 @@ Partial Class frmPersonas
         '
         Me.txtNombre.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNombre.Location = New System.Drawing.Point(15, 138)
-        Me.txtNombre.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtNombre.Margin = New System.Windows.Forms.Padding(2)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(220, 23)
         Me.txtNombre.TabIndex = 4
@@ -567,7 +567,7 @@ Partial Class frmPersonas
         Me.cboCiudad.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboCiudad.FormattingEnabled = True
         Me.cboCiudad.Location = New System.Drawing.Point(199, 59)
-        Me.cboCiudad.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboCiudad.Margin = New System.Windows.Forms.Padding(2)
         Me.cboCiudad.Name = "cboCiudad"
         Me.cboCiudad.Size = New System.Drawing.Size(133, 25)
         Me.cboCiudad.TabIndex = 10
@@ -600,7 +600,7 @@ Partial Class frmPersonas
         '
         Me.txtTelefonoFijo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTelefonoFijo.Location = New System.Drawing.Point(199, 189)
-        Me.txtTelefonoFijo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtTelefonoFijo.Margin = New System.Windows.Forms.Padding(2)
         Me.txtTelefonoFijo.Name = "txtTelefonoFijo"
         Me.txtTelefonoFijo.Size = New System.Drawing.Size(163, 23)
         Me.txtTelefonoFijo.TabIndex = 17
@@ -623,7 +623,7 @@ Partial Class frmPersonas
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkEstado.ForeColor = System.Drawing.Color.White
         Me.chkEstado.Location = New System.Drawing.Point(24, 224)
-        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
         Me.chkEstado.TabIndex = 19
@@ -634,7 +634,7 @@ Partial Class frmPersonas
         '
         Me.txtLetraPuerta.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLetraPuerta.Location = New System.Drawing.Point(456, 125)
-        Me.txtLetraPuerta.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtLetraPuerta.Margin = New System.Windows.Forms.Padding(2)
         Me.txtLetraPuerta.Name = "txtLetraPuerta"
         Me.txtLetraPuerta.Size = New System.Drawing.Size(80, 23)
         Me.txtLetraPuerta.TabIndex = 15
@@ -658,7 +658,7 @@ Partial Class frmPersonas
         Me.cboProvincia.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboProvincia.FormattingEnabled = True
         Me.cboProvincia.Location = New System.Drawing.Point(24, 59)
-        Me.cboProvincia.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboProvincia.Margin = New System.Windows.Forms.Padding(2)
         Me.cboProvincia.Name = "cboProvincia"
         Me.cboProvincia.Size = New System.Drawing.Size(163, 25)
         Me.cboProvincia.TabIndex = 9
@@ -690,7 +690,7 @@ Partial Class frmPersonas
         '
         Me.txtDireccion.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDireccion.Location = New System.Drawing.Point(24, 125)
-        Me.txtDireccion.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtDireccion.Margin = New System.Windows.Forms.Padding(2)
         Me.txtDireccion.Name = "txtDireccion"
         Me.txtDireccion.Size = New System.Drawing.Size(163, 23)
         Me.txtDireccion.TabIndex = 12
@@ -699,7 +699,7 @@ Partial Class frmPersonas
         '
         Me.txtCorreo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCorreo.Location = New System.Drawing.Point(374, 189)
-        Me.txtCorreo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtCorreo.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCorreo.Name = "txtCorreo"
         Me.txtCorreo.Size = New System.Drawing.Size(163, 23)
         Me.txtCorreo.TabIndex = 18
@@ -720,7 +720,7 @@ Partial Class frmPersonas
         '
         Me.txtPiso.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPiso.Location = New System.Drawing.Point(353, 125)
-        Me.txtPiso.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtPiso.Margin = New System.Windows.Forms.Padding(2)
         Me.txtPiso.Name = "txtPiso"
         Me.txtPiso.Size = New System.Drawing.Size(56, 23)
         Me.txtPiso.TabIndex = 14
@@ -729,7 +729,7 @@ Partial Class frmPersonas
         '
         Me.txtNumero.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNumero.Location = New System.Drawing.Point(234, 125)
-        Me.txtNumero.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtNumero.Margin = New System.Windows.Forms.Padding(2)
         Me.txtNumero.Name = "txtNumero"
         Me.txtNumero.Size = New System.Drawing.Size(72, 23)
         Me.txtNumero.TabIndex = 13
@@ -815,7 +815,7 @@ Partial Class frmPersonas
         '
         Me.txtBuscar.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtBuscar.Location = New System.Drawing.Point(255, 30)
-        Me.txtBuscar.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtBuscar.Margin = New System.Windows.Forms.Padding(2)
         Me.txtBuscar.Name = "txtBuscar"
         Me.txtBuscar.Size = New System.Drawing.Size(735, 23)
         Me.txtBuscar.TabIndex = 80

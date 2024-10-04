@@ -621,15 +621,6 @@ Public Class frmCompras
     End Sub
 
 
-
-
-
-
-
-
-
-
-
 #End Region
 
 End Class
