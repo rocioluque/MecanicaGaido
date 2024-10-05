@@ -163,6 +163,9 @@ Public Class frmPersonas
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         Limpiar()
         btnModificar.Enabled = False
+        txtBuscar.Clear()
+        txtBuscar.Visible = False
+
     End Sub
 #End Region
 
