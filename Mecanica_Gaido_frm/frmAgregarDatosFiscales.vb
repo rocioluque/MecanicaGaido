@@ -45,6 +45,9 @@ Public Class frmAgregarDatosFiscales
 
         btnAceptar.Enabled = True
         btnModificar.Enabled = False
+
+        Me.Close()
+
     End Sub
 
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click

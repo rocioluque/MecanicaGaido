@@ -87,6 +87,8 @@ Public Class frmAgregarEmpleados
 
         btnAceptar.Enabled = True
         btnModificar.Enabled = False
+
+        Me.Close()
     End Sub
 #End Region
 

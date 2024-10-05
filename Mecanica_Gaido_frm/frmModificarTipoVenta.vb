@@ -8,6 +8,7 @@ Public Class frmModificarTipoVenta
 #Region "Procedimientos"
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
+        Me.Close()
     End Sub
 
     Private Sub frmModificarTipoVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load

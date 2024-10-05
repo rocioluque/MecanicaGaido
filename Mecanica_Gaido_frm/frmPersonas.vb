@@ -745,12 +745,6 @@ Nombre"
     Private Sub cboTipoPersona_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTipoPersona.SelectedIndexChanged
         validacion()
 
-        If cboTipoPersona.SelectedItem.ToString() = "Personas Jurídicas" Then
-            txtApellido.Enabled = False
-        ElseIf cboTipoPersona.SelectedItem.ToString() = "Personas Físicas" Then
-            txtApellido.Enabled = True
-        End If
-
     End Sub
 
     Private Sub msktxtNumeroDocumento_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles msktxtNumeroDocumento.MaskInputRejected

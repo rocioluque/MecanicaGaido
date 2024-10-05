@@ -57,6 +57,7 @@ Public Class frmModificarRubros
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
+        Me.Close()
     End Sub
 #End Region
 
