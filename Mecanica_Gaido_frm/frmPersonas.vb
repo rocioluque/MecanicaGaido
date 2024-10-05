@@ -19,7 +19,6 @@ Public Class frmPersonas
     Dim EsExento As Boolean
     Dim EsConsFinal As Boolean
 
-
     Public Property IdPersona As Integer
     Public Property NuevaPersonaNombre As String
     Public Property NuevaPersonaNombreCompra As String
@@ -153,10 +152,6 @@ Public Class frmPersonas
         txtNombre.Enabled = True
         txtBuscar.Visible = False
         txtID.Enabled = False
-
-
-
-
 
     End Sub
 
@@ -425,8 +420,6 @@ Nombre"
 
     Private Sub txtBuscar_TextChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
         Filtrar_Grilla()
-
-
     End Sub
 
 #End Region
@@ -558,7 +551,6 @@ Nombre"
         validacion()
     End Sub
 #End Region
-
 
 #Region "Css trucho"
     Private Sub PanelDatosPersonales_Paint(sender As Object, e As PaintEventArgs) Handles PanelDatosPersonales.Paint
@@ -723,28 +715,23 @@ Nombre"
 
 #End Region
 
-#Region "validaciones"
+#Region "Validaciones"
     Public Sub validacion()
         If cboTipoPersona.SelectedValue IsNot Nothing AndAlso
-   cboTipoDocumento.SelectedValue IsNot Nothing AndAlso
-   cboProvincia.SelectedValue IsNot Nothing AndAlso
-   cboCiudad.SelectedValue IsNot Nothing AndAlso
-   Not String.IsNullOrWhiteSpace(txtNombre.Text) AndAlso
-   Not String.IsNullOrWhiteSpace(txtDireccion.Text) AndAlso
-   Not String.IsNullOrWhiteSpace(txtNumero.Text) Then
-
-
+                cboTipoDocumento.SelectedValue IsNot Nothing AndAlso
+                cboProvincia.SelectedValue IsNot Nothing AndAlso
+                cboCiudad.SelectedValue IsNot Nothing AndAlso
+                Not String.IsNullOrWhiteSpace(txtNombre.Text) AndAlso
+                Not String.IsNullOrWhiteSpace(txtDireccion.Text) AndAlso
+                Not String.IsNullOrWhiteSpace(txtNumero.Text) Then
             chkEstado.Visible = True
         Else
             chkEstado.Visible = False
         End If
-
-
     End Sub
 
     Private Sub cboTipoPersona_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTipoPersona.SelectedIndexChanged
         validacion()
-
     End Sub
 
     Private Sub msktxtNumeroDocumento_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles msktxtNumeroDocumento.MaskInputRejected
@@ -814,6 +801,7 @@ Nombre"
         End If
     End Sub
 #End Region
+
 End Class
 
 ' Clases para deserializar el JSON
