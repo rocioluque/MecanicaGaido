@@ -1598,7 +1598,7 @@ Public Class frmOrdenesReparacion
             TablaProductos.WidthPercentage = 100
 
             ' Ancho de las columnas
-            Dim anchoColumnasTProd As Single() = New Single() {0.8F, 2.5F, 0.5F, 2.5F, 1.5F, 1.2F}
+            Dim anchoColumnasTProd As Single() = New Single() {0.8F, 1.0F, 0.5F, 4.3F, 1.2F, 1.2F}
             TablaProductos.SetWidths(anchoColumnasTProd)
             ' Altura de las filas
             Dim rowHeight As Single = 15.0F
@@ -1618,19 +1618,47 @@ Public Class frmOrdenesReparacion
             TablaProductos.AddCell(cellTotal)
 
             ' Fila 2 
-            Dim titles() As String = {"CANT.", "PIEZA N°", "C", "DESCRIPCIÓN", "P. UNITARIO", "IMPORTE"}
+            Dim titles() As String = {"CANT.", "PIEZA N°", "C", "DESCRIPCIÓN", "PRECIO", "TOTAL"}
             For Each title In titles
                 Dim cell As New PdfPCell(New Phrase(title, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 10)))
                 cell.HorizontalAlignment = Element.ALIGN_CENTER
                 TablaProductos.AddCell(cell)
             Next
 
-            ' Filas 3 a 48 VACIAS
-            For i As Integer = 1 To 48
+            ' Añadir las filas de la grilla (grdRepuestos)
+            Dim numFilas As Integer = grdRepuestos.Rows.Count
+            For i As Integer = 0 To numFilas - 1
+                Dim cantidad As String = grdRepuestos.Rows(i).Cells("Cantidad").Value.ToString()
+
+                ' Separar el valor concatenado "CodFabricante - Descripcion"
+                Dim descripcionCompleta As String = grdRepuestos.Rows(i).Cells("Descripcion").Value.ToString()
+                Dim partesDescripcion() As String = descripcionCompleta.Split("-"c)
+
+                ' Asignar cada parte a las variables correspondientes
+                Dim piezaNro As String = partesDescripcion(0) ' Esto es CodFabricante
+                Dim descripcion As String = partesDescripcion(1) ' Esto es Descripcion
+
+                Dim precioUnitario As String = Convert.ToDecimal(grdRepuestos.Rows(i).Cells("Precio").Value).ToString("N2")
+                Dim importe As String = Convert.ToDecimal(grdRepuestos.Rows(i).Cells("Total").Value).ToString("N2")
+
+                ' Añadir las celdas a la tabla
+                TablaProductos.AddCell(New PdfPCell(New Phrase(cantidad, FontFactory.GetFont(FontFactory.HELVETICA, 8))) With {.HorizontalAlignment = Element.ALIGN_CENTER})
+                TablaProductos.AddCell(New PdfPCell(New Phrase(piezaNro, FontFactory.GetFont(FontFactory.HELVETICA, 8))) With {.HorizontalAlignment = Element.ALIGN_CENTER}) ' Aquí se coloca CodFabricante
+                TablaProductos.AddCell(New PdfPCell(New Phrase(" ", FontFactory.GetFont(FontFactory.HELVETICA, 8))) With {.HorizontalAlignment = Element.ALIGN_CENTER})
+                TablaProductos.AddCell(New PdfPCell(New Phrase(descripcion, FontFactory.GetFont(FontFactory.HELVETICA, 8))) With {.HorizontalAlignment = Element.ALIGN_LEFT}) ' Aquí se coloca la descripción
+                TablaProductos.AddCell(New PdfPCell(New Phrase(precioUnitario, FontFactory.GetFont(FontFactory.HELVETICA, 8))) With {.HorizontalAlignment = Element.ALIGN_RIGHT})
+                TablaProductos.AddCell(New PdfPCell(New Phrase(importe, FontFactory.GetFont(FontFactory.HELVETICA, 8))) With {.HorizontalAlignment = Element.ALIGN_RIGHT})
+            Next
+
+            ' Calcular cuántas filas vacías quedan por añadir para llegar a 49 filas
+            Dim filasVacias As Integer = 49 - numFilas
+
+            ' Añadir las filas vacías restantes
+            For i As Integer = 1 To filasVacias
                 For j As Integer = 1 To 6
-                    Dim cell As New PdfPCell(New Phrase(" ", FontFactory.GetFont(FontFactory.HELVETICA, 10)))
-                    cell.FixedHeight = rowHeight
-                    TablaProductos.AddCell(cell)
+                    Dim emptyCell As New PdfPCell(New Phrase(" ", FontFactory.GetFont(FontFactory.HELVETICA, 10)))
+                    emptyCell.FixedHeight = rowHeight
+                    TablaProductos.AddCell(emptyCell)
                 Next
             Next
 
@@ -1641,7 +1669,7 @@ Public Class frmOrdenesReparacion
             TablaProductos.AddCell(cellTotalRepuestos)
 
             ' Fila 49 Columnas 6 VACIA
-            Dim lastCell As New PdfPCell(New Phrase(" ", FontFactory.GetFont(FontFactory.HELVETICA, 10)))
+            Dim lastCell As New PdfPCell(New Phrase(txtMontoRepuestos.Text, FontFactory.GetFont(FontFactory.HELVETICA, 10)))
             lastCell.FixedHeight = rowHeight
             TablaProductos.AddCell(lastCell)
 
