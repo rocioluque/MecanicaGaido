@@ -18,6 +18,8 @@ Public Class frmProductos
         limpiar()
         Cargar_Grilla()
         btnModificar.Enabled = False
+        txtBuscar.Visible = False
+        txtId.Enabled = False
 
         'AGREGAR LOS TEXTBOXS QUE NECESITEN QUE SE VALIDEN COMO NUMERO DECIMAL
         AgregarValidacionATextBox(txtPrecioLista)
@@ -547,6 +549,46 @@ Public Class frmProductos
     Private Sub txtBuscar_TextChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
         Filtrar_Grilla()
     End Sub
+
 #End Region
 
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        txtBuscar.Visible = True
+    End Sub
+
+    Private Sub btnCancelar_Click_1(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        txtId.Clear()
+        txtDescripcion.Clear()
+        cboRubro.SelectedIndex = -1
+        cboMarca.SelectedIndex = -1
+        txtCodigoBarra.Clear()
+        txtCodFabricante.Clear()
+        txtCantidadBulto.Clear()
+        cboOrigen.SelectedIndex = -1
+        chkAlterntivo.Checked = False
+        chkEstado.Checked = False
+        txtNombreDiario.Clear()
+        txtNota.Clear()
+        txtBuscar.Clear()
+        txtBuscar.Visible = False
+        cboOriginal.SelectedIndex = -1
+
+        txtStockReal.Clear()
+        txtStockMinimo.Clear()
+        txtStockDisponible.Clear()
+
+        txtPrecioCompra.Clear()
+        txtUbicacion.Clear()
+        txtUtilidad.Clear()
+        txtPrecioLista.Clear()
+
+
+
+    End Sub
+
+    Private Sub grdProductos_SelectionChanged(sender As Object, e As EventArgs) Handles grdProductos.SelectionChanged
+        If String.IsNullOrWhiteSpace(txtBuscar.Text) Then
+            txtBuscar.Visible = False
+        End If
+    End Sub
 End Class
