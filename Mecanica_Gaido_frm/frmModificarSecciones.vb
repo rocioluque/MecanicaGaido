@@ -9,6 +9,7 @@ Public Class frmModificarSecciones
     Private Sub frmModificarSeccion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         limpiar()
         Cargar_Grilla()
+        AplicarTema(Me)
     End Sub
 
     Public Sub limpiar()
@@ -17,6 +18,12 @@ Public Class frmModificarSecciones
         chkEstado.Checked = False
     End Sub
 
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiar()
+    End Sub
+#End Region
+
+#Region "Cargar Grilla"
     Public Sub Cargar_Grilla()
         Dim conexion As SqlConnection
         Dim comando As New SqlCommand
@@ -41,7 +48,9 @@ Public Class frmModificarSecciones
         oDs = Nothing
         conexion.Close()
     End Sub
+#End Region
 
+#Region "Cargar datos en txt"
     Public Sub CargarDatosEnTextBoxes(ByVal rowIndex As Integer)
         If grdModificarSeccion.Rows.Count > 0 Then
             txtId.Text = Convert.ToInt32(grdModificarSeccion.Rows(rowIndex).Cells("N° Sección").Value)
@@ -54,11 +63,6 @@ Public Class frmModificarSecciones
         If e.RowIndex >= 0 Then
             CargarDatosEnTextBoxes(e.RowIndex)
         End If
-    End Sub
-
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        limpiar()
-        Me.Close()
     End Sub
 #End Region
 

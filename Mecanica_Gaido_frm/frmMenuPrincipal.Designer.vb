@@ -30,6 +30,7 @@ Partial Class frmMenuPrincipal
         Me.lblRol = New System.Windows.Forms.Label()
         Me.lblUsuario = New System.Windows.Forms.Label()
         Me.PanelMenu = New System.Windows.Forms.Panel()
+        Me.btnCambiarTema = New System.Windows.Forms.Button()
         Me.PanelCboGestion = New System.Windows.Forms.Panel()
         Me.btnTipoVenta = New System.Windows.Forms.Button()
         Me.btnTipoVehiculos = New System.Windows.Forms.Button()
@@ -72,7 +73,7 @@ Partial Class frmMenuPrincipal
         Me.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Right
         Me.PanelContenedor.Location = New System.Drawing.Point(224, 0)
         Me.PanelContenedor.Name = "PanelContenedor"
-        Me.PanelContenedor.Size = New System.Drawing.Size(976, 700)
+        Me.PanelContenedor.Size = New System.Drawing.Size(976, 885)
         Me.PanelContenedor.TabIndex = 2
         '
         'PictureBox7
@@ -133,6 +134,7 @@ Partial Class frmMenuPrincipal
         '
         Me.PanelMenu.AutoScroll = True
         Me.PanelMenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.PanelMenu.Controls.Add(Me.btnCambiarTema)
         Me.PanelMenu.Controls.Add(Me.PanelCboGestion)
         Me.PanelMenu.Controls.Add(Me.btnGestionDatos)
         Me.PanelMenu.Controls.Add(Me.PanelCboTableroControl)
@@ -148,8 +150,18 @@ Partial Class frmMenuPrincipal
         Me.PanelMenu.Dock = System.Windows.Forms.DockStyle.Left
         Me.PanelMenu.Location = New System.Drawing.Point(0, 0)
         Me.PanelMenu.Name = "PanelMenu"
-        Me.PanelMenu.Size = New System.Drawing.Size(230, 700)
+        Me.PanelMenu.Size = New System.Drawing.Size(230, 885)
         Me.PanelMenu.TabIndex = 0
+        '
+        'btnCambiarTema
+        '
+        Me.btnCambiarTema.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnCambiarTema.Location = New System.Drawing.Point(53, 850)
+        Me.btnCambiarTema.Name = "btnCambiarTema"
+        Me.btnCambiarTema.Size = New System.Drawing.Size(117, 23)
+        Me.btnCambiarTema.TabIndex = 0
+        Me.btnCambiarTema.Text = "Button1"
+        Me.btnCambiarTema.UseVisualStyleBackColor = True
         '
         'PanelCboGestion
         '
@@ -166,7 +178,7 @@ Partial Class frmMenuPrincipal
         Me.PanelCboGestion.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelCboGestion.Location = New System.Drawing.Point(0, 560)
         Me.PanelCboGestion.Name = "PanelCboGestion"
-        Me.PanelCboGestion.Size = New System.Drawing.Size(213, 225)
+        Me.PanelCboGestion.Size = New System.Drawing.Size(230, 225)
         Me.PanelCboGestion.TabIndex = 52
         Me.PanelCboGestion.Tag = "0"
         Me.PanelCboGestion.Visible = False
@@ -182,7 +194,7 @@ Partial Class frmMenuPrincipal
         Me.btnTipoVenta.ForeColor = System.Drawing.Color.White
         Me.btnTipoVenta.Location = New System.Drawing.Point(0, 194)
         Me.btnTipoVenta.Name = "btnTipoVenta"
-        Me.btnTipoVenta.Size = New System.Drawing.Size(213, 24)
+        Me.btnTipoVenta.Size = New System.Drawing.Size(230, 24)
         Me.btnTipoVenta.TabIndex = 12
         Me.btnTipoVenta.Text = "Tipos de Ventas"
         Me.btnTipoVenta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -200,7 +212,7 @@ Partial Class frmMenuPrincipal
         Me.btnTipoVehiculos.ForeColor = System.Drawing.Color.White
         Me.btnTipoVehiculos.Location = New System.Drawing.Point(0, 170)
         Me.btnTipoVehiculos.Name = "btnTipoVehiculos"
-        Me.btnTipoVehiculos.Size = New System.Drawing.Size(213, 24)
+        Me.btnTipoVehiculos.Size = New System.Drawing.Size(230, 24)
         Me.btnTipoVehiculos.TabIndex = 37
         Me.btnTipoVehiculos.Text = "Tipos de Vehiculos"
         Me.btnTipoVehiculos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -217,7 +229,7 @@ Partial Class frmMenuPrincipal
         Me.btnFormaPago.ForeColor = System.Drawing.Color.White
         Me.btnFormaPago.Location = New System.Drawing.Point(0, 145)
         Me.btnFormaPago.Name = "btnFormaPago"
-        Me.btnFormaPago.Size = New System.Drawing.Size(213, 25)
+        Me.btnFormaPago.Size = New System.Drawing.Size(230, 25)
         Me.btnFormaPago.TabIndex = 14
         Me.btnFormaPago.Text = "Formas de Pago"
         Me.btnFormaPago.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -234,7 +246,7 @@ Partial Class frmMenuPrincipal
         Me.btnFormaEntrega.ForeColor = System.Drawing.Color.White
         Me.btnFormaEntrega.Location = New System.Drawing.Point(0, 120)
         Me.btnFormaEntrega.Name = "btnFormaEntrega"
-        Me.btnFormaEntrega.Size = New System.Drawing.Size(213, 25)
+        Me.btnFormaEntrega.Size = New System.Drawing.Size(230, 25)
         Me.btnFormaEntrega.TabIndex = 11
         Me.btnFormaEntrega.Text = "Formas de Entrega"
         Me.btnFormaEntrega.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -251,7 +263,7 @@ Partial Class frmMenuPrincipal
         Me.btnSeccion.ForeColor = System.Drawing.Color.White
         Me.btnSeccion.Location = New System.Drawing.Point(0, 96)
         Me.btnSeccion.Name = "btnSeccion"
-        Me.btnSeccion.Size = New System.Drawing.Size(213, 24)
+        Me.btnSeccion.Size = New System.Drawing.Size(230, 24)
         Me.btnSeccion.TabIndex = 10
         Me.btnSeccion.Text = "Secciones"
         Me.btnSeccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -268,7 +280,7 @@ Partial Class frmMenuPrincipal
         Me.btnRubro.ForeColor = System.Drawing.Color.White
         Me.btnRubro.Location = New System.Drawing.Point(0, 72)
         Me.btnRubro.Name = "btnRubro"
-        Me.btnRubro.Size = New System.Drawing.Size(213, 24)
+        Me.btnRubro.Size = New System.Drawing.Size(230, 24)
         Me.btnRubro.TabIndex = 12
         Me.btnRubro.Text = "Rubros"
         Me.btnRubro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -285,7 +297,7 @@ Partial Class frmMenuPrincipal
         Me.btnRol.ForeColor = System.Drawing.Color.White
         Me.btnRol.Location = New System.Drawing.Point(0, 48)
         Me.btnRol.Name = "btnRol"
-        Me.btnRol.Size = New System.Drawing.Size(213, 24)
+        Me.btnRol.Size = New System.Drawing.Size(230, 24)
         Me.btnRol.TabIndex = 13
         Me.btnRol.Text = "Roles"
         Me.btnRol.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -302,7 +314,7 @@ Partial Class frmMenuPrincipal
         Me.btnMarca.ForeColor = System.Drawing.Color.White
         Me.btnMarca.Location = New System.Drawing.Point(0, 24)
         Me.btnMarca.Name = "btnMarca"
-        Me.btnMarca.Size = New System.Drawing.Size(213, 24)
+        Me.btnMarca.Size = New System.Drawing.Size(230, 24)
         Me.btnMarca.TabIndex = 11
         Me.btnMarca.Text = "Marcas"
         Me.btnMarca.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -319,7 +331,7 @@ Partial Class frmMenuPrincipal
         Me.btnCiudad.ForeColor = System.Drawing.Color.White
         Me.btnCiudad.Location = New System.Drawing.Point(0, 0)
         Me.btnCiudad.Name = "btnCiudad"
-        Me.btnCiudad.Size = New System.Drawing.Size(213, 24)
+        Me.btnCiudad.Size = New System.Drawing.Size(230, 24)
         Me.btnCiudad.TabIndex = 10
         Me.btnCiudad.Text = "Ciudades"
         Me.btnCiudad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -337,7 +349,7 @@ Partial Class frmMenuPrincipal
         Me.btnGestionDatos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnGestionDatos.Location = New System.Drawing.Point(0, 525)
         Me.btnGestionDatos.Name = "btnGestionDatos"
-        Me.btnGestionDatos.Size = New System.Drawing.Size(213, 35)
+        Me.btnGestionDatos.Size = New System.Drawing.Size(230, 35)
         Me.btnGestionDatos.TabIndex = 51
         Me.btnGestionDatos.Text = "        Gestión de Datos"
         Me.btnGestionDatos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -356,7 +368,7 @@ Partial Class frmMenuPrincipal
         Me.PanelCboTableroControl.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelCboTableroControl.Location = New System.Drawing.Point(0, 348)
         Me.PanelCboTableroControl.Name = "PanelCboTableroControl"
-        Me.PanelCboTableroControl.Size = New System.Drawing.Size(213, 177)
+        Me.PanelCboTableroControl.Size = New System.Drawing.Size(230, 177)
         Me.PanelCboTableroControl.TabIndex = 38
         Me.PanelCboTableroControl.Tag = "0"
         Me.PanelCboTableroControl.Visible = False
@@ -372,7 +384,7 @@ Partial Class frmMenuPrincipal
         Me.btnMiscelaneas.ForeColor = System.Drawing.Color.White
         Me.btnMiscelaneas.Location = New System.Drawing.Point(0, 145)
         Me.btnMiscelaneas.Name = "btnMiscelaneas"
-        Me.btnMiscelaneas.Size = New System.Drawing.Size(213, 25)
+        Me.btnMiscelaneas.Size = New System.Drawing.Size(230, 25)
         Me.btnMiscelaneas.TabIndex = 14
         Me.btnMiscelaneas.Text = "Misceláneas"
         Me.btnMiscelaneas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -389,7 +401,7 @@ Partial Class frmMenuPrincipal
         Me.btnRepVentas.ForeColor = System.Drawing.Color.White
         Me.btnRepVentas.Location = New System.Drawing.Point(0, 120)
         Me.btnRepVentas.Name = "btnRepVentas"
-        Me.btnRepVentas.Size = New System.Drawing.Size(213, 25)
+        Me.btnRepVentas.Size = New System.Drawing.Size(230, 25)
         Me.btnRepVentas.TabIndex = 11
         Me.btnRepVentas.Text = "Ventas"
         Me.btnRepVentas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -406,7 +418,7 @@ Partial Class frmMenuPrincipal
         Me.btnRepCompras.ForeColor = System.Drawing.Color.White
         Me.btnRepCompras.Location = New System.Drawing.Point(0, 96)
         Me.btnRepCompras.Name = "btnRepCompras"
-        Me.btnRepCompras.Size = New System.Drawing.Size(213, 24)
+        Me.btnRepCompras.Size = New System.Drawing.Size(230, 24)
         Me.btnRepCompras.TabIndex = 10
         Me.btnRepCompras.Text = "Compras"
         Me.btnRepCompras.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -423,7 +435,7 @@ Partial Class frmMenuPrincipal
         Me.btnRepProductos.ForeColor = System.Drawing.Color.White
         Me.btnRepProductos.Location = New System.Drawing.Point(0, 72)
         Me.btnRepProductos.Name = "btnRepProductos"
-        Me.btnRepProductos.Size = New System.Drawing.Size(213, 24)
+        Me.btnRepProductos.Size = New System.Drawing.Size(230, 24)
         Me.btnRepProductos.TabIndex = 12
         Me.btnRepProductos.Text = "Productos"
         Me.btnRepProductos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -440,7 +452,7 @@ Partial Class frmMenuPrincipal
         Me.btnRepReparaciones.ForeColor = System.Drawing.Color.White
         Me.btnRepReparaciones.Location = New System.Drawing.Point(0, 48)
         Me.btnRepReparaciones.Name = "btnRepReparaciones"
-        Me.btnRepReparaciones.Size = New System.Drawing.Size(213, 24)
+        Me.btnRepReparaciones.Size = New System.Drawing.Size(230, 24)
         Me.btnRepReparaciones.TabIndex = 13
         Me.btnRepReparaciones.Text = "Reparaciones"
         Me.btnRepReparaciones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -457,7 +469,7 @@ Partial Class frmMenuPrincipal
         Me.btnRepVehiculos.ForeColor = System.Drawing.Color.White
         Me.btnRepVehiculos.Location = New System.Drawing.Point(0, 24)
         Me.btnRepVehiculos.Name = "btnRepVehiculos"
-        Me.btnRepVehiculos.Size = New System.Drawing.Size(213, 24)
+        Me.btnRepVehiculos.Size = New System.Drawing.Size(230, 24)
         Me.btnRepVehiculos.TabIndex = 11
         Me.btnRepVehiculos.Text = "Vehiculos"
         Me.btnRepVehiculos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -474,7 +486,7 @@ Partial Class frmMenuPrincipal
         Me.btnRepPersona.ForeColor = System.Drawing.Color.White
         Me.btnRepPersona.Location = New System.Drawing.Point(0, 0)
         Me.btnRepPersona.Name = "btnRepPersona"
-        Me.btnRepPersona.Size = New System.Drawing.Size(213, 24)
+        Me.btnRepPersona.Size = New System.Drawing.Size(230, 24)
         Me.btnRepPersona.TabIndex = 10
         Me.btnRepPersona.Text = "Personas"
         Me.btnRepPersona.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -492,7 +504,7 @@ Partial Class frmMenuPrincipal
         Me.btnTableroControl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnTableroControl.Location = New System.Drawing.Point(0, 313)
         Me.btnTableroControl.Name = "btnTableroControl"
-        Me.btnTableroControl.Size = New System.Drawing.Size(213, 35)
+        Me.btnTableroControl.Size = New System.Drawing.Size(230, 35)
         Me.btnTableroControl.TabIndex = 50
         Me.btnTableroControl.Text = "        Tablero de Control"
         Me.btnTableroControl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -510,7 +522,7 @@ Partial Class frmMenuPrincipal
         Me.btnVentas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnVentas.Location = New System.Drawing.Point(0, 278)
         Me.btnVentas.Name = "btnVentas"
-        Me.btnVentas.Size = New System.Drawing.Size(213, 35)
+        Me.btnVentas.Size = New System.Drawing.Size(230, 35)
         Me.btnVentas.TabIndex = 49
         Me.btnVentas.Text = "        Ventas"
         Me.btnVentas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -528,7 +540,7 @@ Partial Class frmMenuPrincipal
         Me.btnCompras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnCompras.Location = New System.Drawing.Point(0, 243)
         Me.btnCompras.Name = "btnCompras"
-        Me.btnCompras.Size = New System.Drawing.Size(213, 35)
+        Me.btnCompras.Size = New System.Drawing.Size(230, 35)
         Me.btnCompras.TabIndex = 48
         Me.btnCompras.Text = "        Compras"
         Me.btnCompras.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -546,7 +558,7 @@ Partial Class frmMenuPrincipal
         Me.btnProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnProducto.Location = New System.Drawing.Point(0, 208)
         Me.btnProducto.Name = "btnProducto"
-        Me.btnProducto.Size = New System.Drawing.Size(213, 35)
+        Me.btnProducto.Size = New System.Drawing.Size(230, 35)
         Me.btnProducto.TabIndex = 42
         Me.btnProducto.Text = "        Productos"
         Me.btnProducto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -566,7 +578,7 @@ Partial Class frmMenuPrincipal
         Me.btnOrdenReparacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnOrdenReparacion.Location = New System.Drawing.Point(0, 173)
         Me.btnOrdenReparacion.Name = "btnOrdenReparacion"
-        Me.btnOrdenReparacion.Size = New System.Drawing.Size(213, 35)
+        Me.btnOrdenReparacion.Size = New System.Drawing.Size(230, 35)
         Me.btnOrdenReparacion.TabIndex = 43
         Me.btnOrdenReparacion.Text = "        Reparaciones"
         Me.btnOrdenReparacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -586,7 +598,7 @@ Partial Class frmMenuPrincipal
         Me.btnVehiculos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnVehiculos.Location = New System.Drawing.Point(0, 138)
         Me.btnVehiculos.Name = "btnVehiculos"
-        Me.btnVehiculos.Size = New System.Drawing.Size(213, 35)
+        Me.btnVehiculos.Size = New System.Drawing.Size(230, 35)
         Me.btnVehiculos.TabIndex = 42
         Me.btnVehiculos.Text = "        Vehículos"
         Me.btnVehiculos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -607,7 +619,7 @@ Partial Class frmMenuPrincipal
         Me.btnPersonas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnPersonas.Location = New System.Drawing.Point(0, 103)
         Me.btnPersonas.Name = "btnPersonas"
-        Me.btnPersonas.Size = New System.Drawing.Size(213, 35)
+        Me.btnPersonas.Size = New System.Drawing.Size(230, 35)
         Me.btnPersonas.TabIndex = 40
         Me.btnPersonas.Text = "        Personas"
         Me.btnPersonas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -628,7 +640,7 @@ Partial Class frmMenuPrincipal
         Me.btnInicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnInicio.Location = New System.Drawing.Point(0, 68)
         Me.btnInicio.Name = "btnInicio"
-        Me.btnInicio.Size = New System.Drawing.Size(213, 35)
+        Me.btnInicio.Size = New System.Drawing.Size(230, 35)
         Me.btnInicio.TabIndex = 39
         Me.btnInicio.Text = "        Inicio"
         Me.btnInicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -644,7 +656,7 @@ Partial Class frmMenuPrincipal
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(213, 68)
+        Me.Panel3.Size = New System.Drawing.Size(230, 68)
         Me.Panel3.TabIndex = 1
         '
         'frmMenuPrincipal
@@ -653,7 +665,7 @@ Partial Class frmMenuPrincipal
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(1200, 700)
+        Me.ClientSize = New System.Drawing.Size(1200, 885)
         Me.Controls.Add(Me.PanelContenedor)
         Me.Controls.Add(Me.PanelMenu)
         Me.Cursor = System.Windows.Forms.Cursors.Default
@@ -708,4 +720,5 @@ Partial Class frmMenuPrincipal
     Friend WithEvents btnRepPersona As Button
     Friend WithEvents btnTableroControl As Button
     Friend WithEvents btnVentas As Button
+    Friend WithEvents btnCambiarTema As Button
 End Class

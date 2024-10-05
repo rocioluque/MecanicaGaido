@@ -18,6 +18,7 @@ Public Class frmVentas
         limpiar()
         PonerDecimales()
         Cargar_Grilla_Ventas()
+        AplicarTema(Me)
 
         txtVendedor.Text = UsuarioActivo.nombre_empleado
 

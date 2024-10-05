@@ -487,3 +487,4 @@ C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecani
 C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.exe
 C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.xml
 C:\Users\Fabricio\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.pdb
+C:\Users\alumn\source\repos\MecanicaGaido\Mecanica_Gaido_frm\obj\Debug\Mecanica_Gaido_frm.SwitchButton.resources

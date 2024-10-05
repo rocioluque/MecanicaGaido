@@ -20,6 +20,7 @@ Public Class frmProductos
         btnModificar.Enabled = False
         txtBuscar.Visible = False
         txtId.Enabled = False
+        AplicarTema(Me)
 
         'AGREGAR LOS TEXTBOXS QUE NECESITEN QUE SE VALIDEN COMO NUMERO DECIMAL
         AgregarValidacionATextBox(txtPrecioLista)

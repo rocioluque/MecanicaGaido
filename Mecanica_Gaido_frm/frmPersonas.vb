@@ -152,7 +152,7 @@ Public Class frmPersonas
         txtNombre.Enabled = True
         txtBuscar.Visible = False
         txtID.Enabled = False
-
+        AplicarTema(Me)
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click

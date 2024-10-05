@@ -1,15 +1,19 @@
 ﻿Imports System.Data
 Imports System.Runtime.InteropServices
-Imports Comun_Soporte
-Imports Mecanica_Gaido_frm.User32
 Imports System.Windows.Forms.DataVisualization.Charting
 Imports System.Data.SqlClient
 Imports System.Configuration
 Imports System.Globalization
+
 Imports AD_Mecanica_Gaido
+Imports Comun_Soporte
+Imports Mecanica_Gaido_frm.User32
+
 Imports System.IO
 Imports iTextSharp.text
 Imports iTextSharp.text.pdf
+Imports System.Drawing
+Imports System.Drawing.Drawing2D ' Para el suavizado de bordes (AntiAlias) y gráficos
 
 Public Class frmMenuPrincipal
 
@@ -19,6 +23,8 @@ Public Class frmMenuPrincipal
         lblRol.Text = UsuarioActivo.nombre_rol
         PintarBotonInicio()
         MostrarInicio()
+        Me.DoubleBuffered = True
+
     End Sub
 
     Public Sub MostrarInicio()
@@ -340,6 +346,36 @@ Public Class frmMenuPrincipal
         PanelContenedor.Size = New Size(panelContenedorWidth, panelContenedorHeight)
         PanelContenedor.Location = panelContenedorLocation
     End Sub
+
+
 #End Region
+
+    Private Sub btnCambiarTema_Click(sender As Object, e As EventArgs) Handles btnCambiarTema.Click
+        ' Alternar el tema actual entre claro y oscuro
+        TemaGlobal.CambiarTema()
+
+        ' Aplicar el tema en todos los formularios abiertos
+        TemaGlobal.AplicarTemaEnTodosLosFormularios()
+
+        ' Redibujar el botón para reflejar el cambio visual del switch
+        btnCambiarTema.Invalidate() ' Forzar que se repinte el botón
+    End Sub
+
+    Private Sub btnCambiarTema_Paint(sender As Object, e As PaintEventArgs) Handles btnCambiarTema.Paint
+        ' Este evento da estilo al botón "switch" para que parezca un interruptor visual
+        Dim graphics As Graphics = e.Graphics
+        Dim rectangle As New System.Drawing.Rectangle(0, 0, btnCambiarTema.Width, btnCambiarTema.Height)
+
+        ' Dibujar el fondo del interruptor
+        graphics.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
+        Dim switchBackColor As Color = If(TemaGlobal.ModoActualOscuro, Color.Gray, Color.LightGray)
+        Dim circleColor As Color = If(TemaGlobal.ModoActualOscuro, Color.White, Color.Black)
+        graphics.FillRectangle(New SolidBrush(switchBackColor), rectangle)
+
+        ' Dibujar el círculo del interruptor (como un slider)
+        Dim circleSize As Integer = btnCambiarTema.Height - 6
+        Dim circleX As Integer = If(TemaGlobal.ModoActualOscuro, btnCambiarTema.Width - circleSize - 3, 3)
+        graphics.FillEllipse(New SolidBrush(circleColor), New System.Drawing.Rectangle(circleX, 3, circleSize, circleSize))
+    End Sub
 
 End Class

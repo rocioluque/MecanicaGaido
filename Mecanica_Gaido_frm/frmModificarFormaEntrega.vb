@@ -8,6 +8,7 @@ Public Class frmModificarFormaEntrega
     Private Sub frmModificarFormaEntrega_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         limpiar()
         Cargar_Grilla()
+        AplicarTema(Me)
     End Sub
 
     Public Sub limpiar()
@@ -16,6 +17,12 @@ Public Class frmModificarFormaEntrega
         chkEstado.Checked = False
     End Sub
 
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiar()
+    End Sub
+#End Region
+
+#Region "Cargar Grila"
     Public Sub Cargar_Grilla()
         Dim conexion As SqlConnection
         Dim comando As New SqlCommand
@@ -40,7 +47,9 @@ Public Class frmModificarFormaEntrega
         oDs = Nothing
         conexion.Close()
     End Sub
+#End Region
 
+#Region "Cargar datos en txt"
     Public Sub CargarDatosEnTextBoxes(ByVal rowIndex As Integer)
         If grdModificarFormaEntrega.Rows.Count > 0 Then
             txtId.Text = Convert.ToInt32(grdModificarFormaEntrega.Rows(rowIndex).Cells("N° Forma de Entrega").Value)
@@ -53,11 +62,6 @@ Public Class frmModificarFormaEntrega
         If e.RowIndex >= 0 Then
             CargarDatosEnTextBoxes(e.RowIndex)
         End If
-    End Sub
-
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        limpiar()
-        Me.Close()
     End Sub
 #End Region
 

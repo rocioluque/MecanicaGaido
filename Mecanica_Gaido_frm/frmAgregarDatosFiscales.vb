@@ -28,6 +28,7 @@ Public Class frmAgregarDatosFiscales
         Else
             chkEstado.Visible = True
         End If
+        AplicarTema(Me)
     End Sub
 
     Public Sub limpiar()

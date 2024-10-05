@@ -12,7 +12,7 @@ Public Class frmUbicacion
 
     Private Sub ProbandoArbol_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PopulateTreeView()
-
+        AplicarTema(Me)
     End Sub
 
     Private Sub PopulateTreeView()

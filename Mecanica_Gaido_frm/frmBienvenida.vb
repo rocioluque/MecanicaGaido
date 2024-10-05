@@ -11,6 +11,7 @@ Public Class frmBienvenida
         lblSaludo.Text = ObtenerSaludoAleatorio()
         lblHola.Text = "¡Hola " & UsuarioActivo.nombre_empleado & "!"
         Timer1.Start()
+        AplicarTema(Me)
     End Sub
 #End Region
 

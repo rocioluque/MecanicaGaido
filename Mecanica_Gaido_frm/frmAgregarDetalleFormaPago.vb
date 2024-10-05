@@ -12,6 +12,7 @@ Public Class frmAgregarDetalleFormaPago
         Cargar_Combo_FormaPago()
 
         cboFormaPago.SelectedValue = FormaPagoSeleccionada
+        AplicarTema(Me)
     End Sub
 
     Private Sub Cargar_Combo_FormaPago()
@@ -29,6 +30,10 @@ Public Class frmAgregarDetalleFormaPago
         Catch ex As Exception
             MsgBox("Error al cargar las formas de pago: " & ex.Message, vbCritical, "Error")
         End Try
+    End Sub
+
+    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        Me.Close()
     End Sub
 #End Region
 
@@ -53,7 +58,5 @@ Public Class frmAgregarDetalleFormaPago
     End Sub
 #End Region
 
-    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
-        Me.Close()
-    End Sub
+
 End Class

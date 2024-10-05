@@ -7,6 +7,16 @@ Public Class frmAgregarTipoVenta
     ' Propiedad para almacenar el nombre del nuevo tipo de venta agregado
     Public Property NuevoTipoVentaNombre As String
 
+#Region "Procedimientos"
+    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        Me.Close()
+    End Sub
+
+    Private Sub frmAgregarTipoVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AplicarTema(Me)
+    End Sub
+#End Region
+
 #Region "Cargar"
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         If txtTipoVenta.Text <> Nothing Then
@@ -32,7 +42,4 @@ Public Class frmAgregarTipoVenta
     End Sub
 #End Region
 
-    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
-        Me.Close()
-    End Sub
 End Class

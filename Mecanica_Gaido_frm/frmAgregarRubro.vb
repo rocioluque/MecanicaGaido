@@ -7,6 +7,16 @@ Public Class frmAgregarRubro
     ' Propiedad para almacenar el nombre del nuevo rubro agregado
     Public Property NuevoRubroNombre As String
 
+#Region "Prcedimientos"
+    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        Me.Close()
+    End Sub
+
+    Private Sub frmAgregarRubro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AplicarTema(Me)
+    End Sub
+#End Region
+
 #Region "Cargar"
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         If txtRubro.Text <> Nothing Then
@@ -42,7 +52,4 @@ Public Class frmAgregarRubro
     End Sub
 #End Region
 
-    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
-        Me.Close()
-    End Sub
 End Class

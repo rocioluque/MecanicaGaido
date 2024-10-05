@@ -8,6 +8,19 @@ Public Class frmCompras
     Private denominacionLote As String
 
 #Region "Procedimientos"
+    Private Sub frmCompras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Cargar_Combo_Persona()
+        Cargar_Combo_FormaPago_Compra()
+        Cargar_Combo_Repuestos()
+        Cargar_Grilla_Compras()
+        limpiar()
+        PonerDecimales()
+        btnModificar.Enabled = False
+        txtBusqueda.Visible = False
+
+        AplicarTema(Me)
+    End Sub
+
     Public Sub limpiar()
         txtID.Clear()
         dtpFechaCompra.Value = Date.Today
@@ -21,20 +34,6 @@ Public Class frmCompras
         cboFormaPago.SelectedIndex = -1
         chkEstado.Checked = False
         grdRepuestos.Rows.Clear()
-    End Sub
-
-    Private Sub frmCompras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Cargar_Combo_Persona()
-        Cargar_Combo_FormaPago_Compra()
-        Cargar_Combo_Repuestos()
-        Cargar_Grilla_Compras()
-        limpiar()
-        PonerDecimales()
-        btnModificar.Enabled = False
-        txtBusqueda.Visible = False
-
-
-
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click

@@ -7,12 +7,18 @@ Imports Mecanica_Gaido_frm.User32
 Public Class frmLogin
     Dim o_Login As New AD_Login
 
+#Region "Procedimientos"
+    Private Sub PanelLogin_Paint(sender As Object, e As PaintEventArgs) Handles PanelLogin.Paint
+        AplicarTema(Me)
+    End Sub
+
     Private Sub Cerrar_Sesion(sender As Object, e As FormClosedEventArgs)
         txtUsuario.Clear()
         txtContraseña.Clear()
         Me.Show()
         txtUsuario.Focus()
     End Sub
+#End Region
 
 #Region "Aceptar"
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAcceder.Click
@@ -155,4 +161,5 @@ Public Class frmLogin
 
     End Sub
 #End Region
+
 End Class

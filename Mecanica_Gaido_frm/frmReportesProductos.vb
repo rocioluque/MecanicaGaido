@@ -16,6 +16,7 @@ Public Class frmReportesProductos
     Private Sub frmReportesProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Combo_Marcas()
         CargarGrilla()
+        AplicarTema(Me)
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -87,6 +88,7 @@ Public Class frmReportesProductos
     End Sub
 #End Region
 
+#Region "Crear PDF"
     Public Function GetColumnasSize(dg As DataGridView) As Single()
         Dim values As Single() = New Single(dg.ColumnCount - 1) {}
         For i As Integer = 0 To dg.ColumnCount - 1
@@ -150,7 +152,9 @@ Public Class frmReportesProductos
         document.Add(texto)
         document.Add(datatable)
     End Sub
+#End Region
 
+#Region "Mandar PDF"
     Private Sub btnDescargarPDF_Click(sender As Object, e As EventArgs) Handles btnDescargarPDF.Click
         Try
             Dim doc As New Document(PageSize.A4.Rotate(), 10, 10, 10, 10)
@@ -181,4 +185,6 @@ Public Class frmReportesProductos
         End Try
 
     End Sub
+#End Region
+
 End Class

@@ -24,6 +24,7 @@ Public Class frmInicio
         cargar_grafico_Repuestos()
         CargarGraficoEstados()
         ConsultarDolar1()
+        AplicarTema(Me)
     End Sub
 #End Region
 

@@ -7,6 +7,16 @@ Public Class frmAgregarSeccion
     ' Propiedad para almacenar el nombre de la nueva seccion agregada
     Public Property NuevaSeccionNombre As String
 
+#Region "Procedimientos"
+    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        Me.Close()
+    End Sub
+
+    Private Sub frmAgregarSeccion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AplicarTema(Me)
+    End Sub
+#End Region
+
 #Region "Cargar"
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         If txtSeccion.Text <> Nothing Then
@@ -32,7 +42,4 @@ Public Class frmAgregarSeccion
     End Sub
 #End Region
 
-    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
-        Me.Close()
-    End Sub
 End Class

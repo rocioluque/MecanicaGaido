@@ -21,6 +21,7 @@ Public Class frmAgregarPedidoRepuesto
     Private Sub frmAgregarPedidoRepuesto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Grilla_Productos_BajoStock()
         Cargar_Combo_Persona()
+        AplicarTema(Me)
     End Sub
 
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click

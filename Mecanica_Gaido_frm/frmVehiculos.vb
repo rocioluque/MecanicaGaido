@@ -17,6 +17,7 @@ Public Class frmVehiculos
         btnModificar.Enabled = False
         txtBuscar.Visible = False
         txtID.Enabled = False
+        AplicarTema(Me)
 
         ' Manejar eventos para concatenar datos
         AddHandler cboTipoVehiculo.SelectedIndexChanged, AddressOf ActualizarNombre
@@ -387,7 +388,6 @@ Public Class frmVehiculos
 
 #End Region
 
-
 #Region "validaciones"
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         txtBuscar.Visible = True
@@ -398,5 +398,6 @@ Public Class frmVehiculos
             txtBuscar.Visible = False
         End If
     End Sub
-    #End Region
+#End Region
+
 End Class

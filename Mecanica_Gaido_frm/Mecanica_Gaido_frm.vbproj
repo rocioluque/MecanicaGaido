@@ -535,6 +535,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PIN_GRUPO31DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SwitchButton.Designer.vb">
+      <DependentUpon>SwitchButton.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchButton.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TemaGlobal.vb" />
     <Compile Include="User32.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -666,6 +673,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBienvenida.resx">
       <DependentUpon>frmBienvenida.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchButton.resx">
+      <DependentUpon>SwitchButton.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

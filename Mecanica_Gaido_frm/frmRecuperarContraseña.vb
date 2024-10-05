@@ -12,4 +12,7 @@ Public Class frmRecuperarContraseña
         Me.Close()
     End Sub
 
+    Private Sub frmRecuperarContraseña_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AplicarTema(Me)
+    End Sub
 End Class

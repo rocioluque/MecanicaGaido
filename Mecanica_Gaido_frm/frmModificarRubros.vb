@@ -8,6 +8,7 @@ Public Class frmModificarRubros
     Private Sub frmPersonas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         limpiar()
         Cargar_Grilla()
+        AplicarTema(Me)
     End Sub
 
     Public Sub limpiar()
@@ -16,6 +17,12 @@ Public Class frmModificarRubros
         chkEstado.Checked = False
     End Sub
 
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiar()
+    End Sub
+#End Region
+
+#Region "Cargar Grilla"
     Public Sub Cargar_Grilla()
         Dim conexion As SqlConnection
         Dim comando As New SqlCommand
@@ -40,7 +47,9 @@ Public Class frmModificarRubros
         oDs = Nothing
         conexion.Close()
     End Sub
+#End Region
 
+#Region "Cargar datos en txt"
     Public Sub CargarDatosEnTextBoxes(ByVal rowIndex As Integer)
         If grdModificarRubros.Rows.Count > 0 Then
             txtId.Text = Convert.ToInt32(grdModificarRubros.Rows(rowIndex).Cells("N° Rubro").Value)
@@ -53,11 +62,6 @@ Public Class frmModificarRubros
         If e.RowIndex >= 0 Then
             CargarDatosEnTextBoxes(e.RowIndex)
         End If
-    End Sub
-
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        limpiar()
-        Me.Close()
     End Sub
 #End Region
 

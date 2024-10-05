@@ -23,6 +23,7 @@ Public Class frmOrdenesReparacion
         Cargar_Combo_TiposReparacion()
         limpiar()
         ponerDecimales()
+        AplicarTema(Me)
     End Sub
 
     Public Sub New(Optional ByVal estadoParaFiltrar As String = "", Optional ByVal esFiltradoPorGrafico As Boolean = False)

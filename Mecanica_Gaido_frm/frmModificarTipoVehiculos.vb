@@ -16,6 +16,13 @@ Public Class frmModificarTipoVehiculos
         chkEstado.Checked = False
     End Sub
 
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiar()
+        Me.Close()
+    End Sub
+#End Region
+
+#Region "Cargar Grilla"
     Public Sub Cargar_Grilla()
         Dim conexion As SqlConnection
         Dim comando As New SqlCommand
@@ -40,7 +47,9 @@ Public Class frmModificarTipoVehiculos
         oDs = Nothing
         conexion.Close()
     End Sub
+#End Region
 
+#Region "Cargar datos en txt"
     Public Sub CargarDatosEnTextBoxes(ByVal rowIndex As Integer)
         If grdModificarTipoVehiculo.Rows.Count > 0 Then
             txtId.Text = Convert.ToInt32(grdModificarTipoVehiculo.Rows(rowIndex).Cells("N° Tipo de Vehículo").Value)
@@ -53,11 +62,6 @@ Public Class frmModificarTipoVehiculos
         If e.RowIndex >= 0 Then
             CargarDatosEnTextBoxes(e.RowIndex)
         End If
-    End Sub
-
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        limpiar()
-        Me.Close()
     End Sub
 #End Region
 
@@ -75,4 +79,5 @@ Public Class frmModificarTipoVehiculos
     End Sub
 
 #End Region
+
 End Class
