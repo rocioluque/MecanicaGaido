@@ -552,6 +552,8 @@ Public Class frmProductos
 
 #End Region
 
+#Region " validaciones "
+
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         txtBuscar.Visible = True
     End Sub
@@ -591,4 +593,7 @@ Public Class frmProductos
             txtBuscar.Visible = False
         End If
     End Sub
+
+#End Region
+
 End Class

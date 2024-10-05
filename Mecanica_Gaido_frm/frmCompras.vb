@@ -31,13 +31,16 @@ Public Class frmCompras
         limpiar()
         PonerDecimales()
         btnModificar.Enabled = False
+        txtBusqueda.Visible = False
+
 
 
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
-
+        txtBusqueda.Clear()
+        txtBusqueda.Visible = False
     End Sub
 #End Region
 

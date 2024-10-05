@@ -840,7 +840,7 @@ Partial Class frmPersonas
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(1186, 598)
+        Me.ClientSize = New System.Drawing.Size(1203, 598)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.txtBuscar)
         Me.Controls.Add(Me.lblNota)
