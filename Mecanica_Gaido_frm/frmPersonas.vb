@@ -163,7 +163,7 @@ Public Class frmPersonas
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         Limpiar()
         btnModificar.Enabled = False
-        txtBuscar.Clear()
+        txtBuscar.Clear
         txtBuscar.Visible = False
 
     End Sub
@@ -575,6 +575,7 @@ Nombre"
     End Sub
 
 
+
     Private Sub PanelDirecciones_Paint(sender As Object, e As PaintEventArgs) Handles PanelDirecciones.Paint
         ' Configurar los colores y el grosor del borde
         Dim borderColor As Color = Color.SeaGreen
@@ -730,8 +731,7 @@ Nombre"
    cboCiudad.SelectedValue IsNot Nothing AndAlso
    Not String.IsNullOrWhiteSpace(txtNombre.Text) AndAlso
    Not String.IsNullOrWhiteSpace(txtDireccion.Text) AndAlso
-   Not String.IsNullOrWhiteSpace(txtNumero.Text) AndAlso
-   Not String.IsNullOrWhiteSpace(txtApellido.Text) Then
+   Not String.IsNullOrWhiteSpace(txtNumero.Text) Then
 
 
             chkEstado.Visible = True
@@ -744,6 +744,13 @@ Nombre"
 
     Private Sub cboTipoPersona_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTipoPersona.SelectedIndexChanged
         validacion()
+
+        If cboTipoPersona.SelectedItem.ToString() = "Personas Jurídicas" Then
+            txtApellido.Enabled = False
+        ElseIf cboTipoPersona.SelectedItem.ToString() = "Personas Físicas" Then
+            txtApellido.Enabled = True
+        End If
+
     End Sub
 
     Private Sub msktxtNumeroDocumento_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles msktxtNumeroDocumento.MaskInputRejected
@@ -786,6 +793,7 @@ Nombre"
 
     Private Sub txtApellido_TextChanged(sender As Object, e As EventArgs) Handles txtApellido.TextChanged
         validacion()
+
     End Sub
 
     Private Sub cboCiudad_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCiudad.SelectedIndexChanged
@@ -811,6 +819,8 @@ Nombre"
             txtBuscar.Visible = False
         End If
     End Sub
+
+
 
 
 
