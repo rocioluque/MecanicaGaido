@@ -15,6 +15,8 @@ Public Class frmVehiculos
         Cargar_Grilla()
         Limpiar()
         btnModificar.Enabled = False
+        txtBuscar.Visible = False
+        txtID.Enabled = False
 
         ' Manejar eventos para concatenar datos
         AddHandler cboTipoVehiculo.SelectedIndexChanged, AddressOf ActualizarNombre
@@ -38,6 +40,8 @@ Public Class frmVehiculos
         cboMarca.SelectedIndex = -1
         cboPersona.SelectedIndex = -1
         chkEstado.Checked = False
+        txtBuscar.Clear()
+        txtBuscar.Visible = False
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -379,6 +383,18 @@ Public Class frmVehiculos
         Filtrar_Grilla()
     End Sub
 
+
+
 #End Region
+
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        txtBuscar.Visible = True
+    End Sub
+
+    Private Sub grdVehiculo_SelectionChanged(sender As Object, e As EventArgs) Handles grdVehiculo.SelectionChanged
+        If String.IsNullOrWhiteSpace(txtBuscar.Text) Then
+            txtBuscar.Visible = False
+        End If
+    End Sub
 
 End Class
