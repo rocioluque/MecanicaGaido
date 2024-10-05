@@ -747,6 +747,36 @@ Nombre"
         validacion()
     End Sub
 
+    Private Sub txtNombre_KeyDown(sender As Object, e As KeyEventArgs) Handles txtNombre.KeyDown
+
+        If e.KeyCode = Keys.Enter Then
+
+            e.SuppressKeyPress = False
+
+            txtApellido.Focus()
+        End If
+    End Sub
+
+    Private Sub txtCodigoPostal_KeyDown(sender As Object, e As KeyEventArgs) Handles txtNombre.KeyDown
+
+        If e.KeyCode = Keys.Enter Then
+
+            e.SuppressKeyPress = False
+
+            txtDireccion.Focus()
+        End If
+    End Sub
+
+    Private Sub txtDireccion_KeyDown(sender As Object, e As KeyEventArgs) Handles txtNombre.KeyDown
+
+        If e.KeyCode = Keys.Enter Then
+
+            e.SuppressKeyPress = False
+
+            txtNumero.Focus()
+        End If
+    End Sub
+
     Private Sub txtNombre_TextChanged(sender As Object, e As EventArgs) Handles txtNombre.TextChanged
         validacion()
     End Sub
@@ -778,6 +808,8 @@ Nombre"
             txtBuscar.Visible = False
         End If
     End Sub
+
+
 
 #End Region
 End Class
