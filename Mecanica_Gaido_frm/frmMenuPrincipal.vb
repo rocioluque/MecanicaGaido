@@ -24,7 +24,7 @@ Public Class frmMenuPrincipal
         PintarBotonInicio()
         MostrarInicio()
         Me.DoubleBuffered = True
-
+        AplicarTema(Me)
     End Sub
 
     Public Sub MostrarInicio()
@@ -350,6 +350,11 @@ Public Class frmMenuPrincipal
 
 #End Region
 
+    ' Variables para la animación
+    Private WithEvents animationTimer As New Timer()
+    Private circleTargetX As Integer ' Posición objetivo del círculo
+    Private isAnimating As Boolean = False ' Estado de la animación
+
     Private Sub btnCambiarTema_Click(sender As Object, e As EventArgs) Handles btnCambiarTema.Click
         ' Alternar el tema actual entre claro y oscuro
         TemaGlobal.CambiarTema()
@@ -357,25 +362,68 @@ Public Class frmMenuPrincipal
         ' Aplicar el tema en todos los formularios abiertos
         TemaGlobal.AplicarTemaEnTodosLosFormularios()
 
-        ' Redibujar el botón para reflejar el cambio visual del switch
-        btnCambiarTema.Invalidate() ' Forzar que se repinte el botón
+        ' Establecer la posición objetivo del círculo
+        circleTargetX = If(TemaGlobal.ModoActualOscuro, btnCambiarTema.Width - btnCambiarTema.Height + 3, 3)
+
+        ' Iniciar la animación
+        isAnimating = True
+        animationTimer.Start() ' Iniciar el temporizador
     End Sub
 
     Private Sub btnCambiarTema_Paint(sender As Object, e As PaintEventArgs) Handles btnCambiarTema.Paint
-        ' Este evento da estilo al botón "switch" para que parezca un interruptor visual
         Dim graphics As Graphics = e.Graphics
+        graphics.Clear(btnCambiarTema.Parent.BackColor) ' Asegurarse de que el fondo sea del mismo color que el formulario
+
+        ' Usar el espacio de nombres completo para Rectangle para evitar ambigüedades
         Dim rectangle As New System.Drawing.Rectangle(0, 0, btnCambiarTema.Width, btnCambiarTema.Height)
 
-        ' Dibujar el fondo del interruptor
+        ' Dibujar el fondo del interruptor con bordes redondeados
         graphics.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
         Dim switchBackColor As Color = If(TemaGlobal.ModoActualOscuro, Color.Gray, Color.LightGray)
-        Dim circleColor As Color = If(TemaGlobal.ModoActualOscuro, Color.White, Color.Black)
-        graphics.FillRectangle(New SolidBrush(switchBackColor), rectangle)
+
+        ' Crear un path para el fondo con bordes redondeados
+        Dim borderRadius As Integer = 20 ' Ajusta el radio de los bordes
+        Using path As New Drawing2D.GraphicsPath()
+            path.AddArc(0, 0, borderRadius, borderRadius, 180, 90)
+            path.AddArc(btnCambiarTema.Width - borderRadius, 0, borderRadius, borderRadius, 270, 90)
+            path.AddArc(btnCambiarTema.Width - borderRadius, btnCambiarTema.Height - borderRadius, borderRadius, borderRadius, 0, 90)
+            path.AddArc(0, btnCambiarTema.Height - borderRadius, borderRadius, borderRadius, 90, 90)
+            path.CloseFigure()
+
+            ' Dibujar el fondo con bordes redondeados
+            graphics.FillPath(New SolidBrush(switchBackColor), path)
+        End Using
 
         ' Dibujar el círculo del interruptor (como un slider)
         Dim circleSize As Integer = btnCambiarTema.Height - 6
-        Dim circleX As Integer = If(TemaGlobal.ModoActualOscuro, btnCambiarTema.Width - circleSize - 3, 3)
-        graphics.FillEllipse(New SolidBrush(circleColor), New System.Drawing.Rectangle(circleX, 3, circleSize, circleSize))
+        Dim circleX As Integer = If(isAnimating, circleTargetX, If(TemaGlobal.ModoActualOscuro, btnCambiarTema.Width - circleSize - 3, 3))
+
+        ' Dibujar el círculo
+        graphics.FillEllipse(New SolidBrush(If(TemaGlobal.ModoActualOscuro, Color.White, Color.Black)), New System.Drawing.Rectangle(circleX, 3, circleSize, circleSize))
+    End Sub
+
+    Private Sub animationTimer_Tick(sender As Object, e As EventArgs) Handles animationTimer.Tick
+        ' Actualizar la posición del círculo
+        Dim currentCircleX As Integer = If(TemaGlobal.ModoActualOscuro, btnCambiarTema.Width - btnCambiarTema.Height + 3, 3)
+
+        ' Ajustar la posición del círculo hacia la posición objetivo
+        If currentCircleX <> circleTargetX Then
+            If Math.Abs(currentCircleX - circleTargetX) < 5 Then
+                ' Si está cerca de la posición objetivo, detener la animación
+                animationTimer.Stop()
+                isAnimating = False
+            Else
+                ' Mover el círculo gradualmente
+                If currentCircleX < circleTargetX Then
+                    currentCircleX += 5 ' Ajusta este valor para cambiar la velocidad de la animación
+                ElseIf currentCircleX > circleTargetX Then
+                    currentCircleX -= 5
+                End If
+            End If
+
+            ' Redibujar el botón
+            btnCambiarTema.Invalidate()
+        End If
     End Sub
 
 End Class
