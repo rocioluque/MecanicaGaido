@@ -145,8 +145,8 @@ Public Class frmProductos
             Dim idProducto As String
             btnModificar.Enabled = True
 
-            If selectedRow.Cells("Cod. Fabricante").Value IsNot Nothing Then
-                idProducto = Convert.ToString(selectedRow.Cells("Cod. Fabricante").Value)
+            If selectedRow.Cells("N° Producto").Value IsNot Nothing Then
+                idProducto = Convert.ToString(selectedRow.Cells("N° Producto").Value)
                 CargarDatosEnTxt(idProducto)
 
             Else
@@ -553,8 +553,7 @@ Public Class frmProductos
 
 #End Region
 
-#Region " validaciones "
-
+#Region "Validaciones "
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         txtBuscar.Visible = True
     End Sub
@@ -584,9 +583,6 @@ Public Class frmProductos
         txtUbicacion.Clear()
         txtUtilidad.Clear()
         txtPrecioLista.Clear()
-
-
-
     End Sub
 
     Private Sub grdProductos_SelectionChanged(sender As Object, e As EventArgs) Handles grdProductos.SelectionChanged
@@ -594,7 +590,6 @@ Public Class frmProductos
             txtBuscar.Visible = False
         End If
     End Sub
-
 #End Region
 
 End Class

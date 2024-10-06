@@ -13,7 +13,7 @@ Imports System.IO
 Imports iTextSharp.text
 Imports iTextSharp.text.pdf
 Imports System.Drawing
-Imports System.Drawing.Drawing2D ' Para el suavizado de bordes (AntiAlias) y gráficos
+Imports System.Drawing.Drawing2D
 
 Public Class frmMenuPrincipal
 
@@ -24,7 +24,7 @@ Public Class frmMenuPrincipal
         PintarBotonInicio()
         MostrarInicio()
         Me.DoubleBuffered = True
-        AplicarTema(Me)
+        'AplicarTema(Me)
     End Sub
 
     Public Sub MostrarInicio()
@@ -350,6 +350,7 @@ Public Class frmMenuPrincipal
 
 #End Region
 
+#Region "Modo Color"
     ' Variables para la animación
     Private WithEvents animationTimer As New Timer()
     Private circleTargetX As Integer ' Posición objetivo del círculo
@@ -425,5 +426,6 @@ Public Class frmMenuPrincipal
             btnCambiarTema.Invalidate()
         End If
     End Sub
+#End Region
 
 End Class
