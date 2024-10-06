@@ -1651,11 +1651,12 @@ Public Class frmOrdenesReparacion
                 TablaProductos.AddCell(New PdfPCell(New Phrase(importe, FontFactory.GetFont(FontFactory.HELVETICA, 8))) With {.HorizontalAlignment = Element.ALIGN_RIGHT})
             Next
 
-            ' Calcular cuántas filas vacías quedan por añadir para llegar a 49 filas
-            Dim filasVacias As Integer = 49 - numFilas
+            ' Calcular cuántas filas vacías se pueden agregar sin exceder el límite de una página
+            Dim maxFilasPorPagina As Integer = 48 ' Número de filas que caben en una página
+            Dim filasRestantes As Integer = maxFilasPorPagina - numFilas
 
             ' Añadir las filas vacías restantes
-            For i As Integer = 1 To filasVacias
+            For i As Integer = 1 To filasRestantes
                 For j As Integer = 1 To 6
                     Dim emptyCell As New PdfPCell(New Phrase(" ", FontFactory.GetFont(FontFactory.HELVETICA, 10)))
                     emptyCell.FixedHeight = rowHeight
@@ -1663,19 +1664,17 @@ Public Class frmOrdenesReparacion
                 Next
             Next
 
-            ' Fila 49 Columnas 1 a 5
+            ' Fila final
             Dim cellTotalRepuestos As PdfPCell = New PdfPCell(New Phrase("TOTAL DE REPUESTOS Y LUBRICANTES", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)))
             cellTotalRepuestos.Colspan = 5
             cellTotalRepuestos.HorizontalAlignment = Element.ALIGN_CENTER
             TablaProductos.AddCell(cellTotalRepuestos)
 
-            ' Fila 49 Columnas 6 VACIA
             Dim lastCell As New PdfPCell(New Phrase(txtMontoRepuestos.Text, FontFactory.GetFont(FontFactory.HELVETICA, 10)))
             lastCell.FixedHeight = rowHeight
             TablaProductos.AddCell(lastCell)
 
             document.Add(TablaProductos)
-
             document.Close()
         End Using
 
