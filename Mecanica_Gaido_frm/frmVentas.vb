@@ -8,6 +8,8 @@ Imports Mecanica_Gaido_frm.User32
 Public Class frmVentas
     Dim o_ventas As New AD_Ventas
 
+    Dim Id_Empleado_Login As Integer = UsuarioActivo.id_empleado
+
 #Region "Procedimientos"
     Private Sub frmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Combo_Persona()
@@ -726,7 +728,7 @@ Public Class frmVentas
             ventaDataAccess.AgregarVentaConDetalle(Convert.ToDateTime(dtpFechaVenta.Value),
                                                     txtNumComprobante.Text,
                                                     CInt(cboPersona.SelectedValue),
-                                                    txtVendedor.Text,
+                                                    Id_Empleado_Login,
                                                     CInt(cboFormaPago.SelectedValue),
                                                     CInt(cboDetalleFormaPago.SelectedValue),
                                                  Decimal.Parse(txtSubtotal.Text),

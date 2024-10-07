@@ -8,8 +8,9 @@ Public Class frmLogin
     Dim o_Login As New AD_Login
 
 #Region "Procedimientos"
-    Private Sub PanelLogin_Paint(sender As Object, e As PaintEventArgs) Handles PanelLogin.Paint
+    Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AplicarTema(Me)
+        Aplicar_Imagenes()
     End Sub
 
     Private Sub Cerrar_Sesion(sender As Object, e As FormClosedEventArgs)
@@ -17,6 +18,12 @@ Public Class frmLogin
         txtContraseña.Clear()
         Me.Show()
         txtUsuario.Focus()
+    End Sub
+
+    Private Sub Aplicar_Imagenes()
+        btnMinimizar.BackgroundImage = Image.FromFile(System.IO.Path.Combine("Imagenes", "minimizar_bco.png"))
+        btnCerrar.BackgroundImage = Image.FromFile(System.IO.Path.Combine("Imagenes", "cancel_bco.png"))
+        PanelLogo.BackgroundImage = Image.FromFile(System.IO.Path.Combine("Imagenes", "fondo_GaidoRepuestosServicios.png"))
     End Sub
 #End Region
 

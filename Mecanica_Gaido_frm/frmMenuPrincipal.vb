@@ -24,12 +24,13 @@ Public Class frmMenuPrincipal
         PintarBotonInicio()
         MostrarInicio()
         Me.DoubleBuffered = True
-        'AplicarTema(Me)
+        AplicarTema(Me)
     End Sub
 
     Public Sub MostrarInicio()
         AbrirFormHijo(New frmInicio(), Nothing)
     End Sub
+
 #End Region
 
 #Region "Inicio"

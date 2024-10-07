@@ -160,7 +160,6 @@ Partial Class frmLogin
         'PanelLogo
         '
         Me.PanelLogo.BackColor = System.Drawing.Color.FromArgb(CType(CType(190, Byte), Integer), CType(CType(222, Byte), Integer), CType(CType(187, Byte), Integer))
-        Me.PanelLogo.BackgroundImage = CType(resources.GetObject("PanelLogo.BackgroundImage"), System.Drawing.Image)
         Me.PanelLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PanelLogo.Controls.Add(Me.btnMinimizar)
         Me.PanelLogo.Controls.Add(Me.btnCerrar)
@@ -172,7 +171,7 @@ Partial Class frmLogin
         '
         'btnMinimizar
         '
-        Me.btnMinimizar.BackgroundImage = CType(resources.GetObject("btnMinimizar.BackgroundImage"), System.Drawing.Image)
+        Me.btnMinimizar.BackColor = System.Drawing.Color.Transparent
         Me.btnMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnMinimizar.Location = New System.Drawing.Point(341, 3)
         Me.btnMinimizar.Name = "btnMinimizar"
@@ -182,7 +181,7 @@ Partial Class frmLogin
         '
         'btnCerrar
         '
-        Me.btnCerrar.BackgroundImage = CType(resources.GetObject("btnCerrar.BackgroundImage"), System.Drawing.Image)
+        Me.btnCerrar.BackColor = System.Drawing.Color.Transparent
         Me.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnCerrar.Location = New System.Drawing.Point(362, 3)
         Me.btnCerrar.Name = "btnCerrar"
