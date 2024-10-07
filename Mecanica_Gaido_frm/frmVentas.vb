@@ -55,6 +55,11 @@ Public Class frmVentas
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
+        txtVendedor.Text = UsuarioActivo.nombre_empleado
+        Dim oVenta As New AD_Ventas
+        txtNumComprobante.Text = oVenta.ObtenerNroComprobante
+        txtNumComprobante.Enabled = False
+        btnModificar.Enabled = False
     End Sub
 #End Region
 
@@ -209,7 +214,7 @@ Public Class frmVentas
             If oDs.Rows.Count > 0 Then
                 grdVentas1.AutoGenerateColumns = True
                 grdVentas1.DataSource = oDs
-                grdVentas1.Columns("Vendedor").Visible = False
+                'grdVentas1.Columns("Vendedor").Visible = False
                 grdVentas1.Columns("Detalle FP").Visible = False
                 grdVentas1.Columns("Subtotal").Visible = False
                 grdVentas1.Columns("MontoDtoRecargo").Visible = False
@@ -752,6 +757,8 @@ Public Class frmVentas
 
         Dim oDS As New DataSet
         Dim o_Venta As New AD_Ventas
+
+
 
         oDS = o_Venta.Consultar_Venta_ID(ID_Venta)
 
