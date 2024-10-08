@@ -28,7 +28,6 @@ Public Class frmVentas
         txtNumComprobante.Text = oVenta.ObtenerNroComprobante
         txtNumComprobante.Enabled = False
         btnModificar.Enabled = False
-
     End Sub
 
     Public Sub limpiar()
