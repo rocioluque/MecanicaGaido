@@ -326,10 +326,10 @@ Public Class frmOrdenesReparacion
                 btnQuitarS3.Enabled = True
                 BtnModificarS3.Enabled = False
             Else
-                MsgBox("Por favor, seleccione un repuesto y especifique la cantidad.", vbExclamation, "Advertencia")
+                MsgBox("Por favor, seleccione un proveedor y especifique el servicio.", vbExclamation, "Advertencia")
             End If
         Catch ex As Exception
-            MsgBox("Error al agregar el repuesto: " & ex.Message, vbCritical, "Error")
+            MsgBox("Error al agregar el servicio: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
 
