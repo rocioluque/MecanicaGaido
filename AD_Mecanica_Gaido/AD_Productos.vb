@@ -97,6 +97,31 @@ Public Class AD_Productos
         End Try
     End Function
 
+    Public Function Consultar_StockMinimoPorID(ByVal idProducto As String) As Integer
+        Dim conexion As New SqlConnection(connectionString)
+        Dim comando As New SqlCommand("Consultar_StockMinimoPorID", conexion)
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.AddWithValue("@idProducto", idProducto)
+
+        Try
+            conexion.Open()
+            ' Cambiamos el tipo de retorno a ExecuteScalar ya que queremos un solo valor
+            Dim stockMinimo As Object = comando.ExecuteScalar()
+
+            ' Verificamos si el valor no es nulo antes de retornarlo
+            If stockMinimo IsNot Nothing AndAlso IsNumeric(stockMinimo) Then
+                Return Convert.ToInt32(stockMinimo)
+            Else
+                Return 1 ' Puedes retornar otro valor en caso de no encontrar resultados
+            End If
+        Catch ex As Exception
+            Throw ex
+        Finally
+            conexion.Close()
+        End Try
+    End Function
+
+
 
     Public Sub Agregar_Producto(Descripcion As String, NombreDiario As String, ID_Rubro As Integer, ID_Marca As Integer,
                             CodigoBarra As String, CodFabricante As String, CantidadBulto As Decimal, origen As String,

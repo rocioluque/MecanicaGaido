@@ -62,9 +62,32 @@ Public Class frmAgregarPedidoRepuesto
             fila.Cells("StockDisponible").Value = row("Stock Disponible")
         Next
     End Sub
+
+
+    Private Sub grdProductosBajoStock_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdProductosBajoStock.CellClick
+        Dim o_prod As New AD_Productos
+
+        Try
+            If e.RowIndex >= 0 Then
+                Dim selectedRow As DataGridViewRow = grdProductosBajoStock.Rows(e.RowIndex)
+                Dim idProducto As String = selectedRow.Cells("id_Repuesto").Value.ToString()
+                Dim st_minimo As Decimal = o_prod.Consultar_StockMinimoPorID(idProducto)
+                Dim stockDisponible As Decimal = Convert.ToDecimal(selectedRow.Cells("StockDisponible").Value)
+                Dim cantidadSugerida As Decimal = st_minimo - stockDisponible
+
+                txtCantidad.Text = cantidadSugerida.ToString()
+
+            End If
+        Catch ex As Exception
+            MsgBox("Error al sugerir cantidad del repuesto: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+
 #End Region
 
 #Region "Agregar / Quitar"
+
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         Try
             If grdProductosBajoStock.SelectedRows.Count > 0 AndAlso Not String.IsNullOrEmpty(txtCantidad.Text) Then
@@ -296,5 +319,7 @@ Public Class frmAgregarPedidoRepuesto
 
         Return numeroTelefonoMovil
     End Function
+
+
 #End Region
 End Class
