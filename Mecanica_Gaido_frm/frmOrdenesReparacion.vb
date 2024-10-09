@@ -8,6 +8,7 @@ Imports iTextSharp.text
 Imports iTextSharp.text.pdf
 
 Public Class frmOrdenesReparacion
+    Public persona As Integer = -1
     Dim o_Orden As New AD_OrdenReparacion
 
 #Region "Procedimientos"
@@ -43,6 +44,8 @@ Public Class frmOrdenesReparacion
         CboTipoReparacion.SelectedIndex = -1
         chkActivo.Checked = True
         chkActivo.Visible = False
+        btnAceptar.Enabled = True
+        btnModificar.Enabled = False
     End Sub
 
     Private Sub limpiarServ3()
@@ -614,9 +617,12 @@ Public Class frmOrdenesReparacion
                     dtpTurno.Value = Convert.ToDateTime(row("Fecha_Turno"))
                     dtpEntrada.Value = Convert.ToDateTime(row("Fecha_Entrada"))
                     dtpSalida.Value = Convert.ToDateTime(row("Fecha_Salida"))
+                    txtMontoManoObra.Text = If(IsDBNull(row("Precio_Mano_De_Obra")), "0,00", Convert.ToDecimal(row("Precio_Mano_De_Obra")).ToString("N2"))
                     txtMontoRepuestos.Text = If(IsDBNull(row("MontoRepuestos")), "0,00", Convert.ToDecimal(row("MontoRepuestos")).ToString("N2"))
                     txtMontoServ3.Text = If(IsDBNull(row("MontoServicioTerceros")), "0,00", Convert.ToDecimal(row("MontoServicioTerceros")).ToString("N2"))
-                    txtMontoManoObra.Text = If(IsDBNull(row("Precio_Mano_De_Obra")), "0,00", Convert.ToDecimal(row("Precio_Mano_De_Obra")).ToString("N2"))
+                    txtSubtotal.Text = If(IsDBNull(row("Subtotal")), "0,00", Convert.ToDecimal(row("Subtotal")).ToString("N2"))
+                    txtIVA.Text = If(IsDBNull(row("IVAPorc")), "0,00", Convert.ToDecimal(row("IVAPorc")).ToString("N2"))
+                    txtMontoIVA.Text = If(IsDBNull(row("MontoIVA")), "0,00", Convert.ToDecimal(row("MontoIVA")).ToString("N2"))
                     txtMontoTotalOR.Text = If(IsDBNull(row("MontoTotalOrden")), "0,00", Convert.ToDecimal(row("MontoTotalOrden")).ToString("N2"))
                     chkActivo.Checked = Convert.ToBoolean(row("Estado"))
                     CboTipoReparacion.SelectedValue = row("ID_TipoReparacion")
@@ -893,11 +899,18 @@ Public Class frmOrdenesReparacion
         txtMontoRepuestos.Text = Convert.ToDecimal(txtMontoRepuestos.Text).ToString("N2")
         txtMontoServ3.Text = Convert.ToDecimal(txtMontoServ3.Text).ToString("N2")
         txtMontoTotalOR.Text = Convert.ToDecimal(txtMontoTotalOR.Text).ToString("N2")
+        txtSubtotal.Text = Convert.ToDecimal(txtSubtotal.Text).ToString("N2")
+        txtIVA.Text = Convert.ToDecimal(txtIVA.Text).ToString("N2")
+        txtMontoIVA.Text = Convert.ToDecimal(txtMontoIVA.Text).ToString("N2")
         txtCantidadRepOR.Text = Convert.ToDecimal(txtCantidadRepOR.Text).ToString("N2")
     End Sub
 
     Private Sub CalcularTotalOR()
-        txtMontoTotalOR.Text = Convert.ToDecimal(CDec(txtMontoManoObra.Text) + CDec(txtMontoRepuestos.Text) + CDec(txtMontoServ3.Text)).ToString("N2")
+
+        txtSubtotal.Text = Convert.ToDecimal(CDec(txtMontoManoObra.Text) + CDec(txtMontoRepuestos.Text) + CDec(txtMontoServ3.Text)).ToString("N2")
+        txtMontoIVA.Text = Convert.ToDecimal(CDec(txtSubtotal.Text) * ((CDec(txtIVA.Text).ToString("N2") / 100))).ToString("n2")
+        txtMontoTotalOR.Text = Convert.ToDecimal(CDec(txtSubtotal.Text) + (CDec(txtMontoIVA.Text).ToString("N2"))).ToString("N2")
+
     End Sub
 
     Private Sub txtMontoManoObra_Leave(sender As Object, e As EventArgs) Handles txtMontoManoObra.Leave
@@ -1687,11 +1700,13 @@ Public Class frmOrdenesReparacion
 #End Region
 
     Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
-
+        frmMenuPrincipal.btnPersonas.PerformClick()
     End Sub
 
     Private Sub btnAgregarVehiculo_Click(sender As Object, e As EventArgs) Handles btnAgregarVehiculo.Click
-
+        persona = cboPersonas.SelectedValue
+        frmMenuPrincipal.btnVehiculos.PerformClick()
+        frmVehiculos.cboPersona.SelectedValue = persona
     End Sub
 
 #Region "Focus txt"
