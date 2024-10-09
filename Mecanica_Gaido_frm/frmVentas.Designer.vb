@@ -23,14 +23,14 @@ Partial Class frmVentas
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVentas))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -107,8 +107,8 @@ Partial Class frmVentas
         Me.txtBusqueda = New System.Windows.Forms.TextBox()
         Me.txtMontoServ3 = New System.Windows.Forms.RichTextBox()
         Me.txtMontoManoObra = New System.Windows.Forms.RichTextBox()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
-        Me.RichTextBox2 = New System.Windows.Forms.RichTextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label24 = New System.Windows.Forms.Label()
         CType(Me.btnAgregarPersona, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarFormaPago, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnTipoVenta, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -318,14 +318,14 @@ Partial Class frmVentas
         Me.grdVentas.AllowUserToResizeRows = False
         Me.grdVentas.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdVentas.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdVentas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdVentas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.grdVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdVentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.Descripcion, Me.Diario, Me.Cantidad, Me.Precio, Me.Total})
         Me.grdVentas.Location = New System.Drawing.Point(18, 64)
@@ -340,11 +340,11 @@ Partial Class frmVentas
         '
         'ID
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        Me.ID.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black
+        Me.ID.DefaultCellStyle = DataGridViewCellStyle10
         Me.ID.HeaderText = "ID"
         Me.ID.MinimumWidth = 6
         Me.ID.Name = "ID"
@@ -354,9 +354,9 @@ Partial Class frmVentas
         '
         'Descripcion
         '
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        Me.Descripcion.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black
+        Me.Descripcion.DefaultCellStyle = DataGridViewCellStyle11
         Me.Descripcion.HeaderText = "Repuesto"
         Me.Descripcion.MinimumWidth = 6
         Me.Descripcion.Name = "Descripcion"
@@ -365,9 +365,9 @@ Partial Class frmVentas
         '
         'Diario
         '
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        Me.Diario.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black
+        Me.Diario.DefaultCellStyle = DataGridViewCellStyle12
         Me.Diario.HeaderText = "Nombre común"
         Me.Diario.MinimumWidth = 6
         Me.Diario.Name = "Diario"
@@ -376,12 +376,12 @@ Partial Class frmVentas
         '
         'Cantidad
         '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.Format = "N2"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle13.Format = "N2"
+        DataGridViewCellStyle13.NullValue = Nothing
+        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle13
         Me.Cantidad.HeaderText = "Cantidad"
         Me.Cantidad.MinimumWidth = 6
         Me.Cantidad.Name = "Cantidad"
@@ -390,12 +390,12 @@ Partial Class frmVentas
         '
         'Precio
         '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.Format = "N2"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.Precio.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle14.Format = "N2"
+        DataGridViewCellStyle14.NullValue = Nothing
+        Me.Precio.DefaultCellStyle = DataGridViewCellStyle14
         Me.Precio.HeaderText = "Precio"
         Me.Precio.MinimumWidth = 6
         Me.Precio.Name = "Precio"
@@ -404,12 +404,12 @@ Partial Class frmVentas
         '
         'Total
         '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle7.Format = "N2"
-        DataGridViewCellStyle7.NullValue = Nothing
-        Me.Total.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle15.Format = "N2"
+        DataGridViewCellStyle15.NullValue = Nothing
+        Me.Total.DefaultCellStyle = DataGridViewCellStyle15
         Me.Total.HeaderText = "Total"
         Me.Total.MinimumWidth = 6
         Me.Total.Name = "Total"
@@ -890,7 +890,7 @@ Partial Class frmVentas
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(843, 422)
+        Me.Label11.Location = New System.Drawing.Point(854, 422)
         Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(37, 17)
@@ -902,7 +902,7 @@ Partial Class frmVentas
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(378, 422)
+        Me.Label8.Location = New System.Drawing.Point(527, 422)
         Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(71, 17)
@@ -914,7 +914,7 @@ Partial Class frmVentas
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(155, 422)
+        Me.Label9.Location = New System.Drawing.Point(389, 422)
         Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(59, 17)
@@ -925,6 +925,8 @@ Partial Class frmVentas
         '
         Me.PanelTotales.Controls.Add(Me.txtMontoDtoRecargo)
         Me.PanelTotales.Controls.Add(Me.txtTotal)
+        Me.PanelTotales.Controls.Add(Me.txtMontoManoObra)
+        Me.PanelTotales.Controls.Add(Me.txtMontoServ3)
         Me.PanelTotales.Controls.Add(Me.txtIvaMonto)
         Me.PanelTotales.Controls.Add(Me.txtSubtotal)
         Me.PanelTotales.Location = New System.Drawing.Point(80, 430)
@@ -935,40 +937,40 @@ Partial Class frmVentas
         'txtMontoDtoRecargo
         '
         Me.txtMontoDtoRecargo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMontoDtoRecargo.Location = New System.Drawing.Point(488, 17)
+        Me.txtMontoDtoRecargo.Location = New System.Drawing.Point(595, 17)
         Me.txtMontoDtoRecargo.Name = "txtMontoDtoRecargo"
         Me.txtMontoDtoRecargo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtMontoDtoRecargo.Size = New System.Drawing.Size(139, 28)
+        Me.txtMontoDtoRecargo.Size = New System.Drawing.Size(120, 28)
         Me.txtMontoDtoRecargo.TabIndex = 14
         Me.txtMontoDtoRecargo.Text = "0"
         '
         'txtTotal
         '
         Me.txtTotal.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTotal.Location = New System.Drawing.Point(712, 17)
+        Me.txtTotal.Location = New System.Drawing.Point(740, 17)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtTotal.Size = New System.Drawing.Size(139, 28)
+        Me.txtTotal.Size = New System.Drawing.Size(120, 28)
         Me.txtTotal.TabIndex = 13
         Me.txtTotal.Text = "0"
         '
         'txtIvaMonto
         '
         Me.txtIvaMonto.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIvaMonto.Location = New System.Drawing.Point(264, 17)
+        Me.txtIvaMonto.Location = New System.Drawing.Point(450, 17)
         Me.txtIvaMonto.Name = "txtIvaMonto"
         Me.txtIvaMonto.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtIvaMonto.Size = New System.Drawing.Size(139, 28)
+        Me.txtIvaMonto.Size = New System.Drawing.Size(120, 28)
         Me.txtIvaMonto.TabIndex = 12
         Me.txtIvaMonto.Text = "0"
         '
         'txtSubtotal
         '
         Me.txtSubtotal.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSubtotal.Location = New System.Drawing.Point(40, 17)
+        Me.txtSubtotal.Location = New System.Drawing.Point(305, 17)
         Me.txtSubtotal.Name = "txtSubtotal"
         Me.txtSubtotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtSubtotal.Size = New System.Drawing.Size(139, 28)
+        Me.txtSubtotal.Size = New System.Drawing.Size(120, 28)
         Me.txtSubtotal.TabIndex = 11
         Me.txtSubtotal.Text = "0"
         '
@@ -977,7 +979,7 @@ Partial Class frmVentas
         Me.lblMontoDtoRecargo.AutoSize = True
         Me.lblMontoDtoRecargo.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblMontoDtoRecargo.ForeColor = System.Drawing.Color.White
-        Me.lblMontoDtoRecargo.Location = New System.Drawing.Point(589, 422)
+        Me.lblMontoDtoRecargo.Location = New System.Drawing.Point(677, 422)
         Me.lblMontoDtoRecargo.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblMontoDtoRecargo.Name = "lblMontoDtoRecargo"
         Me.lblMontoDtoRecargo.Size = New System.Drawing.Size(98, 17)
@@ -990,14 +992,14 @@ Partial Class frmVentas
         Me.grdVentas1.AllowUserToDeleteRows = False
         Me.grdVentas1.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdVentas1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdVentas1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdVentas1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle16
         Me.grdVentas1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdVentas1.Location = New System.Drawing.Point(80, 790)
         Me.grdVentas1.MultiSelect = False
@@ -1037,11 +1039,11 @@ Partial Class frmVentas
         Me.txtMontoServ3.AutoWordSelection = True
         Me.txtMontoServ3.Enabled = False
         Me.txtMontoServ3.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtMontoServ3.Location = New System.Drawing.Point(967, 464)
+        Me.txtMontoServ3.Location = New System.Drawing.Point(160, 17)
         Me.txtMontoServ3.Multiline = False
         Me.txtMontoServ3.Name = "txtMontoServ3"
         Me.txtMontoServ3.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtMontoServ3.Size = New System.Drawing.Size(94, 29)
+        Me.txtMontoServ3.Size = New System.Drawing.Size(120, 28)
         Me.txtMontoServ3.TabIndex = 148
         Me.txtMontoServ3.Text = "0"
         '
@@ -1049,40 +1051,37 @@ Partial Class frmVentas
         '
         Me.txtMontoManoObra.AutoWordSelection = True
         Me.txtMontoManoObra.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtMontoManoObra.Location = New System.Drawing.Point(967, 428)
+        Me.txtMontoManoObra.Location = New System.Drawing.Point(15, 17)
         Me.txtMontoManoObra.Multiline = False
         Me.txtMontoManoObra.Name = "txtMontoManoObra"
         Me.txtMontoManoObra.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtMontoManoObra.Size = New System.Drawing.Size(94, 29)
+        Me.txtMontoManoObra.Size = New System.Drawing.Size(120, 28)
         Me.txtMontoManoObra.TabIndex = 147
         Me.txtMontoManoObra.Text = "0"
         '
-        'RichTextBox1
+        'Label15
         '
-        Me.RichTextBox1.AutoWordSelection = True
-        Me.RichTextBox1.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.RichTextBox1.Location = New System.Drawing.Point(967, 423)
-        Me.RichTextBox1.Multiline = False
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.RichTextBox1.Size = New System.Drawing.Size(94, 29)
-        Me.RichTextBox1.TabIndex = 147
-        Me.RichTextBox1.Text = "0"
-        Me.RichTextBox1.Visible = False
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.Label15.ForeColor = System.Drawing.Color.White
+        Me.Label15.Location = New System.Drawing.Point(107, 424)
+        Me.Label15.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(75, 17)
+        Me.Label15.TabIndex = 149
+        Me.Label15.Text = "Mano Obra"
         '
-        'RichTextBox2
+        'Label24
         '
-        Me.RichTextBox2.AutoWordSelection = True
-        Me.RichTextBox2.Enabled = False
-        Me.RichTextBox2.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.RichTextBox2.Location = New System.Drawing.Point(967, 459)
-        Me.RichTextBox2.Multiline = False
-        Me.RichTextBox2.Name = "RichTextBox2"
-        Me.RichTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.RichTextBox2.Size = New System.Drawing.Size(94, 29)
-        Me.RichTextBox2.TabIndex = 148
-        Me.RichTextBox2.Text = "0"
-        Me.RichTextBox2.Visible = False
+        Me.Label24.AutoSize = True
+        Me.Label24.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.Label24.ForeColor = System.Drawing.Color.White
+        Me.Label24.Location = New System.Drawing.Point(261, 423)
+        Me.Label24.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(49, 17)
+        Me.Label24.TabIndex = 150
+        Me.Label24.Text = "Serv 3º"
         '
         'frmVentas
         '
@@ -1092,10 +1091,8 @@ Partial Class frmVentas
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(1164, 920)
-        Me.Controls.Add(Me.RichTextBox2)
-        Me.Controls.Add(Me.txtMontoServ3)
-        Me.Controls.Add(Me.RichTextBox1)
-        Me.Controls.Add(Me.txtMontoManoObra)
+        Me.Controls.Add(Me.Label24)
+        Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.lblBusqueda)
         Me.Controls.Add(Me.txtBusqueda)
         Me.Controls.Add(Me.grdVentas1)
@@ -1223,6 +1220,6 @@ Partial Class frmVentas
     Friend WithEvents txtBusqueda As TextBox
     Friend WithEvents txtMontoServ3 As RichTextBox
     Friend WithEvents txtMontoManoObra As RichTextBox
-    Friend WithEvents RichTextBox1 As RichTextBox
-    Friend WithEvents RichTextBox2 As RichTextBox
+    Friend WithEvents Label15 As Label
+    Friend WithEvents Label24 As Label
 End Class

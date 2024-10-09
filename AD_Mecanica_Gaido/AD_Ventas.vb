@@ -352,6 +352,63 @@ Public Class AD_Ventas
             End Using
         End Using
     End Sub
+
+    Public Sub AgregarVentaConDetalleOR(fechaVenta As Date,
+                                      nroComprobante As String,
+                                      idPersona As Integer,
+                                      vendedor As String,
+                                      idFormaPago As Integer,
+                                      idDetalleFormaPago As Integer,
+                                      Mobra As Decimal,
+                                      Mserv3 As Decimal,
+                                      subtotal As Decimal,
+                                      montoDtoRecargo As Decimal,
+                                      iva As Decimal,
+                                      ivaMonto As Decimal,
+                                      otrosImpuestos As Decimal,
+                                      total As Decimal,
+                                      idTipoVenta As Integer,
+                                      idFormaEntrega As Integer,
+                                      estado As Boolean,
+                                      detalles As DataTable)
+
+        Using connection As New SqlConnection(connectionString)
+            Using command As New SqlCommand("Agregar_VentaConDetalleOR", connection)
+                command.CommandType = CommandType.StoredProcedure
+
+                ' Parámetros para la tabla de ventas
+                command.Parameters.AddWithValue("@FechaVenta", fechaVenta)
+                command.Parameters.AddWithValue("@NroComprobante", nroComprobante)
+                command.Parameters.AddWithValue("@ID_Persona", idPersona)
+                command.Parameters.AddWithValue("@Vendedor", vendedor)
+                command.Parameters.AddWithValue("@ID_FormaPago", idFormaPago)
+                command.Parameters.AddWithValue("@ID_DetalleFormaPago", idDetalleFormaPago)
+                command.Parameters.AddWithValue("@Mobra", Mobra)
+                command.Parameters.AddWithValue("@Mserv3", Mserv3)
+                command.Parameters.AddWithValue("@Subtotal", subtotal)
+                command.Parameters.AddWithValue("@MontoDtoRecargo", montoDtoRecargo)
+                command.Parameters.AddWithValue("@IVA", iva)
+                command.Parameters.AddWithValue("@IVAMonto", ivaMonto)
+                command.Parameters.AddWithValue("@OtrosImpuestos", otrosImpuestos)
+                command.Parameters.AddWithValue("@Total", total)
+                command.Parameters.AddWithValue("@ID_TipoVenta", idTipoVenta)
+                command.Parameters.AddWithValue("@ID_FormaEntrega", idFormaEntrega)
+                command.Parameters.AddWithValue("@Estado", estado)
+
+                ' Crear el parámetro de tipo tabla para los detalles
+                Dim detallesParam As SqlParameter = command.Parameters.AddWithValue("@DetallesVenta", detalles)
+                detallesParam.SqlDbType = SqlDbType.Structured
+                detallesParam.TypeName = "dbo.DetalleVentaType" ' Asegúrate de que este sea el tipo correcto
+
+                ' Abrir conexión y ejecutar el comando
+                connection.Open()
+                command.ExecuteNonQuery()
+            End Using
+        End Using
+    End Sub
+
+
+
 #End Region
 
 

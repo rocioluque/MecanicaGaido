@@ -121,7 +121,6 @@ Partial Class frmOrdenesReparacion
         Me.btnAceptarS3 = New System.Windows.Forms.Button()
         Me.PanelReparaciones = New System.Windows.Forms.Panel()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.grdRepuestosOR = New System.Windows.Forms.DataGridView()
         Me.PanelDetalleDeRepuestos = New System.Windows.Forms.Panel()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.grdRepuestos = New System.Windows.Forms.DataGridView()
@@ -149,7 +148,6 @@ Partial Class frmOrdenesReparacion
         CType(Me.grdServiciosTerceros, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarServiciosTerceros, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelReparaciones.SuspendLayout()
-        CType(Me.grdRepuestosOR, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDetalleDeRepuestos.SuspendLayout()
         CType(Me.grdRepuestos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -703,7 +701,7 @@ Partial Class frmOrdenesReparacion
         Me.btnFacturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFacturar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnFacturar.ForeColor = System.Drawing.Color.White
-        Me.btnFacturar.Location = New System.Drawing.Point(13, 377)
+        Me.btnFacturar.Location = New System.Drawing.Point(12, 370)
         Me.btnFacturar.Name = "btnFacturar"
         Me.btnFacturar.Size = New System.Drawing.Size(117, 37)
         Me.btnFacturar.TabIndex = 116
@@ -1185,24 +1183,6 @@ Partial Class frmOrdenesReparacion
         Me.Label13.TabIndex = 107
         Me.Label13.Text = "Consulta de Reparaciones"
         '
-        'grdRepuestosOR
-        '
-        Me.grdRepuestosOR.AllowUserToAddRows = False
-        Me.grdRepuestosOR.AllowUserToDeleteRows = False
-        Me.grdRepuestosOR.AllowUserToOrderColumns = True
-        Me.grdRepuestosOR.AllowUserToResizeRows = False
-        Me.grdRepuestosOR.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
-        Me.grdRepuestosOR.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.grdRepuestosOR.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdRepuestosOR.Location = New System.Drawing.Point(28, 415)
-        Me.grdRepuestosOR.Name = "grdRepuestosOR"
-        Me.grdRepuestosOR.ReadOnly = True
-        Me.grdRepuestosOR.RowHeadersVisible = False
-        Me.grdRepuestosOR.RowHeadersWidth = 51
-        Me.grdRepuestosOR.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdRepuestosOR.Size = New System.Drawing.Size(790, 175)
-        Me.grdRepuestosOR.TabIndex = 113
-        '
         'PanelDetalleDeRepuestos
         '
         Me.PanelDetalleDeRepuestos.Controls.Add(Me.Label20)
@@ -1473,7 +1453,6 @@ Partial Class frmOrdenesReparacion
         Me.Controls.Add(Me.btnBuscar)
         Me.Controls.Add(Me.lbl1)
         Me.Controls.Add(Me.PanelReparaciones)
-        Me.Controls.Add(Me.grdRepuestosOR)
         Me.Controls.Add(Me.PanelDetallesOrden)
         Me.Controls.Add(Me.PanelDetalleDeRepuestos)
         Me.DoubleBuffered = True
@@ -1496,7 +1475,6 @@ Partial Class frmOrdenesReparacion
         CType(Me.grdServiciosTerceros, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnAgregarServiciosTerceros, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelReparaciones.ResumeLayout(False)
-        CType(Me.grdRepuestosOR, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelDetalleDeRepuestos.ResumeLayout(False)
         Me.PanelDetalleDeRepuestos.PerformLayout()
         CType(Me.grdRepuestos, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1561,7 +1539,6 @@ Partial Class frmOrdenesReparacion
     Friend WithEvents BtnModificarS3 As Button
     Friend WithEvents BtnCancelarS3 As Button
     Friend WithEvents btnAceptarS3 As Button
-    Friend WithEvents grdRepuestosOR As DataGridView
     Friend WithEvents PanelDetalleDeRepuestos As Panel
     Friend WithEvents btnQuitarRepOR As Button
     Friend WithEvents btnAgregarRepOR As Button

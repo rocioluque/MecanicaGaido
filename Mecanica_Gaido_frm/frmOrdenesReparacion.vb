@@ -271,7 +271,12 @@ Public Class frmOrdenesReparacion
         cboVehiculo.SelectedValue = 0
         If combopersonacargado AndAlso cboPersonas.SelectedIndex <> 0 Then
             Dim ID_Persona As Integer = Convert.ToInt32(cboPersonas.SelectedValue)
-            Cargar_Combo_Vehiculos(ID_Persona)
+            If cboPersonas.SelectedValue = 0 Then
+                Exit Sub
+            Else
+                Cargar_Combo_Vehiculos(ID_Persona)
+            End If
+
         End If
 
         If cboPersonas.SelectedValue IsNot Nothing Then
@@ -648,6 +653,7 @@ Public Class frmOrdenesReparacion
                 Dim ordenTable As DataTable = ds.Tables(0)
                 If ordenTable.Rows.Count > 0 Then
                     Dim row As DataRow = ordenTable.Rows(0)
+                    txtID.Text = row("ID_OrdenReparacion")
                     cboPersonas.SelectedValue = row("ID_Persona")
                     Cargar_Combo_Vehiculos(Convert.ToInt32(row("ID_Persona")))
                     cboVehiculo.SelectedValue = row("ID_Vehiculo")
@@ -751,10 +757,23 @@ Public Class frmOrdenesReparacion
 
             Try
                 Dim ID_Orden As Integer = ordenReparacionData.Agregar_Orden_Reparacion(Convert.ToInt32(cboVehiculo.SelectedValue),
-                          txtSeñasParticulares.Text, txtMotivoReparacion.Text, dtpTurno.Value, dtpEntrada.Value, dtpSalida.Value,
-                          cboPersonas.SelectedValue, Convert.ToDecimal(txtMontoRepuestos.Text), Convert.ToDecimal(txtMontoServ3.Text),
-                          Convert.ToDecimal(txtMontoManoObra.Text), Convert.ToDecimal(txtMontoTotalOR.Text), Convert.ToBoolean(chkActivo.Checked),
-                           CboTipoReparacion.SelectedValue, CboProgreso.SelectedItem, transaction)
+                                                                                       txtSeñasParticulares.Text,
+                                                                                       txtMotivoReparacion.Text,
+                                                                                       dtpTurno.Value,
+                                                                                       dtpEntrada.Value,
+                                                                                       dtpSalida.Value,
+                                                                                       cboPersonas.SelectedValue,
+                                                                                       Convert.ToDecimal(txtMontoRepuestos.Text),
+                                                                                       Convert.ToDecimal(txtMontoServ3.Text),
+                                                                                       Convert.ToDecimal(txtMontoManoObra.Text),
+                                                                                       Convert.ToDecimal(txtSubtotal.Text),
+                                                                                       Convert.ToDecimal(txtIVA.Text),
+                                                                                       Convert.ToDecimal(txtMontoIVA.Text),
+                                                                                       Convert.ToDecimal(txtMontoTotalOR.Text),
+                                                                                       Convert.ToBoolean(chkActivo.Checked),
+                                                                                       CboTipoReparacion.SelectedValue,
+                                                                                       CboProgreso.SelectedItem,
+                                                                                       transaction)
 
                 If grdServiciosTerceros.Rows.Count > 0 Then
                     For Each row As DataGridViewRow In grdServiciosTerceros.Rows
@@ -867,10 +886,25 @@ Public Class frmOrdenesReparacion
                 End If
 
                 ' Si no hay problemas con los servicios, continuar con la modificación de la orden
-                Orden.Modificar_OrdenReparacion(id_orden, CInt(cboVehiculo.SelectedValue), txtSeñasParticulares.Text, txtMotivoReparacion.Text,
-                             dtpTurno.Value, dtpEntrada.Value, dtpSalida.Value, CInt(cboPersonas.SelectedValue), Convert.ToDecimal(txtMontoRepuestos.Text),
-                             Convert.ToDecimal(txtMontoServ3.Text), Convert.ToDecimal(txtMontoManoObra.Text), Convert.ToDecimal(txtMontoTotalOR.Text),
-                             Convert.ToBoolean(chkActivo.Checked), CInt(CboTipoReparacion.SelectedValue), CboProgreso.SelectedItem, transaction)
+                Orden.Modificar_OrdenReparacion(id_orden,
+                                                CInt(cboVehiculo.SelectedValue),
+                                                txtSeñasParticulares.Text,
+                                                txtMotivoReparacion.Text,
+                                                dtpTurno.Value,
+                                                dtpEntrada.Value,
+                                                dtpSalida.Value,
+                                                CInt(cboPersonas.SelectedValue),
+                                                Convert.ToDecimal(txtMontoRepuestos.Text),
+                                                Convert.ToDecimal(txtMontoServ3.Text),
+                                                Convert.ToDecimal(txtMontoManoObra.Text),
+                                                Convert.ToDecimal(txtSubtotal.Text),
+                                                Convert.ToDecimal(txtIVA.Text),
+                                                Convert.ToDecimal(txtMontoIVA.Text),
+                                                Convert.ToDecimal(txtMontoTotalOR.Text),
+                                                Convert.ToBoolean(chkActivo.Checked),
+                                                CInt(CboTipoReparacion.SelectedValue),
+                                                CboProgreso.SelectedItem,
+                                                transaction)
 
                 ' Dar de baja servicios de terceros
                 Orden.DarDeBaja_ServiciosTerceros(id_orden, transaction)
@@ -927,6 +961,30 @@ Public Class frmOrdenesReparacion
 #Region "Facturar"
     Private Sub btnFacturar_Click(sender As Object, e As EventArgs) Handles btnFacturar.Click
 
+        NavegacionEntreForms.persona = CInt(cboPersonas.SelectedValue)
+        NavegacionEntreForms.MontoManoObra = CDec(txtMontoManoObra.Text)
+        NavegacionEntreForms.MontoServ3 = CDec(txtMontoServ3.Text)
+        NavegacionEntreForms.TipoVenta = 2
+        NavegacionEntreForms.Nro_orden = CInt(txtID.Text)
+
+        Dim dt As New DataTable
+        For Each column As DataGridViewColumn In grdRepuestos.Columns
+            dt.Columns.Add(column.Name)
+        Next
+
+        For Each row As DataGridViewRow In grdRepuestos.Rows
+            dt.Rows.Add(row.Cells("ID").Value,
+                        row.Cells("Descripcion").Value,
+                        row.Cells("Diario").Value,
+                        row.Cells("Cantidad").Value,
+                        row.Cells("Precio").Value,
+                        row.Cells("Precio").Value)
+        Next
+
+        NavegacionEntreForms.RepuestosVenta = dt
+        NavegacionEntreForms.vengoDeReparaciones = True
+
+        frmMenuPrincipal.btnVentas.PerformClick()
     End Sub
 #End Region
 
@@ -1884,5 +1942,7 @@ Public Class frmOrdenesReparacion
             btnFacturar.Enabled = False
         End If
     End Sub
+
+
 #End Region
 End Class

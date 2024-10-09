@@ -48,13 +48,46 @@ Public Class frmVentas
                 AddHandler ctrl.Enter, AddressOf Control_Enter
             End If
         Next
-
+        limpiar()
         Cargar_Combo_Persona()
-        Cargar_Combo_FormaPago()
         Cargar_Combo_TipoVenta()
+
+        If vengoDeReparaciones Then
+
+            txtMontoManoObra.Text = NavegacionEntreForms.MontoManoObra.ToString("N2")
+            txtMontoServ3.Text = NavegacionEntreForms.MontoServ3.ToString("N2")
+            Dim id_orden = NavegacionEntreForms.Nro_orden
+
+            ' Llenar la grilla con los repuestos transferidos
+            If NavegacionEntreForms.RepuestosVenta IsNot Nothing Then
+                For Each row As DataRow In NavegacionEntreForms.RepuestosVenta.Rows
+                    grdVentas.Rows.Add(row("ID"),
+                                       row("Descripcion"),
+                                       row("Diario"),
+                                       row("Cantidad"),
+                                       row("Precio"),
+                                       row("Total"))
+                Next
+            End If
+            ActualizarMontoTotal()
+            ' Restablecer la variable de control
+            NavegacionEntreForms.vengoDeReparaciones = False
+            NavegacionEntreForms.persona = 0
+            NavegacionEntreForms.Nro_orden = 0
+            NavegacionEntreForms.TipoVenta = 0
+            NavegacionEntreForms.MontoManoObra = 0
+            NavegacionEntreForms.MontoServ3 = 0
+
+        End If
+
+
+
+
+        Cargar_Combo_FormaPago()
+
         Cargar_Combo_FormaEntrega()
         Cargar_Combo_Repuestos()
-        limpiar()
+
         PonerDecimales()
         Cargar_Grilla_Ventas()
         AplicarTema(Me)
@@ -65,6 +98,7 @@ Public Class frmVentas
         txtNumComprobante.Text = oVenta.ObtenerNroComprobante
         txtNumComprobante.Enabled = False
         btnModificar.Enabled = False
+
     End Sub
 
 
@@ -97,6 +131,14 @@ Public Class frmVentas
         txtNumComprobante.Text = oVenta.ObtenerNroComprobante
         txtNumComprobante.Enabled = False
         btnModificar.Enabled = False
+
+        NavegacionEntreForms.vengoDeReparaciones = False
+        NavegacionEntreForms.persona = 0
+        NavegacionEntreForms.Nro_orden = 0
+        NavegacionEntreForms.TipoVenta = 0
+        NavegacionEntreForms.MontoManoObra = 0
+        NavegacionEntreForms.MontoServ3 = 0
+
     End Sub
 #End Region
 
@@ -127,7 +169,7 @@ Public Class frmVentas
                 cboPersona.DataSource = tabla
                 cboPersona.DisplayMember = "Persona"
                 cboPersona.ValueMember = "ID_Persona"
-                cboPersona.SelectedValue = -1
+                cboPersona.SelectedValue = NavegacionEntreForms.persona
             Else
                 MsgBox("No se encontraron Personas.", vbInformation, "Información")
             End If
@@ -181,7 +223,7 @@ Public Class frmVentas
                 cboTipoVenta.DataSource = tabla
                 cboTipoVenta.DisplayMember = "Nombre"
                 cboTipoVenta.ValueMember = "ID_TipoVenta"
-                cboTipoVenta.SelectedValue = -1
+                cboTipoVenta.SelectedValue = NavegacionEntreForms.TipoVenta
             Else
                 MsgBox("No se encontraron Tipos de Ventas.", vbInformation, "Información")
             End If
@@ -401,7 +443,8 @@ Public Class frmVentas
             montoTotal += Convert.ToDecimal(row.Cells("Total").Value)
         Next
 
-        txtSubtotal.Text = montoTotal.ToString("F2")
+        txtSubtotal.Text = montoTotal.ToString("F2") + Convert.ToDecimal(txtMontoManoObra.Text) + Convert.ToDecimal(txtMontoServ3.Text)
+
 
         IvaMonto = ((montoTotal * iva) / 100)
 
@@ -766,8 +809,9 @@ Public Class frmVentas
                                     1)
             Next
 
-            ' Llamar al método para agregar la venta con detalle
-            ventaDataAccess.AgregarVentaConDetalle(Convert.ToDateTime(dtpFechaVenta.Value),
+            If cboTipoVenta.SelectedValue <> 2 Then
+                ' Llamar al método para agregar la venta con detalle
+                ventaDataAccess.AgregarVentaConDetalle(Convert.ToDateTime(dtpFechaVenta.Value),
                                                     txtNumComprobante.Text,
                                                     CInt(cboPersona.SelectedValue),
                                                     Id_Empleado_Login,
@@ -785,6 +829,35 @@ Public Class frmVentas
                                                  CInt(cboFormaEntrega.SelectedValue),
                                                  1,
                                                  detalles)
+            Else
+                ventaDataAccess.AgregarVentaConDetalleOR(Convert.ToDateTime(dtpFechaVenta.Value),
+                                                    txtNumComprobante.Text,
+                                                    CInt(cboPersona.SelectedValue),
+                                                    Id_Empleado_Login,
+                                                    CInt(cboFormaPago.SelectedValue),
+                                                    CInt(cboDetalleFormaPago.SelectedValue),
+                                                    Decimal.Parse(txtMontoManoObra.Text),
+                                                    Decimal.Parse(txtMontoServ3.Text),
+                                                 Decimal.Parse(txtSubtotal.Text),
+                                                 Decimal.Parse(txtMontoDtoRecargo.Text),
+                                                 Decimal.Parse(txtIVA.Text),
+                                                 Decimal.Parse(txtIvaMonto.Text),
+                                                 Decimal.Parse(txtOtrosImpuestos.Text),
+                                                 Decimal.Parse(txtTotal.Text),
+                                                 CInt(cboTipoVenta.SelectedValue),
+                                                 CInt(cboFormaEntrega.SelectedValue),
+                                                 1,
+                                                 detalles)
+            End If
+
+
+            'NavegacionEntreForms
+
+            vengoDeReparaciones = False
+            persona = 0
+            vehiculo = 0
+            combopersonacargado = False
+
 
             MessageBox.Show("Venta registrada con éxito.")
         Catch ex As Exception
