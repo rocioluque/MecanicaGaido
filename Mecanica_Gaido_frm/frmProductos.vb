@@ -39,7 +39,6 @@ Public Class frmProductos
 
 #Region "Procedimientos"
     Private Sub frmProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         ' Registra el evento Enter para todos los controles
         For Each ctrl As Control In Me.Controls
             If TypeOf ctrl Is TextBox OrElse TypeOf ctrl Is RichTextBox Then
@@ -52,12 +51,8 @@ Public Class frmProductos
         Cargar_Combo_Original()
         Cargar_Grilla()
         limpiar()
-        chkEstado.Visible = False
         btnModificar.Enabled = False
-        btnAceptar.Enabled = True
         txtBuscar.Visible = False
-        lblBuscar.Visible = False
-        txtId.Enabled = False
         AplicarTema(Me)
 
         'AGREGAR LOS TEXTBOXS QUE NECESITEN QUE SE VALIDEN COMO NUMERO DECIMAL
@@ -71,37 +66,37 @@ Public Class frmProductos
 
     Public Sub limpiar()
         txtId.Clear()
+        txtBuscar.Clear()
         txtDescripcion.Clear()
         txtNombreDiario.Clear()
+        txtCodigoBarra.Clear()
+        txtCodFabricante.Clear()
         txtCantidadBulto.Clear()
+        txtNota.Clear()
         txtStockReal.Clear()
         txtStockDisponible.Clear()
         txtStockMinimo.Clear()
+        txtUbicacion.Clear()
         txtPrecioCompra.Clear()
         txtUtilidad.Clear()
         txtPrecioLista.Clear()
-        txtUbicacion.Clear()
-        txtCodigoBarra.Clear()
-        txtCodFabricante.Clear()
-        txtNota.Clear()
-        txtBuscar.Clear()
         cboRubro.SelectedIndex = -1
         cboMarca.SelectedIndex = -1
-        cboOriginal.SelectedIndex = -1
         cboOrigen.SelectedIndex = -1
+        cboOriginal.SelectedIndex = -1
         dtpFechaCompra.Value = DateTime.Today
         dtpFechaVenta.Value = DateTime.Today
         chkAlterntivo.Checked = False
-        chkEstado.Visible = False
         chkEstado.Checked = False
         txtBuscar.Visible = False
         lblBuscar.Visible = False
+        chkEstado.Visible = False
+        btnAceptar.Enabled = True
+        btnModificar.Enabled = False
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
-        btnModificar.Enabled = False
-        btnAceptar.Enabled = True
     End Sub
 #End Region
 
@@ -148,8 +143,9 @@ Public Class frmProductos
 
         Try
             Dim datoleido As SqlDataReader = o_Productos.Consultar_ProductoPorID(idProducto)
-
             If datoleido.Read() Then
+                chkEstado.Visible = True
+
                 txtId.Text = datoleido("N° Producto").ToString()
                 txtDescripcion.Text = datoleido("Producto").ToString()
                 txtNombreDiario.Text = datoleido("Nombre Diario").ToString()
@@ -171,7 +167,6 @@ Public Class frmProductos
                 txtCodFabricante.Text = datoleido("CodFabricante").ToString()
                 cboOrigen.Text = datoleido("Origen").ToString()
                 chkEstado.Checked = Convert.ToBoolean(datoleido("Estado"))
-                btnModificar.Enabled = True
             Else
                 MsgBox("No se encontraron resultados", vbInformation, "Error")
             End If
@@ -184,8 +179,6 @@ Public Class frmProductos
 
     Private Sub grdProductos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdProductos.CellClick
         If e.RowIndex >= 0 Then
-
-            ' Obtiene el ID del producto de la celda correspondiente
             Dim selectedRow As DataGridViewRow = grdProductos.Rows(e.RowIndex)
             Dim idProducto As String
             btnModificar.Enabled = True
@@ -198,9 +191,10 @@ Public Class frmProductos
                 MsgBox("El ID del producto no puede ser nulo.", vbCritical, "Error")
             End If
         End If
-        txtBuscar.Visible = True
         txtBuscar.Clear()
-        lblBuscar.Visible = True
+        lblBuscar.Visible = False
+        txtBuscar.Visible = False
+        btnAceptar.Enabled = False
     End Sub
 #End Region
 
@@ -372,9 +366,9 @@ Public Class frmProductos
 
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         txtBuscar.Visible = True
+        lblBuscar.Visible = True
         txtBuscar.Clear()
         txtBuscar.Focus()
-        lblBuscar.Visible = True
     End Sub
 #End Region
 
@@ -598,6 +592,7 @@ Public Class frmProductos
             txtNombreDiario.Focus()
         End If
     End Sub
+
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
         Using frmProbandoArbol As New frmUbicacion(Me)
             If frmProbandoArbol.ShowDialog() = DialogResult.OK Then

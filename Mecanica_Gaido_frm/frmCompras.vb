@@ -38,14 +38,12 @@ Public Class frmCompras
 
 #Region "Procedimientos"
     Private Sub frmCompras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         ' Registra el evento Enter para todos los controles
         For Each ctrl As Control In Me.Controls
             If TypeOf ctrl Is TextBox OrElse TypeOf ctrl Is RichTextBox Then
                 AddHandler ctrl.Enter, AddressOf Control_Enter
             End If
         Next
-
 
         Cargar_Combo_Persona()
         Cargar_Combo_FormaPago_Compra()
@@ -480,6 +478,7 @@ Public Class frmCompras
             MessageBox.Show("Compra modificada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Cargar_Grilla_Compras()
             limpiar()
+
             btnAceptar.Enabled = True
             btnModificar.Enabled = False
         Catch ex As Exception
