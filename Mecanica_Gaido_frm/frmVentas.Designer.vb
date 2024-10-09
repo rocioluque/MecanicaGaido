@@ -105,6 +105,10 @@ Partial Class frmVentas
         Me.grdVentas1 = New System.Windows.Forms.DataGridView()
         Me.lblBusqueda = New System.Windows.Forms.Label()
         Me.txtBusqueda = New System.Windows.Forms.TextBox()
+        Me.txtMontoServ3 = New System.Windows.Forms.RichTextBox()
+        Me.txtMontoManoObra = New System.Windows.Forms.RichTextBox()
+        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.RichTextBox2 = New System.Windows.Forms.RichTextBox()
         CType(Me.btnAgregarPersona, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarFormaPago, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnTipoVenta, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1028,6 +1032,58 @@ Partial Class frmVentas
         Me.txtBusqueda.TabIndex = 145
         Me.txtBusqueda.Visible = False
         '
+        'txtMontoServ3
+        '
+        Me.txtMontoServ3.AutoWordSelection = True
+        Me.txtMontoServ3.Enabled = False
+        Me.txtMontoServ3.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtMontoServ3.Location = New System.Drawing.Point(967, 464)
+        Me.txtMontoServ3.Multiline = False
+        Me.txtMontoServ3.Name = "txtMontoServ3"
+        Me.txtMontoServ3.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtMontoServ3.Size = New System.Drawing.Size(94, 29)
+        Me.txtMontoServ3.TabIndex = 148
+        Me.txtMontoServ3.Text = "0"
+        '
+        'txtMontoManoObra
+        '
+        Me.txtMontoManoObra.AutoWordSelection = True
+        Me.txtMontoManoObra.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtMontoManoObra.Location = New System.Drawing.Point(967, 428)
+        Me.txtMontoManoObra.Multiline = False
+        Me.txtMontoManoObra.Name = "txtMontoManoObra"
+        Me.txtMontoManoObra.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtMontoManoObra.Size = New System.Drawing.Size(94, 29)
+        Me.txtMontoManoObra.TabIndex = 147
+        Me.txtMontoManoObra.Text = "0"
+        '
+        'RichTextBox1
+        '
+        Me.RichTextBox1.AutoWordSelection = True
+        Me.RichTextBox1.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.RichTextBox1.Location = New System.Drawing.Point(967, 423)
+        Me.RichTextBox1.Multiline = False
+        Me.RichTextBox1.Name = "RichTextBox1"
+        Me.RichTextBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.RichTextBox1.Size = New System.Drawing.Size(94, 29)
+        Me.RichTextBox1.TabIndex = 147
+        Me.RichTextBox1.Text = "0"
+        Me.RichTextBox1.Visible = False
+        '
+        'RichTextBox2
+        '
+        Me.RichTextBox2.AutoWordSelection = True
+        Me.RichTextBox2.Enabled = False
+        Me.RichTextBox2.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.RichTextBox2.Location = New System.Drawing.Point(967, 459)
+        Me.RichTextBox2.Multiline = False
+        Me.RichTextBox2.Name = "RichTextBox2"
+        Me.RichTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.RichTextBox2.Size = New System.Drawing.Size(94, 29)
+        Me.RichTextBox2.TabIndex = 148
+        Me.RichTextBox2.Text = "0"
+        Me.RichTextBox2.Visible = False
+        '
         'frmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1035,7 +1091,11 @@ Partial Class frmVentas
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(1147, 1070)
+        Me.ClientSize = New System.Drawing.Size(1164, 920)
+        Me.Controls.Add(Me.RichTextBox2)
+        Me.Controls.Add(Me.txtMontoServ3)
+        Me.Controls.Add(Me.RichTextBox1)
+        Me.Controls.Add(Me.txtMontoManoObra)
         Me.Controls.Add(Me.lblBusqueda)
         Me.Controls.Add(Me.txtBusqueda)
         Me.Controls.Add(Me.grdVentas1)
@@ -1161,4 +1221,8 @@ Partial Class frmVentas
     Friend WithEvents grdVentas1 As DataGridView
     Friend WithEvents lblBusqueda As Label
     Friend WithEvents txtBusqueda As TextBox
+    Friend WithEvents txtMontoServ3 As RichTextBox
+    Friend WithEvents txtMontoManoObra As RichTextBox
+    Friend WithEvents RichTextBox1 As RichTextBox
+    Friend WithEvents RichTextBox2 As RichTextBox
 End Class

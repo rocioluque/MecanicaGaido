@@ -305,6 +305,8 @@ Public Class AD_Ventas
                                       vendedor As String,
                                       idFormaPago As Integer,
                                       idDetalleFormaPago As Integer,
+                                      Mobra As Decimal,
+                                      Mserv3 As Decimal,
                                       subtotal As Decimal,
                                       montoDtoRecargo As Decimal,
                                       iva As Decimal,
@@ -327,6 +329,8 @@ Public Class AD_Ventas
                 command.Parameters.AddWithValue("@Vendedor", vendedor)
                 command.Parameters.AddWithValue("@ID_FormaPago", idFormaPago)
                 command.Parameters.AddWithValue("@ID_DetalleFormaPago", idDetalleFormaPago)
+                command.Parameters.AddWithValue("@Mobra", Mobra)
+                command.Parameters.AddWithValue("@Mserv3", Mserv3)
                 command.Parameters.AddWithValue("@Subtotal", subtotal)
                 command.Parameters.AddWithValue("@MontoDtoRecargo", montoDtoRecargo)
                 command.Parameters.AddWithValue("@IVA", iva)
@@ -359,6 +363,8 @@ Public Class AD_Ventas
                                      vendedor As String,
                                      idFormaPago As Integer,
                                      idDetalleFormaPago As Integer,
+                                         Mobra As Decimal,
+                                      Mserv3 As Decimal,
                                      subtotal As Decimal,
                                      montoDtoRecargo As Decimal,
                                      iva As Decimal,
@@ -382,6 +388,8 @@ Public Class AD_Ventas
                 command.Parameters.AddWithValue("@Vendedor", vendedor)
                 command.Parameters.AddWithValue("@ID_FormaPago", idFormaPago)
                 command.Parameters.AddWithValue("@ID_DetalleFormaPago", idDetalleFormaPago)
+                command.Parameters.AddWithValue("@Mobra", Mobra)
+                command.Parameters.AddWithValue("@Mserv3", Mserv3)
                 command.Parameters.AddWithValue("@Subtotal", subtotal)
                 command.Parameters.AddWithValue("@MontoDtoRecargo", montoDtoRecargo)
                 command.Parameters.AddWithValue("@IVA", iva)

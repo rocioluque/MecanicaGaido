@@ -268,6 +268,7 @@ Public Class frmOrdenesReparacion
     End Sub
 
     Private Sub cboPersonas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPersonas.SelectedIndexChanged
+        cboVehiculo.SelectedValue = 0
         If combopersonacargado AndAlso cboPersonas.SelectedIndex <> 0 Then
             Dim ID_Persona As Integer = Convert.ToInt32(cboPersonas.SelectedValue)
             Cargar_Combo_Vehiculos(ID_Persona)

@@ -1123,6 +1123,7 @@ Partial Class frmOrdenesReparacion
         '
         'txtID_Serv3
         '
+        Me.txtID_Serv3.Enabled = False
         Me.txtID_Serv3.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtID_Serv3.Location = New System.Drawing.Point(15, 37)
         Me.txtID_Serv3.Name = "txtID_Serv3"
