@@ -23,23 +23,29 @@ Public Class frmCompras
 
     Public Sub limpiar()
         txtID.Clear()
-        dtpFechaCompra.Value = Date.Today
-        txtNumComprobante.Text = Nothing
+        txtBusqueda.Clear()
+        txtNumComprobante.Clear()
         txtSubtotal.Text = Convert.ToDecimal(0)
         txtIVA.Text = Convert.ToDecimal(21)
         txtIvaMonto.Text = Convert.ToDecimal(0)
         txtOtrosImpuestos.Text = Convert.ToDecimal(0)
         txtTotal.Text = Convert.ToDecimal(0)
+        dtpFechaCompra.Value = Date.Today
         cboPersona.SelectedIndex = -1
         cboFormaPago.SelectedIndex = -1
+        cboProductoCompra.SelectedIndex = -1
+        txtBusqueda.Visible = False
+        lblBusqueda.Visible = False
+        chkEstado.Visible = False
+        btnAceptar.Enabled = True
+        btnModificar.Enabled = False
         chkEstado.Checked = False
+
         grdRepuestos.Rows.Clear()
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
-        txtBusqueda.Clear()
-        txtBusqueda.Visible = False
     End Sub
 #End Region
 
@@ -69,6 +75,8 @@ Public Class frmCompras
         Try
             Dim datoleido As SqlDataReader = o_Compras.Consultar_Compras_ID(ID_Compra)
             If datoleido.Read() Then
+                chkEstado.Visible = True
+
                 txtID.Text = datoleido("ID_Compra").ToString()
                 dtpFechaCompra.Value = Convert.ToDateTime(datoleido("FechaCompra"))
                 txtNumComprobante.Text = datoleido("NroComprobante").ToString()
@@ -80,7 +88,6 @@ Public Class frmCompras
                 txtOtrosImpuestos.Text = Convert.ToDecimal(datoleido("OtrosImpuestos")).ToString("N2")
                 txtTotal.Text = Convert.ToDecimal(datoleido("Total")).ToString("N2")
                 chkEstado.Checked = Convert.ToBoolean(datoleido("Estado"))
-
             Else
                 MsgBox("No se encontraron resultados", vbInformation, "Error")
             End If
@@ -88,39 +95,23 @@ Public Class frmCompras
             Dim o_Compras1 As New AD_Compras
             Dim repuestosTable = o_Compras1.Cargar_DetalleCompra(txtID.Text)
 
-
             If repuestosTable.Rows.Count > 0 Then
-
                 grdRepuestos.Rows.Clear()
                 For Each repuestoRow As DataRow In repuestosTable.Rows
-
-
                     Dim totalRep = Convert.ToDecimal(repuestoRow("Cantidad")) * Convert.ToDecimal(repuestoRow("PrecioCompra"))
-                    grdRepuestos.Rows.Add(repuestoRow("ID_Repuesto"),
-                                      repuestoRow("Nombre"),
-                                      repuestoRow("Descripcion"),
-                                      repuestoRow("Cantidad"),
-                                      repuestoRow("PrecioCompra"),
-                                      totalRep)
+                    grdRepuestos.Rows.Add(repuestoRow("ID_Repuesto"), repuestoRow("Nombre"), repuestoRow("Descripcion"),
+                                      repuestoRow("Cantidad"), repuestoRow("PrecioCompra"), totalRep)
                 Next
-
-
-
             Else
                 MsgBox("No hay repuestos cargados")
             End If
-
-
-
-
         Catch ex As Exception
             MsgBox("Error al cargar las compras: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+
     Private Sub grdCompras_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdCompras.CellClick
         If e.RowIndex >= 0 Then
-
-            ' Obtiene el ID del producto de la celda correspondiente
             Dim selectedRow As DataGridViewRow = grdCompras.Rows(e.RowIndex)
             Dim ID_Compra As Integer
             btnModificar.Enabled = True
@@ -137,41 +128,7 @@ Public Class frmCompras
         lblBusqueda.Visible = False
         txtBusqueda.Text = ""
         txtBusqueda.Visible = False
-
-    End Sub
-
-
-    'No lo toco por las dudas, pero Cargar_Grilla_DetalleCompra() no está referenciado por ningún SUB
-    Public Sub Cargar_Grilla_DetalleCompra()
-        Try
-            Dim conexion As SqlConnection
-            Dim comando As New SqlCommand
-
-            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
-
-            conexion.Open()
-            comando.Connection = conexion
-            comando.CommandType = CommandType.StoredProcedure
-            comando.CommandText = ("Cargar_Grilla_DetalleCompra")
-
-            Dim datadapter As New SqlDataAdapter(comando)
-            Dim oDs As New DataSet
-            datadapter.Fill(oDs)
-
-            If oDs.Tables(0).Rows.Count > 0 Then
-                grdRepuestos.AutoGenerateColumns = True
-                grdRepuestos.DataSource = oDs.Tables(0)
-                grdRepuestos.Refresh()
-            Else
-                MsgBox("No hay repuestos asociados a esta compra.", vbInformation, "Información")
-            End If
-
-            oDs = Nothing
-            conexion.Close()
-        Catch ex As Exception
-            MsgBox("Error al cargar la grilla: " & ex.Message, vbCritical, "Error")
-        Finally
-        End Try
+        btnAceptar.Enabled = False
     End Sub
 
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
@@ -187,8 +144,8 @@ Public Class frmCompras
         txtBusqueda.Focus()
         txtBusqueda.Text = cadenas
     End Sub
-    Private Sub FIltrarGrilla(cadena As String)
 
+    Private Sub FIltrarGrilla(cadena As String)
         Try
             Dim oDs As DataSet = o_Compras.Filtrar_Grilla_Compras(cadena)
 
@@ -206,12 +163,7 @@ Public Class frmCompras
         Catch ex As Exception
             MsgBox("Error al cargar las compras: " & ex.Message, vbCritical, "Error")
         End Try
-
-
-
     End Sub
-
-
 #End Region
 
 #Region "Cargar cbo"
@@ -462,6 +414,9 @@ Public Class frmCompras
             MessageBox.Show("Error al cargar la compra: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+#End Region
+
+#Region "Modificar"
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         Try
             Dim dtDetalles As New DataTable()
@@ -487,12 +442,12 @@ Public Class frmCompras
             MessageBox.Show("Compra modificada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Cargar_Grilla_Compras()
             limpiar()
+            btnAceptar.Enabled = True
+            btnModificar.Enabled = False
         Catch ex As Exception
             MessageBox.Show("Error al modificar la compra: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
-
 #End Region
 
 #Region "Keypress"

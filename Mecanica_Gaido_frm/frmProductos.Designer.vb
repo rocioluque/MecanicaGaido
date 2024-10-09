@@ -79,7 +79,7 @@ Partial Class frmProductos
         Me.txtUtilidad = New System.Windows.Forms.TextBox()
         Me.lblUtilidad = New System.Windows.Forms.Label()
         Me.txtPrecioCompra = New System.Windows.Forms.TextBox()
-        Me.Label11 = New System.Windows.Forms.Label()
+        Me.lblBuscar = New System.Windows.Forms.Label()
         Me.txtBuscar = New System.Windows.Forms.TextBox()
         Me.btnModificar = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
@@ -755,25 +755,25 @@ Partial Class frmProductos
         Me.txtPrecioCompra.Text = "0"
         Me.txtPrecioCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'Label11
+        'lblBuscar
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(134, 30)
-        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(49, 17)
-        Me.Label11.TabIndex = 116
-        Me.Label11.Text = "Buscar"
+        Me.lblBuscar.AutoSize = True
+        Me.lblBuscar.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.lblBuscar.ForeColor = System.Drawing.Color.White
+        Me.lblBuscar.Location = New System.Drawing.Point(119, 30)
+        Me.lblBuscar.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblBuscar.Name = "lblBuscar"
+        Me.lblBuscar.Size = New System.Drawing.Size(262, 17)
+        Me.lblBuscar.TabIndex = 116
+        Me.lblBuscar.Text = "Utilice el cuadro para hacer búsquedas"
         '
         'txtBuscar
         '
         Me.txtBuscar.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtBuscar.Location = New System.Drawing.Point(245, 27)
+        Me.txtBuscar.Location = New System.Drawing.Point(397, 27)
         Me.txtBuscar.Margin = New System.Windows.Forms.Padding(2)
         Me.txtBuscar.Name = "txtBuscar"
-        Me.txtBuscar.Size = New System.Drawing.Size(735, 23)
+        Me.txtBuscar.Size = New System.Drawing.Size(583, 23)
         Me.txtBuscar.TabIndex = 115
         Me.txtBuscar.Tag = ""
         '
@@ -868,7 +868,7 @@ Partial Class frmProductos
         Me.Controls.Add(Me.btnModificar)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnAceptar)
-        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.lblBuscar)
         Me.Controls.Add(Me.txtBuscar)
         Me.Controls.Add(Me.lblMovimientos)
         Me.Controls.Add(Me.PanelMovimientos)
@@ -953,7 +953,7 @@ Partial Class frmProductos
     Friend WithEvents Label5 As Label
     Friend WithEvents txtStockMinimo As TextBox
     Friend WithEvents lblStockMinimo As Label
-    Friend WithEvents Label11 As Label
+    Friend WithEvents lblBuscar As Label
     Friend WithEvents txtBuscar As TextBox
     Friend WithEvents Button1 As PictureBox
     Friend WithEvents btnModificar As Button

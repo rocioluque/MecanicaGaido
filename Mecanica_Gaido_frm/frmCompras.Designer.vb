@@ -692,7 +692,7 @@ Partial Class frmCompras
         Me.lblBusqueda.AutoSize = True
         Me.lblBusqueda.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblBusqueda.ForeColor = System.Drawing.Color.White
-        Me.lblBusqueda.Location = New System.Drawing.Point(107, 28)
+        Me.lblBusqueda.Location = New System.Drawing.Point(95, 28)
         Me.lblBusqueda.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblBusqueda.Name = "lblBusqueda"
         Me.lblBusqueda.Size = New System.Drawing.Size(262, 17)
@@ -706,7 +706,7 @@ Partial Class frmCompras
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1138, 846)
+        Me.ClientSize = New System.Drawing.Size(1155, 788)
         Me.Controls.Add(Me.lblBusqueda)
         Me.Controls.Add(Me.txtBusqueda)
         Me.Controls.Add(Me.grdCompras)
