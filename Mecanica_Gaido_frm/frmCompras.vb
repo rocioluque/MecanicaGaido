@@ -7,8 +7,48 @@ Public Class frmCompras
     Dim o_Compras As New AD_Compras
     Private denominacionLote As String
 
+
+
+#Region "Enter para pasar de tabulación y comportamientos"
+
+    Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
+        If keyData = Keys.Enter Then
+            ' Verifica si el control activo es un Button
+            If TypeOf Me.ActiveControl Is Button Then
+                ' Ejecuta el evento Click del botón
+                Dim button As Button = DirectCast(Me.ActiveControl, Button)
+                button.PerformClick()
+                Return True
+            Else
+                ' Mueve el foco al siguiente control en el orden de tabulación
+                Me.SelectNextControl(Me.ActiveControl, True, True, True, True)
+                Return True
+            End If
+        End If
+        Return MyBase.ProcessCmdKey(msg, keyData)
+    End Function
+
+    Private Sub Control_Enter(sender As Object, e As EventArgs)
+        If TypeOf sender Is TextBox Then
+            CType(sender, TextBox).SelectAll()
+        ElseIf TypeOf sender Is RichTextBox Then
+            CType(sender, RichTextBox).SelectAll()
+        End If
+    End Sub
+
+#End Region
+
 #Region "Procedimientos"
     Private Sub frmCompras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        ' Registra el evento Enter para todos los controles
+        For Each ctrl As Control In Me.Controls
+            If TypeOf ctrl Is TextBox OrElse TypeOf ctrl Is RichTextBox Then
+                AddHandler ctrl.Enter, AddressOf Control_Enter
+            End If
+        Next
+
+
         Cargar_Combo_Persona()
         Cargar_Combo_FormaPago_Compra()
         Cargar_Combo_Repuestos()

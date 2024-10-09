@@ -7,6 +7,27 @@ Imports Mecanica_Gaido_frm.User32
 Public Class frmLogin
     Dim o_Login As New AD_Login
 
+#Region "Enter para pasar de tabulación"
+
+    Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
+        If keyData = Keys.Enter Then
+            ' Verifica si el control activo es un Button
+            If TypeOf Me.ActiveControl Is Button Then
+                ' Ejecuta el evento Click del botón
+                Dim button As Button = DirectCast(Me.ActiveControl, Button)
+                button.PerformClick()
+                Return True
+            Else
+                ' Mueve el foco al siguiente control en el orden de tabulación
+                Me.SelectNextControl(Me.ActiveControl, True, True, True, True)
+                Return True
+            End If
+        End If
+        Return MyBase.ProcessCmdKey(msg, keyData)
+    End Function
+
+#End Region
+
 #Region "Procedimientos"
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AplicarTema(Me)

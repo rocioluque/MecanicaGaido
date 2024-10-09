@@ -11,8 +11,44 @@ Public Class frmOrdenesReparacion
     Public persona As Integer = -1
     Dim o_Orden As New AD_OrdenReparacion
 
+#Region "Enter para pasar de tabulación"
+
+    Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
+        If keyData = Keys.Enter Then
+            ' Verifica si el control activo es un Button
+            If TypeOf Me.ActiveControl Is Button Then
+                ' Ejecuta el evento Click del botón
+                Dim button As Button = DirectCast(Me.ActiveControl, Button)
+                button.PerformClick()
+                Return True
+            Else
+                ' Mueve el foco al siguiente control en el orden de tabulación
+                Me.SelectNextControl(Me.ActiveControl, True, True, True, True)
+                Return True
+            End If
+        End If
+        Return MyBase.ProcessCmdKey(msg, keyData)
+    End Function
+
+    Private Sub Control_Enter(sender As Object, e As EventArgs)
+        If TypeOf sender Is TextBox Then
+            CType(sender, TextBox).SelectAll()
+        ElseIf TypeOf sender Is RichTextBox Then
+            CType(sender, RichTextBox).SelectAll()
+        End If
+    End Sub
+
+#End Region
+
 #Region "Procedimientos"
     Private Sub frmOrdenesReparacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        For Each ctrl As Control In Me.Controls
+            If TypeOf ctrl Is TextBox OrElse TypeOf ctrl Is RichTextBox Then
+                AddHandler ctrl.Enter, AddressOf Control_Enter
+            End If
+        Next
+
         Cargar_Combo_Personas()
         Cargar_Combo_Prestador()
         Cargar_Combo_Repuestos()
@@ -1710,7 +1746,7 @@ Public Class frmOrdenesReparacion
     End Sub
 
 #Region "Focus txt"
-    Private Sub txtCostoEstimadoS3_GotFocus(sender As Object, e As EventArgs) Handles txtCostoEstimadoS3.GotFocus
+    Private Sub txtCostoEstimadoS3_Enter(sender As Object, e As EventArgs) Handles txtCostoEstimadoS3.Enter
         txtCostoEstimadoS3.SelectAll()
     End Sub
 
@@ -1719,7 +1755,7 @@ Public Class frmOrdenesReparacion
         txtCostoRealS3.Text = Convert.ToDecimal(txtCostoEstimadoS3.Text).ToString("N2")
     End Sub
 
-    Private Sub txtCostoRealS3_GotFocus(sender As Object, e As EventArgs) Handles txtCostoRealS3.GotFocus
+    Private Sub txtCostoRealS3_Enter(sender As Object, e As EventArgs) Handles txtCostoRealS3.Enter
         txtCostoRealS3.SelectAll()
     End Sub
 
@@ -1738,7 +1774,7 @@ Public Class frmOrdenesReparacion
         End If
     End Sub
 
-    Private Sub txtMontoManoObra_GotFocus(sender As Object, e As EventArgs) Handles txtMontoManoObra.GotFocus
+    Private Sub txtMontoManoObra_enter(sender As Object, e As EventArgs) Handles txtMontoManoObra.Enter
         txtMontoManoObra.SelectAll()
     End Sub
 #End Region

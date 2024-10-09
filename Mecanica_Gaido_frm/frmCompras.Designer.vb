@@ -242,6 +242,7 @@ Partial Class frmCompras
         '
         Me.btnAgregarPersona.BackgroundImage = CType(resources.GetObject("btnAgregarPersona.BackgroundImage"), System.Drawing.Image)
         Me.btnAgregarPersona.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnAgregarPersona.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnAgregarPersona.Location = New System.Drawing.Point(189, 90)
         Me.btnAgregarPersona.Name = "btnAgregarPersona"
         Me.btnAgregarPersona.Size = New System.Drawing.Size(26, 25)
@@ -624,6 +625,7 @@ Partial Class frmCompras
         '
         'txtTotal
         '
+        Me.txtTotal.Enabled = False
         Me.txtTotal.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTotal.Location = New System.Drawing.Point(634, 17)
         Me.txtTotal.Name = "txtTotal"
@@ -634,6 +636,7 @@ Partial Class frmCompras
         '
         'txtIvaMonto
         '
+        Me.txtIvaMonto.Enabled = False
         Me.txtIvaMonto.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtIvaMonto.Location = New System.Drawing.Point(336, 17)
         Me.txtIvaMonto.Name = "txtIvaMonto"
@@ -644,6 +647,7 @@ Partial Class frmCompras
         '
         'txtSubtotal
         '
+        Me.txtSubtotal.Enabled = False
         Me.txtSubtotal.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSubtotal.Location = New System.Drawing.Point(40, 17)
         Me.txtSubtotal.Name = "txtSubtotal"
