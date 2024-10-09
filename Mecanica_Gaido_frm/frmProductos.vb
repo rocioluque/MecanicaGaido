@@ -15,10 +15,13 @@ Public Class frmProductos
         Cargar_Combo_Marcas()
         Cargar_Combo_Rubros()
         Cargar_Combo_Original()
-        limpiar()
         Cargar_Grilla()
+        limpiar()
+        chkEstado.Visible = False
         btnModificar.Enabled = False
+        btnAceptar.Enabled = True
         txtBuscar.Visible = False
+        lblBuscar.Visible = False
         txtId.Enabled = False
         AplicarTema(Me)
 
@@ -45,6 +48,8 @@ Public Class frmProductos
         txtUbicacion.Clear()
         txtCodigoBarra.Clear()
         txtCodFabricante.Clear()
+        txtNota.Clear()
+        txtBuscar.Clear()
         cboRubro.SelectedIndex = -1
         cboMarca.SelectedIndex = -1
         cboOriginal.SelectedIndex = -1
@@ -52,11 +57,16 @@ Public Class frmProductos
         dtpFechaCompra.Value = DateTime.Today
         dtpFechaVenta.Value = DateTime.Today
         chkAlterntivo.Checked = False
+        chkEstado.Visible = False
         chkEstado.Checked = False
+        txtBuscar.Visible = False
+        lblBuscar.Visible = False
     End Sub
 
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs)
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         limpiar()
+        btnModificar.Enabled = False
+        btnAceptar.Enabled = True
     End Sub
 #End Region
 
@@ -153,6 +163,9 @@ Public Class frmProductos
                 MsgBox("El ID del producto no puede ser nulo.", vbCritical, "Error")
             End If
         End If
+        txtBuscar.Visible = True
+        txtBuscar.Clear()
+        lblBuscar.Visible = True
     End Sub
 #End Region
 
@@ -551,47 +564,12 @@ Public Class frmProductos
         Filtrar_Grilla()
     End Sub
 
-#End Region
-
-#Region "Validaciones "
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         txtBuscar.Visible = True
-    End Sub
-
-    Private Sub btnCancelar_Click_1(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        txtId.Clear()
-        txtDescripcion.Clear()
-        cboRubro.SelectedIndex = -1
-        cboMarca.SelectedIndex = -1
-        txtCodigoBarra.Clear()
-        txtCodFabricante.Clear()
-        txtCantidadBulto.Clear()
-        cboOrigen.SelectedIndex = -1
-        chkAlterntivo.Checked = False
-        chkEstado.Checked = False
-        txtNombreDiario.Clear()
-        txtNota.Clear()
         txtBuscar.Clear()
-        txtBuscar.Visible = False
-        cboOriginal.SelectedIndex = -1
-
-        txtStockReal.Clear()
-        txtStockMinimo.Clear()
-        txtStockDisponible.Clear()
-
-        txtPrecioCompra.Clear()
-        txtUbicacion.Clear()
-        txtUtilidad.Clear()
-        txtPrecioLista.Clear()
+        txtBuscar.Focus()
+        lblBuscar.Visible = True
     End Sub
-
-    Private Sub grdProductos_SelectionChanged(sender As Object, e As EventArgs) Handles grdProductos.SelectionChanged
-        If String.IsNullOrWhiteSpace(txtBuscar.Text) Then
-            txtBuscar.Visible = False
-        End If
-    End Sub
-
-
 #End Region
 
 End Class
