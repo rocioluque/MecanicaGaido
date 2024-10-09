@@ -7,8 +7,6 @@ Public Class frmCompras
     Dim o_Compras As New AD_Compras
     Private denominacionLote As String
 
-
-
 #Region "Enter para pasar de tabulación y comportamientos"
 
     Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
@@ -139,12 +137,8 @@ Public Class frmCompras
                 grdRepuestos.Rows.Clear()
                 For Each repuestoRow As DataRow In repuestosTable.Rows
                     Dim totalRep = Convert.ToDecimal(repuestoRow("Cantidad")) * Convert.ToDecimal(repuestoRow("PrecioCompra"))
-                    grdRepuestos.Rows.Add(repuestoRow("ID_Repuesto"),
-                                          repuestoRow("Nombre"),
-                                          repuestoRow("Descripcion"),
-                                          repuestoRow("Cantidad"),
-                                          repuestoRow("PrecioCompra"),
-                                          totalRep)
+                    grdRepuestos.Rows.Add(repuestoRow("ID_Repuesto"), repuestoRow("Nombre"), repuestoRow("Descripcion"),
+                                          repuestoRow("Cantidad"), repuestoRow("PrecioCompra"), totalRep)
                 Next
             Else
                 MsgBox("No hay repuestos cargados")
@@ -160,8 +154,8 @@ Public Class frmCompras
             Dim ID_Compra As Integer
             btnModificar.Enabled = True
 
-            If selectedRow.Cells("Codigo").Value IsNot Nothing Then
-                ID_Compra = Convert.ToInt32(selectedRow.Cells("Codigo").Value)
+            If selectedRow.Cells("N° Compra").Value IsNot Nothing Then
+                ID_Compra = Convert.ToInt32(selectedRow.Cells("N° Compra").Value)
                 CargarDatosEnTxt(ID_Compra)
 
             Else

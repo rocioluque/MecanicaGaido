@@ -6,12 +6,11 @@ Imports System.Globalization
 
 Public Class frmProductos
     Dim o_productos As New AD_Productos
-    Private txtsConDecimales As New List(Of TextBox)
 
+    Private txtsConDecimales As New List(Of TextBox)
     Public ubicacionrep As String
 
 #Region "Enter para pasar de tabulación"
-
     Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
         If keyData = Keys.Enter Then
             ' Verifica si el control activo es un Button
@@ -36,7 +35,6 @@ Public Class frmProductos
             CType(sender, RichTextBox).SelectAll()
         End If
     End Sub
-
 #End Region
 
 #Region "Procedimientos"
@@ -292,9 +290,9 @@ Public Class frmProductos
 #End Region
 
 #Region "Modificar"
-    Private Sub btnModificar_Click(sender As Object, e As EventArgs)
+    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         If txtId.Text <> Nothing And txtDescripcion.Text <> Nothing And cboMarca.SelectedValue <> Nothing And txtCodFabricante.Text <> Nothing And
-      txtUbicacion.Text <> Nothing And txtUtilidad.Text <> Nothing Then
+             txtUbicacion.Text <> Nothing And txtUtilidad.Text <> Nothing Then
 
             Try
                 Dim origen As String = cboOrigen.SelectedItem.ToString()
@@ -312,13 +310,71 @@ Public Class frmProductos
                 limpiar()
                 Cargar_Grilla()
                 Cargar_Combo_Original()
+
                 btnModificar.Enabled = False
+                btnAceptar.Enabled = True
             Catch ex As Exception
                 MsgBox("Error al modificar el producto: " & ex.Message, vbCritical, "Error")
             End Try
         Else
             MsgBox("Complete los datos correspondientes.", vbInformation, "Error")
         End If
+    End Sub
+#End Region
+
+#Region "Buscar"
+    Private Sub Filtrar_Grilla()
+        Try
+            Dim conexion As SqlConnection
+            Dim comando As New SqlCommand
+
+            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
+            conexion.Open()
+
+            comando.Connection = conexion
+            comando.CommandType = CommandType.StoredProcedure
+            comando.CommandText = "Cargar_Grilla_Producto"
+
+            Dim datadapter As New SqlDataAdapter(comando)
+            Dim oDs As New DataSet
+            datadapter.Fill(oDs)
+
+            ' Filtrar por nombre o apellido
+            If oDs.Tables(0).Rows.Count > 0 Then
+                Dim dt As DataTable = oDs.Tables(0)
+                Dim filtro As String = txtBuscar.Text.Trim()
+
+                If Not String.IsNullOrEmpty(filtro) Then
+                    Dim dv As New DataView(dt)
+                    dv.RowFilter = String.Format(
+                     "CONVERT([N° Producto], 'System.String') LIKE '%{0}%' OR Producto LIKE '%{0}%' OR [Nombre Diario] LIKE '%{0}%' OR Marca LIKE '%{0}%' OR CONVERT([Stock Real],
+                     'System.String') LIKE '%{0}%' OR CONVERT([Stock Disponible], 'System.String') LIKE '%{0}%' OR CONVERT([Stock Minimo], 'System.String') LIKE '%{0}%' OR CONVERT([Precio Lista], 'System.String') LIKE '%{0}%' OR Ubicacion LIKE '%{0}%'", filtro)
+                    grdProductos.DataSource = dv
+                Else
+                    grdProductos.DataSource = dt
+                End If
+
+                grdProductos.Refresh()
+            Else
+                MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
+            End If
+
+            oDs = Nothing
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox("Error al filtrar la grilla: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub txtBuscar_TextChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
+        Filtrar_Grilla()
+    End Sub
+
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        txtBuscar.Visible = True
+        txtBuscar.Clear()
+        txtBuscar.Focus()
+        lblBuscar.Visible = True
     End Sub
 #End Region
 
@@ -549,63 +605,6 @@ Public Class frmProductos
                 ' Puedes realizar aquí cualquier otra acción necesaria después de cerrar el diálogo
             End If
         End Using
-    End Sub
-
-#End Region
-
-#Region "Buscar"
-    Private Sub Filtrar_Grilla()
-        Try
-            Dim conexion As SqlConnection
-            Dim comando As New SqlCommand
-
-            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
-            conexion.Open()
-
-            comando.Connection = conexion
-            comando.CommandType = CommandType.StoredProcedure
-            comando.CommandText = "Cargar_Grilla_Producto"
-
-            Dim datadapter As New SqlDataAdapter(comando)
-            Dim oDs As New DataSet
-            datadapter.Fill(oDs)
-
-            ' Filtrar por nombre o apellido
-            If oDs.Tables(0).Rows.Count > 0 Then
-                Dim dt As DataTable = oDs.Tables(0)
-                Dim filtro As String = txtBuscar.Text.Trim()
-
-                If Not String.IsNullOrEmpty(filtro) Then
-                    Dim dv As New DataView(dt)
-                    dv.RowFilter = String.Format(
-                     "CONVERT([N° Producto], 'System.String') LIKE '%{0}%' OR Producto LIKE '%{0}%' OR [Nombre Diario] LIKE '%{0}%' OR Marca LIKE '%{0}%' OR CONVERT([Stock Real],
-                     'System.String') LIKE '%{0}%' OR CONVERT([Stock Disponible], 'System.String') LIKE '%{0}%' OR CONVERT([Stock Minimo], 'System.String') LIKE '%{0}%' OR CONVERT([Precio Lista], 'System.String') LIKE '%{0}%' OR Ubicacion LIKE '%{0}%'", filtro)
-                    grdProductos.DataSource = dv
-                Else
-                    grdProductos.DataSource = dt
-                End If
-
-                grdProductos.Refresh()
-            Else
-                MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
-            End If
-
-            oDs = Nothing
-            conexion.Close()
-        Catch ex As Exception
-            MsgBox("Error al filtrar la grilla: " & ex.Message, vbCritical, "Error")
-        End Try
-    End Sub
-
-    Private Sub txtBuscar_TextChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
-        Filtrar_Grilla()
-    End Sub
-
-    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
-        txtBuscar.Visible = True
-        txtBuscar.Clear()
-        txtBuscar.Focus()
-        lblBuscar.Visible = True
     End Sub
 #End Region
 

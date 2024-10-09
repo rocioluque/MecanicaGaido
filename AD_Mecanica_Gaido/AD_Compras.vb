@@ -74,7 +74,7 @@ Public Class AD_Compras
         Dim tabla As New DataSet
 
         Using conexion As New SqlConnection(connectionString)
-            Using comando As New SqlCommand("CargarGrilla_Compras", conexion)
+            Using comando As New SqlCommand("Cargar_Grilla_Compras", conexion)
                 comando.CommandType = CommandType.StoredProcedure
                 Dim datadapter As New SqlDataAdapter(comando)
                 datadapter.Fill(tabla)

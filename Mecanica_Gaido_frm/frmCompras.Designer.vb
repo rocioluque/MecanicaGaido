@@ -582,7 +582,7 @@ Partial Class frmCompras
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(784, 575)
+        Me.Label11.Location = New System.Drawing.Point(784, 570)
         Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(37, 17)
@@ -594,7 +594,7 @@ Partial Class frmCompras
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label14.ForeColor = System.Drawing.Color.White
-        Me.Label14.Location = New System.Drawing.Point(465, 575)
+        Me.Label14.Location = New System.Drawing.Point(465, 570)
         Me.Label14.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(71, 17)
@@ -606,7 +606,7 @@ Partial Class frmCompras
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label13.ForeColor = System.Drawing.Color.White
-        Me.Label13.Location = New System.Drawing.Point(170, 575)
+        Me.Label13.Location = New System.Drawing.Point(170, 570)
         Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(59, 17)
@@ -618,7 +618,7 @@ Partial Class frmCompras
         Me.PanelTotales.Controls.Add(Me.txtTotal)
         Me.PanelTotales.Controls.Add(Me.txtIvaMonto)
         Me.PanelTotales.Controls.Add(Me.txtSubtotal)
-        Me.PanelTotales.Location = New System.Drawing.Point(95, 583)
+        Me.PanelTotales.Location = New System.Drawing.Point(95, 578)
         Me.PanelTotales.Name = "PanelTotales"
         Me.PanelTotales.Size = New System.Drawing.Size(814, 64)
         Me.PanelTotales.TabIndex = 125
@@ -660,6 +660,8 @@ Partial Class frmCompras
         '
         Me.grdCompras.AllowUserToAddRows = False
         Me.grdCompras.AllowUserToDeleteRows = False
+        Me.grdCompras.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.grdCompras.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         Me.grdCompras.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdCompras.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
