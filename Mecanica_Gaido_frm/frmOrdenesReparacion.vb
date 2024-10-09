@@ -7,8 +7,9 @@ Imports System.IO
 Imports iTextSharp.text
 Imports iTextSharp.text.pdf
 
+
 Public Class frmOrdenesReparacion
-    Public persona As Integer = -1
+
     Dim o_Orden As New AD_OrdenReparacion
 
 #Region "Enter para pasar de tabulación"
@@ -49,9 +50,7 @@ Public Class frmOrdenesReparacion
             End If
         Next
 
-        Cargar_Combo_Personas()
-        Cargar_Combo_Prestador()
-        Cargar_Combo_Repuestos()
+
         If esFiltradoPorGrafico AndAlso Not String.IsNullOrEmpty(estadoParaFiltrar) Then
             Cargar_Grilla_OrdenesP(estadoParaFiltrar)
         Else
@@ -61,6 +60,9 @@ Public Class frmOrdenesReparacion
         limpiar()
         ponerDecimales()
         AplicarTema(Me)
+        Cargar_Combo_Personas()
+        Cargar_Combo_Prestador()
+        Cargar_Combo_Repuestos()
     End Sub
 
     Public Sub New(Optional ByVal estadoParaFiltrar As String = "", Optional ByVal esFiltradoPorGrafico As Boolean = False)
@@ -237,7 +239,7 @@ Public Class frmOrdenesReparacion
 #End Region
 
 #Region "Cbo Persona"
-    Private combopersonacargado = False
+    'Private combopersonacargado = False
 
     Private nombrePersona As String
     Private telefonoPersona As String
@@ -254,7 +256,7 @@ Public Class frmOrdenesReparacion
                 cboPersonas.DataSource = tabla
                 cboPersonas.DisplayMember = "Persona"
                 cboPersonas.ValueMember = "ID_Persona"
-                cboPersonas.SelectedIndex = -1
+                cboPersonas.SelectedValue = NavegacionEntreForms.persona
             Else
                 MsgBox("No se encontraron personas.", vbInformation, "Información")
             End If
@@ -266,7 +268,7 @@ Public Class frmOrdenesReparacion
     End Sub
 
     Private Sub cboPersonas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPersonas.SelectedIndexChanged
-        If combopersonacargado AndAlso cboPersonas.SelectedIndex <> -1 Then
+        If combopersonacargado AndAlso cboPersonas.SelectedIndex <> 0 Then
             Dim ID_Persona As Integer = Convert.ToInt32(cboPersonas.SelectedValue)
             Cargar_Combo_Vehiculos(ID_Persona)
         End If
@@ -297,7 +299,7 @@ Public Class frmOrdenesReparacion
     Private numMotorVehiculo As String
     Private horasVehiculo As String
 
-    Private Sub Cargar_Combo_Vehiculos(ID_Persona As Integer)
+    Public Sub Cargar_Combo_Vehiculos(ID_Persona As Integer)
         Try
             Dim tabla As DataTable = o_Orden.Cargar_Combo_Vehiculos(ID_Persona)
 
@@ -306,7 +308,7 @@ Public Class frmOrdenesReparacion
                 cboVehiculo.DataSource = tabla
                 cboVehiculo.DisplayMember = "Nombre"
                 cboVehiculo.ValueMember = "ID_Vehiculo"
-                cboVehiculo.SelectedIndex = -1
+                cboVehiculo.SelectedIndex = NavegacionEntreForms.vehiculo
             Else
                 MsgBox("No se encontraron vehículos para esta persona.", vbInformation, "Información")
             End If
@@ -1740,9 +1742,10 @@ Public Class frmOrdenesReparacion
     End Sub
 
     Private Sub btnAgregarVehiculo_Click(sender As Object, e As EventArgs) Handles btnAgregarVehiculo.Click
-        persona = cboPersonas.SelectedValue
+        NavegacionEntreForms.persona = cboPersonas.SelectedValue
+        NavegacionEntreForms.vengoDeReparaciones = True
         frmMenuPrincipal.btnVehiculos.PerformClick()
-        frmVehiculos.cboPersona.SelectedValue = persona
+        'frmVehiculos.cboPersona.SelectedValue = persona
     End Sub
 
 #Region "Focus txt"
@@ -1871,6 +1874,14 @@ Public Class frmOrdenesReparacion
             Dim rect As New System.Drawing.Rectangle(0, 0, PanelReparaciones.Width - 1, PanelReparaciones.Height - 1)
             e.Graphics.DrawRectangle(pen, rect)
         End Using
+    End Sub
+
+    Private Sub CboProgreso_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboProgreso.SelectedIndexChanged
+        If CboProgreso.SelectedItem = "Finalizada" Then
+            btnFacturar.Enabled = True
+        Else
+            btnFacturar.Enabled = False
+        End If
     End Sub
 #End Region
 End Class

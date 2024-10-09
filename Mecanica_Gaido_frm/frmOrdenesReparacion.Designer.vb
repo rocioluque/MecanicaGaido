@@ -76,6 +76,8 @@ Partial Class frmOrdenesReparacion
         Me.txtMotivoReparacion = New System.Windows.Forms.RichTextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.PanelCostos = New System.Windows.Forms.Panel()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.txtMontoIVA = New System.Windows.Forms.RichTextBox()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.txtIVA = New System.Windows.Forms.RichTextBox()
         Me.Label26 = New System.Windows.Forms.Label()
@@ -137,8 +139,6 @@ Partial Class frmOrdenesReparacion
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.btnDescargarPDF = New System.Windows.Forms.Button()
-        Me.Label28 = New System.Windows.Forms.Label()
-        Me.txtMontoIVA = New System.Windows.Forms.RichTextBox()
         CType(Me.grdOrdenReparacion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregarVehiculo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDetallesOrden.SuspendLayout()
@@ -618,6 +618,30 @@ Partial Class frmOrdenesReparacion
         Me.PanelCostos.Name = "PanelCostos"
         Me.PanelCostos.Size = New System.Drawing.Size(146, 426)
         Me.PanelCostos.TabIndex = 103
+        '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.Label28.ForeColor = System.Drawing.Color.White
+        Me.Label28.Location = New System.Drawing.Point(10, 266)
+        Me.Label28.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(71, 17)
+        Me.Label28.TabIndex = 122
+        Me.Label28.Text = "Monto IVA"
+        '
+        'txtMontoIVA
+        '
+        Me.txtMontoIVA.Enabled = False
+        Me.txtMontoIVA.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtMontoIVA.Location = New System.Drawing.Point(13, 285)
+        Me.txtMontoIVA.Multiline = False
+        Me.txtMontoIVA.Name = "txtMontoIVA"
+        Me.txtMontoIVA.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtMontoIVA.Size = New System.Drawing.Size(124, 29)
+        Me.txtMontoIVA.TabIndex = 121
+        Me.txtMontoIVA.Text = "0"
         '
         'Label27
         '
@@ -1425,30 +1449,6 @@ Partial Class frmOrdenesReparacion
         Me.btnDescargarPDF.Text = "PDF"
         Me.btnDescargarPDF.UseVisualStyleBackColor = False
         '
-        'Label28
-        '
-        Me.Label28.AutoSize = True
-        Me.Label28.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label28.ForeColor = System.Drawing.Color.White
-        Me.Label28.Location = New System.Drawing.Point(10, 266)
-        Me.Label28.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(71, 17)
-        Me.Label28.TabIndex = 122
-        Me.Label28.Text = "Monto IVA"
-        '
-        'txtMontoIVA
-        '
-        Me.txtMontoIVA.Enabled = False
-        Me.txtMontoIVA.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtMontoIVA.Location = New System.Drawing.Point(13, 285)
-        Me.txtMontoIVA.Multiline = False
-        Me.txtMontoIVA.Name = "txtMontoIVA"
-        Me.txtMontoIVA.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtMontoIVA.Size = New System.Drawing.Size(124, 29)
-        Me.txtMontoIVA.TabIndex = 121
-        Me.txtMontoIVA.Text = "0"
-        '
         'frmOrdenesReparacion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1456,7 +1456,7 @@ Partial Class frmOrdenesReparacion
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(1133, 849)
+        Me.ClientSize = New System.Drawing.Size(1150, 866)
         Me.Controls.Add(Me.btnDescargarPDF)
         Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.Label13)

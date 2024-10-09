@@ -530,6 +530,7 @@
     <Compile Include="frmBienvenida.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="NavegacionEntreForms.vb" />
     <Compile Include="PIN_GRUPO31DataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

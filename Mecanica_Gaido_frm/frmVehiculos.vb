@@ -37,7 +37,7 @@ Public Class frmVehiculos
 
 #Region "Procedimientos"
     Private Sub frmVehiculos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Limpiar()
         For Each ctrl As Control In Me.Controls
             If TypeOf ctrl Is TextBox OrElse TypeOf ctrl Is RichTextBox Then
                 AddHandler ctrl.Enter, AddressOf Control_Enter
@@ -48,7 +48,7 @@ Public Class frmVehiculos
         Cargar_Combo_TipoVehiculo()
         Cargar_Combo_Personas()
         Cargar_Grilla()
-        Limpiar()
+
         btnModificar.Enabled = False
         txtBuscar.Visible = False
         txtID.Enabled = False
@@ -82,6 +82,10 @@ Public Class frmVehiculos
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         Limpiar()
+        NavegacionEntreForms.persona = 0
+        NavegacionEntreForms.vehiculo = 0
+        NavegacionEntreForms.vengoDeReparaciones = False
+        NavegacionEntreForms.combopersonacargado = False
     End Sub
 #End Region
 
@@ -172,15 +176,36 @@ Public Class frmVehiculos
             txtModelo.Text <> Nothing And txtNumMotor.Text <> Nothing Then
 
             Try
-                Dim idVehiculo As Integer = o_vehiculo.Agregar_Vehiculo(CInt(cboTipoVehiculo.SelectedValue), CInt(cboMarca.SelectedValue),
-                              txtNombre.Text, txtModelo.Text, txtHorasTrabajadas.Text, txtNumChasis.Text, txtNumMotor.Text,
-                              txtMatricula.Text, txtAñoFabricación.Text, txtNota.Text, chkEstado.Checked)
+                Dim idVehiculo As Integer = o_vehiculo.Agregar_Vehiculo(CInt(cboTipoVehiculo.SelectedValue),
+                                                                        CInt(cboMarca.SelectedValue),
+                                                                        txtNombre.Text, txtModelo.Text,
+                                                                        txtHorasTrabajadas.Text,
+                                                                        txtNumChasis.Text,
+                                                                        txtNumMotor.Text,
+                                                                        txtMatricula.Text,
+                                                                        txtAñoFabricación.Text,
+                                                                        txtNota.Text,
+                                                                        chkEstado.Checked)
 
-                o_vehiculo.Agregar_VehiculoXPersona(CInt(cboPersona.SelectedValue), idVehiculo, chkEstado.Checked)
+                o_vehiculo.Agregar_VehiculoXPersona(CInt(cboPersona.SelectedValue),
+                                                    idVehiculo,
+                                                    chkEstado.Checked)
 
                 MsgBox("Vehículo agregado correctamente.", vbInformation, "Información")
                 Limpiar()
                 Cargar_Grilla()
+                If vengoDeReparaciones Then
+                    NavegacionEntreForms.combopersonacargado = True
+                    frmMenuPrincipal.btnOrdenReparacion.PerformClick()
+                    frmOrdenesReparacion.cboPersonas.SelectedValue = NavegacionEntreForms.persona
+                    frmOrdenesReparacion.Cargar_Combo_Vehiculos(NavegacionEntreForms.persona)
+
+                End If
+                NavegacionEntreForms.combopersonacargado = False
+                NavegacionEntreForms.persona = 0
+                NavegacionEntreForms.vehiculo = 0
+                NavegacionEntreForms.vengoDeReparaciones = False
+
 
             Catch ex As Exception
                 MsgBox("Error al agregar el vehículo: " & ex.Message, vbCritical, "Error")
@@ -272,7 +297,7 @@ Public Class frmVehiculos
                 cboPersona.DataSource = tabla
                 cboPersona.DisplayMember = "Persona"
                 cboPersona.ValueMember = "ID_Persona"
-                cboPersona.SelectedValue = -1
+                cboPersona.SelectedValue = NavegacionEntreForms.persona
             Else
                 MsgBox("No se encontraron Personas.", vbInformation, "Información")
             End If
