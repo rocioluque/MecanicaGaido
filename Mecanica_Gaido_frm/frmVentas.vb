@@ -793,7 +793,7 @@ Public Class frmVentas
                 For Each rowDetalle As DataRow In oDS.Tables(1).Rows
                     grdVentas.Rows.Add(rowDetalle("ID_Repuesto"),
                                        rowDetalle("Descripcion"),
-                                                           "-",'HARDCODE
+                                       rowDetalle("NombreDiario"),
                                        rowDetalle("Cantidad"),
                                        rowDetalle("PrecioVenta"),
                                        rowDetalle("Total"))
@@ -855,7 +855,7 @@ Public Class frmVentas
                                                     Convert.ToDateTime(dtpFechaVenta.Value),
                                                     txtNumComprobante.Text,
                                                     CInt(cboPersona.SelectedValue),
-                                                    txtVendedor.Text,
+                                                    Id_Empleado_Login,
                                                     CInt(cboFormaPago.SelectedValue),
                                                     CInt(cboDetalleFormaPago.SelectedValue),
                                                  Decimal.Parse(txtSubtotal.Text),

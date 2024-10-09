@@ -99,8 +99,12 @@ Public Class frmCompras
                 grdRepuestos.Rows.Clear()
                 For Each repuestoRow As DataRow In repuestosTable.Rows
                     Dim totalRep = Convert.ToDecimal(repuestoRow("Cantidad")) * Convert.ToDecimal(repuestoRow("PrecioCompra"))
-                    grdRepuestos.Rows.Add(repuestoRow("ID_Repuesto"), repuestoRow("Nombre"), repuestoRow("Descripcion"),
-                                      repuestoRow("Cantidad"), repuestoRow("PrecioCompra"), totalRep)
+                    grdRepuestos.Rows.Add(repuestoRow("ID_Repuesto"),
+                                          repuestoRow("Nombre"),
+                                          repuestoRow("Descripcion"),
+                                          repuestoRow("Cantidad"),
+                                          repuestoRow("PrecioCompra"),
+                                          totalRep)
                 Next
             Else
                 MsgBox("No hay repuestos cargados")
