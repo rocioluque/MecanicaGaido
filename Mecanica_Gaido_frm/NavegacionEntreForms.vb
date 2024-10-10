@@ -8,7 +8,7 @@
     Public MontoManoObra As Decimal = 0
     Public MontoServ3 As Decimal = 0
     Public Nro_orden As Integer = 0
-    Public TipoVenta As Integer = 0
+    Public TipoVenta As Integer = 1
 
     Public RepuestosVenta As DataTable
 

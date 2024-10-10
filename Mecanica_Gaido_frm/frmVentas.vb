@@ -5,10 +5,15 @@ Imports System.Configuration
 Imports Comun_Soporte
 Imports Mecanica_Gaido_frm.User32
 
+Imports Telerik.Reporting
+Imports Telerik.Reporting.Processing
+Imports System.IO
+
 Public Class frmVentas
     Dim o_ventas As New AD_Ventas
 
     Dim Id_Empleado_Login As Integer = UsuarioActivo.id_empleado
+    Public Property ReportViewer1 As Object
 
 #Region "Enter para pasar de tabulación"
 
@@ -30,8 +35,8 @@ Public Class frmVentas
     End Function
 
     Private Sub Control_Enter(sender As Object, e As EventArgs)
-        If TypeOf sender Is TextBox Then
-            CType(sender, TextBox).SelectAll()
+        If TypeOf sender Is Windows.Controls.TextBox Then
+            CType(sender, Windows.Controls.TextBox).SelectAll()
         ElseIf TypeOf sender Is RichTextBox Then
             CType(sender, RichTextBox).SelectAll()
         End If
@@ -44,7 +49,7 @@ Public Class frmVentas
     Private Sub frmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         For Each ctrl As Control In Me.Controls
-            If TypeOf ctrl Is TextBox OrElse TypeOf ctrl Is RichTextBox Then
+            If TypeOf ctrl Is Windows.Forms.TextBox OrElse TypeOf ctrl Is RichTextBox Then
                 AddHandler ctrl.Enter, AddressOf Control_Enter
             End If
         Next
@@ -74,7 +79,7 @@ Public Class frmVentas
             NavegacionEntreForms.vengoDeReparaciones = False
             NavegacionEntreForms.persona = 0
             NavegacionEntreForms.Nro_orden = 0
-            NavegacionEntreForms.TipoVenta = 0
+            NavegacionEntreForms.TipoVenta = 1
             NavegacionEntreForms.MontoManoObra = 0
             NavegacionEntreForms.MontoServ3 = 0
 
@@ -241,7 +246,7 @@ Public Class frmVentas
                 cboFormaEntrega.DataSource = tabla
                 cboFormaEntrega.DisplayMember = "Nombre"
                 cboFormaEntrega.ValueMember = "ID_FormaDeEntrega"
-                cboFormaEntrega.SelectedValue = -1
+                cboFormaEntrega.SelectedValue = 2
             Else
                 MsgBox("No se encontraron Formas de Entrega.", vbInformation, "Información")
             End If
@@ -808,10 +813,11 @@ Public Class frmVentas
                                     row.Cells("Precio").Value,
                                     1)
             Next
+            Dim ID_Venta As Integer = 0 ' Variable para almacenar el ID de la venta
 
             If cboTipoVenta.SelectedValue <> 2 Then
                 ' Llamar al método para agregar la venta con detalle
-                ventaDataAccess.AgregarVentaConDetalle(Convert.ToDateTime(dtpFechaVenta.Value),
+                Dim resultado As Boolean = ventaDataAccess.AgregarVentaConDetalle(Convert.ToDateTime(dtpFechaVenta.Value),
                                                     txtNumComprobante.Text,
                                                     CInt(cboPersona.SelectedValue),
                                                     Id_Empleado_Login,
@@ -828,9 +834,9 @@ Public Class frmVentas
                                                  CInt(cboTipoVenta.SelectedValue),
                                                  CInt(cboFormaEntrega.SelectedValue),
                                                  1,
-                                                 detalles)
+                                                 detalles, ID_Venta)
             Else
-                ventaDataAccess.AgregarVentaConDetalleOR(Convert.ToDateTime(dtpFechaVenta.Value),
+                Dim resultado As Boolean = ventaDataAccess.AgregarVentaConDetalleOR(Convert.ToDateTime(dtpFechaVenta.Value),
                                                     txtNumComprobante.Text,
                                                     CInt(cboPersona.SelectedValue),
                                                     Id_Empleado_Login,
@@ -847,8 +853,35 @@ Public Class frmVentas
                                                  CInt(cboTipoVenta.SelectedValue),
                                                  CInt(cboFormaEntrega.SelectedValue),
                                                  1,
-                                                 detalles)
+                                                 detalles, ID_Venta)
             End If
+
+
+
+            '' Obtener el directorio donde se ejecuta la aplicación
+            'Dim appPath As String = AppDomain.CurrentDomain.BaseDirectory
+
+            '' Ruta del archivo de reporte usando Path.Combine para mayor compatibilidad
+            'Dim reportPath As String = Path.Combine(appPath, "FacturaVentaOR.trdx")
+
+            '' Crear instancia del Report
+            'Dim reportSource As New Telerik.Reporting.UriReportSource()
+
+            '' Asignar el path del archivo .trdx
+            'reportSource.Uri = reportPath
+
+            '' Asignar parámetros al reporte
+            'reportSource.Parameters.Add(New Telerik.Reporting.Parameter("IDPersona", cboPersona.SelectedValue)) ' Valor para ID_Venta
+            'reportSource.Parameters.Add(New Telerik.Reporting.Parameter("IDVenta", ID_Venta)) ' Ejemplo de parámetro de cliente
+
+            '' Asignar el reporte al ReportViewer
+            'ReportViewer1.ReportSource = reportSource
+
+            '' Refrescar el ReportViewer para mostrar el reporte
+            'ReportViewer1.RefreshReport()
+
+
+
 
 
             'NavegacionEntreForms
@@ -860,6 +893,7 @@ Public Class frmVentas
 
 
             MessageBox.Show("Venta registrada con éxito.")
+            limpiar()
         Catch ex As Exception
             MessageBox.Show("Error al registrar la venta: " & ex.Message)
         End Try

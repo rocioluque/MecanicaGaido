@@ -299,7 +299,7 @@ Public Class AD_Ventas
 
 
 #Region "Agregar"
-    Public Sub AgregarVentaConDetalle(fechaVenta As Date,
+    Public Function AgregarVentaConDetalle(fechaVenta As Date,
                                       nroComprobante As String,
                                       idPersona As Integer,
                                       vendedor As String,
@@ -316,7 +316,8 @@ Public Class AD_Ventas
                                       idTipoVenta As Integer,
                                       idFormaEntrega As Integer,
                                       estado As Boolean,
-                                      detalles As DataTable)
+                                      detalles As DataTable,
+                                      ByRef ID_Venta_Out As Integer) As Boolean
 
         Using connection As New SqlConnection(connectionString)
             Using command As New SqlCommand("Agregar_VentaConDetalle", connection)
@@ -346,14 +347,22 @@ Public Class AD_Ventas
                 detallesParam.SqlDbType = SqlDbType.Structured
                 detallesParam.TypeName = "dbo.DetalleVentaType" ' Asegúrate de que este sea el tipo correcto
 
-                ' Abrir conexión y ejecutar el comando
+                Dim paramID_Venta_Out As New SqlParameter("@ID_Venta_Out", SqlDbType.Int)
+                paramID_Venta_Out.Direction = ParameterDirection.Output
+                command.Parameters.Add(paramID_Venta_Out)
+
+                ' Abrir la conexión y ejecutar el comando
                 connection.Open()
                 command.ExecuteNonQuery()
+
+                ' Asignar el valor del parámetro de salida a la variable de referencia
+                ID_Venta_Out = Convert.ToInt32(paramID_Venta_Out.Value)
+                Return True
             End Using
         End Using
-    End Sub
+    End Function
 
-    Public Sub AgregarVentaConDetalleOR(fechaVenta As Date,
+    Public Function AgregarVentaConDetalleOR(fechaVenta As Date,
                                       nroComprobante As String,
                                       idPersona As Integer,
                                       vendedor As String,
@@ -370,7 +379,8 @@ Public Class AD_Ventas
                                       idTipoVenta As Integer,
                                       idFormaEntrega As Integer,
                                       estado As Boolean,
-                                      detalles As DataTable)
+                                      detalles As DataTable,
+                                        ByRef ID_Venta_Out As Integer) As Boolean
 
         Using connection As New SqlConnection(connectionString)
             Using command As New SqlCommand("Agregar_VentaConDetalleOR", connection)
@@ -400,12 +410,20 @@ Public Class AD_Ventas
                 detallesParam.SqlDbType = SqlDbType.Structured
                 detallesParam.TypeName = "dbo.DetalleVentaType" ' Asegúrate de que este sea el tipo correcto
 
-                ' Abrir conexión y ejecutar el comando
+                Dim paramID_Venta_Out As New SqlParameter("@ID_Venta_Out", SqlDbType.Int)
+                paramID_Venta_Out.Direction = ParameterDirection.Output
+                command.Parameters.Add(paramID_Venta_Out)
+
+                ' Abrir la conexión y ejecutar el comando
                 connection.Open()
                 command.ExecuteNonQuery()
+
+                ' Asignar el valor del parámetro de salida a la variable de referencia
+                ID_Venta_Out = Convert.ToInt32(paramID_Venta_Out.Value)
+                Return True
             End Using
         End Using
-    End Sub
+    End Function
 
 
 
