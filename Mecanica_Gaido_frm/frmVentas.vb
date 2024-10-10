@@ -146,6 +146,8 @@ Public Class frmVentas
 #End Region
 
 #Region "Carga de cbo"
+
+    Private ComboRepOK As Boolean = True
     Private Sub Cargar_Combo_Repuestos()
         Try
             Dim tablaRep As DataTable = o_ventas.Cargar_Combo_Repuestos()
@@ -161,6 +163,8 @@ Public Class frmVentas
 
         Catch ex As Exception
             MsgBox("Error al cargar los Repuestos: " & ex.Message, vbCritical, "Error")
+        Finally
+            ComboRepOK = False
         End Try
     End Sub
 
@@ -328,7 +332,8 @@ Public Class frmVentas
                 Dim idRepuesto As Integer = Convert.ToInt32(rowView("ID_Repuestos"))
                 Dim descripcionRepuesto As String = rowView("Descripcion").ToString()
                 Dim nombreDiario As String = rowView("nombreDiario").ToString()
-                Dim precio As Decimal = Convert.ToDecimal(rowView("PrecioCompra"))
+                Dim precio As Decimal = Convert.ToDecimal(rowView("PrecioLista"))
+                precio = InputBox("Confirme el Precio", "Precio Sugerido", Convert.ToDecimal(precio).ToString("N2"))
                 Dim cantidad As Integer = Convert.ToDecimal(txtCantidadVentas.Text)
                 Dim total As Decimal = precio * cantidad
 
@@ -1044,6 +1049,43 @@ Public Class frmVentas
 
 
     End Sub
+
+    Private Sub cboProductoVenta_SelectedValueChanged(sender As Object, e As EventArgs) Handles cboProductoVenta.SelectedValueChanged
+        If ComboRepOK Then Return
+
+        If cboProductoVenta.SelectedValue IsNot Nothing AndAlso CInt(cboProductoVenta.SelectedValue) > 0 Then
+            Dim o_rep As New AD_Productos
+
+            ' Almacena la tupla en una variable
+            Dim resultado = o_rep.Consultar_StocksPorID(CInt(cboProductoVenta.SelectedValue))
+
+            ' Extrae los valores de la tupla por nombre
+            Dim stockDisponible As Decimal = resultado.stockDisponible
+            Dim stockMinimo As Decimal = resultado.stockMinimo
+            Dim stockReal As Decimal = resultado.stockReal
+
+            ' Actualiza el texto del label
+            lblDispo.Text = stockDisponible.ToString("F2")
+
+            ' Aplicar formato condicional según el valor de stockDisponible
+            lblDispo.Font = New Font(lblDispo.Font, FontStyle.Bold)
+            lblDispo.Font = New Font(lblDispo.Font.FontFamily, 10)
+
+            ' Cambiar el color según las condiciones
+            If stockDisponible >= stockMinimo Then
+                lblDispo.ForeColor = Color.Green
+            ElseIf stockDisponible > 0 AndAlso stockDisponible < stockMinimo Then
+                lblDispo.ForeColor = Color.Yellow
+            ElseIf stockDisponible <= 0 Then
+                lblDispo.ForeColor = Color.Red
+            End If
+
+            ' También puedes actualizar otros controles como txtCantidadVentas
+            txtCantidadVentas.Text = stockDisponible.ToString("F2")
+        End If
+    End Sub
+
+
 
 
 #End Region

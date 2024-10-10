@@ -131,6 +131,68 @@ Public Class AD_Productos
 
         Return stockDisponible
     End Function
+
+    Public Function Consultar_StockDisponiblePorID(ByVal ID_Repuestos As Integer) As Decimal
+        Dim stockDisponible As Decimal = 0
+
+        ' Asegúrate de usar la cadena de conexión correcta
+        Using connection As New SqlConnection(connectionString)
+            Using command As New SqlCommand("Consultar_StockDisponiblePorID", connection)
+                command.CommandType = CommandType.StoredProcedure
+
+                command.Parameters.AddWithValue("@ID_Repuestos", ID_Repuestos)
+
+                Try
+                    connection.Open() ' Abre la conexión a la base de datos
+                    Dim result As Object = command.ExecuteScalar() ' Ejecuta el comando
+                    If result IsNot Nothing AndAlso Not DBNull.Value.Equals(result) Then
+                        stockDisponible = Convert.ToDecimal(result)
+                    End If
+
+                Catch ex As Exception
+                    ' Maneja la excepción, por ejemplo, mostrando un mensaje o registrando el error
+                    Throw New Exception("Error al consultar el stock disponible: " & ex.Message, ex)
+                End Try
+            End Using
+        End Using
+
+        Return stockDisponible
+    End Function
+
+    Public Function Consultar_StocksPorID(ByVal ID_Repuestos As Integer) As (stockDisponible As Decimal, stockMinimo As Decimal, stockReal As Decimal)
+        Dim stockDisponible As Decimal = 0
+        Dim stockMinimo As Decimal = 0
+        Dim stockReal As Decimal = 0
+
+        ' Asegúrate de usar la cadena de conexión correcta
+        Using connection As New SqlConnection(connectionString)
+            Using command As New SqlCommand("Consultar_StocksPorID", connection)
+                command.CommandType = CommandType.StoredProcedure
+                command.Parameters.AddWithValue("@ID_Repuestos", ID_Repuestos)
+
+                Try
+                    connection.Open() ' Abre la conexión a la base de datos
+                    Using reader As SqlDataReader = command.ExecuteReader() ' Ejecuta el comando y obtiene el lector
+                        If reader.Read() Then ' Si el lector tiene filas
+                            ' Leer las columnas por nombre (ajusta según las columnas devueltas por el SP)
+                            stockDisponible = Convert.ToDecimal(reader("StockDisponible"))
+                            stockMinimo = Convert.ToDecimal(reader("StockMinimo"))
+                            stockReal = Convert.ToDecimal(reader("StockReal"))
+                        End If
+                    End Using
+
+                Catch ex As Exception
+                    ' Maneja la excepción, por ejemplo, mostrando un mensaje o registrando el error
+                    Throw New Exception("Error al consultar los stocks: " & ex.Message, ex)
+                End Try
+            End Using
+        End Using
+
+        ' Devolver los tres valores como una tupla con nombres
+        Return (stockDisponible, stockMinimo, stockReal)
+    End Function
+
+
 #End Region
 
     Public Function Cargar_Grilla() As DataTable

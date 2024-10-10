@@ -430,6 +430,8 @@ Public Class frmInicio
     Private Sub btnExportarPDF_Click(sender As Object, e As EventArgs) Handles btnExportarPDF.Click
         frmAgregarPedidoRepuesto.ShowDialog()
     End Sub
+
+
 #End Region
 
 End Class

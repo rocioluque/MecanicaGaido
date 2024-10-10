@@ -47,6 +47,7 @@ Partial Class frmVentas
         Me.btnTipoVenta = New System.Windows.Forms.PictureBox()
         Me.btnFormaEntrega = New System.Windows.Forms.PictureBox()
         Me.PanelDetalleDeVentas = New System.Windows.Forms.Panel()
+        Me.lblDispo = New System.Windows.Forms.Label()
         Me.grdVentas = New System.Windows.Forms.DataGridView()
         Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -99,14 +100,14 @@ Partial Class frmVentas
         Me.PanelTotales = New System.Windows.Forms.Panel()
         Me.txtMontoDtoRecargo = New System.Windows.Forms.RichTextBox()
         Me.txtTotal = New System.Windows.Forms.RichTextBox()
+        Me.txtMontoManoObra = New System.Windows.Forms.RichTextBox()
+        Me.txtMontoServ3 = New System.Windows.Forms.RichTextBox()
         Me.txtIvaMonto = New System.Windows.Forms.RichTextBox()
         Me.txtSubtotal = New System.Windows.Forms.RichTextBox()
         Me.lblMontoDtoRecargo = New System.Windows.Forms.Label()
         Me.grdVentas1 = New System.Windows.Forms.DataGridView()
         Me.lblBusqueda = New System.Windows.Forms.Label()
         Me.txtBusqueda = New System.Windows.Forms.TextBox()
-        Me.txtMontoServ3 = New System.Windows.Forms.RichTextBox()
-        Me.txtMontoManoObra = New System.Windows.Forms.RichTextBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
         CType(Me.btnAgregarPersona, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -299,6 +300,7 @@ Partial Class frmVentas
         '
         'PanelDetalleDeVentas
         '
+        Me.PanelDetalleDeVentas.Controls.Add(Me.lblDispo)
         Me.PanelDetalleDeVentas.Controls.Add(Me.grdVentas)
         Me.PanelDetalleDeVentas.Controls.Add(Me.btnQuitarVenta)
         Me.PanelDetalleDeVentas.Controls.Add(Me.btnAgregarVenta)
@@ -310,6 +312,17 @@ Partial Class frmVentas
         Me.PanelDetalleDeVentas.Name = "PanelDetalleDeVentas"
         Me.PanelDetalleDeVentas.Size = New System.Drawing.Size(1017, 269)
         Me.PanelDetalleDeVentas.TabIndex = 112
+        '
+        'lblDispo
+        '
+        Me.lblDispo.AutoSize = True
+        Me.lblDispo.Font = New System.Drawing.Font("Lucida Sans Typewriter", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDispo.ForeColor = System.Drawing.Color.Black
+        Me.lblDispo.Location = New System.Drawing.Point(486, 20)
+        Me.lblDispo.Name = "lblDispo"
+        Me.lblDispo.Size = New System.Drawing.Size(95, 15)
+        Me.lblDispo.TabIndex = 145
+        Me.lblDispo.Text = "Disponible:"
         '
         'grdVentas
         '
@@ -441,7 +454,7 @@ Partial Class frmVentas
         Me.btnAgregarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAgregarVenta.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregarVenta.ForeColor = System.Drawing.Color.White
-        Me.btnAgregarVenta.Location = New System.Drawing.Point(714, 10)
+        Me.btnAgregarVenta.Location = New System.Drawing.Point(759, 10)
         Me.btnAgregarVenta.Name = "btnAgregarVenta"
         Me.btnAgregarVenta.Size = New System.Drawing.Size(117, 37)
         Me.btnAgregarVenta.TabIndex = 21
@@ -451,9 +464,9 @@ Partial Class frmVentas
         'txtCantidadVentas
         '
         Me.txtCantidadVentas.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCantidadVentas.Location = New System.Drawing.Point(596, 16)
+        Me.txtCantidadVentas.Location = New System.Drawing.Point(661, 16)
         Me.txtCantidadVentas.Name = "txtCantidadVentas"
-        Me.txtCantidadVentas.Size = New System.Drawing.Size(66, 23)
+        Me.txtCantidadVentas.Size = New System.Drawing.Size(82, 23)
         Me.txtCantidadVentas.TabIndex = 19
         Me.txtCantidadVentas.Text = "1"
         Me.txtCantidadVentas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -463,7 +476,7 @@ Partial Class frmVentas
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.Color.White
-        Me.Label12.Location = New System.Drawing.Point(469, 20)
+        Me.Label12.Location = New System.Drawing.Point(581, 20)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(75, 17)
         Me.Label12.TabIndex = 115
@@ -473,9 +486,9 @@ Partial Class frmVentas
         '
         Me.cboProductoVenta.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboProductoVenta.FormattingEnabled = True
-        Me.cboProductoVenta.Location = New System.Drawing.Point(139, 16)
+        Me.cboProductoVenta.Location = New System.Drawing.Point(89, 16)
         Me.cboProductoVenta.Name = "cboProductoVenta"
-        Me.cboProductoVenta.Size = New System.Drawing.Size(278, 25)
+        Me.cboProductoVenta.Size = New System.Drawing.Size(389, 25)
         Me.cboProductoVenta.TabIndex = 18
         '
         'Label10
@@ -954,6 +967,32 @@ Partial Class frmVentas
         Me.txtTotal.TabIndex = 13
         Me.txtTotal.Text = "0"
         '
+        'txtMontoManoObra
+        '
+        Me.txtMontoManoObra.AutoWordSelection = True
+        Me.txtMontoManoObra.Enabled = False
+        Me.txtMontoManoObra.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtMontoManoObra.Location = New System.Drawing.Point(15, 17)
+        Me.txtMontoManoObra.Multiline = False
+        Me.txtMontoManoObra.Name = "txtMontoManoObra"
+        Me.txtMontoManoObra.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtMontoManoObra.Size = New System.Drawing.Size(120, 28)
+        Me.txtMontoManoObra.TabIndex = 147
+        Me.txtMontoManoObra.Text = "0"
+        '
+        'txtMontoServ3
+        '
+        Me.txtMontoServ3.AutoWordSelection = True
+        Me.txtMontoServ3.Enabled = False
+        Me.txtMontoServ3.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.txtMontoServ3.Location = New System.Drawing.Point(160, 17)
+        Me.txtMontoServ3.Multiline = False
+        Me.txtMontoServ3.Name = "txtMontoServ3"
+        Me.txtMontoServ3.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtMontoServ3.Size = New System.Drawing.Size(120, 28)
+        Me.txtMontoServ3.TabIndex = 148
+        Me.txtMontoServ3.Text = "0"
+        '
         'txtIvaMonto
         '
         Me.txtIvaMonto.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1033,31 +1072,6 @@ Partial Class frmVentas
         Me.txtBusqueda.Size = New System.Drawing.Size(597, 23)
         Me.txtBusqueda.TabIndex = 145
         Me.txtBusqueda.Visible = False
-        '
-        'txtMontoServ3
-        '
-        Me.txtMontoServ3.AutoWordSelection = True
-        Me.txtMontoServ3.Enabled = False
-        Me.txtMontoServ3.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtMontoServ3.Location = New System.Drawing.Point(160, 17)
-        Me.txtMontoServ3.Multiline = False
-        Me.txtMontoServ3.Name = "txtMontoServ3"
-        Me.txtMontoServ3.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtMontoServ3.Size = New System.Drawing.Size(120, 28)
-        Me.txtMontoServ3.TabIndex = 148
-        Me.txtMontoServ3.Text = "0"
-        '
-        'txtMontoManoObra
-        '
-        Me.txtMontoManoObra.AutoWordSelection = True
-        Me.txtMontoManoObra.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.txtMontoManoObra.Location = New System.Drawing.Point(15, 17)
-        Me.txtMontoManoObra.Multiline = False
-        Me.txtMontoManoObra.Name = "txtMontoManoObra"
-        Me.txtMontoManoObra.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtMontoManoObra.Size = New System.Drawing.Size(120, 28)
-        Me.txtMontoManoObra.TabIndex = 147
-        Me.txtMontoManoObra.Text = "0"
         '
         'Label15
         '
@@ -1143,8 +1157,6 @@ Partial Class frmVentas
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
-
-
     End Sub
     Friend WithEvents Label14 As Label
     Friend WithEvents Label13 As Label
@@ -1224,5 +1236,6 @@ Partial Class frmVentas
     Friend WithEvents txtMontoManoObra As RichTextBox
     Friend WithEvents Label15 As Label
     Friend WithEvents Label24 As Label
+    Friend WithEvents lblDispo As Label
     Public Property ReportViewer1 As Telerik.ReportViewer.WinForms.ReportViewer
 End Class
