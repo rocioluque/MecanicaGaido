@@ -325,6 +325,9 @@ Public Class frmVentas
 
 #Region "Agregar / Quitar Productos"
     Private Sub btnAgregarCompra_Click(sender As Object, e As EventArgs) Handles btnAgregarVenta.Click
+
+
+
         Try
             If cboProductoVenta.SelectedValue <> Nothing AndAlso Not String.IsNullOrEmpty(txtCantidadVentas.Text) Then
 
@@ -341,7 +344,7 @@ Public Class frmVentas
                 Cargar_Combo_Repuestos()
                 txtCantidadVentas.Text = Convert.ToDecimal(0).ToString("N2")
                 ActualizarMontoTotal()
-
+                lblDispo.Visible = False
             Else
                 MsgBox("Por favor, seleccione un repuesto y especifique la cantidad.", vbExclamation, "Advertencia")
             End If
@@ -1054,6 +1057,9 @@ Public Class frmVentas
         If ComboRepOK Then Return
 
         If cboProductoVenta.SelectedValue IsNot Nothing AndAlso CInt(cboProductoVenta.SelectedValue) > 0 Then
+            lblDispo.Text = ""
+            lblDispo.Visible = True
+
             Dim o_rep As New AD_Productos
 
             ' Almacena la tupla en una variable
