@@ -612,6 +612,12 @@
       <DependentUpon>frmMenuPrincipal.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmVentaView.Designer.vb">
+      <DependentUpon>FrmVentaView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVentaView.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GoogleDriveUploader.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -646,6 +652,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PIN_GRUPO31DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RptVentas.designer.vb">
+      <DependentUpon>RptVentas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RptVentas.vb">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="SwitchButton.Designer.vb">
       <DependentUpon>SwitchButton.vb</DependentUpon>
@@ -786,12 +798,14 @@
     <EmbeddedResource Include="frmBienvenida.resx">
       <DependentUpon>frmBienvenida.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RptVentas.resx">
+      <DependentUpon>RptVentas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SwitchButton.resx">
       <DependentUpon>SwitchButton.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="FacturaVentaOR.trdx" />
     <None Include="Mecanica_Gaido_frm_TemporaryKey.pfx" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">

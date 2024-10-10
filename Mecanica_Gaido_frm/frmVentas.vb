@@ -5,15 +5,13 @@ Imports System.Configuration
 Imports Comun_Soporte
 Imports Mecanica_Gaido_frm.User32
 
-Imports Telerik.Reporting
-Imports Telerik.Reporting.Processing
-Imports System.IO
+
 
 Public Class frmVentas
     Dim o_ventas As New AD_Ventas
 
     Dim Id_Empleado_Login As Integer = UsuarioActivo.id_empleado
-    Public Property ReportViewer1 As Object
+    
 
 #Region "Enter para pasar de tabulación"
 
@@ -857,32 +855,7 @@ Public Class frmVentas
             End If
 
 
-
-            '' Obtener el directorio donde se ejecuta la aplicación
-            'Dim appPath As String = AppDomain.CurrentDomain.BaseDirectory
-
-            '' Ruta del archivo de reporte usando Path.Combine para mayor compatibilidad
-            'Dim reportPath As String = Path.Combine(appPath, "FacturaVentaOR.trdx")
-
-            '' Crear instancia del Report
-            'Dim reportSource As New Telerik.Reporting.UriReportSource()
-
-            '' Asignar el path del archivo .trdx
-            'reportSource.Uri = reportPath
-
-            '' Asignar parámetros al reporte
-            'reportSource.Parameters.Add(New Telerik.Reporting.Parameter("IDPersona", cboPersona.SelectedValue)) ' Valor para ID_Venta
-            'reportSource.Parameters.Add(New Telerik.Reporting.Parameter("IDVenta", ID_Venta)) ' Ejemplo de parámetro de cliente
-
-            '' Asignar el reporte al ReportViewer
-            'ReportViewer1.ReportSource = reportSource
-
-            '' Refrescar el ReportViewer para mostrar el reporte
-            'ReportViewer1.RefreshReport()
-
-
-
-
+            MostrarReporteVenta(ID_Venta)
 
             'NavegacionEntreForms
 
@@ -897,6 +870,17 @@ Public Class frmVentas
         Catch ex As Exception
             MessageBox.Show("Error al registrar la venta: " & ex.Message)
         End Try
+    End Sub
+
+    Private Sub MostrarReporteVenta(ByVal ID_Venta As Integer)
+        Dim frmReporte As New FrmVentaView()
+
+        ' Pasar el parámetro ID_Venta al formulario del reporte
+        frmReporte.ID_Venta = ID_Venta
+
+        ' Mostrar el formulario a pantalla completa
+        frmReporte.WindowState = FormWindowState.Maximized
+        frmReporte.ShowDialog()
     End Sub
 
     Private Sub CargarDatosVenta(ID_Venta As Integer)
@@ -1019,6 +1003,7 @@ Public Class frmVentas
                                                  detalles)
 
             MessageBox.Show("Venta modificada con éxito.")
+            MostrarReporteVenta(txtID.Text)
             Cargar_Grilla_Ventas()
             limpiar()
         Catch ex As Exception

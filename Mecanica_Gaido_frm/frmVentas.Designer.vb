@@ -1143,6 +1143,8 @@ Partial Class frmVentas
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
+
+
     End Sub
     Friend WithEvents Label14 As Label
     Friend WithEvents Label13 As Label
@@ -1222,4 +1224,5 @@ Partial Class frmVentas
     Friend WithEvents txtMontoManoObra As RichTextBox
     Friend WithEvents Label15 As Label
     Friend WithEvents Label24 As Label
+    Public Property ReportViewer1 As Telerik.ReportViewer.WinForms.ReportViewer
 End Class
