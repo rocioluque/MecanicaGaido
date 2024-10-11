@@ -20,6 +20,7 @@ Partial Class RptVentas
         Dim FormattingRule14 As Telerik.Reporting.Drawing.FormattingRule = New Telerik.Reporting.Drawing.FormattingRule()
         Dim FormattingRule15 As Telerik.Reporting.Drawing.FormattingRule = New Telerik.Reporting.Drawing.FormattingRule()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RptVentas))
+        Dim FormattingRule16 As Telerik.Reporting.Drawing.FormattingRule = New Telerik.Reporting.Drawing.FormattingRule()
         Dim ReportParameter1 As Telerik.Reporting.ReportParameter = New Telerik.Reporting.ReportParameter()
         Dim StyleRule1 As Telerik.Reporting.Drawing.StyleRule = New Telerik.Reporting.Drawing.StyleRule()
         Me.detail = New Telerik.Reporting.DetailSection()
@@ -85,7 +86,6 @@ Partial Class RptVentas
         Me.Shape11 = New Telerik.Reporting.Shape()
         Me.Shape14 = New Telerik.Reporting.Shape()
         Me.Shape2 = New Telerik.Reporting.Shape()
-        Me.TextBox40 = New Telerik.Reporting.TextBox()
         Me.TextBox64 = New Telerik.Reporting.TextBox()
         Me.PictureBox1 = New Telerik.Reporting.PictureBox()
         Me.PageFooterSection1 = New Telerik.Reporting.PageFooterSection()
@@ -96,6 +96,17 @@ Partial Class RptVentas
         Me.TextBox6 = New Telerik.Reporting.TextBox()
         Me.Shape5 = New Telerik.Reporting.Shape()
         Me.SqlDataSource1 = New Telerik.Reporting.SqlDataSource()
+        Me.TextBox7 = New Telerik.Reporting.TextBox()
+        Me.TextBox8 = New Telerik.Reporting.TextBox()
+        Me.TextBox9 = New Telerik.Reporting.TextBox()
+        Me.TextBox13 = New Telerik.Reporting.TextBox()
+        Me.TextBox18 = New Telerik.Reporting.TextBox()
+        Me.TextBox24 = New Telerik.Reporting.TextBox()
+        Me.TextBox15 = New Telerik.Reporting.TextBox()
+        Me.TextBox23 = New Telerik.Reporting.TextBox()
+        Me.TextBox25 = New Telerik.Reporting.TextBox()
+        Me.TextBox34 = New Telerik.Reporting.TextBox()
+        Me.TextBox38 = New Telerik.Reporting.TextBox()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'detail
@@ -116,7 +127,7 @@ Partial Class RptVentas
         Me.TextBox53.Style.Font.Name = "Arial"
         Me.TextBox53.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Pixel(8.0R)
         Me.TextBox53.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right
-        Me.TextBox53.Value = "= Fields.ID_Item"
+        Me.TextBox53.Value = "= Fields.ID_Repuesto"
         '
         'TextBox54
         '
@@ -140,7 +151,7 @@ Partial Class RptVentas
         Me.TextBox56.Style.Font.Name = "Arial"
         Me.TextBox56.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Pixel(8.0R)
         Me.TextBox56.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right
-        Me.TextBox56.Value = "= Fields.PrecioUnitario"
+        Me.TextBox56.Value = "= Fields.PrecioVenta"
         '
         'TextBox36
         '
@@ -198,12 +209,12 @@ Partial Class RptVentas
         Me.TextBox72.Style.Font.Name = "Arial"
         Me.TextBox72.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Pixel(8.0R)
         Me.TextBox72.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right
-        Me.TextBox72.Value = "= Fields.Neto"
+        Me.TextBox72.Value = "= Fields.TotalRepuesto"
         '
         'TextBox50
         '
         Me.TextBox50.Format = "{0:N2}"
-        Me.TextBox50.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.000133514404297R), Telerik.Reporting.Drawing.Unit.Cm(3.5390684604644775R))
+        Me.TextBox50.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.000133514404297R), Telerik.Reporting.Drawing.Unit.Cm(4.3390669822692871R))
         Me.TextBox50.Name = "TextBox50"
         Me.TextBox50.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.3074383735656738R), Telerik.Reporting.Drawing.Unit.Cm(0.3602423369884491R))
         Me.TextBox50.Style.Color = System.Drawing.Color.Black
@@ -212,11 +223,11 @@ Partial Class RptVentas
         Me.TextBox50.Style.Font.Name = "Arial"
         Me.TextBox50.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
         Me.TextBox50.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right
-        Me.TextBox50.Value = "= Fields.TotalGeneral"
+        Me.TextBox50.Value = "= Fields.Total"
         '
         'TextBox29
         '
-        Me.TextBox29.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(14.892292976379395R), Telerik.Reporting.Drawing.Unit.Cm(3.1029999256134033R))
+        Me.TextBox29.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(14.881880760192871R), Telerik.Reporting.Drawing.Unit.Cm(3.9029982089996338R))
         Me.TextBox29.Name = "TextBox29"
         Me.TextBox29.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.0999990701675415R), Telerik.Reporting.Drawing.Unit.Cm(0.33944523334503174R))
         Me.TextBox29.Style.Color = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(68, Byte), Integer), CType(CType(68, Byte), Integer))
@@ -229,7 +240,7 @@ Partial Class RptVentas
         '
         'TextBox28
         '
-        Me.TextBox28.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(12.423138618469238R), Telerik.Reporting.Drawing.Unit.Cm(2.6831386089324951R))
+        Me.TextBox28.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(12.423138618469238R), Telerik.Reporting.Drawing.Unit.Cm(3.4831371307373047R))
         Me.TextBox28.Name = "TextBox28"
         Me.TextBox28.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.5643866062164307R), Telerik.Reporting.Drawing.Unit.Cm(0.33944523334503174R))
         Me.TextBox28.Style.Color = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(68, Byte), Integer), CType(CType(68, Byte), Integer))
@@ -242,7 +253,7 @@ Partial Class RptVentas
         '
         'TextBox27
         '
-        Me.TextBox27.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(12.520291328430176R), Telerik.Reporting.Drawing.Unit.Cm(2.2372965812683105R))
+        Me.TextBox27.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(12.520291328430176R), Telerik.Reporting.Drawing.Unit.Cm(3.03729510307312R))
         Me.TextBox27.Name = "TextBox27"
         Me.TextBox27.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.4818804264068604R), Telerik.Reporting.Drawing.Unit.Cm(0.33944523334503174R))
         Me.TextBox27.Style.Color = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(68, Byte), Integer), CType(CType(68, Byte), Integer))
@@ -256,7 +267,7 @@ Partial Class RptVentas
         'TextBox47
         '
         Me.TextBox47.Format = "{0:N2}"
-        Me.TextBox47.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.002372741699219R), Telerik.Reporting.Drawing.Unit.Cm(2.2372965812683105R))
+        Me.TextBox47.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.002372741699219R), Telerik.Reporting.Drawing.Unit.Cm(3.03729510307312R))
         Me.TextBox47.Name = "TextBox47"
         Me.TextBox47.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.3200004100799561R), Telerik.Reporting.Drawing.Unit.Cm(0.33944472670555115R))
         Me.TextBox47.Style.Color = System.Drawing.Color.Black
@@ -265,12 +276,12 @@ Partial Class RptVentas
         Me.TextBox47.Style.Font.Name = "Arial"
         Me.TextBox47.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
         Me.TextBox47.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right
-        Me.TextBox47.Value = "= Fields.TotalNeto"
+        Me.TextBox47.Value = "= Fields.Subtotal"
         '
         'TextBox48
         '
         Me.TextBox48.Format = "{0:N2}"
-        Me.TextBox48.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(15.987571716308594R), Telerik.Reporting.Drawing.Unit.Cm(2.6831386089324951R))
+        Me.TextBox48.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(15.987571716308594R), Telerik.Reporting.Drawing.Unit.Cm(3.4831371307373047R))
         Me.TextBox48.Name = "TextBox48"
         Me.TextBox48.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.3199989795684814R), Telerik.Reporting.Drawing.Unit.Cm(0.33944582939147949R))
         Me.TextBox48.Style.Color = System.Drawing.Color.Black
@@ -279,12 +290,12 @@ Partial Class RptVentas
         Me.TextBox48.Style.Font.Name = "Arial"
         Me.TextBox48.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
         Me.TextBox48.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right
-        Me.TextBox48.Value = "= Fields.TotalOtrosImpuestos"
+        Me.TextBox48.Value = "= Fields.[Otros Impuestos]"
         '
         'TextBox49
         '
         Me.TextBox49.Format = "{0:N2}"
-        Me.TextBox49.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.000133514404297R), Telerik.Reporting.Drawing.Unit.Cm(3.1029999256134033R))
+        Me.TextBox49.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.000133514404297R), Telerik.Reporting.Drawing.Unit.Cm(3.9029982089996338R))
         Me.TextBox49.Name = "TextBox49"
         Me.TextBox49.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.30743670463562R), Telerik.Reporting.Drawing.Unit.Cm(0.33944472670555115R))
         Me.TextBox49.Style.Color = System.Drawing.Color.Black
@@ -293,11 +304,11 @@ Partial Class RptVentas
         Me.TextBox49.Style.Font.Name = "Arial"
         Me.TextBox49.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
         Me.TextBox49.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right
-        Me.TextBox49.Value = "= Fields.TotalIVA"
+        Me.TextBox49.Value = "= Fields.[Monto IVA]"
         '
         'TextBox26
         '
-        Me.TextBox26.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(13.294519424438477R), Telerik.Reporting.Drawing.Unit.Cm(3.5390684604644775R))
+        Me.TextBox26.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(13.294519424438477R), Telerik.Reporting.Drawing.Unit.Cm(4.3390669822692871R))
         Me.TextBox26.Name = "TextBox26"
         Me.TextBox26.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.6999998092651367R), Telerik.Reporting.Drawing.Unit.Cm(0.36024287343025208R))
         Me.TextBox26.Style.BackgroundColor = System.Drawing.Color.White
@@ -340,12 +351,12 @@ Partial Class RptVentas
         Me.TextBox44.Style.Font.Name = "Arial"
         Me.TextBox44.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
         Me.TextBox44.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Top
-        Me.TextBox44.Value = "= Fields.Obs"
+        Me.TextBox44.Value = "= Sum(Fields.TotalRepuesto)"
         '
         'ReportHeaderSection1
         '
         Me.ReportHeaderSection1.Height = Telerik.Reporting.Drawing.Unit.Cm(8.18019962310791R)
-        Me.ReportHeaderSection1.Items.AddRange(New Telerik.Reporting.ReportItemBase() {Me.TextBox21, Me.TextBox14, Me.TextBox11, Me.TextBox20, Me.TextBox22, Me.Shape1, Me.Shape3, Me.TextBox45, Me.TextBox43, Me.TextBox42, Me.TextBox37, Me.TextBox35, Me.TextBox19, Me.TextBox17, Me.TextBox16, Me.TextBox12, Me.TextBox10, Me.Shape8, Me.TextBox1, Me.TextBox46, Me.TextBox55, Me.TextBox59, Me.TextBox60, Me.TextBox61, Me.TextBox62, Me.TextBox4, Me.TextBox5, Me.TextBox31, Me.TextBox32, Me.TextBox33, Me.TextBox51, Me.TextBox52, Me.TextBox66, Me.TextBox67, Me.TextBox68, Me.Shape4, Me.Shape6, Me.Shape9, Me.Shape11, Me.Shape14, Me.Shape2, Me.TextBox40, Me.TextBox64, Me.PictureBox1})
+        Me.ReportHeaderSection1.Items.AddRange(New Telerik.Reporting.ReportItemBase() {Me.TextBox21, Me.TextBox14, Me.TextBox11, Me.TextBox20, Me.TextBox22, Me.Shape1, Me.Shape3, Me.TextBox45, Me.TextBox43, Me.TextBox42, Me.TextBox37, Me.TextBox35, Me.TextBox19, Me.TextBox17, Me.TextBox16, Me.TextBox12, Me.TextBox10, Me.Shape8, Me.TextBox1, Me.TextBox46, Me.TextBox55, Me.TextBox59, Me.TextBox60, Me.TextBox61, Me.TextBox62, Me.TextBox4, Me.TextBox5, Me.TextBox31, Me.TextBox32, Me.TextBox33, Me.TextBox51, Me.TextBox52, Me.TextBox66, Me.TextBox67, Me.TextBox68, Me.Shape4, Me.Shape6, Me.Shape9, Me.Shape11, Me.Shape14, Me.Shape2, Me.TextBox64, Me.PictureBox1, Me.TextBox7, Me.TextBox8, Me.TextBox9, Me.TextBox13, Me.TextBox18, Me.TextBox24, Me.TextBox38})
         Me.ReportHeaderSection1.Name = "ReportHeaderSection1"
         Me.ReportHeaderSection1.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.Solid
         '
@@ -440,14 +451,14 @@ Partial Class RptVentas
         '
         'TextBox45
         '
-        Me.TextBox45.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.2104165554046631R), Telerik.Reporting.Drawing.Unit.Cm(6.09999942779541R))
+        Me.TextBox45.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(2.700200080871582R), Telerik.Reporting.Drawing.Unit.Cm(6.09999942779541R))
         Me.TextBox45.Name = "TextBox45"
-        Me.TextBox45.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.4700019359588623R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox45.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.8998000621795654R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
         Me.TextBox45.Style.Color = System.Drawing.Color.Black
         Me.TextBox45.Style.Font.Bold = False
         Me.TextBox45.Style.Font.Name = "Arial"
         Me.TextBox45.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox45.Value = "= Fields.Condicion"
+        Me.TextBox45.Value = "= Fields.[Detalle Forma de Pago]"
         '
         'TextBox43
         '
@@ -458,18 +469,18 @@ Partial Class RptVentas
         Me.TextBox43.Style.Font.Bold = False
         Me.TextBox43.Style.Font.Name = "Arial"
         Me.TextBox43.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox43.Value = "= Fields.CUIT"
+        Me.TextBox43.Value = "= Fields.ClienteCUIT"
         '
         'TextBox42
         '
-        Me.TextBox42.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.5999999046325684R), Telerik.Reporting.Drawing.Unit.Cm(5.59999942779541R))
+        Me.TextBox42.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(2.3999998569488525R), Telerik.Reporting.Drawing.Unit.Cm(5.59999942779541R))
         Me.TextBox42.Name = "TextBox42"
-        Me.TextBox42.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(5.0R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox42.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(4.1999993324279785R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
         Me.TextBox42.Style.Color = System.Drawing.Color.Black
         Me.TextBox42.Style.Font.Bold = False
         Me.TextBox42.Style.Font.Name = "Arial"
         Me.TextBox42.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox42.Value = "= Fields.CategoriaIva"
+        Me.TextBox42.Value = "= Fields.[Tipo de Venta]"
         '
         'TextBox37
         '
@@ -480,7 +491,7 @@ Partial Class RptVentas
         Me.TextBox37.Style.Font.Bold = False
         Me.TextBox37.Style.Font.Name = "Arial"
         Me.TextBox37.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox37.Value = "= Fields.DomicilioCliente"
+        Me.TextBox37.Value = "= Fields.ClienteDireccion+"" ""+ Fields.ClienteNumero"
         '
         'TextBox35
         '
@@ -491,18 +502,18 @@ Partial Class RptVentas
         Me.TextBox35.Style.Font.Bold = False
         Me.TextBox35.Style.Font.Name = "Arial"
         Me.TextBox35.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox35.Value = "= Fields.RazonSocial"
+        Me.TextBox35.Value = "= Fields.Cliente"
         '
         'TextBox19
         '
         Me.TextBox19.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.2416672557592392R), Telerik.Reporting.Drawing.Unit.Cm(6.09999942779541R))
         Me.TextBox19.Name = "TextBox19"
-        Me.TextBox19.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.9789578914642334R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox19.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.4583330154418945R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
         Me.TextBox19.Style.Color = System.Drawing.Color.Black
         Me.TextBox19.Style.Font.Bold = True
         Me.TextBox19.Style.Font.Name = "Arial"
         Me.TextBox19.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox19.Value = "Condición de Venta:"
+        Me.TextBox19.Value = "Forma de Pago:"
         '
         'TextBox17
         '
@@ -519,12 +530,12 @@ Partial Class RptVentas
         '
         Me.TextBox16.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.2416672557592392R), Telerik.Reporting.Drawing.Unit.Cm(5.59999942779541R))
         Me.TextBox16.Name = "TextBox16"
-        Me.TextBox16.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.358332633972168R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox16.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.0883324146270752R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
         Me.TextBox16.Style.Color = System.Drawing.Color.Black
         Me.TextBox16.Style.Font.Bold = True
         Me.TextBox16.Style.Font.Name = "Arial"
         Me.TextBox16.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox16.Value = "Condición frente al IVA:"
+        Me.TextBox16.Value = "Tipo de Venta:"
         '
         'TextBox12
         '
@@ -712,7 +723,7 @@ Partial Class RptVentas
         Me.TextBox32.Style.Font.Name = "Arial"
         Me.TextBox32.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
         Me.TextBox32.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle
-        Me.TextBox32.Value = "= Fields.FechaVenta.DayOfYear"
+        Me.TextBox32.Value = "= Fields.FechaVenta.Hour"
         '
         'TextBox33
         '
@@ -848,27 +859,16 @@ Partial Class RptVentas
         Me.Shape2.ShapeType = New Telerik.Reporting.Drawing.Shapes.LineShape(Telerik.Reporting.Drawing.Shapes.LineDirection.EW)
         Me.Shape2.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(18.799900054931641R), Telerik.Reporting.Drawing.Unit.Cm(0.13229165971279144R))
         '
-        'TextBox40
-        '
-        Me.TextBox40.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(8.90000057220459R), Telerik.Reporting.Drawing.Unit.Cm(6.0999999046325684R))
-        Me.TextBox40.Name = "TextBox40"
-        Me.TextBox40.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.6385407447814941R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox40.Style.Color = System.Drawing.Color.Black
-        Me.TextBox40.Style.Font.Bold = True
-        Me.TextBox40.Style.Font.Name = "Arial"
-        Me.TextBox40.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox40.Value = "= Fields.Anulacion"
-        '
         'TextBox64
         '
         Me.TextBox64.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(10.77437686920166R), Telerik.Reporting.Drawing.Unit.Cm(4.30019998550415R))
         Me.TextBox64.Name = "TextBox64"
-        Me.TextBox64.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.0999999046325684R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox64.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.5256234407424927R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
         Me.TextBox64.Style.Color = System.Drawing.Color.Black
         Me.TextBox64.Style.Font.Bold = True
         Me.TextBox64.Style.Font.Name = "Arial"
         Me.TextBox64.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox64.Value = "CBU: 011321654987456131237"
+        Me.TextBox64.Value = "Atendió:"
         '
         'PictureBox1
         '
@@ -881,8 +881,8 @@ Partial Class RptVentas
         '
         'PageFooterSection1
         '
-        Me.PageFooterSection1.Height = Telerik.Reporting.Drawing.Unit.Cm(4.4372963905334473R)
-        Me.PageFooterSection1.Items.AddRange(New Telerik.Reporting.ReportItemBase() {Me.TextBox47, Me.TextBox28, Me.TextBox48, Me.TextBox29, Me.TextBox49, Me.TextBox26, Me.TextBox50, Me.TextBox27, Me.Shape10, Me.TextBox74, Me.TextBox2, Me.TextBox3, Me.TextBox6, Me.Shape5})
+        Me.PageFooterSection1.Height = Telerik.Reporting.Drawing.Unit.Cm(5.3372950553894043R)
+        Me.PageFooterSection1.Items.AddRange(New Telerik.Reporting.ReportItemBase() {Me.TextBox47, Me.TextBox28, Me.TextBox48, Me.TextBox29, Me.TextBox49, Me.TextBox26, Me.TextBox50, Me.TextBox27, Me.Shape10, Me.TextBox74, Me.TextBox2, Me.TextBox3, Me.TextBox6, Me.Shape5, Me.TextBox15, Me.TextBox23, Me.TextBox25, Me.TextBox34})
         Me.PageFooterSection1.Name = "PageFooterSection1"
         Me.PageFooterSection1.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.Solid
         '
@@ -915,7 +915,7 @@ Partial Class RptVentas
         Me.TextBox2.Style.Font.Name = "Arial"
         Me.TextBox2.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
         Me.TextBox2.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Top
-        Me.TextBox2.Value = "= Fields.Obs"
+        Me.TextBox2.Value = "= Fields.[Serv Terceros]"
         '
         'TextBox3
         '
@@ -927,7 +927,7 @@ Partial Class RptVentas
         Me.TextBox3.Style.Font.Name = "Arial"
         Me.TextBox3.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
         Me.TextBox3.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Top
-        Me.TextBox3.Value = "= Fields.Obs"
+        Me.TextBox3.Value = "= Fields.[Mano de Obra]"
         '
         'TextBox6
         '
@@ -952,9 +952,145 @@ Partial Class RptVentas
         '
         Me.SqlDataSource1.ConnectionString = "Mecanica_Gaido_frm.My.MySettings.PIN_GRUPO31ConnectionString"
         Me.SqlDataSource1.Name = "SqlDataSource1"
-        Me.SqlDataSource1.Parameters.AddRange(New Telerik.Reporting.SqlDataSourceParameter() {New Telerik.Reporting.SqlDataSourceParameter("@ID_Venta", System.Data.DbType.Int32, Nothing)})
+        Me.SqlDataSource1.Parameters.AddRange(New Telerik.Reporting.SqlDataSourceParameter() {New Telerik.Reporting.SqlDataSourceParameter("@ID_Venta", System.Data.DbType.Int32, "=Parameters.ID_Venta.Value")})
         Me.SqlDataSource1.SelectCommand = "dbo.Consultar_VentaFactura_ID"
         Me.SqlDataSource1.SelectCommandType = Telerik.Reporting.SqlDataSourceCommandType.StoredProcedure
+        '
+        'TextBox7
+        '
+        Me.TextBox7.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.2416672557592392R), Telerik.Reporting.Drawing.Unit.Cm(6.6000003814697266R))
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.6581325531005859R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox7.Style.Color = System.Drawing.Color.Black
+        Me.TextBox7.Style.Font.Bold = True
+        Me.TextBox7.Style.Font.Name = "Arial"
+        Me.TextBox7.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox7.Value = "Forma de Entrega:"
+        '
+        'TextBox8
+        '
+        Me.TextBox8.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(2.9000000953674316R), Telerik.Reporting.Drawing.Unit.Cm(6.6000003814697266R))
+        Me.TextBox8.Name = "TextBox8"
+        Me.TextBox8.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.702092170715332R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox8.Style.Color = System.Drawing.Color.Black
+        Me.TextBox8.Style.Font.Bold = False
+        Me.TextBox8.Style.Font.Name = "Arial"
+        Me.TextBox8.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox8.Value = "= Fields.[Forma de Entrega]"
+        '
+        'TextBox9
+        '
+        Me.TextBox9.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(8.90000057220459R), Telerik.Reporting.Drawing.Unit.Cm(6.0999999046325684R))
+        Me.TextBox9.Name = "TextBox9"
+        Me.TextBox9.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.8118745088577271R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox9.Style.Color = System.Drawing.Color.Black
+        Me.TextBox9.Style.Font.Bold = True
+        Me.TextBox9.Style.Font.Name = "Arial"
+        Me.TextBox9.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox9.Value = "Localidad:"
+        '
+        'TextBox13
+        '
+        Me.TextBox13.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(10.752083778381348R), Telerik.Reporting.Drawing.Unit.Cm(6.0999999046325684R))
+        Me.TextBox13.Name = "TextBox13"
+        Me.TextBox13.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.5479159355163574R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox13.Style.Color = System.Drawing.Color.Black
+        Me.TextBox13.Style.Font.Bold = False
+        Me.TextBox13.Style.Font.Name = "Arial"
+        Me.TextBox13.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox13.Value = "= Fields.ClienteLocalidad"
+        '
+        'TextBox18
+        '
+        Me.TextBox18.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(8.90000057220459R), Telerik.Reporting.Drawing.Unit.Cm(6.6000003814697266R))
+        Me.TextBox18.Name = "TextBox18"
+        Me.TextBox18.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.8118745088577271R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox18.Style.Color = System.Drawing.Color.Black
+        Me.TextBox18.Style.Font.Bold = True
+        Me.TextBox18.Style.Font.Name = "Arial"
+        Me.TextBox18.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox18.Value = "Teléfono:"
+        '
+        'TextBox24
+        '
+        Me.TextBox24.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(10.752082824707031R), Telerik.Reporting.Drawing.Unit.Cm(6.6000003814697266R))
+        Me.TextBox24.Name = "TextBox24"
+        Me.TextBox24.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.5554885864257812R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox24.Style.Color = System.Drawing.Color.Black
+        Me.TextBox24.Style.Font.Bold = False
+        Me.TextBox24.Style.Font.Name = "Arial"
+        Me.TextBox24.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox24.Value = "= Fields.ClienteTelefono"
+        '
+        'TextBox15
+        '
+        Me.TextBox15.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(12.5R), Telerik.Reporting.Drawing.Unit.Cm(2.5372955799102783R))
+        Me.TextBox15.Name = "TextBox15"
+        Me.TextBox15.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.4818804264068604R), Telerik.Reporting.Drawing.Unit.Cm(0.33944523334503174R))
+        Me.TextBox15.Style.Color = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(68, Byte), Integer), CType(CType(68, Byte), Integer))
+        Me.TextBox15.Style.Font.Bold = True
+        Me.TextBox15.Style.Font.Italic = False
+        Me.TextBox15.Style.Font.Name = "Arial"
+        Me.TextBox15.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox15.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right
+        Me.TextBox15.Value = "Descuento/Recargo:"
+        '
+        'TextBox23
+        '
+        Me.TextBox23.Format = "{0:N2}"
+        Me.TextBox23.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(15.966042518615723R), Telerik.Reporting.Drawing.Unit.Cm(2.5372955799102783R))
+        Me.TextBox23.Name = "TextBox23"
+        Me.TextBox23.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.3200004100799561R), Telerik.Reporting.Drawing.Unit.Cm(0.33944472670555115R))
+        Me.TextBox23.Style.Color = System.Drawing.Color.Black
+        Me.TextBox23.Style.Font.Bold = True
+        Me.TextBox23.Style.Font.Italic = False
+        Me.TextBox23.Style.Font.Name = "Arial"
+        Me.TextBox23.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox23.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right
+        Me.TextBox23.Value = "= Fields.[Descuento/Recargo]"
+        '
+        'TextBox25
+        '
+        Me.TextBox25.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(12.600199699401856R), Telerik.Reporting.Drawing.Unit.Cm(3.9029982089996338R))
+        Me.TextBox25.Name = "TextBox25"
+        Me.TextBox25.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.0999990701675415R), Telerik.Reporting.Drawing.Unit.Cm(0.33944523334503174R))
+        Me.TextBox25.Style.Color = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(68, Byte), Integer), CType(CType(68, Byte), Integer))
+        Me.TextBox25.Style.Font.Bold = True
+        Me.TextBox25.Style.Font.Italic = False
+        Me.TextBox25.Style.Font.Name = "Arial"
+        Me.TextBox25.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox25.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right
+        Me.TextBox25.Value = "IVA: %"
+        '
+        'TextBox34
+        '
+        Me.TextBox34.Format = "{0:P2}"
+        Me.TextBox34.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(13.700399398803711R), Telerik.Reporting.Drawing.Unit.Cm(3.9029982089996338R))
+        Me.TextBox34.Name = "TextBox34"
+        Me.TextBox34.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.181280255317688R), Telerik.Reporting.Drawing.Unit.Cm(0.33944472670555115R))
+        Me.TextBox34.Style.Color = System.Drawing.Color.Black
+        Me.TextBox34.Style.Font.Bold = True
+        Me.TextBox34.Style.Font.Italic = False
+        Me.TextBox34.Style.Font.Name = "Arial"
+        Me.TextBox34.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox34.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right
+        Me.TextBox34.Value = "= Fields.[IVA%]/100"
+        '
+        'TextBox38
+        '
+        FormattingRule16.Filters.Add(New Telerik.Reporting.Filter("=Fields.Letra", Telerik.Reporting.FilterOperator.Equal, "R"))
+        FormattingRule16.Style.Color = System.Drawing.Color.White
+        Me.TextBox38.ConditionalFormatting.AddRange(New Telerik.Reporting.Drawing.FormattingRule() {FormattingRule16})
+        Me.TextBox38.Format = "{0:d}"
+        Me.TextBox38.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(12.300200462341309R), Telerik.Reporting.Drawing.Unit.Cm(4.2677083015441895R))
+        Me.TextBox38.Name = "TextBox38"
+        Me.TextBox38.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(5.5998010635375977R), Telerik.Reporting.Drawing.Unit.Cm(0.40000000596046448R))
+        Me.TextBox38.Style.Color = System.Drawing.Color.Black
+        Me.TextBox38.Style.Font.Bold = False
+        Me.TextBox38.Style.Font.Name = "Arial"
+        Me.TextBox38.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox38.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle
+        Me.TextBox38.Value = "= Fields.Vendedor"
         '
         'RptVentas
         '
@@ -965,6 +1101,7 @@ Partial Class RptVentas
         Me.PageSettings.Margins = New Telerik.Reporting.Drawing.MarginsU(Telerik.Reporting.Drawing.Unit.Mm(14.0R), Telerik.Reporting.Drawing.Unit.Mm(8.0R), Telerik.Reporting.Drawing.Unit.Mm(6.0R), Telerik.Reporting.Drawing.Unit.Mm(5.0R))
         Me.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4
         ReportParameter1.Name = "ID_Venta"
+        ReportParameter1.Text = "@ID_Venta"
         ReportParameter1.Type = Telerik.Reporting.ReportParameterType.[Integer]
         Me.ReportParameters.Add(ReportParameter1)
         Me.Style.BackgroundColor = System.Drawing.Color.White
@@ -972,7 +1109,7 @@ Partial Class RptVentas
         StyleRule1.Style.Padding.Left = Telerik.Reporting.Drawing.Unit.Point(2.0R)
         StyleRule1.Style.Padding.Right = Telerik.Reporting.Drawing.Unit.Point(2.0R)
         Me.StyleSheet.AddRange(New Telerik.Reporting.Drawing.StyleRule() {StyleRule1})
-        Me.Width = Telerik.Reporting.Drawing.Unit.Cm(18.80000114440918R)
+        Me.Width = Telerik.Reporting.Drawing.Unit.Cm(19.300199508666992R)
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
@@ -1033,7 +1170,6 @@ Partial Class RptVentas
     Friend WithEvents TextBox72 As Telerik.Reporting.TextBox
     Friend WithEvents PageFooterSection1 As Telerik.Reporting.PageFooterSection
     Friend WithEvents Shape2 As Telerik.Reporting.Shape
-    Friend WithEvents TextBox40 As Telerik.Reporting.TextBox
     Friend WithEvents TextBox64 As Telerik.Reporting.TextBox
     Friend WithEvents PictureBox1 As Telerik.Reporting.PictureBox
     Friend WithEvents Shape10 As Telerik.Reporting.Shape
@@ -1050,4 +1186,15 @@ Partial Class RptVentas
     Friend WithEvents TextBox3 As Telerik.Reporting.TextBox
     Friend WithEvents TextBox6 As Telerik.Reporting.TextBox
     Friend WithEvents Shape5 As Telerik.Reporting.Shape
+    Friend WithEvents TextBox7 As Telerik.Reporting.TextBox
+    Friend WithEvents TextBox8 As Telerik.Reporting.TextBox
+    Friend WithEvents TextBox9 As Telerik.Reporting.TextBox
+    Friend WithEvents TextBox13 As Telerik.Reporting.TextBox
+    Friend WithEvents TextBox18 As Telerik.Reporting.TextBox
+    Friend WithEvents TextBox24 As Telerik.Reporting.TextBox
+    Friend WithEvents TextBox38 As Telerik.Reporting.TextBox
+    Friend WithEvents TextBox15 As Telerik.Reporting.TextBox
+    Friend WithEvents TextBox23 As Telerik.Reporting.TextBox
+    Friend WithEvents TextBox25 As Telerik.Reporting.TextBox
+    Friend WithEvents TextBox34 As Telerik.Reporting.TextBox
 End Class
