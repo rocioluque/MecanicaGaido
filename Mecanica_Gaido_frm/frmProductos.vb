@@ -273,7 +273,6 @@ Public Class frmProductos
                 Cargar_Grilla()
                 Cargar_Combo_Original()
 
-
             Catch ex As Exception
                 MsgBox("Error al agregar el producto: " & ex.Message, vbCritical, "Error")
             End Try
@@ -301,10 +300,10 @@ Public Class frmProductos
                    precioCompra, utilidad, precioLista, dtpFechaCompra.Value, dtpFechaVenta.Value)
 
                 MsgBox("Producto modificado correctamente.", vbInformation, "Información")
+
                 limpiar()
                 Cargar_Grilla()
                 Cargar_Combo_Original()
-
                 btnModificar.Enabled = False
                 btnAceptar.Enabled = True
             Catch ex As Exception

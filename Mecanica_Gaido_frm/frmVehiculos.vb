@@ -37,7 +37,6 @@ Public Class frmVehiculos
 
 #Region "Procedimientos"
     Private Sub frmVehiculos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Limpiar()
         For Each ctrl As Control In Me.Controls
             If TypeOf ctrl Is TextBox OrElse TypeOf ctrl Is RichTextBox Then
                 AddHandler ctrl.Enter, AddressOf Control_Enter
@@ -48,10 +47,9 @@ Public Class frmVehiculos
         Cargar_Combo_TipoVehiculo()
         Cargar_Combo_Personas()
         Cargar_Grilla()
-
+        Limpiar()
         btnModificar.Enabled = False
         txtBuscar.Visible = False
-        txtID.Enabled = False
         AplicarTema(Me)
 
         ' Manejar eventos para concatenar datos
@@ -64,20 +62,24 @@ Public Class frmVehiculos
 
     Public Sub Limpiar()
         txtID.Clear()
+        txtBuscar.Clear()
         txtNombre.Clear()
         txtModelo.Clear()
         txtHorasTrabajadas.Clear()
         txtNumChasis.Clear()
         txtNumMotor.Clear()
         txtMatricula.Clear()
-        txtNota.Clear()
         txtAñoFabricación.Clear()
+        txtNota.Clear()
         cboTipoVehiculo.SelectedIndex = -1
-        cboMarca.SelectedIndex = -1
         cboPersona.SelectedIndex = -1
+        cboMarca.SelectedIndex = -1
         chkEstado.Checked = False
-        txtBuscar.Clear()
         txtBuscar.Visible = False
+        lblBuscar.Visible = False
+        chkEstado.Visible = False
+        btnAceptar.Enabled = True
+        btnModificar.Enabled = False
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -127,6 +129,8 @@ Public Class frmVehiculos
             Dim datoleido As SqlDataReader = o_vehiculo.Consultar_VehiculoPorID(idVehiculo)
 
             If datoleido.Read() Then
+                chkEstado.Visible = True
+
                 txtID.Text = datoleido("N° Vehículo").ToString()
                 cboPersona.SelectedValue = datoleido("Dueño").ToString
                 txtNombre.Text = datoleido("Vehículo").ToString()
@@ -167,6 +171,10 @@ Public Class frmVehiculos
                 MsgBox("El ID del vehículo no puede ser nulo.", vbCritical, "Error")
             End If
         End If
+        txtBuscar.Clear()
+        lblBuscar.Visible = False
+        txtBuscar.Visible = False
+        btnAceptar.Enabled = False
     End Sub
 #End Region
 
@@ -176,24 +184,16 @@ Public Class frmVehiculos
             txtModelo.Text <> Nothing And txtNumMotor.Text <> Nothing Then
 
             Try
-                Dim idVehiculo As Integer = o_vehiculo.Agregar_Vehiculo(CInt(cboTipoVehiculo.SelectedValue),
-                                                                        CInt(cboMarca.SelectedValue),
-                                                                        txtNombre.Text, txtModelo.Text,
-                                                                        txtHorasTrabajadas.Text,
-                                                                        txtNumChasis.Text,
-                                                                        txtNumMotor.Text,
-                                                                        txtMatricula.Text,
-                                                                        txtAñoFabricación.Text,
-                                                                        txtNota.Text,
-                                                                        chkEstado.Checked)
+                Dim idVehiculo As Integer = o_vehiculo.Agregar_Vehiculo(CInt(cboTipoVehiculo.SelectedValue), CInt(cboMarca.SelectedValue),
+                                txtNombre.Text, txtModelo.Text, txtHorasTrabajadas.Text, txtNumChasis.Text, txtNumMotor.Text,
+                                txtMatricula.Text, txtAñoFabricación.Text, txtNota.Text, chkEstado.Checked)
 
-                o_vehiculo.Agregar_VehiculoXPersona(CInt(cboPersona.SelectedValue),
-                                                    idVehiculo,
-                                                    chkEstado.Checked)
+                o_vehiculo.Agregar_VehiculoXPersona(CInt(cboPersona.SelectedValue), idVehiculo, chkEstado.Checked)
 
                 MsgBox("Vehículo agregado correctamente.", vbInformation, "Información")
                 Limpiar()
                 Cargar_Grilla()
+
                 If vengoDeReparaciones Then
                     NavegacionEntreForms.combopersonacargado = True
                     frmMenuPrincipal.btnOrdenReparacion.PerformClick()
@@ -205,7 +205,6 @@ Public Class frmVehiculos
                 NavegacionEntreForms.persona = 0
                 NavegacionEntreForms.vehiculo = 0
                 NavegacionEntreForms.vengoDeReparaciones = False
-
 
             Catch ex As Exception
                 MsgBox("Error al agregar el vehículo: " & ex.Message, vbCritical, "Error")
@@ -228,15 +227,71 @@ Public Class frmVehiculos
                 o_vehiculo.Modificar_VehiculoXPersona(VehiculoPersona, CInt(cboPersona.SelectedValue), CInt(txtID.Text), chkEstado.Checked)
 
                 MsgBox("Vehículo modificado correctamente.", vbInformation, "Información")
-                Limpiar()
 
+                Limpiar()
                 Cargar_Grilla()
+                btnModificar.Enabled = False
+                btnAceptar.Enabled = True
             Catch ex As Exception
                 MsgBox("Error al modificar el vehículo: " & ex.Message, vbCritical, "Error")
             End Try
         Else
             MsgBox("Complete los datos correspondientes.", vbInformation, "Error")
         End If
+    End Sub
+#End Region
+
+#Region "Buscar"
+    Private Sub Filtrar_Grilla()
+        Try
+            Dim conexion As SqlConnection
+            Dim comando As New SqlCommand
+
+            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
+            conexion.Open()
+
+            comando.Connection = conexion
+            comando.CommandType = CommandType.StoredProcedure
+            comando.CommandText = "Cargar_Grilla_Vehiculo"
+
+            Dim datadapter As New SqlDataAdapter(comando)
+            Dim oDs As New DataSet
+            datadapter.Fill(oDs)
+
+            If oDs.Tables(0).Rows.Count > 0 Then
+                Dim dt As DataTable = oDs.Tables(0)
+                Dim filtro As String = txtBuscar.Text.Trim()
+
+                If Not String.IsNullOrEmpty(filtro) Then
+                    Dim dv As New DataView(dt)
+                    dv.RowFilter = String.Format(
+                    "CONVERT([N° Vehículo], 'System.String') LIKE '%{0}%' OR Dueño LIKE '%{0}%' OR [Vehículo] LIKE '%{0}%' OR [N° Chasis] LIKE '%{0}%'", filtro)
+                    grdVehiculo.DataSource = dv
+                Else
+                    grdVehiculo.DataSource = dt
+                End If
+
+                grdVehiculo.Refresh()
+            Else
+                MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
+            End If
+
+            oDs = Nothing
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox("Error al filtrar la grilla: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    Private Sub txtBuscar_TextChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
+        Filtrar_Grilla()
+    End Sub
+
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        txtBuscar.Visible = True
+        lblBuscar.Visible = True
+        txtBuscar.Clear()
+        txtBuscar.Focus()
     End Sub
 #End Region
 
@@ -311,12 +366,9 @@ Public Class frmVehiculos
 #Region "Marca"
     Private Sub btnAgregarMarca_Click(sender As Object, e As EventArgs) Handles btnAgregarMarca.Click
         Dim frm As New frmAgregarMarca()
-
-        'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
         If frm.ShowDialog() = DialogResult.OK Then
             Cargar_Combo_Marcas()
 
-            ' Buscar y seleccionar la nueva marca en el ComboBox
             Dim nuevaMarcaVehiculo As String = frm.NuevaMarcaVehiculoNombre
             For Each item As DataRowView In cboMarca.Items
                 If item("Nombre").ToString() = nuevaMarcaVehiculo Then
@@ -332,7 +384,6 @@ Public Class frmVehiculos
     Private Sub btnAgregarTipoVehiculo_Click(sender As Object, e As EventArgs) Handles btnAgregarTipoVehiculo.Click
         Dim frm As New frmAgregarTipoVehiculo()
 
-        'Comprueba que si se cerró el modal, se cargue el combo con los nuevos datos
         If frm.ShowDialog() = DialogResult.OK Then
             Cargar_Combo_TipoVehiculo()
 
@@ -348,10 +399,8 @@ Public Class frmVehiculos
     End Sub
 
     Private Sub cboTipoVehiculo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTipoVehiculo.SelectedIndexChanged
-        ' Actualizar el nombre concatenado
         ActualizarNombre(sender, e)
     End Sub
-
 #End Region
 
 #Region "Css trucho"
@@ -367,7 +416,6 @@ Public Class frmVehiculos
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
-
 
     Private Sub PanelIdentificacionVehiculo_Paint(sender As Object, e As PaintEventArgs) Handles PanelIdentificacionVehiculo.Paint
         ' Configurar los colores y el grosor del borde
@@ -393,70 +441,6 @@ Public Class frmVehiculos
             Dim rect As New Rectangle(0, 0, PanelNotas.Width - 1, PanelNotas.Height - 1)
             e.Graphics.DrawRectangle(pen, rect)
         End Using
-    End Sub
-
-#End Region
-
-#Region "Buscar"
-    Private Sub Filtrar_Grilla()
-        Try
-            Dim conexion As SqlConnection
-            Dim comando As New SqlCommand
-
-            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
-            conexion.Open()
-
-            comando.Connection = conexion
-            comando.CommandType = CommandType.StoredProcedure
-            comando.CommandText = "Cargar_Grilla_Vehiculo"
-
-            Dim datadapter As New SqlDataAdapter(comando)
-            Dim oDs As New DataSet
-            datadapter.Fill(oDs)
-
-            ' Filtrar por nombre o apellido
-            If oDs.Tables(0).Rows.Count > 0 Then
-                Dim dt As DataTable = oDs.Tables(0)
-                Dim filtro As String = txtBuscar.Text.Trim()
-
-                If Not String.IsNullOrEmpty(filtro) Then
-                    Dim dv As New DataView(dt)
-                    dv.RowFilter = String.Format(
-                    "CONVERT([N° Vehículo], 'System.String') LIKE '%{0}%' OR Dueño LIKE '%{0}%' OR [Vehículo] LIKE '%{0}%' OR [N° Chasis] LIKE '%{0}%'", filtro)
-                    grdVehiculo.DataSource = dv
-                Else
-                    grdVehiculo.DataSource = dt
-                End If
-
-                grdVehiculo.Refresh()
-            Else
-                MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
-            End If
-
-            oDs = Nothing
-            conexion.Close()
-        Catch ex As Exception
-            MsgBox("Error al filtrar la grilla: " & ex.Message, vbCritical, "Error")
-        End Try
-    End Sub
-
-    Private Sub txtBuscar_TextChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
-        Filtrar_Grilla()
-    End Sub
-
-
-
-#End Region
-
-#Region "validaciones"
-    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
-        txtBuscar.Visible = True
-    End Sub
-
-    Private Sub grdVehiculo_SelectionChanged(sender As Object, e As EventArgs) Handles grdVehiculo.SelectionChanged
-        If String.IsNullOrWhiteSpace(txtBuscar.Text) Then
-            txtBuscar.Visible = False
-        End If
     End Sub
 #End Region
 
