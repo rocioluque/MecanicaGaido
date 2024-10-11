@@ -362,7 +362,8 @@ Public Class AD_Ventas
         End Using
     End Function
 
-    Public Function AgregarVentaConDetalleOR(fechaVenta As Date,
+    Public Function AgregarVentaConDetalleOR(Nro_Orden As Integer,
+                                            fechaVenta As Date,
                                       nroComprobante As String,
                                       idPersona As Integer,
                                       vendedor As String,
@@ -387,6 +388,7 @@ Public Class AD_Ventas
                 command.CommandType = CommandType.StoredProcedure
 
                 ' Parámetros para la tabla de ventas
+                command.Parameters.AddWithValue("@idOrdenRep", Nro_Orden)
                 command.Parameters.AddWithValue("@FechaVenta", fechaVenta)
                 command.Parameters.AddWithValue("@NroComprobante", nroComprobante)
                 command.Parameters.AddWithValue("@ID_Persona", idPersona)
