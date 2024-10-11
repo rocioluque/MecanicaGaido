@@ -67,9 +67,9 @@ Public Class frmVentas
                     grdVentas.Rows.Add(row("ID"),
                                        row("Descripcion"),
                                        row("Diario"),
-                                       row("Cantidad"),
-                                       row("Precio"),
-                                       row("Total"))
+                                       Convert.ToDecimal(row("Cantidad")),
+                                       Convert.ToDecimal(row("Precio")),
+                                       Convert.ToDecimal(row("Total")))
                 Next
             End If
             ActualizarMontoTotal()
@@ -101,7 +101,8 @@ Public Class frmVentas
         txtNumComprobante.Text = oVenta.ObtenerNroComprobante
         txtNumComprobante.Enabled = False
         btnModificar.Enabled = False
-
+        chkEstado.Checked = True
+        chkEstado.Visible = False
     End Sub
 
 
@@ -109,6 +110,8 @@ Public Class frmVentas
         txtID.Clear()
         dtpFechaVenta.Value = Date.Today
         txtNumComprobante.Clear()
+        txtMontoManoObra.Text = Convert.ToDecimal(0)
+        txtMontoServ3.Text = Convert.ToDecimal(0)
         txtSubtotal.Text = Convert.ToDecimal(0)
         txtIVA.Text = Convert.ToDecimal(21)
         txtIvaMonto.Text = Convert.ToDecimal(0)
@@ -123,17 +126,21 @@ Public Class frmVentas
         cboFormaPago.SelectedIndex = -1
         rbtRecargo.Checked = False
         rbtDescuento.Checked = False
-        chkEstado.Checked = False
+        chkEstado.Checked = True
+        chkEstado.Visible = False
         grdVentas.Rows.Clear()
+        btnAceptar.Enabled = True
+        btnModificar.Enabled = False
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        grdVentas.Rows.Clear()
         limpiar()
         txtVendedor.Text = UsuarioActivo.nombre_empleado
         Dim oVenta As New AD_Ventas
         txtNumComprobante.Text = oVenta.ObtenerNroComprobante
         txtNumComprobante.Enabled = False
-        btnModificar.Enabled = False
+
 
         NavegacionEntreForms.vengoDeReparaciones = False
         NavegacionEntreForms.persona = 0
@@ -194,7 +201,7 @@ Public Class frmVentas
                 cboFormaPago.DataSource = tabla
                 cboFormaPago.DisplayMember = "Nombre"
                 cboFormaPago.ValueMember = "ID_FormaPago"
-                cboFormaPago.SelectedValue = -1
+                cboFormaPago.SelectedValue = 5
             Else
                 MsgBox("No se encontraron Fromas de Pago.", vbInformation, "Información")
             End If
@@ -212,7 +219,7 @@ Public Class frmVentas
                 cboDetalleFormaPago.DataSource = tabla
                 cboDetalleFormaPago.DisplayMember = "Nombre"
                 cboDetalleFormaPago.ValueMember = "ID_DetalleFormaPago"
-                cboDetalleFormaPago.SelectedIndex = -1
+                cboDetalleFormaPago.SelectedValue = 20
             Else
                 MsgBox("No se encontraron detalles para la forma de pago seleccionada.", vbInformation, "Información")
             End If
@@ -372,6 +379,8 @@ Public Class frmVentas
     Private Sub PonerDecimales()
         txtIVA.Text = Convert.ToDecimal(txtIVA.Text).ToString("N2")
         txtIvaMonto.Text = Convert.ToDecimal(txtIvaMonto.Text).ToString("N2")
+        txtMontoServ3.Text = Convert.ToDecimal(txtMontoServ3.Text).ToString("N2")
+        txtMontoManoObra.Text = Convert.ToDecimal(txtMontoManoObra.Text).ToString("N2")
         txtOtrosImpuestos.Text = Convert.ToDecimal(txtOtrosImpuestos.Text).ToString("N2")
         txtSubtotal.Text = Convert.ToDecimal(txtSubtotal.Text).ToString("N2")
         txtTotal.Text = Convert.ToDecimal(txtTotal.Text).ToString("N2")
@@ -380,16 +389,19 @@ Public Class frmVentas
     End Sub
 
     Private Sub CalcularTotalCompra()
+        ActualizarMontoTotal()
         txtTotal.Text = Convert.ToDecimal(CDec(txtOtrosImpuestos.Text) + CDec(txtSubtotal.Text) + CDec(txtIvaMonto.Text) + CDec(txtMontoDtoRecargo.Text)).ToString("N2")
     End Sub
 
     Private Sub rbtRecargo_CheckedChanged(sender As Object, e As EventArgs) Handles rbtRecargo.CheckedChanged
+        ActualizarMontoTotal()
         PonerDecimales()
         Calculo_DtoRecargo()
         CalcularTotalCompra()
     End Sub
 
     Private Sub rbtDescuento_CheckedChanged(sender As Object, e As EventArgs) Handles rbtDescuento.CheckedChanged
+        ActualizarMontoTotal()
         PonerDecimales()
         Calculo_DtoRecargo()
         CalcularTotalCompra()
@@ -401,26 +413,31 @@ Public Class frmVentas
     End Sub
 
     Private Sub txtOtrosImpuestos_Leave(sender As Object, e As EventArgs) Handles txtOtrosImpuestos.Leave
+        ActualizarMontoTotal()
         PonerDecimales()
         CalcularTotalCompra()
     End Sub
 
     Private Sub txtIvaMonto_TextChanged(sender As Object, e As EventArgs) Handles txtIvaMonto.TextChanged
+        ActualizarMontoTotal()
         PonerDecimales()
         CalcularTotalCompra()
     End Sub
 
     Private Sub txtPorcentaje_Leave(sender As Object, e As EventArgs) Handles txtPorcentaje.Leave
+        ActualizarMontoTotal()
         PonerDecimales()
         CalcularTotalCompra()
     End Sub
 
     Private Sub txtMontoDtoRecargo_Leave(sender As Object, e As EventArgs) Handles txtMontoDtoRecargo.Leave
+        ActualizarMontoTotal()
         PonerDecimales()
         CalcularTotalCompra()
     End Sub
 
     Public Sub Calculo_DtoRecargo()
+
         Dim montoTotal As Decimal = 0
         Dim porcentajeMonto As Decimal = 0
         Dim porcentaje = txtPorcentaje.Text
@@ -449,12 +466,15 @@ Public Class frmVentas
         Dim IvaMonto As Decimal = 0
         Dim iva = txtIVA.Text
 
+        montoTotal = montoTotal + Convert.ToDecimal(txtMontoManoObra.Text) + Convert.ToDecimal(txtMontoServ3.Text)
+
+
         ' Recorre todas las filas de la grilla y suma los valores de la columna Total
         For Each row As DataGridViewRow In grdVentas.Rows
             montoTotal += Convert.ToDecimal(row.Cells("Total").Value)
         Next
 
-        txtSubtotal.Text = montoTotal.ToString("F2") + Convert.ToDecimal(txtMontoManoObra.Text) + Convert.ToDecimal(txtMontoServ3.Text)
+        txtSubtotal.Text = montoTotal.ToString("N2")
 
 
         IvaMonto = ((montoTotal * iva) / 100)
@@ -917,6 +937,8 @@ Public Class frmVentas
             txtVendedor.Text = rowVenta("Vendedor").ToString()
             cboFormaPago.SelectedValue = CInt(rowVenta("ID_FormaPago"))
             cboDetalleFormaPago.SelectedValue = CInt(rowVenta("ID_DetalleFormaPago"))
+            txtMontoManoObra.Text = CDec(rowVenta("Mano de Obra"))
+            txtMontoServ3.Text = CDec(rowVenta("Serv Terceros"))
             txtSubtotal.Text = Convert.ToDecimal(rowVenta("Subtotal")).ToString("N2")
             txtMontoDtoRecargo.Text = Convert.ToDecimal(rowVenta("MontoDtoRecargo")).ToString("N2")
             txtIVA.Text = Convert.ToDecimal(rowVenta("IVA")).ToString("N2")
@@ -963,9 +985,11 @@ Public Class frmVentas
 
             CargarDatosVenta(ID_Venta)
             btnModificar.Enabled = True
+            chkEstado.Visible = True
             lblBusqueda.Visible = False
             txtBusqueda.Text = ""
             txtBusqueda.Visible = False
+            btnAceptar.Enabled = False
 
         End If
     End Sub
@@ -1016,9 +1040,11 @@ Public Class frmVentas
                                                  1,
                                                  detalles)
 
-            MessageBox.Show("Venta modificada con éxito.")
+
             MostrarReporteVenta(txtID.Text)
             Cargar_Grilla_Ventas()
+
+            MessageBox.Show("Venta modificada con éxito.")
             limpiar()
         Catch ex As Exception
             MessageBox.Show("Error al modificar la venta: " & ex.Message)
@@ -1096,6 +1122,8 @@ Public Class frmVentas
             txtCantidadVentas.Text = stockDisponible.ToString("F2")
         End If
     End Sub
+
+
 
 
 

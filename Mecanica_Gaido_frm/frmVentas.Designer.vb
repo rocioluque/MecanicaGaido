@@ -1006,6 +1006,7 @@ Partial Class frmVentas
         '
         'txtSubtotal
         '
+        Me.txtSubtotal.Enabled = False
         Me.txtSubtotal.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSubtotal.Location = New System.Drawing.Point(305, 17)
         Me.txtSubtotal.Name = "txtSubtotal"

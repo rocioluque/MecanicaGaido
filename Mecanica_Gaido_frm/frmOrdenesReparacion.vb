@@ -75,6 +75,7 @@ Public Class frmOrdenesReparacion
         txtID.Clear()
         txtSeñasParticulares.Clear()
         txtMotivoReparacion.Clear()
+
         cboPersonas.SelectedIndex = -1
         CboPersonaServ3.SelectedIndex = -1
         cboVehiculo.SelectedIndex = -1
@@ -976,9 +977,9 @@ Public Class frmOrdenesReparacion
             dt.Rows.Add(row.Cells("ID").Value,
                         row.Cells("Descripcion").Value,
                         row.Cells("Diario").Value,
-                        row.Cells("Cantidad").Value,
-                        row.Cells("Precio").Value,
-                        row.Cells("Precio").Value)
+                        Convert.ToDecimal(row.Cells("Cantidad").Value),
+                        Convert.ToDecimal(row.Cells("Precio").Value),
+                        Convert.ToDecimal(row.Cells("Total").Value))
         Next
 
         NavegacionEntreForms.RepuestosVenta = dt

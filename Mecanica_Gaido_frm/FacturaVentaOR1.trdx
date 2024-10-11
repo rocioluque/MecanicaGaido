@@ -2,7 +2,7 @@
 <Report DataSourceName="sqlDataSource1" Width="8.20000012715658in" Name="SalesOrderDetails" SnapGridSize="0.1in" xmlns="http://schemas.telerik.com/reporting/2012/3.3">
   <Style BackgroundColor="White" />
   <DataSources>
-    <SqlDataSource ConnectionString="PINGRUPO31" SelectCommand="dbo.Consultar_VentaFactura_ID" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+    <SqlDataSource ConnectionString="PINGRUPO31" ProviderName="System.Data.SqlClient" SelectCommand="dbo.Consultar_VentaFactura_ID" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
       <Parameters>
         <SqlDataSourceParameter DbType="Int32" Name="@ID_Venta">
           <Value>
