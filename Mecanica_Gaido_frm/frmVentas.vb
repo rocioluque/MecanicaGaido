@@ -76,7 +76,7 @@ Public Class frmVentas
             ' Restablecer la variable de control
             NavegacionEntreForms.vengoDeReparaciones = False
             NavegacionEntreForms.persona = 0
-            NavegacionEntreForms.Nro_orden = 0
+            
             NavegacionEntreForms.TipoVenta = 1
             NavegacionEntreForms.MontoManoObra = 0
             NavegacionEntreForms.MontoServ3 = 0
