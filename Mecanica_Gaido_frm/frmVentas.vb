@@ -76,7 +76,7 @@ Public Class frmVentas
             ' Restablecer la variable de control
             NavegacionEntreForms.vengoDeReparaciones = False
             NavegacionEntreForms.persona = 0
-            NavegacionEntreForms.Nro_orden = 0
+            
             NavegacionEntreForms.TipoVenta = 1
             NavegacionEntreForms.MontoManoObra = 0
             NavegacionEntreForms.MontoServ3 = 0
@@ -842,24 +842,26 @@ Public Class frmVentas
                                                  1,
                                                  detalles, ID_Venta)
             Else
-                Dim resultado As Boolean = ventaDataAccess.AgregarVentaConDetalleOR(Convert.ToDateTime(dtpFechaVenta.Value),
-                                                    txtNumComprobante.Text,
-                                                    CInt(cboPersona.SelectedValue),
-                                                    Id_Empleado_Login,
-                                                    CInt(cboFormaPago.SelectedValue),
-                                                    CInt(cboDetalleFormaPago.SelectedValue),
-                                                    Decimal.Parse(txtMontoManoObra.Text),
-                                                    Decimal.Parse(txtMontoServ3.Text),
-                                                 Decimal.Parse(txtSubtotal.Text),
-                                                 Decimal.Parse(txtMontoDtoRecargo.Text),
-                                                 Decimal.Parse(txtIVA.Text),
-                                                 Decimal.Parse(txtIvaMonto.Text),
-                                                 Decimal.Parse(txtOtrosImpuestos.Text),
-                                                 Decimal.Parse(txtTotal.Text),
-                                                 CInt(cboTipoVenta.SelectedValue),
-                                                 CInt(cboFormaEntrega.SelectedValue),
-                                                 1,
-                                                 detalles, ID_Venta)
+                Dim resultado As Boolean = ventaDataAccess.AgregarVentaConDetalleOR(Nro_orden,
+                                                                                    Convert.ToDateTime(dtpFechaVenta.Value),
+                                                                                    txtNumComprobante.Text,
+                                                                                    CInt(cboPersona.SelectedValue),
+                                                                                    Id_Empleado_Login,
+                                                                                    CInt(cboFormaPago.SelectedValue),
+                                                                                    CInt(cboDetalleFormaPago.SelectedValue),
+                                                                                    Decimal.Parse(txtMontoManoObra.Text),
+                                                                                    Decimal.Parse(txtMontoServ3.Text),
+                                                                                     Decimal.Parse(txtSubtotal.Text),
+                                                                                     Decimal.Parse(txtMontoDtoRecargo.Text),
+                                                                                     Decimal.Parse(txtIVA.Text),
+                                                                                     Decimal.Parse(txtIvaMonto.Text),
+                                                                                     Decimal.Parse(txtOtrosImpuestos.Text),
+                                                                                     Decimal.Parse(txtTotal.Text),
+                                                                                     CInt(cboTipoVenta.SelectedValue),
+                                                                                     CInt(cboFormaEntrega.SelectedValue),
+                                                                                     1,
+                                                                                     detalles,
+                                                                                     ID_Venta)
             End If
 
 
@@ -871,6 +873,10 @@ Public Class frmVentas
             persona = 0
             vehiculo = 0
             combopersonacargado = False
+            Nro_orden = 0
+            TipoVenta = 1
+            MontoServ3 = 0
+            MontoManoObra = 0
 
 
             MessageBox.Show("Venta registrada con éxito.")
