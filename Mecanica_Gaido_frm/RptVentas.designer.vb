@@ -325,6 +325,7 @@ Partial Class RptVentas
         '
         'TextBox44
         '
+        Me.TextBox44.Format = "{0:N2}"
         Me.TextBox44.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(9.90000057220459R), Telerik.Reporting.Drawing.Unit.Cm(0.1883527934551239R))
         Me.TextBox44.Name = "TextBox44"
         Me.TextBox44.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(8.39999771118164R), Telerik.Reporting.Drawing.Unit.Cm(0.54430055618286133R))
@@ -662,7 +663,7 @@ Partial Class RptVentas
         Me.TextBox32.Style.Font.Name = "Arial"
         Me.TextBox32.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
         Me.TextBox32.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle
-        Me.TextBox32.Value = "= Fields.FechaVenta.DayOfYear"
+        Me.TextBox32.Value = "= Fields.FechaVenta"
         '
         'TextBox33
         '
@@ -1029,7 +1030,7 @@ Partial Class RptVentas
         StyleRule1.Style.Padding.Left = Telerik.Reporting.Drawing.Unit.Point(2.0R)
         StyleRule1.Style.Padding.Right = Telerik.Reporting.Drawing.Unit.Point(2.0R)
         Me.StyleSheet.AddRange(New Telerik.Reporting.Drawing.StyleRule() {StyleRule1})
-        Me.Width = Telerik.Reporting.Drawing.Unit.Cm(19.300199508666992R)
+        Me.Width = Telerik.Reporting.Drawing.Unit.Cm(18.799999237060547R)
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
