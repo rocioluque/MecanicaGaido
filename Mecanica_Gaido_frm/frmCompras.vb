@@ -113,7 +113,7 @@ Public Class frmCompras
             If datoleido.Read() Then
                 chkEstado.Visible = True
 
-                txtID.Text = datoleido("ID_Compra").ToString()
+                txtID.Text = datoleido("N° Compra").ToString()
                 dtpFechaCompra.Value = Convert.ToDateTime(datoleido("FechaCompra"))
                 txtNumComprobante.Text = datoleido("NroComprobante").ToString()
                 cboPersona.SelectedValue = datoleido("ID_Persona").ToString()
