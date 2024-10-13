@@ -5,13 +5,10 @@ Imports System.Configuration
 Imports Comun_Soporte
 Imports Mecanica_Gaido_frm.User32
 
-
-
 Public Class frmVentas
     Dim o_ventas As New AD_Ventas
 
     Dim Id_Empleado_Login As Integer = UsuarioActivo.id_empleado
-    
 
 #Region "Enter para pasar de tabulación"
 
@@ -41,7 +38,6 @@ Public Class frmVentas
     End Sub
 
 #End Region
-
 
 #Region "Procedimientos"
     Private Sub frmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -326,15 +322,10 @@ Public Class frmVentas
             MsgBox("Error al cargar las Ventas: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
-
-
 #End Region
 
 #Region "Agregar / Quitar Productos"
     Private Sub btnAgregarCompra_Click(sender As Object, e As EventArgs) Handles btnAgregarVenta.Click
-
-
-
         Try
             If cboProductoVenta.SelectedValue <> Nothing AndAlso Not String.IsNullOrEmpty(txtCantidadVentas.Text) Then
 
@@ -981,7 +972,7 @@ Public Class frmVentas
     Private Sub grdVentas1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdVentas1.CellContentClick
         If e.RowIndex >= 0 AndAlso e.RowIndex < grdVentas1.Rows.Count Then
             Dim selectedRow As DataGridViewRow = grdVentas1.Rows(e.RowIndex)
-            Dim ID_Venta As Integer = Convert.ToInt32(selectedRow.Cells("ID_Venta").Value)
+            Dim ID_Venta As Integer = Convert.ToInt32(selectedRow.Cells("N° Venta").Value)
 
             CargarDatosVenta(ID_Venta)
             btnModificar.Enabled = True

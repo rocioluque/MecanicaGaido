@@ -1031,6 +1031,8 @@ Partial Class frmVentas
         '
         Me.grdVentas1.AllowUserToAddRows = False
         Me.grdVentas1.AllowUserToDeleteRows = False
+        Me.grdVentas1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.grdVentas1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders
         Me.grdVentas1.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.grdVentas1.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
@@ -1048,7 +1050,7 @@ Partial Class frmVentas
         Me.grdVentas1.ReadOnly = True
         Me.grdVentas1.RowHeadersVisible = False
         Me.grdVentas1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdVentas1.Size = New System.Drawing.Size(1017, 251)
+        Me.grdVentas1.Size = New System.Drawing.Size(876, 251)
         Me.grdVentas1.TabIndex = 144
         '
         'lblBusqueda
