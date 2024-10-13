@@ -921,7 +921,7 @@ Public Class frmVentas
 
             Dim rowVenta As DataRow = oDS.Tables(0).Rows(0)
 
-            txtID.Text = CInt(rowVenta("ID_Venta"))
+            txtID.Text = CInt(rowVenta("N° Venta"))
             dtpFechaVenta.Value = Convert.ToDateTime(rowVenta("FechaVenta"))
             txtNumComprobante.Text = rowVenta("NroComprobante").ToString()
             cboPersona.SelectedValue = CInt(rowVenta("ID_Persona"))
@@ -965,9 +965,6 @@ Public Class frmVentas
             MessageBox.Show("No se encuentran datos para esta venta")
         End If
     End Sub
-
-
-
 
     Private Sub grdVentas1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdVentas1.CellContentClick
         If e.RowIndex >= 0 AndAlso e.RowIndex < grdVentas1.Rows.Count Then
@@ -1113,12 +1110,6 @@ Public Class frmVentas
             txtCantidadVentas.Text = stockDisponible.ToString("F2")
         End If
     End Sub
-
-
-
-
-
-
 #End Region
 
 End Class
