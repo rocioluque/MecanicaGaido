@@ -62,6 +62,7 @@ Public Class frmProductos
         AgregarValidacionATextBox(txtStockDisponible)
         AgregarValidacionATextBox(txtStockReal)
         AgregarValidacionATextBox(txtUtilidad)
+        AgregarValidacionATextBox(txtStockMinimo)
     End Sub
 
     Public Sub limpiar()
@@ -166,6 +167,7 @@ Public Class frmProductos
                 txtCodigoBarra.Text = datoleido("CodBarra").ToString()
                 txtCodFabricante.Text = datoleido("CodFabricante").ToString()
                 cboOrigen.Text = datoleido("Origen").ToString()
+                txtNota.Text = datoleido("Nota").ToString()
                 chkEstado.Checked = Convert.ToBoolean(datoleido("Estado"))
             Else
                 MsgBox("No se encontraron resultados", vbInformation, "Error")
@@ -252,7 +254,7 @@ Public Class frmProductos
 #End Region
 
 #Region "Cargar"
-    Private Sub btnAceptar_Click(sender As Object, e As EventArgs)
+    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         If txtDescripcion.Text <> Nothing And cboMarca.SelectedValue <> Nothing And txtCodFabricante.Text <> Nothing And
             txtUbicacion.Text <> Nothing And txtUtilidad.Text <> Nothing Then
 
