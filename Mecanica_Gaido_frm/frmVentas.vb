@@ -921,7 +921,7 @@ Public Class frmVentas
 
             Dim rowVenta As DataRow = oDS.Tables(0).Rows(0)
 
-            txtID.Text = CInt(rowVenta("N° Venta"))
+            txtID.Text = CInt(rowVenta("ID_Venta"))
             dtpFechaVenta.Value = Convert.ToDateTime(rowVenta("FechaVenta"))
             txtNumComprobante.Text = rowVenta("NroComprobante").ToString()
             cboPersona.SelectedValue = CInt(rowVenta("ID_Persona"))
