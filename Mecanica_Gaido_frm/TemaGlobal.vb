@@ -113,11 +113,11 @@
     End Sub
 
     Private Sub Button_Paint(sender As Object, e As PaintEventArgs)
-        Dim button As Button = DirectCast(sender, Button)
-        Dim borderColor As Color = If(ModoActualOscuro, ModoOscuroBordePanel, ModoClaroBordePanel)
+        'Dim button As Button = DirectCast(sender, Button)
+        'Dim borderColor As Color = If(ModoActualOscuro, ModoOscuroBordePanel, ModoClaroBordePanel)
 
-        ' Dibuja el borde
-        e.Graphics.DrawRectangle(New Pen(borderColor, 2), 0, 0, button.Width - 1, button.Height - 1)
+        '' Dibuja el borde
+        'e.Graphics.DrawRectangle(New Pen(borderColor, 2), 0, 0, button.Width - 1, button.Height - 1)
     End Sub
 
     ' Aplica el tema en todos los formularios abiertos
