@@ -758,23 +758,12 @@ Public Class frmOrdenesReparacion
 
             Try
                 Dim ID_Orden As Integer = ordenReparacionData.Agregar_Orden_Reparacion(Convert.ToInt32(cboVehiculo.SelectedValue),
-                                                                                       txtSeñasParticulares.Text,
-                                                                                       txtMotivoReparacion.Text,
-                                                                                       dtpTurno.Value,
-                                                                                       dtpEntrada.Value,
-                                                                                       dtpSalida.Value,
-                                                                                       cboPersonas.SelectedValue,
-                                                                                       Convert.ToDecimal(txtMontoRepuestos.Text),
-                                                                                       Convert.ToDecimal(txtMontoServ3.Text),
-                                                                                       Convert.ToDecimal(txtMontoManoObra.Text),
-                                                                                       Convert.ToDecimal(txtSubtotal.Text),
-                                                                                       Convert.ToDecimal(txtIVA.Text),
-                                                                                       Convert.ToDecimal(txtMontoIVA.Text),
-                                                                                       Convert.ToDecimal(txtMontoTotalOR.Text),
-                                                                                       Convert.ToBoolean(chkActivo.Checked),
-                                                                                       CboTipoReparacion.SelectedValue,
-                                                                                       CboProgreso.SelectedItem,
-                                                                                       transaction)
+                          txtSeñasParticulares.Text, txtMotivoReparacion.Text, dtpTurno.Value, dtpEntrada.Value,
+                          dtpSalida.Value, cboPersonas.SelectedValue, Convert.ToDecimal(txtMontoRepuestos.Text),
+                          Convert.ToDecimal(txtMontoServ3.Text), Convert.ToDecimal(txtMontoManoObra.Text),
+                          Convert.ToDecimal(txtSubtotal.Text), Convert.ToDecimal(txtIVA.Text),
+                          Convert.ToDecimal(txtMontoIVA.Text), Convert.ToDecimal(txtMontoTotalOR.Text),
+                          Convert.ToBoolean(chkActivo.Checked), CboTipoReparacion.SelectedValue, CboProgreso.SelectedItem, transaction)
 
                 If grdServiciosTerceros.Rows.Count > 0 Then
                     For Each row As DataGridViewRow In grdServiciosTerceros.Rows
@@ -1004,11 +993,9 @@ Public Class frmOrdenesReparacion
     End Sub
 
     Private Sub CalcularTotalOR()
-
         txtSubtotal.Text = Convert.ToDecimal(CDec(txtMontoManoObra.Text) + CDec(txtMontoRepuestos.Text) + CDec(txtMontoServ3.Text)).ToString("N2")
         txtMontoIVA.Text = Convert.ToDecimal(CDec(txtSubtotal.Text) * ((CDec(txtIVA.Text).ToString("N2") / 100))).ToString("n2")
         txtMontoTotalOR.Text = Convert.ToDecimal(CDec(txtSubtotal.Text) + (CDec(txtMontoIVA.Text).ToString("N2"))).ToString("N2")
-
     End Sub
 
     Private Sub txtMontoManoObra_Leave(sender As Object, e As EventArgs) Handles txtMontoManoObra.Leave
@@ -1645,7 +1632,7 @@ Public Class frmOrdenesReparacion
             TablaTerceros.AddCell(SubTotal)
 
             ' Fila 15 Columna 6 VACIA
-            Dim F15C6 As New PdfPCell(New Paragraph(" ", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
+            Dim F15C6 As New PdfPCell(New Paragraph(txtSubtotal.Text, FontFactory.GetFont(FontFactory.HELVETICA, 11)))
             F15C6.Border = PdfPCell.NO_BORDER
             F15C6.BorderWidthRight = 1
             F15C6.BorderWidthBottom = 1
@@ -1663,7 +1650,7 @@ Public Class frmOrdenesReparacion
             TablaTerceros.AddCell(IVA)
 
             ' Fila 16 Columna 6 VACIA
-            Dim F16C6 As New PdfPCell(New Paragraph(" ", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
+            Dim F16C6 As New PdfPCell(New Paragraph(txtMontoIVA.Text, FontFactory.GetFont(FontFactory.HELVETICA, 11)))
             F16C6.Border = PdfPCell.NO_BORDER
             F16C6.BorderWidthRight = 1
             F16C6.BorderWidthBottom = 1
@@ -1946,4 +1933,5 @@ Public Class frmOrdenesReparacion
 
 
 #End Region
+
 End Class
