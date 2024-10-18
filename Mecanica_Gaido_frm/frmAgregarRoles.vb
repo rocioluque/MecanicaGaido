@@ -7,6 +7,16 @@ Public Class frmAgregarRoles
     ' Propiedad para almacenar el nombre del nuevo rol agregado
     Public Property NuevoRolNombre As String
 
+#Region "Procedimientos"
+    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        Me.Close()
+    End Sub
+
+    Private Sub frmAgregarRoles_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AplicarTema(Me)
+    End Sub
+#End Region
+
 #Region "Cargar"
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         If txtRol.Text <> Nothing Then
@@ -32,7 +42,4 @@ Public Class frmAgregarRoles
     End Sub
 #End Region
 
-    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
-        Me.Close()
-    End Sub
 End Class

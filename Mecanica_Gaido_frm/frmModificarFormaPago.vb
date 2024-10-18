@@ -9,6 +9,7 @@ Public Class frmModificarFormaPago
     Private Sub frmModificarFormaPago_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         limpiar()
         Cargar_Grilla()
+        AplicarTema(Me)
     End Sub
 
     Public Sub limpiar()

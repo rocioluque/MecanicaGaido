@@ -7,14 +7,50 @@ Imports System.IO
 Imports iTextSharp.text
 Imports iTextSharp.text.pdf
 
+
 Public Class frmOrdenesReparacion
+
     Dim o_Orden As New AD_OrdenReparacion
+
+#Region "Enter para pasar de tabulación"
+
+    Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
+        If keyData = Keys.Enter Then
+            ' Verifica si el control activo es un Button
+            If TypeOf Me.ActiveControl Is Button Then
+                ' Ejecuta el evento Click del botón
+                Dim button As Button = DirectCast(Me.ActiveControl, Button)
+                button.PerformClick()
+                Return True
+            Else
+                ' Mueve el foco al siguiente control en el orden de tabulación
+                Me.SelectNextControl(Me.ActiveControl, True, True, True, True)
+                Return True
+            End If
+        End If
+        Return MyBase.ProcessCmdKey(msg, keyData)
+    End Function
+
+    Private Sub Control_Enter(sender As Object, e As EventArgs)
+        If TypeOf sender Is TextBox Then
+            CType(sender, TextBox).SelectAll()
+        ElseIf TypeOf sender Is RichTextBox Then
+            CType(sender, RichTextBox).SelectAll()
+        End If
+    End Sub
+
+#End Region
 
 #Region "Procedimientos"
     Private Sub frmOrdenesReparacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Cargar_Combo_Personas()
-        Cargar_Combo_Prestador()
-        Cargar_Combo_Repuestos()
+
+        For Each ctrl As Control In Me.Controls
+            If TypeOf ctrl Is TextBox OrElse TypeOf ctrl Is RichTextBox Then
+                AddHandler ctrl.Enter, AddressOf Control_Enter
+            End If
+        Next
+
+
         If esFiltradoPorGrafico AndAlso Not String.IsNullOrEmpty(estadoParaFiltrar) Then
             Cargar_Grilla_OrdenesP(estadoParaFiltrar)
         Else
@@ -23,6 +59,10 @@ Public Class frmOrdenesReparacion
         Cargar_Combo_TiposReparacion()
         limpiar()
         ponerDecimales()
+        AplicarTema(Me)
+        Cargar_Combo_Personas()
+        Cargar_Combo_Prestador()
+        Cargar_Combo_Repuestos()
     End Sub
 
     Public Sub New(Optional ByVal estadoParaFiltrar As String = "", Optional ByVal esFiltradoPorGrafico As Boolean = False)
@@ -35,6 +75,7 @@ Public Class frmOrdenesReparacion
         txtID.Clear()
         txtSeñasParticulares.Clear()
         txtMotivoReparacion.Clear()
+
         cboPersonas.SelectedIndex = -1
         CboPersonaServ3.SelectedIndex = -1
         cboVehiculo.SelectedIndex = -1
@@ -42,6 +83,8 @@ Public Class frmOrdenesReparacion
         CboTipoReparacion.SelectedIndex = -1
         chkActivo.Checked = True
         chkActivo.Visible = False
+        btnAceptar.Enabled = True
+        btnModificar.Enabled = False
     End Sub
 
     Private Sub limpiarServ3()
@@ -197,7 +240,7 @@ Public Class frmOrdenesReparacion
 #End Region
 
 #Region "Cbo Persona"
-    Private combopersonacargado = False
+    'Private combopersonacargado = False
 
     Private nombrePersona As String
     Private telefonoPersona As String
@@ -214,7 +257,7 @@ Public Class frmOrdenesReparacion
                 cboPersonas.DataSource = tabla
                 cboPersonas.DisplayMember = "Persona"
                 cboPersonas.ValueMember = "ID_Persona"
-                cboPersonas.SelectedIndex = -1
+                cboPersonas.SelectedValue = NavegacionEntreForms.persona
             Else
                 MsgBox("No se encontraron personas.", vbInformation, "Información")
             End If
@@ -226,9 +269,15 @@ Public Class frmOrdenesReparacion
     End Sub
 
     Private Sub cboPersonas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPersonas.SelectedIndexChanged
-        If combopersonacargado AndAlso cboPersonas.SelectedIndex <> -1 Then
+        cboVehiculo.SelectedValue = 0
+        If combopersonacargado AndAlso cboPersonas.SelectedIndex <> 0 Then
             Dim ID_Persona As Integer = Convert.ToInt32(cboPersonas.SelectedValue)
-            Cargar_Combo_Vehiculos(ID_Persona)
+            If cboPersonas.SelectedValue = 0 Then
+                Exit Sub
+            Else
+                Cargar_Combo_Vehiculos(ID_Persona)
+            End If
+
         End If
 
         If cboPersonas.SelectedValue IsNot Nothing Then
@@ -257,7 +306,7 @@ Public Class frmOrdenesReparacion
     Private numMotorVehiculo As String
     Private horasVehiculo As String
 
-    Private Sub Cargar_Combo_Vehiculos(ID_Persona As Integer)
+    Public Sub Cargar_Combo_Vehiculos(ID_Persona As Integer)
         Try
             Dim tabla As DataTable = o_Orden.Cargar_Combo_Vehiculos(ID_Persona)
 
@@ -266,7 +315,7 @@ Public Class frmOrdenesReparacion
                 cboVehiculo.DataSource = tabla
                 cboVehiculo.DisplayMember = "Nombre"
                 cboVehiculo.ValueMember = "ID_Vehiculo"
-                cboVehiculo.SelectedIndex = -1
+                cboVehiculo.SelectedIndex = NavegacionEntreForms.vehiculo
             Else
                 MsgBox("No se encontraron vehículos para esta persona.", vbInformation, "Información")
             End If
@@ -325,10 +374,10 @@ Public Class frmOrdenesReparacion
                 btnQuitarS3.Enabled = True
                 BtnModificarS3.Enabled = False
             Else
-                MsgBox("Por favor, seleccione un repuesto y especifique la cantidad.", vbExclamation, "Advertencia")
+                MsgBox("Por favor, seleccione un proveedor y especifique el servicio.", vbExclamation, "Advertencia")
             End If
         Catch ex As Exception
-            MsgBox("Error al agregar el repuesto: " & ex.Message, vbCritical, "Error")
+            MsgBox("Error al agregar el servicio: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
 
@@ -605,6 +654,7 @@ Public Class frmOrdenesReparacion
                 Dim ordenTable As DataTable = ds.Tables(0)
                 If ordenTable.Rows.Count > 0 Then
                     Dim row As DataRow = ordenTable.Rows(0)
+                    txtID.Text = row("ID_OrdenReparacion")
                     cboPersonas.SelectedValue = row("ID_Persona")
                     Cargar_Combo_Vehiculos(Convert.ToInt32(row("ID_Persona")))
                     cboVehiculo.SelectedValue = row("ID_Vehiculo")
@@ -613,9 +663,12 @@ Public Class frmOrdenesReparacion
                     dtpTurno.Value = Convert.ToDateTime(row("Fecha_Turno"))
                     dtpEntrada.Value = Convert.ToDateTime(row("Fecha_Entrada"))
                     dtpSalida.Value = Convert.ToDateTime(row("Fecha_Salida"))
+                    txtMontoManoObra.Text = If(IsDBNull(row("Precio_Mano_De_Obra")), "0,00", Convert.ToDecimal(row("Precio_Mano_De_Obra")).ToString("N2"))
                     txtMontoRepuestos.Text = If(IsDBNull(row("MontoRepuestos")), "0,00", Convert.ToDecimal(row("MontoRepuestos")).ToString("N2"))
                     txtMontoServ3.Text = If(IsDBNull(row("MontoServicioTerceros")), "0,00", Convert.ToDecimal(row("MontoServicioTerceros")).ToString("N2"))
-                    txtMontoManoObra.Text = If(IsDBNull(row("Precio_Mano_De_Obra")), "0,00", Convert.ToDecimal(row("Precio_Mano_De_Obra")).ToString("N2"))
+                    txtSubtotal.Text = If(IsDBNull(row("Subtotal")), "0,00", Convert.ToDecimal(row("Subtotal")).ToString("N2"))
+                    txtIVA.Text = If(IsDBNull(row("IVAPorc")), "0,00", Convert.ToDecimal(row("IVAPorc")).ToString("N2"))
+                    txtMontoIVA.Text = If(IsDBNull(row("MontoIVA")), "0,00", Convert.ToDecimal(row("MontoIVA")).ToString("N2"))
                     txtMontoTotalOR.Text = If(IsDBNull(row("MontoTotalOrden")), "0,00", Convert.ToDecimal(row("MontoTotalOrden")).ToString("N2"))
                     chkActivo.Checked = Convert.ToBoolean(row("Estado"))
                     CboTipoReparacion.SelectedValue = row("ID_TipoReparacion")
@@ -705,10 +758,12 @@ Public Class frmOrdenesReparacion
 
             Try
                 Dim ID_Orden As Integer = ordenReparacionData.Agregar_Orden_Reparacion(Convert.ToInt32(cboVehiculo.SelectedValue),
-                          txtSeñasParticulares.Text, txtMotivoReparacion.Text, dtpTurno.Value, dtpEntrada.Value, dtpSalida.Value,
-                          cboPersonas.SelectedValue, Convert.ToDecimal(txtMontoRepuestos.Text), Convert.ToDecimal(txtMontoServ3.Text),
-                          Convert.ToDecimal(txtMontoManoObra.Text), Convert.ToDecimal(txtMontoTotalOR.Text), Convert.ToBoolean(chkActivo.Checked),
-                           CboTipoReparacion.SelectedValue, CboProgreso.SelectedItem, transaction)
+                          txtSeñasParticulares.Text, txtMotivoReparacion.Text, dtpTurno.Value, dtpEntrada.Value,
+                          dtpSalida.Value, cboPersonas.SelectedValue, Convert.ToDecimal(txtMontoRepuestos.Text),
+                          Convert.ToDecimal(txtMontoServ3.Text), Convert.ToDecimal(txtMontoManoObra.Text),
+                          Convert.ToDecimal(txtSubtotal.Text), Convert.ToDecimal(txtIVA.Text),
+                          Convert.ToDecimal(txtMontoIVA.Text), Convert.ToDecimal(txtMontoTotalOR.Text),
+                          Convert.ToBoolean(chkActivo.Checked), CboTipoReparacion.SelectedValue, CboProgreso.SelectedItem, transaction)
 
                 If grdServiciosTerceros.Rows.Count > 0 Then
                     For Each row As DataGridViewRow In grdServiciosTerceros.Rows
@@ -821,10 +876,25 @@ Public Class frmOrdenesReparacion
                 End If
 
                 ' Si no hay problemas con los servicios, continuar con la modificación de la orden
-                Orden.Modificar_OrdenReparacion(id_orden, CInt(cboVehiculo.SelectedValue), txtSeñasParticulares.Text, txtMotivoReparacion.Text,
-                             dtpTurno.Value, dtpEntrada.Value, dtpSalida.Value, CInt(cboPersonas.SelectedValue), Convert.ToDecimal(txtMontoRepuestos.Text),
-                             Convert.ToDecimal(txtMontoServ3.Text), Convert.ToDecimal(txtMontoManoObra.Text), Convert.ToDecimal(txtMontoTotalOR.Text),
-                             Convert.ToBoolean(chkActivo.Checked), CInt(CboTipoReparacion.SelectedValue), CboProgreso.SelectedItem, transaction)
+                Orden.Modificar_OrdenReparacion(id_orden,
+                                                CInt(cboVehiculo.SelectedValue),
+                                                txtSeñasParticulares.Text,
+                                                txtMotivoReparacion.Text,
+                                                dtpTurno.Value,
+                                                dtpEntrada.Value,
+                                                dtpSalida.Value,
+                                                CInt(cboPersonas.SelectedValue),
+                                                Convert.ToDecimal(txtMontoRepuestos.Text),
+                                                Convert.ToDecimal(txtMontoServ3.Text),
+                                                Convert.ToDecimal(txtMontoManoObra.Text),
+                                                Convert.ToDecimal(txtSubtotal.Text),
+                                                Convert.ToDecimal(txtIVA.Text),
+                                                Convert.ToDecimal(txtMontoIVA.Text),
+                                                Convert.ToDecimal(txtMontoTotalOR.Text),
+                                                Convert.ToBoolean(chkActivo.Checked),
+                                                CInt(CboTipoReparacion.SelectedValue),
+                                                CboProgreso.SelectedItem,
+                                                transaction)
 
                 ' Dar de baja servicios de terceros
                 Orden.DarDeBaja_ServiciosTerceros(id_orden, transaction)
@@ -881,6 +951,30 @@ Public Class frmOrdenesReparacion
 #Region "Facturar"
     Private Sub btnFacturar_Click(sender As Object, e As EventArgs) Handles btnFacturar.Click
 
+        NavegacionEntreForms.persona = CInt(cboPersonas.SelectedValue)
+        NavegacionEntreForms.MontoManoObra = CDec(txtMontoManoObra.Text)
+        NavegacionEntreForms.MontoServ3 = CDec(txtMontoServ3.Text)
+        NavegacionEntreForms.TipoVenta = 2
+        NavegacionEntreForms.Nro_orden = CInt(txtID.Text)
+
+        Dim dt As New DataTable
+        For Each column As DataGridViewColumn In grdRepuestos.Columns
+            dt.Columns.Add(column.Name)
+        Next
+
+        For Each row As DataGridViewRow In grdRepuestos.Rows
+            dt.Rows.Add(row.Cells("ID").Value,
+                        row.Cells("Descripcion").Value,
+                        row.Cells("Diario").Value,
+                        Convert.ToDecimal(row.Cells("Cantidad").Value),
+                        Convert.ToDecimal(row.Cells("Precio").Value),
+                        Convert.ToDecimal(row.Cells("Total").Value))
+        Next
+
+        NavegacionEntreForms.RepuestosVenta = dt
+        NavegacionEntreForms.vengoDeReparaciones = True
+
+        frmMenuPrincipal.btnVentas.PerformClick()
     End Sub
 #End Region
 
@@ -892,11 +986,16 @@ Public Class frmOrdenesReparacion
         txtMontoRepuestos.Text = Convert.ToDecimal(txtMontoRepuestos.Text).ToString("N2")
         txtMontoServ3.Text = Convert.ToDecimal(txtMontoServ3.Text).ToString("N2")
         txtMontoTotalOR.Text = Convert.ToDecimal(txtMontoTotalOR.Text).ToString("N2")
+        txtSubtotal.Text = Convert.ToDecimal(txtSubtotal.Text).ToString("N2")
+        txtIVA.Text = Convert.ToDecimal(txtIVA.Text).ToString("N2")
+        txtMontoIVA.Text = Convert.ToDecimal(txtMontoIVA.Text).ToString("N2")
         txtCantidadRepOR.Text = Convert.ToDecimal(txtCantidadRepOR.Text).ToString("N2")
     End Sub
 
     Private Sub CalcularTotalOR()
-        txtMontoTotalOR.Text = Convert.ToDecimal(CDec(txtMontoManoObra.Text) + CDec(txtMontoRepuestos.Text) + CDec(txtMontoServ3.Text)).ToString("N2")
+        txtSubtotal.Text = Convert.ToDecimal(CDec(txtMontoManoObra.Text) + CDec(txtMontoRepuestos.Text) + CDec(txtMontoServ3.Text)).ToString("N2")
+        txtMontoIVA.Text = Convert.ToDecimal(CDec(txtSubtotal.Text) * ((CDec(txtIVA.Text).ToString("N2") / 100))).ToString("n2")
+        txtMontoTotalOR.Text = Convert.ToDecimal(CDec(txtSubtotal.Text) + (CDec(txtMontoIVA.Text).ToString("N2"))).ToString("N2")
     End Sub
 
     Private Sub txtMontoManoObra_Leave(sender As Object, e As EventArgs) Handles txtMontoManoObra.Leave
@@ -1533,7 +1632,7 @@ Public Class frmOrdenesReparacion
             TablaTerceros.AddCell(SubTotal)
 
             ' Fila 15 Columna 6 VACIA
-            Dim F15C6 As New PdfPCell(New Paragraph(" ", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
+            Dim F15C6 As New PdfPCell(New Paragraph(txtSubtotal.Text, FontFactory.GetFont(FontFactory.HELVETICA, 11)))
             F15C6.Border = PdfPCell.NO_BORDER
             F15C6.BorderWidthRight = 1
             F15C6.BorderWidthBottom = 1
@@ -1551,7 +1650,7 @@ Public Class frmOrdenesReparacion
             TablaTerceros.AddCell(IVA)
 
             ' Fila 16 Columna 6 VACIA
-            Dim F16C6 As New PdfPCell(New Paragraph(" ", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
+            Dim F16C6 As New PdfPCell(New Paragraph(txtMontoIVA.Text, FontFactory.GetFont(FontFactory.HELVETICA, 11)))
             F16C6.Border = PdfPCell.NO_BORDER
             F16C6.BorderWidthRight = 1
             F16C6.BorderWidthBottom = 1
@@ -1598,7 +1697,7 @@ Public Class frmOrdenesReparacion
             TablaProductos.WidthPercentage = 100
 
             ' Ancho de las columnas
-            Dim anchoColumnasTProd As Single() = New Single() {0.8F, 2.5F, 0.5F, 2.5F, 1.5F, 1.2F}
+            Dim anchoColumnasTProd As Single() = New Single() {0.8F, 1.0F, 0.5F, 4.3F, 1.2F, 1.2F}
             TablaProductos.SetWidths(anchoColumnasTProd)
             ' Altura de las filas
             Dim rowHeight As Single = 15.0F
@@ -1618,35 +1717,62 @@ Public Class frmOrdenesReparacion
             TablaProductos.AddCell(cellTotal)
 
             ' Fila 2 
-            Dim titles() As String = {"CANT.", "PIEZA N°", "C", "DESCRIPCIÓN", "P. UNITARIO", "IMPORTE"}
+            Dim titles() As String = {"CANT.", "PIEZA N°", "C", "DESCRIPCIÓN", "PRECIO", "TOTAL"}
             For Each title In titles
                 Dim cell As New PdfPCell(New Phrase(title, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 10)))
                 cell.HorizontalAlignment = Element.ALIGN_CENTER
                 TablaProductos.AddCell(cell)
             Next
 
-            ' Filas 3 a 48 VACIAS
-            For i As Integer = 1 To 48
+            ' Añadir las filas de la grilla (grdRepuestos)
+            Dim numFilas As Integer = grdRepuestos.Rows.Count
+            For i As Integer = 0 To numFilas - 1
+                Dim cantidad As String = grdRepuestos.Rows(i).Cells("Cantidad").Value.ToString()
+
+                ' Separar el valor concatenado "CodFabricante - Descripcion"
+                Dim descripcionCompleta As String = grdRepuestos.Rows(i).Cells("Descripcion").Value.ToString()
+                Dim partesDescripcion() As String = descripcionCompleta.Split("-"c)
+
+                ' Asignar cada parte a las variables correspondientes
+                Dim piezaNro As String = partesDescripcion(0) ' Esto es CodFabricante
+                Dim descripcion As String = partesDescripcion(1) ' Esto es Descripcion
+
+                Dim precioUnitario As String = Convert.ToDecimal(grdRepuestos.Rows(i).Cells("Precio").Value).ToString("N2")
+                Dim importe As String = Convert.ToDecimal(grdRepuestos.Rows(i).Cells("Total").Value).ToString("N2")
+
+                ' Añadir las celdas a la tabla
+                TablaProductos.AddCell(New PdfPCell(New Phrase(cantidad, FontFactory.GetFont(FontFactory.HELVETICA, 8))) With {.HorizontalAlignment = Element.ALIGN_CENTER})
+                TablaProductos.AddCell(New PdfPCell(New Phrase(piezaNro, FontFactory.GetFont(FontFactory.HELVETICA, 8))) With {.HorizontalAlignment = Element.ALIGN_CENTER}) ' Aquí se coloca CodFabricante
+                TablaProductos.AddCell(New PdfPCell(New Phrase(" ", FontFactory.GetFont(FontFactory.HELVETICA, 8))) With {.HorizontalAlignment = Element.ALIGN_CENTER})
+                TablaProductos.AddCell(New PdfPCell(New Phrase(descripcion, FontFactory.GetFont(FontFactory.HELVETICA, 8))) With {.HorizontalAlignment = Element.ALIGN_LEFT}) ' Aquí se coloca la descripción
+                TablaProductos.AddCell(New PdfPCell(New Phrase(precioUnitario, FontFactory.GetFont(FontFactory.HELVETICA, 8))) With {.HorizontalAlignment = Element.ALIGN_RIGHT})
+                TablaProductos.AddCell(New PdfPCell(New Phrase(importe, FontFactory.GetFont(FontFactory.HELVETICA, 8))) With {.HorizontalAlignment = Element.ALIGN_RIGHT})
+            Next
+
+            ' Calcular cuántas filas vacías se pueden agregar sin exceder el límite de una página
+            Dim maxFilasPorPagina As Integer = 48 ' Número de filas que caben en una página
+            Dim filasRestantes As Integer = maxFilasPorPagina - numFilas
+
+            ' Añadir las filas vacías restantes
+            For i As Integer = 1 To filasRestantes
                 For j As Integer = 1 To 6
-                    Dim cell As New PdfPCell(New Phrase(" ", FontFactory.GetFont(FontFactory.HELVETICA, 10)))
-                    cell.FixedHeight = rowHeight
-                    TablaProductos.AddCell(cell)
+                    Dim emptyCell As New PdfPCell(New Phrase(" ", FontFactory.GetFont(FontFactory.HELVETICA, 10)))
+                    emptyCell.FixedHeight = rowHeight
+                    TablaProductos.AddCell(emptyCell)
                 Next
             Next
 
-            ' Fila 49 Columnas 1 a 5
+            ' Fila final
             Dim cellTotalRepuestos As PdfPCell = New PdfPCell(New Phrase("TOTAL DE REPUESTOS Y LUBRICANTES", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)))
             cellTotalRepuestos.Colspan = 5
             cellTotalRepuestos.HorizontalAlignment = Element.ALIGN_CENTER
             TablaProductos.AddCell(cellTotalRepuestos)
 
-            ' Fila 49 Columnas 6 VACIA
-            Dim lastCell As New PdfPCell(New Phrase(" ", FontFactory.GetFont(FontFactory.HELVETICA, 10)))
+            Dim lastCell As New PdfPCell(New Phrase(txtMontoRepuestos.Text, FontFactory.GetFont(FontFactory.HELVETICA, 10)))
             lastCell.FixedHeight = rowHeight
             TablaProductos.AddCell(lastCell)
 
             document.Add(TablaProductos)
-
             document.Close()
         End Using
 
@@ -1659,15 +1785,18 @@ Public Class frmOrdenesReparacion
 #End Region
 
     Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
-
+        frmMenuPrincipal.btnPersonas.PerformClick()
     End Sub
 
     Private Sub btnAgregarVehiculo_Click(sender As Object, e As EventArgs) Handles btnAgregarVehiculo.Click
-
+        NavegacionEntreForms.persona = cboPersonas.SelectedValue
+        NavegacionEntreForms.vengoDeReparaciones = True
+        frmMenuPrincipal.btnVehiculos.PerformClick()
+        'frmVehiculos.cboPersona.SelectedValue = persona
     End Sub
 
 #Region "Focus txt"
-    Private Sub txtCostoEstimadoS3_GotFocus(sender As Object, e As EventArgs) Handles txtCostoEstimadoS3.GotFocus
+    Private Sub txtCostoEstimadoS3_Enter(sender As Object, e As EventArgs) Handles txtCostoEstimadoS3.Enter
         txtCostoEstimadoS3.SelectAll()
     End Sub
 
@@ -1676,7 +1805,7 @@ Public Class frmOrdenesReparacion
         txtCostoRealS3.Text = Convert.ToDecimal(txtCostoEstimadoS3.Text).ToString("N2")
     End Sub
 
-    Private Sub txtCostoRealS3_GotFocus(sender As Object, e As EventArgs) Handles txtCostoRealS3.GotFocus
+    Private Sub txtCostoRealS3_Enter(sender As Object, e As EventArgs) Handles txtCostoRealS3.Enter
         txtCostoRealS3.SelectAll()
     End Sub
 
@@ -1695,7 +1824,7 @@ Public Class frmOrdenesReparacion
         End If
     End Sub
 
-    Private Sub txtMontoManoObra_GotFocus(sender As Object, e As EventArgs) Handles txtMontoManoObra.GotFocus
+    Private Sub txtMontoManoObra_enter(sender As Object, e As EventArgs) Handles txtMontoManoObra.Enter
         txtMontoManoObra.SelectAll()
     End Sub
 #End Region
@@ -1793,5 +1922,16 @@ Public Class frmOrdenesReparacion
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
+
+    Private Sub CboProgreso_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboProgreso.SelectedIndexChanged
+        If CboProgreso.SelectedItem = "Finalizada" Then
+            btnFacturar.Enabled = True
+        Else
+            btnFacturar.Enabled = False
+        End If
+    End Sub
+
+
 #End Region
+
 End Class

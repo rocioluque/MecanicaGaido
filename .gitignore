@@ -55,3 +55,6 @@ $Windows.~WS/
 *.lnk
 
 /AFIP
+/RptComprobanteFiscalOrig.vb
+/RptComprobanteFiscalOrig.resx
+/RptComprobanteFiscalOrig.Designer.vb

@@ -21,6 +21,7 @@ Public Class frmAgregarPedidoRepuesto
     Private Sub frmAgregarPedidoRepuesto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Grilla_Productos_BajoStock()
         Cargar_Combo_Persona()
+        AplicarTema(Me)
     End Sub
 
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
@@ -61,9 +62,32 @@ Public Class frmAgregarPedidoRepuesto
             fila.Cells("StockDisponible").Value = row("Stock Disponible")
         Next
     End Sub
+
+
+    Private Sub grdProductosBajoStock_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdProductosBajoStock.CellClick
+        Dim o_prod As New AD_Productos
+
+        Try
+            If e.RowIndex >= 0 Then
+                Dim selectedRow As DataGridViewRow = grdProductosBajoStock.Rows(e.RowIndex)
+                Dim idProducto As String = selectedRow.Cells("id_Repuesto").Value.ToString()
+                Dim st_minimo As Decimal = o_prod.Consultar_StockMinimoPorID(idProducto)
+                Dim stockDisponible As Decimal = Convert.ToDecimal(selectedRow.Cells("StockDisponible").Value)
+                Dim cantidadSugerida As Decimal = st_minimo - stockDisponible
+
+                txtCantidad.Text = cantidadSugerida.ToString()
+
+            End If
+        Catch ex As Exception
+            MsgBox("Error al sugerir cantidad del repuesto: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+
 #End Region
 
 #Region "Agregar / Quitar"
+
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         Try
             If grdProductosBajoStock.SelectedRows.Count > 0 AndAlso Not String.IsNullOrEmpty(txtCantidad.Text) Then
@@ -80,6 +104,7 @@ Public Class frmAgregarPedidoRepuesto
                 filaNueva.Cells("cantidad").Value = cantidad ' Ajustar al Name de la columna cantidad
 
                 txtCantidad.Text = String.Empty
+                grdProductosBajoStock.Rows.Remove(selectedRow)
             Else
                 MsgBox("Por favor, seleccione un repuesto de la grilla y especifique la cantidad.", vbExclamation, "Advertencia")
             End If
@@ -91,7 +116,23 @@ Public Class frmAgregarPedidoRepuesto
     Private Sub btnQuitar_Click(sender As Object, e As EventArgs) Handles btnQuitar.Click
         Try
             If grdRepuestos.SelectedRows.Count > 0 Then
-                grdRepuestos.Rows.Remove(grdRepuestos.SelectedRows(0))
+                Dim o_prod As New AD_Productos
+                ' Obtener la fila seleccionada de la grilla de repuestos
+                Dim selectedRow As DataGridViewRow = grdRepuestos.SelectedRows(0)
+
+                ' Obtener los valores de la fila seleccionada
+                Dim idRepuesto As Integer = Convert.ToInt32(selectedRow.Cells("id_Repuestos").Value)
+                Dim descripcionRepuesto As String = selectedRow.Cells("nombre").Value.ToString()
+                Dim stockDisponible As Decimal = o_prod.Consultar_StockDisponiblePorID(idRepuesto)
+
+                ' Agregar los datos de vuelta a la grilla de productos bajo stock
+                Dim filaNueva As DataGridViewRow = CType(grdProductosBajoStock.Rows(grdProductosBajoStock.Rows.Add()), DataGridViewRow)
+                filaNueva.Cells("id_Repuesto").Value = idRepuesto
+                filaNueva.Cells("Descripcion").Value = descripcionRepuesto
+                filaNueva.Cells("StockDisponible").Value = stockDisponible
+
+                ' Eliminar la fila de la grilla de repuestos
+                grdRepuestos.Rows.Remove(selectedRow)
 
             Else
                 MsgBox("Por favor, seleccione una fila para quitar.", vbExclamation, "Advertencia")
@@ -295,5 +336,7 @@ Public Class frmAgregarPedidoRepuesto
 
         Return numeroTelefonoMovil
     End Function
+
+
 #End Region
 End Class

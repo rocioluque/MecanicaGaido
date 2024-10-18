@@ -12,6 +12,7 @@ Public Class frmReportesReparaciones
     Private Sub frmReportesReparaciones_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ReparacionesPorMes()
         CargarGraficoTiposReparacion()
+        AplicarTema(Me)
     End Sub
 #End Region
 

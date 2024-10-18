@@ -5,6 +5,39 @@ Public Class frmModificarCiudades
     Dim o_Ciudad As New AD_Ciudades
 
 #Region "Procedimientos"
+    Private Sub frmPersonas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        limpiar()
+
+        ' Cargar provincias al inicializar el formulario
+        Cargar_Provincias()
+        ' Cargar la grilla con un valor por defecto (opcional)
+        If cboProvincia.SelectedIndex <> -1 Then
+            Dim idProvincia As Integer = CInt(cboProvincia.SelectedValue)
+            Cargar_Grilla(idProvincia)
+        End If
+
+        If txtCiudad.Text = Nothing Then
+            chkEstado.Visible = False
+        Else
+            chkEstado.Visible = True
+        End If
+
+        AplicarTema(Me)
+    End Sub
+
+    Public Sub limpiar()
+        txtId.Clear()
+        txtCiudad.Clear()
+        cboProvincia.SelectedIndex = -1
+        chkEstado.Checked = False
+    End Sub
+
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiar()
+    End Sub
+#End Region
+
+#Region "Cargar Combo"
     Private Sub Cargar_Provincias()
         Try
             Dim tabla As DataTable = o_Ciudad.Cargar_Provincias()
@@ -36,26 +69,9 @@ Public Class frmModificarCiudades
             End If
         End If
     End Sub
+#End Region
 
-    Private Sub frmPersonas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        limpiar()
-
-        ' Cargar provincias al inicializar el formulario
-        Cargar_Provincias()
-        ' Cargar la grilla con un valor por defecto (opcional)
-        If cboProvincia.SelectedIndex <> -1 Then
-            Dim idProvincia As Integer = CInt(cboProvincia.SelectedValue)
-            Cargar_Grilla(idProvincia)
-        End If
-    End Sub
-
-    Public Sub limpiar()
-        txtId.Clear()
-        txtCiudad.Clear()
-        cboProvincia.SelectedIndex = -1
-        chkEstado.Checked = False
-    End Sub
-
+#Region "Cargar Grilla"
     Public Sub Cargar_Grilla(idProvincia As Integer)
         Dim conexion As SqlConnection
         Dim comando As New SqlCommand
@@ -82,7 +98,9 @@ Public Class frmModificarCiudades
         oDs = Nothing
         conexion.Close()
     End Sub
+#End Region
 
+#Region "Cargar Datos en txt"
     Public Sub CargarDatosEnTextBoxes(ByVal rowIndex As Integer)
         If grdModificarCiudad.Rows.Count > 0 Then
             txtId.Text = Convert.ToInt32(grdModificarCiudad.Rows(rowIndex).Cells("N° Ciudad").Value)
@@ -102,10 +120,6 @@ Public Class frmModificarCiudades
             CargarDatosEnTextBoxes(e.RowIndex)
         End If
     End Sub
-
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        limpiar()
-    End Sub
 #End Region
 
 #Region "Modificar"
@@ -119,5 +133,22 @@ Public Class frmModificarCiudades
             MsgBox("Error al modificar la ciudad: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
+
+    Private Sub chkEstado_CheckedChanged(sender As Object, e As EventArgs) Handles chkEstado.CheckedChanged
+        If txtCiudad.Text = Nothing Then
+            chkEstado.Visible = False
+        Else
+            chkEstado.Visible = True
+        End If
+    End Sub
+
+    Private Sub txtCiudad_TextChanged(sender As Object, e As EventArgs) Handles txtCiudad.TextChanged
+        If txtCiudad.Text = Nothing Then
+            chkEstado.Visible = False
+        Else
+            chkEstado.Visible = True
+        End If
+    End Sub
 #End Region
+
 End Class

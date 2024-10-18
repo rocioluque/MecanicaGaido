@@ -68,11 +68,13 @@ Public Class AD_Compras
         Return tabla
     End Function
 #End Region
+
+#Region "Grillas"
     Public Function Cargar_Grilla_Compras()
         Dim tabla As New DataSet
 
         Using conexion As New SqlConnection(connectionString)
-            Using comando As New SqlCommand("CargarGrilla_Compras", conexion)
+            Using comando As New SqlCommand("Cargar_Grilla_Compras", conexion)
                 comando.CommandType = CommandType.StoredProcedure
                 Dim datadapter As New SqlDataAdapter(comando)
                 datadapter.Fill(tabla)
@@ -95,6 +97,21 @@ Public Class AD_Compras
         Return tabla
     End Function
 
+    Public Function Cargar_Grilla_DetalleCompra() As DataTable
+        Dim tabla As New DataTable
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Grilla_DetalleCompra", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                Dim datadapter As New SqlDataAdapter(comando)
+                datadapter.Fill(tabla)
+            End Using
+        End Using
+        Return tabla
+    End Function
+#End Region
+
+#Region "Consultas"
     Public Function Consultar_Compras_ID(ID_Compras As Integer) As SqlDataReader
 
         Dim conexion As New SqlConnection(connectionString)
@@ -110,33 +127,9 @@ Public Class AD_Compras
         End Try
 
     End Function
+#End Region
 
-    Public Function Cargar_DetalleCompra(ID_Compra As Integer) As DataTable
-        Dim tabla As New DataTable
-
-        Using conexion As New SqlConnection(connectionString)
-            Using comando As New SqlCommand("Cargar_DetalleCompra", conexion)
-                comando.CommandType = CommandType.StoredProcedure
-                comando.Parameters.AddWithValue("@ID_Compra", ID_Compra)
-                Dim datadapter As New SqlDataAdapter(comando)
-                datadapter.Fill(tabla)
-            End Using
-        End Using
-        Return tabla
-    End Function
-    Public Function Cargar_Grilla_DetalleCompra() As DataTable
-        Dim tabla As New DataTable
-
-        Using conexion As New SqlConnection(connectionString)
-            Using comando As New SqlCommand("Cargar_Grilla_DetalleCompra", conexion)
-                comando.CommandType = CommandType.StoredProcedure
-                Dim datadapter As New SqlDataAdapter(comando)
-                datadapter.Fill(tabla)
-            End Using
-        End Using
-        Return tabla
-    End Function
-
+#Region "Cargar"
     Public Sub AgregarCompra(fechaCompra As DateTime, nroComprobante As String, idPersona As Integer, idFormaPago As Integer,
                              subtotal As Decimal, iva As Decimal, ivaMonto As Decimal, otrosImpuestos As Decimal,
                              total As Decimal, estado As Boolean, detallesCompra As DataTable, denominacionLote As String)
@@ -167,9 +160,26 @@ Public Class AD_Compras
             End Using
         End Using
     End Sub
+
+    Public Function Cargar_DetalleCompra(ID_Compra As Integer) As DataTable
+        Dim tabla As New DataTable
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_DetalleCompra", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@ID_Compra", ID_Compra)
+                Dim datadapter As New SqlDataAdapter(comando)
+                datadapter.Fill(tabla)
+            End Using
+        End Using
+        Return tabla
+    End Function
+#End Region
+
+#Region "Modificar"
     Public Sub ModificarCompra(idCompra As Integer, fechaCompra As DateTime, nroComprobante As String, idPersona As Integer, idFormaPago As Integer,
-                             subtotal As Decimal, iva As Decimal, ivaMonto As Decimal, otrosImpuestos As Decimal,
-                             total As Decimal, estado As Boolean, detallesCompra As DataTable, denominacionLote As String)
+                            subtotal As Decimal, iva As Decimal, ivaMonto As Decimal, otrosImpuestos As Decimal,
+                            total As Decimal, estado As Boolean, detallesCompra As DataTable, denominacionLote As String)
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Modificar_Compra", conexion)
                 comando.CommandType = CommandType.StoredProcedure
@@ -198,5 +208,6 @@ Public Class AD_Compras
             End Using
         End Using
     End Sub
+#End Region
 
 End Class

@@ -6,13 +6,10 @@ Public Class frmModificarTipoVenta
     Dim o_TiposDeVenta As New AD_TiposDeVenta
 
 #Region "Procedimientos"
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        limpiar()
-    End Sub
-
     Private Sub frmModificarTipoVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         limpiar()
         Cargar_Grilla()
+        AplicarTema(Me)
     End Sub
 
     Public Sub limpiar()
@@ -20,6 +17,13 @@ Public Class frmModificarTipoVenta
         txtIdTipoDeVenta.Clear()
         chkEstadoTV.Checked = False
     End Sub
+
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        limpiar()
+    End Sub
+#End Region
+
+#Region "Cargar Grilla"
     Public Sub Cargar_Grilla()
         Dim conexion As SqlConnection
         Dim comando As New SqlCommand
@@ -44,7 +48,9 @@ Public Class frmModificarTipoVenta
         oDs = Nothing
         conexion.Close()
     End Sub
+#End Region
 
+#Region "Cargar datos en txt"
     Public Sub CargarDatosEnTextBoxes(ByVal rowIndex As Integer)
         If grdModificarTipoDeVenta.Rows.Count > 0 Then
             txtIdTipoDeVenta.Text = Convert.ToInt32(grdModificarTipoDeVenta.Rows(rowIndex).Cells("Codigo").Value)

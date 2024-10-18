@@ -227,7 +227,7 @@ Public Class AD_OrdenReparacion
 
 #Region "Agregar"
     Public Function Agregar_Orden_Reparacion(ID_Vehiculo As Integer, Senas As String, Motivo As String, Turno As Date, Entrada As Date,
-                      Salida As Date, ID_Persona As Integer, Repuestos As Decimal, Serv3 As Decimal, MObra As Decimal, Total As Decimal,
+                      Salida As Date, ID_Persona As Integer, Repuestos As Decimal, Serv3 As Decimal, MObra As Decimal, subtotal As Decimal, iva As Decimal, montoIva As Decimal, Total As Decimal,
                       Estado As Boolean, TipoRep As Integer, Progreso As String, transaction As SqlTransaction) As Integer
 
         Dim ID_Orden As Integer
@@ -246,6 +246,9 @@ Public Class AD_OrdenReparacion
             command.Parameters.AddWithValue("@Repuestos", Repuestos)
             command.Parameters.AddWithValue("@Serv3", Serv3)
             command.Parameters.AddWithValue("@MObra", MObra)
+            command.Parameters.AddWithValue("@Subtotal", subtotal)
+            command.Parameters.AddWithValue("@IVAPorc", iva)
+            command.Parameters.AddWithValue("@IVAmonto", montoIva)
             command.Parameters.AddWithValue("@Total", Total)
             command.Parameters.AddWithValue("@Estado", Estado)
             command.Parameters.AddWithValue("@ID_TipoReparacion", TipoRep)
@@ -308,7 +311,7 @@ Public Class AD_OrdenReparacion
 #Region "Modificar"
     Public Sub Modificar_OrdenReparacion(id_orden As Integer, id_vehiculo As Integer, señasparticulares As String, motivoreparacion As String,
                         turno As DateTime, entrada As DateTime, salida As DateTime, id_persona As Integer, montorepuestos As Decimal,
-                        montoservicios As Decimal, montomanoobra As Decimal, montototal As Decimal, activo As Boolean,
+                        montoservicios As Decimal, montomanoobra As Decimal, subtotal As Decimal, iva As Decimal, montoIva As Decimal, montototal As Decimal, activo As Boolean,
                         ID_TipoReparacion As Integer, ProgresoOrden As String, transaction As SqlTransaction)
 
         Using conection As New SqlConnection(connectionString)
@@ -325,6 +328,9 @@ Public Class AD_OrdenReparacion
                 comando.Parameters.AddWithValue("@Repuestos", montorepuestos)
                 comando.Parameters.AddWithValue("@Serv3", montoservicios)
                 comando.Parameters.AddWithValue("@MObra", montomanoobra)
+                comando.Parameters.AddWithValue("@Subtotal", subtotal)
+                comando.Parameters.AddWithValue("@IVAPorc", iva)
+                comando.Parameters.AddWithValue("@IVAmonto", montoIva)
                 comando.Parameters.AddWithValue("@Total", montototal)
                 comando.Parameters.AddWithValue("@Estado", activo)
                 comando.Parameters.AddWithValue("@ID_TipoReparacion", ID_TipoReparacion)

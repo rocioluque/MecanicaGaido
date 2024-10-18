@@ -8,8 +8,16 @@ Public Class frmAgregarTipoVehiculo
     Public Property NuevoTipoVehiculoNombre As String
 
 #Region "Procedimientos"
+    Private Sub frmAgregarTipoVehiculo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AplicarTema(Me)
+    End Sub
+
     Public Sub limpiar()
         txtTipoVehiculo.Clear()
+    End Sub
+
+    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        Me.Close()
     End Sub
 #End Region
 
@@ -39,7 +47,4 @@ Public Class frmAgregarTipoVehiculo
     End Sub
 #End Region
 
-    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
-        Me.Close()
-    End Sub
 End Class

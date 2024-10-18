@@ -81,7 +81,7 @@ Partial Class frmAgregarMarca
         Me.chkProducto.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkProducto.ForeColor = System.Drawing.Color.White
         Me.chkProducto.Location = New System.Drawing.Point(33, 115)
-        Me.chkProducto.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.chkProducto.Margin = New System.Windows.Forms.Padding(2)
         Me.chkProducto.Name = "chkProducto"
         Me.chkProducto.Size = New System.Drawing.Size(141, 21)
         Me.chkProducto.TabIndex = 2
@@ -94,7 +94,7 @@ Partial Class frmAgregarMarca
         Me.chkVehiculo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkVehiculo.ForeColor = System.Drawing.Color.White
         Me.chkVehiculo.Location = New System.Drawing.Point(221, 115)
-        Me.chkVehiculo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.chkVehiculo.Margin = New System.Windows.Forms.Padding(2)
         Me.chkVehiculo.Name = "chkVehiculo"
         Me.chkVehiculo.Size = New System.Drawing.Size(135, 21)
         Me.chkVehiculo.TabIndex = 3

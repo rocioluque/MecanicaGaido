@@ -22,6 +22,13 @@ Public Class frmAgregarDatosFiscales
             btnAceptar.Enabled = True
             btnModificar.Enabled = False
         End If
+
+        If txtID.Text = Nothing Then
+            chkEstado.Visible = False
+        Else
+            chkEstado.Visible = True
+        End If
+        AplicarTema(Me)
     End Sub
 
     Public Sub limpiar()
@@ -39,6 +46,9 @@ Public Class frmAgregarDatosFiscales
 
         btnAceptar.Enabled = True
         btnModificar.Enabled = False
+
+        Me.Close()
+
     End Sub
 
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
@@ -211,6 +221,14 @@ Public Class frmAgregarDatosFiscales
             Dim rect As New Rectangle(0, 0, PanelDetallesTributarios.Width - 1, PanelDetallesTributarios.Height - 1)
             e.Graphics.DrawRectangle(pen, rect)
         End Using
+    End Sub
+
+    Private Sub chkEstado_CheckedChanged(sender As Object, e As EventArgs) Handles chkEstado.CheckedChanged
+        If txtID.Text = Nothing Then
+            chkEstado.Visible = False
+        Else
+            chkEstado.Visible = True
+        End If
     End Sub
 #End Region
 End Class

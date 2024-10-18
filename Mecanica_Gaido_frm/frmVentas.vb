@@ -8,16 +8,88 @@ Imports Mecanica_Gaido_frm.User32
 Public Class frmVentas
     Dim o_ventas As New AD_Ventas
 
+    Dim Id_Empleado_Login As Integer = UsuarioActivo.id_empleado
+
+#Region "Enter para pasar de tabulación"
+
+    Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
+        If keyData = Keys.Enter Then
+            ' Verifica si el control activo es un Button
+            If TypeOf Me.ActiveControl Is Button Then
+                ' Ejecuta el evento Click del botón
+                Dim button As Button = DirectCast(Me.ActiveControl, Button)
+                button.PerformClick()
+                Return True
+            Else
+                ' Mueve el foco al siguiente control en el orden de tabulación
+                Me.SelectNextControl(Me.ActiveControl, True, True, True, True)
+                Return True
+            End If
+        End If
+        Return MyBase.ProcessCmdKey(msg, keyData)
+    End Function
+
+    Private Sub Control_Enter(sender As Object, e As EventArgs)
+        If TypeOf sender Is Windows.Controls.TextBox Then
+            CType(sender, Windows.Controls.TextBox).SelectAll()
+        ElseIf TypeOf sender Is RichTextBox Then
+            CType(sender, RichTextBox).SelectAll()
+        End If
+    End Sub
+
+#End Region
+
 #Region "Procedimientos"
     Private Sub frmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        For Each ctrl As Control In Me.Controls
+            If TypeOf ctrl Is Windows.Forms.TextBox OrElse TypeOf ctrl Is RichTextBox Then
+                AddHandler ctrl.Enter, AddressOf Control_Enter
+            End If
+        Next
+        limpiar()
         Cargar_Combo_Persona()
-        Cargar_Combo_FormaPago()
         Cargar_Combo_TipoVenta()
+
+        If vengoDeReparaciones Then
+
+            txtMontoManoObra.Text = NavegacionEntreForms.MontoManoObra.ToString("N2")
+            txtMontoServ3.Text = NavegacionEntreForms.MontoServ3.ToString("N2")
+            Dim id_orden = NavegacionEntreForms.Nro_orden
+
+            ' Llenar la grilla con los repuestos transferidos
+            If NavegacionEntreForms.RepuestosVenta IsNot Nothing Then
+                For Each row As DataRow In NavegacionEntreForms.RepuestosVenta.Rows
+                    grdVentas.Rows.Add(row("ID"),
+                                       row("Descripcion"),
+                                       row("Diario"),
+                                       Convert.ToDecimal(row("Cantidad")),
+                                       Convert.ToDecimal(row("Precio")),
+                                       Convert.ToDecimal(row("Total")))
+                Next
+            End If
+            ActualizarMontoTotal()
+            ' Restablecer la variable de control
+            NavegacionEntreForms.vengoDeReparaciones = False
+            NavegacionEntreForms.persona = 0
+            
+            NavegacionEntreForms.TipoVenta = 1
+            NavegacionEntreForms.MontoManoObra = 0
+            NavegacionEntreForms.MontoServ3 = 0
+
+        End If
+
+
+
+
+        Cargar_Combo_FormaPago()
+
         Cargar_Combo_FormaEntrega()
         Cargar_Combo_Repuestos()
-        limpiar()
+
         PonerDecimales()
         Cargar_Grilla_Ventas()
+        AplicarTema(Me)
 
         txtVendedor.Text = UsuarioActivo.nombre_empleado
 
@@ -25,13 +97,17 @@ Public Class frmVentas
         txtNumComprobante.Text = oVenta.ObtenerNroComprobante
         txtNumComprobante.Enabled = False
         btnModificar.Enabled = False
-
+        chkEstado.Checked = True
+        chkEstado.Visible = False
     End Sub
+
 
     Public Sub limpiar()
         txtID.Clear()
         dtpFechaVenta.Value = Date.Today
         txtNumComprobante.Clear()
+        txtMontoManoObra.Text = Convert.ToDecimal(0)
+        txtMontoServ3.Text = Convert.ToDecimal(0)
         txtSubtotal.Text = Convert.ToDecimal(0)
         txtIVA.Text = Convert.ToDecimal(21)
         txtIvaMonto.Text = Convert.ToDecimal(0)
@@ -46,16 +122,35 @@ Public Class frmVentas
         cboFormaPago.SelectedIndex = -1
         rbtRecargo.Checked = False
         rbtDescuento.Checked = False
-        chkEstado.Checked = False
+        chkEstado.Checked = True
+        chkEstado.Visible = False
         grdVentas.Rows.Clear()
+        btnAceptar.Enabled = True
+        btnModificar.Enabled = False
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        grdVentas.Rows.Clear()
         limpiar()
+        txtVendedor.Text = UsuarioActivo.nombre_empleado
+        Dim oVenta As New AD_Ventas
+        txtNumComprobante.Text = oVenta.ObtenerNroComprobante
+        txtNumComprobante.Enabled = False
+
+
+        NavegacionEntreForms.vengoDeReparaciones = False
+        NavegacionEntreForms.persona = 0
+        NavegacionEntreForms.Nro_orden = 0
+        NavegacionEntreForms.TipoVenta = 0
+        NavegacionEntreForms.MontoManoObra = 0
+        NavegacionEntreForms.MontoServ3 = 0
+
     End Sub
 #End Region
 
 #Region "Carga de cbo"
+
+    Private ComboRepOK As Boolean = True
     Private Sub Cargar_Combo_Repuestos()
         Try
             Dim tablaRep As DataTable = o_ventas.Cargar_Combo_Repuestos()
@@ -71,6 +166,8 @@ Public Class frmVentas
 
         Catch ex As Exception
             MsgBox("Error al cargar los Repuestos: " & ex.Message, vbCritical, "Error")
+        Finally
+            ComboRepOK = False
         End Try
     End Sub
 
@@ -82,7 +179,7 @@ Public Class frmVentas
                 cboPersona.DataSource = tabla
                 cboPersona.DisplayMember = "Persona"
                 cboPersona.ValueMember = "ID_Persona"
-                cboPersona.SelectedValue = -1
+                cboPersona.SelectedValue = NavegacionEntreForms.persona
             Else
                 MsgBox("No se encontraron Personas.", vbInformation, "Información")
             End If
@@ -100,7 +197,7 @@ Public Class frmVentas
                 cboFormaPago.DataSource = tabla
                 cboFormaPago.DisplayMember = "Nombre"
                 cboFormaPago.ValueMember = "ID_FormaPago"
-                cboFormaPago.SelectedValue = -1
+                cboFormaPago.SelectedValue = 5
             Else
                 MsgBox("No se encontraron Fromas de Pago.", vbInformation, "Información")
             End If
@@ -118,7 +215,7 @@ Public Class frmVentas
                 cboDetalleFormaPago.DataSource = tabla
                 cboDetalleFormaPago.DisplayMember = "Nombre"
                 cboDetalleFormaPago.ValueMember = "ID_DetalleFormaPago"
-                cboDetalleFormaPago.SelectedIndex = -1
+                cboDetalleFormaPago.SelectedValue = 20
             Else
                 MsgBox("No se encontraron detalles para la forma de pago seleccionada.", vbInformation, "Información")
             End If
@@ -136,7 +233,7 @@ Public Class frmVentas
                 cboTipoVenta.DataSource = tabla
                 cboTipoVenta.DisplayMember = "Nombre"
                 cboTipoVenta.ValueMember = "ID_TipoVenta"
-                cboTipoVenta.SelectedValue = -1
+                cboTipoVenta.SelectedValue = NavegacionEntreForms.TipoVenta
             Else
                 MsgBox("No se encontraron Tipos de Ventas.", vbInformation, "Información")
             End If
@@ -154,7 +251,7 @@ Public Class frmVentas
                 cboFormaEntrega.DataSource = tabla
                 cboFormaEntrega.DisplayMember = "Nombre"
                 cboFormaEntrega.ValueMember = "ID_FormaDeEntrega"
-                cboFormaEntrega.SelectedValue = -1
+                cboFormaEntrega.SelectedValue = 2
             Else
                 MsgBox("No se encontraron Formas de Entrega.", vbInformation, "Información")
             End If
@@ -206,7 +303,7 @@ Public Class frmVentas
             If oDs.Rows.Count > 0 Then
                 grdVentas1.AutoGenerateColumns = True
                 grdVentas1.DataSource = oDs
-                grdVentas1.Columns("Vendedor").Visible = False
+                'grdVentas1.Columns("Vendedor").Visible = False
                 grdVentas1.Columns("Detalle FP").Visible = False
                 grdVentas1.Columns("Subtotal").Visible = False
                 grdVentas1.Columns("MontoDtoRecargo").Visible = False
@@ -225,8 +322,6 @@ Public Class frmVentas
             MsgBox("Error al cargar las Ventas: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
-
-
 #End Region
 
 #Region "Agregar / Quitar Productos"
@@ -238,7 +333,8 @@ Public Class frmVentas
                 Dim idRepuesto As Integer = Convert.ToInt32(rowView("ID_Repuestos"))
                 Dim descripcionRepuesto As String = rowView("Descripcion").ToString()
                 Dim nombreDiario As String = rowView("nombreDiario").ToString()
-                Dim precio As Decimal = Convert.ToDecimal(rowView("PrecioCompra"))
+                Dim precio As Decimal = Convert.ToDecimal(rowView("PrecioLista"))
+                precio = InputBox("Confirme el Precio", "Precio Sugerido", Convert.ToDecimal(precio).ToString("N2"))
                 Dim cantidad As Integer = Convert.ToDecimal(txtCantidadVentas.Text)
                 Dim total As Decimal = precio * cantidad
 
@@ -246,7 +342,7 @@ Public Class frmVentas
                 Cargar_Combo_Repuestos()
                 txtCantidadVentas.Text = Convert.ToDecimal(0).ToString("N2")
                 ActualizarMontoTotal()
-
+                lblDispo.Visible = False
             Else
                 MsgBox("Por favor, seleccione un repuesto y especifique la cantidad.", vbExclamation, "Advertencia")
             End If
@@ -274,6 +370,8 @@ Public Class frmVentas
     Private Sub PonerDecimales()
         txtIVA.Text = Convert.ToDecimal(txtIVA.Text).ToString("N2")
         txtIvaMonto.Text = Convert.ToDecimal(txtIvaMonto.Text).ToString("N2")
+        txtMontoServ3.Text = Convert.ToDecimal(txtMontoServ3.Text).ToString("N2")
+        txtMontoManoObra.Text = Convert.ToDecimal(txtMontoManoObra.Text).ToString("N2")
         txtOtrosImpuestos.Text = Convert.ToDecimal(txtOtrosImpuestos.Text).ToString("N2")
         txtSubtotal.Text = Convert.ToDecimal(txtSubtotal.Text).ToString("N2")
         txtTotal.Text = Convert.ToDecimal(txtTotal.Text).ToString("N2")
@@ -282,16 +380,19 @@ Public Class frmVentas
     End Sub
 
     Private Sub CalcularTotalCompra()
+        ActualizarMontoTotal()
         txtTotal.Text = Convert.ToDecimal(CDec(txtOtrosImpuestos.Text) + CDec(txtSubtotal.Text) + CDec(txtIvaMonto.Text) + CDec(txtMontoDtoRecargo.Text)).ToString("N2")
     End Sub
 
     Private Sub rbtRecargo_CheckedChanged(sender As Object, e As EventArgs) Handles rbtRecargo.CheckedChanged
+        ActualizarMontoTotal()
         PonerDecimales()
         Calculo_DtoRecargo()
         CalcularTotalCompra()
     End Sub
 
     Private Sub rbtDescuento_CheckedChanged(sender As Object, e As EventArgs) Handles rbtDescuento.CheckedChanged
+        ActualizarMontoTotal()
         PonerDecimales()
         Calculo_DtoRecargo()
         CalcularTotalCompra()
@@ -303,26 +404,31 @@ Public Class frmVentas
     End Sub
 
     Private Sub txtOtrosImpuestos_Leave(sender As Object, e As EventArgs) Handles txtOtrosImpuestos.Leave
+        ActualizarMontoTotal()
         PonerDecimales()
         CalcularTotalCompra()
     End Sub
 
     Private Sub txtIvaMonto_TextChanged(sender As Object, e As EventArgs) Handles txtIvaMonto.TextChanged
+        ActualizarMontoTotal()
         PonerDecimales()
         CalcularTotalCompra()
     End Sub
 
     Private Sub txtPorcentaje_Leave(sender As Object, e As EventArgs) Handles txtPorcentaje.Leave
+        ActualizarMontoTotal()
         PonerDecimales()
         CalcularTotalCompra()
     End Sub
 
     Private Sub txtMontoDtoRecargo_Leave(sender As Object, e As EventArgs) Handles txtMontoDtoRecargo.Leave
+        ActualizarMontoTotal()
         PonerDecimales()
         CalcularTotalCompra()
     End Sub
 
     Public Sub Calculo_DtoRecargo()
+
         Dim montoTotal As Decimal = 0
         Dim porcentajeMonto As Decimal = 0
         Dim porcentaje = txtPorcentaje.Text
@@ -351,12 +457,16 @@ Public Class frmVentas
         Dim IvaMonto As Decimal = 0
         Dim iva = txtIVA.Text
 
+        montoTotal = montoTotal + Convert.ToDecimal(txtMontoManoObra.Text) + Convert.ToDecimal(txtMontoServ3.Text)
+
+
         ' Recorre todas las filas de la grilla y suma los valores de la columna Total
         For Each row As DataGridViewRow In grdVentas.Rows
             montoTotal += Convert.ToDecimal(row.Cells("Total").Value)
         Next
 
-        txtSubtotal.Text = montoTotal.ToString("F2")
+        txtSubtotal.Text = montoTotal.ToString("N2")
+
 
         IvaMonto = ((montoTotal * iva) / 100)
 
@@ -720,14 +830,18 @@ Public Class frmVentas
                                     row.Cells("Precio").Value,
                                     1)
             Next
+            Dim ID_Venta As Integer = 0 ' Variable para almacenar el ID de la venta
 
-            ' Llamar al método para agregar la venta con detalle
-            ventaDataAccess.AgregarVentaConDetalle(Convert.ToDateTime(dtpFechaVenta.Value),
+            If cboTipoVenta.SelectedValue <> 2 Then
+                ' Llamar al método para agregar la venta con detalle
+                Dim resultado As Boolean = ventaDataAccess.AgregarVentaConDetalle(Convert.ToDateTime(dtpFechaVenta.Value),
                                                     txtNumComprobante.Text,
                                                     CInt(cboPersona.SelectedValue),
-                                                    txtVendedor.Text,
+                                                    Id_Empleado_Login,
                                                     CInt(cboFormaPago.SelectedValue),
                                                     CInt(cboDetalleFormaPago.SelectedValue),
+                                                    Decimal.Parse(txtMontoManoObra.Text),
+                                                    Decimal.Parse(txtMontoServ3.Text),
                                                  Decimal.Parse(txtSubtotal.Text),
                                                  Decimal.Parse(txtMontoDtoRecargo.Text),
                                                  Decimal.Parse(txtIVA.Text),
@@ -737,18 +851,69 @@ Public Class frmVentas
                                                  CInt(cboTipoVenta.SelectedValue),
                                                  CInt(cboFormaEntrega.SelectedValue),
                                                  1,
-                                                 detalles)
+                                                 detalles, ID_Venta)
+            Else
+                Dim resultado As Boolean = ventaDataAccess.AgregarVentaConDetalleOR(Nro_orden,
+                                                                                    Convert.ToDateTime(dtpFechaVenta.Value),
+                                                                                    txtNumComprobante.Text,
+                                                                                    CInt(cboPersona.SelectedValue),
+                                                                                    Id_Empleado_Login,
+                                                                                    CInt(cboFormaPago.SelectedValue),
+                                                                                    CInt(cboDetalleFormaPago.SelectedValue),
+                                                                                    Decimal.Parse(txtMontoManoObra.Text),
+                                                                                    Decimal.Parse(txtMontoServ3.Text),
+                                                                                     Decimal.Parse(txtSubtotal.Text),
+                                                                                     Decimal.Parse(txtMontoDtoRecargo.Text),
+                                                                                     Decimal.Parse(txtIVA.Text),
+                                                                                     Decimal.Parse(txtIvaMonto.Text),
+                                                                                     Decimal.Parse(txtOtrosImpuestos.Text),
+                                                                                     Decimal.Parse(txtTotal.Text),
+                                                                                     CInt(cboTipoVenta.SelectedValue),
+                                                                                     CInt(cboFormaEntrega.SelectedValue),
+                                                                                     1,
+                                                                                     detalles,
+                                                                                     ID_Venta)
+            End If
+
+
+            MostrarReporteVenta(ID_Venta)
+
+            'NavegacionEntreForms
+
+            vengoDeReparaciones = False
+            persona = 0
+            vehiculo = 0
+            combopersonacargado = False
+            Nro_orden = 0
+            TipoVenta = 1
+            MontoServ3 = 0
+            MontoManoObra = 0
+
 
             MessageBox.Show("Venta registrada con éxito.")
+            limpiar()
         Catch ex As Exception
             MessageBox.Show("Error al registrar la venta: " & ex.Message)
         End Try
+    End Sub
+
+    Private Sub MostrarReporteVenta(ByVal ID_Venta As Integer)
+        Dim frmReporte As New FrmVentaView()
+
+        ' Pasar el parámetro ID_Venta al formulario del reporte
+        frmReporte.ID_Venta = ID_Venta
+
+        ' Mostrar el formulario a pantalla completa
+        frmReporte.WindowState = FormWindowState.Maximized
+        frmReporte.ShowDialog()
     End Sub
 
     Private Sub CargarDatosVenta(ID_Venta As Integer)
 
         Dim oDS As New DataSet
         Dim o_Venta As New AD_Ventas
+
+
 
         oDS = o_Venta.Consultar_Venta_ID(ID_Venta)
 
@@ -763,6 +928,8 @@ Public Class frmVentas
             txtVendedor.Text = rowVenta("Vendedor").ToString()
             cboFormaPago.SelectedValue = CInt(rowVenta("ID_FormaPago"))
             cboDetalleFormaPago.SelectedValue = CInt(rowVenta("ID_DetalleFormaPago"))
+            txtMontoManoObra.Text = CDec(rowVenta("Mano de Obra"))
+            txtMontoServ3.Text = CDec(rowVenta("Serv Terceros"))
             txtSubtotal.Text = Convert.ToDecimal(rowVenta("Subtotal")).ToString("N2")
             txtMontoDtoRecargo.Text = Convert.ToDecimal(rowVenta("MontoDtoRecargo")).ToString("N2")
             txtIVA.Text = Convert.ToDecimal(rowVenta("IVA")).ToString("N2")
@@ -784,7 +951,7 @@ Public Class frmVentas
                 For Each rowDetalle As DataRow In oDS.Tables(1).Rows
                     grdVentas.Rows.Add(rowDetalle("ID_Repuesto"),
                                        rowDetalle("Descripcion"),
-                                                           "-",'HARDCODE
+                                       rowDetalle("NombreDiario"),
                                        rowDetalle("Cantidad"),
                                        rowDetalle("PrecioVenta"),
                                        rowDetalle("Total"))
@@ -799,19 +966,18 @@ Public Class frmVentas
         End If
     End Sub
 
-
-
-
     Private Sub grdVentas1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdVentas1.CellContentClick
         If e.RowIndex >= 0 AndAlso e.RowIndex < grdVentas1.Rows.Count Then
             Dim selectedRow As DataGridViewRow = grdVentas1.Rows(e.RowIndex)
-            Dim ID_Venta As Integer = Convert.ToInt32(selectedRow.Cells("ID_Venta").Value)
+            Dim ID_Venta As Integer = Convert.ToInt32(selectedRow.Cells("N° Venta").Value)
 
             CargarDatosVenta(ID_Venta)
             btnModificar.Enabled = True
+            chkEstado.Visible = True
             lblBusqueda.Visible = False
             txtBusqueda.Text = ""
             txtBusqueda.Visible = False
+            btnAceptar.Enabled = False
 
         End If
     End Sub
@@ -846,9 +1012,11 @@ Public Class frmVentas
                                                     Convert.ToDateTime(dtpFechaVenta.Value),
                                                     txtNumComprobante.Text,
                                                     CInt(cboPersona.SelectedValue),
-                                                    txtVendedor.Text,
+                                                    Id_Empleado_Login,
                                                     CInt(cboFormaPago.SelectedValue),
                                                     CInt(cboDetalleFormaPago.SelectedValue),
+                                                    Decimal.Parse(txtMontoManoObra.Text),
+                                                    Decimal.Parse(txtMontoServ3.Text),
                                                  Decimal.Parse(txtSubtotal.Text),
                                                  Decimal.Parse(txtMontoDtoRecargo.Text),
                                                  Decimal.Parse(txtIVA.Text),
@@ -860,8 +1028,11 @@ Public Class frmVentas
                                                  1,
                                                  detalles)
 
-            MessageBox.Show("Venta modificada con éxito.")
+
+            MostrarReporteVenta(txtID.Text)
             Cargar_Grilla_Ventas()
+
+            MessageBox.Show("Venta modificada con éxito.")
             limpiar()
         Catch ex As Exception
             MessageBox.Show("Error al modificar la venta: " & ex.Message)
@@ -902,7 +1073,43 @@ Public Class frmVentas
 
     End Sub
 
+    Private Sub cboProductoVenta_SelectedValueChanged(sender As Object, e As EventArgs) Handles cboProductoVenta.SelectedValueChanged
+        If ComboRepOK Then Return
 
+        If cboProductoVenta.SelectedValue IsNot Nothing AndAlso CInt(cboProductoVenta.SelectedValue) > 0 Then
+            lblDispo.Text = ""
+            lblDispo.Visible = True
+
+            Dim o_rep As New AD_Productos
+
+            ' Almacena la tupla en una variable
+            Dim resultado = o_rep.Consultar_StocksPorID(CInt(cboProductoVenta.SelectedValue))
+
+            ' Extrae los valores de la tupla por nombre
+            Dim stockDisponible As Decimal = resultado.stockDisponible
+            Dim stockMinimo As Decimal = resultado.stockMinimo
+            Dim stockReal As Decimal = resultado.stockReal
+
+            ' Actualiza el texto del label
+            lblDispo.Text = stockDisponible.ToString("F2")
+
+            ' Aplicar formato condicional según el valor de stockDisponible
+            lblDispo.Font = New Font(lblDispo.Font, FontStyle.Bold)
+            lblDispo.Font = New Font(lblDispo.Font.FontFamily, 10)
+
+            ' Cambiar el color según las condiciones
+            If stockDisponible >= stockMinimo Then
+                lblDispo.ForeColor = Color.Green
+            ElseIf stockDisponible > 0 AndAlso stockDisponible < stockMinimo Then
+                lblDispo.ForeColor = Color.Yellow
+            ElseIf stockDisponible <= 0 Then
+                lblDispo.ForeColor = Color.Red
+            End If
+
+            ' También puedes actualizar otros controles como txtCantidadVentas
+            txtCantidadVentas.Text = stockDisponible.ToString("F2")
+        End If
+    End Sub
 #End Region
 
 End Class

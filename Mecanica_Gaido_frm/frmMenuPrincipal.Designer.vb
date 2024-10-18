@@ -30,6 +30,7 @@ Partial Class frmMenuPrincipal
         Me.lblRol = New System.Windows.Forms.Label()
         Me.lblUsuario = New System.Windows.Forms.Label()
         Me.PanelMenu = New System.Windows.Forms.Panel()
+        Me.btnCambiarTema = New System.Windows.Forms.Button()
         Me.PanelCboGestion = New System.Windows.Forms.Panel()
         Me.btnTipoVenta = New System.Windows.Forms.Button()
         Me.btnTipoVehiculos = New System.Windows.Forms.Button()
@@ -70,9 +71,10 @@ Partial Class frmMenuPrincipal
         Me.PanelContenedor.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.PanelContenedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PanelContenedor.Location = New System.Drawing.Point(224, 0)
+        Me.PanelContenedor.Location = New System.Drawing.Point(299, 0)
+        Me.PanelContenedor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PanelContenedor.Name = "PanelContenedor"
-        Me.PanelContenedor.Size = New System.Drawing.Size(976, 700)
+        Me.PanelContenedor.Size = New System.Drawing.Size(1301, 1055)
         Me.PanelContenedor.TabIndex = 2
         '
         'PictureBox7
@@ -80,8 +82,9 @@ Partial Class frmMenuPrincipal
         Me.PictureBox7.BackgroundImage = CType(resources.GetObject("PictureBox7.BackgroundImage"), System.Drawing.Image)
         Me.PictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.PictureBox7.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox7.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox7.Name = "PictureBox7"
-        Me.PictureBox7.Size = New System.Drawing.Size(66, 68)
+        Me.PictureBox7.Size = New System.Drawing.Size(88, 84)
         Me.PictureBox7.TabIndex = 13
         Me.PictureBox7.TabStop = False
         '
@@ -90,9 +93,10 @@ Partial Class frmMenuPrincipal
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(67, 18)
+        Me.Label2.Location = New System.Drawing.Point(89, 22)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(50, 16)
+        Me.Label2.Size = New System.Drawing.Size(62, 19)
         Me.Label2.TabIndex = 29
         Me.Label2.Text = "Usuario:"
         '
@@ -101,9 +105,10 @@ Partial Class frmMenuPrincipal
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(67, 35)
+        Me.Label1.Location = New System.Drawing.Point(89, 43)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(27, 16)
+        Me.Label1.Size = New System.Drawing.Size(34, 19)
         Me.Label1.TabIndex = 30
         Me.Label1.Text = "Rol:"
         '
@@ -112,9 +117,10 @@ Partial Class frmMenuPrincipal
         Me.lblRol.AutoSize = True
         Me.lblRol.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRol.ForeColor = System.Drawing.Color.White
-        Me.lblRol.Location = New System.Drawing.Point(90, 35)
+        Me.lblRol.Location = New System.Drawing.Point(120, 43)
+        Me.lblRol.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblRol.Name = "lblRol"
-        Me.lblRol.Size = New System.Drawing.Size(11, 16)
+        Me.lblRol.Size = New System.Drawing.Size(13, 19)
         Me.lblRol.TabIndex = 28
         Me.lblRol.Text = ":"
         '
@@ -123,9 +129,10 @@ Partial Class frmMenuPrincipal
         Me.lblUsuario.AutoSize = True
         Me.lblUsuario.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUsuario.ForeColor = System.Drawing.Color.White
-        Me.lblUsuario.Location = New System.Drawing.Point(115, 18)
+        Me.lblUsuario.Location = New System.Drawing.Point(153, 22)
+        Me.lblUsuario.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblUsuario.Name = "lblUsuario"
-        Me.lblUsuario.Size = New System.Drawing.Size(11, 16)
+        Me.lblUsuario.Size = New System.Drawing.Size(13, 19)
         Me.lblUsuario.TabIndex = 28
         Me.lblUsuario.Text = ":"
         '
@@ -133,6 +140,7 @@ Partial Class frmMenuPrincipal
         '
         Me.PanelMenu.AutoScroll = True
         Me.PanelMenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.PanelMenu.Controls.Add(Me.btnCambiarTema)
         Me.PanelMenu.Controls.Add(Me.PanelCboGestion)
         Me.PanelMenu.Controls.Add(Me.btnGestionDatos)
         Me.PanelMenu.Controls.Add(Me.PanelCboTableroControl)
@@ -146,10 +154,26 @@ Partial Class frmMenuPrincipal
         Me.PanelMenu.Controls.Add(Me.btnInicio)
         Me.PanelMenu.Controls.Add(Me.Panel3)
         Me.PanelMenu.Dock = System.Windows.Forms.DockStyle.Left
+        Me.PanelMenu.ForeColor = System.Drawing.Color.White
         Me.PanelMenu.Location = New System.Drawing.Point(0, 0)
+        Me.PanelMenu.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PanelMenu.Name = "PanelMenu"
-        Me.PanelMenu.Size = New System.Drawing.Size(230, 700)
+        Me.PanelMenu.Size = New System.Drawing.Size(307, 1055)
         Me.PanelMenu.TabIndex = 0
+        '
+        'btnCambiarTema
+        '
+        Me.btnCambiarTema.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnCambiarTema.BackColor = System.Drawing.Color.Transparent
+        Me.btnCambiarTema.FlatAppearance.BorderSize = 0
+        Me.btnCambiarTema.Location = New System.Drawing.Point(84, 1012)
+        Me.btnCambiarTema.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnCambiarTema.Name = "btnCambiarTema"
+        Me.btnCambiarTema.Size = New System.Drawing.Size(135, 28)
+        Me.btnCambiarTema.TabIndex = 0
+        Me.btnCambiarTema.Text = "Button1"
+        Me.btnCambiarTema.UseVisualStyleBackColor = False
+        Me.btnCambiarTema.Visible = False
         '
         'PanelCboGestion
         '
@@ -164,15 +188,18 @@ Partial Class frmMenuPrincipal
         Me.PanelCboGestion.Controls.Add(Me.btnMarca)
         Me.PanelCboGestion.Controls.Add(Me.btnCiudad)
         Me.PanelCboGestion.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelCboGestion.Location = New System.Drawing.Point(0, 560)
+        Me.PanelCboGestion.ForeColor = System.Drawing.Color.White
+        Me.PanelCboGestion.Location = New System.Drawing.Point(0, 689)
+        Me.PanelCboGestion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PanelCboGestion.Name = "PanelCboGestion"
-        Me.PanelCboGestion.Size = New System.Drawing.Size(213, 225)
+        Me.PanelCboGestion.Size = New System.Drawing.Size(307, 277)
         Me.PanelCboGestion.TabIndex = 52
         Me.PanelCboGestion.Tag = "0"
         Me.PanelCboGestion.Visible = False
         '
         'btnTipoVenta
         '
+        Me.btnTipoVenta.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnTipoVenta.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnTipoVenta.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnTipoVenta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
@@ -180,34 +207,38 @@ Partial Class frmMenuPrincipal
         Me.btnTipoVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnTipoVenta.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnTipoVenta.ForeColor = System.Drawing.Color.White
-        Me.btnTipoVenta.Location = New System.Drawing.Point(0, 194)
+        Me.btnTipoVenta.Location = New System.Drawing.Point(0, 242)
+        Me.btnTipoVenta.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnTipoVenta.Name = "btnTipoVenta"
-        Me.btnTipoVenta.Size = New System.Drawing.Size(213, 24)
-        Me.btnTipoVenta.TabIndex = 12
+        Me.btnTipoVenta.Size = New System.Drawing.Size(307, 30)
+        Me.btnTipoVenta.TabIndex = 25
         Me.btnTipoVenta.Text = "Tipos de Ventas"
         Me.btnTipoVenta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnTipoVenta.UseVisualStyleBackColor = True
+        Me.btnTipoVenta.UseVisualStyleBackColor = False
         '
         'btnTipoVehiculos
         '
         Me.btnTipoVehiculos.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnTipoVehiculos.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnTipoVehiculos.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnTipoVehiculos.FlatAppearance.BorderSize = 0
-        Me.btnTipoVehiculos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
+        Me.btnTipoVehiculos.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.btnTipoVehiculos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
+        Me.btnTipoVehiculos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnTipoVehiculos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnTipoVehiculos.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnTipoVehiculos.ForeColor = System.Drawing.Color.White
-        Me.btnTipoVehiculos.Location = New System.Drawing.Point(0, 170)
+        Me.btnTipoVehiculos.Location = New System.Drawing.Point(0, 212)
+        Me.btnTipoVehiculos.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnTipoVehiculos.Name = "btnTipoVehiculos"
-        Me.btnTipoVehiculos.Size = New System.Drawing.Size(213, 24)
-        Me.btnTipoVehiculos.TabIndex = 37
+        Me.btnTipoVehiculos.Size = New System.Drawing.Size(307, 30)
+        Me.btnTipoVehiculos.TabIndex = 24
         Me.btnTipoVehiculos.Text = "Tipos de Vehiculos"
         Me.btnTipoVehiculos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnTipoVehiculos.UseVisualStyleBackColor = False
         '
         'btnFormaPago
         '
+        Me.btnFormaPago.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnFormaPago.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnFormaPago.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnFormaPago.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
@@ -215,16 +246,18 @@ Partial Class frmMenuPrincipal
         Me.btnFormaPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFormaPago.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnFormaPago.ForeColor = System.Drawing.Color.White
-        Me.btnFormaPago.Location = New System.Drawing.Point(0, 145)
+        Me.btnFormaPago.Location = New System.Drawing.Point(0, 181)
+        Me.btnFormaPago.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnFormaPago.Name = "btnFormaPago"
-        Me.btnFormaPago.Size = New System.Drawing.Size(213, 25)
-        Me.btnFormaPago.TabIndex = 14
+        Me.btnFormaPago.Size = New System.Drawing.Size(307, 31)
+        Me.btnFormaPago.TabIndex = 23
         Me.btnFormaPago.Text = "Formas de Pago"
         Me.btnFormaPago.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnFormaPago.UseVisualStyleBackColor = True
+        Me.btnFormaPago.UseVisualStyleBackColor = False
         '
         'btnFormaEntrega
         '
+        Me.btnFormaEntrega.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnFormaEntrega.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnFormaEntrega.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnFormaEntrega.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
@@ -232,16 +265,18 @@ Partial Class frmMenuPrincipal
         Me.btnFormaEntrega.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFormaEntrega.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnFormaEntrega.ForeColor = System.Drawing.Color.White
-        Me.btnFormaEntrega.Location = New System.Drawing.Point(0, 120)
+        Me.btnFormaEntrega.Location = New System.Drawing.Point(0, 150)
+        Me.btnFormaEntrega.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnFormaEntrega.Name = "btnFormaEntrega"
-        Me.btnFormaEntrega.Size = New System.Drawing.Size(213, 25)
-        Me.btnFormaEntrega.TabIndex = 11
+        Me.btnFormaEntrega.Size = New System.Drawing.Size(307, 31)
+        Me.btnFormaEntrega.TabIndex = 22
         Me.btnFormaEntrega.Text = "Formas de Entrega"
         Me.btnFormaEntrega.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnFormaEntrega.UseVisualStyleBackColor = True
+        Me.btnFormaEntrega.UseVisualStyleBackColor = False
         '
         'btnSeccion
         '
+        Me.btnSeccion.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnSeccion.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnSeccion.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnSeccion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
@@ -249,16 +284,18 @@ Partial Class frmMenuPrincipal
         Me.btnSeccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSeccion.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnSeccion.ForeColor = System.Drawing.Color.White
-        Me.btnSeccion.Location = New System.Drawing.Point(0, 96)
+        Me.btnSeccion.Location = New System.Drawing.Point(0, 120)
+        Me.btnSeccion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnSeccion.Name = "btnSeccion"
-        Me.btnSeccion.Size = New System.Drawing.Size(213, 24)
-        Me.btnSeccion.TabIndex = 10
+        Me.btnSeccion.Size = New System.Drawing.Size(307, 30)
+        Me.btnSeccion.TabIndex = 21
         Me.btnSeccion.Text = "Secciones"
         Me.btnSeccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSeccion.UseVisualStyleBackColor = True
+        Me.btnSeccion.UseVisualStyleBackColor = False
         '
         'btnRubro
         '
+        Me.btnRubro.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnRubro.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnRubro.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnRubro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
@@ -266,16 +303,18 @@ Partial Class frmMenuPrincipal
         Me.btnRubro.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRubro.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnRubro.ForeColor = System.Drawing.Color.White
-        Me.btnRubro.Location = New System.Drawing.Point(0, 72)
+        Me.btnRubro.Location = New System.Drawing.Point(0, 90)
+        Me.btnRubro.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnRubro.Name = "btnRubro"
-        Me.btnRubro.Size = New System.Drawing.Size(213, 24)
-        Me.btnRubro.TabIndex = 12
+        Me.btnRubro.Size = New System.Drawing.Size(307, 30)
+        Me.btnRubro.TabIndex = 20
         Me.btnRubro.Text = "Rubros"
         Me.btnRubro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnRubro.UseVisualStyleBackColor = True
+        Me.btnRubro.UseVisualStyleBackColor = False
         '
         'btnRol
         '
+        Me.btnRol.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnRol.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnRol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnRol.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
@@ -283,16 +322,18 @@ Partial Class frmMenuPrincipal
         Me.btnRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRol.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnRol.ForeColor = System.Drawing.Color.White
-        Me.btnRol.Location = New System.Drawing.Point(0, 48)
+        Me.btnRol.Location = New System.Drawing.Point(0, 60)
+        Me.btnRol.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnRol.Name = "btnRol"
-        Me.btnRol.Size = New System.Drawing.Size(213, 24)
-        Me.btnRol.TabIndex = 13
+        Me.btnRol.Size = New System.Drawing.Size(307, 30)
+        Me.btnRol.TabIndex = 19
         Me.btnRol.Text = "Roles"
         Me.btnRol.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnRol.UseVisualStyleBackColor = True
+        Me.btnRol.UseVisualStyleBackColor = False
         '
         'btnMarca
         '
+        Me.btnMarca.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnMarca.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnMarca.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnMarca.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
@@ -300,16 +341,18 @@ Partial Class frmMenuPrincipal
         Me.btnMarca.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnMarca.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnMarca.ForeColor = System.Drawing.Color.White
-        Me.btnMarca.Location = New System.Drawing.Point(0, 24)
+        Me.btnMarca.Location = New System.Drawing.Point(0, 30)
+        Me.btnMarca.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnMarca.Name = "btnMarca"
-        Me.btnMarca.Size = New System.Drawing.Size(213, 24)
-        Me.btnMarca.TabIndex = 11
+        Me.btnMarca.Size = New System.Drawing.Size(307, 30)
+        Me.btnMarca.TabIndex = 18
         Me.btnMarca.Text = "Marcas"
         Me.btnMarca.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnMarca.UseVisualStyleBackColor = True
+        Me.btnMarca.UseVisualStyleBackColor = False
         '
         'btnCiudad
         '
+        Me.btnCiudad.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnCiudad.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnCiudad.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnCiudad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
@@ -318,27 +361,30 @@ Partial Class frmMenuPrincipal
         Me.btnCiudad.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnCiudad.ForeColor = System.Drawing.Color.White
         Me.btnCiudad.Location = New System.Drawing.Point(0, 0)
+        Me.btnCiudad.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnCiudad.Name = "btnCiudad"
-        Me.btnCiudad.Size = New System.Drawing.Size(213, 24)
-        Me.btnCiudad.TabIndex = 10
+        Me.btnCiudad.Size = New System.Drawing.Size(307, 30)
+        Me.btnCiudad.TabIndex = 17
         Me.btnCiudad.Text = "Ciudades"
         Me.btnCiudad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCiudad.UseVisualStyleBackColor = True
+        Me.btnCiudad.UseVisualStyleBackColor = False
         '
         'btnGestionDatos
         '
         Me.btnGestionDatos.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
         Me.btnGestionDatos.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnGestionDatos.FlatAppearance.BorderSize = 0
+        Me.btnGestionDatos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
         Me.btnGestionDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnGestionDatos.Font = New System.Drawing.Font("Century Gothic", 11.25!)
         Me.btnGestionDatos.ForeColor = System.Drawing.Color.White
         Me.btnGestionDatos.Image = CType(resources.GetObject("btnGestionDatos.Image"), System.Drawing.Image)
         Me.btnGestionDatos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnGestionDatos.Location = New System.Drawing.Point(0, 525)
+        Me.btnGestionDatos.Location = New System.Drawing.Point(0, 646)
+        Me.btnGestionDatos.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnGestionDatos.Name = "btnGestionDatos"
-        Me.btnGestionDatos.Size = New System.Drawing.Size(213, 35)
-        Me.btnGestionDatos.TabIndex = 51
+        Me.btnGestionDatos.Size = New System.Drawing.Size(307, 43)
+        Me.btnGestionDatos.TabIndex = 16
         Me.btnGestionDatos.Text = "        Gestión de Datos"
         Me.btnGestionDatos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnGestionDatos.UseVisualStyleBackColor = False
@@ -354,15 +400,18 @@ Partial Class frmMenuPrincipal
         Me.PanelCboTableroControl.Controls.Add(Me.btnRepVehiculos)
         Me.PanelCboTableroControl.Controls.Add(Me.btnRepPersona)
         Me.PanelCboTableroControl.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelCboTableroControl.Location = New System.Drawing.Point(0, 348)
+        Me.PanelCboTableroControl.ForeColor = System.Drawing.Color.White
+        Me.PanelCboTableroControl.Location = New System.Drawing.Point(0, 428)
+        Me.PanelCboTableroControl.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PanelCboTableroControl.Name = "PanelCboTableroControl"
-        Me.PanelCboTableroControl.Size = New System.Drawing.Size(213, 177)
+        Me.PanelCboTableroControl.Size = New System.Drawing.Size(307, 218)
         Me.PanelCboTableroControl.TabIndex = 38
         Me.PanelCboTableroControl.Tag = "0"
         Me.PanelCboTableroControl.Visible = False
         '
         'btnMiscelaneas
         '
+        Me.btnMiscelaneas.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnMiscelaneas.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnMiscelaneas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnMiscelaneas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
@@ -370,16 +419,18 @@ Partial Class frmMenuPrincipal
         Me.btnMiscelaneas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnMiscelaneas.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnMiscelaneas.ForeColor = System.Drawing.Color.White
-        Me.btnMiscelaneas.Location = New System.Drawing.Point(0, 145)
+        Me.btnMiscelaneas.Location = New System.Drawing.Point(0, 181)
+        Me.btnMiscelaneas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnMiscelaneas.Name = "btnMiscelaneas"
-        Me.btnMiscelaneas.Size = New System.Drawing.Size(213, 25)
-        Me.btnMiscelaneas.TabIndex = 14
+        Me.btnMiscelaneas.Size = New System.Drawing.Size(307, 31)
+        Me.btnMiscelaneas.TabIndex = 15
         Me.btnMiscelaneas.Text = "Misceláneas"
         Me.btnMiscelaneas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnMiscelaneas.UseVisualStyleBackColor = True
+        Me.btnMiscelaneas.UseVisualStyleBackColor = False
         '
         'btnRepVentas
         '
+        Me.btnRepVentas.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnRepVentas.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnRepVentas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnRepVentas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
@@ -387,16 +438,18 @@ Partial Class frmMenuPrincipal
         Me.btnRepVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRepVentas.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnRepVentas.ForeColor = System.Drawing.Color.White
-        Me.btnRepVentas.Location = New System.Drawing.Point(0, 120)
+        Me.btnRepVentas.Location = New System.Drawing.Point(0, 150)
+        Me.btnRepVentas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnRepVentas.Name = "btnRepVentas"
-        Me.btnRepVentas.Size = New System.Drawing.Size(213, 25)
-        Me.btnRepVentas.TabIndex = 11
+        Me.btnRepVentas.Size = New System.Drawing.Size(307, 31)
+        Me.btnRepVentas.TabIndex = 14
         Me.btnRepVentas.Text = "Ventas"
         Me.btnRepVentas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnRepVentas.UseVisualStyleBackColor = True
+        Me.btnRepVentas.UseVisualStyleBackColor = False
         '
         'btnRepCompras
         '
+        Me.btnRepCompras.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnRepCompras.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnRepCompras.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnRepCompras.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
@@ -404,16 +457,18 @@ Partial Class frmMenuPrincipal
         Me.btnRepCompras.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRepCompras.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnRepCompras.ForeColor = System.Drawing.Color.White
-        Me.btnRepCompras.Location = New System.Drawing.Point(0, 96)
+        Me.btnRepCompras.Location = New System.Drawing.Point(0, 120)
+        Me.btnRepCompras.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnRepCompras.Name = "btnRepCompras"
-        Me.btnRepCompras.Size = New System.Drawing.Size(213, 24)
-        Me.btnRepCompras.TabIndex = 10
+        Me.btnRepCompras.Size = New System.Drawing.Size(307, 30)
+        Me.btnRepCompras.TabIndex = 13
         Me.btnRepCompras.Text = "Compras"
         Me.btnRepCompras.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnRepCompras.UseVisualStyleBackColor = True
+        Me.btnRepCompras.UseVisualStyleBackColor = False
         '
         'btnRepProductos
         '
+        Me.btnRepProductos.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnRepProductos.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnRepProductos.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnRepProductos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
@@ -421,16 +476,18 @@ Partial Class frmMenuPrincipal
         Me.btnRepProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRepProductos.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnRepProductos.ForeColor = System.Drawing.Color.White
-        Me.btnRepProductos.Location = New System.Drawing.Point(0, 72)
+        Me.btnRepProductos.Location = New System.Drawing.Point(0, 90)
+        Me.btnRepProductos.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnRepProductos.Name = "btnRepProductos"
-        Me.btnRepProductos.Size = New System.Drawing.Size(213, 24)
+        Me.btnRepProductos.Size = New System.Drawing.Size(307, 30)
         Me.btnRepProductos.TabIndex = 12
         Me.btnRepProductos.Text = "Productos"
         Me.btnRepProductos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnRepProductos.UseVisualStyleBackColor = True
+        Me.btnRepProductos.UseVisualStyleBackColor = False
         '
         'btnRepReparaciones
         '
+        Me.btnRepReparaciones.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnRepReparaciones.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnRepReparaciones.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnRepReparaciones.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
@@ -438,16 +495,18 @@ Partial Class frmMenuPrincipal
         Me.btnRepReparaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRepReparaciones.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnRepReparaciones.ForeColor = System.Drawing.Color.White
-        Me.btnRepReparaciones.Location = New System.Drawing.Point(0, 48)
+        Me.btnRepReparaciones.Location = New System.Drawing.Point(0, 60)
+        Me.btnRepReparaciones.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnRepReparaciones.Name = "btnRepReparaciones"
-        Me.btnRepReparaciones.Size = New System.Drawing.Size(213, 24)
-        Me.btnRepReparaciones.TabIndex = 13
+        Me.btnRepReparaciones.Size = New System.Drawing.Size(307, 30)
+        Me.btnRepReparaciones.TabIndex = 11
         Me.btnRepReparaciones.Text = "Reparaciones"
         Me.btnRepReparaciones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnRepReparaciones.UseVisualStyleBackColor = True
+        Me.btnRepReparaciones.UseVisualStyleBackColor = False
         '
         'btnRepVehiculos
         '
+        Me.btnRepVehiculos.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnRepVehiculos.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnRepVehiculos.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnRepVehiculos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
@@ -455,16 +514,18 @@ Partial Class frmMenuPrincipal
         Me.btnRepVehiculos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRepVehiculos.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnRepVehiculos.ForeColor = System.Drawing.Color.White
-        Me.btnRepVehiculos.Location = New System.Drawing.Point(0, 24)
+        Me.btnRepVehiculos.Location = New System.Drawing.Point(0, 30)
+        Me.btnRepVehiculos.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnRepVehiculos.Name = "btnRepVehiculos"
-        Me.btnRepVehiculos.Size = New System.Drawing.Size(213, 24)
-        Me.btnRepVehiculos.TabIndex = 11
+        Me.btnRepVehiculos.Size = New System.Drawing.Size(307, 30)
+        Me.btnRepVehiculos.TabIndex = 10
         Me.btnRepVehiculos.Text = "Vehiculos"
         Me.btnRepVehiculos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnRepVehiculos.UseVisualStyleBackColor = True
+        Me.btnRepVehiculos.UseVisualStyleBackColor = False
         '
         'btnRepPersona
         '
+        Me.btnRepPersona.BackColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnRepPersona.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnRepPersona.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.btnRepPersona.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen
@@ -473,27 +534,30 @@ Partial Class frmMenuPrincipal
         Me.btnRepPersona.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnRepPersona.ForeColor = System.Drawing.Color.White
         Me.btnRepPersona.Location = New System.Drawing.Point(0, 0)
+        Me.btnRepPersona.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnRepPersona.Name = "btnRepPersona"
-        Me.btnRepPersona.Size = New System.Drawing.Size(213, 24)
-        Me.btnRepPersona.TabIndex = 10
+        Me.btnRepPersona.Size = New System.Drawing.Size(307, 30)
+        Me.btnRepPersona.TabIndex = 9
         Me.btnRepPersona.Text = "Personas"
         Me.btnRepPersona.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnRepPersona.UseVisualStyleBackColor = True
+        Me.btnRepPersona.UseVisualStyleBackColor = False
         '
         'btnTableroControl
         '
         Me.btnTableroControl.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
         Me.btnTableroControl.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnTableroControl.FlatAppearance.BorderSize = 0
+        Me.btnTableroControl.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
         Me.btnTableroControl.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnTableroControl.Font = New System.Drawing.Font("Century Gothic", 11.25!)
         Me.btnTableroControl.ForeColor = System.Drawing.Color.White
         Me.btnTableroControl.Image = CType(resources.GetObject("btnTableroControl.Image"), System.Drawing.Image)
         Me.btnTableroControl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnTableroControl.Location = New System.Drawing.Point(0, 313)
+        Me.btnTableroControl.Location = New System.Drawing.Point(0, 385)
+        Me.btnTableroControl.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnTableroControl.Name = "btnTableroControl"
-        Me.btnTableroControl.Size = New System.Drawing.Size(213, 35)
-        Me.btnTableroControl.TabIndex = 50
+        Me.btnTableroControl.Size = New System.Drawing.Size(307, 43)
+        Me.btnTableroControl.TabIndex = 8
         Me.btnTableroControl.Text = "        Tablero de Control"
         Me.btnTableroControl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnTableroControl.UseVisualStyleBackColor = False
@@ -503,15 +567,17 @@ Partial Class frmMenuPrincipal
         Me.btnVentas.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
         Me.btnVentas.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnVentas.FlatAppearance.BorderSize = 0
+        Me.btnVentas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
         Me.btnVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnVentas.Font = New System.Drawing.Font("Century Gothic", 11.25!)
         Me.btnVentas.ForeColor = System.Drawing.Color.White
         Me.btnVentas.Image = CType(resources.GetObject("btnVentas.Image"), System.Drawing.Image)
         Me.btnVentas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnVentas.Location = New System.Drawing.Point(0, 278)
+        Me.btnVentas.Location = New System.Drawing.Point(0, 342)
+        Me.btnVentas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnVentas.Name = "btnVentas"
-        Me.btnVentas.Size = New System.Drawing.Size(213, 35)
-        Me.btnVentas.TabIndex = 49
+        Me.btnVentas.Size = New System.Drawing.Size(307, 43)
+        Me.btnVentas.TabIndex = 7
         Me.btnVentas.Text = "        Ventas"
         Me.btnVentas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnVentas.UseVisualStyleBackColor = False
@@ -521,15 +587,17 @@ Partial Class frmMenuPrincipal
         Me.btnCompras.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
         Me.btnCompras.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnCompras.FlatAppearance.BorderSize = 0
+        Me.btnCompras.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
         Me.btnCompras.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCompras.Font = New System.Drawing.Font("Century Gothic", 11.25!)
         Me.btnCompras.ForeColor = System.Drawing.Color.White
         Me.btnCompras.Image = CType(resources.GetObject("btnCompras.Image"), System.Drawing.Image)
         Me.btnCompras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCompras.Location = New System.Drawing.Point(0, 243)
+        Me.btnCompras.Location = New System.Drawing.Point(0, 299)
+        Me.btnCompras.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnCompras.Name = "btnCompras"
-        Me.btnCompras.Size = New System.Drawing.Size(213, 35)
-        Me.btnCompras.TabIndex = 48
+        Me.btnCompras.Size = New System.Drawing.Size(307, 43)
+        Me.btnCompras.TabIndex = 6
         Me.btnCompras.Text = "        Compras"
         Me.btnCompras.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnCompras.UseVisualStyleBackColor = False
@@ -539,15 +607,17 @@ Partial Class frmMenuPrincipal
         Me.btnProducto.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
         Me.btnProducto.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnProducto.FlatAppearance.BorderSize = 0
+        Me.btnProducto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
         Me.btnProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnProducto.Font = New System.Drawing.Font("Century Gothic", 11.25!)
         Me.btnProducto.ForeColor = System.Drawing.Color.White
         Me.btnProducto.Image = CType(resources.GetObject("btnProducto.Image"), System.Drawing.Image)
         Me.btnProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnProducto.Location = New System.Drawing.Point(0, 208)
+        Me.btnProducto.Location = New System.Drawing.Point(0, 256)
+        Me.btnProducto.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnProducto.Name = "btnProducto"
-        Me.btnProducto.Size = New System.Drawing.Size(213, 35)
-        Me.btnProducto.TabIndex = 42
+        Me.btnProducto.Size = New System.Drawing.Size(307, 43)
+        Me.btnProducto.TabIndex = 5
         Me.btnProducto.Text = "        Productos"
         Me.btnProducto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnProducto.UseVisualStyleBackColor = False
@@ -564,10 +634,11 @@ Partial Class frmMenuPrincipal
         Me.btnOrdenReparacion.ForeColor = System.Drawing.Color.White
         Me.btnOrdenReparacion.Image = CType(resources.GetObject("btnOrdenReparacion.Image"), System.Drawing.Image)
         Me.btnOrdenReparacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnOrdenReparacion.Location = New System.Drawing.Point(0, 173)
+        Me.btnOrdenReparacion.Location = New System.Drawing.Point(0, 213)
+        Me.btnOrdenReparacion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnOrdenReparacion.Name = "btnOrdenReparacion"
-        Me.btnOrdenReparacion.Size = New System.Drawing.Size(213, 35)
-        Me.btnOrdenReparacion.TabIndex = 43
+        Me.btnOrdenReparacion.Size = New System.Drawing.Size(307, 43)
+        Me.btnOrdenReparacion.TabIndex = 4
         Me.btnOrdenReparacion.Text = "        Reparaciones"
         Me.btnOrdenReparacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnOrdenReparacion.UseVisualStyleBackColor = False
@@ -584,10 +655,11 @@ Partial Class frmMenuPrincipal
         Me.btnVehiculos.ForeColor = System.Drawing.Color.White
         Me.btnVehiculos.Image = CType(resources.GetObject("btnVehiculos.Image"), System.Drawing.Image)
         Me.btnVehiculos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnVehiculos.Location = New System.Drawing.Point(0, 138)
+        Me.btnVehiculos.Location = New System.Drawing.Point(0, 170)
+        Me.btnVehiculos.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnVehiculos.Name = "btnVehiculos"
-        Me.btnVehiculos.Size = New System.Drawing.Size(213, 35)
-        Me.btnVehiculos.TabIndex = 42
+        Me.btnVehiculos.Size = New System.Drawing.Size(307, 43)
+        Me.btnVehiculos.TabIndex = 3
         Me.btnVehiculos.Text = "        Vehículos"
         Me.btnVehiculos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnVehiculos.UseVisualStyleBackColor = False
@@ -605,10 +677,11 @@ Partial Class frmMenuPrincipal
         Me.btnPersonas.ForeColor = System.Drawing.Color.White
         Me.btnPersonas.Image = CType(resources.GetObject("btnPersonas.Image"), System.Drawing.Image)
         Me.btnPersonas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnPersonas.Location = New System.Drawing.Point(0, 103)
+        Me.btnPersonas.Location = New System.Drawing.Point(0, 127)
+        Me.btnPersonas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnPersonas.Name = "btnPersonas"
-        Me.btnPersonas.Size = New System.Drawing.Size(213, 35)
-        Me.btnPersonas.TabIndex = 40
+        Me.btnPersonas.Size = New System.Drawing.Size(307, 43)
+        Me.btnPersonas.TabIndex = 2
         Me.btnPersonas.Text = "        Personas"
         Me.btnPersonas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnPersonas.UseVisualStyleBackColor = False
@@ -626,10 +699,11 @@ Partial Class frmMenuPrincipal
         Me.btnInicio.ForeColor = System.Drawing.Color.White
         Me.btnInicio.Image = CType(resources.GetObject("btnInicio.Image"), System.Drawing.Image)
         Me.btnInicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnInicio.Location = New System.Drawing.Point(0, 68)
+        Me.btnInicio.Location = New System.Drawing.Point(0, 84)
+        Me.btnInicio.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnInicio.Name = "btnInicio"
-        Me.btnInicio.Size = New System.Drawing.Size(213, 35)
-        Me.btnInicio.TabIndex = 39
+        Me.btnInicio.Size = New System.Drawing.Size(307, 43)
+        Me.btnInicio.TabIndex = 1
         Me.btnInicio.Text = "        Inicio"
         Me.btnInicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnInicio.UseVisualStyleBackColor = False
@@ -643,22 +717,24 @@ Partial Class frmMenuPrincipal
         Me.Panel3.Controls.Add(Me.lblRol)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(213, 68)
+        Me.Panel3.Size = New System.Drawing.Size(307, 84)
         Me.Panel3.TabIndex = 1
         '
         'frmMenuPrincipal
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(1200, 700)
+        Me.ClientSize = New System.Drawing.Size(1600, 1055)
         Me.Controls.Add(Me.PanelContenedor)
         Me.Controls.Add(Me.PanelMenu)
         Me.Cursor = System.Windows.Forms.Cursors.Default
         Me.DoubleBuffered = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmMenuPrincipal"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Mecánica Gaido - Menu Principal"
@@ -708,4 +784,5 @@ Partial Class frmMenuPrincipal
     Friend WithEvents btnRepPersona As Button
     Friend WithEvents btnTableroControl As Button
     Friend WithEvents btnVentas As Button
+    Friend WithEvents btnCambiarTema As Button
 End Class

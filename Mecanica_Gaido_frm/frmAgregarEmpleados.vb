@@ -13,6 +13,8 @@ Public Class frmAgregarEmpleados
         Cargar_Combo_Seccion()
         Cargar_Combo_Rol()
         cboSeccion.TabIndex = 1
+        validar()
+        AplicarTema(Me)
 
         If o_empleados.ControlarIdPersonaEnEmpleado(IdPersona) Then
             ' Si la persona ya es un empleado, deshabilitar el botón "Aceptar"
@@ -26,6 +28,7 @@ Public Class frmAgregarEmpleados
             btnAceptar.Enabled = True
             btnModificar.Enabled = False
         End If
+
     End Sub
 
     Public Sub limpiar()
@@ -53,6 +56,35 @@ Public Class frmAgregarEmpleados
 
         btnAceptar.Enabled = True
         btnModificar.Enabled = False
+
+        Me.Close()
+    End Sub
+#End Region
+
+#Region "validacion"
+    Public Sub validar()
+        If txtUsuario.Text <> Nothing And txtContraseña.Text <> Nothing And txtCargo.Text <> Nothing Then
+
+            chkEstado.Visible = True
+        Else
+            chkEstado.Visible = False
+        End If
+    End Sub
+
+    Private Sub chkEstado_CheckedChanged(sender As Object, e As EventArgs) Handles chkEstado.CheckedChanged
+        validar()
+    End Sub
+
+    Private Sub txtUsuario_TextChanged(sender As Object, e As EventArgs) Handles txtUsuario.TextChanged
+        validar()
+    End Sub
+
+    Private Sub txtCargo_TextChanged(sender As Object, e As EventArgs) Handles txtCargo.TextChanged
+        validar()
+    End Sub
+
+    Private Sub txtContraseña_TextChanged(sender As Object, e As EventArgs) Handles txtContraseña.TextChanged
+        validar()
     End Sub
 #End Region
 
@@ -361,5 +393,6 @@ Public Class frmAgregarEmpleados
             e.Graphics.DrawRectangle(pen, rect)
         End Using
     End Sub
+
 #End Region
 End Class

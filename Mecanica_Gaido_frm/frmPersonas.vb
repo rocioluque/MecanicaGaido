@@ -19,10 +19,182 @@ Public Class frmPersonas
     Dim EsExento As Boolean
     Dim EsConsFinal As Boolean
 
-
     Public Property IdPersona As Integer
     Public Property NuevaPersonaNombre As String
     Public Property NuevaPersonaNombreCompra As String
+
+#Region "Enter para pasar de tabulación"
+
+    Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
+        If keyData = Keys.Enter Then
+            ' Verifica si el control activo es un Button
+            If TypeOf Me.ActiveControl Is Button Then
+                ' Ejecuta el evento Click del botón
+                Dim button As Button = DirectCast(Me.ActiveControl, Button)
+                button.PerformClick()
+                Return True
+            Else
+                ' Mueve el foco al siguiente control en el orden de tabulación
+                Me.SelectNextControl(Me.ActiveControl, True, True, True, True)
+                Return True
+            End If
+        End If
+        Return MyBase.ProcessCmdKey(msg, keyData)
+    End Function
+
+    Private Sub Control_Enter(sender As Object, e As EventArgs)
+        If TypeOf sender Is TextBox Then
+            CType(sender, TextBox).SelectAll()
+        ElseIf TypeOf sender Is RichTextBox Then
+            CType(sender, RichTextBox).SelectAll()
+        End If
+    End Sub
+
+#End Region
+
+#Region "Procedimientos"
+    Private Sub frmPersonas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        ' Registra el evento Enter para todos los controles
+        For Each ctrl As Control In Me.Controls
+            If TypeOf ctrl Is TextBox OrElse TypeOf ctrl Is RichTextBox Then
+                AddHandler ctrl.Enter, AddressOf Control_Enter
+            End If
+        Next
+
+        Cargar_Provincias()
+        Cargar_Combo_TipoDocumento()
+        Cargar_Combo_TipoPersona()
+        Cargar_Grilla()
+        Limpiar()
+        btnModificar.Enabled = False
+        txtBuscar.Visible = False
+        AplicarTema(Me)
+    End Sub
+
+    Public Sub Limpiar()
+        txtID.Clear()
+        txtBuscar.Clear()
+        msktxtNumeroDocumento.Clear()
+        txtNombre.Clear()
+        txtApellido.Clear()
+        txtCodigoPostal.Clear()
+        txtDireccion.Clear()
+        txtNumero.Clear()
+        txtPiso.Clear()
+        txtLetraPuerta.Clear()
+        txtTelefonoMovil.Clear()
+        txtTelefonoFijo.Clear()
+        txtCorreo.Clear()
+        txtNota.Clear()
+        cboTipoPersona.SelectedIndex = -1
+        cboTipoDocumento.SelectedIndex = -1
+        cboProvincia.SelectedIndex = -1
+        cboCiudad.SelectedIndex = -1
+        dtpFechaNacimiento.Value = DateTime.Today
+        chkEstado.Checked = False
+        txtBuscar.Visible = False
+        lblBuscar.Visible = False
+        chkEstado.Visible = False
+        btnAceptar.Enabled = True
+        btnModificar.Enabled = False
+    End Sub
+
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        Limpiar()
+    End Sub
+#End Region
+
+#Region "Grilla y datos en txt"
+    Public Sub Cargar_Grilla()
+        Try
+            Dim conexion As SqlConnection
+            Dim comando As New SqlCommand
+
+            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
+
+            conexion.Open()
+            comando.Connection = conexion
+            comando.CommandType = CommandType.StoredProcedure
+            comando.CommandText = ("Cargar_Grilla_Persona")
+
+            Dim datadapter As New SqlDataAdapter(comando)
+            Dim oDs As New DataSet
+            datadapter.Fill(oDs)
+
+            If oDs.Tables(0).Rows.Count > 0 Then
+                grdPersonas.AutoGenerateColumns = True
+                grdPersonas.DataSource = oDs.Tables(0)
+                grdPersonas.Refresh()
+            Else
+                MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
+            End If
+
+            oDs = Nothing
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox("Error al cargar la grilla: " & ex.Message, vbCritical, "Error")
+        Finally
+        End Try
+    End Sub
+
+    Public Sub CargarDatosEnTxt(ByVal idPersona As Integer)
+        Try
+            Dim datoleido As SqlDataReader = o_Personas.Consultar_PersonaPorID(idPersona)
+
+            If datoleido.Read() Then
+                chkEstado.Visible = True
+
+                txtID.Text = datoleido("N° Persona").ToString()
+                txtNombre.Text = datoleido("Nombre / Razon Social").ToString()
+                txtApellido.Text = datoleido("Apellido").ToString()
+                dtpFechaNacimiento.Value = Convert.ToDateTime(datoleido("Fecha_Nacimiento"))
+                msktxtNumeroDocumento.Text = datoleido("Documento").ToString()
+                txtTelefonoMovil.Text = datoleido("Teléfono Móvil").ToString()
+                txtTelefonoFijo.Text = datoleido("Teléfono Fijo").ToString()
+                txtCorreo.Text = datoleido("Correo").ToString()
+                cboProvincia.SelectedValue = datoleido("ID_Provincia").ToString()
+                cboCiudad.SelectedValue = datoleido("ID_Ciudad").ToString()
+                cboTipoPersona.SelectedValue = datoleido("ID_TipoPersona").ToString()
+                cboTipoDocumento.SelectedValue = datoleido("ID_TipoDocumento").ToString()
+                txtDireccion.Text = datoleido("Direccion").ToString()
+                txtNumero.Text = datoleido("Numero").ToString()
+                txtPiso.Text = datoleido("Piso").ToString()
+                txtLetraPuerta.Text = datoleido("Letra/Puerta").ToString()
+                txtCodigoPostal.Text = datoleido("Codigo_Postal").ToString()
+                txtNota.Text = datoleido("Nota").ToString()
+                chkEstado.Checked = Convert.ToBoolean(datoleido("Estado"))
+
+            Else
+                MsgBox("No se encontraron resultados", vbInformation, "Error")
+            End If
+
+            datoleido.Close()
+        Catch ex As Exception
+            MessageBox.Show("Ocurrió un error al consultar la persona " & ex.Message, "Error")
+        End Try
+    End Sub
+
+    Private Sub grdPersonas_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdPersonas.CellClick
+        If e.RowIndex >= 0 Then
+            Dim selectedRow As DataGridViewRow = grdPersonas.Rows(e.RowIndex)
+            Dim IdPersona As Integer
+            btnModificar.Enabled = True
+
+            If selectedRow.Cells("N° Persona").Value IsNot Nothing Then
+                IdPersona = Convert.ToInt32(selectedRow.Cells("N° Persona").Value)
+                CargarDatosEnTxt(IdPersona)
+            Else
+                MsgBox("El ID de Persona no puede ser nulo.", vbCritical, "Error")
+
+            End If
+        End If
+        txtBuscar.Clear()
+        lblBuscar.Visible = False
+        txtBuscar.Visible = False
+        btnAceptar.Enabled = False
+    End Sub
+#End Region
 
 #Region "Carga de Cbos"
     Private Sub Cargar_Provincias()
@@ -74,11 +246,9 @@ Public Class frmPersonas
         If cboProvincia.SelectedIndex <> -1 Then
             cboCiudad.Enabled = True
             btnAgregarCiudad.Enabled = True
-
         Else
             cboCiudad.Enabled = False
             btnAgregarCiudad.Enabled = False
-
         End If
     End Sub
 
@@ -115,132 +285,15 @@ Public Class frmPersonas
             MsgBox("Error al cargar los tipos de persona: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
-#End Region
 
-#Region "Procedimientos"
-    Public Sub Limpiar()
-        txtID.Clear()
-        txtNombre.Clear()
-        txtApellido.Clear()
-        txtTelefonoMovil.Clear()
-        txtTelefonoFijo.Clear()
-        msktxtNumeroDocumento.Clear()
-        txtCorreo.Clear()
-        txtDireccion.Clear()
-        txtNumero.Clear()
-        txtPiso.Clear()
-        txtLetraPuerta.Clear()
-        txtCodigoPostal.Clear()
-        txtNota.Clear()
-        dtpFechaNacimiento.Value = DateTime.Today
-        cboTipoPersona.SelectedIndex = -1
-        cboProvincia.SelectedIndex = -1
-        cboCiudad.SelectedIndex = -1
-        cboTipoDocumento.SelectedIndex = -1
-        chkEstado.Checked = False
-    End Sub
-
-    Private Sub frmPersonas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Limpiar()
-        Cargar_Provincias()
-        Cargar_Combo_TipoDocumento()
-        Cargar_Combo_TipoPersona()
-        Cargar_Grilla()
-        btnModificar.Enabled = False
-        txtNombre.Enabled = True
-    End Sub
-
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        Limpiar()
-    End Sub
-#End Region
-
-#Region "Grilla y datos en txt"
-    Public Sub Cargar_Grilla()
-        Try
-            Dim conexion As SqlConnection
-            Dim comando As New SqlCommand
-
-            conexion = New SqlConnection("Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123")
-
-            conexion.Open()
-            comando.Connection = conexion
-            comando.CommandType = CommandType.StoredProcedure
-            comando.CommandText = ("Cargar_Grilla_Persona")
-
-            Dim datadapter As New SqlDataAdapter(comando)
-            Dim oDs As New DataSet
-            datadapter.Fill(oDs)
-
-            If oDs.Tables(0).Rows.Count > 0 Then
-                grdPersonas.AutoGenerateColumns = True
-                grdPersonas.DataSource = oDs.Tables(0)
-                grdPersonas.Refresh()
-            Else
-                MsgBox("No se encontraron datos para mostrar.", vbInformation, "Información")
-            End If
-
-            oDs = Nothing
-            conexion.Close()
-        Catch ex As Exception
-            MsgBox("Error al cargar la grilla: " & ex.Message, vbCritical, "Error")
-        Finally
-        End Try
-    End Sub
-
-    Public Sub CargarDatosEnTxt(ByVal idPersona As Integer)
-        Try
-            Dim datoleido As SqlDataReader = o_Personas.Consultar_PersonaPorID(idPersona)
-
-            If datoleido.Read() Then
-                txtID.Text = datoleido("N° Persona").ToString()
-                txtNombre.Text = datoleido("Nombre / Razon Social").ToString()
-                txtApellido.Text = datoleido("Apellido").ToString()
-                dtpFechaNacimiento.Value = Convert.ToDateTime(datoleido("Fecha_Nacimiento"))
-                msktxtNumeroDocumento.Text = datoleido("Documento").ToString()
-                txtTelefonoMovil.Text = datoleido("Teléfono Móvil").ToString()
-                txtTelefonoFijo.Text = datoleido("Teléfono Fijo").ToString()
-                txtCorreo.Text = datoleido("Correo").ToString()
-                cboProvincia.SelectedValue = datoleido("ID_Provincia").ToString()
-                cboCiudad.SelectedValue = datoleido("ID_Ciudad").ToString()
-                cboTipoPersona.SelectedValue = datoleido("ID_TipoPersona").ToString()
-                cboTipoDocumento.SelectedValue = datoleido("ID_TipoDocumento").ToString()
-                txtDireccion.Text = datoleido("Direccion").ToString()
-                txtNumero.Text = datoleido("Numero").ToString()
-                txtPiso.Text = datoleido("Piso").ToString()
-                txtLetraPuerta.Text = datoleido("Letra/Puerta").ToString()
-                txtCodigoPostal.Text = datoleido("Codigo_Postal").ToString()
-                txtNota.Text = datoleido("Nota").ToString()
-                chkEstado.Checked = Convert.ToBoolean(datoleido("Estado"))
-
-            Else
-                MsgBox("No se encontraron resultados", vbInformation, "Error")
-            End If
-
-            datoleido.Close()
-        Catch ex As Exception
-            MessageBox.Show("Ocurrió un error al consultar la persona " & ex.Message, "Error")
-        End Try
-    End Sub
-
-    Private Sub grdPersonas_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdPersonas.CellClick
-        If e.RowIndex >= 0 Then
-
-            ' Obtiene el ID de persona de la celda correspondiente
-            Dim selectedRow As DataGridViewRow = grdPersonas.Rows(e.RowIndex)
-            Dim IdPersona As Integer
-            btnModificar.Enabled = True
-
-            If selectedRow.Cells("N° Persona").Value IsNot Nothing Then
-                IdPersona = Convert.ToInt32(selectedRow.Cells("N° Persona").Value)
-                CargarDatosEnTxt(IdPersona)
-            Else
-                MsgBox("El ID de Persona no puede ser nulo.", vbCritical, "Error")
-
+    Private Sub cboTipoPersona_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTipoPersona.SelectedIndexChanged
+        If cboTipoPersona.SelectedItem IsNot Nothing Then
+            If cboTipoPersona.SelectedItem.ToString() = "Personas Jurídicas" Then
+                txtApellido.Enabled = False
+            ElseIf cboTipoPersona.SelectedItem.ToString() = "Personas Físicas" Then
+                txtApellido.Enabled = True
             End If
         End If
-
-
     End Sub
 #End Region
 
@@ -273,13 +326,11 @@ Public Class frmPersonas
             If cboTipoPersona.Text = "Personas Físicas" Then
 
                 'NO TOQUEN EL NOMBRE DE DONDE ESTÁ
-
                 frmAgregarDatosFiscales.lblNombre.Text = "Apellido y 
 Nombre"
             Else
                 frmAgregarDatosFiscales.lblNombre.Text = "Razón Social"
             End If
-
             frmAgregarDatosFiscales.ShowDialog()
         Else
             MsgBox("Por favor seleccione una persona para cargar sus datos físcales.", vbInformation, "Información")
@@ -351,10 +402,13 @@ Nombre"
                        txtTelefonoFijo.Text, dtpFechaNacimiento.Value, CInt(cboTipoDocumento.SelectedValue), msktxtNumeroDocumento.Text,
                        txtCorreo.Text, txtDireccion.Text, txtNumero.Text, txtPiso.Text, txtLetraPuerta.Text, txtCodigoPostal.Text,
                        Convert.ToInt32(cboCiudad.SelectedValue), txtNota.Text, chkEstado.Checked)
+
                 MsgBox("Persona modificada correctamente.", vbInformation, "Información")
                 Limpiar()
                 Cargar_Grilla()
 
+                btnModificar.Enabled = False
+                btnAceptar.Enabled = True
             Catch ex As Exception
                 MsgBox("Error al modificar la persona: " & ex.Message, vbCritical, "Error")
             End Try
@@ -413,246 +467,17 @@ Nombre"
         Filtrar_Grilla()
     End Sub
 
-#End Region
-
-#Region "Keypress"
-    'Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs)
-    '    If Not Char.IsLetter(e.KeyChar) _
-    '       AndAlso Not Char.IsControl(e.KeyChar) _
-    '       AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
-    '        e.Handled = True
-    '    End If
-    'End Sub
-
-    'Private Sub txtApellido_KeyPress(sender As Object, e As KeyPressEventArgs)
-    '    If Not Char.IsLetter(e.KeyChar) _
-    '     AndAlso Not Char.IsControl(e.KeyChar) _
-    '     AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
-    '        e.Handled = True
-    '    End If
-
-    'End Sub
-
-    Private Sub txtTelefono_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        txtBuscar.Visible = True
+        lblBuscar.Visible = True
+        txtBuscar.Clear()
+        txtBuscar.Focus()
     End Sub
-
-    Private Sub txtDireccion_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDireccion.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtNumero.Focus()
-        End If
-    End Sub
-
-    Private Sub txtNumero_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNumero.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtPiso.Focus()
-        End If
-
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
-
-    End Sub
-
-    Private Sub txtLetraPuerta_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtLetraPuerta.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtTelefonoMovil.Focus()
-        End If
-    End Sub
-
-    Private Sub txtTelefonoMovil_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Asc(e.KeyChar) = 13 Then
-            txtTelefonoFijo.Focus()
-        End If
-    End Sub
-
-    Private Sub txtPiso_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPiso.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtLetraPuerta.Focus()
-        End If
-    End Sub
-
-    Private Sub txtTelefonoFijo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTelefonoFijo.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtCorreo.Focus()
-        End If
-    End Sub
-
-    Private Sub txtCorreo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCorreo.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtNota.Focus()
-        End If
-    End Sub
-
-    Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombre.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            txtApellido.Focus()
-        End If
-    End Sub
-
-    Private Sub txtApellido_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtApellido.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            msktxtNumeroDocumento.Focus()
-        End If
-    End Sub
-
-    Private Sub txtNumeroDocumento_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-        End If
-    End Sub
-#End Region
-
-#Region "Mascaras"
-    Public Sub Mascaras()
-        If cboTipoDocumento.Text IsNot Nothing Then
-            Select Case cboTipoDocumento.Text.ToString()
-                Case "CUIL", "CUIT"
-                    msktxtNumeroDocumento.Mask = "00-00000000-0"
-                Case "DNI"
-                    msktxtNumeroDocumento.Mask = "00.000.000"
-                Case Else
-                    msktxtNumeroDocumento.Mask = ""
-            End Select
-        End If
-    End Sub
-
-    Private Sub cboTipoDocumento_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTipoDocumento.SelectedIndexChanged
-        Mascaras()
-    End Sub
-#End Region
-
-#Region "Habilitar y deshabilitar botones"
-    Private Sub cboCiudad_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCiudad.SelectedIndexChanged
-        If cboCiudad.SelectedIndex <> -1 Then
-
-            txtCodigoPostal.Enabled = True
-        Else
-
-            txtCodigoPostal.Enabled = False
-        End If
-    End Sub
-
-    Private Sub txtCodigoPostal_TextChanged(sender As Object, e As EventArgs)
-        ActualizarEstadoControles()
-    End Sub
-
-    Private Sub txtDireccion_TextChanged(sender As Object, e As EventArgs) Handles txtDireccion.TextChanged
-        ActualizarEstadoControles()
-    End Sub
-
-    Private Sub txtNumero_TextChanged(sender As Object, e As EventArgs) Handles txtNumero.TextChanged
-        ActualizarEstadoControles()
-    End Sub
-
-    Private Sub txtPiso_TextChanged(sender As Object, e As EventArgs) Handles txtPiso.TextChanged
-        ActualizarEstadoControles()
-    End Sub
-
-    Private Sub txtLetraPuerta_TextChanged(sender As Object, e As EventArgs) Handles txtLetraPuerta.TextChanged
-        ActualizarEstadoControles()
-    End Sub
-
-    Private Sub txtTelefonoMovil_TextChanged(sender As Object, e As EventArgs)
-        ActualizarEstadoControles()
-    End Sub
-
-    Private Sub txtTelefonoFijo_TextChanged(sender As Object, e As EventArgs) Handles txtTelefonoFijo.TextChanged
-        ActualizarEstadoControles()
-    End Sub
-
-    Private Sub txtCorreo_TextChanged(sender As Object, e As EventArgs) Handles txtCorreo.TextChanged
-        ActualizarEstadoControles()
-    End Sub
-
-    Private Sub chkEstado_CheckedChanged(sender As Object, e As EventArgs) Handles chkEstado.CheckedChanged
-        ActualizarEstadoControles()
-    End Sub
-
-    Private Sub ActualizarEstadoControles()
-        Dim habilitar As Boolean = Not String.IsNullOrEmpty(txtCodigoPostal.Text)
-        txtDireccion.Enabled = habilitar
-        txtNumero.Enabled = habilitar
-        txtPiso.Enabled = habilitar
-        txtLetraPuerta.Enabled = habilitar
-        txtTelefonoFijo.Enabled = habilitar
-        txtTelefonoMovil.Enabled = habilitar
-        txtCorreo.Enabled = habilitar
-        chkEstado.Enabled = habilitar
-    End Sub
-#End Region
-
-#Region "Css trucho"
-    Private Sub PanelDatosPersonales_Paint(sender As Object, e As PaintEventArgs) Handles PanelDatosPersonales.Paint
-        ' Configurar los colores y el grosor del borde
-        Dim borderColor As Color = Color.SeaGreen
-        Dim borderWidth As Integer = 1
-
-        ' Crear un objeto Pen para dibujar el borde
-        Using pen As New Pen(borderColor, borderWidth)
-            ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelDatosPersonales.Width - 1, PanelDatosPersonales.Height - 1)
-            e.Graphics.DrawRectangle(pen, rect)
-        End Using
-    End Sub
-
-
-    Private Sub PanelDirecciones_Paint(sender As Object, e As PaintEventArgs) Handles PanelDirecciones.Paint
-        ' Configurar los colores y el grosor del borde
-        Dim borderColor As Color = Color.SeaGreen
-        Dim borderWidth As Integer = 1
-
-        ' Crear un objeto Pen para dibujar el borde
-        Using pen As New Pen(borderColor, borderWidth)
-            ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelDirecciones.Width - 1, PanelDirecciones.Height - 1)
-            e.Graphics.DrawRectangle(pen, rect)
-        End Using
-    End Sub
-
-    Private Sub PanelNotas_Paint(sender As Object, e As PaintEventArgs) Handles PanelNotas.Paint
-        ' Configurar los colores y el grosor del borde
-        Dim borderColor As Color = Color.SeaGreen
-        Dim borderWidth As Integer = 1
-
-        ' Crear un objeto Pen para dibujar el borde
-        Using pen As New Pen(borderColor, borderWidth)
-            ' Ajustar el área para dibujar el borde sin recortes
-            Dim rect As New Rectangle(0, 0, PanelNotas.Width - 1, PanelNotas.Height - 1)
-            e.Graphics.DrawRectangle(pen, rect)
-        End Using
-    End Sub
-
-
-
-
 #End Region
 
 #Region "AFIP"
     Private Async Sub BtnValidarCUIT(sender As Object, e As EventArgs) Handles msktxtNumeroDocumento.Leave
-
         If cboTipoDocumento.SelectedValue = 3 Then
-
             Dim cuit As String = msktxtNumeroDocumento.Text.Replace("-", "")
 
             ' Validar que el CUIT tenga 11 dígitos
@@ -734,7 +559,6 @@ Nombre"
                         Else
                             txtApellido.Text = ""
                             txtNombre.Text = RazonSocial
-
                         End If
 
                         cboProvincia.SelectedValue = contribuyenteData.Contribuyente.domicilioFiscal.idProvincia
@@ -760,9 +584,155 @@ Nombre"
             End Try
         End If
     End Sub
+#End Region
 
-    Private Sub grdPersonas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdPersonas.CellContentClick
+#Region "Keypress"
+    Private Sub txtTelefono_KeyPress(sender As Object, e As KeyPressEventArgs)
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
+    End Sub
 
+    Private Sub txtDireccion_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDireccion.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtNumero.Focus()
+        End If
+    End Sub
+
+    Private Sub txtNumero_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNumero.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtPiso.Focus()
+        End If
+
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub txtLetraPuerta_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtLetraPuerta.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtTelefonoMovil.Focus()
+        End If
+    End Sub
+
+    Private Sub txtTelefonoMovil_KeyPress(sender As Object, e As KeyPressEventArgs)
+        If Asc(e.KeyChar) = 13 Then
+            txtTelefonoFijo.Focus()
+        End If
+    End Sub
+
+    Private Sub txtPiso_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPiso.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtLetraPuerta.Focus()
+        End If
+    End Sub
+
+    Private Sub txtTelefonoFijo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTelefonoFijo.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtCorreo.Focus()
+        End If
+    End Sub
+
+    Private Sub txtCorreo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCorreo.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtNota.Focus()
+        End If
+    End Sub
+
+    Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombre.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            txtApellido.Focus()
+        End If
+    End Sub
+
+    Private Sub txtApellido_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtApellido.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            msktxtNumeroDocumento.Focus()
+        End If
+    End Sub
+
+    Private Sub txtNumeroDocumento_KeyPress(sender As Object, e As KeyPressEventArgs)
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
+    End Sub
+#End Region
+
+#Region "Mascaras"
+    Public Sub Mascaras()
+        If cboTipoDocumento.Text IsNot Nothing Then
+            Select Case cboTipoDocumento.Text.ToString()
+                Case "CUIL", "CUIT"
+                    msktxtNumeroDocumento.Mask = "00-00000000-0"
+                Case "DNI"
+                    msktxtNumeroDocumento.Mask = "00.000.000"
+                Case Else
+                    msktxtNumeroDocumento.Mask = ""
+            End Select
+        End If
+    End Sub
+
+    Private Sub cboTipoDocumento_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTipoDocumento.SelectedIndexChanged
+        Mascaras()
+    End Sub
+#End Region
+
+#Region "Css trucho"
+    Private Sub PanelDatosPersonales_Paint(sender As Object, e As PaintEventArgs) Handles PanelDatosPersonales.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelDatosPersonales.Width - 1, PanelDatosPersonales.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub PanelDirecciones_Paint(sender As Object, e As PaintEventArgs) Handles PanelDirecciones.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelDirecciones.Width - 1, PanelDirecciones.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
+    End Sub
+
+    Private Sub PanelNotas_Paint(sender As Object, e As PaintEventArgs) Handles PanelNotas.Paint
+        ' Configurar los colores y el grosor del borde
+        Dim borderColor As Color = Color.SeaGreen
+        Dim borderWidth As Integer = 1
+
+        ' Crear un objeto Pen para dibujar el borde
+        Using pen As New Pen(borderColor, borderWidth)
+            ' Ajustar el área para dibujar el borde sin recortes
+            Dim rect As New Rectangle(0, 0, PanelNotas.Width - 1, PanelNotas.Height - 1)
+            e.Graphics.DrawRectangle(pen, rect)
+        End Using
     End Sub
 #End Region
 

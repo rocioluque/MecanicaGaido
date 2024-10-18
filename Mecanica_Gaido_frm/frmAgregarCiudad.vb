@@ -25,6 +25,7 @@ Public Class frmAgregarCiudad
                 cboProvincia.SelectedValue = ProvinciaSeleccionada
             End If
         End If
+        AplicarTema(Me)
     End Sub
 
     Private Sub Cargar_Provincias()

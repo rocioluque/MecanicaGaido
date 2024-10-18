@@ -64,7 +64,7 @@ Public Class AD_Reportes
 
 #End Region
 
-#Region "Reporte reparaciones"
+#Region "Reporte Reparaciones"
     Public Function Contar_Reparaciones_Mes(ByVal año As Integer) As DataTable
         Dim dt As New DataTable()
 
@@ -143,8 +143,35 @@ Public Class AD_Reportes
 
 #End Region
 
-#Region "Reporte ventas"
+#Region "Reporte Ventas"
+    Public Function ObtenerVentasPorMes(ByVal año As Integer) As DataTable
+        Dim dt As New DataTable()
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Contar_Ventas_Mes", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@Año", año)
 
+                Dim adapter As New SqlDataAdapter(comando)
+
+                adapter.Fill(dt)
+            End Using
+        End Using
+        Return dt
+    End Function
+
+    Public Function ObtenerVentasPorEmpleado() As DataTable
+        Dim dt As New DataTable()
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Contar_Ventas_Empleado", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+
+                Dim adapter As New SqlDataAdapter(comando)
+
+                adapter.Fill(dt)
+            End Using
+        End Using
+        Return dt
+    End Function
 #End Region
 
 #Region "Reporte miscelaneas"

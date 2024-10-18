@@ -70,19 +70,7 @@ Public Class AD_Productos
     End Function
 #End Region
 
-    Public Function Cargar_Grilla() As DataTable
-        Dim tabla As New DataTable
-
-        Using conexion As New SqlConnection(connectionString)
-            Using comando As New SqlCommand("Cargar_Grilla_Producto", conexion)
-                comando.CommandType = CommandType.StoredProcedure
-                Dim datadapter As New SqlDataAdapter(comando)
-                datadapter.Fill(tabla)
-            End Using
-        End Using
-        Return tabla
-    End Function
-
+#Region "Consultas"
     Public Function Consultar_ProductoPorID(ByVal idProducto As String) As SqlDataReader
         Dim conexion As New SqlConnection(connectionString)
         Dim comando As New SqlCommand("Consultar_ProductoPorID", conexion)
@@ -97,6 +85,128 @@ Public Class AD_Productos
         End Try
     End Function
 
+    Public Function Consultar_StockMinimoPorID(ByVal idProducto As String) As Integer
+        Dim conexion As New SqlConnection(connectionString)
+        Dim comando As New SqlCommand("Consultar_StockMinimoPorID", conexion)
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.AddWithValue("@idProducto", idProducto)
+
+        Try
+            conexion.Open()
+            ' Cambiamos el tipo de retorno a ExecuteScalar ya que queremos un solo valor
+            Dim stockMinimo As Object = comando.ExecuteScalar()
+
+            ' Verificamos si el valor no es nulo antes de retornarlo
+            If stockMinimo IsNot Nothing AndAlso IsNumeric(stockMinimo) Then
+                Return Convert.ToInt32(stockMinimo)
+            Else
+                Return 1 ' Puedes retornar otro valor en caso de no encontrar resultados
+            End If
+        Catch ex As Exception
+            Throw ex
+        Finally
+            conexion.Close()
+        End Try
+    End Function
+
+    Public Function Consultar_StockDisponiblePorID(ByVal ID_Repuestos As Integer, transaction As SqlTransaction) As Decimal
+        Dim stockDisponible As Decimal = 0
+
+        Using command As New SqlCommand("Consultar_StockDisponiblePorID", transaction.Connection)
+            command.CommandType = CommandType.StoredProcedure
+            command.Transaction = transaction
+
+            command.Parameters.AddWithValue("@ID_Repuestos", ID_Repuestos)
+
+            Try
+                Dim result As Object = command.ExecuteScalar()
+                If result IsNot Nothing AndAlso Not DBNull.Value.Equals(result) Then
+                    stockDisponible = Convert.ToDecimal(result)
+                End If
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+        End Using
+
+        Return stockDisponible
+    End Function
+
+    Public Function Consultar_StockDisponiblePorID(ByVal ID_Repuestos As Integer) As Decimal
+        Dim stockDisponible As Decimal = 0
+
+        ' Asegúrate de usar la cadena de conexión correcta
+        Using connection As New SqlConnection(connectionString)
+            Using command As New SqlCommand("Consultar_StockDisponiblePorID", connection)
+                command.CommandType = CommandType.StoredProcedure
+
+                command.Parameters.AddWithValue("@ID_Repuestos", ID_Repuestos)
+
+                Try
+                    connection.Open() ' Abre la conexión a la base de datos
+                    Dim result As Object = command.ExecuteScalar() ' Ejecuta el comando
+                    If result IsNot Nothing AndAlso Not DBNull.Value.Equals(result) Then
+                        stockDisponible = Convert.ToDecimal(result)
+                    End If
+
+                Catch ex As Exception
+                    ' Maneja la excepción, por ejemplo, mostrando un mensaje o registrando el error
+                    Throw New Exception("Error al consultar el stock disponible: " & ex.Message, ex)
+                End Try
+            End Using
+        End Using
+
+        Return stockDisponible
+    End Function
+
+    Public Function Consultar_StocksPorID(ByVal ID_Repuestos As Integer) As (stockDisponible As Decimal, stockMinimo As Decimal, stockReal As Decimal)
+        Dim stockDisponible As Decimal = 0
+        Dim stockMinimo As Decimal = 0
+        Dim stockReal As Decimal = 0
+
+        ' Asegúrate de usar la cadena de conexión correcta
+        Using connection As New SqlConnection(connectionString)
+            Using command As New SqlCommand("Consultar_StocksPorID", connection)
+                command.CommandType = CommandType.StoredProcedure
+                command.Parameters.AddWithValue("@ID_Repuestos", ID_Repuestos)
+
+                Try
+                    connection.Open() ' Abre la conexión a la base de datos
+                    Using reader As SqlDataReader = command.ExecuteReader() ' Ejecuta el comando y obtiene el lector
+                        If reader.Read() Then ' Si el lector tiene filas
+                            ' Leer las columnas por nombre (ajusta según las columnas devueltas por el SP)
+                            stockDisponible = Convert.ToDecimal(reader("StockDisponible"))
+                            stockMinimo = Convert.ToDecimal(reader("StockMinimo"))
+                            stockReal = Convert.ToDecimal(reader("StockReal"))
+                        End If
+                    End Using
+
+                Catch ex As Exception
+                    ' Maneja la excepción, por ejemplo, mostrando un mensaje o registrando el error
+                    Throw New Exception("Error al consultar los stocks: " & ex.Message, ex)
+                End Try
+            End Using
+        End Using
+
+        ' Devolver los tres valores como una tupla con nombres
+        Return (stockDisponible, stockMinimo, stockReal)
+    End Function
+
+
+#End Region
+
+    Public Function Cargar_Grilla() As DataTable
+        Dim tabla As New DataTable
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Grilla_Producto", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                Dim datadapter As New SqlDataAdapter(comando)
+                datadapter.Fill(tabla)
+            End Using
+        End Using
+        Return tabla
+    End Function
 
     Public Sub Agregar_Producto(Descripcion As String, NombreDiario As String, ID_Rubro As Integer, ID_Marca As Integer,
                             CodigoBarra As String, CodFabricante As String, CantidadBulto As Decimal, origen As String,
@@ -171,67 +281,32 @@ Public Class AD_Productos
         End Using
     End Sub
 
-    Public Sub Agregar_Repuestos_Ordenes(ID_Repuesto As Integer,
-                                     ID_OrdenReparacion As Integer,
-                                     Cantidad As Decimal,
-                                     Precio As Decimal,
-                                     Estado As Boolean,
-                                     transaction As SqlTransaction)
-
+    Public Sub Agregar_Repuestos_Ordenes(ID_Repuesto As Integer, ID_OrdenReparacion As Integer, Cantidad As Decimal,
+                                     Precio As Decimal, Estado As Boolean, transaction As SqlTransaction)
         Using command As New SqlCommand("Agregar_Repuestos_Ordenes", transaction.Connection)
             command.CommandType = CommandType.StoredProcedure
             command.Transaction = transaction
-
             command.Parameters.AddWithValue("@ID_Repuesto", ID_Repuesto)
             command.Parameters.AddWithValue("@ID_OrdenReparacion", ID_OrdenReparacion)
             command.Parameters.AddWithValue("@Cantidad", Cantidad)
             command.Parameters.AddWithValue("@Precio", Precio)
             command.Parameters.AddWithValue("@Estado", Estado)
-
             Try
                 command.ExecuteScalar()
-
             Catch ex As System.Exception
                 Throw ex
             End Try
         End Using
     End Sub
 
-
-    Public Function Consultar_StockDisponiblePorID(ByVal ID_Repuestos As Integer, transaction As SqlTransaction) As Decimal
-        Dim stockDisponible As Decimal = 0
-
-        Using command As New SqlCommand("Consultar_StockDisponiblePorID", transaction.Connection)
-            command.CommandType = CommandType.StoredProcedure
-            command.Transaction = transaction
-
-            command.Parameters.AddWithValue("@ID_Repuestos", ID_Repuestos)
-
-            Try
-                Dim result As Object = command.ExecuteScalar()
-                If result IsNot Nothing AndAlso Not DBNull.Value.Equals(result) Then
-                    stockDisponible = Convert.ToDecimal(result)
-                End If
-
-            Catch ex As Exception
-                Throw ex
-            End Try
-        End Using
-
-        Return stockDisponible
-    End Function
-
     Public Sub Modificar_StockDisponiblePorID(ID_Repuestos As Integer, stockDisponible As Decimal, transaction As SqlTransaction)
         Using command As New SqlCommand("Modificar_StockDisponiblePorID", transaction.Connection)
             command.CommandType = CommandType.StoredProcedure
             command.Transaction = transaction
-
             command.Parameters.AddWithValue("@ID_Repuestos", ID_Repuestos)
             command.Parameters.AddWithValue("@StockDisponible", stockDisponible)
-
             Try
                 command.ExecuteNonQuery()
-
             Catch ex As Exception
                 Throw ex
             End Try
