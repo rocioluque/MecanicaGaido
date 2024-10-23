@@ -271,27 +271,33 @@ Public Class frmPersonas
 
     Private Sub Cargar_Combo_TipoPersona()
         Try
-            Dim tabla As DataTable = o_Personas.Cargar_Combo_TipoPersona
+            ' Cargamos el DataTable
+            Dim dt As DataTable = o_Personas.Cargar_Combo_TipoPersona
 
-            If tabla.Rows.Count > 0 Then
-                cboTipoPersona.DataSource = tabla
-                cboTipoPersona.DisplayMember = "Nombre"
-                cboTipoPersona.ValueMember = "ID_TipoPersona"
-                cboTipoPersona.SelectedIndex = -1
-            Else
-                MsgBox("No se encontraron tipos de persona.", vbInformation, "Información")
-            End If
+            ' Asignamos el DataTable al ComboBox
+            cboTipoPersona.DataSource = dt
+            cboTipoPersona.DisplayMember = "Nombre"
+            cboTipoPersona.ValueMember = "ID_TipoPersona"
+            cboTipoPersona.SelectedIndex = -1
         Catch ex As Exception
             MsgBox("Error al cargar los tipos de persona: " & ex.Message, vbCritical, "Error")
         End Try
     End Sub
 
     Private Sub cboTipoPersona_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTipoPersona.SelectedIndexChanged
-        If cboTipoPersona.SelectedItem IsNot Nothing Then
-            If cboTipoPersona.SelectedItem.ToString() = "Personas Jurídicas" Then
+        ' Verificamos que el valor seleccionado sea válido y que no sea DataRowView
+        If cboTipoPersona.SelectedValue IsNot Nothing AndAlso Not TypeOf cboTipoPersona.SelectedValue Is DataRowView Then
+            Dim selectedValue As Integer = Convert.ToInt32(cboTipoPersona.SelectedValue)
+
+            ' Condiciones para habilitar/deshabilitar controles según el tipo de persona seleccionada
+            If selectedValue = 2 Then
                 txtApellido.Enabled = False
-            ElseIf cboTipoPersona.SelectedItem.ToString() = "Personas Físicas" Then
+                lblApellido.Font = New Font(lblApellido.Font, FontStyle.Strikeout)
+                lblFechaNacimiento.Text = "Fecha Inicio Act."
+            ElseIf selectedValue = 1 Then
                 txtApellido.Enabled = True
+                lblApellido.Font = New Font(lblApellido.Font, FontStyle.Regular)
+                lblFechaNacimiento.Text = "Fecha de Nacimiento"
             End If
         End If
     End Sub
@@ -373,7 +379,7 @@ Nombre"
             txtCodigoPostal.Text <> Nothing Then
 
             Try
-                o_Personas.Agregar_Persona(CInt(cboTipoPersona.SelectedValue), txtNombre.Text, txtApellido.Text, txtTelefonoMovil.Text,
+                Dim ID_Persona As Integer = o_Personas.Agregar_Persona(CInt(cboTipoPersona.SelectedValue), txtNombre.Text, txtApellido.Text, txtTelefonoMovil.Text,
                        txtTelefonoFijo.Text, dtpFechaNacimiento.Value, CInt(cboTipoDocumento.SelectedValue), msktxtNumeroDocumento.Text,
                        txtCorreo.Text, txtDireccion.Text, txtNumero.Text, txtPiso.Text, txtLetraPuerta.Text, txtCodigoPostal.Text,
                        Convert.ToInt32(cboCiudad.SelectedValue), txtNota.Text, chkEstado.Checked)
@@ -381,9 +387,25 @@ Nombre"
                 NuevaPersonaNombre = txtApellido.Text & " " & txtNombre.Text
                 NuevaPersonaNombreCompra = txtApellido.Text & " " & txtNombre.Text
 
-                MsgBox("Persona agregada correctamente.", vbInformation, "Información")
+                MsgBox("Persona agregada correctamente con el ID: " & ID_Persona & ".", vbInformation, "Información")
                 Limpiar()
                 Cargar_Grilla()
+                NavegacionEntreForms.persona = ID_Persona
+                If vengoDeReparaciones Then
+                    NavegacionEntreForms.combopersonacargado = True
+
+                    frmMenuPrincipal.btnVehiculos.PerformClick()
+
+                    'frmOrdenesReparacion.Cargar_Combo_Vehiculos(NavegacionEntreForms.persona)
+                ElseIf vengoDeVehiculos Then
+
+                    frmMenuPrincipal.btnVehiculos.PerformClick()
+                    NavegacionEntreForms.vengoDeReparaciones = False
+
+
+                End If
+
+                NavegacionEntreForms.vengoDeVehiculos = False
 
             Catch ex As Exception
                 MsgBox("Error al agregar la persona: " & ex.Message, vbCritical, "Error")

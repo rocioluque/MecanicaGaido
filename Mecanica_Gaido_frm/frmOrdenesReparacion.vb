@@ -1785,6 +1785,7 @@ Public Class frmOrdenesReparacion
 #End Region
 
     Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
+        NavegacionEntreForms.vengoDeReparaciones = True
         frmMenuPrincipal.btnPersonas.PerformClick()
     End Sub
 

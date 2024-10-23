@@ -42,12 +42,12 @@ Public Class frmVehiculos
                 AddHandler ctrl.Enter, AddressOf Control_Enter
             End If
         Next
-
+        Limpiar()
         Cargar_Combo_Marcas()
         Cargar_Combo_TipoVehiculo()
         Cargar_Combo_Personas()
         Cargar_Grilla()
-        Limpiar()
+
         btnModificar.Enabled = False
         txtBuscar.Visible = False
         AplicarTema(Me)
@@ -197,14 +197,15 @@ Public Class frmVehiculos
                 If vengoDeReparaciones Then
                     NavegacionEntreForms.combopersonacargado = True
                     frmMenuPrincipal.btnOrdenReparacion.PerformClick()
-                    frmOrdenesReparacion.cboPersonas.SelectedValue = NavegacionEntreForms.persona
-                    frmOrdenesReparacion.Cargar_Combo_Vehiculos(NavegacionEntreForms.persona)
+
+
 
                 End If
                 NavegacionEntreForms.combopersonacargado = False
                 NavegacionEntreForms.persona = 0
                 NavegacionEntreForms.vehiculo = 0
                 NavegacionEntreForms.vengoDeReparaciones = False
+                NavegacionEntreForms.vengoDeVehiculos = False
 
             Catch ex As Exception
                 MsgBox("Error al agregar el vehículo: " & ex.Message, vbCritical, "Error")
@@ -360,6 +361,7 @@ Public Class frmVehiculos
         Catch ex As Exception
             MsgBox("Error al cargar la persona: " & ex.Message, vbCritical, "Error")
         End Try
+
     End Sub
 #End Region
 
@@ -401,6 +403,16 @@ Public Class frmVehiculos
     Private Sub cboTipoVehiculo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTipoVehiculo.SelectedIndexChanged
         ActualizarNombre(sender, e)
     End Sub
+
+    Private Sub txtDominio_leave(sender As Object, e As EventArgs) Handles txtMatricula.Leave
+        txtMatricula.Text = txtMatricula.Text.ToUpper()
+    End Sub
+    Private Sub txtMotor_leave(sender As Object, e As EventArgs) Handles txtNumMotor.Leave
+        txtNumMotor.Text = txtNumMotor.Text.ToUpper()
+    End Sub
+    Private Sub txtChasis_leave(sender As Object, e As EventArgs) Handles txtNumChasis.Leave
+        txtNumChasis.Text = txtNumChasis.Text.ToUpper()
+    End Sub
 #End Region
 
 #Region "Css trucho"
@@ -441,6 +453,11 @@ Public Class frmVehiculos
             Dim rect As New Rectangle(0, 0, PanelNotas.Width - 1, PanelNotas.Height - 1)
             e.Graphics.DrawRectangle(pen, rect)
         End Using
+    End Sub
+
+    Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
+        NavegacionEntreForms.vengoDeVehiculos = True
+        frmMenuPrincipal.btnPersonas.PerformClick()
     End Sub
 #End Region
 
