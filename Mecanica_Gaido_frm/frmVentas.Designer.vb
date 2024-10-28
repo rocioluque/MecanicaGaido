@@ -904,7 +904,7 @@ Partial Class frmVentas
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(854, 422)
+        Me.Label11.Location = New System.Drawing.Point(859, 422)
         Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(37, 17)
@@ -916,7 +916,7 @@ Partial Class frmVentas
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(527, 422)
+        Me.Label8.Location = New System.Drawing.Point(552, 422)
         Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(71, 17)
@@ -928,7 +928,7 @@ Partial Class frmVentas
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(389, 422)
+        Me.Label9.Location = New System.Drawing.Point(406, 422)
         Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(59, 17)
@@ -1020,7 +1020,7 @@ Partial Class frmVentas
         Me.lblMontoDtoRecargo.AutoSize = True
         Me.lblMontoDtoRecargo.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.lblMontoDtoRecargo.ForeColor = System.Drawing.Color.White
-        Me.lblMontoDtoRecargo.Location = New System.Drawing.Point(677, 422)
+        Me.lblMontoDtoRecargo.Location = New System.Drawing.Point(680, 422)
         Me.lblMontoDtoRecargo.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblMontoDtoRecargo.Name = "lblMontoDtoRecargo"
         Me.lblMontoDtoRecargo.Size = New System.Drawing.Size(98, 17)
@@ -1082,7 +1082,7 @@ Partial Class frmVentas
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label15.ForeColor = System.Drawing.Color.White
-        Me.Label15.Location = New System.Drawing.Point(107, 424)
+        Me.Label15.Location = New System.Drawing.Point(117, 424)
         Me.Label15.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(75, 17)
@@ -1094,7 +1094,7 @@ Partial Class frmVentas
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.Label24.ForeColor = System.Drawing.Color.White
-        Me.Label24.Location = New System.Drawing.Point(261, 423)
+        Me.Label24.Location = New System.Drawing.Point(274, 423)
         Me.Label24.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(49, 17)
