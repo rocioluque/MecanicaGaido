@@ -71,19 +71,19 @@ Public Class AD_Personas
     End Function
 
     Public Function Cargar_Combo_TipoPersona() As DataTable
-        Dim tabla As New DataTable
+        Dim tabla As New DataTable()
 
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Cargar_Combo_TipoPersona", conexion)
                 comando.CommandType = CommandType.StoredProcedure
+
                 Try
                     conexion.Open()
-                    Dim datadapter As New SqlDataAdapter(comando)
-                    datadapter.Fill(tabla)
+                    Dim da As New SqlDataAdapter(comando)
+                    da.Fill(tabla)
                 Catch ex As Exception
                     Throw New Exception("Error al cargar los tipos de personas desde la base de datos", ex)
                 End Try
-
             End Using
         End Using
 
@@ -104,10 +104,11 @@ Public Class AD_Personas
         Return tabla
     End Function
 
-    Public Sub Agregar_Persona(idTipoPersonas As Integer, nombre As String, apellido As String, telefonoMovil As String,
+    Public Function Agregar_Persona(idTipoPersonas As Integer, nombre As String, apellido As String, telefonoMovil As String,
                                telefonoFijo As String, FechaNacimiento As Date, idTipoDocumento As Integer, NumeroDocumento As String,
                               Correo As String, Direccion As String, Numero As Integer, Piso As String, LetraPuerta As String, CodigoPostal As Integer,
-                               idCiudad As Integer, Nota As String, Estado As Boolean)
+                               idCiudad As Integer, Nota As String, Estado As Boolean) As Integer
+        Dim idPersona As Integer = 0
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Agregar_Persona", conexion)
                 comando.CommandType = CommandType.StoredProcedure
@@ -128,12 +129,16 @@ Public Class AD_Personas
                 comando.Parameters.AddWithValue("@ID_Ciudad", idCiudad)
                 comando.Parameters.AddWithValue("@Nota", Nota)
                 comando.Parameters.AddWithValue("@Estado", Estado)
-
+                Dim idPersonaParam As New SqlParameter("@ID_Persona", SqlDbType.Int)
+                idPersonaParam.Direction = ParameterDirection.Output
+                comando.Parameters.Add(idPersonaParam)
                 conexion.Open()
                 comando.ExecuteNonQuery()
+                idPersona = Convert.ToInt32(idPersonaParam.Value)
             End Using
         End Using
-    End Sub
+        Return idPersona
+    End Function
 
     Public Sub Modificar_Persona(idPersona As Integer, idTipoPersonas As Integer, nombre As String, apellido As String, telefonoMovil As String,
                                telefonoFijo As String, FechaNacimiento As Date, idTipoDocumento As Integer, NumeroDocumento As String,

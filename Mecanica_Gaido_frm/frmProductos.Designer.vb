@@ -116,7 +116,7 @@ Partial Class frmProductos
         Me.grdProductos.RowHeadersWidth = 51
         Me.grdProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdProductos.Size = New System.Drawing.Size(858, 285)
-        Me.grdProductos.TabIndex = 25
+        Me.grdProductos.TabIndex = 40
         '
         'chkEstado
         '
@@ -128,7 +128,7 @@ Partial Class frmProductos
         Me.chkEstado.Location = New System.Drawing.Point(601, 162)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(82, 21)
-        Me.chkEstado.TabIndex = 13
+        Me.chkEstado.TabIndex = 14
         Me.chkEstado.Text = "¿Activo?"
         Me.chkEstado.UseVisualStyleBackColor = True
         '
@@ -160,7 +160,7 @@ Partial Class frmProductos
         Me.txtCodigoBarra.Location = New System.Drawing.Point(307, 74)
         Me.txtCodigoBarra.Name = "txtCodigoBarra"
         Me.txtCodigoBarra.Size = New System.Drawing.Size(224, 23)
-        Me.txtCodigoBarra.TabIndex = 7
+        Me.txtCodigoBarra.TabIndex = 8
         '
         'txtCodFabricante
         '
@@ -168,7 +168,7 @@ Partial Class frmProductos
         Me.txtCodFabricante.Location = New System.Drawing.Point(307, 118)
         Me.txtCodFabricante.Name = "txtCodFabricante"
         Me.txtCodFabricante.Size = New System.Drawing.Size(224, 23)
-        Me.txtCodFabricante.TabIndex = 8
+        Me.txtCodFabricante.TabIndex = 9
         '
         'lblCodBarra
         '
@@ -249,22 +249,28 @@ Partial Class frmProductos
         '
         'cboMarca
         '
+        Me.cboMarca.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboMarca.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboMarca.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.cboMarca.FormattingEnabled = True
         Me.cboMarca.Location = New System.Drawing.Point(307, 30)
         Me.cboMarca.Name = "cboMarca"
         Me.cboMarca.Size = New System.Drawing.Size(186, 25)
-        Me.cboMarca.TabIndex = 6
+        Me.cboMarca.TabIndex = 7
         '
         'cboOriginal
         '
+        Me.cboOriginal.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboOriginal.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboOriginal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboOriginal.Enabled = False
         Me.cboOriginal.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.cboOriginal.FormattingEnabled = True
         Me.cboOriginal.Location = New System.Drawing.Point(601, 118)
         Me.cboOriginal.Name = "cboOriginal"
         Me.cboOriginal.Size = New System.Drawing.Size(223, 25)
-        Me.cboOriginal.TabIndex = 12
+        Me.cboOriginal.TabIndex = 13
         '
         'txtDescripcion
         '
@@ -272,7 +278,7 @@ Partial Class frmProductos
         Me.txtDescripcion.Location = New System.Drawing.Point(15, 75)
         Me.txtDescripcion.Name = "txtDescripcion"
         Me.txtDescripcion.Size = New System.Drawing.Size(224, 23)
-        Me.txtDescripcion.TabIndex = 3
+        Me.txtDescripcion.TabIndex = 4
         '
         'txtNombreDiario
         '
@@ -280,7 +286,7 @@ Partial Class frmProductos
         Me.txtNombreDiario.Location = New System.Drawing.Point(15, 118)
         Me.txtNombreDiario.Name = "txtNombreDiario"
         Me.txtNombreDiario.Size = New System.Drawing.Size(224, 23)
-        Me.txtNombreDiario.TabIndex = 4
+        Me.txtNombreDiario.TabIndex = 5
         '
         'txtCantidadBulto
         '
@@ -288,7 +294,7 @@ Partial Class frmProductos
         Me.txtCantidadBulto.Location = New System.Drawing.Point(307, 162)
         Me.txtCantidadBulto.Name = "txtCantidadBulto"
         Me.txtCantidadBulto.Size = New System.Drawing.Size(224, 23)
-        Me.txtCantidadBulto.TabIndex = 9
+        Me.txtCantidadBulto.TabIndex = 10
         Me.txtCantidadBulto.Text = "1"
         Me.txtCantidadBulto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -298,7 +304,7 @@ Partial Class frmProductos
         Me.txtStockReal.Location = New System.Drawing.Point(152, 24)
         Me.txtStockReal.Name = "txtStockReal"
         Me.txtStockReal.Size = New System.Drawing.Size(121, 23)
-        Me.txtStockReal.TabIndex = 14
+        Me.txtStockReal.TabIndex = 18
         Me.txtStockReal.Text = "0"
         Me.txtStockReal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -308,7 +314,7 @@ Partial Class frmProductos
         Me.txtStockDisponible.Location = New System.Drawing.Point(152, 53)
         Me.txtStockDisponible.Name = "txtStockDisponible"
         Me.txtStockDisponible.Size = New System.Drawing.Size(121, 23)
-        Me.txtStockDisponible.TabIndex = 15
+        Me.txtStockDisponible.TabIndex = 19
         Me.txtStockDisponible.Text = "0"
         Me.txtStockDisponible.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -318,7 +324,7 @@ Partial Class frmProductos
         Me.txtUbicacion.Location = New System.Drawing.Point(152, 111)
         Me.txtUbicacion.Name = "txtUbicacion"
         Me.txtUbicacion.Size = New System.Drawing.Size(92, 23)
-        Me.txtUbicacion.TabIndex = 16
+        Me.txtUbicacion.TabIndex = 21
         '
         'lblDescripcion
         '
@@ -366,12 +372,15 @@ Partial Class frmProductos
         '
         'cboRubro
         '
+        Me.cboRubro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboRubro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboRubro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboRubro.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.cboRubro.FormattingEnabled = True
         Me.cboRubro.Location = New System.Drawing.Point(15, 162)
         Me.cboRubro.Name = "cboRubro"
         Me.cboRubro.Size = New System.Drawing.Size(186, 25)
-        Me.cboRubro.TabIndex = 5
+        Me.cboRubro.TabIndex = 6
         '
         'txtId
         '
@@ -390,7 +399,7 @@ Partial Class frmProductos
         Me.chkAlterntivo.Location = New System.Drawing.Point(600, 70)
         Me.chkAlterntivo.Name = "chkAlterntivo"
         Me.chkAlterntivo.Size = New System.Drawing.Size(109, 21)
-        Me.chkAlterntivo.TabIndex = 11
+        Me.chkAlterntivo.TabIndex = 12
         Me.chkAlterntivo.Text = "¿Alternativo?"
         Me.chkAlterntivo.UseVisualStyleBackColor = True
         '
@@ -406,7 +415,7 @@ Partial Class frmProductos
         Me.btnBuscar.Location = New System.Drawing.Point(189, 15)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(50, 28)
-        Me.btnBuscar.TabIndex = 2
+        Me.btnBuscar.TabIndex = 3
         Me.btnBuscar.Text = "..."
         Me.btnBuscar.UseVisualStyleBackColor = False
         '
@@ -475,7 +484,7 @@ Partial Class frmProductos
         Me.PanelDatosEspecificos.Location = New System.Drawing.Point(122, 74)
         Me.PanelDatosEspecificos.Name = "PanelDatosEspecificos"
         Me.PanelDatosEspecificos.Size = New System.Drawing.Size(858, 201)
-        Me.PanelDatosEspecificos.TabIndex = 109
+        Me.PanelDatosEspecificos.TabIndex = 2
         '
         'Label3
         '
@@ -526,7 +535,7 @@ Partial Class frmProductos
         Me.cboOrigen.Location = New System.Drawing.Point(600, 30)
         Me.cboOrigen.Name = "cboOrigen"
         Me.cboOrigen.Size = New System.Drawing.Size(224, 25)
-        Me.cboOrigen.TabIndex = 10
+        Me.cboOrigen.TabIndex = 11
         '
         'lblExistencia
         '
@@ -555,7 +564,7 @@ Partial Class frmProductos
         Me.PanelExistencia.Location = New System.Drawing.Point(122, 365)
         Me.PanelExistencia.Name = "PanelExistencia"
         Me.PanelExistencia.Size = New System.Drawing.Size(316, 157)
-        Me.PanelExistencia.TabIndex = 111
+        Me.PanelExistencia.TabIndex = 17
         '
         'Button1
         '
@@ -571,10 +580,10 @@ Partial Class frmProductos
         '
         Me.txtStockMinimo.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtStockMinimo.Location = New System.Drawing.Point(152, 82)
-        Me.txtStockMinimo.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtStockMinimo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtStockMinimo.Name = "txtStockMinimo"
         Me.txtStockMinimo.Size = New System.Drawing.Size(121, 23)
-        Me.txtStockMinimo.TabIndex = 115
+        Me.txtStockMinimo.TabIndex = 20
         Me.txtStockMinimo.Text = "0"
         Me.txtStockMinimo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -630,7 +639,7 @@ Partial Class frmProductos
         Me.PanelMovimientos.Location = New System.Drawing.Point(499, 365)
         Me.PanelMovimientos.Name = "PanelMovimientos"
         Me.PanelMovimientos.Size = New System.Drawing.Size(316, 157)
-        Me.PanelMovimientos.TabIndex = 113
+        Me.PanelMovimientos.TabIndex = 22
         '
         'Label4
         '
@@ -655,7 +664,7 @@ Partial Class frmProductos
         Me.dtpFechaVenta.Location = New System.Drawing.Point(165, 116)
         Me.dtpFechaVenta.Name = "dtpFechaVenta"
         Me.dtpFechaVenta.Size = New System.Drawing.Size(121, 23)
-        Me.dtpFechaVenta.TabIndex = 21
+        Me.dtpFechaVenta.TabIndex = 27
         '
         'dtpFechaCompra
         '
@@ -668,7 +677,7 @@ Partial Class frmProductos
         Me.dtpFechaCompra.Name = "dtpFechaCompra"
         Me.dtpFechaCompra.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.dtpFechaCompra.Size = New System.Drawing.Size(121, 23)
-        Me.dtpFechaCompra.TabIndex = 20
+        Me.dtpFechaCompra.TabIndex = 26
         '
         'lblPrecioLista
         '
@@ -687,7 +696,7 @@ Partial Class frmProductos
         Me.txtPrecioLista.Location = New System.Drawing.Point(165, 66)
         Me.txtPrecioLista.Name = "txtPrecioLista"
         Me.txtPrecioLista.Size = New System.Drawing.Size(121, 23)
-        Me.txtPrecioLista.TabIndex = 19
+        Me.txtPrecioLista.TabIndex = 25
         Me.txtPrecioLista.Text = "0"
         Me.txtPrecioLista.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -730,7 +739,7 @@ Partial Class frmProductos
         Me.txtUtilidad.Location = New System.Drawing.Point(165, 41)
         Me.txtUtilidad.Name = "txtUtilidad"
         Me.txtUtilidad.Size = New System.Drawing.Size(121, 23)
-        Me.txtUtilidad.TabIndex = 18
+        Me.txtUtilidad.TabIndex = 24
         Me.txtUtilidad.Text = "0"
         Me.txtUtilidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -751,7 +760,7 @@ Partial Class frmProductos
         Me.txtPrecioCompra.Location = New System.Drawing.Point(165, 16)
         Me.txtPrecioCompra.Name = "txtPrecioCompra"
         Me.txtPrecioCompra.Size = New System.Drawing.Size(121, 23)
-        Me.txtPrecioCompra.TabIndex = 17
+        Me.txtPrecioCompra.TabIndex = 23
         Me.txtPrecioCompra.Text = "0"
         Me.txtPrecioCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -771,10 +780,10 @@ Partial Class frmProductos
         '
         Me.txtBuscar.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtBuscar.Location = New System.Drawing.Point(397, 27)
-        Me.txtBuscar.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtBuscar.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtBuscar.Name = "txtBuscar"
         Me.txtBuscar.Size = New System.Drawing.Size(583, 23)
-        Me.txtBuscar.TabIndex = 115
+        Me.txtBuscar.TabIndex = 1
         Me.txtBuscar.Tag = ""
         '
         'btnModificar
@@ -789,7 +798,7 @@ Partial Class frmProductos
         Me.btnModificar.Location = New System.Drawing.Point(880, 425)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(100, 37)
-        Me.btnModificar.TabIndex = 118
+        Me.btnModificar.TabIndex = 29
         Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = False
         '
@@ -806,7 +815,7 @@ Partial Class frmProductos
         Me.btnCancelar.Location = New System.Drawing.Point(880, 485)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(100, 37)
-        Me.btnCancelar.TabIndex = 119
+        Me.btnCancelar.TabIndex = 30
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = False
         '
@@ -822,7 +831,7 @@ Partial Class frmProductos
         Me.btnAceptar.Location = New System.Drawing.Point(880, 365)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(100, 37)
-        Me.btnAceptar.TabIndex = 117
+        Me.btnAceptar.TabIndex = 28
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = False
         '
@@ -844,7 +853,7 @@ Partial Class frmProductos
         Me.PanelNota.Location = New System.Drawing.Point(122, 290)
         Me.PanelNota.Name = "PanelNota"
         Me.PanelNota.Size = New System.Drawing.Size(858, 55)
-        Me.PanelNota.TabIndex = 120
+        Me.PanelNota.TabIndex = 15
         '
         'txtNota
         '
@@ -852,7 +861,7 @@ Partial Class frmProductos
         Me.txtNota.Location = New System.Drawing.Point(17, 14)
         Me.txtNota.Name = "txtNota"
         Me.txtNota.Size = New System.Drawing.Size(827, 27)
-        Me.txtNota.TabIndex = 21
+        Me.txtNota.TabIndex = 16
         Me.txtNota.Text = ""
         '
         'frmProductos
@@ -862,7 +871,7 @@ Partial Class frmProductos
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(1187, 673)
+        Me.ClientSize = New System.Drawing.Size(1095, 673)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.PanelNota)
         Me.Controls.Add(Me.btnModificar)

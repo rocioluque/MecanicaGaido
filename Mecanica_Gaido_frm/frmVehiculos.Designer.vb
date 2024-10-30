@@ -118,7 +118,7 @@ Partial Class frmVehiculos
         Me.cboTipoVehiculo.Margin = New System.Windows.Forms.Padding(2)
         Me.cboTipoVehiculo.Name = "cboTipoVehiculo"
         Me.cboTipoVehiculo.Size = New System.Drawing.Size(222, 25)
-        Me.cboTipoVehiculo.TabIndex = 3
+        Me.cboTipoVehiculo.TabIndex = 1
         '
         'Label2
         '
@@ -156,7 +156,7 @@ Partial Class frmVehiculos
         Me.btnModificar.Location = New System.Drawing.Point(502, 413)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(117, 37)
-        Me.btnModificar.TabIndex = 15
+        Me.btnModificar.TabIndex = 17
         Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = False
         '
@@ -173,7 +173,7 @@ Partial Class frmVehiculos
         Me.btnCancelar.Location = New System.Drawing.Point(826, 413)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(117, 37)
-        Me.btnCancelar.TabIndex = 16
+        Me.btnCancelar.TabIndex = 18
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = False
         '
@@ -189,7 +189,7 @@ Partial Class frmVehiculos
         Me.btnAceptar.Location = New System.Drawing.Point(178, 413)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(117, 37)
-        Me.btnAceptar.TabIndex = 14
+        Me.btnAceptar.TabIndex = 16
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = False
         '
@@ -251,7 +251,7 @@ Partial Class frmVehiculos
         Me.PanelDatoVehiculo.Location = New System.Drawing.Point(178, 121)
         Me.PanelDatoVehiculo.Name = "PanelDatoVehiculo"
         Me.PanelDatoVehiculo.Size = New System.Drawing.Size(279, 270)
-        Me.PanelDatoVehiculo.TabIndex = 113
+        Me.PanelDatoVehiculo.TabIndex = 2
         '
         'Label14
         '
@@ -275,7 +275,7 @@ Partial Class frmVehiculos
         Me.cboPersona.Margin = New System.Windows.Forms.Padding(2)
         Me.cboPersona.Name = "cboPersona"
         Me.cboPersona.Size = New System.Drawing.Size(222, 25)
-        Me.cboPersona.TabIndex = 4
+        Me.cboPersona.TabIndex = 3
         '
         'btnAgregarCuenta
         '
@@ -327,6 +327,8 @@ Partial Class frmVehiculos
         '
         'cboMarca
         '
+        Me.cboMarca.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboMarca.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboMarca.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.cboMarca.FormattingEnabled = True
@@ -334,7 +336,7 @@ Partial Class frmVehiculos
         Me.cboMarca.Margin = New System.Windows.Forms.Padding(2)
         Me.cboMarca.Name = "cboMarca"
         Me.cboMarca.Size = New System.Drawing.Size(222, 25)
-        Me.cboMarca.TabIndex = 6
+        Me.cboMarca.TabIndex = 5
         '
         'btnAgregarMarca
         '
@@ -365,7 +367,7 @@ Partial Class frmVehiculos
         Me.txtModelo.Margin = New System.Windows.Forms.Padding(2)
         Me.txtModelo.Name = "txtModelo"
         Me.txtModelo.Size = New System.Drawing.Size(253, 23)
-        Me.txtModelo.TabIndex = 7
+        Me.txtModelo.TabIndex = 6
         '
         'Label4
         '
@@ -399,7 +401,7 @@ Partial Class frmVehiculos
         Me.txtNombre.Margin = New System.Windows.Forms.Padding(2)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(253, 23)
-        Me.txtNombre.TabIndex = 5
+        Me.txtNombre.TabIndex = 4
         '
         'txtHorasTrabajadas
         '
@@ -408,7 +410,7 @@ Partial Class frmVehiculos
         Me.txtHorasTrabajadas.Margin = New System.Windows.Forms.Padding(2)
         Me.txtHorasTrabajadas.Name = "txtHorasTrabajadas"
         Me.txtHorasTrabajadas.Size = New System.Drawing.Size(253, 23)
-        Me.txtHorasTrabajadas.TabIndex = 8
+        Me.txtHorasTrabajadas.TabIndex = 7
         '
         'Label6
         '
@@ -440,7 +442,7 @@ Partial Class frmVehiculos
         Me.PanelNotas.Location = New System.Drawing.Point(490, 318)
         Me.PanelNotas.Name = "PanelNotas"
         Me.PanelNotas.Size = New System.Drawing.Size(454, 73)
-        Me.PanelNotas.TabIndex = 119
+        Me.PanelNotas.TabIndex = 14
         '
         'txtNota
         '
@@ -448,7 +450,7 @@ Partial Class frmVehiculos
         Me.txtNota.Location = New System.Drawing.Point(13, 19)
         Me.txtNota.Name = "txtNota"
         Me.txtNota.Size = New System.Drawing.Size(414, 40)
-        Me.txtNota.TabIndex = 13
+        Me.txtNota.TabIndex = 15
         Me.txtNota.Text = ""
         '
         'lblIdentificacionVehiculo
@@ -478,7 +480,7 @@ Partial Class frmVehiculos
         Me.PanelIdentificacionVehiculo.Location = New System.Drawing.Point(490, 121)
         Me.PanelIdentificacionVehiculo.Name = "PanelIdentificacionVehiculo"
         Me.PanelIdentificacionVehiculo.Size = New System.Drawing.Size(454, 179)
-        Me.PanelIdentificacionVehiculo.TabIndex = 120
+        Me.PanelIdentificacionVehiculo.TabIndex = 8
         '
         'Label9
         '
@@ -499,7 +501,7 @@ Partial Class frmVehiculos
         Me.txtAñoFabricación.Margin = New System.Windows.Forms.Padding(2)
         Me.txtAñoFabricación.Name = "txtAñoFabricación"
         Me.txtAñoFabricación.Size = New System.Drawing.Size(253, 23)
-        Me.txtAñoFabricación.TabIndex = 112
+        Me.txtAñoFabricación.TabIndex = 12
         '
         'Label12
         '
@@ -568,7 +570,7 @@ Partial Class frmVehiculos
         Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
-        Me.chkEstado.TabIndex = 12
+        Me.chkEstado.TabIndex = 13
         Me.chkEstado.Text = "¿Activo?"
         Me.chkEstado.UseVisualStyleBackColor = True
         '
@@ -630,7 +632,7 @@ Partial Class frmVehiculos
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(1138, 734)
+        Me.ClientSize = New System.Drawing.Size(1095, 734)
         Me.Controls.Add(Me.lblBuscar)
         Me.Controls.Add(Me.txtBuscar)
         Me.Controls.Add(Me.Label7)

@@ -97,7 +97,7 @@ Partial Class frmCompras
         Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(85, 21)
-        Me.chkEstado.TabIndex = 12
+        Me.chkEstado.TabIndex = 11
         Me.chkEstado.Text = "¿Activo?"
         Me.chkEstado.UseVisualStyleBackColor = True
         '
@@ -109,7 +109,7 @@ Partial Class frmCompras
         Me.txtOtrosImpuestos.Name = "txtOtrosImpuestos"
         Me.txtOtrosImpuestos.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtOtrosImpuestos.Size = New System.Drawing.Size(123, 23)
-        Me.txtOtrosImpuestos.TabIndex = 10
+        Me.txtOtrosImpuestos.TabIndex = 5
         Me.txtOtrosImpuestos.Text = "0"
         '
         'txtIVA
@@ -120,7 +120,7 @@ Partial Class frmCompras
         Me.txtIVA.Name = "txtIVA"
         Me.txtIVA.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtIVA.Size = New System.Drawing.Size(123, 23)
-        Me.txtIVA.TabIndex = 8
+        Me.txtIVA.TabIndex = 4
         Me.txtIVA.Text = "21"
         '
         'txtID
@@ -142,7 +142,7 @@ Partial Class frmCompras
         Me.cboFormaPago.Margin = New System.Windows.Forms.Padding(2)
         Me.cboFormaPago.Name = "cboFormaPago"
         Me.cboFormaPago.Size = New System.Drawing.Size(220, 25)
-        Me.cboFormaPago.TabIndex = 6
+        Me.cboFormaPago.TabIndex = 10
         '
         'cboPersona
         '
@@ -152,7 +152,7 @@ Partial Class frmCompras
         Me.cboPersona.Margin = New System.Windows.Forms.Padding(2)
         Me.cboPersona.Name = "cboPersona"
         Me.cboPersona.Size = New System.Drawing.Size(169, 25)
-        Me.cboPersona.TabIndex = 5
+        Me.cboPersona.TabIndex = 9
         '
         'Label10
         '
@@ -261,7 +261,7 @@ Partial Class frmCompras
         Me.btnModificar.Location = New System.Drawing.Point(936, 172)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(117, 37)
-        Me.btnModificar.TabIndex = 14
+        Me.btnModificar.TabIndex = 18
         Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = False
         '
@@ -278,7 +278,7 @@ Partial Class frmCompras
         Me.btnCancelar.Location = New System.Drawing.Point(936, 275)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(117, 37)
-        Me.btnCancelar.TabIndex = 15
+        Me.btnCancelar.TabIndex = 19
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = False
         '
@@ -294,7 +294,7 @@ Partial Class frmCompras
         Me.btnAceptar.Location = New System.Drawing.Point(936, 69)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(117, 37)
-        Me.btnAceptar.TabIndex = 13
+        Me.btnAceptar.TabIndex = 17
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = False
         '
@@ -326,7 +326,7 @@ Partial Class frmCompras
         Me.PanelDetalleDeCompras.Location = New System.Drawing.Point(95, 236)
         Me.PanelDetalleDeCompras.Name = "PanelDetalleDeCompras"
         Me.PanelDetalleDeCompras.Size = New System.Drawing.Size(814, 324)
-        Me.PanelDetalleDeCompras.TabIndex = 115
+        Me.PanelDetalleDeCompras.TabIndex = 12
         '
         'grdRepuestos
         '
@@ -444,7 +444,7 @@ Partial Class frmCompras
         Me.btnQuitarCompra.Location = New System.Drawing.Point(670, 9)
         Me.btnQuitarCompra.Name = "btnQuitarCompra"
         Me.btnQuitarCompra.Size = New System.Drawing.Size(117, 37)
-        Me.btnQuitarCompra.TabIndex = 22
+        Me.btnQuitarCompra.TabIndex = 16
         Me.btnQuitarCompra.Text = "Quitar"
         Me.btnQuitarCompra.UseVisualStyleBackColor = False
         '
@@ -460,7 +460,7 @@ Partial Class frmCompras
         Me.btnAgregarCompra.Location = New System.Drawing.Point(542, 9)
         Me.btnAgregarCompra.Name = "btnAgregarCompra"
         Me.btnAgregarCompra.Size = New System.Drawing.Size(117, 37)
-        Me.btnAgregarCompra.TabIndex = 21
+        Me.btnAgregarCompra.TabIndex = 15
         Me.btnAgregarCompra.Text = "Agregar"
         Me.btnAgregarCompra.UseVisualStyleBackColor = False
         '
@@ -470,7 +470,7 @@ Partial Class frmCompras
         Me.txtCantidadCompra.Location = New System.Drawing.Point(458, 16)
         Me.txtCantidadCompra.Name = "txtCantidadCompra"
         Me.txtCantidadCompra.Size = New System.Drawing.Size(66, 23)
-        Me.txtCantidadCompra.TabIndex = 19
+        Me.txtCantidadCompra.TabIndex = 14
         Me.txtCantidadCompra.Text = "1"
         Me.txtCantidadCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -487,12 +487,14 @@ Partial Class frmCompras
         '
         'cboProductoCompra
         '
+        Me.cboProductoCompra.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboProductoCompra.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cboProductoCompra.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboProductoCompra.FormattingEnabled = True
         Me.cboProductoCompra.Location = New System.Drawing.Point(93, 16)
         Me.cboProductoCompra.Name = "cboProductoCompra"
         Me.cboProductoCompra.Size = New System.Drawing.Size(278, 25)
-        Me.cboProductoCompra.TabIndex = 18
+        Me.cboProductoCompra.TabIndex = 13
         '
         'Label6
         '
@@ -532,7 +534,7 @@ Partial Class frmCompras
         Me.PanelInformacionGeneral.Location = New System.Drawing.Point(374, 69)
         Me.PanelInformacionGeneral.Name = "PanelInformacionGeneral"
         Me.PanelInformacionGeneral.Size = New System.Drawing.Size(535, 153)
-        Me.PanelInformacionGeneral.TabIndex = 117
+        Me.PanelInformacionGeneral.TabIndex = 6
         '
         'txtNumComprobante
         '
@@ -541,7 +543,7 @@ Partial Class frmCompras
         Me.txtNumComprobante.Mask = "A-00000-00000000"
         Me.txtNumComprobante.Name = "txtNumComprobante"
         Me.txtNumComprobante.Size = New System.Drawing.Size(220, 23)
-        Me.txtNumComprobante.TabIndex = 90
+        Me.txtNumComprobante.TabIndex = 8
         '
         'dtpFechaCompra
         '
@@ -552,7 +554,7 @@ Partial Class frmCompras
         Me.dtpFechaCompra.Location = New System.Drawing.Point(15, 36)
         Me.dtpFechaCompra.Name = "dtpFechaCompra"
         Me.dtpFechaCompra.Size = New System.Drawing.Size(200, 23)
-        Me.dtpFechaCompra.TabIndex = 89
+        Me.dtpFechaCompra.TabIndex = 7
         '
         'Label7
         '
@@ -575,7 +577,7 @@ Partial Class frmCompras
         Me.PanelImpuestos.Location = New System.Drawing.Point(95, 112)
         Me.PanelImpuestos.Name = "PanelImpuestos"
         Me.PanelImpuestos.Size = New System.Drawing.Size(258, 110)
-        Me.PanelImpuestos.TabIndex = 123
+        Me.PanelImpuestos.TabIndex = 3
         '
         'Label11
         '
@@ -678,6 +680,7 @@ Partial Class frmCompras
         Me.grdCompras.Name = "grdCompras"
         Me.grdCompras.ReadOnly = True
         Me.grdCompras.RowHeadersVisible = False
+        Me.grdCompras.RowHeadersWidth = 51
         Me.grdCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdCompras.Size = New System.Drawing.Size(814, 164)
         Me.grdCompras.TabIndex = 128
@@ -690,7 +693,7 @@ Partial Class frmCompras
         Me.txtBusqueda.Name = "txtBusqueda"
         Me.txtBusqueda.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.txtBusqueda.Size = New System.Drawing.Size(535, 23)
-        Me.txtBusqueda.TabIndex = 33
+        Me.txtBusqueda.TabIndex = 1
         Me.txtBusqueda.Visible = False
         '
         'lblBusqueda
@@ -712,7 +715,7 @@ Partial Class frmCompras
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1155, 788)
+        Me.ClientSize = New System.Drawing.Size(1112, 748)
         Me.Controls.Add(Me.lblBusqueda)
         Me.Controls.Add(Me.txtBusqueda)
         Me.Controls.Add(Me.grdCompras)

@@ -746,6 +746,7 @@ Public Class frmOrdenesReparacion
         Dim repuestosData As New AD_Productos
 
         Dim connectionString = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123"
+        Dim ID_Orden As Integer
 
         Using conn As New SqlConnection(connectionString)
             conn.Open()
@@ -757,7 +758,7 @@ Public Class frmOrdenesReparacion
             End If
 
             Try
-                Dim ID_Orden As Integer = ordenReparacionData.Agregar_Orden_Reparacion(Convert.ToInt32(cboVehiculo.SelectedValue),
+                ID_Orden = ordenReparacionData.Agregar_Orden_Reparacion(Convert.ToInt32(cboVehiculo.SelectedValue),
                           txtSeñasParticulares.Text, txtMotivoReparacion.Text, dtpTurno.Value, dtpEntrada.Value,
                           dtpSalida.Value, cboPersonas.SelectedValue, Convert.ToDecimal(txtMontoRepuestos.Text),
                           Convert.ToDecimal(txtMontoServ3.Text), Convert.ToDecimal(txtMontoManoObra.Text),
@@ -804,6 +805,7 @@ Public Class frmOrdenesReparacion
 
         Cargar_Grilla_Ordenes()
         MessageBox.Show("Orden cargada exitosamente")
+        CrearPDF(ID_Orden)
 
         limpiarServ3()
         txtID.Clear()
@@ -1033,7 +1035,7 @@ Public Class frmOrdenesReparacion
 #End Region
 
 #Region "Crear PDF"
-    Public Sub CrearPDF()
+    Public Sub CrearPDF(ID_Orden As Integer)
         Dim pdfPath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), $"OrdenesReparaciones.pdf")
         Using fs As New FileStream(pdfPath, FileMode.Create, FileAccess.Write, FileShare.None)
             Dim document As New Document()
@@ -1074,7 +1076,8 @@ Public Class frmOrdenesReparacion
             encabezado.AddCell(Col4F1)
 
             ' Fila 1 Columnas 5-6-7-8
-            Dim NumOrdenCell As New PdfPCell(New Paragraph("ORDEN DE REPARACIÓN N° ", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11)))
+            Dim NumOrdenText As String = $"ORDEN DE REPARACIÓN N° {ID_Orden}"
+            Dim NumOrdenCell As New PdfPCell(New Paragraph(NumOrdenText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11)))
             NumOrdenCell.Colspan = 4
             NumOrdenCell.Border = PdfPCell.NO_BORDER
             NumOrdenCell.BorderWidthTop = 1
@@ -1778,13 +1781,10 @@ Public Class frmOrdenesReparacion
 
         MessageBox.Show("PDF creado exitosamente en: " & pdfPath)
     End Sub
-
-    Private Sub btnDescargarPDF_Click(sender As Object, e As EventArgs) Handles btnDescargarPDF.Click
-        CrearPDF()
-    End Sub
 #End Region
 
     Private Sub btnAgregarCuenta_Click(sender As Object, e As EventArgs) Handles btnAgregarCuenta.Click
+        NavegacionEntreForms.vengoDeReparaciones = True
         frmMenuPrincipal.btnPersonas.PerformClick()
     End Sub
 
