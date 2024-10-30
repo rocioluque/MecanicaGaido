@@ -964,9 +964,11 @@ Public Class frmVentas
             ' Si no se encontró la venta, mostrar un mensaje de error
             MessageBox.Show("No se encuentran datos para esta venta")
         End If
+        ActualizarMontoTotal()
+        oDS.Clear()
     End Sub
 
-    Private Sub grdVentas1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdVentas1.CellContentClick
+    Private Sub grdVentas1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdVentas1.CellClick
         If e.RowIndex >= 0 AndAlso e.RowIndex < grdVentas1.Rows.Count Then
             Dim selectedRow As DataGridViewRow = grdVentas1.Rows(e.RowIndex)
             Dim ID_Venta As Integer = Convert.ToInt32(selectedRow.Cells("N° Venta").Value)
