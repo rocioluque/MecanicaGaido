@@ -195,7 +195,7 @@ Public Class frmModificarCiudades
             ' Si se encontraron coordenadas, agrega un marcador
             If coordenadas IsNot Nothing Then
                 Dim marker As New GMarkerGoogle(New PointLatLng(coordenadas.Latitud, coordenadas.Longitud), GMarkerGoogleType.red_dot)
-                marker.ToolTipText = $"{provincia.Nombre}: {provincia.CantidadPersonas} personas"
+                marker.ToolTipText = $"{provincia.Nombre}: {provincia.CantidadPersonas} personas registradas"
                 markers.Markers.Add(marker)
             End If
         Next
