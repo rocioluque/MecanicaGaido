@@ -13,5 +13,7 @@
 
     Public RepuestosVenta As DataTable
 
+    Public G_lat As Double
+    Public G_lon As Double
 
 End Module

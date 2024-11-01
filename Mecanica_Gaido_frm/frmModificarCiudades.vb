@@ -202,7 +202,7 @@ Public Class frmModificarCiudades
 
         ' Agrega los marcadores al control del mapa
         gmapControl.Overlays.Add(markers)
-        gmapControl.Position = New PointLatLng(-38.4161, -63.6167) ' Centra el mapa en Argentina
+        gmapControl.Position = New PointLatLng(G_lat, G_lon) ' Centra el mapa en Argentina
     End Sub
 #End Region
 
