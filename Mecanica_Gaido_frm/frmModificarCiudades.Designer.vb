@@ -33,6 +33,7 @@ Partial Class frmModificarCiudades
         Me.btnModificar = New System.Windows.Forms.Button()
         Me.cboProvincia = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.GMapControl = New GMap.NET.WindowsForms.GMapControl()
         CType(Me.grdModificarCiudad, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -155,12 +156,40 @@ Partial Class frmModificarCiudades
         Me.Label2.TabIndex = 36
         Me.Label2.Text = "Provincia"
         '
+        'GMapControl
+        '
+        Me.GMapControl.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GMapControl.Bearing = 0!
+        Me.GMapControl.CanDragMap = True
+        Me.GMapControl.EmptyTileColor = System.Drawing.Color.Navy
+        Me.GMapControl.GrayScaleMode = False
+        Me.GMapControl.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow
+        Me.GMapControl.LevelsKeepInMemory = 5
+        Me.GMapControl.Location = New System.Drawing.Point(791, 346)
+        Me.GMapControl.MarkersEnabled = True
+        Me.GMapControl.MaxZoom = 20
+        Me.GMapControl.MinZoom = 1
+        Me.GMapControl.MouseWheelZoomEnabled = True
+        Me.GMapControl.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter
+        Me.GMapControl.Name = "GMapControl"
+        Me.GMapControl.NegativeMode = False
+        Me.GMapControl.PolygonsEnabled = True
+        Me.GMapControl.RetryLoadTile = 0
+        Me.GMapControl.RoutesEnabled = True
+        Me.GMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.[Integer]
+        Me.GMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(225, Byte), Integer))
+        Me.GMapControl.ShowTileGridLines = False
+        Me.GMapControl.Size = New System.Drawing.Size(400, 300)
+        Me.GMapControl.TabIndex = 37
+        Me.GMapControl.Zoom = 5.0R
+        '
         'frmModificarCiudades
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1203, 658)
+        Me.Controls.Add(Me.GMapControl)
         Me.Controls.Add(Me.cboProvincia)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtCiudad)
@@ -191,4 +220,5 @@ Partial Class frmModificarCiudades
     Friend WithEvents btnModificar As Button
     Friend WithEvents cboProvincia As ComboBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents GMapControl As GMap.NET.WindowsForms.GMapControl
 End Class
