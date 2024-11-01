@@ -1,8 +1,15 @@
 ﻿Imports System.Data
 Imports AD_Mecanica_Gaido
 Imports System.Data.SqlClient
+
+Imports GMap.NET
+Imports GMap.NET.MapProviders
+Imports GMap.NET.WindowsForms
+Imports GMap.NET.WindowsForms.Markers
+
 Public Class frmModificarCiudades
     Dim o_Ciudad As New AD_Ciudades
+    Private gmapControl As GMapControl
 
 #Region "Procedimientos"
     Private Sub frmPersonas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -23,6 +30,24 @@ Public Class frmModificarCiudades
         End If
 
         AplicarTema(Me)
+
+        ' Inicializa el control GMap en tu formulario
+        gmapControl = New GMapControl()
+
+        ' Establece la ubicación y tamaño del mapa
+        gmapControl.Location = New Point(Me.ClientSize.Width - 400, Me.ClientSize.Height - 300) ' Ajusta estas coordenadas según tus necesidades
+        gmapControl.Size = New Size(400, 300) ' Establece el tamaño del control
+
+        Me.Controls.Add(gmapControl)
+
+        ' Configura el mapa
+        gmapControl.MapProvider = GMapProviders.OpenStreetMap ' O cualquier proveedor que desees usar
+        gmapControl.MinZoom = 1
+        gmapControl.MaxZoom = 20
+        gmapControl.Zoom = 5 ' Ajusta el nivel de zoom inicial
+
+        ' Carga las provincias en el mapa
+        CargarPersonasPorProvinciaEnMapa()
     End Sub
 
     Public Sub limpiar()
@@ -148,6 +173,36 @@ Public Class frmModificarCiudades
         Else
             chkEstado.Visible = True
         End If
+    End Sub
+#End Region
+
+#Region "Grafico Provincia"
+    Private Sub CargarPersonasPorProvinciaEnMapa()
+        ' Obtiene los datos desde la capa de acceso a datos
+        Dim provincias As List(Of AD_Ciudades.Provincia) = o_Ciudad.ObtenerPersonasPorProvincia()
+
+        ' Crea una capa de marcadores en el mapa
+        Dim markers As New GMapOverlay("markers")
+
+        ' Crea una instancia de la clase que contiene las coordenadas
+        Dim coordenadasProvincias As List(Of AD_Ciudades.Provincia) = o_Ciudad.ObtenerCoordenadasProvincias()
+
+        ' Recorre cada provincia y agrega un marcador en el mapa
+        For Each provincia In provincias
+            ' Busca las coordenadas correspondientes a la provincia actual
+            Dim coordenadas As AD_Ciudades.Provincia = coordenadasProvincias.FirstOrDefault(Function(p) p.Nombre.Equals(provincia.Nombre, StringComparison.OrdinalIgnoreCase))
+
+            ' Si se encontraron coordenadas, agrega un marcador
+            If coordenadas IsNot Nothing Then
+                Dim marker As New GMarkerGoogle(New PointLatLng(coordenadas.Latitud, coordenadas.Longitud), GMarkerGoogleType.red_dot)
+                marker.ToolTipText = $"{provincia.Nombre}: {provincia.CantidadPersonas} personas"
+                markers.Markers.Add(marker)
+            End If
+        Next
+
+        ' Agrega los marcadores al control del mapa
+        gmapControl.Overlays.Add(markers)
+        gmapControl.Position = New PointLatLng(-38.4161, -63.6167) ' Centra el mapa en Argentina
     End Sub
 #End Region
 

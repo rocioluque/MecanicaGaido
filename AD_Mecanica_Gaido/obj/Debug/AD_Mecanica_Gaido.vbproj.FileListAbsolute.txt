@@ -262,3 +262,17 @@ C:\Users\Carabante\source\repos\MecanicaGaido\AD_Mecanica_Gaido\obj\Debug\AD_Mec
 C:\Users\Carabante\source\repos\MecanicaGaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.dll
 C:\Users\Carabante\source\repos\MecanicaGaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.xml
 C:\Users\Carabante\source\repos\MecanicaGaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.pdb
+C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\EntityFramework.dll
+C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\GMap.NET.Core.dll
+C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\GMap.NET.WindowsForms.dll
+C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\System.Data.SqlClient.dll
+C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\System.Data.SQLite.dll
+C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\System.Security.Principal.Windows.dll
+C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\EntityFramework.xml
+C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\System.Data.SqlClient.xml
+C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\System.Data.SQLite.xml
+C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\System.Security.Principal.Windows.xml
