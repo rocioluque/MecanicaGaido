@@ -68,8 +68,9 @@ Public Class frmInicio
     Private Async Sub MostrarClima()
         Dim coordenadas = Await ObtenerCoordenadasAsync()
         Dim lat As String = coordenadas.Item1.ToString()
+        G_lat = lat
         Dim lon As String = coordenadas.Item2.ToString()
-
+        G_lon = lon
         Dim apiKey As String = "89cff514fec4a4da7077ca6b99f9a8d2"
 
         Dim clima = Await ObtenerClimaAsync(lat, lon)

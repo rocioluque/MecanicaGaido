@@ -185,7 +185,7 @@ Public Class frmModificarCiudades
 
         ' Agrega los marcadores al control del mapa
         GMapControl.Overlays.Add(markers)
-        GMapControl.Position = New PointLatLng(-31.4201, -64.1888) ' Centra el mapa en Córdoba
+        GMapControl.Position = New PointLatLng(G_lat, G_lon) ' Centra el mapa en Argentina
     End Sub
 #End Region
 
