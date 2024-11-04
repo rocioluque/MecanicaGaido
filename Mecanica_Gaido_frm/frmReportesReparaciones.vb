@@ -134,12 +134,17 @@ Public Class frmReportesReparaciones
     }
         Dim colorIndex As Integer = 0
 
+        Dim maxCantidad As Integer = 0
+        Dim minCantidad As Integer = Integer.MaxValue
+
         For Each row As DataRow In dtTiposReparacion.Rows
             Dim tipoReparacion As String = row("TipoDeReparacion").ToString()
             Dim cantidad As Integer = Convert.ToInt32(row("Cantidad"))
 
-            Dim pointIndex As Integer = series.Points.AddXY(tipoReparacion, cantidad)
+            maxCantidad = Math.Max(maxCantidad, cantidad)
+            minCantidad = Math.Min(minCantidad, cantidad)
 
+            Dim pointIndex As Integer = series.Points.AddXY(tipoReparacion, cantidad)
             series.Points(pointIndex).Color = colors(colorIndex Mod colors.Length)
             colorIndex += 1
         Next
@@ -159,9 +164,14 @@ Public Class frmReportesReparaciones
 
         ChtOrdenReparacion.ChartAreas(0).AxisY.Title = "Cantidad de Órdenes"
         ChtOrdenReparacion.ChartAreas(0).AxisY.IsStartedFromZero = True
-        ChtOrdenReparacion.ChartAreas(0).AxisY.LabelStyle.Interval = 1
-        ChtOrdenReparacion.ChartAreas(0).AxisY.MajorGrid.Interval = 1
-        ChtOrdenReparacion.ChartAreas(0).AxisY.MajorGrid.Enabled = True
+
+        Dim intervalo As Integer = Math.Ceiling((maxCantidad - minCantidad) / 5.0)
+        ChtOrdenReparacion.ChartAreas(0).AxisY.Interval = Math.Max(intervalo, 1)
+        ChtOrdenReparacion.ChartAreas(0).AxisY.MajorGrid.Interval = Math.Max(intervalo, 1)
+
+        ChtOrdenReparacion.ChartAreas(0).AxisY.Minimum = Math.Max(minCantidad - intervalo, 0)
+        ChtOrdenReparacion.ChartAreas(0).AxisY.Maximum = maxCantidad + intervalo
+
         ChtOrdenReparacion.ChartAreas(0).AxisY.LabelStyle.ForeColor = Color.White
         ChtOrdenReparacion.ChartAreas(0).AxisY.LineColor = Color.White
         ChtOrdenReparacion.ChartAreas(0).AxisY.MajorGrid.LineColor = Color.Gray

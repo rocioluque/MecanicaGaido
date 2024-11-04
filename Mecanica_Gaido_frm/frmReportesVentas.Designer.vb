@@ -138,10 +138,10 @@ Partial Class frmReportesVentas
         Series1.MarkerColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
         Series1.MarkerSize = 8
         Series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle
-        Series1.Name = "Cantidad de Ventas"
+        Series1.Name = "Ventas por Mes"
         Me.chartVentasMes.Series.Add(Series1)
         Me.chartVentasMes.Size = New System.Drawing.Size(584, 327)
-        Me.chartVentasMes.TabIndex = 80
+        Me.chartVentasMes.TabIndex = 0
         Me.chartVentasMes.Text = "Chart1"
         '
         'ChtVentasEmpleado

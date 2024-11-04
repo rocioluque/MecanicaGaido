@@ -10,9 +10,9 @@ Public Class frmReportesVentas
 
 #Region "Procedimientos"
     Private Sub frmReportesVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        AplicarTema(Me)
         VentasPorMes()
         VentasPorEmpleado()
+        AplicarTema(Me)
     End Sub
 #End Region
 
@@ -73,7 +73,7 @@ Public Class frmReportesVentas
                     chartVentasMes.ChartAreas(0).AxisX.CustomLabels.Add(i - 0.5, i + 0.5, New DateTime(2023, i, 1).ToString("MMMM"))
                 Next
 
-                chartVentasMes.ChartAreas(0).AxisY.Title = "Cantidad de Ventas"
+                chartVentasMes.ChartAreas(0).AxisY.Title = "Cant. de Ventas"
                 chartVentasMes.ChartAreas(0).AxisY.LabelStyle.ForeColor = Color.White
                 chartVentasMes.ChartAreas(0).AxisY.LineColor = Color.White
                 chartVentasMes.ChartAreas(0).AxisY.MajorGrid.LineColor = Color.Gray
@@ -117,37 +117,83 @@ Public Class frmReportesVentas
         ChtVentasEmpleado.Series.Clear()
 
         Dim series As New Series("Ventas por Empleado")
+        series.IsVisibleInLegend = False
         series.ChartType = SeriesChartType.Column
         series.IsValueShownAsLabel = True
         series.LabelForeColor = Color.White
+        series.Font = New Font("Century Gothic", 9.75F)
 
-        If dt.Rows.Count > 0 Then
-            For Each row As DataRow In dt.Rows
-                Dim empleado As String = row("Empleado").ToString()
-                Dim cantidad As Integer = Convert.ToInt32(row("CantidadVentas"))
-                series.Points.AddXY(empleado, cantidad)
-            Next
+        Dim colors As Color() = {
+        Color.FromArgb(146, 139, 87),
+        Color.FromArgb(60, 179, 113),
+        Color.FromArgb(32, 178, 170),
+        Color.FromArgb(0, 139, 69),
+        Color.FromArgb(0, 255, 127),
+        Color.FromArgb(46, 139, 87)
+    }
+        Dim colorIndex As Integer = 0
 
-            ChtVentasEmpleado.Series.Add(series)
+        Dim maxCantidad As Integer = 0
+        Dim minCantidad As Integer = Integer.MaxValue
 
-            ' Customizar gráfico
-            ChtVentasEmpleado.BackColor = Color.Transparent
-            ChtVentasEmpleado.ChartAreas(0).BackColor = Color.Transparent
-            ChtVentasEmpleado.ChartAreas(0).AxisX.LabelStyle.ForeColor = Color.White
-            ChtVentasEmpleado.ChartAreas(0).AxisY.Title = "Cantidad de Ventas"
-            ChtVentasEmpleado.ChartAreas(0).AxisY.LabelStyle.ForeColor = Color.White
+        For Each row As DataRow In dt.Rows
+            Dim empleado As String = row("Empleado").ToString()
+            Dim cantidad As Integer = Convert.ToInt32(row("CantidadVentas"))
 
-            ' Leyenda
-            ChtVentasEmpleado.Legends.Clear()
-            Dim legend As New Legend("Leyenda")
-            legend.Docking = Docking.Top
-            legend.ForeColor = Color.White
-            ChtVentasEmpleado.Legends.Add(legend)
-        Else
-            lblNoInformacion.Visible = True
-            ChtVentasEmpleado.Visible = False
-            lblNoInformacion.Text = "No hay ventas registradas."
-        End If
+            maxCantidad = Math.Max(maxCantidad, cantidad)
+            minCantidad = Math.Min(minCantidad, cantidad)
+
+            Dim pointIndex As Integer = series.Points.AddXY(empleado, cantidad)
+            series.Points(pointIndex).Color = colors(colorIndex Mod colors.Length)
+            colorIndex += 1
+        Next
+
+        ChtVentasEmpleado.Series.Add(series)
+
+        ChtVentasEmpleado.BackColor = Color.Transparent
+        ChtVentasEmpleado.ChartAreas(0).BackColor = Color.Transparent
+
+        ChtVentasEmpleado.ChartAreas(0).AxisX.Title = ""
+        ChtVentasEmpleado.ChartAreas(0).AxisX.MajorGrid.Enabled = False
+        ChtVentasEmpleado.ChartAreas(0).AxisX.LabelStyle.ForeColor = Color.White
+        ChtVentasEmpleado.ChartAreas(0).AxisX.LineColor = Color.White
+        ChtVentasEmpleado.ChartAreas(0).AxisX.MajorGrid.LineColor = Color.Gray
+        ChtVentasEmpleado.ChartAreas(0).AxisX.TitleForeColor = Color.White
+        ChtVentasEmpleado.ChartAreas(0).AxisX.LabelStyle.Font = New Font("Century Gothic", 8)
+
+        ChtVentasEmpleado.ChartAreas(0).AxisY.Title = "Cantidad de Ventas"
+        ChtVentasEmpleado.ChartAreas(0).AxisY.IsStartedFromZero = True
+
+        Dim intervalo As Integer = Math.Ceiling((maxCantidad - minCantidad) / 5.0)
+        ChtVentasEmpleado.ChartAreas(0).AxisY.Interval = Math.Max(intervalo, 1)
+        ChtVentasEmpleado.ChartAreas(0).AxisY.MajorGrid.Interval = Math.Max(intervalo, 1)
+
+        ChtVentasEmpleado.ChartAreas(0).AxisY.Minimum = Math.Max(minCantidad - intervalo, 0)
+        ChtVentasEmpleado.ChartAreas(0).AxisY.Maximum = maxCantidad + intervalo
+
+        ChtVentasEmpleado.ChartAreas(0).AxisY.LabelStyle.ForeColor = Color.White
+        ChtVentasEmpleado.ChartAreas(0).AxisY.LineColor = Color.White
+        ChtVentasEmpleado.ChartAreas(0).AxisY.MajorGrid.LineColor = Color.Gray
+        ChtVentasEmpleado.ChartAreas(0).AxisY.TitleForeColor = Color.White
+        ChtVentasEmpleado.ChartAreas(0).AxisY.LabelStyle.Font = New Font("Century Gothic", 9.75F)
+
+        ChtVentasEmpleado.Legends.Clear()
+        Dim legend As New Legend("Leyenda")
+        legend.Docking = Docking.Top
+        legend.ForeColor = Color.White
+        legend.BackColor = Color.Transparent
+        legend.Title = "Cantidad de Ventas por Empleados"
+        legend.TitleFont = New Font("Century Gothic", 9.75F, FontStyle.Regular)
+        legend.TitleForeColor = Color.White
+        legend.Alignment = StringAlignment.Center
+        ChtVentasEmpleado.Legends.Add(legend)
+
+        For i As Integer = 0 To series.Points.Count - 1
+            Dim legendItem As New LegendItem()
+            legendItem.Name = series.Points(i).AxisLabel
+            legendItem.Color = series.Points(i).Color
+            legend.CustomItems.Add(legendItem)
+        Next
     End Sub
 #End Region
 
