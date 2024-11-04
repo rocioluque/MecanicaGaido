@@ -32,7 +32,7 @@ Public Class frmReportesReparaciones
             seriesAñoActual.IsValueShownAsLabel = True
             seriesAñoActual.LabelForeColor = Color.White
             seriesAñoActual.Color = Color.FromArgb(60, 179, 113)
-            seriesAñoActual.BorderWidth = 3 '
+            seriesAñoActual.BorderWidth = 3
 
             Dim seriesAñoAnterior As New Series("Reparaciones Año " & (año - 1))
             seriesAñoAnterior.ChartType = SeriesChartType.Line

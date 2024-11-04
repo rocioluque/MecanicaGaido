@@ -33,10 +33,9 @@ Partial Class frmReportesVentas
         Dim CustomLabel8 As System.Windows.Forms.DataVisualization.Charting.CustomLabel = New System.Windows.Forms.DataVisualization.Charting.CustomLabel()
         Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
         Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmReportesVentas))
         Me.lblNoInformacion = New System.Windows.Forms.Label()
         Me.txtAño = New System.Windows.Forms.TextBox()
@@ -118,7 +117,7 @@ Partial Class frmReportesVentas
         ChartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
         ChartArea1.AxisY.LineColor = System.Drawing.Color.LightGray
         ChartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray
-        ChartArea1.AxisY.Title = "Cant. de Reparaciones"
+        ChartArea1.AxisY.Title = "Cant. de Ventas"
         ChartArea1.AxisY.TitleFont = New System.Drawing.Font("Century Gothic", 9.0!)
         ChartArea1.AxisY.TitleForeColor = System.Drawing.Color.White
         ChartArea1.BorderColor = System.Drawing.Color.White
@@ -139,14 +138,8 @@ Partial Class frmReportesVentas
         Series1.MarkerColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
         Series1.MarkerSize = 8
         Series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle
-        Series1.Name = "seriesAñoActual"
-        Series2.BorderWidth = 3
-        Series2.ChartArea = "ChartArea1"
-        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series2.Legend = "Leyenda"
-        Series2.Name = "seriesAñoAnterior"
+        Series1.Name = "Cantidad de Ventas"
         Me.chartVentasMes.Series.Add(Series1)
-        Me.chartVentasMes.Series.Add(Series2)
         Me.chartVentasMes.Size = New System.Drawing.Size(584, 327)
         Me.chartVentasMes.TabIndex = 80
         Me.chartVentasMes.Text = "Chart1"
@@ -177,10 +170,10 @@ Partial Class frmReportesVentas
         Me.ChtVentasEmpleado.Location = New System.Drawing.Point(31, 388)
         Me.ChtVentasEmpleado.Name = "ChtVentasEmpleado"
         Me.ChtVentasEmpleado.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen
-        Series3.ChartArea = "ChartArea1"
-        Series3.Legend = "Leyenda"
-        Series3.Name = "Series1"
-        Me.ChtVentasEmpleado.Series.Add(Series3)
+        Series2.ChartArea = "ChartArea1"
+        Series2.Legend = "Leyenda"
+        Series2.Name = "Series1"
+        Me.ChtVentasEmpleado.Series.Add(Series2)
         Me.ChtVentasEmpleado.Size = New System.Drawing.Size(584, 323)
         Me.ChtVentasEmpleado.TabIndex = 142
         '
