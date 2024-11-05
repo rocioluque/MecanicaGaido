@@ -683,7 +683,7 @@ Partial Class RptHistorialCliente
         Me.TextBox15.Style.Font.Bold = True
         Me.TextBox15.Style.Font.Name = "Arial"
         Me.TextBox15.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox15.Value = "Nombre del Vehícuo:"
+        Me.TextBox15.Value = "Nombre del Vehículo:"
         '
         'TextBox16
         '
@@ -837,7 +837,7 @@ Partial Class RptHistorialCliente
         '
         Me.SqlDataSource1.ConnectionString = "Mecanica_Gaido_frm.My.MySettings.PIN_GRUPO31ConnectionString"
         Me.SqlDataSource1.Name = "SqlDataSource1"
-        Me.SqlDataSource1.Parameters.AddRange(New Telerik.Reporting.SqlDataSourceParameter() {New Telerik.Reporting.SqlDataSourceParameter("@ID_Persona", System.Data.DbType.Int32, "=Parameters.ID_Venta.Value")})
+        Me.SqlDataSource1.Parameters.AddRange(New Telerik.Reporting.SqlDataSourceParameter() {New Telerik.Reporting.SqlDataSourceParameter("@ID_Persona", System.Data.DbType.Int32, "=Parameters.ID_Persona.Value")})
         Me.SqlDataSource1.SelectCommand = "dbo.Consultar_Historial_Reparaciones"
         Me.SqlDataSource1.SelectCommandType = Telerik.Reporting.SqlDataSourceCommandType.StoredProcedure
         '
