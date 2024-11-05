@@ -7,18 +7,14 @@ Imports System.Data.Common
 Imports System.Windows.Forms
 Imports Microsoft.Practices.EnterpriseLibrary.Data
 
-
-
 Public Class AD_Ventas
     Private connectionString As String
 
     Dim oDatabase As Database
+
     Public Sub New()
         connectionString = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123"
-
-
     End Sub
-
 
 
 #Region "Carga de Cbo"
@@ -200,7 +196,6 @@ Public Class AD_Ventas
     End Function
 #End Region
 
-
     Public Function Cargar_Grilla_DetalleVenta() As DataTable
         Dim tabla As New DataTable
 
@@ -249,10 +244,8 @@ Public Class AD_Ventas
     End Function
 
 
-
     Public Function ObtenerNroComprobante() As String
         Dim nroComprobante As String = ""
-
 
         Try
             Using connection As New SqlConnection(connectionString)
@@ -282,6 +275,7 @@ Public Class AD_Ventas
 
         Return nroComprobante
     End Function
+
     Public Function ObtenerNro(input As String) As String
 
         Dim longitudMaxima As Integer = Math.Min(input.Length, 8)
@@ -296,7 +290,6 @@ Public Class AD_Ventas
 
         Return String.Empty
     End Function
-
 
 #Region "Agregar"
     Public Function AgregarVentaConDetalle(fechaVenta As Date,
@@ -431,7 +424,6 @@ Public Class AD_Ventas
 
 #End Region
 
-
 #Region "Modificar"
     Public Sub ModificarVentaConDetalle(ID_Venta As Integer,
                                        fechaVenta As Date,
@@ -489,6 +481,5 @@ Public Class AD_Ventas
         End Using
     End Sub
 #End Region
-
 
 End Class
