@@ -55,26 +55,6 @@ Public Class AD_Ventas
         Return tabla
     End Function
 
-    'Public Function Cargar_Combo_Empleados() As DataTable
-    '    Dim tabla As New DataTable
-
-    '    Using conexion As New SqlConnection(connectionString)
-    '        Using comando As New SqlCommand("Cargar_Combo_Empleados", conexion)
-    '            comando.CommandType = CommandType.StoredProcedure
-    '            Try
-    '                conexion.Open()
-    '                Dim datadapter As New SqlDataAdapter(comando)
-    '                datadapter.Fill(tabla)
-    '            Catch ex As Exception
-    '                Throw New Exception("Error al cargar los empleados desde la base de datos: " & ex.Message, ex)
-    '            End Try
-
-    '        End Using
-    '    End Using
-
-    '    Return tabla
-    'End Function
-
     Public Function Cargar_Combo_FormaPago() As DataTable
         Dim tabla As New DataTable
 

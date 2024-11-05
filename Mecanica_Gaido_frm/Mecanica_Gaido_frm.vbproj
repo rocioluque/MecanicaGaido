@@ -646,6 +646,12 @@
     <Compile Include="FrmVentaView.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmViewHistorialCliente.Designer.vb">
+      <DependentUpon>frmViewHistorialCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewHistorialCliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GoogleDriveUploader.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -680,6 +686,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PIN_GRUPO31DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RptHistorialCliente.designer.vb">
+      <DependentUpon>RptHistorialCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RptHistorialCliente.vb">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="RptVentas.designer.vb">
       <DependentUpon>RptVentas.vb</DependentUpon>
@@ -814,6 +826,9 @@
     <EmbeddedResource Include="frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmViewHistorialCliente.resx">
+      <DependentUpon>frmViewHistorialCliente.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -825,6 +840,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBienvenida.resx">
       <DependentUpon>frmBienvenida.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptHistorialCliente.resx">
+      <DependentUpon>RptHistorialCliente.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptVentas.resx">
       <DependentUpon>RptVentas.vb</DependentUpon>

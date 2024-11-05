@@ -57,7 +57,24 @@ Public Class AD_Reportes
 #End Region
 
 #Region "Reporte personas"
+    Public Function Cargar_Combo_Persona() As DataTable
+        Dim tabla As New DataTable
 
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Combo_Personas", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                Try
+                    conexion.Open()
+                    Dim datadapter As New SqlDataAdapter(comando)
+                    datadapter.Fill(tabla)
+                Catch ex As Exception
+                    Throw New Exception("Error al cargar las personas desde la base de datos: " & ex.Message, ex)
+                End Try
+
+            End Using
+        End Using
+        Return tabla
+    End Function
 #End Region
 
 #Region "Reporte vehiculos"
