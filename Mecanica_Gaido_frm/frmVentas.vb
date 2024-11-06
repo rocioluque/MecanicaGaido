@@ -1036,6 +1036,9 @@ Public Class frmVentas
 
             MessageBox.Show("Venta modificada con éxito.")
             limpiar()
+            btnCancelar.PerformClick()
+            Dim oVenta As New AD_Ventas
+            txtNumComprobante.Text = oVenta.ObtenerNroComprobante
         Catch ex As Exception
             MessageBox.Show("Error al modificar la venta: " & ex.Message)
         End Try
