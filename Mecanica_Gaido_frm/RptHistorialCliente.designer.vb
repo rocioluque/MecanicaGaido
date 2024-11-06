@@ -8,19 +8,12 @@ Partial Class RptHistorialCliente
         Dim Group1 As Telerik.Reporting.Group = New Telerik.Reporting.Group()
         Dim ReportParameter1 As Telerik.Reporting.ReportParameter = New Telerik.Reporting.ReportParameter()
         Dim StyleRule1 As Telerik.Reporting.Drawing.StyleRule = New Telerik.Reporting.Drawing.StyleRule()
-        Me.groupFooterSection = New Telerik.Reporting.GroupFooterSection()
         Me.TextBox54 = New Telerik.Reporting.TextBox()
         Me.TextBox53 = New Telerik.Reporting.TextBox()
         Me.TextBox56 = New Telerik.Reporting.TextBox()
         Me.TextBox36 = New Telerik.Reporting.TextBox()
         Me.TextBox72 = New Telerik.Reporting.TextBox()
         Me.TextBox28 = New Telerik.Reporting.TextBox()
-        Me.Shape29 = New Telerik.Reporting.Shape()
-        Me.Shape16 = New Telerik.Reporting.Shape()
-        Me.Shape15 = New Telerik.Reporting.Shape()
-        Me.Shape1 = New Telerik.Reporting.Shape()
-        Me.Shape3 = New Telerik.Reporting.Shape()
-        Me.groupHeaderSection = New Telerik.Reporting.GroupHeaderSection()
         Me.TextBox19 = New Telerik.Reporting.TextBox()
         Me.TextBox5 = New Telerik.Reporting.TextBox()
         Me.TextBox15 = New Telerik.Reporting.TextBox()
@@ -72,18 +65,13 @@ Partial Class RptHistorialCliente
         Me.TextBox18 = New Telerik.Reporting.TextBox()
         Me.TextBox24 = New Telerik.Reporting.TextBox()
         Me.SqlDataSource1 = New Telerik.Reporting.SqlDataSource()
+        Me.groupHeaderSection1 = New Telerik.Reporting.GroupHeaderSection()
+        Me.groupFooterSection1 = New Telerik.Reporting.GroupFooterSection()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
-        '
-        'groupFooterSection
-        '
-        Me.groupFooterSection.Height = Telerik.Reporting.Drawing.Unit.Cm(0.6477089524269104R)
-        Me.groupFooterSection.Items.AddRange(New Telerik.Reporting.ReportItemBase() {Me.TextBox54, Me.TextBox53, Me.TextBox56, Me.TextBox36, Me.TextBox72, Me.TextBox28, Me.Shape29, Me.Shape16, Me.Shape15, Me.Shape1, Me.Shape3})
-        Me.groupFooterSection.Name = "groupFooterSection"
-        Me.groupFooterSection.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.Solid
         '
         'TextBox54
         '
-        Me.TextBox54.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.440000057220459R), Telerik.Reporting.Drawing.Unit.Cm(0.079999998211860657R))
+        Me.TextBox54.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.4215879440307617R), Telerik.Reporting.Drawing.Unit.Cm(0.00010012308484874666R))
         Me.TextBox54.Name = "TextBox54"
         Me.TextBox54.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.380000114440918R), Telerik.Reporting.Drawing.Unit.Cm(0.31000000238418579R))
         Me.TextBox54.Style.Color = System.Drawing.Color.Black
@@ -96,7 +84,7 @@ Partial Class RptHistorialCliente
         'TextBox53
         '
         Me.TextBox53.Format = "{0:N0}"
-        Me.TextBox53.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.10000000149011612R), Telerik.Reporting.Drawing.Unit.Cm(0.079999998211860657R))
+        Me.TextBox53.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.81554615497589111R), Telerik.Reporting.Drawing.Unit.Cm(0.00010012308484874666R))
         Me.TextBox53.Name = "TextBox53"
         Me.TextBox53.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.4299999475479126R), Telerik.Reporting.Drawing.Unit.Cm(0.31000000238418579R))
         Me.TextBox53.Style.Color = System.Drawing.Color.Black
@@ -109,7 +97,7 @@ Partial Class RptHistorialCliente
         'TextBox56
         '
         Me.TextBox56.Format = "{0:N2}"
-        Me.TextBox56.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(13.779999732971191R), Telerik.Reporting.Drawing.Unit.Cm(0.079999998211860657R))
+        Me.TextBox56.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(13.761588096618652R), Telerik.Reporting.Drawing.Unit.Cm(0.00010012308484874666R))
         Me.TextBox56.Name = "TextBox56"
         Me.TextBox56.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.619999885559082R), Telerik.Reporting.Drawing.Unit.Cm(0.31000000238418579R))
         Me.TextBox56.Style.Color = System.Drawing.Color.Black
@@ -122,7 +110,7 @@ Partial Class RptHistorialCliente
         'TextBox36
         '
         Me.TextBox36.Format = "{0:d}"
-        Me.TextBox36.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.8199999332427979R), Telerik.Reporting.Drawing.Unit.Cm(0.079999998211860657R))
+        Me.TextBox36.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.801588773727417R), Telerik.Reporting.Drawing.Unit.Cm(0.00010012308484874666R))
         Me.TextBox36.Name = "TextBox36"
         Me.TextBox36.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.380000114440918R), Telerik.Reporting.Drawing.Unit.Cm(0.31000000238418579R))
         Me.TextBox36.Style.Color = System.Drawing.Color.Black
@@ -135,7 +123,7 @@ Partial Class RptHistorialCliente
         'TextBox72
         '
         Me.TextBox72.Format = "{0:N2}"
-        Me.TextBox72.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.399999618530273R), Telerik.Reporting.Drawing.Unit.Cm(0.079999998211860657R))
+        Me.TextBox72.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.381587982177734R), Telerik.Reporting.Drawing.Unit.Cm(0.00010012308484874666R))
         Me.TextBox72.Name = "TextBox72"
         Me.TextBox72.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.619999885559082R), Telerik.Reporting.Drawing.Unit.Cm(0.31000000238418579R))
         Me.TextBox72.Style.Color = System.Drawing.Color.Black
@@ -148,7 +136,7 @@ Partial Class RptHistorialCliente
         'TextBox28
         '
         Me.TextBox28.Format = "{0:N2}"
-        Me.TextBox28.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(6.1999998092651367R), Telerik.Reporting.Drawing.Unit.Cm(0.079999998211860657R))
+        Me.TextBox28.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(6.1815881729125977R), Telerik.Reporting.Drawing.Unit.Cm(0.00010012308484874666R))
         Me.TextBox28.Name = "TextBox28"
         Me.TextBox28.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.5799999237060547R), Telerik.Reporting.Drawing.Unit.Cm(0.31000000238418579R))
         Me.TextBox28.Style.Color = System.Drawing.Color.Black
@@ -158,57 +146,9 @@ Partial Class RptHistorialCliente
         Me.TextBox28.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center
         Me.TextBox28.Value = "= Fields.OrdenMotivo"
         '
-        'Shape29
-        '
-        Me.Shape29.Anchoring = CType((Telerik.Reporting.AnchoringStyles.Top Or Telerik.Reporting.AnchoringStyles.Bottom), Telerik.Reporting.AnchoringStyles)
-        Me.Shape29.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.3799991607666R), Telerik.Reporting.Drawing.Unit.Cm(0R))
-        Me.Shape29.Name = "Shape29"
-        Me.Shape29.ShapeType = New Telerik.Reporting.Drawing.Shapes.LineShape(Telerik.Reporting.Drawing.Shapes.LineDirection.NS)
-        Me.Shape29.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(0.15000000596046448R), Telerik.Reporting.Drawing.Unit.Cm(0.40709838271141052R))
-        '
-        'Shape16
-        '
-        Me.Shape16.Anchoring = CType((Telerik.Reporting.AnchoringStyles.Top Or Telerik.Reporting.AnchoringStyles.Bottom), Telerik.Reporting.AnchoringStyles)
-        Me.Shape16.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.7999999523162842R), Telerik.Reporting.Drawing.Unit.Cm(0R))
-        Me.Shape16.Name = "Shape16"
-        Me.Shape16.ShapeType = New Telerik.Reporting.Drawing.Shapes.LineShape(Telerik.Reporting.Drawing.Shapes.LineDirection.NS)
-        Me.Shape16.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(0.15000000596046448R), Telerik.Reporting.Drawing.Unit.Cm(0.40709838271141052R))
-        '
-        'Shape15
-        '
-        Me.Shape15.Anchoring = CType((Telerik.Reporting.AnchoringStyles.Top Or Telerik.Reporting.AnchoringStyles.Bottom), Telerik.Reporting.AnchoringStyles)
-        Me.Shape15.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.4099999666213989R), Telerik.Reporting.Drawing.Unit.Cm(0R))
-        Me.Shape15.Name = "Shape15"
-        Me.Shape15.ShapeType = New Telerik.Reporting.Drawing.Shapes.LineShape(Telerik.Reporting.Drawing.Shapes.LineDirection.NS)
-        Me.Shape15.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(0.15000000596046448R), Telerik.Reporting.Drawing.Unit.Cm(0.40709838271141052R))
-        '
-        'Shape1
-        '
-        Me.Shape1.Anchoring = CType((Telerik.Reporting.AnchoringStyles.Top Or Telerik.Reporting.AnchoringStyles.Bottom), Telerik.Reporting.AnchoringStyles)
-        Me.Shape1.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(6.179999828338623R), Telerik.Reporting.Drawing.Unit.Cm(0R))
-        Me.Shape1.Name = "Shape1"
-        Me.Shape1.ShapeType = New Telerik.Reporting.Drawing.Shapes.LineShape(Telerik.Reporting.Drawing.Shapes.LineDirection.NS)
-        Me.Shape1.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(0.15000000596046448R), Telerik.Reporting.Drawing.Unit.Cm(0.40709838271141052R))
-        '
-        'Shape3
-        '
-        Me.Shape3.Anchoring = CType((Telerik.Reporting.AnchoringStyles.Top Or Telerik.Reporting.AnchoringStyles.Bottom), Telerik.Reporting.AnchoringStyles)
-        Me.Shape3.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(13.760000228881836R), Telerik.Reporting.Drawing.Unit.Cm(0R))
-        Me.Shape3.Name = "Shape3"
-        Me.Shape3.ShapeType = New Telerik.Reporting.Drawing.Shapes.LineShape(Telerik.Reporting.Drawing.Shapes.LineDirection.NS)
-        Me.Shape3.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(0.15000000596046448R), Telerik.Reporting.Drawing.Unit.Cm(0.40709838271141052R))
-        '
-        'groupHeaderSection
-        '
-        Me.groupHeaderSection.Height = Telerik.Reporting.Drawing.Unit.Cm(2.1199991703033447R)
-        Me.groupHeaderSection.Items.AddRange(New Telerik.Reporting.ReportItemBase() {Me.TextBox19, Me.TextBox5, Me.TextBox15, Me.TextBox16, Me.TextBox4, Me.TextBox23, Me.TextBox25, Me.TextBox26, Me.TextBox7, Me.TextBox8, Me.TextBox22, Me.TextBox21, Me.TextBox14, Me.TextBox11, Me.TextBox20, Me.Shape6, Me.Shape9, Me.Shape11, Me.Shape14, Me.TextBox27, Me.Shape2})
-        Me.groupHeaderSection.Name = "groupHeaderSection"
-        Me.groupHeaderSection.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.None
-        Me.groupHeaderSection.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.Solid
-        '
         'TextBox19
         '
-        Me.TextBox19.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.14166750013828278R), Telerik.Reporting.Drawing.Unit.Cm(0.28260466456413269R))
+        Me.TextBox19.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.12325636297464371R), Telerik.Reporting.Drawing.Unit.Cm(0.16500042378902435R))
         Me.TextBox19.Name = "TextBox19"
         Me.TextBox19.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.7286186218261719R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
         Me.TextBox19.Style.Color = System.Drawing.Color.Black
@@ -219,7 +159,7 @@ Partial Class RptHistorialCliente
         '
         'TextBox5
         '
-        Me.TextBox5.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.8184118270874023R), Telerik.Reporting.Drawing.Unit.Cm(0.78531301021575928R))
+        Me.TextBox5.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.8000001907348633R), Telerik.Reporting.Drawing.Unit.Cm(0.66770875453948975R))
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.6815881729125977R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
         Me.TextBox5.Style.Color = System.Drawing.Color.Black
@@ -230,7 +170,7 @@ Partial Class RptHistorialCliente
         '
         'TextBox15
         '
-        Me.TextBox15.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.9997987747192383R), Telerik.Reporting.Drawing.Unit.Cm(0.28260466456413269R))
+        Me.TextBox15.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.9813871383666992R), Telerik.Reporting.Drawing.Unit.Cm(0.16500042378902435R))
         Me.TextBox15.Name = "TextBox15"
         Me.TextBox15.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.6000001430511475R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
         Me.TextBox15.Style.Color = System.Drawing.Color.Black
@@ -241,7 +181,7 @@ Partial Class RptHistorialCliente
         '
         'TextBox16
         '
-        Me.TextBox16.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.14166750013828278R), Telerik.Reporting.Drawing.Unit.Cm(0.78531301021575928R))
+        Me.TextBox16.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.12325636297464371R), Telerik.Reporting.Drawing.Unit.Cm(0.66770875453948975R))
         Me.TextBox16.Name = "TextBox16"
         Me.TextBox16.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.3767440319061279R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
         Me.TextBox16.Style.Color = System.Drawing.Color.Black
@@ -252,7 +192,7 @@ Partial Class RptHistorialCliente
         '
         'TextBox4
         '
-        Me.TextBox4.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(8.5R), Telerik.Reporting.Drawing.Unit.Cm(0.78531301021575928R))
+        Me.TextBox4.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(8.4815883636474609R), Telerik.Reporting.Drawing.Unit.Cm(0.66770875453948975R))
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.060122013092041R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
         Me.TextBox4.Style.Color = System.Drawing.Color.Black
@@ -263,7 +203,7 @@ Partial Class RptHistorialCliente
         '
         'TextBox23
         '
-        Me.TextBox23.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(7.6000003814697266R), Telerik.Reporting.Drawing.Unit.Cm(0.28260466456413269R))
+        Me.TextBox23.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(7.5815887451171875R), Telerik.Reporting.Drawing.Unit.Cm(0.16500042378902435R))
         Me.TextBox23.Name = "TextBox23"
         Me.TextBox23.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(8.45939826965332R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
         Me.TextBox23.Style.Color = System.Drawing.Color.Black
@@ -274,7 +214,7 @@ Partial Class RptHistorialCliente
         '
         'TextBox25
         '
-        Me.TextBox25.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.51841139793396R), Telerik.Reporting.Drawing.Unit.Cm(0.78531301021575928R))
+        Me.TextBox25.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.5R), Telerik.Reporting.Drawing.Unit.Cm(0.66770875453948975R))
         Me.TextBox25.Name = "TextBox25"
         Me.TextBox25.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.9000008106231689R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
         Me.TextBox25.Style.Color = System.Drawing.Color.Black
@@ -285,7 +225,7 @@ Partial Class RptHistorialCliente
         '
         'TextBox26
         '
-        Me.TextBox26.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.8184115886688232R), Telerik.Reporting.Drawing.Unit.Cm(0.28260466456413269R))
+        Me.TextBox26.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.8000003099441528R), Telerik.Reporting.Drawing.Unit.Cm(0.16500042378902435R))
         Me.TextBox26.Name = "TextBox26"
         Me.TextBox26.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.2000000476837158R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
         Me.TextBox26.Style.Color = System.Drawing.Color.Black
@@ -296,7 +236,7 @@ Partial Class RptHistorialCliente
         '
         'TextBox7
         '
-        Me.TextBox7.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(12.300000190734863R), Telerik.Reporting.Drawing.Unit.Cm(0.78531301021575928R))
+        Me.TextBox7.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(12.281587600708008R), Telerik.Reporting.Drawing.Unit.Cm(0.66770875453948975R))
         Me.TextBox7.Name = "TextBox7"
         Me.TextBox7.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.0112497806549072R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
         Me.TextBox7.Style.Color = System.Drawing.Color.Black
@@ -307,7 +247,7 @@ Partial Class RptHistorialCliente
         '
         'TextBox8
         '
-        Me.TextBox8.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(15.30000114440918R), Telerik.Reporting.Drawing.Unit.Cm(0.78531301021575928R))
+        Me.TextBox8.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(15.281589508056641R), Telerik.Reporting.Drawing.Unit.Cm(0.66770875453948975R))
         Me.TextBox8.Name = "TextBox8"
         Me.TextBox8.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.8813905715942383R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
         Me.TextBox8.Style.Color = System.Drawing.Color.Black
@@ -319,7 +259,7 @@ Partial Class RptHistorialCliente
         'TextBox22
         '
         Me.TextBox22.Format = "{0:d}"
-        Me.TextBox22.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.440000057220459R), Telerik.Reporting.Drawing.Unit.Cm(1.4999992847442627R))
+        Me.TextBox22.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.4215887784957886R), Telerik.Reporting.Drawing.Unit.Cm(1.382394552230835R))
         Me.TextBox22.Name = "TextBox22"
         Me.TextBox22.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.3784112930297852R), Telerik.Reporting.Drawing.Unit.Cm(0.617395281791687R))
         Me.TextBox22.Style.BackgroundColor = System.Drawing.Color.Silver
@@ -335,7 +275,7 @@ Partial Class RptHistorialCliente
         '
         'TextBox21
         '
-        Me.TextBox21.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.10000000149011612R), Telerik.Reporting.Drawing.Unit.Cm(1.4999992847442627R))
+        Me.TextBox21.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.081588603556156158R), Telerik.Reporting.Drawing.Unit.Cm(1.382394552230835R))
         Me.TextBox21.Name = "TextBox21"
         Me.TextBox21.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.4315916299819946R), Telerik.Reporting.Drawing.Unit.Cm(0.617395281791687R))
         Me.TextBox21.Style.BackgroundColor = System.Drawing.Color.Silver
@@ -349,7 +289,7 @@ Partial Class RptHistorialCliente
         '
         'TextBox14
         '
-        Me.TextBox14.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.399999618530273R), Telerik.Reporting.Drawing.Unit.Cm(1.4999992847442627R))
+        Me.TextBox14.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.381589889526367R), Telerik.Reporting.Drawing.Unit.Cm(1.382394552230835R))
         Me.TextBox14.Name = "TextBox14"
         Me.TextBox14.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.6223750114440918R), Telerik.Reporting.Drawing.Unit.Cm(0.61739450693130493R))
         Me.TextBox14.Style.BackgroundColor = System.Drawing.Color.Silver
@@ -363,7 +303,7 @@ Partial Class RptHistorialCliente
         '
         'TextBox11
         '
-        Me.TextBox11.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(6.1999998092651367R), Telerik.Reporting.Drawing.Unit.Cm(1.4999992847442627R))
+        Me.TextBox11.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(6.1815881729125977R), Telerik.Reporting.Drawing.Unit.Cm(1.382394552230835R))
         Me.TextBox11.Name = "TextBox11"
         Me.TextBox11.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.5799999237060547R), Telerik.Reporting.Drawing.Unit.Cm(0.62000000476837158R))
         Me.TextBox11.Style.BackgroundColor = System.Drawing.Color.Silver
@@ -377,7 +317,7 @@ Partial Class RptHistorialCliente
         '
         'TextBox20
         '
-        Me.TextBox20.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.8199999332427979R), Telerik.Reporting.Drawing.Unit.Cm(1.4999992847442627R))
+        Me.TextBox20.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.801588773727417R), Telerik.Reporting.Drawing.Unit.Cm(1.382394552230835R))
         Me.TextBox20.Name = "TextBox20"
         Me.TextBox20.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.380000114440918R), Telerik.Reporting.Drawing.Unit.Cm(0.62000000476837158R))
         Me.TextBox20.Style.BackgroundColor = System.Drawing.Color.Silver
@@ -391,35 +331,35 @@ Partial Class RptHistorialCliente
         '
         'Shape6
         '
-        Me.Shape6.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.4099999666213989R), Telerik.Reporting.Drawing.Unit.Cm(1.4999992847442627R))
+        Me.Shape6.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.391588568687439R), Telerik.Reporting.Drawing.Unit.Cm(1.382394552230835R))
         Me.Shape6.Name = "Shape6"
         Me.Shape6.ShapeType = New Telerik.Reporting.Drawing.Shapes.LineShape(Telerik.Reporting.Drawing.Shapes.LineDirection.NS)
         Me.Shape6.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(0.15000000596046448R), Telerik.Reporting.Drawing.Unit.Cm(0.60000002384185791R))
         '
         'Shape9
         '
-        Me.Shape9.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.7999999523162842R), Telerik.Reporting.Drawing.Unit.Cm(1.4999992847442627R))
+        Me.Shape9.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.7815887928009033R), Telerik.Reporting.Drawing.Unit.Cm(1.382394552230835R))
         Me.Shape9.Name = "Shape9"
         Me.Shape9.ShapeType = New Telerik.Reporting.Drawing.Shapes.LineShape(Telerik.Reporting.Drawing.Shapes.LineDirection.NS)
         Me.Shape9.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(0.15000000596046448R), Telerik.Reporting.Drawing.Unit.Cm(0.60000002384185791R))
         '
         'Shape11
         '
-        Me.Shape11.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(6.179999828338623R), Telerik.Reporting.Drawing.Unit.Cm(1.4999992847442627R))
+        Me.Shape11.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(6.161588191986084R), Telerik.Reporting.Drawing.Unit.Cm(1.382394552230835R))
         Me.Shape11.Name = "Shape11"
         Me.Shape11.ShapeType = New Telerik.Reporting.Drawing.Shapes.LineShape(Telerik.Reporting.Drawing.Shapes.LineDirection.NS)
         Me.Shape11.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(0.15000000596046448R), Telerik.Reporting.Drawing.Unit.Cm(0.60000002384185791R))
         '
         'Shape14
         '
-        Me.Shape14.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.3799991607666R), Telerik.Reporting.Drawing.Unit.Cm(1.4999992847442627R))
+        Me.Shape14.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.361587524414062R), Telerik.Reporting.Drawing.Unit.Cm(1.382394552230835R))
         Me.Shape14.Name = "Shape14"
         Me.Shape14.ShapeType = New Telerik.Reporting.Drawing.Shapes.LineShape(Telerik.Reporting.Drawing.Shapes.LineDirection.NS)
         Me.Shape14.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(0.15000000596046448R), Telerik.Reporting.Drawing.Unit.Cm(0.60000002384185791R))
         '
         'TextBox27
         '
-        Me.TextBox27.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(13.779999732971191R), Telerik.Reporting.Drawing.Unit.Cm(1.4999992847442627R))
+        Me.TextBox27.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(13.761588096618652R), Telerik.Reporting.Drawing.Unit.Cm(1.382394552230835R))
         Me.TextBox27.Name = "TextBox27"
         Me.TextBox27.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.619999885559082R), Telerik.Reporting.Drawing.Unit.Cm(0.62000000476837158R))
         Me.TextBox27.Style.BackgroundColor = System.Drawing.Color.Silver
@@ -433,7 +373,7 @@ Partial Class RptHistorialCliente
         '
         'Shape2
         '
-        Me.Shape2.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(13.760000228881836R), Telerik.Reporting.Drawing.Unit.Cm(1.4999992847442627R))
+        Me.Shape2.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(13.741589546203613R), Telerik.Reporting.Drawing.Unit.Cm(1.382394552230835R))
         Me.Shape2.Name = "Shape2"
         Me.Shape2.ShapeType = New Telerik.Reporting.Drawing.Shapes.LineShape(Telerik.Reporting.Drawing.Shapes.LineDirection.NS)
         Me.Shape2.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(0.15000000596046448R), Telerik.Reporting.Drawing.Unit.Cm(0.60000002384185791R))
@@ -450,7 +390,7 @@ Partial Class RptHistorialCliente
         '
         'EncabezadoHistorial
         '
-        Me.EncabezadoHistorial.Height = Telerik.Reporting.Drawing.Unit.Cm(6.2000002861022949R)
+        Me.EncabezadoHistorial.Height = Telerik.Reporting.Drawing.Unit.Cm(6.2999997138977051R)
         Me.EncabezadoHistorial.Items.AddRange(New Telerik.Reporting.ReportItemBase() {Me.TextBox43, Me.TextBox37, Me.TextBox35, Me.TextBox17, Me.TextBox12, Me.TextBox10, Me.TextBox1, Me.TextBox46, Me.TextBox55, Me.TextBox59, Me.TextBox60, Me.TextBox61, Me.TextBox62, Me.TextBox31, Me.TextBox32, Me.TextBox33, Me.TextBox51, Me.TextBox52, Me.TextBox66, Me.TextBox67, Me.TextBox68, Me.Shape4, Me.PictureBox1, Me.TextBox9, Me.TextBox13, Me.TextBox18, Me.TextBox24})
         Me.EncabezadoHistorial.Name = "EncabezadoHistorial"
         Me.EncabezadoHistorial.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.Solid
@@ -771,15 +711,32 @@ Partial Class RptHistorialCliente
         Me.SqlDataSource1.SelectCommand = "dbo.Consultar_Historial_Reparaciones"
         Me.SqlDataSource1.SelectCommandType = Telerik.Reporting.SqlDataSourceCommandType.StoredProcedure
         '
+        'groupHeaderSection1
+        '
+        Me.groupHeaderSection1.Height = Telerik.Reporting.Drawing.Unit.Cm(2.2677085399627686R)
+        Me.groupHeaderSection1.Items.AddRange(New Telerik.Reporting.ReportItemBase() {Me.TextBox5, Me.TextBox19, Me.TextBox15, Me.TextBox16, Me.TextBox4, Me.TextBox23, Me.TextBox25, Me.TextBox26, Me.TextBox7, Me.TextBox8, Me.TextBox22, Me.TextBox21, Me.TextBox14, Me.TextBox11, Me.TextBox20, Me.Shape6, Me.Shape9, Me.Shape11, Me.Shape14, Me.TextBox27, Me.Shape2})
+        Me.groupHeaderSection1.Name = "groupHeaderSection1"
+        Me.groupHeaderSection1.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.None
+        Me.groupHeaderSection1.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.Solid
+        Me.groupHeaderSection1.Style.BorderStyle.Top = Telerik.Reporting.Drawing.BorderType.None
+        '
+        'groupFooterSection1
+        '
+        Me.groupFooterSection1.Height = Telerik.Reporting.Drawing.Unit.Cm(3.0R)
+        Me.groupFooterSection1.Items.AddRange(New Telerik.Reporting.ReportItemBase() {Me.TextBox56, Me.TextBox53, Me.TextBox54, Me.TextBox36, Me.TextBox72, Me.TextBox28})
+        Me.groupFooterSection1.Name = "groupFooterSection1"
+        Me.groupFooterSection1.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.Solid
+        Me.groupFooterSection1.Style.BorderStyle.Top = Telerik.Reporting.Drawing.BorderType.None
+        '
         'RptHistorialCliente
         '
         Me.DataSource = Me.SqlDataSource1
-        Group1.GroupFooter = Me.groupFooterSection
-        Group1.GroupHeader = Me.groupHeaderSection
-        Group1.Groupings.Add(New Telerik.Reporting.Grouping("=Fields.VehiculoNumero"))
-        Group1.Name = "GrupoVehiculo"
+        Group1.GroupFooter = Me.groupFooterSection1
+        Group1.GroupHeader = Me.groupHeaderSection1
+        Group1.Groupings.Add(New Telerik.Reporting.Grouping("=Fields.VehiculoMatricula"))
+        Group1.Name = "group"
         Me.Groups.AddRange(New Telerik.Reporting.Group() {Group1})
-        Me.Items.AddRange(New Telerik.Reporting.ReportItemBase() {Me.groupHeaderSection, Me.groupFooterSection, Me.detail, Me.EncabezadoHistorial})
+        Me.Items.AddRange(New Telerik.Reporting.ReportItemBase() {Me.detail, Me.EncabezadoHistorial, Me.groupHeaderSection1, Me.groupFooterSection1})
         Me.Name = "RptHistorialCliente"
         Me.PageSettings.Landscape = False
         Me.PageSettings.Margins = New Telerik.Reporting.Drawing.MarginsU(Telerik.Reporting.Drawing.Unit.Mm(8.0R), Telerik.Reporting.Drawing.Unit.Mm(8.0R), Telerik.Reporting.Drawing.Unit.Mm(6.0R), Telerik.Reporting.Drawing.Unit.Mm(5.0R))
@@ -793,12 +750,11 @@ Partial Class RptHistorialCliente
         StyleRule1.Style.Padding.Left = Telerik.Reporting.Drawing.Unit.Point(2.0R)
         StyleRule1.Style.Padding.Right = Telerik.Reporting.Drawing.Unit.Point(2.0R)
         Me.StyleSheet.AddRange(New Telerik.Reporting.Drawing.StyleRule() {StyleRule1})
-        Me.Width = Telerik.Reporting.Drawing.Unit.Cm(19.118310928344727R)
+        Me.Width = Telerik.Reporting.Drawing.Unit.Cm(19.20098876953125R)
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
     Friend WithEvents detail As Telerik.Reporting.DetailSection
-    Friend WithEvents Shape15 As Telerik.Reporting.Shape
     Friend WithEvents TextBox53 As Telerik.Reporting.TextBox
     Friend WithEvents TextBox54 As Telerik.Reporting.TextBox
     Friend WithEvents TextBox56 As Telerik.Reporting.TextBox
@@ -835,8 +791,6 @@ Partial Class RptHistorialCliente
     Friend WithEvents PictureBox1 As Telerik.Reporting.PictureBox
     Friend WithEvents SqlDataSource1 As Telerik.Reporting.SqlDataSource
     Friend WithEvents TextBox36 As Telerik.Reporting.TextBox
-    Friend WithEvents Shape16 As Telerik.Reporting.Shape
-    Friend WithEvents Shape29 As Telerik.Reporting.Shape
     Friend WithEvents Shape9 As Telerik.Reporting.Shape
     Friend WithEvents Shape11 As Telerik.Reporting.Shape
     Friend WithEvents Shape14 As Telerik.Reporting.Shape
@@ -854,11 +808,9 @@ Partial Class RptHistorialCliente
     Friend WithEvents TextBox26 As Telerik.Reporting.TextBox
     Friend WithEvents TextBox7 As Telerik.Reporting.TextBox
     Friend WithEvents TextBox8 As Telerik.Reporting.TextBox
-    Friend WithEvents groupHeaderSection As Telerik.Reporting.GroupHeaderSection
-    Friend WithEvents groupFooterSection As Telerik.Reporting.GroupFooterSection
-    Friend WithEvents Shape1 As Telerik.Reporting.Shape
     Friend WithEvents TextBox28 As Telerik.Reporting.TextBox
-    Friend WithEvents Shape3 As Telerik.Reporting.Shape
     Friend WithEvents TextBox27 As Telerik.Reporting.TextBox
     Friend WithEvents Shape2 As Telerik.Reporting.Shape
+    Friend WithEvents groupHeaderSection1 As Telerik.Reporting.GroupHeaderSection
+    Friend WithEvents groupFooterSection1 As Telerik.Reporting.GroupFooterSection
 End Class
