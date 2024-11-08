@@ -5,6 +5,7 @@ Imports System.IO
 
 Public Class frmViewHistorialCliente
     Public Property ID_Persona As Integer
+    Public Property NombreReporte As String
 
     <Obsolete>
     Private Sub FrmVentaView_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -29,4 +30,5 @@ Public Class frmViewHistorialCliente
         ' Refrescar el ReportViewer para que muestre el reporte
         reportViewer.RefreshReport()
     End Sub
+
 End Class

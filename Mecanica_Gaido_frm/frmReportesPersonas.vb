@@ -50,7 +50,12 @@ Public Class frmReportesPersonas
         If cboPersona.SelectedValue <> Nothing Then
             Dim ID_Persona As Integer = cboPersona.SelectedValue
 
-            MostrarHistorialReparaciones(ID_Persona)
+            If o_reporte.TieneOrdenesDeReparacion(ID_Persona) Then
+                MostrarHistorialReparaciones(ID_Persona)
+            Else
+                MsgBox("La persona seleccionada no tiene órdenes de reparación.", vbInformation, "Información")
+            End If
+
         Else
             MsgBox("Por favor seleccione una persona para buscar su historial de reparaciones.", vbInformation, "Información")
         End If

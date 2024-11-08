@@ -4,6 +4,7 @@ Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Configuration
 Imports System.Data.Common
+
 Public Class AD_Reportes
     Private connectionString As String
 
@@ -75,6 +76,33 @@ Public Class AD_Reportes
         End Using
         Return tabla
     End Function
+
+    Public Function TieneOrdenesDeReparacion(ByVal ID_Persona As Integer) As Boolean
+        Dim resultado As Boolean = False
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Consultar_Historial_Reparaciones", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@ID_Persona", ID_Persona)
+                Try
+                    conexion.Open()
+                    Dim lector As SqlDataReader = comando.ExecuteReader()
+
+                    If lector.HasRows Then
+                        resultado = True
+                    End If
+
+                    lector.Close()
+                Catch ex As Exception
+                    Throw New Exception("Error al verificar las órdenes de reparación: " & ex.Message, ex)
+                Finally
+                    conexion.Close()
+                End Try
+            End Using
+        End Using
+        Return resultado
+    End Function
+
 #End Region
 
 #Region "Reporte vehiculos"
@@ -194,4 +222,5 @@ Public Class AD_Reportes
 #Region "Reporte miscelaneas"
 
 #End Region
+
 End Class
