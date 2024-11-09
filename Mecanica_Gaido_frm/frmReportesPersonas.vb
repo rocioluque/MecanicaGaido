@@ -38,7 +38,7 @@ Public Class frmReportesPersonas
     Private Sub MostrarHistorialReparaciones(ByVal ID_Persona As Integer)
         Dim frmReporte As New frmViewHistorialCliente()
 
-        ' Pasar el parámetro ID_Venta al formulario del reporte
+        ' Pasar los parámetros al formulario del reporte
         frmReporte.ID_Persona = ID_Persona
 
         ' Mostrar el formulario a pantalla completa
@@ -55,9 +55,8 @@ Public Class frmReportesPersonas
             Else
                 MsgBox("La persona seleccionada no tiene órdenes de reparación.", vbInformation, "Información")
             End If
-
         Else
-            MsgBox("Por favor seleccione una persona para buscar su historial de reparaciones.", vbInformation, "Información")
+                MsgBox("Por favor seleccione una persona para buscar su historial de reparaciones.", vbInformation, "Información")
         End If
     End Sub
 End Class
