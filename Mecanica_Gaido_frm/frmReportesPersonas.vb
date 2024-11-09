@@ -35,11 +35,13 @@ Public Class frmReportesPersonas
     End Sub
 #End Region
 
-    Private Sub MostrarHistorialReparaciones(ByVal ID_Persona As Integer)
+    Private Sub MostrarHistorialReparaciones(ByVal ID_Persona As Integer, ByVal FechaMin As String, ByVal FechaMax As String)
         Dim frmReporte As New frmViewHistorialCliente()
 
         ' Pasar los parámetros al formulario del reporte
         frmReporte.ID_Persona = ID_Persona
+        frmReporte.FechaMin = FechaMin
+        frmReporte.FechaMax = FechaMax
 
         ' Mostrar el formulario a pantalla completa
         frmReporte.WindowState = FormWindowState.Maximized
@@ -49,11 +51,17 @@ Public Class frmReportesPersonas
     Private Sub btnObtenerHistorial_Click(sender As Object, e As EventArgs) Handles btnObtenerHistorial.Click
         If cboPersona.SelectedValue <> Nothing Then
             Dim ID_Persona As Integer = cboPersona.SelectedValue
+            Dim FechaMin As Date = dtpFechaMin.Value.Date
+            Dim FechaMax As Date = dtpFechaMax.Value.Date
 
-            If o_reporte.TieneOrdenesDeReparacion(ID_Persona) Then
-                MostrarHistorialReparaciones(ID_Persona)
+            If dtpFechaMin.Value <= dtpFechaMax.Value Then
+                If o_reporte.TieneOrdenesDeReparacion(ID_Persona, FechaMin, FechaMax) Then
+                    MostrarHistorialReparaciones(ID_Persona, FechaMin, FechaMax)
+                Else
+                    MsgBox("La persona seleccionada no tiene órdenes de reparación.", vbInformation, "Información")
+                End If
             Else
-                MsgBox("La persona seleccionada no tiene órdenes de reparación.", vbInformation, "Información")
+                MsgBox("La fecha inicial no puede ser mayor que la fecha final.", vbExclamation, "Error en las fechas")
             End If
         Else
                 MsgBox("Por favor seleccione una persona para buscar su historial de reparaciones.", vbInformation, "Información")

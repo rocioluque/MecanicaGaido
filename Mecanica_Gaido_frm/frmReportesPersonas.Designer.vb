@@ -28,6 +28,10 @@ Partial Class frmReportesPersonas
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cboPersona = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.dtpFechaMin = New System.Windows.Forms.DateTimePicker()
+        Me.dtpFechaMax = New System.Windows.Forms.DateTimePicker()
         Me.SuspendLayout()
         '
         'lblDisponible
@@ -91,12 +95,58 @@ Partial Class frmReportesPersonas
         Me.Label2.TabIndex = 129
         Me.Label2.Text = "HISTORIAL DE REPARACIONES"
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(284, 135)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(45, 17)
+        Me.Label3.TabIndex = 130
+        Me.Label3.Text = "Hasta"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.75!)
+        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.Location = New System.Drawing.Point(28, 135)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(48, 17)
+        Me.Label4.TabIndex = 131
+        Me.Label4.Text = "Desde"
+        '
+        'dtpFechaMin
+        '
+        Me.dtpFechaMin.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaMin.Location = New System.Drawing.Point(130, 132)
+        Me.dtpFechaMin.Name = "dtpFechaMin"
+        Me.dtpFechaMin.Size = New System.Drawing.Size(100, 20)
+        Me.dtpFechaMin.TabIndex = 132
+        Me.dtpFechaMin.Value = New Date(2024, 11, 9, 0, 0, 0, 0)
+        '
+        'dtpFechaMax
+        '
+        Me.dtpFechaMax.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaMax.Location = New System.Drawing.Point(384, 131)
+        Me.dtpFechaMax.Name = "dtpFechaMax"
+        Me.dtpFechaMax.Size = New System.Drawing.Size(100, 20)
+        Me.dtpFechaMax.TabIndex = 133
+        Me.dtpFechaMax.Value = New Date(2024, 11, 9, 0, 0, 0, 0)
+        '
         'frmReportesPersonas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1004, 575)
+        Me.Controls.Add(Me.dtpFechaMax)
+        Me.Controls.Add(Me.dtpFechaMin)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.btnObtenerHistorial)
         Me.Controls.Add(Me.Label1)
@@ -115,4 +165,8 @@ Partial Class frmReportesPersonas
     Friend WithEvents Label1 As Label
     Friend WithEvents cboPersona As ComboBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents dtpFechaMin As DateTimePicker
+    Friend WithEvents dtpFechaMax As DateTimePicker
 End Class

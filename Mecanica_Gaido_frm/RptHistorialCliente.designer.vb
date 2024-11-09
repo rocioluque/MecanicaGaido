@@ -7,6 +7,8 @@ Partial Class RptHistorialCliente
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RptHistorialCliente))
         Dim Group1 As Telerik.Reporting.Group = New Telerik.Reporting.Group()
         Dim ReportParameter1 As Telerik.Reporting.ReportParameter = New Telerik.Reporting.ReportParameter()
+        Dim ReportParameter2 As Telerik.Reporting.ReportParameter = New Telerik.Reporting.ReportParameter()
+        Dim ReportParameter3 As Telerik.Reporting.ReportParameter = New Telerik.Reporting.ReportParameter()
         Dim StyleRule1 As Telerik.Reporting.Drawing.StyleRule = New Telerik.Reporting.Drawing.StyleRule()
         Dim StyleRule2 As Telerik.Reporting.Drawing.StyleRule = New Telerik.Reporting.Drawing.StyleRule()
         Me.GroupFooter1 = New Telerik.Reporting.GroupFooterSection()
@@ -832,7 +834,15 @@ Partial Class RptHistorialCliente
         ReportParameter1.Name = "ID_Persona"
         ReportParameter1.Text = "@ID_Persona"
         ReportParameter1.Type = Telerik.Reporting.ReportParameterType.[Integer]
+        ReportParameter2.Name = "FechaMin"
+        ReportParameter2.Text = "@FechaMin"
+        ReportParameter2.Type = Telerik.Reporting.ReportParameterType.DateTime
+        ReportParameter3.Name = "FechaMax"
+        ReportParameter3.Text = "@FechaMax"
+        ReportParameter3.Type = Telerik.Reporting.ReportParameterType.DateTime
         Me.ReportParameters.Add(ReportParameter1)
+        Me.ReportParameters.Add(ReportParameter2)
+        Me.ReportParameters.Add(ReportParameter3)
         Me.Style.BackgroundColor = System.Drawing.Color.White
         StyleRule1.Selectors.AddRange(New Telerik.Reporting.Drawing.ISelector() {New Telerik.Reporting.Drawing.TypeSelector(GetType(Telerik.Reporting.TextItemBase)), New Telerik.Reporting.Drawing.TypeSelector(GetType(Telerik.Reporting.HtmlTextBox))})
         StyleRule1.Style.Padding.Left = Telerik.Reporting.Drawing.Unit.Point(2.0R)

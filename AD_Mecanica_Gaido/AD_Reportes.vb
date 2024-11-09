@@ -77,13 +77,15 @@ Public Class AD_Reportes
         Return tabla
     End Function
 
-    Public Function TieneOrdenesDeReparacion(ByVal ID_Persona As Integer) As Boolean
+    Public Function TieneOrdenesDeReparacion(ByVal ID_Persona As Integer, ByVal FechaMin As Date, ByVal FechaMax As Date) As Boolean
         Dim resultado As Boolean = False
 
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Consultar_Historial_Reparaciones", conexion)
                 comando.CommandType = CommandType.StoredProcedure
                 comando.Parameters.AddWithValue("@ID_Persona", ID_Persona)
+                comando.Parameters.AddWithValue("@FechaMin", FechaMin)
+                comando.Parameters.AddWithValue("@FechaMax", FechaMax)
                 Try
                     conexion.Open()
                     Dim lector As SqlDataReader = comando.ExecuteReader()
@@ -102,7 +104,6 @@ Public Class AD_Reportes
         End Using
         Return resultado
     End Function
-
 #End Region
 
 #Region "Reporte vehiculos"
