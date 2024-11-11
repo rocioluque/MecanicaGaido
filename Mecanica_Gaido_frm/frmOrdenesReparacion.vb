@@ -655,9 +655,17 @@ Public Class frmOrdenesReparacion
                 If ordenTable.Rows.Count > 0 Then
                     Dim row As DataRow = ordenTable.Rows(0)
                     txtID.Text = row("ID_OrdenReparacion")
+
+
                     cboPersonas.SelectedValue = row("ID_Persona")
+
+
                     Cargar_Combo_Vehiculos(Convert.ToInt32(row("ID_Persona")))
+
+
                     cboVehiculo.SelectedValue = row("ID_Vehiculo")
+
+
                     txtSeñasParticulares.Text = row("Señas_Particulares").ToString()
                     txtMotivoReparacion.Text = row("Motivo_Reparacion").ToString()
                     dtpTurno.Value = Convert.ToDateTime(row("Fecha_Turno"))
