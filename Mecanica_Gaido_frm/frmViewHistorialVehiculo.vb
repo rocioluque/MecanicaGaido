@@ -13,7 +13,7 @@ Public Class frmViewHistorialVehiculo
         ' Establecer el tamaño y el anclaje del control (para que se ajuste al formulario)
         reportViewer.Dock = DockStyle.Fill
 
-        Dim report As New RptHistorialClienteVehiculo()
+        Dim report As New RptHistorialVehiculo()
 
         ' Asignar el parámetro al reporte
         report.ReportParameters("ID_Vehiculo").Value = ID_Vehiculo
