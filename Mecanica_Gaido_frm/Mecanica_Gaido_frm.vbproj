@@ -653,6 +653,12 @@
     <Compile Include="frmViewHistorialCliente.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmViewHistorialVehiculo.designer.vb">
+      <DependentUpon>frmViewHistorialVehiculo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewHistorialVehiculo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GoogleDriveUploader.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -692,6 +698,12 @@
       <DependentUpon>RptHistorialCliente.vb</DependentUpon>
     </Compile>
     <Compile Include="RptHistorialCliente.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptHistorialVehiculo.designer.vb">
+      <DependentUpon>RptHistorialVehiculo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RptHistorialVehiculo.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="RptVentas.designer.vb">
@@ -830,6 +842,9 @@
     <EmbeddedResource Include="frmViewHistorialCliente.resx">
       <DependentUpon>frmViewHistorialCliente.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmViewHistorialVehiculo.resx">
+      <DependentUpon>frmViewHistorialVehiculo.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -844,6 +859,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptHistorialCliente.resx">
       <DependentUpon>RptHistorialCliente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptHistorialVehiculo.resx">
+      <DependentUpon>RptHistorialVehiculo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptVentas.resx">
       <DependentUpon>RptVentas.vb</DependentUpon>
