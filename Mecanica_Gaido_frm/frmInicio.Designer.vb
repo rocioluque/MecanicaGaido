@@ -69,7 +69,7 @@ Partial Class frmInicio
         Me.lblHora.AutoSize = True
         Me.lblHora.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.lblHora.Font = New System.Drawing.Font("Century Gothic", 30.0!)
-        Me.lblHora.ForeColor = System.Drawing.Color.White
+        Me.lblHora.ForeColor = System.Drawing.Color.Black
         Me.lblHora.Location = New System.Drawing.Point(20, 9)
         Me.lblHora.Name = "lblHora"
         Me.lblHora.Size = New System.Drawing.Size(114, 49)
@@ -90,7 +90,7 @@ Partial Class frmInicio
         Me.btnExportarPDF.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
         Me.btnExportarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnExportarPDF.Font = New System.Drawing.Font("Century Gothic", 11.25!)
-        Me.btnExportarPDF.ForeColor = System.Drawing.Color.White
+        Me.btnExportarPDF.ForeColor = System.Drawing.Color.Black
         Me.btnExportarPDF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnExportarPDF.Location = New System.Drawing.Point(1004, 23)
         Me.btnExportarPDF.Name = "btnExportarPDF"
@@ -104,7 +104,7 @@ Partial Class frmInicio
         '
         Me.lblViento.AutoSize = True
         Me.lblViento.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblViento.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.lblViento.ForeColor = System.Drawing.Color.Black
         Me.lblViento.Location = New System.Drawing.Point(245, 223)
         Me.lblViento.Name = "lblViento"
         Me.lblViento.Size = New System.Drawing.Size(19, 17)
@@ -115,7 +115,7 @@ Partial Class frmInicio
         '
         Me.lblVisibilidad.AutoSize = True
         Me.lblVisibilidad.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblVisibilidad.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.lblVisibilidad.ForeColor = System.Drawing.Color.Black
         Me.lblVisibilidad.Location = New System.Drawing.Point(150, 223)
         Me.lblVisibilidad.Name = "lblVisibilidad"
         Me.lblVisibilidad.Size = New System.Drawing.Size(16, 17)
@@ -126,7 +126,7 @@ Partial Class frmInicio
         '
         Me.lblHumedad.AutoSize = True
         Me.lblHumedad.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblHumedad.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.lblHumedad.ForeColor = System.Drawing.Color.Black
         Me.lblHumedad.Location = New System.Drawing.Point(58, 223)
         Me.lblHumedad.Name = "lblHumedad"
         Me.lblHumedad.Size = New System.Drawing.Size(24, 17)
@@ -137,7 +137,7 @@ Partial Class frmInicio
         '
         Me.lblSensacionTermica.AutoSize = True
         Me.lblSensacionTermica.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSensacionTermica.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.lblSensacionTermica.ForeColor = System.Drawing.Color.Black
         Me.lblSensacionTermica.Location = New System.Drawing.Point(118, 184)
         Me.lblSensacionTermica.Name = "lblSensacionTermica"
         Me.lblSensacionTermica.Size = New System.Drawing.Size(19, 17)
@@ -148,7 +148,7 @@ Partial Class frmInicio
         '
         Me.lblUbicacion.AutoSize = True
         Me.lblUbicacion.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUbicacion.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.lblUbicacion.ForeColor = System.Drawing.Color.Black
         Me.lblUbicacion.Location = New System.Drawing.Point(25, 111)
         Me.lblUbicacion.Name = "lblUbicacion"
         Me.lblUbicacion.Size = New System.Drawing.Size(89, 19)
@@ -198,7 +198,7 @@ Partial Class frmInicio
         '
         Me.lblDescripcion.AutoSize = True
         Me.lblDescripcion.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescripcion.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.lblDescripcion.ForeColor = System.Drawing.Color.Black
         Me.lblDescripcion.Location = New System.Drawing.Point(26, 145)
         Me.lblDescripcion.Name = "lblDescripcion"
         Me.lblDescripcion.Size = New System.Drawing.Size(82, 17)
@@ -209,7 +209,7 @@ Partial Class frmInicio
         '
         Me.lblDolar.AutoSize = True
         Me.lblDolar.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDolar.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.lblDolar.ForeColor = System.Drawing.Color.Black
         Me.lblDolar.Location = New System.Drawing.Point(25, 255)
         Me.lblDolar.Name = "lblDolar"
         Me.lblDolar.Size = New System.Drawing.Size(50, 19)
@@ -269,7 +269,7 @@ Partial Class frmInicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1147, 702)
         Me.Controls.Add(Me.ChtOrdenReparacion)
         Me.Controls.Add(Me.lblDolar)

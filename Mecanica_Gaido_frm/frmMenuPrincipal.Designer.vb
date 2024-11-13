@@ -166,7 +166,6 @@ Partial Class frmMenuPrincipal
         Me.btnCambiarTema.TabIndex = 0
         Me.btnCambiarTema.Text = "Button1"
         Me.btnCambiarTema.UseVisualStyleBackColor = False
-        Me.btnCambiarTema.Visible = False
         '
         'PanelCboGestion
         '
