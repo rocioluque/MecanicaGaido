@@ -30,7 +30,6 @@ Public Class frmLogin
 
 #Region "Procedimientos"
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        AplicarTema(Me)
         Aplicar_Imagenes()
     End Sub
 
@@ -186,7 +185,6 @@ Public Class frmLogin
 
         pathLogo.CloseAllFigures()
         PanelLogo.Region = New Region(pathLogo)
-
     End Sub
 #End Region
 

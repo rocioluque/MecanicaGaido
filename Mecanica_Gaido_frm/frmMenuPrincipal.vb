@@ -4,16 +4,14 @@ Imports System.Windows.Forms.DataVisualization.Charting
 Imports System.Data.SqlClient
 Imports System.Configuration
 Imports System.Globalization
-
-Imports AD_Mecanica_Gaido
-Imports Comun_Soporte
-Imports Mecanica_Gaido_frm.User32
-
 Imports System.IO
 Imports iTextSharp.text
 Imports iTextSharp.text.pdf
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
+Imports AD_Mecanica_Gaido
+Imports Comun_Soporte
+Imports Mecanica_Gaido_frm.User32
 
 Public Class frmMenuPrincipal
 
@@ -241,13 +239,14 @@ Public Class frmMenuPrincipal
     End Sub
 #End Region
 
-#Region "Formulario Padre y resize"
+#Region "Formulario Padre y colores"
     Private btnAnterior As Button = Nothing
+    Private isModoOscuro As Boolean = TemaGlobal.ModoActualOscuro
 
     Public Sub AbrirFormHijo(formHijo As Object, sender As Button)
         ' Restablecer el color del botón anterior
-        If btnAnterior IsNot Nothing AndAlso sender IsNot Nothing Then
-            btnAnterior.BackColor = Color.FromArgb(65, 65, 65)
+        If btnAnterior IsNot Nothing AndAlso sender IsNot btnAnterior Then
+            btnAnterior.BackColor = If(isModoOscuro, Color.FromArgb(65, 65, 65), Color.FromArgb(147, 147, 147))
         End If
 
         btnAnterior = sender
@@ -260,20 +259,14 @@ Public Class frmMenuPrincipal
             Me.PanelContenedor.Controls.RemoveAt(0)
         End If
 
-        'Convierte el objeto formHijo a un tipo Form
         Dim fh As Form = TryCast(formHijo, Form)
 
         If fh IsNot Nothing Then
-            'Esto indica que el formulario no es un formulario de nivel superior
             fh.TopLevel = False
-            ' El formulario se ajustará al tamaño completo del contenedor
             fh.Dock = DockStyle.Fill
-            'Agrega el formulario al contenedor
             Me.PanelContenedor.Controls.Add(fh)
-            'Almacena una referencia al formulario hijo en la propiedad Tag del contenedor.
             Me.PanelContenedor.Tag = fh
             fh.Show()
-            'Trae el formulario al frente de cualquier otro control
             fh.BringToFront()
         End If
 
@@ -286,7 +279,7 @@ Public Class frmMenuPrincipal
     Private Sub AbrirFormCbo(formHijo As Object, sender As Button)
         ' Restablecer el color del botón anterior
         If btnAnterior IsNot Nothing Then
-            btnAnterior.BackColor = Color.FromArgb(91, 91, 91)
+            btnAnterior.BackColor = If(isModoOscuro, Color.FromArgb(91, 91, 91), Color.FromArgb(174, 174, 174))
         End If
 
         ' Actualizar el color del botón actual
@@ -298,20 +291,14 @@ Public Class frmMenuPrincipal
             Me.PanelContenedor.Controls.RemoveAt(0)
         End If
 
-        'Convierte el objeto formHijo a un tipo Form
         Dim fh As Form = TryCast(formHijo, Form)
 
         If fh IsNot Nothing Then
-            'Esto indica que el formulario no es un formulario de nivel superior
             fh.TopLevel = False
-            ' El formulario se ajustará al tamaño completo del contenedor
             fh.Dock = DockStyle.Fill
-            'Agrega el formulario al contenedor
             Me.PanelContenedor.Controls.Add(fh)
-            'Almacena una referencia al formulario hijo en la propiedad Tag del contenedor.
             Me.PanelContenedor.Tag = fh
             fh.Show()
-            'Trae el formulario al frente de cualquier otro control
             fh.BringToFront()
         End If
 
@@ -324,16 +311,15 @@ Public Class frmMenuPrincipal
     Private Sub PintarBotonInicio()
         ' Restablecer el color del botón anterior
         If btnAnterior IsNot Nothing Then
-            btnAnterior.BackColor = Color.FromArgb(65, 65, 65)
+            btnAnterior.BackColor = If(isModoOscuro, Color.FromArgb(65, 65, 65), Color.FromArgb(147, 147, 147))
         End If
-
-        ' Pintar el botón "Inicio" con un color especial cuando no hay formularios hijos abiertos
-        'btnInicio.BackColor = Color.SeaGreen
 
         ' Actualizar el botón anterior como btnInicio
         btnAnterior = btnInicio
     End Sub
+#End Region
 
+#Region "Resize"
     Private Sub MenuPrincipal_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
         ' Obtener el tamaño del panel izquierdo que queremos dejar visible
         Dim panelMenuWidth As Integer = PanelMenu.Width
@@ -347,44 +333,34 @@ Public Class frmMenuPrincipal
         PanelContenedor.Size = New Size(panelContenedorWidth, panelContenedorHeight)
         PanelContenedor.Location = panelContenedorLocation
     End Sub
-
-
 #End Region
 
 #Region "Modo Color"
-    ' Variables para la animación
     Private WithEvents animationTimer As New Timer()
-    Private circleTargetX As Integer ' Posición objetivo del círculo
-    Private isAnimating As Boolean = False ' Estado de la animación
+    Private circleTargetX As Integer
+    Private isAnimating As Boolean = False
 
     Private Sub btnCambiarTema_Click(sender As Object, e As EventArgs) Handles btnCambiarTema.Click
-        ' Alternar el tema actual entre claro y oscuro
         TemaGlobal.CambiarTema()
 
-        ' Aplicar el tema en todos los formularios abiertos
         TemaGlobal.AplicarTemaEnTodosLosFormularios()
 
-        ' Establecer la posición objetivo del círculo
         circleTargetX = If(TemaGlobal.ModoActualOscuro, btnCambiarTema.Width - btnCambiarTema.Height + 3, 3)
 
-        ' Iniciar la animación
         isAnimating = True
-        animationTimer.Start() ' Iniciar el temporizador
+        animationTimer.Start()
     End Sub
 
     Private Sub btnCambiarTema_Paint(sender As Object, e As PaintEventArgs) Handles btnCambiarTema.Paint
         Dim graphics As Graphics = e.Graphics
-        graphics.Clear(btnCambiarTema.Parent.BackColor) ' Asegurarse de que el fondo sea del mismo color que el formulario
+        graphics.Clear(btnCambiarTema.Parent.BackColor)
 
-        ' Usar el espacio de nombres completo para Rectangle para evitar ambigüedades
         Dim rectangle As New System.Drawing.Rectangle(0, 0, btnCambiarTema.Width, btnCambiarTema.Height)
 
-        ' Dibujar el fondo del interruptor con bordes redondeados
         graphics.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
         Dim switchBackColor As Color = If(TemaGlobal.ModoActualOscuro, Color.Gray, Color.LightGray)
 
-        ' Crear un path para el fondo con bordes redondeados
-        Dim borderRadius As Integer = 20 ' Ajusta el radio de los bordes
+        Dim borderRadius As Integer = 20
         Using path As New Drawing2D.GraphicsPath()
             path.AddArc(0, 0, borderRadius, borderRadius, 180, 90)
             path.AddArc(btnCambiarTema.Width - borderRadius, 0, borderRadius, borderRadius, 270, 90)
@@ -392,38 +368,30 @@ Public Class frmMenuPrincipal
             path.AddArc(0, btnCambiarTema.Height - borderRadius, borderRadius, borderRadius, 90, 90)
             path.CloseFigure()
 
-            ' Dibujar el fondo con bordes redondeados
             graphics.FillPath(New SolidBrush(switchBackColor), path)
         End Using
 
-        ' Dibujar el círculo del interruptor (como un slider)
         Dim circleSize As Integer = btnCambiarTema.Height - 6
         Dim circleX As Integer = If(isAnimating, circleTargetX, If(TemaGlobal.ModoActualOscuro, btnCambiarTema.Width - circleSize - 3, 3))
 
-        ' Dibujar el círculo
         graphics.FillEllipse(New SolidBrush(If(TemaGlobal.ModoActualOscuro, Color.White, Color.Black)), New System.Drawing.Rectangle(circleX, 3, circleSize, circleSize))
     End Sub
 
     Private Sub animationTimer_Tick(sender As Object, e As EventArgs) Handles animationTimer.Tick
-        ' Actualizar la posición del círculo
         Dim currentCircleX As Integer = If(TemaGlobal.ModoActualOscuro, btnCambiarTema.Width - btnCambiarTema.Height + 3, 3)
 
-        ' Ajustar la posición del círculo hacia la posición objetivo
         If currentCircleX <> circleTargetX Then
             If Math.Abs(currentCircleX - circleTargetX) < 5 Then
-                ' Si está cerca de la posición objetivo, detener la animación
                 animationTimer.Stop()
                 isAnimating = False
             Else
-                ' Mover el círculo gradualmente
                 If currentCircleX < circleTargetX Then
-                    currentCircleX += 5 ' Ajusta este valor para cambiar la velocidad de la animación
+                    currentCircleX += 5
                 ElseIf currentCircleX > circleTargetX Then
                     currentCircleX -= 5
                 End If
             End If
 
-            ' Redibujar el botón
             btnCambiarTema.Invalidate()
         End If
     End Sub
