@@ -46,7 +46,7 @@ Partial Class frmModificarFormaEntrega
         '
         Me.lblFormaEntrega.AutoSize = True
         Me.lblFormaEntrega.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFormaEntrega.ForeColor = System.Drawing.Color.White
+        Me.lblFormaEntrega.ForeColor = System.Drawing.Color.Black
         Me.lblFormaEntrega.Location = New System.Drawing.Point(320, 37)
         Me.lblFormaEntrega.Name = "lblFormaEntrega"
         Me.lblFormaEntrega.Size = New System.Drawing.Size(139, 20)
@@ -57,7 +57,7 @@ Partial Class frmModificarFormaEntrega
         '
         Me.chkEstado.AutoSize = True
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkEstado.ForeColor = System.Drawing.Color.White
+        Me.chkEstado.ForeColor = System.Drawing.Color.Black
         Me.chkEstado.Location = New System.Drawing.Point(77, 84)
         Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
@@ -73,7 +73,7 @@ Partial Class frmModificarFormaEntrega
         Me.grdModificarFormaEntrega.AllowUserToResizeRows = False
         Me.grdModificarFormaEntrega.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdModificarFormaEntrega.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.grdModificarFormaEntrega.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.grdModificarFormaEntrega.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.grdModificarFormaEntrega.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarFormaEntrega.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdModificarFormaEntrega.Location = New System.Drawing.Point(44, 144)
@@ -92,7 +92,7 @@ Partial Class frmModificarFormaEntrega
         Me.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancelar.ForeColor = System.Drawing.Color.White
+        Me.btnCancelar.ForeColor = System.Drawing.Color.Black
         Me.btnCancelar.Location = New System.Drawing.Point(745, 84)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(82, 29)
@@ -113,7 +113,7 @@ Partial Class frmModificarFormaEntrega
         '
         Me.lblNumeroFormaEntrega.AutoSize = True
         Me.lblNumeroFormaEntrega.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumeroFormaEntrega.ForeColor = System.Drawing.Color.White
+        Me.lblNumeroFormaEntrega.ForeColor = System.Drawing.Color.Black
         Me.lblNumeroFormaEntrega.Location = New System.Drawing.Point(73, 37)
         Me.lblNumeroFormaEntrega.Name = "lblNumeroFormaEntrega"
         Me.lblNumeroFormaEntrega.Size = New System.Drawing.Size(160, 20)
@@ -126,7 +126,7 @@ Partial Class frmModificarFormaEntrega
         Me.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnModificar.ForeColor = System.Drawing.Color.White
+        Me.btnModificar.ForeColor = System.Drawing.Color.Black
         Me.btnModificar.Location = New System.Drawing.Point(745, 32)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(82, 29)
@@ -138,7 +138,7 @@ Partial Class frmModificarFormaEntrega
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(871, 396)
         Me.Controls.Add(Me.txtFormaEntrega)
         Me.Controls.Add(Me.lblFormaEntrega)

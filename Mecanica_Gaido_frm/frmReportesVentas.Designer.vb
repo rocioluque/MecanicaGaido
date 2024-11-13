@@ -59,11 +59,11 @@ Partial Class frmReportesVentas
         '
         'txtAño
         '
-        Me.txtAño.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.txtAño.BackColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.txtAño.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtAño.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAño.ForeColor = System.Drawing.Color.White
-        Me.txtAño.Location = New System.Drawing.Point(121, 25)
+        Me.txtAño.ForeColor = System.Drawing.Color.Black
+        Me.txtAño.Location = New System.Drawing.Point(123, 24)
         Me.txtAño.Name = "txtAño"
         Me.txtAño.Size = New System.Drawing.Size(73, 16)
         Me.txtAño.TabIndex = 81
@@ -74,7 +74,7 @@ Partial Class frmReportesVentas
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.ForeColor = System.Drawing.Color.Black
         Me.Label1.Location = New System.Drawing.Point(56, 24)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(34, 17)
@@ -181,7 +181,7 @@ Partial Class frmReportesVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1315, 752)
         Me.Controls.Add(Me.ChtVentasEmpleado)
         Me.Controls.Add(Me.lblNoInformacion)

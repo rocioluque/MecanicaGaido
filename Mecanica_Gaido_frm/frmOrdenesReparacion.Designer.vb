@@ -160,7 +160,7 @@ Partial Class frmOrdenesReparacion
         DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
         Me.grdOrdenReparacion.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.grdOrdenReparacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.grdOrdenReparacion.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.grdOrdenReparacion.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.grdOrdenReparacion.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdOrdenReparacion.CausesValidation = False
         Me.grdOrdenReparacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -185,7 +185,7 @@ Partial Class frmOrdenesReparacion
         Me.chkActivo.Checked = True
         Me.chkActivo.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkActivo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkActivo.ForeColor = System.Drawing.Color.White
+        Me.chkActivo.ForeColor = System.Drawing.Color.Black
         Me.chkActivo.Location = New System.Drawing.Point(478, 36)
         Me.chkActivo.Name = "chkActivo"
         Me.chkActivo.Size = New System.Drawing.Size(85, 21)
@@ -198,7 +198,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.ForeColor = System.Drawing.Color.Black
         Me.Label4.Location = New System.Drawing.Point(12, 151)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(110, 17)
@@ -209,7 +209,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.ForeColor = System.Drawing.Color.Black
         Me.Label3.Location = New System.Drawing.Point(12, 107)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(102, 17)
@@ -232,7 +232,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.ForeColor = System.Drawing.Color.White
+        Me.Label10.ForeColor = System.Drawing.Color.Black
         Me.Label10.Location = New System.Drawing.Point(12, 63)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(109, 17)
@@ -243,7 +243,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.ForeColor = System.Drawing.Color.Black
         Me.Label1.Location = New System.Drawing.Point(12, 187)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(255, 17)
@@ -254,7 +254,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.White
+        Me.Label8.ForeColor = System.Drawing.Color.Black
         Me.Label8.Location = New System.Drawing.Point(12, 16)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(64, 17)
@@ -265,7 +265,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.White
+        Me.Label7.ForeColor = System.Drawing.Color.Black
         Me.Label7.Location = New System.Drawing.Point(12, 64)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(228, 17)
@@ -276,7 +276,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.lbl1.AutoSize = True
         Me.lbl1.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lbl1.ForeColor = System.Drawing.Color.White
+        Me.lbl1.ForeColor = System.Drawing.Color.Black
         Me.lbl1.Location = New System.Drawing.Point(37, 28)
         Me.lbl1.Name = "lbl1"
         Me.lbl1.Size = New System.Drawing.Size(62, 17)
@@ -292,7 +292,7 @@ Partial Class frmOrdenesReparacion
         Me.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnModificar.ForeColor = System.Drawing.Color.White
+        Me.btnModificar.ForeColor = System.Drawing.Color.Black
         Me.btnModificar.Location = New System.Drawing.Point(915, 68)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(117, 37)
@@ -309,7 +309,7 @@ Partial Class frmOrdenesReparacion
         Me.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancelar.ForeColor = System.Drawing.Color.White
+        Me.btnCancelar.ForeColor = System.Drawing.Color.Black
         Me.btnCancelar.Location = New System.Drawing.Point(915, 112)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(117, 37)
@@ -325,7 +325,7 @@ Partial Class frmOrdenesReparacion
         Me.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAceptar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAceptar.ForeColor = System.Drawing.Color.White
+        Me.btnAceptar.ForeColor = System.Drawing.Color.Black
         Me.btnAceptar.Location = New System.Drawing.Point(915, 25)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(117, 37)
@@ -341,7 +341,7 @@ Partial Class frmOrdenesReparacion
         Me.btnBuscar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBuscar.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBuscar.ForeColor = System.Drawing.Color.White
+        Me.btnBuscar.ForeColor = System.Drawing.Color.Black
         Me.btnBuscar.Location = New System.Drawing.Point(262, 21)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(50, 28)
@@ -372,7 +372,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.lblNota.AutoSize = True
         Me.lblNota.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblNota.ForeColor = System.Drawing.Color.White
+        Me.lblNota.ForeColor = System.Drawing.Color.Black
         Me.lblNota.Location = New System.Drawing.Point(52, 58)
         Me.lblNota.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblNota.Name = "lblNota"
@@ -469,7 +469,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.ForeColor = System.Drawing.Color.White
+        Me.Label12.ForeColor = System.Drawing.Color.Black
         Me.Label12.Location = New System.Drawing.Point(12, 17)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(75, 17)
@@ -502,7 +502,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.ForeColor = System.Drawing.Color.Black
         Me.Label2.Location = New System.Drawing.Point(332, 16)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
@@ -533,7 +533,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label25.AutoSize = True
         Me.Label25.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label25.ForeColor = System.Drawing.Color.White
+        Me.Label25.ForeColor = System.Drawing.Color.Black
         Me.Label25.Location = New System.Drawing.Point(325, 130)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(145, 17)
@@ -557,7 +557,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.ForeColor = System.Drawing.Color.White
+        Me.Label24.ForeColor = System.Drawing.Color.Black
         Me.Label24.Location = New System.Drawing.Point(12, 130)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(134, 17)
@@ -598,7 +598,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label6.ForeColor = System.Drawing.Color.White
+        Me.Label6.ForeColor = System.Drawing.Color.Black
         Me.Label6.Location = New System.Drawing.Point(9, 16)
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
@@ -632,7 +632,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label28.AutoSize = True
         Me.Label28.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label28.ForeColor = System.Drawing.Color.White
+        Me.Label28.ForeColor = System.Drawing.Color.Black
         Me.Label28.Location = New System.Drawing.Point(10, 266)
         Me.Label28.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label28.Name = "Label28"
@@ -656,7 +656,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label27.AutoSize = True
         Me.Label27.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label27.ForeColor = System.Drawing.Color.White
+        Me.Label27.ForeColor = System.Drawing.Color.Black
         Me.Label27.Location = New System.Drawing.Point(11, 216)
         Me.Label27.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label27.Name = "Label27"
@@ -681,7 +681,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label26.AutoSize = True
         Me.Label26.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label26.ForeColor = System.Drawing.Color.White
+        Me.Label26.ForeColor = System.Drawing.Color.Black
         Me.Label26.Location = New System.Drawing.Point(10, 166)
         Me.Label26.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label26.Name = "Label26"
@@ -711,7 +711,7 @@ Partial Class frmOrdenesReparacion
         Me.btnFacturar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnFacturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFacturar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnFacturar.ForeColor = System.Drawing.Color.White
+        Me.btnFacturar.ForeColor = System.Drawing.Color.Black
         Me.btnFacturar.Location = New System.Drawing.Point(12, 370)
         Me.btnFacturar.Name = "btnFacturar"
         Me.btnFacturar.Size = New System.Drawing.Size(117, 37)
@@ -723,7 +723,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label21.ForeColor = System.Drawing.Color.White
+        Me.Label21.ForeColor = System.Drawing.Color.Black
         Me.Label21.Location = New System.Drawing.Point(10, 316)
         Me.Label21.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label21.Name = "Label21"
@@ -747,7 +747,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label5.ForeColor = System.Drawing.Color.White
+        Me.Label5.ForeColor = System.Drawing.Color.Black
         Me.Label5.Location = New System.Drawing.Point(9, 66)
         Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
@@ -759,7 +759,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label15.ForeColor = System.Drawing.Color.White
+        Me.Label15.ForeColor = System.Drawing.Color.Black
         Me.Label15.Location = New System.Drawing.Point(9, 116)
         Me.Label15.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label15.Name = "Label15"
@@ -809,8 +809,8 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(14, -3)
+        Me.Label9.ForeColor = System.Drawing.Color.Black
+        Me.Label9.Location = New System.Drawing.Point(14, -4)
         Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(134, 17)
@@ -853,7 +853,7 @@ Partial Class frmOrdenesReparacion
         Me.btnQuitarS3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnQuitarS3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnQuitarS3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnQuitarS3.ForeColor = System.Drawing.Color.White
+        Me.btnQuitarS3.ForeColor = System.Drawing.Color.Black
         Me.btnQuitarS3.Location = New System.Drawing.Point(875, 69)
         Me.btnQuitarS3.Name = "btnQuitarS3"
         Me.btnQuitarS3.Size = New System.Drawing.Size(117, 37)
@@ -865,6 +865,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.lblResultadoPrestador.AutoSize = True
         Me.lblResultadoPrestador.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblResultadoPrestador.ForeColor = System.Drawing.Color.Black
         Me.lblResultadoPrestador.Location = New System.Drawing.Point(160, 70)
         Me.lblResultadoPrestador.Name = "lblResultadoPrestador"
         Me.lblResultadoPrestador.Size = New System.Drawing.Size(69, 17)
@@ -877,7 +878,7 @@ Partial Class frmOrdenesReparacion
         Me.chkActivoS3.Checked = True
         Me.chkActivoS3.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkActivoS3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkActivoS3.ForeColor = System.Drawing.Color.White
+        Me.chkActivoS3.ForeColor = System.Drawing.Color.Black
         Me.chkActivoS3.Location = New System.Drawing.Point(750, 95)
         Me.chkActivoS3.Name = "chkActivoS3"
         Me.chkActivoS3.Size = New System.Drawing.Size(85, 21)
@@ -890,7 +891,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.chkAvanceServ3.AutoSize = True
         Me.chkAvanceServ3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkAvanceServ3.ForeColor = System.Drawing.Color.White
+        Me.chkAvanceServ3.ForeColor = System.Drawing.Color.Black
         Me.chkAvanceServ3.Location = New System.Drawing.Point(626, 95)
         Me.chkAvanceServ3.Name = "chkAvanceServ3"
         Me.chkAvanceServ3.Size = New System.Drawing.Size(108, 21)
@@ -902,7 +903,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.ForeColor = System.Drawing.Color.White
+        Me.Label18.ForeColor = System.Drawing.Color.Black
         Me.Label18.Location = New System.Drawing.Point(723, 18)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(79, 17)
@@ -925,7 +926,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.ForeColor = System.Drawing.Color.White
+        Me.Label17.ForeColor = System.Drawing.Color.Black
         Me.Label17.Location = New System.Drawing.Point(593, 17)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(111, 17)
@@ -936,7 +937,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.ForeColor = System.Drawing.Color.White
+        Me.Label16.ForeColor = System.Drawing.Color.Black
         Me.Label16.Location = New System.Drawing.Point(12, 18)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(76, 17)
@@ -959,7 +960,7 @@ Partial Class frmOrdenesReparacion
         Me.grdServiciosTerceros.AllowUserToAddRows = False
         Me.grdServiciosTerceros.AllowUserToDeleteRows = False
         Me.grdServiciosTerceros.AllowUserToResizeRows = False
-        Me.grdServiciosTerceros.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.grdServiciosTerceros.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.grdServiciosTerceros.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
@@ -1067,7 +1068,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.ForeColor = System.Drawing.Color.White
+        Me.Label14.ForeColor = System.Drawing.Color.Black
         Me.Label14.Location = New System.Drawing.Point(12, 70)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(142, 17)
@@ -1078,7 +1079,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.ForeColor = System.Drawing.Color.White
+        Me.Label11.ForeColor = System.Drawing.Color.Black
         Me.Label11.Location = New System.Drawing.Point(111, 18)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(69, 17)
@@ -1117,7 +1118,7 @@ Partial Class frmOrdenesReparacion
         Me.BtnModificarS3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.BtnModificarS3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnModificarS3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnModificarS3.ForeColor = System.Drawing.Color.White
+        Me.BtnModificarS3.ForeColor = System.Drawing.Color.Black
         Me.BtnModificarS3.Location = New System.Drawing.Point(875, 120)
         Me.BtnModificarS3.Name = "BtnModificarS3"
         Me.BtnModificarS3.Size = New System.Drawing.Size(117, 37)
@@ -1152,7 +1153,7 @@ Partial Class frmOrdenesReparacion
         Me.BtnCancelarS3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.BtnCancelarS3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnCancelarS3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnCancelarS3.ForeColor = System.Drawing.Color.White
+        Me.BtnCancelarS3.ForeColor = System.Drawing.Color.Black
         Me.BtnCancelarS3.Location = New System.Drawing.Point(875, 171)
         Me.BtnCancelarS3.Name = "BtnCancelarS3"
         Me.BtnCancelarS3.Size = New System.Drawing.Size(117, 37)
@@ -1168,7 +1169,7 @@ Partial Class frmOrdenesReparacion
         Me.btnAceptarS3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnAceptarS3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAceptarS3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAceptarS3.ForeColor = System.Drawing.Color.White
+        Me.btnAceptarS3.ForeColor = System.Drawing.Color.Black
         Me.btnAceptarS3.Location = New System.Drawing.Point(875, 18)
         Me.btnAceptarS3.Name = "btnAceptarS3"
         Me.btnAceptarS3.Size = New System.Drawing.Size(117, 37)
@@ -1189,7 +1190,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label13.ForeColor = System.Drawing.Color.White
+        Me.Label13.ForeColor = System.Drawing.Color.Black
         Me.Label13.Location = New System.Drawing.Point(54, 867)
         Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label13.Name = "Label13"
@@ -1216,7 +1217,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label20.ForeColor = System.Drawing.Color.White
+        Me.Label20.ForeColor = System.Drawing.Color.Black
         Me.Label20.Location = New System.Drawing.Point(8, -3)
         Me.Label20.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label20.Name = "Label20"
@@ -1229,7 +1230,7 @@ Partial Class frmOrdenesReparacion
         Me.grdRepuestos.AllowUserToAddRows = False
         Me.grdRepuestos.AllowUserToDeleteRows = False
         Me.grdRepuestos.AllowUserToResizeRows = False
-        Me.grdRepuestos.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.grdRepuestos.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.grdRepuestos.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
@@ -1349,7 +1350,7 @@ Partial Class frmOrdenesReparacion
         Me.btnQuitarRepOR.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnQuitarRepOR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnQuitarRepOR.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnQuitarRepOR.ForeColor = System.Drawing.Color.White
+        Me.btnQuitarRepOR.ForeColor = System.Drawing.Color.Black
         Me.btnQuitarRepOR.Location = New System.Drawing.Point(730, 23)
         Me.btnQuitarRepOR.Name = "btnQuitarRepOR"
         Me.btnQuitarRepOR.Size = New System.Drawing.Size(117, 37)
@@ -1365,7 +1366,7 @@ Partial Class frmOrdenesReparacion
         Me.btnAgregarRepOR.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnAgregarRepOR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAgregarRepOR.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAgregarRepOR.ForeColor = System.Drawing.Color.White
+        Me.btnAgregarRepOR.ForeColor = System.Drawing.Color.Black
         Me.btnAgregarRepOR.Location = New System.Drawing.Point(599, 24)
         Me.btnAgregarRepOR.Name = "btnAgregarRepOR"
         Me.btnAgregarRepOR.Size = New System.Drawing.Size(117, 37)
@@ -1387,7 +1388,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.ForeColor = System.Drawing.Color.White
+        Me.Label22.ForeColor = System.Drawing.Color.Black
         Me.Label22.Location = New System.Drawing.Point(437, 33)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(75, 17)
@@ -1410,7 +1411,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label23.AutoSize = True
         Me.Label23.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label23.ForeColor = System.Drawing.Color.White
+        Me.Label23.ForeColor = System.Drawing.Color.Black
         Me.Label23.Location = New System.Drawing.Point(15, 33)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(72, 17)
@@ -1421,7 +1422,7 @@ Partial Class frmOrdenesReparacion
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label19.ForeColor = System.Drawing.Color.White
+        Me.Label19.ForeColor = System.Drawing.Color.Black
         Me.Label19.Location = New System.Drawing.Point(908, 162)
         Me.Label19.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label19.Name = "Label19"
@@ -1434,9 +1435,9 @@ Partial Class frmOrdenesReparacion
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(1095, 748)
+        Me.ClientSize = New System.Drawing.Size(1095, 1044)
         Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.PanelServiciosTerceros)
@@ -1454,7 +1455,7 @@ Partial Class frmOrdenesReparacion
         Me.Controls.Add(Me.PanelDetallesOrden)
         Me.Controls.Add(Me.PanelDetalleDeRepuestos)
         Me.DoubleBuffered = True
-        Me.ForeColor = System.Drawing.Color.White
+        Me.ForeColor = System.Drawing.Color.Black
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmOrdenesReparacion"

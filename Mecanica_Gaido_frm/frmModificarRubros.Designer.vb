@@ -46,7 +46,7 @@ Partial Class frmModificarRubros
         '
         Me.lblCiudad.AutoSize = True
         Me.lblCiudad.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCiudad.ForeColor = System.Drawing.Color.White
+        Me.lblCiudad.ForeColor = System.Drawing.Color.Black
         Me.lblCiudad.Location = New System.Drawing.Point(322, 39)
         Me.lblCiudad.Name = "lblCiudad"
         Me.lblCiudad.Size = New System.Drawing.Size(52, 20)
@@ -57,7 +57,7 @@ Partial Class frmModificarRubros
         '
         Me.chkEstado.AutoSize = True
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkEstado.ForeColor = System.Drawing.Color.White
+        Me.chkEstado.ForeColor = System.Drawing.Color.Black
         Me.chkEstado.Location = New System.Drawing.Point(77, 94)
         Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
@@ -73,7 +73,7 @@ Partial Class frmModificarRubros
         Me.grdModificarRubros.AllowUserToResizeRows = False
         Me.grdModificarRubros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdModificarRubros.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.grdModificarRubros.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.grdModificarRubros.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.grdModificarRubros.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarRubros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdModificarRubros.Location = New System.Drawing.Point(44, 146)
@@ -92,7 +92,7 @@ Partial Class frmModificarRubros
         Me.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancelar.ForeColor = System.Drawing.Color.White
+        Me.btnCancelar.ForeColor = System.Drawing.Color.Black
         Me.btnCancelar.Location = New System.Drawing.Point(745, 86)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(82, 29)
@@ -112,7 +112,7 @@ Partial Class frmModificarRubros
         '
         Me.lblNumeroRubro.AutoSize = True
         Me.lblNumeroRubro.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumeroRubro.ForeColor = System.Drawing.Color.White
+        Me.lblNumeroRubro.ForeColor = System.Drawing.Color.Black
         Me.lblNumeroRubro.Location = New System.Drawing.Point(73, 39)
         Me.lblNumeroRubro.Name = "lblNumeroRubro"
         Me.lblNumeroRubro.Size = New System.Drawing.Size(73, 20)
@@ -125,7 +125,7 @@ Partial Class frmModificarRubros
         Me.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnModificar.ForeColor = System.Drawing.Color.White
+        Me.btnModificar.ForeColor = System.Drawing.Color.Black
         Me.btnModificar.Location = New System.Drawing.Point(745, 30)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(82, 29)
@@ -137,7 +137,7 @@ Partial Class frmModificarRubros
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(871, 396)
         Me.Controls.Add(Me.txtRubro)
         Me.Controls.Add(Me.lblCiudad)

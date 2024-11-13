@@ -46,7 +46,7 @@ Partial Class frmModificarRoles
         '
         Me.lblRol.AutoSize = True
         Me.lblRol.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRol.ForeColor = System.Drawing.Color.White
+        Me.lblRol.ForeColor = System.Drawing.Color.Black
         Me.lblRol.Location = New System.Drawing.Point(281, 39)
         Me.lblRol.Name = "lblRol"
         Me.lblRol.Size = New System.Drawing.Size(31, 20)
@@ -57,7 +57,7 @@ Partial Class frmModificarRoles
         '
         Me.chkEstado.AutoSize = True
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkEstado.ForeColor = System.Drawing.Color.White
+        Me.chkEstado.ForeColor = System.Drawing.Color.Black
         Me.chkEstado.Location = New System.Drawing.Point(77, 86)
         Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
@@ -73,7 +73,7 @@ Partial Class frmModificarRoles
         Me.grdModificarRol.AllowUserToResizeRows = False
         Me.grdModificarRol.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdModificarRol.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.grdModificarRol.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.grdModificarRol.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.grdModificarRol.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarRol.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdModificarRol.Location = New System.Drawing.Point(44, 146)
@@ -92,7 +92,7 @@ Partial Class frmModificarRoles
         Me.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancelar.ForeColor = System.Drawing.Color.White
+        Me.btnCancelar.ForeColor = System.Drawing.Color.Black
         Me.btnCancelar.Location = New System.Drawing.Point(745, 86)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(82, 29)
@@ -112,7 +112,7 @@ Partial Class frmModificarRoles
         '
         Me.lblNumeroRol.AutoSize = True
         Me.lblNumeroRol.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumeroRol.ForeColor = System.Drawing.Color.White
+        Me.lblNumeroRol.ForeColor = System.Drawing.Color.Black
         Me.lblNumeroRol.Location = New System.Drawing.Point(73, 39)
         Me.lblNumeroRol.Name = "lblNumeroRol"
         Me.lblNumeroRol.Size = New System.Drawing.Size(52, 20)
@@ -125,7 +125,7 @@ Partial Class frmModificarRoles
         Me.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnModificar.ForeColor = System.Drawing.Color.White
+        Me.btnModificar.ForeColor = System.Drawing.Color.Black
         Me.btnModificar.Location = New System.Drawing.Point(745, 30)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(82, 29)
@@ -137,7 +137,7 @@ Partial Class frmModificarRoles
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(871, 396)
         Me.Controls.Add(Me.txtRol)
         Me.Controls.Add(Me.lblRol)

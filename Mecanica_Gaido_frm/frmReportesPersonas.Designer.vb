@@ -51,7 +51,7 @@ Partial Class frmReportesPersonas
         Me.btnObtenerHistorial.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
         Me.btnObtenerHistorial.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnObtenerHistorial.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnObtenerHistorial.ForeColor = System.Drawing.Color.White
+        Me.btnObtenerHistorial.ForeColor = System.Drawing.Color.Black
         Me.btnObtenerHistorial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnObtenerHistorial.Location = New System.Drawing.Point(359, 68)
         Me.btnObtenerHistorial.Name = "btnObtenerHistorial"
@@ -66,7 +66,7 @@ Partial Class frmReportesPersonas
         Me.Label1.AutoSize = True
         Me.Label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.ForeColor = System.Drawing.Color.Black
         Me.Label1.Location = New System.Drawing.Point(28, 78)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(54, 17)
@@ -88,7 +88,7 @@ Partial Class frmReportesPersonas
         Me.Label2.AutoSize = True
         Me.Label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.ForeColor = System.Drawing.Color.Black
         Me.Label2.Location = New System.Drawing.Point(28, 30)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(219, 18)
@@ -100,7 +100,7 @@ Partial Class frmReportesPersonas
         Me.Label3.AutoSize = True
         Me.Label3.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.ForeColor = System.Drawing.Color.Black
         Me.Label3.Location = New System.Drawing.Point(284, 135)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(45, 17)
@@ -112,7 +112,7 @@ Partial Class frmReportesPersonas
         Me.Label4.AutoSize = True
         Me.Label4.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.ForeColor = System.Drawing.Color.Black
         Me.Label4.Location = New System.Drawing.Point(28, 135)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(48, 17)
@@ -121,19 +121,21 @@ Partial Class frmReportesPersonas
         '
         'dtpFechaMin
         '
+        Me.dtpFechaMin.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFechaMin.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaMin.Location = New System.Drawing.Point(130, 132)
+        Me.dtpFechaMin.Location = New System.Drawing.Point(130, 130)
         Me.dtpFechaMin.Name = "dtpFechaMin"
-        Me.dtpFechaMin.Size = New System.Drawing.Size(100, 20)
+        Me.dtpFechaMin.Size = New System.Drawing.Size(100, 23)
         Me.dtpFechaMin.TabIndex = 132
         Me.dtpFechaMin.Value = New Date(2024, 11, 9, 0, 0, 0, 0)
         '
         'dtpFechaMax
         '
+        Me.dtpFechaMax.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFechaMax.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaMax.Location = New System.Drawing.Point(384, 131)
+        Me.dtpFechaMax.Location = New System.Drawing.Point(384, 130)
         Me.dtpFechaMax.Name = "dtpFechaMax"
-        Me.dtpFechaMax.Size = New System.Drawing.Size(100, 20)
+        Me.dtpFechaMax.Size = New System.Drawing.Size(100, 23)
         Me.dtpFechaMax.TabIndex = 133
         Me.dtpFechaMax.Value = New Date(2024, 11, 9, 0, 0, 0, 0)
         '
@@ -141,7 +143,7 @@ Partial Class frmReportesPersonas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1004, 575)
         Me.Controls.Add(Me.dtpFechaMax)
         Me.Controls.Add(Me.dtpFechaMin)

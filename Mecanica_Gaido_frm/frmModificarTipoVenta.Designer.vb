@@ -46,7 +46,7 @@ Partial Class frmModificarTipoVenta
         '
         Me.lblTipoDeVenta.AutoSize = True
         Me.lblTipoDeVenta.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTipoDeVenta.ForeColor = System.Drawing.Color.White
+        Me.lblTipoDeVenta.ForeColor = System.Drawing.Color.Black
         Me.lblTipoDeVenta.Location = New System.Drawing.Point(339, 39)
         Me.lblTipoDeVenta.Name = "lblTipoDeVenta"
         Me.lblTipoDeVenta.Size = New System.Drawing.Size(110, 20)
@@ -57,7 +57,7 @@ Partial Class frmModificarTipoVenta
         '
         Me.chkEstadoTV.AutoSize = True
         Me.chkEstadoTV.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkEstadoTV.ForeColor = System.Drawing.Color.White
+        Me.chkEstadoTV.ForeColor = System.Drawing.Color.Black
         Me.chkEstadoTV.Location = New System.Drawing.Point(77, 85)
         Me.chkEstadoTV.Margin = New System.Windows.Forms.Padding(2, 1, 2, 1)
         Me.chkEstadoTV.Name = "chkEstadoTV"
@@ -73,7 +73,7 @@ Partial Class frmModificarTipoVenta
         Me.grdModificarTipoDeVenta.AllowUserToResizeRows = False
         Me.grdModificarTipoDeVenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdModificarTipoDeVenta.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.grdModificarTipoDeVenta.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.grdModificarTipoDeVenta.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.grdModificarTipoDeVenta.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarTipoDeVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdModificarTipoDeVenta.Location = New System.Drawing.Point(44, 146)
@@ -92,7 +92,7 @@ Partial Class frmModificarTipoVenta
         Me.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancelar.ForeColor = System.Drawing.Color.White
+        Me.btnCancelar.ForeColor = System.Drawing.Color.Black
         Me.btnCancelar.Location = New System.Drawing.Point(847, 98)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(82, 29)
@@ -112,7 +112,7 @@ Partial Class frmModificarTipoVenta
         '
         Me.lblNumeroTV.AutoSize = True
         Me.lblNumeroTV.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumeroTV.ForeColor = System.Drawing.Color.White
+        Me.lblNumeroTV.ForeColor = System.Drawing.Color.Black
         Me.lblNumeroTV.Location = New System.Drawing.Point(73, 38)
         Me.lblNumeroTV.Name = "lblNumeroTV"
         Me.lblNumeroTV.Size = New System.Drawing.Size(111, 20)
@@ -125,7 +125,7 @@ Partial Class frmModificarTipoVenta
         Me.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnModificar.ForeColor = System.Drawing.Color.White
+        Me.btnModificar.ForeColor = System.Drawing.Color.Black
         Me.btnModificar.Location = New System.Drawing.Point(847, 34)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(82, 29)
@@ -137,7 +137,7 @@ Partial Class frmModificarTipoVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(979, 396)
         Me.Controls.Add(Me.txtTipoDeVenta)
         Me.Controls.Add(Me.lblTipoDeVenta)

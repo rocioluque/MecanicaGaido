@@ -105,7 +105,7 @@ Partial Class frmProductos
         Me.grdProductos.AllowUserToResizeRows = False
         Me.grdProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
-        Me.grdProductos.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.grdProductos.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.grdProductos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdProductos.Location = New System.Drawing.Point(122, 541)
@@ -124,7 +124,7 @@ Partial Class frmProductos
         Me.chkEstado.Checked = True
         Me.chkEstado.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.chkEstado.ForeColor = System.Drawing.Color.White
+        Me.chkEstado.ForeColor = System.Drawing.Color.Black
         Me.chkEstado.Location = New System.Drawing.Point(601, 162)
         Me.chkEstado.Name = "chkEstado"
         Me.chkEstado.Size = New System.Drawing.Size(82, 21)
@@ -136,7 +136,7 @@ Partial Class frmProductos
         '
         Me.lblOrigen.AutoSize = True
         Me.lblOrigen.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblOrigen.ForeColor = System.Drawing.Color.White
+        Me.lblOrigen.ForeColor = System.Drawing.Color.Black
         Me.lblOrigen.Location = New System.Drawing.Point(598, 11)
         Me.lblOrigen.Name = "lblOrigen"
         Me.lblOrigen.Size = New System.Drawing.Size(48, 17)
@@ -147,7 +147,7 @@ Partial Class frmProductos
         '
         Me.lblUbicacion.AutoSize = True
         Me.lblUbicacion.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblUbicacion.ForeColor = System.Drawing.Color.White
+        Me.lblUbicacion.ForeColor = System.Drawing.Color.Black
         Me.lblUbicacion.Location = New System.Drawing.Point(16, 114)
         Me.lblUbicacion.Name = "lblUbicacion"
         Me.lblUbicacion.Size = New System.Drawing.Size(69, 17)
@@ -174,7 +174,7 @@ Partial Class frmProductos
         '
         Me.lblCodBarra.AutoSize = True
         Me.lblCodBarra.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblCodBarra.ForeColor = System.Drawing.Color.White
+        Me.lblCodBarra.ForeColor = System.Drawing.Color.Black
         Me.lblCodBarra.Location = New System.Drawing.Point(304, 55)
         Me.lblCodBarra.Name = "lblCodBarra"
         Me.lblCodBarra.Size = New System.Drawing.Size(105, 17)
@@ -185,7 +185,7 @@ Partial Class frmProductos
         '
         Me.lblCodFabricante.AutoSize = True
         Me.lblCodFabricante.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblCodFabricante.ForeColor = System.Drawing.Color.White
+        Me.lblCodFabricante.ForeColor = System.Drawing.Color.Black
         Me.lblCodFabricante.Location = New System.Drawing.Point(304, 99)
         Me.lblCodFabricante.Name = "lblCodFabricante"
         Me.lblCodFabricante.Size = New System.Drawing.Size(139, 17)
@@ -196,7 +196,7 @@ Partial Class frmProductos
         '
         Me.lblStockDisponible.AutoSize = True
         Me.lblStockDisponible.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblStockDisponible.ForeColor = System.Drawing.Color.White
+        Me.lblStockDisponible.ForeColor = System.Drawing.Color.Black
         Me.lblStockDisponible.Location = New System.Drawing.Point(16, 56)
         Me.lblStockDisponible.Name = "lblStockDisponible"
         Me.lblStockDisponible.Size = New System.Drawing.Size(107, 17)
@@ -207,7 +207,7 @@ Partial Class frmProductos
         '
         Me.lblStockReal.AutoSize = True
         Me.lblStockReal.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblStockReal.ForeColor = System.Drawing.Color.White
+        Me.lblStockReal.ForeColor = System.Drawing.Color.Black
         Me.lblStockReal.Location = New System.Drawing.Point(16, 27)
         Me.lblStockReal.Name = "lblStockReal"
         Me.lblStockReal.Size = New System.Drawing.Size(71, 17)
@@ -218,7 +218,7 @@ Partial Class frmProductos
         '
         Me.lblCantBulto.AutoSize = True
         Me.lblCantBulto.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblCantBulto.ForeColor = System.Drawing.Color.White
+        Me.lblCantBulto.ForeColor = System.Drawing.Color.Black
         Me.lblCantBulto.Location = New System.Drawing.Point(304, 143)
         Me.lblCantBulto.Name = "lblCantBulto"
         Me.lblCantBulto.Size = New System.Drawing.Size(120, 17)
@@ -229,7 +229,7 @@ Partial Class frmProductos
         '
         Me.lblRubro.AutoSize = True
         Me.lblRubro.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblRubro.ForeColor = System.Drawing.Color.White
+        Me.lblRubro.ForeColor = System.Drawing.Color.Black
         Me.lblRubro.Location = New System.Drawing.Point(12, 143)
         Me.lblRubro.Name = "lblRubro"
         Me.lblRubro.Size = New System.Drawing.Size(42, 17)
@@ -240,7 +240,7 @@ Partial Class frmProductos
         '
         Me.lblMarca.AutoSize = True
         Me.lblMarca.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblMarca.ForeColor = System.Drawing.Color.White
+        Me.lblMarca.ForeColor = System.Drawing.Color.Black
         Me.lblMarca.Location = New System.Drawing.Point(304, 11)
         Me.lblMarca.Name = "lblMarca"
         Me.lblMarca.Size = New System.Drawing.Size(47, 17)
@@ -330,7 +330,7 @@ Partial Class frmProductos
         '
         Me.lblDescripcion.AutoSize = True
         Me.lblDescripcion.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblDescripcion.ForeColor = System.Drawing.Color.White
+        Me.lblDescripcion.ForeColor = System.Drawing.Color.Black
         Me.lblDescripcion.Location = New System.Drawing.Point(12, 55)
         Me.lblDescripcion.Name = "lblDescripcion"
         Me.lblDescripcion.Size = New System.Drawing.Size(79, 17)
@@ -341,7 +341,7 @@ Partial Class frmProductos
         '
         Me.lblNombreDiario.AutoSize = True
         Me.lblNombreDiario.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblNombreDiario.ForeColor = System.Drawing.Color.White
+        Me.lblNombreDiario.ForeColor = System.Drawing.Color.Black
         Me.lblNombreDiario.Location = New System.Drawing.Point(12, 99)
         Me.lblNombreDiario.Name = "lblNombreDiario"
         Me.lblNombreDiario.Size = New System.Drawing.Size(94, 17)
@@ -352,7 +352,7 @@ Partial Class frmProductos
         '
         Me.lblNombreOriginal.AutoSize = True
         Me.lblNombreOriginal.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblNombreOriginal.ForeColor = System.Drawing.Color.White
+        Me.lblNombreOriginal.ForeColor = System.Drawing.Color.Black
         Me.lblNombreOriginal.Location = New System.Drawing.Point(598, 99)
         Me.lblNombreOriginal.Name = "lblNombreOriginal"
         Me.lblNombreOriginal.Size = New System.Drawing.Size(124, 17)
@@ -363,7 +363,7 @@ Partial Class frmProductos
         '
         Me.lblNProducto.AutoSize = True
         Me.lblNProducto.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblNProducto.ForeColor = System.Drawing.Color.White
+        Me.lblNProducto.ForeColor = System.Drawing.Color.Black
         Me.lblNProducto.Location = New System.Drawing.Point(12, 22)
         Me.lblNProducto.Name = "lblNProducto"
         Me.lblNProducto.Size = New System.Drawing.Size(80, 17)
@@ -395,7 +395,7 @@ Partial Class frmProductos
         '
         Me.chkAlterntivo.AutoSize = True
         Me.chkAlterntivo.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.chkAlterntivo.ForeColor = System.Drawing.Color.White
+        Me.chkAlterntivo.ForeColor = System.Drawing.Color.Black
         Me.chkAlterntivo.Location = New System.Drawing.Point(600, 70)
         Me.chkAlterntivo.Name = "chkAlterntivo"
         Me.chkAlterntivo.Size = New System.Drawing.Size(109, 21)
@@ -411,7 +411,7 @@ Partial Class frmProductos
         Me.btnBuscar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBuscar.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBuscar.ForeColor = System.Drawing.Color.White
+        Me.btnBuscar.ForeColor = System.Drawing.Color.Black
         Me.btnBuscar.Location = New System.Drawing.Point(189, 15)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(50, 28)
@@ -443,7 +443,7 @@ Partial Class frmProductos
         '
         Me.lblDatosEspecificos.AutoSize = True
         Me.lblDatosEspecificos.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblDatosEspecificos.ForeColor = System.Drawing.Color.White
+        Me.lblDatosEspecificos.ForeColor = System.Drawing.Color.Black
         Me.lblDatosEspecificos.Location = New System.Drawing.Point(134, 65)
         Me.lblDatosEspecificos.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblDatosEspecificos.Name = "lblDatosEspecificos"
@@ -541,7 +541,7 @@ Partial Class frmProductos
         '
         Me.lblExistencia.AutoSize = True
         Me.lblExistencia.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblExistencia.ForeColor = System.Drawing.Color.White
+        Me.lblExistencia.ForeColor = System.Drawing.Color.Black
         Me.lblExistencia.Location = New System.Drawing.Point(137, 357)
         Me.lblExistencia.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblExistencia.Name = "lblExistencia"
@@ -580,7 +580,7 @@ Partial Class frmProductos
         '
         Me.txtStockMinimo.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtStockMinimo.Location = New System.Drawing.Point(152, 82)
-        Me.txtStockMinimo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtStockMinimo.Margin = New System.Windows.Forms.Padding(2)
         Me.txtStockMinimo.Name = "txtStockMinimo"
         Me.txtStockMinimo.Size = New System.Drawing.Size(121, 23)
         Me.txtStockMinimo.TabIndex = 20
@@ -591,7 +591,7 @@ Partial Class frmProductos
         '
         Me.lblStockMinimo.AutoSize = True
         Me.lblStockMinimo.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblStockMinimo.ForeColor = System.Drawing.Color.White
+        Me.lblStockMinimo.ForeColor = System.Drawing.Color.Black
         Me.lblStockMinimo.Location = New System.Drawing.Point(16, 85)
         Me.lblStockMinimo.Name = "lblStockMinimo"
         Me.lblStockMinimo.Size = New System.Drawing.Size(88, 17)
@@ -615,7 +615,7 @@ Partial Class frmProductos
         '
         Me.lblMovimientos.AutoSize = True
         Me.lblMovimientos.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblMovimientos.ForeColor = System.Drawing.Color.White
+        Me.lblMovimientos.ForeColor = System.Drawing.Color.Black
         Me.lblMovimientos.Location = New System.Drawing.Point(512, 357)
         Me.lblMovimientos.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblMovimientos.Name = "lblMovimientos"
@@ -683,7 +683,7 @@ Partial Class frmProductos
         '
         Me.lblPrecioLista.AutoSize = True
         Me.lblPrecioLista.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblPrecioLista.ForeColor = System.Drawing.Color.White
+        Me.lblPrecioLista.ForeColor = System.Drawing.Color.Black
         Me.lblPrecioLista.Location = New System.Drawing.Point(30, 71)
         Me.lblPrecioLista.Name = "lblPrecioLista"
         Me.lblPrecioLista.Size = New System.Drawing.Size(76, 17)
@@ -704,7 +704,7 @@ Partial Class frmProductos
         '
         Me.lblFechaUltVenta.AutoSize = True
         Me.lblFechaUltVenta.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblFechaUltVenta.ForeColor = System.Drawing.Color.White
+        Me.lblFechaUltVenta.ForeColor = System.Drawing.Color.Black
         Me.lblFechaUltVenta.Location = New System.Drawing.Point(29, 124)
         Me.lblFechaUltVenta.Name = "lblFechaUltVenta"
         Me.lblFechaUltVenta.Size = New System.Drawing.Size(110, 17)
@@ -715,7 +715,7 @@ Partial Class frmProductos
         '
         Me.lblFechaUltimaCompra.AutoSize = True
         Me.lblFechaUltimaCompra.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblFechaUltimaCompra.ForeColor = System.Drawing.Color.White
+        Me.lblFechaUltimaCompra.ForeColor = System.Drawing.Color.Black
         Me.lblFechaUltimaCompra.Location = New System.Drawing.Point(30, 97)
         Me.lblFechaUltimaCompra.Name = "lblFechaUltimaCompra"
         Me.lblFechaUltimaCompra.Size = New System.Drawing.Size(121, 17)
@@ -726,7 +726,7 @@ Partial Class frmProductos
         '
         Me.lblPrecioCompra.AutoSize = True
         Me.lblPrecioCompra.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblPrecioCompra.ForeColor = System.Drawing.Color.White
+        Me.lblPrecioCompra.ForeColor = System.Drawing.Color.Black
         Me.lblPrecioCompra.Location = New System.Drawing.Point(29, 18)
         Me.lblPrecioCompra.Name = "lblPrecioCompra"
         Me.lblPrecioCompra.Size = New System.Drawing.Size(97, 17)
@@ -747,7 +747,7 @@ Partial Class frmProductos
         '
         Me.lblUtilidad.AutoSize = True
         Me.lblUtilidad.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblUtilidad.ForeColor = System.Drawing.Color.White
+        Me.lblUtilidad.ForeColor = System.Drawing.Color.Black
         Me.lblUtilidad.Location = New System.Drawing.Point(29, 45)
         Me.lblUtilidad.Name = "lblUtilidad"
         Me.lblUtilidad.Size = New System.Drawing.Size(75, 17)
@@ -768,7 +768,7 @@ Partial Class frmProductos
         '
         Me.lblBuscar.AutoSize = True
         Me.lblBuscar.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.lblBuscar.ForeColor = System.Drawing.Color.White
+        Me.lblBuscar.ForeColor = System.Drawing.Color.Black
         Me.lblBuscar.Location = New System.Drawing.Point(119, 30)
         Me.lblBuscar.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblBuscar.Name = "lblBuscar"
@@ -780,7 +780,7 @@ Partial Class frmProductos
         '
         Me.txtBuscar.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.txtBuscar.Location = New System.Drawing.Point(397, 27)
-        Me.txtBuscar.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtBuscar.Margin = New System.Windows.Forms.Padding(2)
         Me.txtBuscar.Name = "txtBuscar"
         Me.txtBuscar.Size = New System.Drawing.Size(583, 23)
         Me.txtBuscar.TabIndex = 1
@@ -794,7 +794,7 @@ Partial Class frmProductos
         Me.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnModificar.ForeColor = System.Drawing.Color.White
+        Me.btnModificar.ForeColor = System.Drawing.Color.Black
         Me.btnModificar.Location = New System.Drawing.Point(880, 425)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(100, 37)
@@ -811,7 +811,7 @@ Partial Class frmProductos
         Me.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancelar.ForeColor = System.Drawing.Color.White
+        Me.btnCancelar.ForeColor = System.Drawing.Color.Black
         Me.btnCancelar.Location = New System.Drawing.Point(880, 485)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(100, 37)
@@ -827,7 +827,7 @@ Partial Class frmProductos
         Me.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAceptar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAceptar.ForeColor = System.Drawing.Color.White
+        Me.btnAceptar.ForeColor = System.Drawing.Color.Black
         Me.btnAceptar.Location = New System.Drawing.Point(880, 365)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(100, 37)
@@ -839,7 +839,7 @@ Partial Class frmProductos
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label6.ForeColor = System.Drawing.Color.White
+        Me.Label6.ForeColor = System.Drawing.Color.Black
         Me.Label6.Location = New System.Drawing.Point(134, 282)
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
@@ -869,7 +869,7 @@ Partial Class frmProductos
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(1095, 673)
         Me.Controls.Add(Me.Label6)

@@ -57,7 +57,7 @@ Partial Class frmModificarFormaPago
         '
         Me.lblFormaDePago.AutoSize = True
         Me.lblFormaDePago.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFormaDePago.ForeColor = System.Drawing.Color.White
+        Me.lblFormaDePago.ForeColor = System.Drawing.Color.Black
         Me.lblFormaDePago.Location = New System.Drawing.Point(388, 38)
         Me.lblFormaDePago.Name = "lblFormaDePago"
         Me.lblFormaDePago.Size = New System.Drawing.Size(61, 17)
@@ -68,7 +68,7 @@ Partial Class frmModificarFormaPago
         '
         Me.chkEstadoFP.AutoSize = True
         Me.chkEstadoFP.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkEstadoFP.ForeColor = System.Drawing.Color.White
+        Me.chkEstadoFP.ForeColor = System.Drawing.Color.Black
         Me.chkEstadoFP.Location = New System.Drawing.Point(77, 75)
         Me.chkEstadoFP.Margin = New System.Windows.Forms.Padding(2, 1, 2, 1)
         Me.chkEstadoFP.Name = "chkEstadoFP"
@@ -84,7 +84,7 @@ Partial Class frmModificarFormaPago
         Me.grdModificarFP.AllowUserToResizeRows = False
         Me.grdModificarFP.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdModificarFP.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.grdModificarFP.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.grdModificarFP.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.grdModificarFP.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdModificarFP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdModificarFP.Location = New System.Drawing.Point(77, 110)
@@ -103,7 +103,7 @@ Partial Class frmModificarFormaPago
         Me.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancelar.ForeColor = System.Drawing.Color.White
+        Me.btnCancelar.ForeColor = System.Drawing.Color.Black
         Me.btnCancelar.Location = New System.Drawing.Point(840, 257)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(82, 29)
@@ -124,7 +124,7 @@ Partial Class frmModificarFormaPago
         '
         Me.lblNumeroFP.AutoSize = True
         Me.lblNumeroFP.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumeroFP.ForeColor = System.Drawing.Color.White
+        Me.lblNumeroFP.ForeColor = System.Drawing.Color.Black
         Me.lblNumeroFP.Location = New System.Drawing.Point(73, 38)
         Me.lblNumeroFP.Name = "lblNumeroFP"
         Me.lblNumeroFP.Size = New System.Drawing.Size(128, 17)
@@ -137,7 +137,7 @@ Partial Class frmModificarFormaPago
         Me.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnModificar.ForeColor = System.Drawing.Color.White
+        Me.btnModificar.ForeColor = System.Drawing.Color.Black
         Me.btnModificar.Location = New System.Drawing.Point(840, 141)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(82, 29)
@@ -157,7 +157,7 @@ Partial Class frmModificarFormaPago
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.ForeColor = System.Drawing.Color.Black
         Me.Label1.Location = New System.Drawing.Point(404, 287)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(61, 17)
@@ -168,7 +168,7 @@ Partial Class frmModificarFormaPago
         '
         Me.chkEstadoDetalleFP.AutoSize = True
         Me.chkEstadoDetalleFP.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkEstadoDetalleFP.ForeColor = System.Drawing.Color.White
+        Me.chkEstadoDetalleFP.ForeColor = System.Drawing.Color.Black
         Me.chkEstadoDetalleFP.Location = New System.Drawing.Point(657, 329)
         Me.chkEstadoDetalleFP.Margin = New System.Windows.Forms.Padding(2, 1, 2, 1)
         Me.chkEstadoDetalleFP.Name = "chkEstadoDetalleFP"
@@ -190,7 +190,7 @@ Partial Class frmModificarFormaPago
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.ForeColor = System.Drawing.Color.Black
         Me.Label2.Location = New System.Drawing.Point(73, 287)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(178, 17)
@@ -201,7 +201,7 @@ Partial Class frmModificarFormaPago
         '
         Me.rbtRecargo.AutoSize = True
         Me.rbtRecargo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rbtRecargo.ForeColor = System.Drawing.Color.White
+        Me.rbtRecargo.ForeColor = System.Drawing.Color.Black
         Me.rbtRecargo.Location = New System.Drawing.Point(77, 328)
         Me.rbtRecargo.Name = "rbtRecargo"
         Me.rbtRecargo.Size = New System.Drawing.Size(81, 21)
@@ -214,7 +214,7 @@ Partial Class frmModificarFormaPago
         '
         Me.rbtDescuento.AutoSize = True
         Me.rbtDescuento.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rbtDescuento.ForeColor = System.Drawing.Color.White
+        Me.rbtDescuento.ForeColor = System.Drawing.Color.Black
         Me.rbtDescuento.Location = New System.Drawing.Point(221, 328)
         Me.rbtDescuento.Name = "rbtDescuento"
         Me.rbtDescuento.Size = New System.Drawing.Size(95, 21)
@@ -227,7 +227,7 @@ Partial Class frmModificarFormaPago
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.ForeColor = System.Drawing.Color.Black
         Me.Label3.Location = New System.Drawing.Point(372, 330)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(78, 17)
@@ -249,7 +249,7 @@ Partial Class frmModificarFormaPago
         Me.grdDetalleFP.AllowUserToResizeRows = False
         Me.grdDetalleFP.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdDetalleFP.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.grdDetalleFP.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.grdDetalleFP.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.grdDetalleFP.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdDetalleFP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdDetalleFP.Location = New System.Drawing.Point(77, 381)
@@ -266,7 +266,7 @@ Partial Class frmModificarFormaPago
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(962, 548)
         Me.Controls.Add(Me.grdDetalleFP)
         Me.Controls.Add(Me.Label3)

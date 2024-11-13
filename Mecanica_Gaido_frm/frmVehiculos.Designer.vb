@@ -84,7 +84,7 @@ Partial Class frmVehiculos
         Me.grdVehiculo.AllowUserToResizeRows = False
         Me.grdVehiculo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdVehiculo.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
-        Me.grdVehiculo.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.grdVehiculo.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.grdVehiculo.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.grdVehiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdVehiculo.Location = New System.Drawing.Point(178, 482)
@@ -124,7 +124,7 @@ Partial Class frmVehiculos
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.ForeColor = System.Drawing.Color.Black
         Me.Label2.Location = New System.Drawing.Point(503, 80)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
@@ -136,7 +136,7 @@ Partial Class frmVehiculos
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.ForeColor = System.Drawing.Color.Black
         Me.Label1.Location = New System.Drawing.Point(175, 80)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
@@ -152,7 +152,7 @@ Partial Class frmVehiculos
         Me.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnModificar.ForeColor = System.Drawing.Color.White
+        Me.btnModificar.ForeColor = System.Drawing.Color.Black
         Me.btnModificar.Location = New System.Drawing.Point(502, 413)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(117, 37)
@@ -169,7 +169,7 @@ Partial Class frmVehiculos
         Me.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancelar.ForeColor = System.Drawing.Color.White
+        Me.btnCancelar.ForeColor = System.Drawing.Color.Black
         Me.btnCancelar.Location = New System.Drawing.Point(826, 413)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(117, 37)
@@ -185,7 +185,7 @@ Partial Class frmVehiculos
         Me.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAceptar.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAceptar.ForeColor = System.Drawing.Color.White
+        Me.btnAceptar.ForeColor = System.Drawing.Color.Black
         Me.btnAceptar.Location = New System.Drawing.Point(178, 413)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(117, 37)
@@ -201,7 +201,7 @@ Partial Class frmVehiculos
         Me.btnBuscar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBuscar.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBuscar.ForeColor = System.Drawing.Color.White
+        Me.btnBuscar.ForeColor = System.Drawing.Color.Black
         Me.btnBuscar.Location = New System.Drawing.Point(407, 73)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(50, 28)
@@ -223,7 +223,7 @@ Partial Class frmVehiculos
         '
         Me.lblDatosVehiculo.AutoSize = True
         Me.lblDatosVehiculo.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblDatosVehiculo.ForeColor = System.Drawing.Color.White
+        Me.lblDatosVehiculo.ForeColor = System.Drawing.Color.Black
         Me.lblDatosVehiculo.Location = New System.Drawing.Point(188, 113)
         Me.lblDatosVehiculo.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblDatosVehiculo.Name = "lblDatosVehiculo"
@@ -291,7 +291,7 @@ Partial Class frmVehiculos
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.ForeColor = System.Drawing.Color.White
+        Me.Label15.ForeColor = System.Drawing.Color.Black
         Me.Label15.Location = New System.Drawing.Point(10, 16)
         Me.Label15.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label15.Name = "Label15"
@@ -352,7 +352,7 @@ Partial Class frmVehiculos
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.ForeColor = System.Drawing.Color.Black
         Me.Label3.Location = New System.Drawing.Point(10, 66)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
@@ -373,7 +373,7 @@ Partial Class frmVehiculos
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.ForeColor = System.Drawing.Color.Black
         Me.Label4.Location = New System.Drawing.Point(10, 114)
         Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
@@ -385,7 +385,7 @@ Partial Class frmVehiculos
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.White
+        Me.Label5.ForeColor = System.Drawing.Color.Black
         Me.Label5.Location = New System.Drawing.Point(10, 164)
         Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
@@ -416,7 +416,7 @@ Partial Class frmVehiculos
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.White
+        Me.Label6.ForeColor = System.Drawing.Color.Black
         Me.Label6.Location = New System.Drawing.Point(10, 212)
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
@@ -428,7 +428,7 @@ Partial Class frmVehiculos
         '
         Me.lblNota.AutoSize = True
         Me.lblNota.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblNota.ForeColor = System.Drawing.Color.White
+        Me.lblNota.ForeColor = System.Drawing.Color.Black
         Me.lblNota.Location = New System.Drawing.Point(502, 310)
         Me.lblNota.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblNota.Name = "lblNota"
@@ -457,7 +457,7 @@ Partial Class frmVehiculos
         '
         Me.lblIdentificacionVehiculo.AutoSize = True
         Me.lblIdentificacionVehiculo.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.lblIdentificacionVehiculo.ForeColor = System.Drawing.Color.White
+        Me.lblIdentificacionVehiculo.ForeColor = System.Drawing.Color.Black
         Me.lblIdentificacionVehiculo.Location = New System.Drawing.Point(500, 113)
         Me.lblIdentificacionVehiculo.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblIdentificacionVehiculo.Name = "lblIdentificacionVehiculo"
@@ -486,7 +486,7 @@ Partial Class frmVehiculos
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.White
+        Me.Label9.ForeColor = System.Drawing.Color.Black
         Me.Label9.Location = New System.Drawing.Point(13, 114)
         Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label9.Name = "Label9"
@@ -529,7 +529,7 @@ Partial Class frmVehiculos
         '
         Me.lblNumChasis.AutoSize = True
         Me.lblNumChasis.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumChasis.ForeColor = System.Drawing.Color.White
+        Me.lblNumChasis.ForeColor = System.Drawing.Color.Black
         Me.lblNumChasis.Location = New System.Drawing.Point(13, 27)
         Me.lblNumChasis.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblNumChasis.Name = "lblNumChasis"
@@ -541,7 +541,7 @@ Partial Class frmVehiculos
         '
         Me.lblNumMotor.AutoSize = True
         Me.lblNumMotor.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumMotor.ForeColor = System.Drawing.Color.White
+        Me.lblNumMotor.ForeColor = System.Drawing.Color.Black
         Me.lblNumMotor.Location = New System.Drawing.Point(13, 56)
         Me.lblNumMotor.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblNumMotor.Name = "lblNumMotor"
@@ -553,7 +553,7 @@ Partial Class frmVehiculos
         '
         Me.lblMatricula.AutoSize = True
         Me.lblMatricula.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMatricula.ForeColor = System.Drawing.Color.White
+        Me.lblMatricula.ForeColor = System.Drawing.Color.Black
         Me.lblMatricula.Location = New System.Drawing.Point(13, 85)
         Me.lblMatricula.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblMatricula.Name = "lblMatricula"
@@ -565,7 +565,7 @@ Partial Class frmVehiculos
         '
         Me.chkEstado.AutoSize = True
         Me.chkEstado.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkEstado.ForeColor = System.Drawing.Color.White
+        Me.chkEstado.ForeColor = System.Drawing.Color.Black
         Me.chkEstado.Location = New System.Drawing.Point(16, 143)
         Me.chkEstado.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEstado.Name = "chkEstado"
@@ -607,7 +607,7 @@ Partial Class frmVehiculos
         '
         Me.lblBuscar.AutoSize = True
         Me.lblBuscar.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.lblBuscar.ForeColor = System.Drawing.Color.White
+        Me.lblBuscar.ForeColor = System.Drawing.Color.Black
         Me.lblBuscar.Location = New System.Drawing.Point(175, 29)
         Me.lblBuscar.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblBuscar.Name = "lblBuscar"
@@ -630,7 +630,7 @@ Partial Class frmVehiculos
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(1095, 734)
         Me.Controls.Add(Me.lblBuscar)

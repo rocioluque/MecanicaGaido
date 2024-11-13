@@ -47,7 +47,7 @@ Partial Class frmReportesProductos
         Me.Label1.AutoSize = True
         Me.Label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.ForeColor = System.Drawing.Color.Black
         Me.Label1.Location = New System.Drawing.Point(35, 27)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(49, 17)
@@ -71,7 +71,7 @@ Partial Class frmReportesProductos
         Me.grdRepuestos.AllowUserToResizeRows = False
         Me.grdRepuestos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdRepuestos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
-        Me.grdRepuestos.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.grdRepuestos.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.grdRepuestos.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
@@ -142,7 +142,7 @@ Partial Class frmReportesProductos
         Me.Label2.AutoSize = True
         Me.Label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.ForeColor = System.Drawing.Color.Black
         Me.Label2.Location = New System.Drawing.Point(403, 27)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(94, 17)
@@ -168,7 +168,7 @@ Partial Class frmReportesProductos
         Me.btnDescargarPDF.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
         Me.btnDescargarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDescargarPDF.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.btnDescargarPDF.ForeColor = System.Drawing.Color.White
+        Me.btnDescargarPDF.ForeColor = System.Drawing.Color.Black
         Me.btnDescargarPDF.Image = CType(resources.GetObject("btnDescargarPDF.Image"), System.Drawing.Image)
         Me.btnDescargarPDF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnDescargarPDF.Location = New System.Drawing.Point(406, 268)
@@ -187,7 +187,7 @@ Partial Class frmReportesProductos
         Me.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.btnCancelar.ForeColor = System.Drawing.Color.White
+        Me.btnCancelar.ForeColor = System.Drawing.Color.Black
         Me.btnCancelar.Location = New System.Drawing.Point(148, 268)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(130, 35)
@@ -199,7 +199,7 @@ Partial Class frmReportesProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(990, 572)
         Me.Controls.Add(Me.btnDescargarPDF)
         Me.Controls.Add(Me.btnCancelar)
