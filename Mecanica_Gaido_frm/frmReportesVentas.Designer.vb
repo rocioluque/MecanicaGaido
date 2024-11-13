@@ -125,7 +125,7 @@ Partial Class frmReportesVentas
         Me.chartVentasMes.ChartAreas.Add(ChartArea1)
         Legend1.Name = "Leyenda"
         Me.chartVentasMes.Legends.Add(Legend1)
-        Me.chartVentasMes.Location = New System.Drawing.Point(31, 40)
+        Me.chartVentasMes.Location = New System.Drawing.Point(39, 40)
         Me.chartVentasMes.Name = "chartVentasMes"
         Me.chartVentasMes.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen
         Series1.BorderWidth = 3

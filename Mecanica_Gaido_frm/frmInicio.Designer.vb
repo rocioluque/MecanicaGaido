@@ -57,7 +57,7 @@ Partial Class frmInicio
         '
         Me.lblFecha.AutoSize = True
         Me.lblFecha.Font = New System.Drawing.Font("Century Gothic", 15.0!)
-        Me.lblFecha.ForeColor = System.Drawing.Color.MediumSeaGreen
+        Me.lblFecha.ForeColor = System.Drawing.Color.SeaGreen
         Me.lblFecha.Location = New System.Drawing.Point(25, 73)
         Me.lblFecha.Name = "lblFecha"
         Me.lblFecha.Size = New System.Drawing.Size(72, 23)
