@@ -241,27 +241,64 @@ Public Class frmAgregarPedidoRepuesto
 
         ' TABLA DE REPUESTOS
         Dim datatable As New PdfPTable(grdRepuestos.ColumnCount)
+
+        Dim anchosColumnas As Single() = {15.0F, 70.0F, 15.0F}
+        datatable.SetWidths(anchosColumnas)
+
         datatable.DefaultCell.Padding = 3
         datatable.WidthPercentage = 100
         datatable.DefaultCell.BorderWidth = 2
         datatable.DefaultCell.VerticalAlignment = Element.ALIGN_CENTER
 
+        ' Agregar encabezados centrados
         For i As Integer = 0 To grdRepuestos.ColumnCount - 1
-            datatable.AddCell(grdRepuestos.Columns(i).HeaderText)
+            Dim headerCell As New PdfPCell(New Phrase(grdRepuestos.Columns(i).HeaderText))
+            headerCell.HorizontalAlignment = Element.ALIGN_CENTER
+            headerCell.VerticalAlignment = Element.ALIGN_CENTER
+            headerCell.BorderWidth = 2
+            datatable.AddCell(headerCell)
         Next
 
         datatable.HeaderRows = 1
         datatable.DefaultCell.BorderWidth = 1
 
-        For i As Integer = 0 To grdRepuestos.RowCount - 1 'Recorre la filas del datagridview
-            For j As Integer = 0 To grdRepuestos.ColumnCount - 1 'Recorre las columnas del datagridview
-                datatable.AddCell(grdRepuestos(j, i).Value.ToString())
+        ' Agregar datos con alineación específica para cada columna
+        For i As Integer = 0 To grdRepuestos.RowCount - 1
+            For j As Integer = 0 To grdRepuestos.ColumnCount - 1
+                Dim cell As New PdfPCell(New Phrase(grdRepuestos(j, i).Value.ToString()))
 
+                ' Configurar alineación según la columna
+                Select Case j
+                    Case 0, 2  ' Primera y tercera columna
+                        cell.HorizontalAlignment = Element.ALIGN_CENTER
+                    Case 1     ' Columna del medio
+                        cell.HorizontalAlignment = Element.ALIGN_LEFT
+                End Select
+
+                cell.VerticalAlignment = Element.ALIGN_CENTER
+                cell.BorderWidth = 1
+                datatable.AddCell(cell)
             Next
             datatable.CompleteRow()
         Next
 
         document.Add(datatable)
+        'For i As Integer = 0 To grdRepuestos.ColumnCount - 1
+        '    datatable.AddCell(grdRepuestos.Columns(i).HeaderText)
+        'Next
+
+        'datatable.HeaderRows = 1
+        'datatable.DefaultCell.BorderWidth = 1
+
+        'For i As Integer = 0 To grdRepuestos.RowCount - 1 'Recorre la filas del datagridview
+        '    For j As Integer = 0 To grdRepuestos.ColumnCount - 1 'Recorre las columnas del datagridview
+        '        datatable.AddCell(grdRepuestos(j, i).Value.ToString())
+
+        '    Next
+        '    datatable.CompleteRow()
+        'Next
+
+        'document.Add(datatable)
     End Sub
 #End Region
 
@@ -286,6 +323,7 @@ Public Class frmAgregarPedidoRepuesto
                         EnviarWhatsapp(tempFilePath)
 
                         MessageBox.Show("Documento PDF generado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        grdRepuestos.Rows.Clear()
                     Else
                         MessageBox.Show("El archivo PDF no se ha creado correctamente porque: ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
