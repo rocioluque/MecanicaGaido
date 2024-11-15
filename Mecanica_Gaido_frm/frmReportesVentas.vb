@@ -17,15 +17,126 @@ Public Class frmReportesVentas
 #End Region
 
 #Region "Grafico Ventas por mes"
+    'Private Sub VentasPorMes()
+    '    Dim año As Integer
+    '    If Integer.TryParse(txtAño.Text, año) Then
+    '        Dim dt As DataTable = o_reportes.ObtenerVentasPorMes(año)
+
+    '        lblNoInformacion.Visible = False
+    '        chartVentasMes.Visible = True
+
+    '        chartVentasMes.Series.Clear()
+
+    '        Dim seriesAñoActual As New Series("Ventas Año " & año)
+    '        seriesAñoActual.ChartType = SeriesChartType.Line
+    '        seriesAñoActual.IsValueShownAsLabel = True
+    '        seriesAñoActual.LabelForeColor = Color.White
+    '        seriesAñoActual.Color = Color.FromArgb(60, 179, 113)
+    '        seriesAñoActual.BorderWidth = 3
+
+    '        Dim seriesAñoAnterior As New Series("Ventas Año " & (año - 1))
+    '        seriesAñoAnterior.ChartType = SeriesChartType.Line
+    '        seriesAñoAnterior.IsValueShownAsLabel = True
+    '        seriesAñoAnterior.LabelForeColor = Color.White
+    '        seriesAñoAnterior.Color = Color.FromArgb(146, 139, 87)
+    '        seriesAñoAnterior.BorderWidth = 3
+
+    '        If dt.Rows.Count > 0 Then
+    '            For Each row As DataRow In dt.Rows
+    '                Dim mes As Integer = Convert.ToInt32(row("Mes"))
+    '                Dim cantidad As Decimal = Convert.ToDecimal(row("CantidadVentas"))
+    '                Dim añoDato As Integer = Convert.ToInt32(row("Año"))
+
+    '                If añoDato = año Then
+    '                    seriesAñoActual.Points.AddXY(mes, cantidad)
+    '                ElseIf añoDato = año - 1 Then
+    '                    seriesAñoAnterior.Points.AddXY(mes, cantidad)
+    '                End If
+    '            Next
+
+    '            chartVentasMes.Series.Add(seriesAñoActual)
+    '            chartVentasMes.Series.Add(seriesAñoAnterior)
+
+    '            chartVentasMes.BackColor = Color.Transparent
+    '            chartVentasMes.ChartAreas(0).BackColor = Color.Transparent
+    '            chartVentasMes.ChartAreas(0).AxisX.Interval = 1
+    '            chartVentasMes.ChartAreas(0).AxisX.Title = ""
+    '            chartVentasMes.ChartAreas(0).AxisX.LabelStyle.ForeColor = Color.White
+    '            chartVentasMes.ChartAreas(0).AxisX.LineColor = Color.White
+    '            chartVentasMes.ChartAreas(0).AxisX.MajorGrid.Enabled = False
+    '            chartVentasMes.ChartAreas(0).AxisX.LabelStyle.Font = New Font("Century Gothic", 9.75F)
+    '            chartVentasMes.ChartAreas(0).AxisX.TitleForeColor = Color.White
+    '            chartVentasMes.ChartAreas(0).AxisX.LabelStyle.Angle = -45
+    '            chartVentasMes.ChartAreas(0).AxisX.CustomLabels.Clear()
+
+    '            For i As Integer = 1 To 12
+    '                chartVentasMes.ChartAreas(0).AxisX.CustomLabels.Add(i - 0.5, i + 0.5, New DateTime(2023, i, 1).ToString("MMMM"))
+    '            Next
+
+    '            chartVentasMes.ChartAreas(0).AxisY.Title = "Cant. de Ventas"
+    '            chartVentasMes.ChartAreas(0).AxisY.LabelStyle.ForeColor = Color.White
+    '            chartVentasMes.ChartAreas(0).AxisY.LineColor = Color.White
+    '            chartVentasMes.ChartAreas(0).AxisY.MajorGrid.LineColor = Color.Gray
+    '            chartVentasMes.ChartAreas(0).AxisY.LabelStyle.Font = New Font("Century Gothic", 8)
+    '            chartVentasMes.ChartAreas(0).AxisY.TitleForeColor = Color.White
+
+    '            chartVentasMes.Legends.Clear()
+    '            Dim legend As New Legend("Leyenda")
+    '            legend.Docking = Docking.Top
+    '            legend.BackColor = Color.Transparent
+    '            legend.ForeColor = Color.White
+    '            legend.Title = "Ventas por Mes"
+    '            legend.TitleFont = New Font("Century Gothic", 9.75F, FontStyle.Regular)
+    '            legend.TitleForeColor = Color.White
+    '            legend.Alignment = StringAlignment.Center
+    '            chartVentasMes.Legends.Add(legend)
+    '        Else
+    '            lblNoInformacion.Visible = True
+    '            chartVentasMes.Visible = False
+    '            lblNoInformacion.Text = "No hay ventas en el año seleccionado."
+    '        End If
+    '    End If
+    'End Sub
     Private Sub VentasPorMes()
         Dim año As Integer
+
         If Integer.TryParse(txtAño.Text, año) Then
             Dim dt As DataTable = o_reportes.ObtenerVentasPorMes(año)
 
             lblNoInformacion.Visible = False
             chartVentasMes.Visible = True
 
+            ' Limpiar solo las series y leyendas, mantener el ChartArea
             chartVentasMes.Series.Clear()
+            chartVentasMes.Legends.Clear()
+
+            ' Obtener el ChartArea existente o crear uno nuevo si no existe
+            Dim chartArea As ChartArea
+            If chartVentasMes.ChartAreas.Count > 0 Then
+                chartArea = chartVentasMes.ChartAreas(0)
+            Else
+                chartArea = New ChartArea()
+                chartVentasMes.ChartAreas.Add(chartArea)
+            End If
+
+            ' Configurar el ChartArea
+            chartArea.BackColor = Color.Transparent
+            chartArea.AxisX.Interval = 1
+            chartArea.AxisX.Title = ""
+            chartArea.AxisX.LabelStyle.ForeColor = Color.White
+            chartArea.AxisX.LineColor = Color.White
+            chartArea.AxisX.MajorGrid.Enabled = False
+            chartArea.AxisX.LabelStyle.Font = New Font("Century Gothic", 9.75F)
+            chartArea.AxisX.TitleForeColor = Color.White
+            chartArea.AxisX.LabelStyle.Angle = -45
+
+            ' Configurar eje Y
+            chartArea.AxisY.Title = "Cant. de Ventas"
+            chartArea.AxisY.LabelStyle.ForeColor = Color.White
+            chartArea.AxisY.LineColor = Color.White
+            chartArea.AxisY.MajorGrid.LineColor = Color.Gray
+            chartArea.AxisY.LabelStyle.Font = New Font("Century Gothic", 8)
+            chartArea.AxisY.TitleForeColor = Color.White
 
             Dim seriesAñoActual As New Series("Ventas Año " & año)
             seriesAñoActual.ChartType = SeriesChartType.Line
@@ -57,30 +168,13 @@ Public Class frmReportesVentas
                 chartVentasMes.Series.Add(seriesAñoActual)
                 chartVentasMes.Series.Add(seriesAñoAnterior)
 
-                chartVentasMes.BackColor = Color.Transparent
-                chartVentasMes.ChartAreas(0).BackColor = Color.Transparent
-                chartVentasMes.ChartAreas(0).AxisX.Interval = 1
-                chartVentasMes.ChartAreas(0).AxisX.Title = ""
-                chartVentasMes.ChartAreas(0).AxisX.LabelStyle.ForeColor = Color.White
-                chartVentasMes.ChartAreas(0).AxisX.LineColor = Color.White
-                chartVentasMes.ChartAreas(0).AxisX.MajorGrid.Enabled = False
-                chartVentasMes.ChartAreas(0).AxisX.LabelStyle.Font = New Font("Century Gothic", 9.75F)
-                chartVentasMes.ChartAreas(0).AxisX.TitleForeColor = Color.White
-                chartVentasMes.ChartAreas(0).AxisX.LabelStyle.Angle = -45
-                chartVentasMes.ChartAreas(0).AxisX.CustomLabels.Clear()
-
+                ' Configurar etiquetas personalizadas del eje X
+                chartArea.AxisX.CustomLabels.Clear()
                 For i As Integer = 1 To 12
-                    chartVentasMes.ChartAreas(0).AxisX.CustomLabels.Add(i - 0.5, i + 0.5, New DateTime(2023, i, 1).ToString("MMMM"))
+                    chartArea.AxisX.CustomLabels.Add(i - 0.5, i + 0.5, New DateTime(2023, i, 1).ToString("MMMM"))
                 Next
 
-                chartVentasMes.ChartAreas(0).AxisY.Title = "Cant. de Ventas"
-                chartVentasMes.ChartAreas(0).AxisY.LabelStyle.ForeColor = Color.White
-                chartVentasMes.ChartAreas(0).AxisY.LineColor = Color.White
-                chartVentasMes.ChartAreas(0).AxisY.MajorGrid.LineColor = Color.Gray
-                chartVentasMes.ChartAreas(0).AxisY.LabelStyle.Font = New Font("Century Gothic", 8)
-                chartVentasMes.ChartAreas(0).AxisY.TitleForeColor = Color.White
-
-                chartVentasMes.Legends.Clear()
+                ' Configurar leyenda
                 Dim legend As New Legend("Leyenda")
                 legend.Docking = Docking.Top
                 legend.BackColor = Color.Transparent
@@ -90,6 +184,8 @@ Public Class frmReportesVentas
                 legend.TitleForeColor = Color.White
                 legend.Alignment = StringAlignment.Center
                 chartVentasMes.Legends.Add(legend)
+
+                chartVentasMes.BackColor = Color.Transparent
             Else
                 lblNoInformacion.Visible = True
                 chartVentasMes.Visible = False
@@ -99,14 +195,14 @@ Public Class frmReportesVentas
     End Sub
 
     Private Sub txtAño_TextChanged(sender As Object, e As EventArgs) Handles txtAño.TextChanged
-        'Dim año As Integer
-        'If txtAño.Text.Length = 4 AndAlso Integer.TryParse(txtAño.Text, año) Then
-        '    VentasPorMes()
-        'Else
-        '    lblNoInformacion.Visible = True
-        '    chartVentasMes.Visible = False
-        '    lblNoInformacion.Text = "Ingrese un año valido"
-        'End If
+        Dim año As Integer
+        If txtAño.Text.Length = 4 AndAlso Integer.TryParse(txtAño.Text, año) Then
+            VentasPorMes()
+        Else
+            lblNoInformacion.Visible = True
+            chartVentasMes.Visible = False
+            lblNoInformacion.Text = "Ingrese un año valido"
+        End If
     End Sub
 #End Region
 

@@ -22,19 +22,9 @@ Partial Class frmReportesVentas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim CustomLabel1 As System.Windows.Forms.DataVisualization.Charting.CustomLabel = New System.Windows.Forms.DataVisualization.Charting.CustomLabel()
-        Dim CustomLabel2 As System.Windows.Forms.DataVisualization.Charting.CustomLabel = New System.Windows.Forms.DataVisualization.Charting.CustomLabel()
-        Dim CustomLabel3 As System.Windows.Forms.DataVisualization.Charting.CustomLabel = New System.Windows.Forms.DataVisualization.Charting.CustomLabel()
-        Dim CustomLabel4 As System.Windows.Forms.DataVisualization.Charting.CustomLabel = New System.Windows.Forms.DataVisualization.Charting.CustomLabel()
-        Dim CustomLabel5 As System.Windows.Forms.DataVisualization.Charting.CustomLabel = New System.Windows.Forms.DataVisualization.Charting.CustomLabel()
-        Dim CustomLabel6 As System.Windows.Forms.DataVisualization.Charting.CustomLabel = New System.Windows.Forms.DataVisualization.Charting.CustomLabel()
-        Dim CustomLabel7 As System.Windows.Forms.DataVisualization.Charting.CustomLabel = New System.Windows.Forms.DataVisualization.Charting.CustomLabel()
-        Dim CustomLabel8 As System.Windows.Forms.DataVisualization.Charting.CustomLabel = New System.Windows.Forms.DataVisualization.Charting.CustomLabel()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
         Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmReportesVentas))
         Me.lblNoInformacion = New System.Windows.Forms.Label()
@@ -84,57 +74,14 @@ Partial Class frmReportesVentas
         'chartVentasMes
         '
         Me.chartVentasMes.BackColor = System.Drawing.Color.Transparent
-        CustomLabel1.ForeColor = System.Drawing.Color.White
-        CustomLabel1.Text = "Enero"
-        CustomLabel2.Text = "Febrero"
-        CustomLabel3.Text = "Marzo"
-        CustomLabel4.Text = "Abril"
-        CustomLabel5.Text = "Mayo"
-        CustomLabel6.Text = "Junio"
-        CustomLabel7.Text = "Julio"
-        ChartArea1.AxisX.CustomLabels.Add(CustomLabel1)
-        ChartArea1.AxisX.CustomLabels.Add(CustomLabel2)
-        ChartArea1.AxisX.CustomLabels.Add(CustomLabel3)
-        ChartArea1.AxisX.CustomLabels.Add(CustomLabel4)
-        ChartArea1.AxisX.CustomLabels.Add(CustomLabel5)
-        ChartArea1.AxisX.CustomLabels.Add(CustomLabel6)
-        ChartArea1.AxisX.CustomLabels.Add(CustomLabel7)
-        ChartArea1.AxisX.CustomLabels.Add(CustomLabel8)
-        ChartArea1.AxisX.InterlacedColor = System.Drawing.Color.LightGray
-        ChartArea1.AxisX.Interval = 1.0R
-        ChartArea1.AxisX.LabelStyle.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ChartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea1.AxisX.LineColor = System.Drawing.Color.LightGray
-        ChartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray
-        ChartArea1.AxisX.Maximum = 12.0R
-        ChartArea1.AxisX.Minimum = 1.0R
-        ChartArea1.AxisX.Title = "Mes"
-        ChartArea1.AxisX.TitleFont = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ChartArea1.AxisX.TitleForeColor = System.Drawing.Color.White
-        ChartArea1.AxisY.InterlacedColor = System.Drawing.Color.LightGray
-        ChartArea1.AxisY.IsLabelAutoFit = False
-        ChartArea1.AxisY.LabelStyle.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ChartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea1.AxisY.LineColor = System.Drawing.Color.LightGray
-        ChartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray
-        ChartArea1.AxisY.Title = "Cant. de Ventas"
-        ChartArea1.AxisY.TitleFont = New System.Drawing.Font("Century Gothic", 9.0!)
-        ChartArea1.AxisY.TitleForeColor = System.Drawing.Color.White
-        ChartArea1.BorderColor = System.Drawing.Color.White
-        ChartArea1.Name = "ChartArea1"
-        Me.chartVentasMes.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Leyenda"
-        Me.chartVentasMes.Legends.Add(Legend1)
-        Me.chartVentasMes.Location = New System.Drawing.Point(39, 40)
+        Me.chartVentasMes.Location = New System.Drawing.Point(31, 44)
         Me.chartVentasMes.Name = "chartVentasMes"
         Me.chartVentasMes.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen
         Series1.BorderWidth = 3
-        Series1.ChartArea = "ChartArea1"
         Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
         Series1.Color = System.Drawing.Color.SeaGreen
         Series1.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Series1.IsValueShownAsLabel = True
-        Series1.Legend = "Leyenda"
         Series1.MarkerColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
         Series1.MarkerSize = 8
         Series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle
@@ -148,25 +95,25 @@ Partial Class frmReportesVentas
         '
         Me.ChtVentasEmpleado.BackColor = System.Drawing.Color.Transparent
         Me.ChtVentasEmpleado.BackSecondaryColor = System.Drawing.Color.White
-        ChartArea2.Area3DStyle.Inclination = 10
-        ChartArea2.AxisX.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ChartArea2.AxisX.TitleForeColor = System.Drawing.Color.White
-        ChartArea2.AxisX2.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ChartArea2.AxisX2.TitleForeColor = System.Drawing.Color.White
-        ChartArea2.AxisY.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ChartArea2.AxisY.TitleForeColor = System.Drawing.Color.White
-        ChartArea2.AxisY2.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ChartArea2.AxisY2.TitleForeColor = System.Drawing.Color.White
-        ChartArea2.BackColor = System.Drawing.Color.Transparent
-        ChartArea2.BorderColor = System.Drawing.Color.SeaGreen
-        ChartArea2.CursorX.LineColor = System.Drawing.Color.White
-        ChartArea2.CursorX.SelectionColor = System.Drawing.Color.WhiteSmoke
-        ChartArea2.CursorY.LineColor = System.Drawing.Color.White
-        ChartArea2.CursorY.SelectionColor = System.Drawing.Color.WhiteSmoke
-        ChartArea2.Name = "ChartArea1"
-        Me.ChtVentasEmpleado.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Leyenda"
-        Me.ChtVentasEmpleado.Legends.Add(Legend2)
+        ChartArea1.Area3DStyle.Inclination = 10
+        ChartArea1.AxisX.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea1.AxisX.TitleForeColor = System.Drawing.Color.White
+        ChartArea1.AxisX2.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea1.AxisX2.TitleForeColor = System.Drawing.Color.White
+        ChartArea1.AxisY.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea1.AxisY.TitleForeColor = System.Drawing.Color.White
+        ChartArea1.AxisY2.TitleFont = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea1.AxisY2.TitleForeColor = System.Drawing.Color.White
+        ChartArea1.BackColor = System.Drawing.Color.Transparent
+        ChartArea1.BorderColor = System.Drawing.Color.SeaGreen
+        ChartArea1.CursorX.LineColor = System.Drawing.Color.White
+        ChartArea1.CursorX.SelectionColor = System.Drawing.Color.WhiteSmoke
+        ChartArea1.CursorY.LineColor = System.Drawing.Color.White
+        ChartArea1.CursorY.SelectionColor = System.Drawing.Color.WhiteSmoke
+        ChartArea1.Name = "ChartArea1"
+        Me.ChtVentasEmpleado.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Leyenda"
+        Me.ChtVentasEmpleado.Legends.Add(Legend1)
         Me.ChtVentasEmpleado.Location = New System.Drawing.Point(31, 388)
         Me.ChtVentasEmpleado.Name = "ChtVentasEmpleado"
         Me.ChtVentasEmpleado.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen

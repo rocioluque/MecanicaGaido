@@ -819,9 +819,6 @@ Public Class frmVentas
             detalles.Columns.Add("PrecioVenta", GetType(Decimal))
             detalles.Columns.Add("Estado", GetType(Boolean))
 
-            ' Llenar el DataTable con los detalles de la venta (ejemplo)
-            ' Aquí deberías agregar la lógica para obtener los detalles de los controles de tu formulario
-            ' Por ejemplo:
             For Each row As DataGridViewRow In grdVentas.Rows
                 detalles.Rows.Add(row.Cells("ID").Value,
                                     1, 'por no trabajar con lote
@@ -830,7 +827,7 @@ Public Class frmVentas
                                     row.Cells("Precio").Value,
                                     1)
             Next
-            Dim ID_Venta As Integer = 0 ' Variable para almacenar el ID de la venta
+            Dim ID_Venta As Integer = 0
 
             If cboTipoVenta.SelectedValue <> 2 Then
                 ' Llamar al método para agregar la venta con detalle
@@ -891,7 +888,8 @@ Public Class frmVentas
 
 
             MessageBox.Show("Venta registrada con éxito.")
-            limpiar()
+            btnCancelar.PerformClick()
+
         Catch ex As Exception
             MessageBox.Show("Error al registrar la venta: " & ex.Message)
         End Try
@@ -1035,10 +1033,9 @@ Public Class frmVentas
             Cargar_Grilla_Ventas()
 
             MessageBox.Show("Venta modificada con éxito.")
-            limpiar()
+
             btnCancelar.PerformClick()
-            Dim oVenta As New AD_Ventas
-            txtNumComprobante.Text = oVenta.ObtenerNroComprobante
+
         Catch ex As Exception
             MessageBox.Show("Error al modificar la venta: " & ex.Message)
         End Try
