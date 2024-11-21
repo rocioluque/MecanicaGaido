@@ -58,12 +58,12 @@ Partial Class frmMenuPrincipal
         Me.btnVehiculos = New System.Windows.Forms.Button()
         Me.btnPersonas = New System.Windows.Forms.Button()
         Me.btnInicio = New System.Windows.Forms.Button()
-        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.PanelUsuario = New System.Windows.Forms.Panel()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelMenu.SuspendLayout()
         Me.PanelCboGestion.SuspendLayout()
         Me.PanelCboTableroControl.SuspendLayout()
-        Me.Panel3.SuspendLayout()
+        Me.PanelUsuario.SuspendLayout()
         Me.SuspendLayout()
         '
         'PanelContenedor
@@ -146,7 +146,7 @@ Partial Class frmMenuPrincipal
         Me.PanelMenu.Controls.Add(Me.btnVehiculos)
         Me.PanelMenu.Controls.Add(Me.btnPersonas)
         Me.PanelMenu.Controls.Add(Me.btnInicio)
-        Me.PanelMenu.Controls.Add(Me.Panel3)
+        Me.PanelMenu.Controls.Add(Me.PanelUsuario)
         Me.PanelMenu.Dock = System.Windows.Forms.DockStyle.Left
         Me.PanelMenu.ForeColor = System.Drawing.Color.White
         Me.PanelMenu.Location = New System.Drawing.Point(0, 0)
@@ -673,19 +673,19 @@ Partial Class frmMenuPrincipal
         Me.btnInicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnInicio.UseVisualStyleBackColor = False
         '
-        'Panel3
+        'PanelUsuario
         '
-        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(147, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(147, Byte), Integer))
-        Me.Panel3.Controls.Add(Me.PictureBox7)
-        Me.Panel3.Controls.Add(Me.Label2)
-        Me.Panel3.Controls.Add(Me.lblUsuario)
-        Me.Panel3.Controls.Add(Me.Label1)
-        Me.Panel3.Controls.Add(Me.lblRol)
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel3.Location = New System.Drawing.Point(0, 0)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(230, 68)
-        Me.Panel3.TabIndex = 1
+        Me.PanelUsuario.BackColor = System.Drawing.Color.FromArgb(CType(CType(147, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(147, Byte), Integer))
+        Me.PanelUsuario.Controls.Add(Me.PictureBox7)
+        Me.PanelUsuario.Controls.Add(Me.Label2)
+        Me.PanelUsuario.Controls.Add(Me.lblUsuario)
+        Me.PanelUsuario.Controls.Add(Me.Label1)
+        Me.PanelUsuario.Controls.Add(Me.lblRol)
+        Me.PanelUsuario.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PanelUsuario.Location = New System.Drawing.Point(0, 0)
+        Me.PanelUsuario.Name = "PanelUsuario"
+        Me.PanelUsuario.Size = New System.Drawing.Size(230, 68)
+        Me.PanelUsuario.TabIndex = 1
         '
         'frmMenuPrincipal
         '
@@ -707,8 +707,8 @@ Partial Class frmMenuPrincipal
         Me.PanelMenu.ResumeLayout(False)
         Me.PanelCboGestion.ResumeLayout(False)
         Me.PanelCboTableroControl.ResumeLayout(False)
-        Me.Panel3.ResumeLayout(False)
-        Me.Panel3.PerformLayout()
+        Me.PanelUsuario.ResumeLayout(False)
+        Me.PanelUsuario.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -718,7 +718,7 @@ Partial Class frmMenuPrincipal
     Friend WithEvents lblRol As Label
     Friend WithEvents lblUsuario As Label
     Friend WithEvents PanelMenu As Panel
-    Friend WithEvents Panel3 As Panel
+    Friend WithEvents PanelUsuario As Panel
     Friend WithEvents btnOrdenReparacion As Button
     Friend WithEvents btnVehiculos As Button
     Friend WithEvents btnProductos As Button

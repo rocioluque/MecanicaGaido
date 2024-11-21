@@ -57,8 +57,9 @@
                 ElseIf btn.Parent IsNot Nothing AndAlso btn.Parent.Name = "PanelMenu" Then
                     btn.BackColor = If(ModoActualOscuro, ModoOscuroPanelNav, ModoClaroPanelNav)
                 Else
-                    btn.BackColor = colorBoton
+                    btn.BackColor = If(ModoActualOscuro, ModoOscuroFondo, ModoClaroFondo)
                 End If
+
                 btn.ForeColor = colorTexto
 
                 If btn.Parent.Name = "PanelCboTableroControl" OrElse btn.Parent.Name = "PanelCboGestion" Then
@@ -195,5 +196,4 @@
             AplicarTema(form)
         Next
     End Sub
-
 End Module

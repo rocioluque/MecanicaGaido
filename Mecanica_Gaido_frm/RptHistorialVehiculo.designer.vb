@@ -577,7 +577,7 @@ Partial Class RptHistorialVehiculo
         Me.TextBox1.Style.Font.Name = "Arial"
         Me.TextBox1.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14.0R)
         Me.TextBox1.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left
-        Me.TextBox1.Value = "REPARACIONES POR VEHICULO"
+        Me.TextBox1.Value = "REPARACIONES POR VEHÍCULO"
         '
         'TextBox46
         '
