@@ -80,6 +80,15 @@ Public Class frmReportesReparaciones
                 chartReparacionesMes.ChartAreas(0).AxisY.LabelStyle.Font = New Font("Century Gothic", 8)
                 chartReparacionesMes.ChartAreas(0).AxisY.TitleForeColor = Color.White
 
+                Dim maxCantidad As Integer = dt.AsEnumerable().Max(Function(row) Convert.ToInt32(row("CantidadReparaciones")))
+                Dim minCantidad As Integer = dt.AsEnumerable().Min(Function(row) Convert.ToInt32(row("CantidadReparaciones")))
+                Dim intervalo As Integer = Math.Ceiling((maxCantidad - minCantidad) / 5.0)
+
+                chartReparacionesMes.ChartAreas(0).AxisY.Interval = Math.Max(intervalo, 1)
+                chartReparacionesMes.ChartAreas(0).AxisY.MajorGrid.Interval = Math.Max(intervalo, 1)
+                chartReparacionesMes.ChartAreas(0).AxisY.Minimum = Math.Max(minCantidad - intervalo, 0)
+                chartReparacionesMes.ChartAreas(0).AxisY.Maximum = maxCantidad + intervalo
+
                 chartReparacionesMes.Legends.Clear()
                 Dim legend As New Legend("Leyenda")
                 legend.Docking = Docking.Top
@@ -151,6 +160,13 @@ Public Class frmReportesReparaciones
 
         ChtOrdenReparacion.Series.Add(series)
 
+        ' Configuración de intervalos dinámicos
+        Dim intervalo As Integer = Math.Ceiling((maxCantidad - minCantidad) / 5.0)
+        ChtOrdenReparacion.ChartAreas(0).AxisY.Interval = Math.Max(intervalo, 1)
+        ChtOrdenReparacion.ChartAreas(0).AxisY.MajorGrid.Interval = Math.Max(intervalo, 1)
+        ChtOrdenReparacion.ChartAreas(0).AxisY.Minimum = Math.Max(minCantidad - intervalo, 0)
+        ChtOrdenReparacion.ChartAreas(0).AxisY.Maximum = maxCantidad + intervalo
+
         ChtOrdenReparacion.BackColor = Color.Transparent
         ChtOrdenReparacion.ChartAreas(0).BackColor = Color.Transparent
 
@@ -163,15 +179,6 @@ Public Class frmReportesReparaciones
         ChtOrdenReparacion.ChartAreas(0).AxisX.LabelStyle.Font = New Font("Century Gothic", 8)
 
         ChtOrdenReparacion.ChartAreas(0).AxisY.Title = "Cantidad de Órdenes"
-        ChtOrdenReparacion.ChartAreas(0).AxisY.IsStartedFromZero = True
-
-        Dim intervalo As Integer = Math.Ceiling((maxCantidad - minCantidad) / 5.0)
-        ChtOrdenReparacion.ChartAreas(0).AxisY.Interval = Math.Max(intervalo, 1)
-        ChtOrdenReparacion.ChartAreas(0).AxisY.MajorGrid.Interval = Math.Max(intervalo, 1)
-
-        ChtOrdenReparacion.ChartAreas(0).AxisY.Minimum = Math.Max(minCantidad - intervalo, 0)
-        ChtOrdenReparacion.ChartAreas(0).AxisY.Maximum = maxCantidad + intervalo
-
         ChtOrdenReparacion.ChartAreas(0).AxisY.LabelStyle.ForeColor = Color.White
         ChtOrdenReparacion.ChartAreas(0).AxisY.LineColor = Color.White
         ChtOrdenReparacion.ChartAreas(0).AxisY.MajorGrid.LineColor = Color.Gray

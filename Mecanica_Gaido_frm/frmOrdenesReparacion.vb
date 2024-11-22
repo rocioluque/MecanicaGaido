@@ -1100,6 +1100,7 @@ Public Class frmOrdenesReparacion
             NumOrdenCell.BorderWidthRight = 1
             NumOrdenCell.BorderColor = BaseColor.BLACK
             NumOrdenCell.HorizontalAlignment = Element.ALIGN_LEFT
+            NumOrdenCell.VerticalAlignment = Element.ALIGN_BOTTOM
             encabezado.AddCell(NumOrdenCell)
 
             ' Fila 2 Columnas 4-5-6 VACIAS
@@ -1190,7 +1191,7 @@ Public Class frmOrdenesReparacion
             DatosCliente.WidthPercentage = 100
 
             ' Filas 1-2 Columnas 1 a 5
-            Dim NombreCelll As New PdfPCell(New Paragraph("  Señor/es: " & nombrePersona, FontFactory.GetFont(FontFactory.HELVETICA, 11)))
+            Dim NombreCelll As New PdfPCell(New Paragraph("Señor/es: " & nombrePersona, FontFactory.GetFont(FontFactory.HELVETICA, 11)))
             NombreCelll.Colspan = 5
             NombreCelll.Rowspan = 2
             NombreCelll.Border = PdfPCell.NO_BORDER
@@ -1199,6 +1200,7 @@ Public Class frmOrdenesReparacion
             NombreCelll.BorderColor = BaseColor.BLACK
             NombreCelll.HorizontalAlignment = Element.ALIGN_LEFT
             NombreCelll.VerticalAlignment = Element.ALIGN_BOTTOM
+            NombreCelll.PaddingLeft = 10
             DatosCliente.AddCell(NombreCelll)
 
             ' Filas 1-2 Columnas 6-7-8
@@ -1214,13 +1216,14 @@ Public Class frmOrdenesReparacion
             DatosCliente.AddCell(TelCell)
 
             ' Fila 3 Columnas 1 a 4
-            Dim DomicilioCell As New PdfPCell(New Paragraph("  Domicilio: " & direccionPersona, FontFactory.GetFont(FontFactory.HELVETICA, 11)))
+            Dim DomicilioCell As New PdfPCell(New Paragraph("Domicilio: " & direccionPersona, FontFactory.GetFont(FontFactory.HELVETICA, 11)))
             DomicilioCell.Colspan = 4
             DomicilioCell.Border = PdfPCell.NO_BORDER
             DomicilioCell.BorderWidthLeft = 1
             DomicilioCell.BorderColor = BaseColor.BLACK
             DomicilioCell.HorizontalAlignment = Element.ALIGN_LEFT
             DomicilioCell.VerticalAlignment = Element.ALIGN_CENTER
+            DomicilioCell.PaddingLeft = 10
             DatosCliente.AddCell(DomicilioCell)
 
             ' Fila 3 Columnas 5 a 8
@@ -1234,13 +1237,14 @@ Public Class frmOrdenesReparacion
             DatosCliente.AddCell(LocalidadCell)
 
             ' Filas 4-5 Columna 1
-            Dim IVACell As New PdfPCell(New Paragraph("  IVA", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
+            Dim IVACell As New PdfPCell(New Paragraph("IVA", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
             IVACell.Colspan = 1
             IVACell.Rowspan = 2
             IVACell.Border = PdfPCell.NO_BORDER
             IVACell.BorderWidthLeft = 1
             IVACell.HorizontalAlignment = Element.ALIGN_LEFT
             IVACell.VerticalAlignment = Element.ALIGN_TOP
+            IVACell.PaddingLeft = 10
             DatosCliente.AddCell(IVACell)
 
             ' Filas 4-5 Columna 2-3
@@ -1296,7 +1300,7 @@ Public Class frmOrdenesReparacion
             DatosVehículo.AddCell(SeparadorTabla)
 
             ' Filas 2-3 Columnas 1 a 4
-            Dim MarcaCell As New PdfPCell(New Phrase("  Marca: " & marcaVehiculo, FontFactory.GetFont(FontFactory.HELVETICA, 11)))
+            Dim MarcaCell As New PdfPCell(New Phrase("Marca: " & marcaVehiculo, FontFactory.GetFont(FontFactory.HELVETICA, 11)))
             MarcaCell.Colspan = 4
             MarcaCell.Rowspan = 2
             MarcaCell.Border = PdfPCell.NO_BORDER
@@ -1305,6 +1309,7 @@ Public Class frmOrdenesReparacion
             MarcaCell.BorderColor = BaseColor.BLACK
             MarcaCell.HorizontalAlignment = Element.ALIGN_LEFT
             MarcaCell.VerticalAlignment = Element.ALIGN_BOTTOM
+            MarcaCell.PaddingLeft = 10
             DatosVehículo.AddCell(MarcaCell)
 
             ' Filas 2-3 Columnas 5-6
@@ -1330,13 +1335,14 @@ Public Class frmOrdenesReparacion
             DatosVehículo.AddCell(HorasCell)
 
             ' Fila 4 Columnas 1 a 4
-            Dim ChasisCell As New PdfPCell(New Phrase("  Chasis: " & chasisVehiculo, FontFactory.GetFont(FontFactory.HELVETICA, 11)))
+            Dim ChasisCell As New PdfPCell(New Phrase("Chasis: " & chasisVehiculo, FontFactory.GetFont(FontFactory.HELVETICA, 11)))
             ChasisCell.Colspan = 4
             ChasisCell.Border = PdfPCell.NO_BORDER
             ChasisCell.BorderWidthLeft = 1
             ChasisCell.BorderColor = BaseColor.BLACK
             ChasisCell.HorizontalAlignment = Element.ALIGN_LEFT
             ChasisCell.VerticalAlignment = Element.ALIGN_BOTTOM
+            ChasisCell.PaddingLeft = 10
             DatosVehículo.AddCell(ChasisCell)
 
             ' Fila 4 Columnas 5-6
@@ -1392,6 +1398,7 @@ Public Class frmOrdenesReparacion
             TrabajosCell.Border = PdfPCell.BOX
             TrabajosCell.BorderColor = BaseColor.BLACK
             TrabajosCell.BorderWidth = 1
+            TrabajosCell.VerticalAlignment = Element.ALIGN_CENTER
             TrabajosCell.HorizontalAlignment = Element.ALIGN_CENTER
             TrabajosCell.BackgroundColor = New BaseColor(46, 139, 87)
             TablaTrabajos.AddCell(TrabajosCell)
@@ -1403,59 +1410,110 @@ Public Class frmOrdenesReparacion
             ImporteCell.BorderColor = BaseColor.BLACK
             ImporteCell.BorderWidth = 1
             ImporteCell.HorizontalAlignment = Element.ALIGN_CENTER
+            ImporteCell.VerticalAlignment = Element.ALIGN_CENTER
             ImporteCell.BackgroundColor = New BaseColor(46, 139, 87)
             TablaTrabajos.AddCell(ImporteCell)
 
             ' Separar el contenido del txtMotivoReparacion en líneas según el ancho máximo permitido
             Dim motivoReparacion As String = txtMotivoReparacion.Text
-            Dim lineasMotivo As List(Of String) = DividirTextoEnLineas(motivoReparacion, 60)
+            Dim fuente As BaseFont = FontFactory.GetFont(FontFactory.HELVETICA).BaseFont
+            Dim tamanioFuente As Single = 11
+            Dim anchoDisponible As Single = 595 * (0.8F + 2.5F + 0.5F + 2.5F) / 10 ' Ajuste proporcional según el ancho de las columnas
 
-            ' Filas dinámicas según las líneas de motivoReparacion
+            Dim lineasMotivo As List(Of String) = DividirTextoAutomaticamente(motivoReparacion, fuente, tamanioFuente, anchoDisponible)
+
+            ' Determinar el importe solo una vez, ya que será una celda combinada
+            Dim textoImporte As String = txtMontoManoObra.Text
+
+            ' Crea la celda del importe con Rowspan igual al número de líneas del motivo
+            Dim CeldaImporte As New PdfPCell(New Phrase(textoImporte, FontFactory.GetFont(FontFactory.HELVETICA, tamanioFuente)))
+            CeldaImporte.Colspan = 2
+            CeldaImporte.Rowspan = lineasMotivo.Count
+            CeldaImporte.Border = PdfPCell.LEFT_BORDER Or PdfPCell.RIGHT_BORDER Or PdfPCell.BOTTOM_BORDER
+            CeldaImporte.BorderWidthLeft = 1
+            CeldaImporte.BorderWidthRight = 1
+            CeldaImporte.BorderWidthBottom = 0.5F
+            CeldaImporte.HorizontalAlignment = Element.ALIGN_RIGHT
+            CeldaImporte.VerticalAlignment = Element.ALIGN_MIDDLE
+            CeldaImporte.PaddingRight = 10
+
+            ' Agregar las celdas a la tabla
             For i As Integer = 0 To lineasMotivo.Count - 1
                 ' Columnas 1 a 4: Motivo de reparación
                 Dim textoLinea As String = lineasMotivo(i)
-                Dim CeldaMotivo As New PdfPCell(New Phrase(textoLinea, FontFactory.GetFont(FontFactory.HELVETICA, 11)))
+                Dim CeldaMotivo As New PdfPCell(New Phrase(textoLinea, FontFactory.GetFont(FontFactory.HELVETICA, tamanioFuente)))
                 CeldaMotivo.Colspan = 4
                 CeldaMotivo.FixedHeight = filaTrabajos
                 CeldaMotivo.Border = PdfPCell.LEFT_BORDER Or PdfPCell.RIGHT_BORDER Or PdfPCell.BOTTOM_BORDER
                 CeldaMotivo.BorderWidthLeft = 1
                 CeldaMotivo.BorderWidthRight = 1
                 CeldaMotivo.BorderWidthBottom = 0.5F
+                CeldaMotivo.PaddingLeft = 10
                 TablaTrabajos.AddCell(CeldaMotivo)
 
-                ' Columnas 5-6: Monto Mano de Obra solo en la primera fila
-                Dim textoImporte As String = If(i = 0, txtMontoManoObra.Text, " ")
-                Dim CeldaImporte As New PdfPCell(New Phrase(textoImporte, FontFactory.GetFont(FontFactory.HELVETICA, 11)))
-                CeldaImporte.Colspan = 2
-                CeldaImporte.FixedHeight = filaTrabajos
-                CeldaImporte.Border = PdfPCell.LEFT_BORDER Or PdfPCell.RIGHT_BORDER Or PdfPCell.BOTTOM_BORDER
-                CeldaImporte.BorderWidthLeft = 1
-                CeldaImporte.BorderWidthRight = 1
-                CeldaImporte.BorderWidthBottom = 0.5F
-                TablaTrabajos.AddCell(CeldaImporte)
+                ' Solo agregar la celda del importe una vez, en la primera iteración
+                If i = 0 Then
+                    TablaTrabajos.AddCell(CeldaImporte)
+                End If
             Next
 
-            ' Fila final con bordes completos (Columnas 1-4)
-            Dim TrabajosColspanFinalCell As New PdfPCell(New Phrase(" ", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
-            TrabajosColspanFinalCell.Colspan = 4
-            TrabajosColspanFinalCell.FixedHeight = filaTrabajos
-            TrabajosColspanFinalCell.Border = PdfPCell.LEFT_BORDER Or PdfPCell.RIGHT_BORDER Or PdfPCell.BOTTOM_BORDER
-            TrabajosColspanFinalCell.BorderColor = BaseColor.BLACK
-            TrabajosColspanFinalCell.BorderWidthLeft = 1
-            TrabajosColspanFinalCell.BorderWidthRight = 1
-            TrabajosColspanFinalCell.BorderWidthBottom = 1
-            TablaTrabajos.AddCell(TrabajosColspanFinalCell)
+            ' Fila con títulos
+            Dim TituloSeñasCell As PdfPCell = New PdfPCell(New Phrase("SEÑAS PARTICULARES", FontFactory.GetFont(FontFactory.HELVETICA, 12, Font.Bold, BaseColor.WHITE)))
+            TituloSeñasCell.Colspan = 4
+            TituloSeñasCell.Border = PdfPCell.BOX
+            TituloSeñasCell.BorderColor = BaseColor.BLACK
+            TituloSeñasCell.BorderWidth = 1
+            TituloSeñasCell.HorizontalAlignment = Element.ALIGN_CENTER
+            TituloSeñasCell.VerticalAlignment = Element.ALIGN_MIDDLE
+            TituloSeñasCell.BackgroundColor = New BaseColor(46, 139, 87)
+            TablaTrabajos.AddCell(TituloSeñasCell)
 
-            ' Fila final con bordes completos (Columnas 5-6)
-            Dim ImporteFinalCell As New PdfPCell(New Phrase(" ", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
-            ImporteFinalCell.Colspan = 2
-            ImporteFinalCell.FixedHeight = filaTrabajos
-            ImporteFinalCell.Border = PdfPCell.LEFT_BORDER Or PdfPCell.RIGHT_BORDER Or PdfPCell.BOTTOM_BORDER
-            ImporteFinalCell.BorderColor = BaseColor.BLACK
-            ImporteFinalCell.BorderWidthLeft = 1
-            ImporteFinalCell.BorderWidthRight = 1
-            ImporteFinalCell.BorderWidthBottom = 1
-            TablaTrabajos.AddCell(ImporteFinalCell)
+            Dim TituloTipoCell As New PdfPCell(New Phrase("TIPO DE REPARACIÓN", FontFactory.GetFont(FontFactory.HELVETICA, 12, Font.Bold, BaseColor.WHITE)))
+            TituloTipoCell.Colspan = 2
+            TituloTipoCell.Border = PdfPCell.BOX
+            TituloTipoCell.BorderColor = BaseColor.BLACK
+            TituloTipoCell.BorderWidth = 1
+            TituloTipoCell.HorizontalAlignment = Element.ALIGN_CENTER
+            TituloTipoCell.VerticalAlignment = Element.ALIGN_MIDDLE
+            TituloTipoCell.BackgroundColor = New BaseColor(46, 139, 87)
+            TablaTrabajos.AddCell(TituloTipoCell)
+
+            Dim señasParticulares As String = txtSeñasParticulares.Text
+            Dim lineasSeñas As List(Of String) = DividirTextoAutomaticamente(señasParticulares, fuente, tamanioFuente, anchoDisponible)
+            Dim textoTipoReparacion As String = CboTipoReparacion.Text
+
+            ' Crea la celda del tipo de reparacion con Rowspan igual al número de líneas de señas particulares
+            Dim TipoReparacionCell As New PdfPCell(New Phrase(textoTipoReparacion, FontFactory.GetFont(FontFactory.HELVETICA, 11)))
+            TipoReparacionCell.Colspan = 2
+            TipoReparacionCell.Rowspan = lineasSeñas.Count
+            TipoReparacionCell.Border = PdfPCell.LEFT_BORDER Or PdfPCell.RIGHT_BORDER Or PdfPCell.BOTTOM_BORDER
+            TipoReparacionCell.BorderColor = BaseColor.BLACK
+            TipoReparacionCell.BorderWidthLeft = 1
+            TipoReparacionCell.BorderWidthRight = 1
+            TipoReparacionCell.BorderWidthBottom = 0.5F
+            TipoReparacionCell.HorizontalAlignment = Element.ALIGN_RIGHT
+            TipoReparacionCell.VerticalAlignment = Element.ALIGN_MIDDLE
+            TipoReparacionCell.PaddingRight = 10
+
+            ' Agregar las celdas a la tabla
+            For i As Integer = 0 To lineasSeñas.Count - 1
+                ' Columnas 1 a 4: Señas Particulares
+                Dim textoLinea As String = lineasSeñas(i)
+                Dim CeldaSeñasParticulares As New PdfPCell(New Phrase(señasParticulares, FontFactory.GetFont(FontFactory.HELVETICA, tamanioFuente)))
+                CeldaSeñasParticulares.Colspan = 4
+                CeldaSeñasParticulares.FixedHeight = filaTrabajos
+                CeldaSeñasParticulares.Border = PdfPCell.LEFT_BORDER Or PdfPCell.RIGHT_BORDER Or PdfPCell.BOTTOM_BORDER
+                CeldaSeñasParticulares.BorderWidthLeft = 1
+                CeldaSeñasParticulares.BorderWidthRight = 1
+                CeldaSeñasParticulares.BorderWidthBottom = 0.5F
+                CeldaSeñasParticulares.PaddingLeft = 10
+                TablaTrabajos.AddCell(CeldaSeñasParticulares)
+
+                ' Agrega tipo de reparacion
+                If i = 0 Then
+                    TablaTrabajos.AddCell(TipoReparacionCell)
+                End If
+            Next
 
             document.Add(TablaTrabajos)
 
@@ -1476,13 +1534,54 @@ Public Class frmOrdenesReparacion
             TablaTerceros.AddCell(FilaVaciaTerceros)
 
             ' Fila 2 Columnas 1 a 6
-            Dim TercerosCell As PdfPCell = New PdfPCell(New Phrase("MANO DE OBRA DE TERCEROS", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
+            Dim TercerosCell As PdfPCell = New PdfPCell(New Phrase("MANO DE OBRA DE TERCEROS", FontFactory.GetFont(FontFactory.HELVETICA, 12, Font.Bold, BaseColor.WHITE)))
             TercerosCell.Colspan = 6
             TercerosCell.HorizontalAlignment = Element.ALIGN_CENTER
             TercerosCell.Border = PdfPCell.BOX
             TercerosCell.BorderColor = BaseColor.BLACK
             TercerosCell.BorderWidth = 1
+            TercerosCell.BackgroundColor = New BaseColor(46, 139, 87)
             TablaTerceros.AddCell(TercerosCell)
+
+            ' Fila 3 Columnas 1-2
+            Dim PrestadorCell As PdfPCell = New PdfPCell(New Phrase("PRESTADOR", FontFactory.GetFont(FontFactory.HELVETICA, 11, Font.Bold, BaseColor.WHITE)))
+            PrestadorCell.Colspan = 2
+            PrestadorCell.HorizontalAlignment = Element.ALIGN_CENTER
+            PrestadorCell.Border = PdfPCell.BOX
+            PrestadorCell.BorderColor = BaseColor.BLACK
+            PrestadorCell.BorderWidth = 1
+            PrestadorCell.BackgroundColor = New BaseColor(60, 179, 113)
+            TablaTerceros.AddCell(PrestadorCell)
+
+            ' Fila 3 Columnas 3-4
+            Dim ServicioCell As PdfPCell = New PdfPCell(New Phrase("SERVICIO SOLICITADO", FontFactory.GetFont(FontFactory.HELVETICA, 11, Font.Bold, BaseColor.WHITE)))
+            ServicioCell.Colspan = 2
+            ServicioCell.HorizontalAlignment = Element.ALIGN_CENTER
+            ServicioCell.Border = PdfPCell.BOX
+            ServicioCell.BorderColor = BaseColor.BLACK
+            ServicioCell.BorderWidth = 1
+            ServicioCell.BackgroundColor = New BaseColor(60, 179, 113)
+            TablaTerceros.AddCell(ServicioCell)
+
+            ' Fila 3 Columna 5
+            Dim CostoEstimadoCell As PdfPCell = New PdfPCell(New Phrase("C. ESTIMADO", FontFactory.GetFont(FontFactory.HELVETICA, 11, Font.Bold, BaseColor.WHITE)))
+            CostoEstimadoCell.Colspan = 1
+            CostoEstimadoCell.HorizontalAlignment = Element.ALIGN_CENTER
+            CostoEstimadoCell.Border = PdfPCell.BOX
+            CostoEstimadoCell.BorderColor = BaseColor.BLACK
+            CostoEstimadoCell.BorderWidth = 1
+            CostoEstimadoCell.BackgroundColor = New BaseColor(60, 179, 113)
+            TablaTerceros.AddCell(CostoEstimadoCell)
+
+            ' Fila 3 Columna 6
+            Dim CostoRealCell As PdfPCell = New PdfPCell(New Phrase("C. REAL", FontFactory.GetFont(FontFactory.HELVETICA, 11, Font.Bold, BaseColor.WHITE)))
+            CostoRealCell.Colspan = 1
+            CostoRealCell.HorizontalAlignment = Element.ALIGN_CENTER
+            CostoRealCell.Border = PdfPCell.BOX
+            CostoRealCell.BorderColor = BaseColor.BLACK
+            CostoRealCell.BorderWidth = 1
+            CostoRealCell.BackgroundColor = New BaseColor(60, 179, 113)
+            TablaTerceros.AddCell(CostoRealCell)
 
             For Each fila As DataGridViewRow In grdServiciosTerceros.Rows
                 If Not fila.IsNewRow Then
@@ -1534,30 +1633,7 @@ Public Class frmOrdenesReparacion
                 End If
             Next
 
-            ' Fila 9 VACIA BORDES
-            For j As Integer = 1 To 6
-                Dim VaciasTercerosUltima As New PdfPCell(New Phrase(" ", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
-                VaciasTercerosUltima.FixedHeight = filaTrabajos
-
-                ' Configuración común
-                VaciasTercerosUltima.Border = PdfPCell.NO_BORDER
-                VaciasTercerosUltima.BorderWidthBottom = 1.0F
-                VaciasTercerosUltima.BorderColorBottom = BaseColor.BLACK
-
-                ' Configuración de bordes por columna
-                If j = 1 Then
-                    VaciasTercerosUltima.BorderWidthLeft = 1.0F
-                    VaciasTercerosUltima.BorderColorLeft = BaseColor.BLACK
-                ElseIf j = 6 Then
-                    VaciasTercerosUltima.BorderWidthRight = 1.0F
-                    VaciasTercerosUltima.BorderColorRight = BaseColor.BLACK
-                End If
-
-                ' Añadir celda a la tabla
-                TablaTerceros.AddCell(VaciasTercerosUltima)
-            Next
-
-            ' Fila 10 Columnas 1 a 5
+            ' Fila Total Serv Terceros Columnas 1 a 5
             Dim TotalMOTCell As PdfPCell = New PdfPCell(New Phrase("TOTAL MANO DE OBRA DE TERCEROS", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
             TotalMOTCell.Colspan = 5
             TotalMOTCell.HorizontalAlignment = Element.ALIGN_CENTER
@@ -1568,7 +1644,7 @@ Public Class frmOrdenesReparacion
             TotalMOTCell.BorderColor = BaseColor.BLACK
             TablaTerceros.AddCell(TotalMOTCell)
 
-            ' Fila 10 Columna 6 VACIA
+            ' Fila Total Serv Terceros Columna 6 
             Dim f10Vacia As PdfPCell = New PdfPCell(New Phrase(txtMontoServ3.Text, FontFactory.GetFont(FontFactory.HELVETICA, 11)))
             f10Vacia.Border = PdfPCell.NO_BORDER
             f10Vacia.BorderWidthRight = 1
@@ -1576,6 +1652,20 @@ Public Class frmOrdenesReparacion
             f10Vacia.BorderColor = BaseColor.BLACK
             f10Vacia.HorizontalAlignment = Element.ALIGN_RIGHT
             TablaTerceros.AddCell(f10Vacia)
+
+            ' Fila 9 VACIA BORDES
+            For j As Integer = 1 To 6
+                Dim VaciasTercerosUltima As New PdfPCell(New Phrase(" ", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
+                VaciasTercerosUltima.FixedHeight = filaTrabajos
+
+                ' Configuración común
+                VaciasTercerosUltima.Border = PdfPCell.NO_BORDER
+                VaciasTercerosUltima.BorderWidthBottom = 1.0F
+                VaciasTercerosUltima.BorderColorBottom = BaseColor.BLACK
+
+                ' Añadir celda a la tabla
+                TablaTerceros.AddCell(VaciasTercerosUltima)
+            Next
 
             ' Filas 11-12-13 Columnas 1-2-3
             Dim ObservacionesCell As PdfPCell = New PdfPCell(New Phrase("OBSERVACIONES:", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
@@ -1840,20 +1930,23 @@ Public Class frmOrdenesReparacion
         MessageBox.Show("PDF creado exitosamente en: " & pdfPath)
     End Sub
 
-    Private Function DividirTextoEnLineas(texto As String, anchoMaximo As Integer) As List(Of String)
-        Dim lineas As New List(Of String)
-        Dim palabras() As String = texto.Split(" "c)
+    Public Function DividirTextoAutomaticamente(texto As String, fuente As BaseFont, tamanioFuente As Single, anchoDisponible As Single) As List(Of String)
+        Dim lineas As New List(Of String)()
+        Dim palabras As String() = texto.Split(" "c) ' Dividir el texto en palabras
         Dim lineaActual As String = ""
 
-        For Each palabra As String In palabras
-            If (lineaActual.Length + palabra.Length + 1) <= anchoMaximo Then
+        For Each palabra In palabras
+            Dim anchoLineaActual As Single = fuente.GetWidthPoint(lineaActual & " " & palabra, tamanioFuente)
+            If anchoLineaActual <= anchoDisponible Then
                 lineaActual &= If(String.IsNullOrEmpty(lineaActual), palabra, " " & palabra)
             Else
+                ' Agregar la línea actual a la lista y comenzar una nueva
                 lineas.Add(lineaActual)
                 lineaActual = palabra
             End If
         Next
 
+        ' Agregar la última línea si queda texto
         If Not String.IsNullOrEmpty(lineaActual) Then
             lineas.Add(lineaActual)
         End If
