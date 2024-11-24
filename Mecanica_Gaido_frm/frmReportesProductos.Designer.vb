@@ -22,10 +22,10 @@ Partial Class frmReportesProductos
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmReportesProductos))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cboMarca = New System.Windows.Forms.ComboBox()
@@ -48,9 +48,10 @@ Partial Class frmReportesProductos
         Me.Label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(35, 27)
+        Me.Label1.Location = New System.Drawing.Point(47, 33)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(49, 17)
+        Me.Label1.Size = New System.Drawing.Size(67, 21)
         Me.Label1.TabIndex = 121
         Me.Label1.Text = "Marca"
         '
@@ -58,10 +59,10 @@ Partial Class frmReportesProductos
         '
         Me.cboMarca.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboMarca.FormattingEnabled = True
-        Me.cboMarca.Location = New System.Drawing.Point(128, 24)
-        Me.cboMarca.Margin = New System.Windows.Forms.Padding(2)
+        Me.cboMarca.Location = New System.Drawing.Point(171, 30)
+        Me.cboMarca.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cboMarca.Name = "cboMarca"
-        Me.cboMarca.Size = New System.Drawing.Size(169, 25)
+        Me.cboMarca.Size = New System.Drawing.Size(224, 29)
         Me.cboMarca.TabIndex = 120
         '
         'grdRepuestos
@@ -73,30 +74,32 @@ Partial Class frmReportesProductos
         Me.grdRepuestos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         Me.grdRepuestos.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.grdRepuestos.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SeaGreen
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdRepuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(65, Byte), Integer))
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SeaGreen
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdRepuestos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.grdRepuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdRepuestos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodFabricante, Me.Descripcion, Me.StockReal, Me.PrecioLista, Me.Total})
-        Me.grdRepuestos.Location = New System.Drawing.Point(23, 71)
+        Me.grdRepuestos.Location = New System.Drawing.Point(31, 87)
+        Me.grdRepuestos.Margin = New System.Windows.Forms.Padding(4)
         Me.grdRepuestos.MultiSelect = False
         Me.grdRepuestos.Name = "grdRepuestos"
         Me.grdRepuestos.ReadOnly = True
         Me.grdRepuestos.RowHeadersVisible = False
         Me.grdRepuestos.RowHeadersWidth = 51
         Me.grdRepuestos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdRepuestos.Size = New System.Drawing.Size(633, 176)
+        Me.grdRepuestos.Size = New System.Drawing.Size(844, 217)
         Me.grdRepuestos.TabIndex = 122
         '
         'CodFabricante
         '
         Me.CodFabricante.FillWeight = 50.0!
         Me.CodFabricante.HeaderText = "N° Repuesto"
+        Me.CodFabricante.MinimumWidth = 6
         Me.CodFabricante.Name = "CodFabricante"
         Me.CodFabricante.ReadOnly = True
         '
@@ -104,36 +107,40 @@ Partial Class frmReportesProductos
         '
         Me.Descripcion.FillWeight = 120.0!
         Me.Descripcion.HeaderText = "Descripción"
+        Me.Descripcion.MinimumWidth = 6
         Me.Descripcion.Name = "Descripcion"
         Me.Descripcion.ReadOnly = True
         '
         'StockReal
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.StockReal.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.StockReal.DefaultCellStyle = DataGridViewCellStyle6
         Me.StockReal.FillWeight = 45.0!
         Me.StockReal.HeaderText = "Cantidad"
+        Me.StockReal.MinimumWidth = 6
         Me.StockReal.Name = "StockReal"
         Me.StockReal.ReadOnly = True
         '
         'PrecioLista
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "N2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.PrecioLista.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.Format = "N2"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.PrecioLista.DefaultCellStyle = DataGridViewCellStyle7
         Me.PrecioLista.FillWeight = 60.0!
         Me.PrecioLista.HeaderText = "Precio Unitario"
+        Me.PrecioLista.MinimumWidth = 6
         Me.PrecioLista.Name = "PrecioLista"
         Me.PrecioLista.ReadOnly = True
         '
         'Total
         '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "N2"
-        Me.Total.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle8.Format = "N2"
+        Me.Total.DefaultCellStyle = DataGridViewCellStyle8
         Me.Total.FillWeight = 50.0!
         Me.Total.HeaderText = "Total"
+        Me.Total.MinimumWidth = 6
         Me.Total.Name = "Total"
         Me.Total.ReadOnly = True
         '
@@ -143,9 +150,10 @@ Partial Class frmReportesProductos
         Me.Label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(403, 27)
+        Me.Label2.Location = New System.Drawing.Point(537, 33)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(94, 17)
+        Me.Label2.Size = New System.Drawing.Size(123, 21)
         Me.Label2.TabIndex = 123
         Me.Label2.Text = "Total General"
         '
@@ -153,9 +161,10 @@ Partial Class frmReportesProductos
         '
         Me.txtTotal.Enabled = False
         Me.txtTotal.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTotal.Location = New System.Drawing.Point(544, 24)
+        Me.txtTotal.Location = New System.Drawing.Point(725, 30)
+        Me.txtTotal.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTotal.Name = "txtTotal"
-        Me.txtTotal.Size = New System.Drawing.Size(90, 23)
+        Me.txtTotal.Size = New System.Drawing.Size(119, 27)
         Me.txtTotal.TabIndex = 124
         Me.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -171,9 +180,10 @@ Partial Class frmReportesProductos
         Me.btnDescargarPDF.ForeColor = System.Drawing.Color.Black
         Me.btnDescargarPDF.Image = CType(resources.GetObject("btnDescargarPDF.Image"), System.Drawing.Image)
         Me.btnDescargarPDF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDescargarPDF.Location = New System.Drawing.Point(406, 268)
+        Me.btnDescargarPDF.Location = New System.Drawing.Point(541, 330)
+        Me.btnDescargarPDF.Margin = New System.Windows.Forms.Padding(4)
         Me.btnDescargarPDF.Name = "btnDescargarPDF"
-        Me.btnDescargarPDF.Size = New System.Drawing.Size(143, 35)
+        Me.btnDescargarPDF.Size = New System.Drawing.Size(191, 43)
         Me.btnDescargarPDF.TabIndex = 127
         Me.btnDescargarPDF.Text = "          Descargar PDF"
         Me.btnDescargarPDF.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -188,19 +198,20 @@ Partial Class frmReportesProductos
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Century Gothic", 9.0!)
         Me.btnCancelar.ForeColor = System.Drawing.Color.Black
-        Me.btnCancelar.Location = New System.Drawing.Point(148, 268)
+        Me.btnCancelar.Location = New System.Drawing.Point(197, 330)
+        Me.btnCancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(130, 35)
+        Me.btnCancelar.Size = New System.Drawing.Size(173, 43)
         Me.btnCancelar.TabIndex = 126
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = False
         '
         'frmReportesProductos
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(990, 572)
+        Me.ClientSize = New System.Drawing.Size(1043, 457)
         Me.Controls.Add(Me.btnDescargarPDF)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.txtTotal)
@@ -210,6 +221,7 @@ Partial Class frmReportesProductos
         Me.Controls.Add(Me.cboMarca)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmReportesProductos"
         Me.Text = "frmReportesProductos"
         CType(Me.grdRepuestos, System.ComponentModel.ISupportInitialize).EndInit()

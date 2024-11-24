@@ -160,6 +160,7 @@
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SqlClient, Version=4.6.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SqlClient.4.8.3\lib\net461\System.Data.SqlClient.dll</HintPath>
@@ -236,6 +237,7 @@
     <Compile Include="AD_Secciones.vb" />
     <Compile Include="AD_ServicioTerceros.vb" />
     <Compile Include="AD_TiposDeVenta.vb" />
+    <Compile Include="AD_Ubicacion.vb" />
     <Compile Include="AD_Vehiculos.vb" />
     <Compile Include="AD_Ventas.vb" />
     <Compile Include="Clima\Clima.vb" />
