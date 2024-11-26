@@ -9,6 +9,7 @@ Imports iTextSharp.text.pdf
 
 Public Class frmOrdenesReparacion
     Dim o_Orden As New AD_OrdenReparacion
+    Public idVehic As Integer
 
 #Region "Enter para pasar de tabulación"
 
@@ -265,8 +266,27 @@ Public Class frmOrdenesReparacion
         End Try
         combopersonacargado = True
     End Sub
+    Private Sub CargarComboVehiculos(idVehic)
+        Dim ds As DataSet
+        Dim oVeh As New AD_Vehiculos
+        ds = oVeh.Consultar_Vehiculo_ID(idVehic)
+        Try
+            If ds.Tables(0).Rows.Count > 0 Then
+                cboVehiculo.DataSource = Nothing
+                cboVehiculo.DataSource = ds.Tables(0)
+                cboVehiculo.DisplayMember = "Vehículo"
+                cboVehiculo.ValueMember = "N° Vehículo"
+            Else
+                MsgBox("No se encontró el vehículo", vbCritical, "Error")
+            End If
+        Catch ex As Exception
+            MsgBox("Error al cargar el vehiculo: " & ex.Message, vbCritical, "Error")
+        End Try
+
+    End Sub
 
     Private Sub cboPersonas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPersonas.SelectedIndexChanged
+
         cboVehiculo.SelectedValue = 0
         If combopersonacargado AndAlso cboPersonas.SelectedIndex <> 0 Then
             Dim ID_Persona As Integer = Convert.ToInt32(cboPersonas.SelectedValue)
@@ -275,6 +295,8 @@ Public Class frmOrdenesReparacion
             Else
                 Cargar_Combo_Vehiculos(ID_Persona)
             End If
+        ElseIf combopersonacargado = False Then
+            CargarComboVehiculos(idVehic)
 
         End If
 
@@ -629,10 +651,12 @@ Public Class frmOrdenesReparacion
             Dim selectedRow As DataGridViewRow = grdOrdenReparacion.Rows(e.RowIndex)
             Dim ID_Orden As Integer = Convert.ToInt32(selectedRow.Cells("ID").Value)
 
+
             CargarDatosOrden(ID_Orden)
 
             btnAceptar.Enabled = False
             btnModificar.Enabled = True
+
         End If
     End Sub
 
@@ -652,13 +676,14 @@ Public Class frmOrdenesReparacion
                 Dim ordenTable As DataTable = ds.Tables(0)
                 If ordenTable.Rows.Count > 0 Then
                     Dim row As DataRow = ordenTable.Rows(0)
+                    idVehic = row("ID_Vehiculo")
                     txtID.Text = row("ID_OrdenReparacion")
 
 
                     cboPersonas.SelectedValue = row("ID_Persona")
 
 
-                    Cargar_Combo_Vehiculos(Convert.ToInt32(row("ID_Persona")))
+                    CargarComboVehiculos(Convert.ToInt32(row("ID_Vehiculo")))
 
 
                     cboVehiculo.SelectedValue = row("ID_Vehiculo")
@@ -2104,4 +2129,6 @@ Public Class frmOrdenesReparacion
             btnFacturar.Enabled = False
         End If
     End Sub
+
+
 End Class

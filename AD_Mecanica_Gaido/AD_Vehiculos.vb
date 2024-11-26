@@ -4,12 +4,25 @@ Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Configuration
 Imports System.Data.Common
+Imports Microsoft.Practices.EnterpriseLibrary.Data
 Public Class AD_Vehiculos
     Private connectionString As String
 
+    Dim oDatabase As Database
+
     Public Sub New()
         connectionString = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123"
+        Try
+            DatabaseFactory.SetDatabaseProviderFactory(New DatabaseProviderFactory())
+        Catch ex As InvalidOperationException
+
+        End Try
+        oDatabase = DatabaseFactory.CreateDatabase("Conn")
     End Sub
+
+    'Public Sub New()
+    '    connectionString = "Data Source=168.197.51.109;Initial Catalog=PIN_GRUPO31; UID=PIN_GRUPO31; PWD=PIN_GRUPO31123"
+    'End Sub
 
 #Region "Carga de cbo"
     Public Function Cargar_Combo_Marcas() As DataTable
@@ -151,6 +164,13 @@ Public Class AD_Vehiculos
             conexion.Open()
             Return comando.ExecuteReader(CommandBehavior.CloseConnection)
         Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+    Public Function Consultar_Vehiculo_ID(ByVal idvehiculo As Integer) As DataSet
+        Try
+            Return oDatabase.ExecuteDataSet("Consultar_Vehiculo_ID", idvehiculo)
+        Catch ex As System.Exception
             Throw ex
         End Try
     End Function

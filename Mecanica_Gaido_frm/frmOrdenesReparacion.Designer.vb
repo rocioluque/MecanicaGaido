@@ -1437,7 +1437,7 @@ Partial Class frmOrdenesReparacion
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(201, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(1095, 1044)
+        Me.ClientSize = New System.Drawing.Size(1095, 920)
         Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.PanelServiciosTerceros)
