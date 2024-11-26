@@ -53,7 +53,7 @@ Partial Class frmReportesPersonas
         Me.btnObtenerHistorial.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnObtenerHistorial.ForeColor = System.Drawing.Color.Black
         Me.btnObtenerHistorial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnObtenerHistorial.Location = New System.Drawing.Point(359, 68)
+        Me.btnObtenerHistorial.Location = New System.Drawing.Point(359, 166)
         Me.btnObtenerHistorial.Name = "btnObtenerHistorial"
         Me.btnObtenerHistorial.Size = New System.Drawing.Size(125, 35)
         Me.btnObtenerHistorial.TabIndex = 128
@@ -80,7 +80,7 @@ Partial Class frmReportesPersonas
         Me.cboPersona.Location = New System.Drawing.Point(130, 75)
         Me.cboPersona.Margin = New System.Windows.Forms.Padding(2)
         Me.cboPersona.Name = "cboPersona"
-        Me.cboPersona.Size = New System.Drawing.Size(169, 25)
+        Me.cboPersona.Size = New System.Drawing.Size(354, 25)
         Me.cboPersona.TabIndex = 126
         '
         'Label2
@@ -101,7 +101,7 @@ Partial Class frmReportesPersonas
         Me.Label3.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.75!)
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(284, 135)
+        Me.Label3.Location = New System.Drawing.Point(28, 183)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(45, 17)
         Me.Label3.TabIndex = 130
@@ -121,8 +121,9 @@ Partial Class frmReportesPersonas
         '
         'dtpFechaMin
         '
+        Me.dtpFechaMin.CustomFormat = "dd/MM/yyyy"
         Me.dtpFechaMin.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpFechaMin.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaMin.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtpFechaMin.Location = New System.Drawing.Point(130, 130)
         Me.dtpFechaMin.Name = "dtpFechaMin"
         Me.dtpFechaMin.Size = New System.Drawing.Size(100, 23)
@@ -131,13 +132,14 @@ Partial Class frmReportesPersonas
         '
         'dtpFechaMax
         '
+        Me.dtpFechaMax.CustomFormat = "dd/MM/yyyy"
         Me.dtpFechaMax.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpFechaMax.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaMax.Location = New System.Drawing.Point(384, 130)
+        Me.dtpFechaMax.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtpFechaMax.Location = New System.Drawing.Point(130, 178)
         Me.dtpFechaMax.Name = "dtpFechaMax"
         Me.dtpFechaMax.Size = New System.Drawing.Size(100, 23)
         Me.dtpFechaMax.TabIndex = 133
-        Me.dtpFechaMax.Value = New Date(2024, 11, 9, 0, 0, 0, 0)
+        Me.dtpFechaMax.Value = New Date(2024, 11, 26, 0, 0, 0, 0)
         '
         'frmReportesPersonas
         '

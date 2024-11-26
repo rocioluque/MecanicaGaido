@@ -14,6 +14,8 @@ Public Class frmReportesPersonas
     Private Sub frmReportesPersonas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AplicarTema(Me)
         Cargar_Combo_Persona()
+        dtpFechaMax.Value = DateTime.Now
+        dtpFechaMin.Value = New DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)
     End Sub
 
     Private Sub Cargar_Combo_Persona()

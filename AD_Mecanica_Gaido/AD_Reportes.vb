@@ -104,10 +104,58 @@ Public Class AD_Reportes
         End Using
         Return resultado
     End Function
+
+    Public Function TieneOrdenesDeReparacion_V(ByVal ID_Vehiculo As Integer, ByVal FechaMin As Date, ByVal FechaMax As Date) As Boolean
+        Dim resultado As Boolean = False
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Consultar_Historial_RepVehiculos", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@ID_Vehiculo", ID_Vehiculo)
+                comando.Parameters.AddWithValue("@FechaMin", FechaMin)
+                comando.Parameters.AddWithValue("@FechaMax", FechaMax)
+                Try
+                    conexion.Open()
+                    Dim lector As SqlDataReader = comando.ExecuteReader()
+
+                    If lector.HasRows Then
+                        resultado = True
+                    End If
+
+                    lector.Close()
+                Catch ex As Exception
+                    Throw New Exception("Error al verificar las órdenes de reparación: " & ex.Message, ex)
+                Finally
+                    conexion.Close()
+                End Try
+            End Using
+        End Using
+        Return resultado
+    End Function
+
+
+
 #End Region
 
 #Region "Reporte vehiculos"
+    Public Function Cargar_Combo_Vehiculo()
+        Dim tabla As New DataTable
 
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Combo_VehiculosTodos", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                Try
+                    conexion.Open()
+                    Dim datadapter As New SqlDataAdapter(comando)
+                    datadapter.Fill(tabla)
+                Catch ex As Exception
+                    Throw New Exception("Error al cargar los vehículos desde la base de datos: " & ex.Message, ex)
+                End Try
+
+            End Using
+        End Using
+        Return tabla
+    End Function
 #End Region
 
 #Region "Reporte Reparaciones"

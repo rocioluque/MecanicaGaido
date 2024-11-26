@@ -7,22 +7,14 @@ Partial Class RptHistorialVehiculo
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RptHistorialVehiculo))
         Dim Group1 As Telerik.Reporting.Group = New Telerik.Reporting.Group()
         Dim ReportParameter1 As Telerik.Reporting.ReportParameter = New Telerik.Reporting.ReportParameter()
+        Dim ReportParameter2 As Telerik.Reporting.ReportParameter = New Telerik.Reporting.ReportParameter()
+        Dim ReportParameter3 As Telerik.Reporting.ReportParameter = New Telerik.Reporting.ReportParameter()
         Dim StyleRule1 As Telerik.Reporting.Drawing.StyleRule = New Telerik.Reporting.Drawing.StyleRule()
         Me.GroupFooter1 = New Telerik.Reporting.GroupFooterSection()
         Me.TextBox3 = New Telerik.Reporting.TextBox()
         Me.TextBox6 = New Telerik.Reporting.TextBox()
         Me.TextBox28 = New Telerik.Reporting.TextBox()
         Me.GroupHeader1 = New Telerik.Reporting.GroupHeaderSection()
-        Me.TextBox5 = New Telerik.Reporting.TextBox()
-        Me.TextBox19 = New Telerik.Reporting.TextBox()
-        Me.TextBox15 = New Telerik.Reporting.TextBox()
-        Me.TextBox16 = New Telerik.Reporting.TextBox()
-        Me.TextBox4 = New Telerik.Reporting.TextBox()
-        Me.TextBox23 = New Telerik.Reporting.TextBox()
-        Me.TextBox25 = New Telerik.Reporting.TextBox()
-        Me.TextBox26 = New Telerik.Reporting.TextBox()
-        Me.TextBox7 = New Telerik.Reporting.TextBox()
-        Me.TextBox8 = New Telerik.Reporting.TextBox()
         Me.TextBox22 = New Telerik.Reporting.TextBox()
         Me.TextBox21 = New Telerik.Reporting.TextBox()
         Me.TextBox14 = New Telerik.Reporting.TextBox()
@@ -34,6 +26,26 @@ Partial Class RptHistorialVehiculo
         Me.Shape14 = New Telerik.Reporting.Shape()
         Me.TextBox27 = New Telerik.Reporting.TextBox()
         Me.Shape2 = New Telerik.Reporting.Shape()
+        Me.TextBox10 = New Telerik.Reporting.TextBox()
+        Me.TextBox37 = New Telerik.Reporting.TextBox()
+        Me.TextBox35 = New Telerik.Reporting.TextBox()
+        Me.TextBox17 = New Telerik.Reporting.TextBox()
+        Me.TextBox12 = New Telerik.Reporting.TextBox()
+        Me.TextBox43 = New Telerik.Reporting.TextBox()
+        Me.TextBox9 = New Telerik.Reporting.TextBox()
+        Me.TextBox13 = New Telerik.Reporting.TextBox()
+        Me.TextBox18 = New Telerik.Reporting.TextBox()
+        Me.TextBox24 = New Telerik.Reporting.TextBox()
+        Me.TextBox5 = New Telerik.Reporting.TextBox()
+        Me.TextBox19 = New Telerik.Reporting.TextBox()
+        Me.TextBox15 = New Telerik.Reporting.TextBox()
+        Me.TextBox16 = New Telerik.Reporting.TextBox()
+        Me.TextBox4 = New Telerik.Reporting.TextBox()
+        Me.TextBox23 = New Telerik.Reporting.TextBox()
+        Me.TextBox25 = New Telerik.Reporting.TextBox()
+        Me.TextBox26 = New Telerik.Reporting.TextBox()
+        Me.TextBox7 = New Telerik.Reporting.TextBox()
+        Me.TextBox8 = New Telerik.Reporting.TextBox()
         Me.detail = New Telerik.Reporting.DetailSection()
         Me.TextBox72 = New Telerik.Reporting.TextBox()
         Me.Shape15 = New Telerik.Reporting.Shape()
@@ -43,16 +55,10 @@ Partial Class RptHistorialVehiculo
         Me.TextBox56 = New Telerik.Reporting.TextBox()
         Me.TextBox54 = New Telerik.Reporting.TextBox()
         Me.TextBox53 = New Telerik.Reporting.TextBox()
-        Me.TextBox2 = New Telerik.Reporting.TextBox()
         Me.TextBox36 = New Telerik.Reporting.TextBox()
         Me.Shape1 = New Telerik.Reporting.Shape()
+        Me.TextBox2 = New Telerik.Reporting.TextBox()
         Me.EncabezadoHistorial = New Telerik.Reporting.ReportHeaderSection()
-        Me.TextBox43 = New Telerik.Reporting.TextBox()
-        Me.TextBox37 = New Telerik.Reporting.TextBox()
-        Me.TextBox35 = New Telerik.Reporting.TextBox()
-        Me.TextBox17 = New Telerik.Reporting.TextBox()
-        Me.TextBox12 = New Telerik.Reporting.TextBox()
-        Me.TextBox10 = New Telerik.Reporting.TextBox()
         Me.TextBox1 = New Telerik.Reporting.TextBox()
         Me.TextBox46 = New Telerik.Reporting.TextBox()
         Me.TextBox55 = New Telerik.Reporting.TextBox()
@@ -70,10 +76,6 @@ Partial Class RptHistorialVehiculo
         Me.TextBox68 = New Telerik.Reporting.TextBox()
         Me.Shape4 = New Telerik.Reporting.Shape()
         Me.PictureBox1 = New Telerik.Reporting.PictureBox()
-        Me.TextBox9 = New Telerik.Reporting.TextBox()
-        Me.TextBox13 = New Telerik.Reporting.TextBox()
-        Me.TextBox18 = New Telerik.Reporting.TextBox()
-        Me.TextBox24 = New Telerik.Reporting.TextBox()
         Me.TextBox29 = New Telerik.Reporting.TextBox()
         Me.TextBox30 = New Telerik.Reporting.TextBox()
         Me.TextBox34 = New Telerik.Reporting.TextBox()
@@ -128,127 +130,17 @@ Partial Class RptHistorialVehiculo
         '
         'GroupHeader1
         '
-        Me.GroupHeader1.Height = Telerik.Reporting.Drawing.Unit.Cm(2.0023946762084961R)
-        Me.GroupHeader1.Items.AddRange(New Telerik.Reporting.ReportItemBase() {Me.TextBox5, Me.TextBox19, Me.TextBox15, Me.TextBox16, Me.TextBox4, Me.TextBox23, Me.TextBox25, Me.TextBox26, Me.TextBox7, Me.TextBox8, Me.TextBox22, Me.TextBox21, Me.TextBox14, Me.TextBox11, Me.TextBox20, Me.Shape6, Me.Shape9, Me.Shape11, Me.Shape14, Me.TextBox27, Me.Shape2})
+        Me.GroupHeader1.Height = Telerik.Reporting.Drawing.Unit.Cm(2.5315613746643066R)
+        Me.GroupHeader1.Items.AddRange(New Telerik.Reporting.ReportItemBase() {Me.TextBox22, Me.TextBox21, Me.TextBox14, Me.TextBox11, Me.TextBox20, Me.Shape6, Me.Shape9, Me.Shape11, Me.Shape14, Me.TextBox27, Me.Shape2, Me.TextBox10, Me.TextBox37, Me.TextBox35, Me.TextBox17, Me.TextBox12, Me.TextBox43, Me.TextBox9, Me.TextBox13, Me.TextBox18, Me.TextBox24})
         Me.GroupHeader1.Name = "GroupHeader1"
         Me.GroupHeader1.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.None
         Me.GroupHeader1.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.Solid
         Me.GroupHeader1.Style.BorderStyle.Top = Telerik.Reporting.Drawing.BorderType.None
         '
-        'TextBox5
-        '
-        Me.TextBox5.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.8000001907348633R), Telerik.Reporting.Drawing.Unit.Cm(0.66770875453948975R))
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.6815881729125977R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox5.Style.Color = System.Drawing.Color.Black
-        Me.TextBox5.Style.Font.Bold = True
-        Me.TextBox5.Style.Font.Name = "Arial"
-        Me.TextBox5.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox5.Value = "Tipo de Vehículo:"
-        '
-        'TextBox19
-        '
-        Me.TextBox19.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.12325636297464371R), Telerik.Reporting.Drawing.Unit.Cm(0.16500042378902435R))
-        Me.TextBox19.Name = "TextBox19"
-        Me.TextBox19.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.7286186218261719R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox19.Style.Color = System.Drawing.Color.Black
-        Me.TextBox19.Style.Font.Bold = True
-        Me.TextBox19.Style.Font.Name = "Arial"
-        Me.TextBox19.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox19.Value = "Matrícula:"
-        '
-        'TextBox15
-        '
-        Me.TextBox15.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.9813871383666992R), Telerik.Reporting.Drawing.Unit.Cm(0.16500042378902435R))
-        Me.TextBox15.Name = "TextBox15"
-        Me.TextBox15.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.6000001430511475R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox15.Style.Color = System.Drawing.Color.Black
-        Me.TextBox15.Style.Font.Bold = True
-        Me.TextBox15.Style.Font.Name = "Arial"
-        Me.TextBox15.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox15.Value = "Vehículo:"
-        '
-        'TextBox16
-        '
-        Me.TextBox16.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.12325636297464371R), Telerik.Reporting.Drawing.Unit.Cm(0.66770875453948975R))
-        Me.TextBox16.Name = "TextBox16"
-        Me.TextBox16.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.3767440319061279R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox16.Style.Color = System.Drawing.Color.Black
-        Me.TextBox16.Style.Font.Bold = True
-        Me.TextBox16.Style.Font.Name = "Arial"
-        Me.TextBox16.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox16.Value = "Modelo:"
-        '
-        'TextBox4
-        '
-        Me.TextBox4.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(8.4815883636474609R), Telerik.Reporting.Drawing.Unit.Cm(0.66770875453948975R))
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.060122013092041R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox4.Style.Color = System.Drawing.Color.Black
-        Me.TextBox4.Style.Font.Bold = False
-        Me.TextBox4.Style.Font.Name = "Arial"
-        Me.TextBox4.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox4.Value = "= Fields.TipoVehiculo"
-        '
-        'TextBox23
-        '
-        Me.TextBox23.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(7.5815887451171875R), Telerik.Reporting.Drawing.Unit.Cm(0.16500042378902435R))
-        Me.TextBox23.Name = "TextBox23"
-        Me.TextBox23.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(8.45939826965332R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox23.Style.Color = System.Drawing.Color.Black
-        Me.TextBox23.Style.Font.Bold = False
-        Me.TextBox23.Style.Font.Name = "Arial"
-        Me.TextBox23.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox23.Value = "= Fields.VehiculoNombre"
-        '
-        'TextBox25
-        '
-        Me.TextBox25.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.5R), Telerik.Reporting.Drawing.Unit.Cm(0.66770875453948975R))
-        Me.TextBox25.Name = "TextBox25"
-        Me.TextBox25.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.9000008106231689R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox25.Style.Color = System.Drawing.Color.Black
-        Me.TextBox25.Style.Font.Bold = False
-        Me.TextBox25.Style.Font.Name = "Arial"
-        Me.TextBox25.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox25.Value = "= Fields.VehiculoModelo"
-        '
-        'TextBox26
-        '
-        Me.TextBox26.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.8000003099441528R), Telerik.Reporting.Drawing.Unit.Cm(0.16500042378902435R))
-        Me.TextBox26.Name = "TextBox26"
-        Me.TextBox26.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.2000000476837158R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox26.Style.Color = System.Drawing.Color.Black
-        Me.TextBox26.Style.Font.Bold = False
-        Me.TextBox26.Style.Font.Name = "Arial"
-        Me.TextBox26.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox26.Value = "= Fields.VehiculoMatricula"
-        '
-        'TextBox7
-        '
-        Me.TextBox7.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(12.281587600708008R), Telerik.Reporting.Drawing.Unit.Cm(0.66770875453948975R))
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.0112497806549072R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox7.Style.Color = System.Drawing.Color.Black
-        Me.TextBox7.Style.Font.Bold = True
-        Me.TextBox7.Style.Font.Name = "Arial"
-        Me.TextBox7.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox7.Value = "Año de Fabricación:"
-        '
-        'TextBox8
-        '
-        Me.TextBox8.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(15.281589508056641R), Telerik.Reporting.Drawing.Unit.Cm(0.66770875453948975R))
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.8813905715942383R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox8.Style.Color = System.Drawing.Color.Black
-        Me.TextBox8.Style.Font.Bold = False
-        Me.TextBox8.Style.Font.Name = "Arial"
-        Me.TextBox8.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox8.Value = "= Fields.VehiculoañoFabricacion"
-        '
         'TextBox22
         '
         Me.TextBox22.Format = "{0:d}"
-        Me.TextBox22.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.4745054244995117R), Telerik.Reporting.Drawing.Unit.Cm(1.382394552230835R))
+        Me.TextBox22.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.4745054244995117R), Telerik.Reporting.Drawing.Unit.Cm(1.8586446046829224R))
         Me.TextBox22.Name = "TextBox22"
         Me.TextBox22.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.3784112930297852R), Telerik.Reporting.Drawing.Unit.Cm(0.617395281791687R))
         Me.TextBox22.Style.BackgroundColor = System.Drawing.Color.Silver
@@ -264,7 +156,7 @@ Partial Class RptHistorialVehiculo
         '
         'TextBox21
         '
-        Me.TextBox21.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.13450527191162109R), Telerik.Reporting.Drawing.Unit.Cm(1.382394552230835R))
+        Me.TextBox21.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.13450527191162109R), Telerik.Reporting.Drawing.Unit.Cm(1.8586446046829224R))
         Me.TextBox21.Name = "TextBox21"
         Me.TextBox21.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.4315916299819946R), Telerik.Reporting.Drawing.Unit.Cm(0.617395281791687R))
         Me.TextBox21.Style.BackgroundColor = System.Drawing.Color.Silver
@@ -278,7 +170,7 @@ Partial Class RptHistorialVehiculo
         '
         'TextBox14
         '
-        Me.TextBox14.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.434507369995117R), Telerik.Reporting.Drawing.Unit.Cm(1.382394552230835R))
+        Me.TextBox14.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.434507369995117R), Telerik.Reporting.Drawing.Unit.Cm(1.8586446046829224R))
         Me.TextBox14.Name = "TextBox14"
         Me.TextBox14.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.6223750114440918R), Telerik.Reporting.Drawing.Unit.Cm(0.61739450693130493R))
         Me.TextBox14.Style.BackgroundColor = System.Drawing.Color.Silver
@@ -292,7 +184,7 @@ Partial Class RptHistorialVehiculo
         '
         'TextBox11
         '
-        Me.TextBox11.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.8529167175292969R), Telerik.Reporting.Drawing.Unit.Cm(1.3799999952316284R))
+        Me.TextBox11.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.8529167175292969R), Telerik.Reporting.Drawing.Unit.Cm(1.8562500476837158R))
         Me.TextBox11.Name = "TextBox11"
         Me.TextBox11.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.5799999237060547R), Telerik.Reporting.Drawing.Unit.Cm(0.62000000476837158R))
         Me.TextBox11.Style.BackgroundColor = System.Drawing.Color.Silver
@@ -306,7 +198,7 @@ Partial Class RptHistorialVehiculo
         '
         'TextBox20
         '
-        Me.TextBox20.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(11.432916641235352R), Telerik.Reporting.Drawing.Unit.Cm(1.3799999952316284R))
+        Me.TextBox20.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(11.432916641235352R), Telerik.Reporting.Drawing.Unit.Cm(1.8562500476837158R))
         Me.TextBox20.Name = "TextBox20"
         Me.TextBox20.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.380000114440918R), Telerik.Reporting.Drawing.Unit.Cm(0.62000000476837158R))
         Me.TextBox20.Style.BackgroundColor = System.Drawing.Color.Silver
@@ -320,35 +212,35 @@ Partial Class RptHistorialVehiculo
         '
         'Shape6
         '
-        Me.Shape6.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.4445052146911621R), Telerik.Reporting.Drawing.Unit.Cm(1.382394552230835R))
+        Me.Shape6.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.4445052146911621R), Telerik.Reporting.Drawing.Unit.Cm(1.8586446046829224R))
         Me.Shape6.Name = "Shape6"
         Me.Shape6.ShapeType = New Telerik.Reporting.Drawing.Shapes.LineShape(Telerik.Reporting.Drawing.Shapes.LineDirection.NS)
         Me.Shape6.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(0.15000000596046448R), Telerik.Reporting.Drawing.Unit.Cm(0.60000002384185791R))
         '
         'Shape9
         '
-        Me.Shape9.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.8345053195953369R), Telerik.Reporting.Drawing.Unit.Cm(1.382394552230835R))
+        Me.Shape9.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.8345053195953369R), Telerik.Reporting.Drawing.Unit.Cm(1.8586446046829224R))
         Me.Shape9.Name = "Shape9"
         Me.Shape9.ShapeType = New Telerik.Reporting.Drawing.Shapes.LineShape(Telerik.Reporting.Drawing.Shapes.LineDirection.NS)
         Me.Shape9.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(0.15000000596046448R), Telerik.Reporting.Drawing.Unit.Cm(0.60000002384185791R))
         '
         'Shape11
         '
-        Me.Shape11.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(11.41291618347168R), Telerik.Reporting.Drawing.Unit.Cm(1.3799999952316284R))
+        Me.Shape11.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(11.41291618347168R), Telerik.Reporting.Drawing.Unit.Cm(1.8562500476837158R))
         Me.Shape11.Name = "Shape11"
         Me.Shape11.ShapeType = New Telerik.Reporting.Drawing.Shapes.LineShape(Telerik.Reporting.Drawing.Shapes.LineDirection.NS)
         Me.Shape11.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(0.15000000596046448R), Telerik.Reporting.Drawing.Unit.Cm(0.60000002384185791R))
         '
         'Shape14
         '
-        Me.Shape14.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.414505004882812R), Telerik.Reporting.Drawing.Unit.Cm(1.382394552230835R))
+        Me.Shape14.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.414505004882812R), Telerik.Reporting.Drawing.Unit.Cm(1.8586446046829224R))
         Me.Shape14.Name = "Shape14"
         Me.Shape14.ShapeType = New Telerik.Reporting.Drawing.Shapes.LineShape(Telerik.Reporting.Drawing.Shapes.LineDirection.NS)
         Me.Shape14.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(0.15000000596046448R), Telerik.Reporting.Drawing.Unit.Cm(0.60000002384185791R))
         '
         'TextBox27
         '
-        Me.TextBox27.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(13.814505577087402R), Telerik.Reporting.Drawing.Unit.Cm(1.382394552230835R))
+        Me.TextBox27.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(13.814505577087402R), Telerik.Reporting.Drawing.Unit.Cm(1.8586446046829224R))
         Me.TextBox27.Name = "TextBox27"
         Me.TextBox27.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.619999885559082R), Telerik.Reporting.Drawing.Unit.Cm(0.62000000476837158R))
         Me.TextBox27.Style.BackgroundColor = System.Drawing.Color.Silver
@@ -362,15 +254,235 @@ Partial Class RptHistorialVehiculo
         '
         'Shape2
         '
-        Me.Shape2.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(13.794506072998047R), Telerik.Reporting.Drawing.Unit.Cm(1.382394552230835R))
+        Me.Shape2.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(13.794506072998047R), Telerik.Reporting.Drawing.Unit.Cm(1.8586446046829224R))
         Me.Shape2.Name = "Shape2"
         Me.Shape2.ShapeType = New Telerik.Reporting.Drawing.Shapes.LineShape(Telerik.Reporting.Drawing.Shapes.LineDirection.NS)
         Me.Shape2.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(0.15000000596046448R), Telerik.Reporting.Drawing.Unit.Cm(0.60000002384185791R))
         '
+        'TextBox10
+        '
+        Me.TextBox10.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(4.6116666793823242R), Telerik.Reporting.Drawing.Unit.Cm(0.2404153048992157R))
+        Me.TextBox10.Name = "TextBox10"
+        Me.TextBox10.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(4.6041650772094727R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox10.Style.Color = System.Drawing.Color.Black
+        Me.TextBox10.Style.Font.Bold = True
+        Me.TextBox10.Style.Font.Name = "Arial"
+        Me.TextBox10.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox10.Value = "Apellido y Nombre/Razón Social:"
+        '
+        'TextBox37
+        '
+        Me.TextBox37.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(2.3571703433990479R), Telerik.Reporting.Drawing.Unit.Cm(0.74644947052001953R))
+        Me.TextBox37.Name = "TextBox37"
+        Me.TextBox37.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.5479159355163574R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox37.Style.Color = System.Drawing.Color.Black
+        Me.TextBox37.Style.Font.Bold = False
+        Me.TextBox37.Style.Font.Name = "Arial"
+        Me.TextBox37.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox37.Value = "= Fields.ClienteDireccion+"" ""+ Fields.ClienteNumero"
+        '
+        'TextBox35
+        '
+        Me.TextBox35.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(9.3704166412353516R), Telerik.Reporting.Drawing.Unit.Cm(0.21395698189735413R))
+        Me.TextBox35.Name = "TextBox35"
+        Me.TextBox35.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(9.1999998092651367R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox35.Style.Color = System.Drawing.Color.Black
+        Me.TextBox35.Style.Font.Bold = False
+        Me.TextBox35.Style.Font.Name = "Arial"
+        Me.TextBox35.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox35.Value = "= Fields.Cliente"
+        '
+        'TextBox17
+        '
+        Me.TextBox17.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.35333436727523804R), Telerik.Reporting.Drawing.Unit.Cm(0.2404153048992157R))
+        Me.TextBox17.Name = "TextBox17"
+        Me.TextBox17.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.0037500858306885R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox17.Style.Color = System.Drawing.Color.Black
+        Me.TextBox17.Style.Font.Bold = True
+        Me.TextBox17.Style.Font.Name = "Arial"
+        Me.TextBox17.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox17.Value = "CUIT:"
+        '
+        'TextBox12
+        '
+        Me.TextBox12.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.35166698694229126R), Telerik.Reporting.Drawing.Unit.Cm(0.74041664600372314R))
+        Me.TextBox12.Name = "TextBox12"
+        Me.TextBox12.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.8118745088577271R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox12.Style.Color = System.Drawing.Color.Black
+        Me.TextBox12.Style.Font.Bold = True
+        Me.TextBox12.Style.Font.Name = "Arial"
+        Me.TextBox12.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox12.Value = "Domicilio:"
+        '
+        'TextBox43
+        '
+        Me.TextBox43.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.5175001621246338R), Telerik.Reporting.Drawing.Unit.Cm(0.21395698189735413R))
+        Me.TextBox43.Name = "TextBox43"
+        Me.TextBox43.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.8700015544891357R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox43.Style.Color = System.Drawing.Color.Black
+        Me.TextBox43.Style.Font.Bold = False
+        Me.TextBox43.Style.Font.Name = "Arial"
+        Me.TextBox43.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox43.Value = "= Fields.ClienteCUIT"
+        '
+        'TextBox9
+        '
+        Me.TextBox9.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.35166698694229126R), Telerik.Reporting.Drawing.Unit.Cm(1.2404160499572754R))
+        Me.TextBox9.Name = "TextBox9"
+        Me.TextBox9.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.8118745088577271R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox9.Style.Color = System.Drawing.Color.Black
+        Me.TextBox9.Style.Font.Bold = True
+        Me.TextBox9.Style.Font.Name = "Arial"
+        Me.TextBox9.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox9.Value = "Localidad:"
+        '
+        'TextBox13
+        '
+        Me.TextBox13.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(2.2616672515869141R), Telerik.Reporting.Drawing.Unit.Cm(1.2404160499572754R))
+        Me.TextBox13.Name = "TextBox13"
+        Me.TextBox13.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.5479159355163574R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox13.Style.Color = System.Drawing.Color.Black
+        Me.TextBox13.Style.Font.Bold = False
+        Me.TextBox13.Style.Font.Name = "Arial"
+        Me.TextBox13.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox13.Value = "= Fields.ClienteLocalidad"
+        '
+        'TextBox18
+        '
+        Me.TextBox18.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(10.159585952758789R), Telerik.Reporting.Drawing.Unit.Cm(0.74041664600372314R))
+        Me.TextBox18.Name = "TextBox18"
+        Me.TextBox18.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.8118745088577271R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox18.Style.Color = System.Drawing.Color.Black
+        Me.TextBox18.Style.Font.Bold = True
+        Me.TextBox18.Style.Font.Name = "Arial"
+        Me.TextBox18.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox18.Value = "Teléfono:"
+        '
+        'TextBox24
+        '
+        Me.TextBox24.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(12.011668205261231R), Telerik.Reporting.Drawing.Unit.Cm(0.74041664600372314R))
+        Me.TextBox24.Name = "TextBox24"
+        Me.TextBox24.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(6.3860430717468262R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox24.Style.Color = System.Drawing.Color.Black
+        Me.TextBox24.Style.Font.Bold = False
+        Me.TextBox24.Style.Font.Name = "Arial"
+        Me.TextBox24.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox24.Value = "= Fields.ClienteTelefono"
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.979957103729248R), Telerik.Reporting.Drawing.Unit.Cm(5.144892692565918R))
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.6815881729125977R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox5.Style.Color = System.Drawing.Color.Black
+        Me.TextBox5.Style.Font.Bold = True
+        Me.TextBox5.Style.Font.Name = "Arial"
+        Me.TextBox5.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox5.Value = "Tipo de Vehículo:"
+        '
+        'TextBox19
+        '
+        Me.TextBox19.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.30321305990219116R), Telerik.Reporting.Drawing.Unit.Cm(4.6421842575073242R))
+        Me.TextBox19.Name = "TextBox19"
+        Me.TextBox19.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.7286186218261719R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox19.Style.Color = System.Drawing.Color.Black
+        Me.TextBox19.Style.Font.Bold = True
+        Me.TextBox19.Style.Font.Name = "Arial"
+        Me.TextBox19.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox19.Value = "Matrícula:"
+        '
+        'TextBox15
+        '
+        Me.TextBox15.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(6.1613435745239258R), Telerik.Reporting.Drawing.Unit.Cm(4.6421842575073242R))
+        Me.TextBox15.Name = "TextBox15"
+        Me.TextBox15.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.6000001430511475R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox15.Style.Color = System.Drawing.Color.Black
+        Me.TextBox15.Style.Font.Bold = True
+        Me.TextBox15.Style.Font.Name = "Arial"
+        Me.TextBox15.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox15.Value = "Vehículo:"
+        '
+        'TextBox16
+        '
+        Me.TextBox16.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.30321305990219116R), Telerik.Reporting.Drawing.Unit.Cm(5.144892692565918R))
+        Me.TextBox16.Name = "TextBox16"
+        Me.TextBox16.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.3767440319061279R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox16.Style.Color = System.Drawing.Color.Black
+        Me.TextBox16.Style.Font.Bold = True
+        Me.TextBox16.Style.Font.Name = "Arial"
+        Me.TextBox16.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox16.Value = "Modelo:"
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(8.6615447998046875R), Telerik.Reporting.Drawing.Unit.Cm(5.144892692565918R))
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.060122013092041R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox4.Style.Color = System.Drawing.Color.Black
+        Me.TextBox4.Style.Font.Bold = False
+        Me.TextBox4.Style.Font.Name = "Arial"
+        Me.TextBox4.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox4.Value = "= Fields.TipoVehiculo"
+        '
+        'TextBox23
+        '
+        Me.TextBox23.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(7.7615456581115723R), Telerik.Reporting.Drawing.Unit.Cm(4.6421842575073242R))
+        Me.TextBox23.Name = "TextBox23"
+        Me.TextBox23.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(8.45939826965332R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox23.Style.Color = System.Drawing.Color.Black
+        Me.TextBox23.Style.Font.Bold = False
+        Me.TextBox23.Style.Font.Name = "Arial"
+        Me.TextBox23.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox23.Value = "= Fields.VehiculoNombre"
+        '
+        'TextBox25
+        '
+        Me.TextBox25.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.6799571514129639R), Telerik.Reporting.Drawing.Unit.Cm(5.144892692565918R))
+        Me.TextBox25.Name = "TextBox25"
+        Me.TextBox25.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.9000008106231689R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox25.Style.Color = System.Drawing.Color.Black
+        Me.TextBox25.Style.Font.Bold = False
+        Me.TextBox25.Style.Font.Name = "Arial"
+        Me.TextBox25.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox25.Value = "= Fields.VehiculoModelo"
+        '
+        'TextBox26
+        '
+        Me.TextBox26.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.9799566268920898R), Telerik.Reporting.Drawing.Unit.Cm(4.6421842575073242R))
+        Me.TextBox26.Name = "TextBox26"
+        Me.TextBox26.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.2000000476837158R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox26.Style.Color = System.Drawing.Color.Black
+        Me.TextBox26.Style.Font.Bold = False
+        Me.TextBox26.Style.Font.Name = "Arial"
+        Me.TextBox26.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox26.Value = "= Fields.VehiculoMatricula"
+        '
+        'TextBox7
+        '
+        Me.TextBox7.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(12.461544990539551R), Telerik.Reporting.Drawing.Unit.Cm(5.144892692565918R))
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.0112497806549072R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox7.Style.Color = System.Drawing.Color.Black
+        Me.TextBox7.Style.Font.Bold = True
+        Me.TextBox7.Style.Font.Name = "Arial"
+        Me.TextBox7.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox7.Value = "Año de Fabricación:"
+        '
+        'TextBox8
+        '
+        Me.TextBox8.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(15.461545944213867R), Telerik.Reporting.Drawing.Unit.Cm(5.144892692565918R))
+        Me.TextBox8.Name = "TextBox8"
+        Me.TextBox8.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.8813905715942383R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
+        Me.TextBox8.Style.Color = System.Drawing.Color.Black
+        Me.TextBox8.Style.Font.Bold = False
+        Me.TextBox8.Style.Font.Name = "Arial"
+        Me.TextBox8.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
+        Me.TextBox8.Value = "= Fields.VehiculoañoFabricacion"
+        '
         'detail
         '
         Me.detail.Height = Telerik.Reporting.Drawing.Unit.Cm(0.48506942391395569R)
-        Me.detail.Items.AddRange(New Telerik.Reporting.ReportItemBase() {Me.TextBox72, Me.Shape15, Me.Shape29, Me.Shape16, Me.Shape28, Me.TextBox56, Me.TextBox54, Me.TextBox53, Me.TextBox2, Me.TextBox36, Me.Shape1})
+        Me.detail.Items.AddRange(New Telerik.Reporting.ReportItemBase() {Me.TextBox72, Me.Shape15, Me.Shape29, Me.Shape16, Me.Shape28, Me.TextBox56, Me.TextBox54, Me.TextBox53, Me.TextBox36, Me.Shape1, Me.TextBox2})
         Me.detail.Name = "detail"
         Me.detail.Style.BorderColor.Bottom = System.Drawing.Color.Black
         Me.detail.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.None
@@ -461,19 +573,6 @@ Partial Class RptHistorialVehiculo
         Me.TextBox53.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center
         Me.TextBox53.Value = "= Fields.OrdenNumero"
         '
-        'TextBox2
-        '
-        Me.TextBox2.Format = "{0:d}"
-        Me.TextBox2.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.4729166030883789R), Telerik.Reporting.Drawing.Unit.Cm(0.079999998211860657R))
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.380000114440918R), Telerik.Reporting.Drawing.Unit.Cm(0.31000000238418579R))
-        Me.TextBox2.Style.Color = System.Drawing.Color.Black
-        Me.TextBox2.Style.Font.Bold = False
-        Me.TextBox2.Style.Font.Name = "Arial"
-        Me.TextBox2.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Pixel(8.0R)
-        Me.TextBox2.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center
-        Me.TextBox2.Value = "= Fields.OrdenFechaEntrada"
-        '
         'TextBox36
         '
         Me.TextBox36.Format = "{0:N2}"
@@ -495,78 +594,25 @@ Partial Class RptHistorialVehiculo
         Me.Shape1.ShapeType = New Telerik.Reporting.Drawing.Shapes.LineShape(Telerik.Reporting.Drawing.Shapes.LineDirection.NS)
         Me.Shape1.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(0.15000000596046448R), Telerik.Reporting.Drawing.Unit.Cm(0.49000000953674316R))
         '
+        'TextBox2
+        '
+        Me.TextBox2.Format = "{0:d}"
+        Me.TextBox2.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.4729166030883789R), Telerik.Reporting.Drawing.Unit.Cm(0.079999998211860657R))
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.380000114440918R), Telerik.Reporting.Drawing.Unit.Cm(0.31000000238418579R))
+        Me.TextBox2.Style.Color = System.Drawing.Color.Black
+        Me.TextBox2.Style.Font.Bold = False
+        Me.TextBox2.Style.Font.Name = "Arial"
+        Me.TextBox2.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Pixel(8.0R)
+        Me.TextBox2.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center
+        Me.TextBox2.Value = "= Fields.OrdenFechaEntrada"
+        '
         'EncabezadoHistorial
         '
-        Me.EncabezadoHistorial.Height = Telerik.Reporting.Drawing.Unit.Cm(6.2999997138977051R)
-        Me.EncabezadoHistorial.Items.AddRange(New Telerik.Reporting.ReportItemBase() {Me.TextBox43, Me.TextBox37, Me.TextBox35, Me.TextBox17, Me.TextBox12, Me.TextBox10, Me.TextBox1, Me.TextBox46, Me.TextBox55, Me.TextBox59, Me.TextBox60, Me.TextBox61, Me.TextBox62, Me.TextBox31, Me.TextBox32, Me.TextBox33, Me.TextBox51, Me.TextBox52, Me.TextBox66, Me.TextBox67, Me.TextBox68, Me.Shape4, Me.PictureBox1, Me.TextBox9, Me.TextBox13, Me.TextBox18, Me.TextBox24, Me.TextBox29, Me.TextBox30, Me.TextBox34, Me.TextBox38})
+        Me.EncabezadoHistorial.Height = Telerik.Reporting.Drawing.Unit.Cm(5.8000001907348633R)
+        Me.EncabezadoHistorial.Items.AddRange(New Telerik.Reporting.ReportItemBase() {Me.TextBox1, Me.TextBox46, Me.TextBox55, Me.TextBox59, Me.TextBox60, Me.TextBox61, Me.TextBox62, Me.TextBox31, Me.TextBox32, Me.TextBox33, Me.TextBox51, Me.TextBox52, Me.TextBox66, Me.TextBox67, Me.TextBox68, Me.Shape4, Me.PictureBox1, Me.TextBox29, Me.TextBox30, Me.TextBox34, Me.TextBox38, Me.TextBox26, Me.TextBox19, Me.TextBox15, Me.TextBox16, Me.TextBox4, Me.TextBox23, Me.TextBox25, Me.TextBox5, Me.TextBox7, Me.TextBox8})
         Me.EncabezadoHistorial.Name = "EncabezadoHistorial"
         Me.EncabezadoHistorial.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.Solid
-        '
-        'TextBox43
-        '
-        Me.TextBox43.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.2000000476837158R), Telerik.Reporting.Drawing.Unit.Cm(4.5322904586791992R))
-        Me.TextBox43.Name = "TextBox43"
-        Me.TextBox43.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.8700015544891357R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox43.Style.Color = System.Drawing.Color.Black
-        Me.TextBox43.Style.Font.Bold = False
-        Me.TextBox43.Style.Font.Name = "Arial"
-        Me.TextBox43.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox43.Value = "= Fields.ClienteCUIT"
-        '
-        'TextBox37
-        '
-        Me.TextBox37.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(2.0500006675720215R), Telerik.Reporting.Drawing.Unit.Cm(5.0322918891906738R))
-        Me.TextBox37.Name = "TextBox37"
-        Me.TextBox37.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.5479159355163574R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox37.Style.Color = System.Drawing.Color.Black
-        Me.TextBox37.Style.Font.Bold = False
-        Me.TextBox37.Style.Font.Name = "Arial"
-        Me.TextBox37.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox37.Value = "= Fields.ClienteDireccion+"" ""+ Fields.ClienteNumero"
-        '
-        'TextBox35
-        '
-        Me.TextBox35.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(9.0R), Telerik.Reporting.Drawing.Unit.Cm(4.5322904586791992R))
-        Me.TextBox35.Name = "TextBox35"
-        Me.TextBox35.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(9.1999998092651367R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox35.Style.Color = System.Drawing.Color.Black
-        Me.TextBox35.Style.Font.Bold = False
-        Me.TextBox35.Style.Font.Name = "Arial"
-        Me.TextBox35.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox35.Value = "= Fields.Cliente"
-        '
-        'TextBox17
-        '
-        Me.TextBox17.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.14166750013828278R), Telerik.Reporting.Drawing.Unit.Cm(4.5322904586791992R))
-        Me.TextBox17.Name = "TextBox17"
-        Me.TextBox17.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.0037500858306885R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox17.Style.Color = System.Drawing.Color.Black
-        Me.TextBox17.Style.Font.Bold = True
-        Me.TextBox17.Style.Font.Name = "Arial"
-        Me.TextBox17.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox17.Value = "CUIT:"
-        '
-        'TextBox12
-        '
-        Me.TextBox12.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.14000013470649719R), Telerik.Reporting.Drawing.Unit.Cm(5.0322918891906738R))
-        Me.TextBox12.Name = "TextBox12"
-        Me.TextBox12.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.8118745088577271R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox12.Style.Color = System.Drawing.Color.Black
-        Me.TextBox12.Style.Font.Bold = True
-        Me.TextBox12.Style.Font.Name = "Arial"
-        Me.TextBox12.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox12.Value = "Domicilio:"
-        '
-        'TextBox10
-        '
-        Me.TextBox10.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(4.4000000953674316R), Telerik.Reporting.Drawing.Unit.Cm(4.5322904586791992R))
-        Me.TextBox10.Name = "TextBox10"
-        Me.TextBox10.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(4.6041650772094727R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox10.Style.Color = System.Drawing.Color.Black
-        Me.TextBox10.Style.Font.Bold = True
-        Me.TextBox10.Style.Font.Name = "Arial"
-        Me.TextBox10.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox10.Value = "Apellido y Nombre/Razón Social:"
         '
         'TextBox1
         '
@@ -766,50 +812,6 @@ Partial Class RptHistorialVehiculo
         Me.PictureBox1.Sizing = Telerik.Reporting.Drawing.ImageSizeMode.ScaleProportional
         Me.PictureBox1.Value = CType(resources.GetObject("PictureBox1.Value"), Object)
         '
-        'TextBox9
-        '
-        Me.TextBox9.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.14000013470649719R), Telerik.Reporting.Drawing.Unit.Cm(5.5322914123535156R))
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.8118745088577271R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox9.Style.Color = System.Drawing.Color.Black
-        Me.TextBox9.Style.Font.Bold = True
-        Me.TextBox9.Style.Font.Name = "Arial"
-        Me.TextBox9.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox9.Value = "Localidad:"
-        '
-        'TextBox13
-        '
-        Me.TextBox13.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(2.0500006675720215R), Telerik.Reporting.Drawing.Unit.Cm(5.5322914123535156R))
-        Me.TextBox13.Name = "TextBox13"
-        Me.TextBox13.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.5479159355163574R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox13.Style.Color = System.Drawing.Color.Black
-        Me.TextBox13.Style.Font.Bold = False
-        Me.TextBox13.Style.Font.Name = "Arial"
-        Me.TextBox13.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox13.Value = "= Fields.ClienteLocalidad"
-        '
-        'TextBox18
-        '
-        Me.TextBox18.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(9.9479188919067383R), Telerik.Reporting.Drawing.Unit.Cm(5.0322918891906738R))
-        Me.TextBox18.Name = "TextBox18"
-        Me.TextBox18.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.8118745088577271R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox18.Style.Color = System.Drawing.Color.Black
-        Me.TextBox18.Style.Font.Bold = True
-        Me.TextBox18.Style.Font.Name = "Arial"
-        Me.TextBox18.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox18.Value = "Teléfono:"
-        '
-        'TextBox24
-        '
-        Me.TextBox24.Location = New Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(11.80000114440918R), Telerik.Reporting.Drawing.Unit.Cm(5.0322918891906738R))
-        Me.TextBox24.Name = "TextBox24"
-        Me.TextBox24.Size = New Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(6.3860430717468262R), Telerik.Reporting.Drawing.Unit.Cm(0.40000060200691223R))
-        Me.TextBox24.Style.Color = System.Drawing.Color.Black
-        Me.TextBox24.Style.Font.Bold = False
-        Me.TextBox24.Style.Font.Name = "Arial"
-        Me.TextBox24.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8.0R)
-        Me.TextBox24.Value = "= Fields.ClienteTelefono"
-        '
         'TextBox29
         '
         Me.TextBox29.Format = "{0:dd/MM/yyyy}"
@@ -864,7 +866,7 @@ Partial Class RptHistorialVehiculo
         '
         Me.SqlDataSource1.ConnectionString = "Mecanica_Gaido_frm.My.MySettings.PIN_GRUPO31ConnectionString"
         Me.SqlDataSource1.Name = "SqlDataSource1"
-        Me.SqlDataSource1.Parameters.AddRange(New Telerik.Reporting.SqlDataSourceParameter() {New Telerik.Reporting.SqlDataSourceParameter("@ID_Vehiculo", System.Data.DbType.Int32, "=Parameters.ID_Vehiculo.Value")})
+        Me.SqlDataSource1.Parameters.AddRange(New Telerik.Reporting.SqlDataSourceParameter() {New Telerik.Reporting.SqlDataSourceParameter("@ID_Vehiculo", System.Data.DbType.Int32, "=Parameters.ID_Vehiculo.Value"), New Telerik.Reporting.SqlDataSourceParameter("@FechaMin", System.Data.DbType.DateTime, "=Parameters.FechaMin.Value"), New Telerik.Reporting.SqlDataSourceParameter("@FechaMax", System.Data.DbType.DateTime, "=Parameters.FechaMax.Value")})
         Me.SqlDataSource1.SelectCommand = "dbo.Consultar_Historial_RepVehiculos"
         Me.SqlDataSource1.SelectCommandType = Telerik.Reporting.SqlDataSourceCommandType.StoredProcedure
         '
@@ -885,7 +887,13 @@ Partial Class RptHistorialVehiculo
         ReportParameter1.Name = "ID_Vehiculo"
         ReportParameter1.Text = "@ID_Vehiculo"
         ReportParameter1.Type = Telerik.Reporting.ReportParameterType.[Integer]
+        ReportParameter2.Name = "FechaMin"
+        ReportParameter2.Text = "@FechaMin"
+        ReportParameter3.Name = "FechaMax"
+        ReportParameter3.Text = "@FechaMax"
         Me.ReportParameters.Add(ReportParameter1)
+        Me.ReportParameters.Add(ReportParameter2)
+        Me.ReportParameters.Add(ReportParameter3)
         Me.Style.BackgroundColor = System.Drawing.Color.White
         StyleRule1.Selectors.AddRange(New Telerik.Reporting.Drawing.ISelector() {New Telerik.Reporting.Drawing.TypeSelector(GetType(Telerik.Reporting.TextItemBase)), New Telerik.Reporting.Drawing.TypeSelector(GetType(Telerik.Reporting.HtmlTextBox))})
         StyleRule1.Style.Padding.Left = Telerik.Reporting.Drawing.Unit.Point(2.0R)

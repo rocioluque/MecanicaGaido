@@ -5,6 +5,8 @@ Imports System.IO
 
 Public Class frmViewHistorialVehiculo
     Public Property ID_Vehiculo As Integer
+    Public Property FechaMin As Date
+    Public Property FechaMax As Date
 
     <Obsolete>
     Private Sub frmViewHistorialVehiculo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -17,6 +19,8 @@ Public Class frmViewHistorialVehiculo
 
         ' Asignar el parámetro al reporte
         report.ReportParameters("ID_Vehiculo").Value = ID_Vehiculo
+        report.ReportParameters("FechaMin").Value = FechaMin
+        report.ReportParameters("FechaMax").Value = FechaMax
 
         reportViewer.ReportSource = report
         Me.Controls.Add(reportViewer)

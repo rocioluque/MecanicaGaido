@@ -254,6 +254,7 @@
     <Compile Include="Clima\Viento.vb" />
     <Compile Include="Clima\Weather.vb" />
     <Compile Include="ConnectionToSql.vb" />
+    <Compile Include="DatoDeposito.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
