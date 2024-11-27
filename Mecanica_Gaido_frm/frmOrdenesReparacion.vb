@@ -6,7 +6,6 @@ Imports System.IO
 Imports iTextSharp.text
 Imports iTextSharp.text.pdf
 
-
 Public Class frmOrdenesReparacion
     Dim o_Orden As New AD_OrdenReparacion
     Public idVehic As Integer
@@ -2129,6 +2128,5 @@ Public Class frmOrdenesReparacion
             btnFacturar.Enabled = False
         End If
     End Sub
-
 
 End Class

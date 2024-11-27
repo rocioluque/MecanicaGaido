@@ -210,6 +210,24 @@ Public Class AD_Reportes
         Return tabla
     End Function
 
+    Public Function Cargar_Combo_Repuestos() As DataTable
+        Dim tabla As New DataTable
+
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Cargar_Combo_Repuestos", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                Try
+                    conexion.Open()
+                    Dim datadapter As New SqlDataAdapter(comando)
+                    datadapter.Fill(tabla)
+                Catch ex As Exception
+                    Throw New Exception("Error al cargar los Repuestos desde la base de datos: " & ex.Message, ex)
+                End Try
+            End Using
+        End Using
+        Return tabla
+    End Function
+
     Public Function ObtenerRepuestos(Optional marcaID As Integer? = Nothing) As DataSet
         Dim ds As New DataSet()
 

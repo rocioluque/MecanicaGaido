@@ -15,8 +15,11 @@ Public Class frmReportesProductos
 #Region "Procedimientos"
     Private Sub frmReportesProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cargar_Combo_Marcas()
+        Cargar_Combo_Repuestos()
         CargarGrilla()
         AplicarTema(Me)
+        dtpFechaMax.Value = DateTime.Now
+        dtpFechaMin.Value = New DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -86,9 +89,26 @@ Public Class frmReportesProductos
             CargarGrilla()
         End If
     End Sub
+
+    Private Sub Cargar_Combo_Repuestos()
+        Try
+            Dim tabla As DataTable = o_reportes.Cargar_Combo_Repuestos
+
+            If tabla.Rows.Count > 0 Then
+                cboProducto.DataSource = tabla
+                cboProducto.DisplayMember = "Descripcion"
+                cboProducto.ValueMember = "ID_Repuestos"
+                cboProducto.SelectedIndex = -1
+            Else
+                MsgBox("No se encontraron productos.", vbInformation, "Información")
+            End If
+        Catch ex As Exception
+            MsgBox("Error al cargar los productos: " & ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
 #End Region
 
-#Region "Crear PDF"
+#Region "Crear PDF Listado Capítal Rep"
     Public Function GetColumnasSize(dg As DataGridView) As Single()
         Dim values As Single() = New Single(dg.ColumnCount - 1) {}
         For i As Integer = 0 To dg.ColumnCount - 1
@@ -285,6 +305,198 @@ Public Class frmReportesProductos
     End Sub
 
 
+#End Region
+
+#Region "Crear PDF Reporte Productos"
+    Public Sub PDFReporteProductos(ByVal document As Document)
+        ' Iniciar el documento PDF
+        document.Open()
+
+        '************
+        ' ENCABEZADO
+        '************
+        Dim encabezado As New PdfPTable(8)
+        encabezado.WidthPercentage = 100
+
+        ' Filas 1 a 4, Columnas 1 a 4 - Logo
+        Dim logoPath As String = System.IO.Path.Combine("Imagenes", "mecanicaGaidoLogo-SinFondo.png")
+        If File.Exists(logoPath) Then
+            Dim logo As Image = Image.GetInstance(logoPath)
+            logo.ScaleToFit(140, 120)
+
+            Dim logoCell As New PdfPCell(logo)
+            logoCell.Colspan = 4
+            logoCell.Rowspan = 4
+            logoCell.HorizontalAlignment = Element.ALIGN_CENTER
+            logoCell.VerticalAlignment = Element.ALIGN_MIDDLE
+            logoCell.Border = PdfPCell.NO_BORDER
+
+            encabezado.AddCell(logoCell)
+        Else
+            MessageBox.Show("La imagen no se encontró en la ruta especificada.")
+        End If
+
+        ' Fila 1, Columnas 5 a 8 - Vacia
+        Dim NumOrdenCell As New PdfPCell(New Paragraph("  ", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11)))
+        NumOrdenCell.Colspan = 4
+        NumOrdenCell.Border = PdfPCell.NO_BORDER
+        NumOrdenCell.HorizontalAlignment = Element.ALIGN_LEFT
+        encabezado.AddCell(NumOrdenCell)
+
+        ' Fila 2, Columnas 5 a 8 - Dirección
+        Dim direccionCell As New PdfPCell(New Paragraph("Corrientes 136 - (5940) LAS VARILLAS (Cba.)", FontFactory.GetFont(FontFactory.HELVETICA, 10)))
+        direccionCell.Colspan = 4
+        direccionCell.Border = PdfPCell.NO_BORDER
+        direccionCell.HorizontalAlignment = Element.ALIGN_CENTER
+        direccionCell.VerticalAlignment = Element.ALIGN_TOP
+        encabezado.AddCell(direccionCell)
+
+        ' Fila 3, Columnas 5 a 8 - Teléfono
+        Dim telefonoCell As New PdfPCell(New Paragraph("Tel. 03533 420505 / 03533 15419566", FontFactory.GetFont(FontFactory.HELVETICA, 10)))
+        telefonoCell.Colspan = 4
+        telefonoCell.Border = PdfPCell.NO_BORDER
+        telefonoCell.HorizontalAlignment = Element.ALIGN_CENTER
+        telefonoCell.VerticalAlignment = Element.ALIGN_TOP
+        encabezado.AddCell(telefonoCell)
+
+        ' Fila 4, Columnas 5 a 8 - Email
+        Dim emailCell As New PdfPCell(New Paragraph("rgaido@lasvarinet.com.ar", FontFactory.GetFont(FontFactory.HELVETICA, 10)))
+        emailCell.Colspan = 4
+        emailCell.Border = PdfPCell.NO_BORDER
+        emailCell.HorizontalAlignment = Element.ALIGN_CENTER
+        emailCell.VerticalAlignment = Element.ALIGN_TOP
+        encabezado.AddCell(emailCell)
+
+        ' Fila 5, Columnas 1 a 4 - Dueño
+        Dim Dueñocell As New PdfPCell(New Phrase("de Roberto C. Gaido", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11)))
+        Dueñocell.Colspan = 4
+        Dueñocell.Border = PdfPCell.NO_BORDER
+        Dueñocell.HorizontalAlignment = Element.ALIGN_CENTER
+        Dueñocell.VerticalAlignment = Element.ALIGN_TOP
+        encabezado.AddCell(Dueñocell)
+
+        ' Fila 5, Columnas 5 a 8 - Vacia
+        For col As Integer = 5 To 8
+            Dim emptyCell As New PdfPCell(New Phrase(" "))
+
+            If col = 8 Then
+                emptyCell.Border = PdfPCell.NO_BORDER
+            Else
+                emptyCell.Border = PdfPCell.NO_BORDER
+            End If
+            encabezado.AddCell(emptyCell)
+        Next
+
+        ' Fila 6, Columnas 1 a 8 - Línea de separación 
+        Dim separadorCell As New PdfPCell()
+        separadorCell.Colspan = 8
+        separadorCell.FixedHeight = 1
+        separadorCell.Border = PdfPCell.NO_BORDER
+        separadorCell.BackgroundColor = New BaseColor(46, 139, 87)
+        encabezado.AddCell(separadorCell)
+
+        document.Add(encabezado)
+
+        '*******************
+        ' TÍTULO DE REPORTE
+        '*******************
+        Dim TituloReporte As New PdfPTable(8)
+        TituloReporte.WidthPercentage = 100
+
+        ' Fila 1, Columnas 1 a 8 - Vacia
+        Dim SeparadorTabla As New PdfPCell(New Paragraph(" ", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
+        SeparadorTabla.Colspan = 8
+        SeparadorTabla.Border = PdfPCell.NO_BORDER
+        TituloReporte.AddCell(SeparadorTabla)
+
+        ' Filas 2-3, Columnas 1 a 8 - Fecha Emisión
+        Dim FechaEmisionCell As New PdfPCell(New Paragraph("Fecha de emisión " & DateTime.Now.ToShortDateString, FontFactory.GetFont(FontFactory.HELVETICA, 9)))
+        FechaEmisionCell.Colspan = 8
+        FechaEmisionCell.Rowspan = 1
+        FechaEmisionCell.Border = PdfPCell.NO_BORDER
+        FechaEmisionCell.HorizontalAlignment = Element.ALIGN_RIGHT
+        FechaEmisionCell.VerticalAlignment = Element.ALIGN_TOP
+        TituloReporte.AddCell(FechaEmisionCell)
+
+        ' Filas 4-5, Columnas 1 a 8 - Título
+        Dim TituloCell As New PdfPCell(New Phrase("RESUMEN DE MOVIMIENTO DE MERCADERÍA", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11)))
+        TituloCell.Colspan = 8
+        TituloCell.Rowspan = 2
+        TituloCell.Border = PdfPCell.NO_BORDER
+        TituloCell.HorizontalAlignment = Element.ALIGN_CENTER
+        TituloCell.VerticalAlignment = Element.ALIGN_BOTTOM
+        TituloCell.PaddingLeft = 10
+        TituloReporte.AddCell(TituloCell)
+
+        ' Filas 6-7, Columnas 1 a 8 - Fecha
+        Dim FechaMin As Date = dtpFechaMin.Value.Date
+        Dim FechaMax As Date = dtpFechaMax.Value.Date
+
+        Dim FechaCell As New PdfPCell(New Paragraph("Del " & FechaMin & " al " & FechaMax, FontFactory.GetFont(FontFactory.HELVETICA, 10)))
+        FechaCell.Colspan = 8
+        FechaCell.Rowspan = 2
+        FechaCell.Border = PdfPCell.NO_BORDER
+        FechaCell.HorizontalAlignment = Element.ALIGN_CENTER
+        FechaCell.VerticalAlignment = Element.ALIGN_BOTTOM
+        TituloReporte.AddCell(FechaCell)
+
+        ' Fila 8, Columnas 1 a 8 - Vacia
+        Dim FilaVaciaTabla As New PdfPCell(New Paragraph(" ", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
+        FilaVaciaTabla.Colspan = 8
+        FilaVaciaTabla.Border = PdfPCell.NO_BORDER
+        TituloReporte.AddCell(FilaVaciaTabla)
+
+        ' Filas 9-10, Columnas 1 a 8 - Repuesto
+        Dim RepuestoCell As New PdfPCell(New Paragraph("Repuesto: " & cboProducto.Text, FontFactory.GetFont(FontFactory.HELVETICA, 10)))
+        RepuestoCell.Colspan = 8
+        RepuestoCell.Rowspan = 2
+        RepuestoCell.Border = PdfPCell.NO_BORDER
+        RepuestoCell.HorizontalAlignment = Element.ALIGN_LEFT
+        RepuestoCell.VerticalAlignment = Element.ALIGN_BOTTOM
+        TituloReporte.AddCell(RepuestoCell)
+
+        document.Add(TituloReporte)
+
+        '*******************
+        ' ENCABEZADO TABLA
+        '*******************
+
+        Dim EncabezadoTabla As New PdfPTable(8)
+        EncabezadoTabla.WidthPercentage = 100
+
+        ' Fila 1, Columnas 1 a 8 - Vacia
+        Dim FilaVaciaEncabezado As New PdfPCell(New Paragraph(" ", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
+        FilaVaciaEncabezado.Colspan = 8
+        FilaVaciaEncabezado.Border = PdfPCell.NO_BORDER
+        EncabezadoTabla.AddCell(FilaVaciaEncabezado)
+
+        document.Close()
+    End Sub
+
+
+#End Region
+
+#Region "Descargar pdf"
+    Private Sub btnObtenerResumen_Click(sender As Object, e As EventArgs) Handles btnObtenerResumen.Click
+        Try
+            Dim folderPath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Movimiento de Repuestos")
+
+            If Not Directory.Exists(folderPath) Then
+                Directory.CreateDirectory(folderPath)
+            End If
+
+            Dim pdfPath As String = Path.Combine(folderPath, "ReporteProductos.pdf")
+
+            Dim document As New Document()
+            PdfWriter.GetInstance(document, New FileStream(pdfPath, FileMode.Create))
+
+            PDFReporteProductos(document)
+
+            MessageBox.Show("El PDF se ha guardado correctamente en: " & pdfPath, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show("Error al generar el PDF: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 #End Region
 
 End Class
