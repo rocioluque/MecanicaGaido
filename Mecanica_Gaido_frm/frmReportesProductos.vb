@@ -457,12 +457,13 @@ Public Class frmReportesProductos
 
         document.Add(TituloReporte)
 
-        '*******************
+        '******************
         ' ENCABEZADO TABLA
-        '*******************
+        '******************
 
-        Dim EncabezadoTabla As New PdfPTable(8)
+        Dim EncabezadoTabla As New PdfPTable(6)
         EncabezadoTabla.WidthPercentage = 100
+        EncabezadoTabla.SetWidths(New Single() {2.5F, 1.5F, 1.5F, 1.5F, 1.5F, 0.5F})
 
         ' Fila 1, Columnas 1 a 8 - Vacia
         Dim FilaVaciaEncabezado As New PdfPCell(New Paragraph(" ", FontFactory.GetFont(FontFactory.HELVETICA, 11)))
@@ -470,22 +471,109 @@ Public Class frmReportesProductos
         FilaVaciaEncabezado.Border = PdfPCell.NO_BORDER
         EncabezadoTabla.AddCell(FilaVaciaEncabezado)
 
+        'Fila 2, Columnas 1 a 8 - Títulos
+        Dim titulos As String() = {"COMPROBANTE", "FEC.EMI.", "INGRESO", "EGRESO", "STOCK", ""}
+        For Each titulo As String In titulos
+            Dim tituloEncabezadoCell As New PdfPCell(New Paragraph(titulo, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11)))
+            tituloEncabezadoCell.HorizontalAlignment = Element.ALIGN_CENTER
+            tituloEncabezadoCell.VerticalAlignment = Element.ALIGN_MIDDLE
+            tituloEncabezadoCell.Border = PdfPCell.TOP_BORDER Or PdfPCell.BOTTOM_BORDER
+            EncabezadoTabla.AddCell(tituloEncabezadoCell)
+        Next
+
+        document.Add(EncabezadoTabla)
+
+        '****************
+        ' REGISTRO TABLA
+        '****************
+
+        Dim RegistroTabla As New PdfPTable(6)
+        RegistroTabla.WidthPercentage = 100
+        RegistroTabla.SetWidths(New Single() {2.5F, 1.5F, 1.5F, 1.5F, 1.5F, 0.5F})
+
+        Dim ID_Repuesto As Integer = Convert.ToInt32(cboProducto.SelectedValue)
+        Dim movimientos As DataTable = o_reportes.ObtenerMovimientosProducto(ID_Repuesto)
+
+        For Each row As DataRow In movimientos.Rows
+            ' Celda: COMPROBANTE
+            Dim comprobanteCell As New PdfPCell(New Paragraph(row("COMPROBANTE").ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)))
+            comprobanteCell.HorizontalAlignment = Element.ALIGN_LEFT
+            comprobanteCell.VerticalAlignment = Element.ALIGN_MIDDLE
+            comprobanteCell.Border = PdfPCell.NO_BORDER
+            RegistroTabla.AddCell(comprobanteCell)
+
+            ' Celda: FEC.EMI.
+            Dim fechaEmitCell As New PdfPCell(New Paragraph(Convert.ToDateTime(row("FEC.EMI.")).ToString("dd-MM-yyyy"), FontFactory.GetFont(FontFactory.HELVETICA, 10)))
+            fechaEmitCell.HorizontalAlignment = Element.ALIGN_CENTER
+            fechaEmitCell.VerticalAlignment = Element.ALIGN_MIDDLE
+            fechaEmitCell.Border = PdfPCell.NO_BORDER
+            RegistroTabla.AddCell(fechaEmitCell)
+
+            ' Celda: INGRESO
+            Dim ingresoCell As New PdfPCell(New Paragraph(row("INGRESO").ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)))
+            ingresoCell.HorizontalAlignment = Element.ALIGN_CENTER
+            ingresoCell.VerticalAlignment = Element.ALIGN_MIDDLE
+            ingresoCell.Border = PdfPCell.NO_BORDER
+            RegistroTabla.AddCell(ingresoCell)
+
+            ' Celda: EGRESO
+            Dim egresoCell As New PdfPCell(New Paragraph(row("EGRESO").ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)))
+            egresoCell.HorizontalAlignment = Element.ALIGN_CENTER
+            egresoCell.VerticalAlignment = Element.ALIGN_MIDDLE
+            egresoCell.Border = PdfPCell.NO_BORDER
+            RegistroTabla.AddCell(egresoCell)
+
+            ' Celda: STOCK
+            Dim stockCell As New PdfPCell(New Paragraph(row("STOCK").ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)))
+            stockCell.HorizontalAlignment = Element.ALIGN_CENTER
+            stockCell.VerticalAlignment = Element.ALIGN_MIDDLE
+            stockCell.Border = PdfPCell.NO_BORDER
+            RegistroTabla.AddCell(stockCell)
+
+            ' Celda: Espacio en blanco o cuadrado [   ]
+            Dim espacioCell As New PdfPCell(New Paragraph("[   ]", FontFactory.GetFont(FontFactory.HELVETICA, 10)))
+            espacioCell.HorizontalAlignment = Element.ALIGN_CENTER
+            espacioCell.VerticalAlignment = Element.ALIGN_MIDDLE
+            espacioCell.Border = PdfPCell.NO_BORDER
+            RegistroTabla.AddCell(espacioCell)
+        Next
+
+        document.Add(RegistroTabla)
+
+        ' **************
+        ' PIE DE PÁGINA 
+        ' **************
+
+
+
         document.Close()
     End Sub
-
-
 #End Region
 
-#Region "Descargar pdf"
+#Region "Descargar pdf Reporte Productos"
     Private Sub btnObtenerResumen_Click(sender As Object, e As EventArgs) Handles btnObtenerResumen.Click
         Try
+            Dim codFabricante As String
+            Dim seleccionado As String = cboProducto.Text
+            Dim FechaMin As Date = dtpFechaMin.Value.Date
+            Dim FechaMax As Date = dtpFechaMax.Value.Date
+            Dim fechaMinStr As String = FechaMin.ToString("dd_MM_yy")
+            Dim fechaMaxStr As String = FechaMax.ToString("dd_MM_yy")
+
+            ' Extraer CodFabricante (antes del guion "-")
+            If Not String.IsNullOrEmpty(seleccionado) AndAlso seleccionado.Contains(" - ") Then
+                codFabricante = seleccionado.Split("-"c)(0).Trim()
+            Else
+                codFabricante = "SIN_CODIGO"
+            End If
+
             Dim folderPath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Movimiento de Repuestos")
 
             If Not Directory.Exists(folderPath) Then
                 Directory.CreateDirectory(folderPath)
             End If
 
-            Dim pdfPath As String = Path.Combine(folderPath, "ReporteProductos.pdf")
+            Dim pdfPath As String = Path.Combine(folderPath, $"{codFabricante}_RMM_{fechaMinStr}_AL_{fechaMaxStr}.pdf")
 
             Dim document As New Document()
             PdfWriter.GetInstance(document, New FileStream(pdfPath, FileMode.Create))
@@ -500,3 +588,5 @@ Public Class frmReportesProductos
 #End Region
 
 End Class
+
+

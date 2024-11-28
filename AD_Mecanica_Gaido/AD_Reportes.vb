@@ -195,6 +195,8 @@ Public Class AD_Reportes
 #End Region
 
 #Region "Reporte productos"
+
+#Region "Carga cbo"
     Public Function Cargar_Combo_Marcas() As DataTable
         Dim tabla As New DataTable
 
@@ -231,7 +233,9 @@ Public Class AD_Reportes
         End Using
         Return tabla
     End Function
+#End Region
 
+#Region "Funcion listado rep"
     Public Function ObtenerRepuestos(Optional marcaID As Integer? = Nothing) As DataSet
         Dim ds As New DataSet()
 
@@ -253,6 +257,23 @@ Public Class AD_Reportes
 
         Return ds
     End Function
+#End Region
+
+#Region "Funcion mov rep"
+    Public Function ObtenerMovimientosProducto(ByVal ID_Repuesto As Integer) As DataTable
+        Dim dt As New DataTable()
+        Using conexion As New SqlConnection(connectionString)
+            Using comando As New SqlCommand("Obtener_Movimientos_Producto", conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddWithValue("@ID_Repuesto", ID_Repuesto)
+                Dim adapter As New SqlDataAdapter(comando)
+                adapter.Fill(dt)
+            End Using
+        End Using
+        Return dt
+    End Function
+#End Region
+
 #End Region
 
 #Region "Reporte compras"
