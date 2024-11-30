@@ -138,12 +138,16 @@ Public Class AD_Reportes
 #End Region
 
 #Region "Reporte vehiculos"
-    Public Function Cargar_Combo_Vehiculo()
+    Public Function Cargar_Combo_Vehiculo(criterio As String, valor As String) As DataTable
         Dim tabla As New DataTable
-
+        Dim parametros As New List(Of SqlParameter) From {
+        New SqlParameter("@Criterio", criterio),
+        New SqlParameter("@Valor", valor)
+    }
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Cargar_Combo_VehiculosTodos", conexion)
                 comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.AddRange(parametros.ToArray())
                 Try
                     conexion.Open()
                     Dim datadapter As New SqlDataAdapter(comando)

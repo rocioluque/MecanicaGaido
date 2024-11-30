@@ -11,15 +11,23 @@ Public Class frmReportesVehiculos
     Dim o_reporte As New AD_Reportes
     Private Sub frmReportesVehiculos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AplicarTema(Me)
-        Cargar_Combo_Vehiculo()
+        Cargar_Combo_Vehiculo("", "")
         dtpFechaMax.Value = DateTime.Now
         dtpFechaMin.Value = New DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)
+        Cargar_Criterios()
+
+    End Sub
+    Private Sub Cargar_Criterios()
+        cboCriterio.Items.Clear()
+        cboCriterio.Items.Add("Matricula")
+        cboCriterio.Items.Add("Numero_Chasis")
+        cboCriterio.Items.Add("Numero_Motor")
     End Sub
 
 
-    Private Sub Cargar_Combo_Vehiculo()
+    Private Sub Cargar_Combo_Vehiculo(criterio As String, valor As String)
         Try
-            Dim tabla As DataTable = o_reporte.Cargar_Combo_Vehiculo
+            Dim tabla As DataTable = o_reporte.Cargar_Combo_Vehiculo(criterio, valor)
 
             If tabla.Rows.Count > 0 Then
                 cboVehiculo.DataSource = tabla
@@ -35,9 +43,7 @@ Public Class frmReportesVehiculos
         End Try
     End Sub
 
-    '*********************
-    ' MODIFICAR DESDE ACA
-    '*********************
+
 
     Private Sub MostrarHistorialReparaciones(ByVal ID_Vehiculo As Integer, ByVal FechaMin As String, ByVal FechaMax As String)
         Dim frmReporte As New frmViewHistorialVehiculo()
@@ -71,6 +77,33 @@ Public Class frmReportesVehiculos
             MsgBox("Por favor seleccione un vehículo para buscar su historial de reparaciones.", vbInformation, "Información")
         End If
     End Sub
+
+    Private Sub txtCriterio_leave(sender As Object, e As EventArgs) Handles txtCriterio.Leave
+        txtCriterio.Text = txtCriterio.Text.ToUpper()
+    End Sub
+
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+
+
+        If cboCriterio.SelectedIndex >= 0 AndAlso Not String.IsNullOrWhiteSpace(txtCriterio.Text) Then
+            Dim criterio As String = cboCriterio.SelectedItem.ToString()
+            Dim valor As String = txtCriterio.Text
+
+            ' Validar que el criterio sea uno permitido (seguridad adicional)
+            Select Case criterio
+                Case "Matricula", "Numero_Chasis", "Numero_Motor"
+                    Cargar_Combo_Vehiculo(criterio, valor)
+                Case Else
+                    MsgBox("Seleccione un criterio válido.", vbExclamation, "Advertencia")
+            End Select
+        Else
+            MsgBox("Debe seleccionar un criterio y completar el campo de texto.", vbExclamation, "Advertencia")
+        End If
+
+        cboCriterio.SelectedIndex = -1
+        txtCriterio.Text = ""
+    End Sub
+
 
 
 End Class
