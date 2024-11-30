@@ -174,10 +174,6 @@ C:\Users\Carabante\source\repos\MecanicaGaido\AD_Mecanica_Gaido\obj\Debug\AD_Mec
 C:\Users\Carabante\source\repos\MecanicaGaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.dll
 C:\Users\Carabante\source\repos\MecanicaGaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.xml
 C:\Users\Carabante\source\repos\MecanicaGaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.pdb
-C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.AssemblyReference.cache
-C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.Resources.resources
-C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.GenerateResource.cache
-C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.CoreCompileInputs.cache
 C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\AD_Mecanica_Gaido.dll.config
 C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\AD_Mecanica_Gaido.dll
 C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\AD_Mecanica_Gaido.pdb
@@ -272,6 +268,10 @@ C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\System.Run
 C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\System.Security.Principal.Windows.xml
 C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\bin\Debug\System.ValueTuple.xml
+C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.AssemblyReference.cache
+C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.Resources.resources
+C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.GenerateResource.cache
+C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.CoreCompileInputs.cache
 C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.vbproj.CopyComplete
 C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.dll
 C:\Users\alumn\source\repos\MecanicaGaido\AD_Mecanica_Gaido\obj\Debug\AD_Mecanica_Gaido.xml

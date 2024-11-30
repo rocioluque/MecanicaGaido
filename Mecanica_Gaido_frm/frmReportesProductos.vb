@@ -309,7 +309,6 @@ Public Class frmReportesProductos
 
 #Region "Crear PDF Reporte Productos"
     Public Sub PDFReporteProductos(ByVal document As Document)
-        ' Iniciar el documento PDF
         document.Open()
 
         '************
@@ -544,9 +543,26 @@ Public Class frmReportesProductos
         ' PIE DE PÁGINA 
         ' **************
 
+        'Dim PiePagina As New PdfPTable(2)
+        'PiePagina.WidthPercentage = 100
+        'PiePagina.SetWidths(New Single() {0.5F, 0.5F})
 
+        '' Fila 1: Número de página
+        'Dim PageNumberCell As New PdfPCell(New Paragraph("Página " & document.PageNumber.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8)))
+        'PageNumberCell.HorizontalAlignment = Element.ALIGN_LEFT
+        'PageNumberCell.Border = PdfPCell.NO_BORDER
+        'PiePagina.AddCell(PageNumberCell)
+
+        '' Fila 1: Texto centrado
+        'Dim PieTextoCell As New PdfPCell(New Paragraph("Mecánica Gaido by MECASOFT", FontFactory.GetFont(FontFactory.HELVETICA, 8)))
+        'PieTextoCell.HorizontalAlignment = Element.ALIGN_RIGHT
+        'PieTextoCell.Border = PdfPCell.NO_BORDER
+        'PiePagina.AddCell(PieTextoCell)
+
+        'document.Add(PiePagina)
 
         document.Close()
+
     End Sub
 #End Region
 
@@ -588,5 +604,3 @@ Public Class frmReportesProductos
 #End Region
 
 End Class
-
-
