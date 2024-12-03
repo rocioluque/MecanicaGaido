@@ -264,6 +264,7 @@ Public Class frmOrdenesReparacion
             MsgBox("Error al cargar las personas: " & ex.Message, vbCritical, "Error")
         End Try
         combopersonacargado = True
+
     End Sub
     Private Sub CargarComboVehiculos(idVehic)
         Dim ds As DataSet
@@ -295,8 +296,12 @@ Public Class frmOrdenesReparacion
                 Cargar_Combo_Vehiculos(ID_Persona)
             End If
         ElseIf combopersonacargado = False Then
-            CargarComboVehiculos(idVehic)
+            If idVehic = 0 Then
+                Exit Sub
+            Else
 
+                CargarComboVehiculos(idVehic)
+            End If
         End If
 
         If cboPersonas.SelectedValue IsNot Nothing Then
@@ -971,6 +976,7 @@ Public Class frmOrdenesReparacion
                 ' Si todo está bien, hacer commit
                 transaction.Commit()
                 MessageBox.Show("Orden modificada exitosamente.")
+                CrearPDF(id_orden)
             Catch ex As Exception
                 transaction.Rollback()
                 MessageBox.Show("Error al modificar la orden: " & ex.Message)

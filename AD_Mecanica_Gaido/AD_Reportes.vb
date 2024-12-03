@@ -139,27 +139,31 @@ Public Class AD_Reportes
 
 #Region "Reporte vehiculos"
     Public Function Cargar_Combo_Vehiculo(criterio As String, valor As String) As DataTable
-        Dim tabla As New DataTable
+        Dim tabla As New DataTable()
         Dim parametros As New List(Of SqlParameter) From {
-        New SqlParameter("@Criterio", criterio),
-        New SqlParameter("@Valor", valor)
+        New SqlParameter("@Criterio", If(String.IsNullOrEmpty(criterio), DBNull.Value, criterio)),
+        New SqlParameter("@Valor", If(String.IsNullOrEmpty(valor), DBNull.Value, valor))
     }
+
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Cargar_Combo_VehiculosTodos", conexion)
                 comando.CommandType = CommandType.StoredProcedure
                 comando.Parameters.AddRange(parametros.ToArray())
+
                 Try
                     conexion.Open()
-                    Dim datadapter As New SqlDataAdapter(comando)
-                    datadapter.Fill(tabla)
+                    Using adaptador As New SqlDataAdapter(comando)
+                        adaptador.Fill(tabla)
+                    End Using
                 Catch ex As Exception
                     Throw New Exception("Error al cargar los vehículos desde la base de datos: " & ex.Message, ex)
                 End Try
-
             End Using
         End Using
+
         Return tabla
     End Function
+
 #End Region
 
 #Region "Reporte Reparaciones"
@@ -260,18 +264,24 @@ Public Class AD_Reportes
 #End Region
 
 #Region "Funcion mov rep"
-    Public Function ObtenerMovimientosProducto(ByVal ID_Repuesto As Integer) As DataTable
+
+    Public Function ObtenerMovimientosProducto(ByVal ID_Repuesto As Integer, ByVal fechaInicio As Date, ByVal fechaFinal As Date) As DataTable
         Dim dt As New DataTable()
         Using conexion As New SqlConnection(connectionString)
             Using comando As New SqlCommand("Obtener_Movimientos_Producto", conexion)
                 comando.CommandType = CommandType.StoredProcedure
+                ' Agregar parámetros al comando
                 comando.Parameters.AddWithValue("@ID_Repuesto", ID_Repuesto)
+                comando.Parameters.AddWithValue("@fechainicio", fechaInicio)
+                comando.Parameters.AddWithValue("@fechafinal", fechaFinal)
+                ' Llenar el DataTable con los resultados
                 Dim adapter As New SqlDataAdapter(comando)
                 adapter.Fill(dt)
             End Using
         End Using
         Return dt
     End Function
+
 #End Region
 
 #End Region

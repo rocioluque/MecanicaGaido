@@ -491,7 +491,8 @@ Public Class frmReportesProductos
         RegistroTabla.SetWidths(New Single() {2.5F, 1.5F, 1.5F, 1.5F, 1.5F, 0.5F})
 
         Dim ID_Repuesto As Integer = Convert.ToInt32(cboProducto.SelectedValue)
-        Dim movimientos As DataTable = o_reportes.ObtenerMovimientosProducto(ID_Repuesto)
+
+        Dim movimientos As DataTable = o_reportes.ObtenerMovimientosProducto(ID_Repuesto, FechaMin, FechaMax)
 
         For Each row As DataRow In movimientos.Rows
             ' Celda: COMPROBANTE

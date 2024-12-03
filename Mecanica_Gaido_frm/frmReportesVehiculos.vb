@@ -11,11 +11,10 @@ Public Class frmReportesVehiculos
     Dim o_reporte As New AD_Reportes
     Private Sub frmReportesVehiculos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AplicarTema(Me)
-        Cargar_Combo_Vehiculo("", "")
+        Cargar_Combo_Vehiculo(String.Empty, String.Empty)
         dtpFechaMax.Value = DateTime.Now
         dtpFechaMin.Value = New DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)
         Cargar_Criterios()
-
     End Sub
     Private Sub Cargar_Criterios()
         cboCriterio.Items.Clear()
@@ -83,8 +82,6 @@ Public Class frmReportesVehiculos
     End Sub
 
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
-
-
         If cboCriterio.SelectedIndex >= 0 AndAlso Not String.IsNullOrWhiteSpace(txtCriterio.Text) Then
             Dim criterio As String = cboCriterio.SelectedItem.ToString()
             Dim valor As String = txtCriterio.Text
@@ -100,9 +97,11 @@ Public Class frmReportesVehiculos
             MsgBox("Debe seleccionar un criterio y completar el campo de texto.", vbExclamation, "Advertencia")
         End If
 
+        ' Limpia los controles
         cboCriterio.SelectedIndex = -1
-        txtCriterio.Text = ""
+        txtCriterio.Clear()
     End Sub
+
 
 
 
