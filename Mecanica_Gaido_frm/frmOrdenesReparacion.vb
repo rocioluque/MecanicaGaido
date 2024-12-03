@@ -349,7 +349,7 @@ Public Class frmOrdenesReparacion
         End Try
     End Sub
 
-    Private Sub cboVehiculo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboVehiculo.SelectedIndexChanged
+    Private Sub cboVehiculo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboVehiculo.SelectedValueChanged
         If cboVehiculo.SelectedValue IsNot Nothing Then
             Dim selectedValue As Object = cboVehiculo.SelectedValue
             Dim idVehiculo As Integer
